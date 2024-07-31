@@ -1,0 +1,85 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install poetry
+          poetry install
+
+  ruff-format:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Python environment from setup job
+        run: source .venv/bin/activate
+
+      - name: Check ruff version
+        run: ruff --version
+
+      - name: Run ruff format check
+        run: ruff format --check .
+
+  ruff-lint:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Python environment from setup job
+        run: source .venv/bin/activate
+
+      - name: Check ruff version
+        run: ruff --version
+
+      - name: Run ruff lint
+        run: ruff check --output-format=github .
+
+  mypy-type-check:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Python environment from setup job
+        run: source .venv/bin/activate
+
+      - name: Check mypy version
+        run: mypy --version
+
+      - name: Run mypy type check
+        run: mypy .
