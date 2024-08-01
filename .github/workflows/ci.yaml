@@ -67,7 +67,7 @@ jobs:
       - name: Run ruff format check
         run: |
           source .venv/bin/activate
-          poetry run ruff format --check --output-format=github .
+          poetry run ruff format --check .
 
   ruff-lint:
     needs: setup
