@@ -28,6 +28,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
+      - name: Cache virtual environment
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-venv-
+
       - name: Install dependencies
         run: |
           python -m venv .venv
@@ -43,14 +51,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Use Python environment from setup job
-        run: source .venv/bin/activate
+      - name: Restore virtual environment cache
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-venv-
 
       - name: Check ruff version
-        run: ruff --version
+        run: |
+          source .venv/bin/activate
+          poetry run ruff --version
 
       - name: Run ruff format check
-        run: ruff format --check .
+        run: |
+          source .venv/bin/activate
+          poetry run ruff format --check --output-format=github .
 
   ruff-lint:
     needs: setup
@@ -59,14 +76,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Use Python environment from setup job
+      - name: Restore virtual environment cache
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-venv-
+
+      - name: Set up Python environment
         run: source .venv/bin/activate
 
       - name: Check ruff version
-        run: ruff --version
+        run: |
+          source .venv/bin/activate
+          poetry run ruff --version
 
       - name: Run ruff lint
-        run: ruff check --output-format=github .
+        run: |
+          source .venv/bin/activate
+          poetry run ruff check --output-format=github .
 
   mypy-type-check:
     needs: setup
@@ -75,11 +104,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Use Python environment from setup job
-        run: source .venv/bin/activate
+      - name: Restore virtual environment cache
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-venv-
 
       - name: Check mypy version
-        run: mypy --version
+        run: |
+          source .venv/bin/activate
+          poetry run mypy --version
 
       - name: Run mypy type check
-        run: mypy .
+        run: |
+          source .venv/bin/activate
+          poetry run mypy .
