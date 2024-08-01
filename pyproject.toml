@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "adf-core-python"
+name = "adf_core_python"
 version = "0.1.0"
 description = "Agent Development Framework for Python"
 authors = [
@@ -11,10 +11,6 @@ package-mode = true
 
 [tool.poetry.dependencies]
 python = "^3.12"
-grpcio = "^1.62.1"
-grpcio-tools = "^1.62.1"
-rcrs_core = {git = "https://github.com/shima004/rcrs_core_python.git"}
-
 
 [tool.poetry.group.dev.dependencies]
 taskipy = "^1.12.2"
@@ -27,7 +23,6 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.taskipy.tasks]
-generate-proto = "bash scripts/generateProto.sh"
 format = "ruff format ."
 lint = "ruff check ."
 typecheck = "mypy ."
