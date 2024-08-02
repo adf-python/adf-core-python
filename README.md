@@ -22,5 +22,5 @@ poetry build
 ### Pre Commit
 
 ```bash
-poetry run task preCommit
+poetry run task precommit
 ```
