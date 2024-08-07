@@ -11,6 +11,8 @@ package-mode = true
 
 [tool.poetry.dependencies]
 python = "^3.12"
+rcrs_core = {git = "https://github.com/adf-python/rcrs-core-python"}
+
 
 [tool.poetry.group.dev.dependencies]
 taskipy = "^1.12.2"
