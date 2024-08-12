@@ -6,7 +6,7 @@ from adf_core_python.core.config.module_config import ModuleConfig
 
 
 class TestModuleConfig:
-    def test_can_read_from_yaml(self):
+    def test_can_read_from_yaml(self) -> None:
         script_dir = os.path.dirname(os.path.abspath(__file__))
         config_file_path = os.path.join(script_dir, "module.yaml")
         config = ModuleConfig(config_file_path)
@@ -43,6 +43,6 @@ class TestModuleConfig:
             == "adf.impl.module.algorithm.KMeansClustering"
         )
 
-    def test_if_file_not_found(self):
+    def test_if_file_not_found(self) -> None:
         with pytest.raises(FileNotFoundError):
             ModuleConfig("not_found.yaml")
