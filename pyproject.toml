@@ -12,6 +12,9 @@ package-mode = true
 [tool.poetry.dependencies]
 python = "^3.12"
 rcrs_core = {git = "https://github.com/adf-python/rcrs-core-python"}
+pyyaml = "^6.0.2"
+pytest = "^8.3.2"
+types-pyyaml = "^6.0.12.20240808"
 
 
 [tool.poetry.group.dev.dependencies]
