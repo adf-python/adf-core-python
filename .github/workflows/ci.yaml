@@ -123,3 +123,23 @@ jobs:
         run: |
           source .venv/bin/activate
           poetry run mypy .
+
+  pytest:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Restore virtual environment cache
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-venv-
+
+      - name: Run pytest
+        run: |
+          source .venv/bin/activate
+          poetry run pytest tests/

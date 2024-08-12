@@ -31,7 +31,8 @@ build-backend = "poetry.core.masonry.api"
 format = "ruff format ."
 lint = "ruff check ."
 typecheck = "mypy ."
-precommit = "task format && task lint && task typecheck"
+test = "pytest"
+precommit = "task format && task lint && task typecheck && task test"
 
 [tool.ruff]
 # Exclude a variety of commonly ignored directories.
