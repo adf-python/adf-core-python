@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from adf_core_python.core.config.module_config import ModuleConfig
+from adf_core_python.core.agent.config.module_config import ModuleConfig
 
 
 class TestModuleConfig:

@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from adf_core_python.core.develop.develop_data import DevelopData
+from adf_core_python.core.agent.develop.develop_data import DevelopData
 
 
 class TestDevelopData:
