@@ -1,0 +1,12 @@
+{
+    "string" : "test",
+    "number" : 1,
+    "boolean" : true,
+    "dict" : {
+        "test" : "test"
+    },
+    "array" : [
+        "test",
+        "test"
+    ]
+}
