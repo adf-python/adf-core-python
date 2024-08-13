@@ -12,7 +12,7 @@ from adf_core_python.core.launcher.connect.connector import Connector
 
 
 class ConnectorAmbulanceCentre(Connector):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         self.logger: Logger = getLogger(__name__)
 
@@ -37,14 +37,14 @@ class ConnectorAmbulanceCentre(Connector):
                 # tactics_ambulance_centre = DummyTacticsAmbulanceCentre()
                 pass
 
-            module_config: ModuleConfig = ModuleConfig(
+            module_config: ModuleConfig = ModuleConfig(  # noqa: F841
                 config.get_value_or_default(
                     ConfigKey.KEY_MODULE_CONFIG_FILE_NAME,
                     ModuleConfig.DEFAULT_CONFIG_FILE_NAME,
                 )
             )
 
-            develop_data: DevelopData = DevelopData(
+            develop_data: DevelopData = DevelopData(  # noqa: F841
                 config.get_boolean_value_or_default(ConfigKey.KEY_DEBUG_FLAG, False),
                 config.get_value_or_default(
                     ConfigKey.KEY_DEVELOP_DATA_FILE_NAME, DevelopData.DEFAULT_FILE_NAME
