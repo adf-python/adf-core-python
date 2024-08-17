@@ -1,6 +1,6 @@
 from logging import Logger, getLogger
 
-from rcrs_core.agents.ambulanceCenterAgent import AmbulanceCenterAgent
+from rcrs_core.agents.fireStationAgent import FireStationAgent
 from rcrs_core.config.config import Config
 from rcrs_core.connection.componentLauncher import ComponentLauncher
 
@@ -11,7 +11,7 @@ from adf_core_python.core.launcher.config_key import ConfigKey
 from adf_core_python.core.launcher.connect.connector import Connector
 
 
-class ConnectorAmbulanceCentre(Connector):
+class ConnectorFireStation(Connector):
     def __init__(self) -> None:
         super().__init__()
         self.logger: Logger = getLogger(__name__)
@@ -29,12 +29,12 @@ class ConnectorAmbulanceCentre(Connector):
             return
 
         for _ in range(count):
-            # tactics_ambulance_centre: TacticsAmbulanceCentre
-            if loader.get_tactics_ambulance_centre() is not None:
-                self.logger.error("Cannot load ambulance centre tactics")
-                # tactics_ambulance_centre = loader.get_tactics_ambulance_centre()
+            # tactics_fire_station: TacticsFireStation
+            if loader.get_tactics_fire_station() is not None:
+                self.logger.error("Cannot load fire station tactics")
+                # tactics_fire_station = loader.get_tactics_fire_station()
             else:
-                # tactics_ambulance_centre = DummyTacticsAmbulanceCentre()
+                # tactics_fire_station = DummyTacticsFireStation()
                 pass
 
             module_config: ModuleConfig = ModuleConfig(  # noqa: F841
@@ -53,8 +53,7 @@ class ConnectorAmbulanceCentre(Connector):
 
             # TODO: component_launcher.generate_request_ID can cause race condition
             component_launcher.connect(
-                # TODO: AmbulanceCenterAgent is not implemented precompute method and other methods
-                AmbulanceCenterAgent(
+                FireStationAgent(
                     config.get_boolean_value_or_default(
                         ConfigKey.KEY_PRECOMPUTE, False
                     ),
@@ -62,4 +61,4 @@ class ConnectorAmbulanceCentre(Connector):
                 component_launcher.generate_request_ID(),
             )
 
-        self.logger.info("Connected ambulance centre (count: %d)" % count)
+        self.logger.info("Connected fire station (count: %d)" % count)

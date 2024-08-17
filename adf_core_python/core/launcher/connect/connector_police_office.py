@@ -1,6 +1,6 @@
 from logging import Logger, getLogger
 
-from rcrs_core.agents.ambulanceCenterAgent import AmbulanceCenterAgent
+from rcrs_core.agents.policeOfficeAgent import PoliceOfficeAgent
 from rcrs_core.config.config import Config
 from rcrs_core.connection.componentLauncher import ComponentLauncher
 
@@ -11,7 +11,7 @@ from adf_core_python.core.launcher.config_key import ConfigKey
 from adf_core_python.core.launcher.connect.connector import Connector
 
 
-class ConnectorAmbulanceCentre(Connector):
+class ConnectorPoliceOffice(Connector):
     def __init__(self) -> None:
         super().__init__()
         self.logger: Logger = getLogger(__name__)
@@ -29,12 +29,12 @@ class ConnectorAmbulanceCentre(Connector):
             return
 
         for _ in range(count):
-            # tactics_ambulance_centre: TacticsAmbulanceCentre
-            if loader.get_tactics_ambulance_centre() is not None:
-                self.logger.error("Cannot load ambulance centre tactics")
-                # tactics_ambulance_centre = loader.get_tactics_ambulance_centre()
+            # tactics_police_office: TacticsPoliceOffice
+            if loader.get_tactics_police_office() is not None:
+                self.logger.error("Cannot load police office tactics")
+                # tactics_police_office = loader.get_tactics_police_office()
             else:
-                # tactics_ambulance_centre = DummyTacticsAmbulanceCentre()
+                # tactics_police_office = DummyTacticsPoliceOffice()
                 pass
 
             module_config: ModuleConfig = ModuleConfig(  # noqa: F841
@@ -53,12 +53,11 @@ class ConnectorAmbulanceCentre(Connector):
 
             # TODO: component_launcher.generate_request_ID can cause race condition
             component_launcher.connect(
-                # TODO: AmbulanceCenterAgent is not implemented precompute method and other methods
-                AmbulanceCenterAgent(
+                PoliceOfficeAgent(
                     config.get_boolean_value_or_default(
                         ConfigKey.KEY_PRECOMPUTE, False
                     ),
-                ),  # type: ignore
+                ),
                 component_launcher.generate_request_ID(),
             )
 
