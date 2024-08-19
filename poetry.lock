@@ -274,7 +274,7 @@ rtree = "*"
 type = "git"
 url = "https://github.com/adf-python/rcrs-core-python"
 reference = "HEAD"
-resolved_reference = "4fb11912097abccd68fc2ee7440eaa16adbcdc23"
+resolved_reference = "6771354084ce60b3dd96a77f509ad1e0314ac886"
 
 [[package]]
 name = "rtree"
