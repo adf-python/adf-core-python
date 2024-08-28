@@ -72,7 +72,8 @@ class AgentInfo:
         EntityID
             Entity ID of the agent
         """
-        return self._agent.get_id()  # type: ignore TODO: Agent class should return EntityID instead of EntityID | None
+        # TODO: Agent class should return EntityID instead of EntityID | None
+        return self._agent.get_id()  # type: ignore
 
     def get_myself(self) -> Entity:
         """

@@ -11,12 +11,6 @@ class WorldInfo:
         self._is_run_rollback: bool = False
         self._rollback: Dict[EntityID, Dict[int, Dict[int, Any]]] = {}
 
-    def index_class(self):
-        """
-        Index class
-        """
-        self._world_model.index
-
     # TODO: Implement the worldmodel access methods
     def get_world_model(self) -> WorldModel:
         """
