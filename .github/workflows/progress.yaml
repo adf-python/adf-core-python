@@ -3,7 +3,6 @@ name: Calculate Progress
 on:
   issues:
     types: [edited]
-    number: [35]
 
 jobs:
   calculate:
