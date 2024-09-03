@@ -1,0 +1,63 @@
+name: Calculate Progress
+
+on:
+  issues:
+    types: [edited]
+    number: [35]
+
+jobs:
+  calculate:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Extract and calculate progress
+      id: progress
+      if: ${{ github.event.issue.number == 35 }}
+      run: |
+        # フォーマットされたタスクを含む行をすべて取得
+        high_priority_total=$(grep -E "\|\s*実装優先度\s*\|\s*⭐️⭐️⭐️" $GITHUB_EVENT_PATH | wc -l)
+        high_priority_completed=$(grep -E "\|\s*実装優先度\s*\|\s*⭐️⭐️⭐️" $GITHUB_EVENT_PATH | grep -E "^\s*- \[x\]" | wc -l)
+        medium_priority_total=$(grep -E "\|\s*実装優先度\s*\|\s*⭐️⭐️" $GITHUB_EVENT_PATH | wc -l)
+        medium_priority_completed=$(grep -E "\|\s*実装優先度\s*\|\s*⭐️⭐️" $GITHUB_EVENT_PATH | grep -E "^\s*- \[x\]" | wc -l)
+        low_priority_total=$(grep -E "\|\s*実装優先度\s*\|\s*⭐️" $GITHUB_EVENT_PATH | wc -l)
+        low_priority_completed=$(grep -E "\|\s*実装優先度\s*\|\s*⭐️" $GITHUB_EVENT_PATH | grep -E "^\s*- \[x\]" | wc -l)
+
+        if [ $high_priority_total -eq 0 ]; then
+          high_priority_percentage=0
+        else
+          high_priority_percentage=$(($high_priority_completed * 100 / $high_priority_total))
+        fi
+
+        if [ $medium_priority_total -eq 0 ]; then
+          medium_priority_percentage=0
+        else
+          medium_priority_percentage=$(($medium_priority_completed * 100 / $medium_priority_total))
+        fi
+
+        if [ $low_priority_total -eq 0 ]; then
+          low_priority_percentage=0
+        else
+          low_priority_percentage=$(($low_priority_completed * 100 / $low_priority_total))
+        fi
+
+        echo "High Priority: $high_priority_percentage%"
+        echo "Medium Priority: $medium_priority_percentage%"
+        echo "Low Priority: $low_priority_percentage%"
+
+        echo "::set-output name=high::$high_priority_percentage"
+        echo "::set-output name=medium::$medium_priority_percentage"
+        echo "::set-output name=low::$low_priority_percentage"
+
+    - name: Post progress to issue
+      if: ${{ github.event.issue.number == 35 }}
+      uses: peter-evans/create-or-update-comment@v4
+      with:
+        issue-number: ${{ github.event.issue.number }}
+        body: |
+          ### 進捗状況
+          - 高優先度: ${{ steps.progress.outputs.high }}% 完了
+          - 中優先度: ${{ steps.progress.outputs.medium }}% 完了
+          - 低優先度: ${{ steps.progress.outputs.low }}% 完了
