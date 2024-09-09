@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING
 
 from adf_core_python.core.component.module.algorithm.path_planning import (
     PathPlanning,
@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 class AStarPathPlanning(PathPlanning):
     def get_path(
         self, from_entity_id: EntityID, to_entity_id: EntityID
-    ) -> List[EntityID]:
+    ) -> list[EntityID]:
         return []
 
     def get_distance(self, from_entity_id: EntityID, to_entity_id: EntityID) -> float:

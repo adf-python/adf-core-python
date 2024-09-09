@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING
 
 from adf_core_python.core.component.module.abstract_module import AbstractModule
 
@@ -33,7 +33,7 @@ class PathPlanning(AbstractModule):
     @abstractmethod
     def get_path(
         self, from_entity_id: EntityID, to_entity_id: EntityID
-    ) -> List[EntityID]:
+    ) -> list[EntityID]:
         pass
 
     @abstractmethod

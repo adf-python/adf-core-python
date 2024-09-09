@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING, Any, List, Optional
+from typing import TYPE_CHECKING, Any, Optional
 
 if TYPE_CHECKING:
     from adf_core_python.core.agent.communication.message_manager import MessageManager
@@ -18,8 +18,8 @@ if TYPE_CHECKING:
 class TacticsAgent(ABC):
     def __init__(self, parent: Optional[TacticsAgent] = None) -> None:
         self._parent = parent
-        self._modules: List[AbstractModule] = []
-        self._actions: List[ExtAction] = []
+        self._modules: list[AbstractModule] = []
+        self._actions: list[ExtAction] = []
         self._command_executor: Any = None
 
     @abstractmethod

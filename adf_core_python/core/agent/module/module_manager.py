@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import importlib
-from typing import TYPE_CHECKING, Any, Dict, Type, TypeVar
+from typing import TYPE_CHECKING, Any, Type, TypeVar
 
 from adf_core_python.core.component.module.abstract_module import AbstractModule
 
@@ -30,13 +30,13 @@ class ModuleManager:
         self._scenario_info = scenario_info
         self._module_config = module_config
         self._develop_data = develop_data
-        self._modules: Dict[str, AbstractModule] = {}
-        self._actions: Dict[str, ExtAction] = {}
+        self._modules: dict[str, AbstractModule] = {}
+        self._actions: dict[str, ExtAction] = {}
 
-        self._executors: Dict[str, Any] = {}
-        self._pickers: Dict[str, Any] = {}
-        self._channel_subscribers: Dict[str, Any] = {}
-        self._message_coordinators: Dict[str, Any] = {}
+        self._executors: dict[str, Any] = {}
+        self._pickers: dict[str, Any] = {}
+        self._channel_subscribers: dict[str, Any] = {}
+        self._message_coordinators: dict[str, Any] = {}
 
     def get_module(self, module_name: str, default_module_name: str) -> AbstractModule:
         class_name = self._module_config.get_value_or_default(

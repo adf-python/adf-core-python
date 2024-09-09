@@ -1,4 +1,4 @@
-from typing import Any, Dict, Final
+from typing import Any, Final
 
 from rcrs_core.config.config import Config
 from yaml import safe_load
@@ -38,7 +38,7 @@ class ModuleConfig(Config):
         for key, value in flatten_data.items():
             print(f"{key}: {self.get_value(key)}")
 
-    def _read_from_yaml(self, file_name: str) -> Dict[str, Any]:
+    def _read_from_yaml(self, file_name: str) -> dict[str, Any]:
         """
         Read configuration from yaml file
 
@@ -49,7 +49,7 @@ class ModuleConfig(Config):
 
         Returns
         -------
-        Dict[str, Any]
+        dict[str, Any]
             Configuration data
         """
         try:
@@ -63,14 +63,14 @@ class ModuleConfig(Config):
         return data
 
     def _flatten(
-        self, data: Dict[str, Any], parent_key: str = "", sep: str = "."
-    ) -> Dict[str, Any]:
+        self, data: dict[str, Any], parent_key: str = "", sep: str = "."
+    ) -> dict[str, Any]:
         """
         Flatten nested dictionary to a single level dictionary
 
         Parameters
         ----------
-        data : Dict[str, Any]
+        data : dict[str, Any]
             Nested dictionary
         parent_key : str, optional
             Parent key, by default ""
@@ -79,7 +79,7 @@ class ModuleConfig(Config):
 
         Returns
         -------
-        Dict[str, Any]
+        dict[str, Any]
             Flattened dictionary
         """
         flatten_data = {}

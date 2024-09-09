@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from adf_core_python.core.agent.communication.message_manager import MessageManager
@@ -33,7 +33,7 @@ class AbstractModule(ABC):
         self._count_update_info: int = 0
         self._count_update_info_current_time: int = 0
 
-        self._sub_modules: List[AbstractModule] = []
+        self._sub_modules: list[AbstractModule] = []
 
     def register_sub_module(self, sub_module: AbstractModule) -> None:
         self._sub_modules.append(sub_module)

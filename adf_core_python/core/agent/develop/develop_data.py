@@ -1,5 +1,5 @@
 import json
-from typing import Any, Dict, Final
+from typing import Any, Final
 
 
 class DevelopData:
@@ -11,12 +11,12 @@ class DevelopData:
         """
         Constructor
         """
-        self._develop_data: Dict[str, Any] = self._set_data_from_json(file_name)
+        self._develop_data: dict[str, Any] = self._set_data_from_json(file_name)
         self._is_develop_mode: bool = is_develop_mode
 
         self._set_data_from_json(file_name)
 
-    def _set_data_from_json(self, file_name: str) -> Dict[str, Any]:
+    def _set_data_from_json(self, file_name: str) -> dict[str, Any]:
         """
         Set data from json
 
@@ -27,7 +27,7 @@ class DevelopData:
 
         Returns
         -------
-        Dict[str, Any]
+        dict[str, Any]
             Develop data
         """
         try:
