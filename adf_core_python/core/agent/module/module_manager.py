@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import importlib
-from typing import TYPE_CHECKING, Any, Type, TypeVar
+from typing import TYPE_CHECKING, Any
 
 from adf_core_python.core.component.module.abstract_module import AbstractModule
 
@@ -12,8 +12,6 @@ if TYPE_CHECKING:
     from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
     from adf_core_python.core.agent.info.world_info import WorldInfo
     from adf_core_python.core.component.extaction.ext_action import ExtAction
-
-T = TypeVar("T")
 
 
 class ModuleManager:
@@ -44,7 +42,7 @@ class ModuleManager:
         )
 
         try:
-            module_class: Type[AbstractModule] = self._load_module(class_name)
+            module_class: type = self._load_module(class_name)
         except (ImportError, AttributeError) as e:
             raise RuntimeError(f"Failed to load module {class_name}") from e
 
@@ -71,7 +69,7 @@ class ModuleManager:
         )
 
         try:
-            action_class: Type[ExtAction] = self._load_module(class_name)
+            action_class: type = self._load_module(class_name)
         except (ImportError, AttributeError) as e:
             raise RuntimeError(f"Failed to load action {class_name}") from e
 
@@ -92,7 +90,7 @@ class ModuleManager:
 
         raise RuntimeError(f"Action {class_name} is not a subclass of ExtAction")
 
-    def _load_module(self, class_name: str) -> Type[T]:
+    def _load_module(self, class_name: str) -> type:
         module_name, module_class_name = class_name.rsplit(".", 1)
         module = importlib.import_module(module_name)
         return getattr(module, module_class_name)
