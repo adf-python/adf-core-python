@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING, Any, List, Optional
+from typing import TYPE_CHECKING, Any, Optional
 
 if TYPE_CHECKING:
     from adf_core_python.core.agent.communication.message_manager import MessageManager
@@ -17,8 +17,8 @@ if TYPE_CHECKING:
 class TacticsCenter(ABC):
     def __init__(self, parent: Optional[TacticsCenter] = None) -> None:
         self._parent = parent
-        self._modules: List[AbstractModule] = []
-        self._command_pickers: List[Any] = []
+        self._modules: list[AbstractModule] = []
+        self._command_pickers: list[Any] = []
 
     @abstractmethod
     def initialize(

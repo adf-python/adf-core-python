@@ -1,5 +1,5 @@
 from time import time
-from typing import Any, Dict, List
+from typing import Any
 
 from rcrs_core.agents.agent import Agent
 from rcrs_core.entities.human import Human
@@ -14,8 +14,8 @@ class AgentInfo:
         self._agent: Agent = agent
         self._world_model: WorldModel = world_model
         self._time: int = 0
-        self._action_history: Dict[int, Action] = {}
-        self._heard_commands: List[Any] = []
+        self._action_history: dict[int, Action] = {}
+        self._heard_commands: list[Any] = []
         self._change_set: ChangeSet = ChangeSet()
         self._start_think_time: float = 0.0
 
@@ -41,24 +41,24 @@ class AgentInfo:
         """
         return self._time
 
-    def set_heard_commands(self, heard_commands: List[Any]) -> None:
+    def set_heard_commands(self, heard_commands: list[Any]) -> None:
         """
         Set the heard commands
 
         Parameters
         ----------
-        heard_commands : List[Any]
+        heard_commands : list[Any]
             Heard commands
         """
         self._heard_commands = heard_commands
 
-    def get_heard_commands(self) -> List[Any]:
+    def get_heard_commands(self) -> list[Any]:
         """
         Get the heard commands
 
         Returns
         -------
-        List[Any]
+        list[Any]
             Heard commands
         """
         return self._heard_commands
