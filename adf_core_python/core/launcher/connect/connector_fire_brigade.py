@@ -11,7 +11,7 @@ from adf_core_python.core.launcher.config_key import ConfigKey
 from adf_core_python.core.launcher.connect.connector import Connector
 
 
-class ConnectorFIreBrigade(Connector):
+class ConnectorFireBrigade(Connector):
     def __init__(self) -> None:
         super().__init__()
         self.logger: Logger = getLogger(__name__)
