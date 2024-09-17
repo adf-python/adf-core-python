@@ -4,6 +4,7 @@ from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any, Optional
 
 if TYPE_CHECKING:
+    from adf_core_python.core.agent.action.action import Action
     from adf_core_python.core.agent.communication.message_manager import MessageManager
     from adf_core_python.core.agent.develop.develop_data import DevelopData
     from adf_core_python.core.agent.info.agent_info import AgentInfo
@@ -74,7 +75,7 @@ class TacticsAgent(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def update_info(
+    def think(
         self,
         agent_info: AgentInfo,
         world_info: WorldInfo,
@@ -83,7 +84,7 @@ class TacticsAgent(ABC):
         precompute_data: PrecomputeData,
         message_manager: MessageManager,
         develop_data: DevelopData,
-    ) -> None:
+    ) -> Action:
         raise NotImplementedError
 
     def get_parent_tactics(self) -> Optional[TacticsAgent]:
