@@ -8,12 +8,11 @@ team:
 adf:
   launcher:
     precompute: 0
-  adf:
-    debug:
-      flag: 0
-    agent:
-      moduleconfig:
-        filename: config/module.yaml
+  debug:
+    flag: 0
+  agent:
+    moduleconfig:
+      filename: config/module.yaml
 
   develop:
     flag: 1

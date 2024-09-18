@@ -1,5 +1,6 @@
 import importlib
 import threading
+from logging import Logger, getLogger
 
 from rcrs_core.connection.componentLauncher import ComponentLauncher
 
@@ -30,15 +31,18 @@ from adf_core_python.core.launcher.connect.connector_police_office import (
 class AgentLauncher:
     def __init__(self, config: Config):
         self.config = config
+        self.logger: Logger = getLogger(__name__)
         self.connectors: list[Connector] = []
+        self.thread_list: list[threading.Thread] = []
 
     def initConnector(self):
         loader_name, loader_class_name = self.config.get_value(
-            ConfigKey.KEY_LOADER_CLASS
-        ).split(".")
-        self.loader: AbstractLoader = importlib.import_module(
-            loader_name,
-        ).__getattr__(
+            ConfigKey.KEY_LOADER_CLASS,
+            "adf_core_python.implement.default_loader.DefaultLoader",
+        ).rsplit(".", 1)
+        loader_module = importlib.import_module(loader_name)
+        self.loader: AbstractLoader = getattr(
+            loader_module,
             loader_class_name,
         )(
             self.config.get_value(ConfigKey.KEY_TEAM_NAME),
@@ -54,18 +58,23 @@ class AgentLauncher:
     def launch(self):
         host: str = self.config.get_value(ConfigKey.KEY_KERNEL_HOST, "localhost")
         port: int = self.config.get_value(ConfigKey.KEY_KERNEL_PORT, 27931)
+        self.logger.info(f"Start agent launcher (host: {host}, port: {port})")
+
         component_launcher: ComponentLauncher = ComponentLauncher(port, host)
 
-        thread_list: list[threading.Thread] = []
         for connector in self.connectors:
             thread = threading.Thread(
                 target=connector.connect,
                 args=(component_launcher, self.config, self.loader),
             )
             thread.start()
-            thread_list.append(thread)
+            self.thread_list.append(thread)
 
-        for thread in thread_list:
+        for thread in self.thread_list:
             thread.join()
 
         connected_agent_count = 0
+        for connector in self.connectors:
+            connected_agent_count += connector.get_connected_agent_count()
+
+        self.logger.info(f"Connected agent count: {connected_agent_count}")
