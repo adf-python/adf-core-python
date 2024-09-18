@@ -1,11 +1,14 @@
-from typing import Any
+from typing import Any, Optional
 
 from yaml import safe_load
 
 
 class Config:
-    def __init__(self):
+    def __init__(self, config_file: Optional[str] = None) -> None:
         self.config: dict[str, Any] = {}
+        if config_file:
+            self.config = self.read_from_yaml(config_file)
+            self.config = self.flatten(self.config)
 
     def set_value(self, key: str, value: Any):
         self.config[key] = value
@@ -35,3 +38,6 @@ class Config:
             else:
                 flatten_data[new_key] = value
         return flatten_data
+
+    def __str__(self) -> str:
+        return str(self.config)
