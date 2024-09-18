@@ -1,9 +1,8 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Optional
+from typing import Optional
 
-if TYPE_CHECKING:
-    from adf_core_python.core.component.tactics.tactics_center import TacticsCenter
+from adf_core_python.core.component.tactics.tactics_center import TacticsCenter
 
 
 class TacticsPoliceOffice(TacticsCenter):

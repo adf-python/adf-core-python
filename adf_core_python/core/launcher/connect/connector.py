@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 
 from rcrs_core.connection.componentLauncher import ComponentLauncher
-from rcrs_core.config.config import Config
 
 from adf_core_python.core.component.abstract_loader import AbstractLoader
+from adf_core_python.core.config.config import Config
 
 
 class Connector(ABC):
