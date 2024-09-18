@@ -51,7 +51,7 @@ class Main:
             metavar="",
         )
         parser.add_argument(
-            "--varbose", type=bool, default=False, help="varbose flag", metavar=""
+            "--verbose", type=bool, default=False, help="verbose flag", metavar=""
         )
         args = parser.parse_args()
         print(args)
