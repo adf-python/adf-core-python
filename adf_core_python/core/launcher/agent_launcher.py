@@ -35,7 +35,7 @@ class AgentLauncher:
         self.connectors: list[Connector] = []
         self.thread_list: list[threading.Thread] = []
 
-    def initConnector(self):
+    def initConnector(self) -> None:
         loader_name, loader_class_name = self.config.get_value(
             ConfigKey.KEY_LOADER_CLASS,
             "adf_core_python.implement.default_loader.DefaultLoader",
@@ -55,7 +55,7 @@ class AgentLauncher:
         self.connectors.append(ConnectorPoliceForce())
         self.connectors.append(ConnectorPoliceOffice())
 
-    def launch(self):
+    def launch(self) -> None:
         host: str = self.config.get_value(ConfigKey.KEY_KERNEL_HOST, "localhost")
         port: int = self.config.get_value(ConfigKey.KEY_KERNEL_PORT, 27931)
         self.logger.info(f"Start agent launcher (host: {host}, port: {port})")

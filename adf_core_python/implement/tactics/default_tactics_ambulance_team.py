@@ -106,8 +106,8 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
     ) -> Action:
         self.module_update_info(message_manager)
 
-        agent: AmbulanceTeamEntity = cast(AmbulanceTeamEntity, agent_info.get_myself())
-        entity_id = agent_info.get_entity_id()
+        agent: AmbulanceTeamEntity = cast(AmbulanceTeamEntity, agent_info.get_myself())  # noqa: F841
+        entity_id = agent_info.get_entity_id()  # noqa: F841
 
         target_entity_id = self._human_detector.calculate().get_target_entity_id()
         action = (

@@ -33,7 +33,7 @@ class ConnectorAmbulanceTeam(Connector):
             if loader.get_tactics_ambulance_team() is None:
                 self.logger.error("Cannot load ambulance team tactics")
 
-            tactics_ambulance_team: TacticsAmbulanceTeam = (
+            tactics_ambulance_team: TacticsAmbulanceTeam = (  # noqa: F841
                 loader.get_tactics_ambulance_team()
             )
 

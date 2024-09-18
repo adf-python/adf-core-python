@@ -2,7 +2,7 @@ import argparse
 
 
 class Main:
-    def __init__(self):
+    def __init__(self) -> None:
         parser = argparse.ArgumentParser(description="Agent Launcher")
 
         parser.add_argument(

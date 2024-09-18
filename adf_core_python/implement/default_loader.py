@@ -1,8 +1,23 @@
 from typing import TYPE_CHECKING
 
 from adf_core_python.core.component.abstract_loader import AbstractLoader
+from adf_core_python.implement.tactics.default_tactics_ambulance_center import (
+    DefaultTacticsAmbulanceCenter,
+)
 from adf_core_python.implement.tactics.default_tactics_ambulance_team import (
     DefaultTacticsAmbulanceTeam,
+)
+from adf_core_python.implement.tactics.default_tactics_fire_brigade import (
+    DefaultTacticsFireBrigade,
+)
+from adf_core_python.implement.tactics.default_tactics_fire_station import (
+    DefaultTacticsFireStation,
+)
+from adf_core_python.implement.tactics.default_tactics_police_force import (
+    DefaultTacticsPoliceForce,
+)
+from adf_core_python.implement.tactics.default_tactics_police_office import (
+    DefaultTacticsPoliceOffice,
 )
 
 if TYPE_CHECKING:
@@ -30,17 +45,17 @@ class DefaultLoader(AbstractLoader):
     def get_tactics_ambulance_team(self) -> TacticsAmbulanceTeam:
         return DefaultTacticsAmbulanceTeam()
 
-    # def get_tactics_fire_brigade(self) -> TacticsFireBrigade:
-    #     pass
+    def get_tactics_fire_brigade(self) -> TacticsFireBrigade:
+        return DefaultTacticsFireBrigade()
 
-    # def get_tactics_police_force(self) -> TacticsPoliceForce:
-    #     pass
+    def get_tactics_police_force(self) -> TacticsPoliceForce:
+        return DefaultTacticsPoliceForce()
 
-    # def get_tactics_ambulance_centre(self) -> TacticsAmbulanceCenter:
-    #     pass
+    def get_tactics_ambulance_centre(self) -> TacticsAmbulanceCenter:
+        return DefaultTacticsAmbulanceCenter()
 
-    # def get_tactics_fire_station(self) -> TacticsFireStation:
-    #     pass
+    def get_tactics_fire_station(self) -> TacticsFireStation:
+        return DefaultTacticsFireStation()
 
-    # def get_tactics_police_office(self) -> TacticsPoliceOffice:
-    #     pass
+    def get_tactics_police_office(self) -> TacticsPoliceOffice:
+        return DefaultTacticsPoliceOffice()

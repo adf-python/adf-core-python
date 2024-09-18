@@ -10,7 +10,7 @@ class Config:
             self.config = self.read_from_yaml(config_file)
             self.config = self.flatten(self.config)
 
-    def set_value(self, key: str, value: Any):
+    def set_value(self, key: str, value: Any) -> None:
         self.config[key] = value
 
     def get_value(self, key: str, default: Any = None) -> Any:
