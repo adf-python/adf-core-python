@@ -5,6 +5,10 @@ from typing import TYPE_CHECKING
 
 from rcrs_core.entities.area import Area
 
+from adf_core_python.core.component.module.complex.target_detector import (
+    TargetDetector,
+)
+
 if TYPE_CHECKING:
     from adf_core_python.core.agent.develop.develop_data import DevelopData
     from adf_core_python.core.agent.info.agent_info import AgentInfo
@@ -12,9 +16,6 @@ if TYPE_CHECKING:
     from adf_core_python.core.agent.info.world_info import WorldInfo
     from adf_core_python.core.agent.module.module_manager import ModuleManager
     from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
-    from adf_core_python.core.component.module.complex.target_detector import (
-        TargetDetector,
-    )
 
 
 class Search(TargetDetector[Area]):
