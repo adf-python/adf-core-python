@@ -68,7 +68,7 @@ class Main:
         self.config.set_value(ConfigKey.KEY_PRECOMPUTE, args.precompute)
         self.config.set_value(ConfigKey.KEY_DEBUG_FLAG, args.verbose)
 
-    def launch(self):
+    def launch(self) -> None:
         agent_launcher: AgentLauncher = AgentLauncher(
             self.config,
         )
