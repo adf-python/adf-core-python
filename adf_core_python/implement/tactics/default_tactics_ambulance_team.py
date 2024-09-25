@@ -36,28 +36,28 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
                     Search,
                     module_manager.get_module(
                         "DefaultTacticsAmbulanceTeam.Search",
-                        "adf.impl.module.complex.DefaultSearch",
+                        "adf_core_python.implement.module.complex.DefaultSearch",
                     ),
                 )
                 self._human_detector: HumanDetector = cast(
                     HumanDetector,
                     module_manager.get_module(
                         "DefaultTacticsAmbulanceTeam.HumanDetector",
-                        "adf.impl.module.complex.DefaultHumanDetector",
+                        "adf_core_python.implement.module.complex.DefaultHumanDetector",
                     ),
                 )
-                self._actionTransport = module_manager.get_ext_action(
-                    "DefaultTacticsAmbulanceTeam.ExtActionMove",
-                    "adf.impl.extaction.DefaultExtActionMove",
+                self._action_transport = module_manager.get_ext_action(
+                    "DefaultTacticsAmbulanceTeam.ExtActionTransport",
+                    "adf_core_python.implement.extaction.DefaultExtActionTransport",
                 )
-                self._actionExtMove = module_manager.get_ext_action(
+                self._action_ext_move = module_manager.get_ext_action(
                     "DefaultTacticsAmbulanceTeam.ExtActionMove",
-                    "adf.impl.extaction.DefaultExtActionMove",
+                    "adf_core_python.implement.extaction.DefaultExtActionMove",
                 )
-                self.register_module(self._search)
-                self.register_module(self._human_detector)
-                self.register_action(self._actionTransport)
-                self.register_action(self._actionExtMove)
+        self.register_module(self._search)
+        self.register_module(self._human_detector)
+        self.register_action(self._action_transport)
+        self.register_action(self._action_ext_move)
 
     def precompute(
         self,
@@ -111,7 +111,7 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
 
         target_entity_id = self._human_detector.calculate().get_target_entity_id()
         action = (
-            self._actionTransport.set_target_entity_id(target_entity_id)
+            self._action_transport.set_target_entity_id(target_entity_id)
             .calc()
             .get_action()
         )
@@ -120,7 +120,7 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
 
         target_entity_id = self._search.calculate().get_target_entity_id()
         action = (
-            self._actionExtMove.set_target_entity_id(target_entity_id)
+            self._action_ext_move.set_target_entity_id(target_entity_id)
             .calc()
             .get_action()
         )

@@ -1,11 +1,18 @@
+from typing import cast
+
+from rcrs_core.entities.fireBrigade import FireBrigadeEntity
+
 from adf_core_python.core.agent.action.action import Action
+from adf_core_python.core.agent.action.common.action_rest import ActionRest
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
-from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
+from adf_core_python.core.agent.info.scenario_info import Mode, ScenarioInfo
 from adf_core_python.core.agent.info.world_info import WorldInfo
 from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
+from adf_core_python.core.component.module.complex.human_detector import HumanDetector
+from adf_core_python.core.component.module.complex.search import Search
 from adf_core_python.core.component.tactics.tactics_fire_brigade import (
     TacticsFireBrigade,
 )
@@ -22,7 +29,35 @@ class DefaultTacticsFireBrigade(TacticsFireBrigade):
         message_manager: MessageManager,
         develop_data: DevelopData,
     ) -> None:
-        raise NotImplementedError
+        # world_info.index_class()
+        match scenario_info.get_mode():
+            case Mode.NON_PRECOMPUTE:
+                self._search: Search = cast(
+                    Search,
+                    module_manager.get_module(
+                        "DefaultTacticsFireBrigade.Search",
+                        "adf_core_python.impl.module.complex.DefaultSearch",
+                    ),
+                )
+                self._human_detector: HumanDetector = cast(
+                    HumanDetector,
+                    module_manager.get_module(
+                        "DefaultTacticsFireBrigade.HumanDetector",
+                        "adf_core_python.impl.module.complex.DefaultHumanDetector",
+                    ),
+                )
+                self._action_fire_rescue = module_manager.get_ext_action(
+                    "DefaultTacticsFireBrigade.ExtActionFireRescue",
+                    "adf_core_python.impl.extaction.DefaultExtActionFireRescue",
+                )
+                self._action_ext_move = module_manager.get_ext_action(
+                    "DefaultTacticsAmbulanceTeam.ExtActionMove",
+                    "adf_core_python.impl.extaction.DefaultExtActionMove",
+                )
+        self.register_module(self._search)
+        self.register_module(self._human_detector)
+        self.register_action(self._action_fire_rescue)
+        self.register_action(self._action_ext_move)
 
     def precompute(
         self,
@@ -34,7 +69,7 @@ class DefaultTacticsFireBrigade(TacticsFireBrigade):
         message_manager: MessageManager,
         develop_data: DevelopData,
     ) -> None:
-        raise NotImplementedError
+        self.module_precompute(precompute_data)
 
     def resume(
         self,
@@ -46,7 +81,7 @@ class DefaultTacticsFireBrigade(TacticsFireBrigade):
         message_manager: MessageManager,
         develop_data: DevelopData,
     ) -> None:
-        raise NotImplementedError
+        self.module_resume(precompute_data)
 
     def prepare(
         self,
@@ -57,7 +92,7 @@ class DefaultTacticsFireBrigade(TacticsFireBrigade):
         precompute_data: PrecomputeData,
         develop_data: DevelopData,
     ) -> None:
-        raise NotImplementedError
+        self.module_prepare()
 
     def think(
         self,
@@ -69,4 +104,27 @@ class DefaultTacticsFireBrigade(TacticsFireBrigade):
         message_manager: MessageManager,
         develop_data: DevelopData,
     ) -> Action:
-        raise NotImplementedError
+        self.module_update_info(message_manager)
+
+        agent: FireBrigadeEntity = cast(FireBrigadeEntity, agent_info.get_myself())  # noqa: F841
+        entity_id = agent_info.get_entity_id()  # noqa: F841
+
+        target_entity_id = self._human_detector.calculate().get_target_entity_id()
+        action = (
+            self._action_fire_rescue.set_target_entity_id(target_entity_id)
+            .calc()
+            .get_action()
+        )
+        if action is not None:
+            return action
+
+        target_entity_id = self._search.calculate().get_target_entity_id()
+        action = (
+            self._action_ext_move.set_target_entity_id(target_entity_id)
+            .calc()
+            .get_action()
+        )
+        if action is not None:
+            return action
+
+        return ActionRest()
