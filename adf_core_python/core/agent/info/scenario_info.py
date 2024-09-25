@@ -1,6 +1,6 @@
 from enum import Enum
 
-from rcrs_core.config.config import Config
+from adf_core_python.core.config.config import Config
 
 
 class Mode(Enum):
@@ -71,4 +71,4 @@ class ScenarioInfo:
         str
             Value of the configuration
         """
-        return self._config.get_value_or_default(key, default)
+        return self._config.get_value(key, default)
