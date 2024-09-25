@@ -35,7 +35,7 @@ class AgentLauncher:
         self.connectors: list[Connector] = []
         self.thread_list: list[threading.Thread] = []
 
-    def initConnector(self) -> None:
+    def init_connector(self) -> None:
         loader_name, loader_class_name = self.config.get_value(
             ConfigKey.KEY_LOADER_CLASS,
             "adf_core_python.implement.default_loader.DefaultLoader",
