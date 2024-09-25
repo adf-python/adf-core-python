@@ -1,5 +1,9 @@
 import argparse
 
+from adf_core_python.core.config.config import Config
+from adf_core_python.core.launcher.agent_launcher import AgentLauncher
+from adf_core_python.core.launcher.config_key import ConfigKey
+
 
 class Main:
     def __init__(self) -> None:
@@ -55,7 +59,23 @@ class Main:
         )
         args = parser.parse_args()
         print(args)
+        self.config = Config()
+        self.config.set_value(ConfigKey.KEY_KERNEL_HOST, args.host)
+        self.config.set_value(ConfigKey.KEY_KERNEL_PORT, args.port)
+        self.config.set_value(ConfigKey.KEY_AMBULANCE_CENTRE_COUNT, args.ambulance)
+        self.config.set_value(ConfigKey.KEY_FIRE_STATION_COUNT, args.firebrigade)
+        self.config.set_value(ConfigKey.KEY_POLICE_OFFICE_COUNT, args.policeforce)
+        self.config.set_value(ConfigKey.KEY_PRECOMPUTE, args.precompute)
+        self.config.set_value(ConfigKey.KEY_DEBUG_FLAG, args.verbose)
+
+    def launch(self) -> None:
+        agent_launcher: AgentLauncher = AgentLauncher(
+            self.config,
+        )
+        agent_launcher.init_connector()
+        agent_launcher.launch()
 
 
 if __name__ == "__main__":
     main = Main()
+    main.launch()
