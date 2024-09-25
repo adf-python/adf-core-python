@@ -27,8 +27,8 @@ class PlatoonAmbulance(Platoon):
             develop_data,
         )
 
-    def precompute(self):
+    def precompute(self) -> None:
         pass
 
-    def get_requested_entities(self):
+    def get_requested_entities(self) -> list[str]:
         return [URN.Entity.AMBULANCE_TEAM]

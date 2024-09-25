@@ -1,6 +1,8 @@
 from logging import Logger, getLogger
 
 from rcrs_core.agents.agent import Agent
+from rcrs_core.commands.Command import Command
+from rcrs_core.worldmodel.changeSet import ChangeSet
 
 from adf_core_python.core.agent.action.action import Action
 from adf_core_python.core.agent.communication.message_manager import MessageManager
@@ -24,7 +26,7 @@ class Platoon(Agent):
         data_storage_name: str,
         module_config: ModuleConfig,
         develop_data: DevelopData,
-    ):
+    ) -> None:
         super().__init__(
             is_precompute,
         )
@@ -36,7 +38,7 @@ class Platoon(Agent):
         self._module_config = module_config
         self._develop_data = develop_data
 
-    def post_connect(self):
+    def post_connect(self) -> None:
         self._logger: Logger = getLogger(__name__)
         self._agent_info: AgentInfo = AgentInfo(self, self.world_model)
         self._world_info: WorldInfo = WorldInfo(self.world_model)
@@ -85,7 +87,7 @@ class Platoon(Agent):
                     self._develop_data,
                 )
 
-    def think(self, time, change_set, hear):
+    def think(self, time: int, change_set: ChangeSet, hear: list[Command]) -> None:
         action: Action = self._tactics_agent.think(
             self._agent_info,
             self._world_info,
