@@ -1,9 +1,7 @@
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:
-    from rcrs_core.commands.Command import Command
-    from rcrs_core.worldmodel.entityID import EntityID
+from rcrs_core.commands.Command import Command
+from rcrs_core.worldmodel.entityID import EntityID
 
 
 class Action(ABC):

@@ -1,10 +1,10 @@
 from logging import Logger, getLogger
 
-from rcrs_core.agents.ambulanceTeamAgent import AmbulanceTeamAgent
 from rcrs_core.connection.componentLauncher import ComponentLauncher
 
 from adf_core_python.core.agent.config.module_config import ModuleConfig
 from adf_core_python.core.agent.develop.develop_data import DevelopData
+from adf_core_python.core.agent.platoon.platoon_ambulance import PlatoonAmbulance
 from adf_core_python.core.component.abstract_loader import AbstractLoader
 from adf_core_python.core.component.tactics.tactics_ambulance_team import (
     TacticsAmbulanceTeam,
@@ -53,8 +53,14 @@ class ConnectorAmbulanceTeam(Connector):
 
             # TODO: component_launcher.generate_request_ID can cause race condition
             component_launcher.connect(
-                AmbulanceTeamAgent(
+                PlatoonAmbulance(
+                    tactics_ambulance_team,
+                    "ambulance_team",
                     config.get_value(ConfigKey.KEY_PRECOMPUTE, False),
+                    config.get_value(ConfigKey.KEY_DEBUG_FLAG, False),
+                    "test",
+                    module_config,
+                    develop_data,
                 ),
                 component_launcher.generate_request_ID(),
             )
