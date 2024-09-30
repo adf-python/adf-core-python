@@ -11,7 +11,6 @@ from rcrs_core.worldmodel.entityID import EntityID
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
 from adf_core_python.core.component.module.complex.road_detector import RoadDetector
-from adf_core_python.core.component.module.complex.target_detector import TargetDetector
 
 if TYPE_CHECKING:
     from adf_core_python.core.agent.develop.develop_data import DevelopData
@@ -41,7 +40,7 @@ class DefaultRoadDetector(RoadDetector):
             case Mode.NON_PRECOMPUTE:
                 self._path_planning: PathPlanning = cast(
                     PathPlanning,
-                    self.module_manager.get_module(
+                    module_manager.get_module(
                         "DefaultRoadDetector.PathPlanning",
                         "adf_core_python.implement.module.algorithm.DijkstraPathPlanning",
                     ),
@@ -143,7 +142,7 @@ class DefaultRoadDetector(RoadDetector):
             if len(self._priority_roads) > 0:
                 self._path_planning.set_from(position_entity_id)
                 self._path_planning.set_destination(list(self._target_areas))
-                path: list[EntityID] = self._path_planning.calculate().get_path()
+                path: list[EntityID] = self._path_planning.calculate().get_result()
                 if path is not None and len(path) > 0:
                     self._result = path[-1]
 

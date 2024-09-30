@@ -31,6 +31,10 @@ class PathPlanning(AbstractModule):
         )
 
     @abstractmethod
+    def get_result(self) -> list[EntityID]:
+        pass
+
+    @abstractmethod
     def get_path(
         self, from_entity_id: EntityID, to_entity_id: EntityID
     ) -> list[EntityID]:

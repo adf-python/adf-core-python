@@ -73,7 +73,7 @@ class WorldInfo:
                 entity_ids.append(entity.get_id())
 
         return entity_ids
-    
+
     def get_entities_of_type(self, entity_type: type[Entity]) -> list[Entity]:
         """
         Get the entities of the specified type
