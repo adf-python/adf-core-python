@@ -31,7 +31,7 @@ class DefaultTacticsPoliceForce(TacticsPoliceForce):
     ) -> None:
         # world_info.index_class()
         self._clear_distance = int(
-            scenario_info.get_config_value("clear.repair.distance", "null")
+            scenario_info.get_value("clear.repair.distance", "null")
         )
 
         match scenario_info.get_mode():

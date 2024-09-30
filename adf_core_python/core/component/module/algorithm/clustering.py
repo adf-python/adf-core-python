@@ -1,13 +1,12 @@
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import TYPE_CHECKING, Generic, Optional, TypeVar
-
-from rcrs_core.entities.entity import Entity
+from typing import TYPE_CHECKING
 
 from adf_core_python.core.component.module.abstract_module import AbstractModule
 
 if TYPE_CHECKING:
+    from rcrs_core.entities.entity import Entity
     from rcrs_core.worldmodel.entityID import EntityID
 
     from adf_core_python.core.agent.communication.message_manager import MessageManager
@@ -18,10 +17,8 @@ if TYPE_CHECKING:
     from adf_core_python.core.agent.module.module_manager import ModuleManager
     from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
 
-T = TypeVar("T", bound=Entity)
 
-
-class TargetDetector(AbstractModule, Generic[T]):
+class Clustering(AbstractModule):
     def __init__(
         self,
         agent_info: AgentInfo,
@@ -35,25 +32,37 @@ class TargetDetector(AbstractModule, Generic[T]):
         )
 
     @abstractmethod
-    def get_target_entity_id(self) -> Optional[EntityID]:
+    def get_cluster_number(self) -> int:
         pass
 
     @abstractmethod
-    def calculate(self) -> TargetDetector[T]:
+    def get_cluster_index(self, entity_id: EntityID) -> int:
         pass
 
-    def precompute(self, precompute_data: PrecomputeData) -> TargetDetector[T]:
+    @abstractmethod
+    def get_cluster_entities(self, cluster_index: int) -> list[Entity]:
+        pass
+
+    @abstractmethod
+    def get_cluster_entity_ids(self, cluster_index: int) -> list[EntityID]:
+        pass
+
+    @abstractmethod
+    def calculate(self) -> Clustering:
+        pass
+
+    def precompute(self, precompute_data: PrecomputeData) -> Clustering:
         super().precompute(precompute_data)
         return self
 
-    def resume(self, precompute_data: PrecomputeData) -> TargetDetector[T]:
+    def resume(self, precompute_data: PrecomputeData) -> Clustering:
         super().resume(precompute_data)
         return self
 
-    def prepare(self) -> TargetDetector[T]:
+    def prepare(self) -> Clustering:
         super().prepare()
         return self
 
-    def update_info(self, message_manager: MessageManager) -> TargetDetector[T]:
+    def update_info(self, message_manager: MessageManager) -> Clustering:
         super().update_info(message_manager)
         return self

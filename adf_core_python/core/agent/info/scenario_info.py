@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Any
 
 from adf_core_python.core.config.config import Config
 
@@ -57,7 +58,7 @@ class ScenarioInfo:
         """
         return self._mode
 
-    def get_config_value(self, key: str, default: str) -> str:
+    def get_value(self, key: str, default: Any) -> Any:
         """
         Get the value of the configuration
 
@@ -65,10 +66,12 @@ class ScenarioInfo:
         ----------
         key : str
             Key of the configuration
+        default : Any
+            Default value of the configuration
 
         Returns
         -------
-        str
+        Any
             Value of the configuration
         """
         return self._config.get_value(key, default)
