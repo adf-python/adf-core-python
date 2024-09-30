@@ -73,3 +73,24 @@ class WorldInfo:
                 entity_ids.append(entity.get_id())
 
         return entity_ids
+    
+    def get_entities_of_type(self, entity_type: type[Entity]) -> list[Entity]:
+        """
+        Get the entities of the specified type
+
+        Parameters
+        ----------
+        entity_type : type[Entity]
+            Entity type
+
+        Returns
+        -------
+        list[Entity]
+            Entities
+        """
+        entities: list[Entity] = []
+        for entity in self._world_model.get_entities():
+            if isinstance(entity, entity_type):
+                entities.append(entity)
+
+        return entities
