@@ -48,12 +48,12 @@ class AgentLauncher:
             self.config.get_value(ConfigKey.KEY_TEAM_NAME),
         )
 
-        self.connectors.append(ConnectorAmbulanceCentre())
+        # self.connectors.append(ConnectorAmbulanceCentre())
         self.connectors.append(ConnectorAmbulanceTeam())
-        self.connectors.append(ConnectorFireBrigade())
-        self.connectors.append(ConnectorFireStation())
-        self.connectors.append(ConnectorPoliceForce())
-        self.connectors.append(ConnectorPoliceOffice())
+        # self.connectors.append(ConnectorFireBrigade())
+        # self.connectors.append(ConnectorFireStation())
+        # self.connectors.append(ConnectorPoliceForce())
+        # self.connectors.append(ConnectorPoliceOffice())
 
     def launch(self) -> None:
         host: str = self.config.get_value(ConfigKey.KEY_KERNEL_HOST, "localhost")

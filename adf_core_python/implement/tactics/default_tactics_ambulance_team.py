@@ -36,23 +36,23 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
                     Search,
                     module_manager.get_module(
                         "DefaultTacticsAmbulanceTeam.Search",
-                        "adf_core_python.implement.module.complex.DefaultSearch",
+                        "adf_core_python.core.component.module.complex.search.Search",
                     ),
                 )
                 self._human_detector: HumanDetector = cast(
                     HumanDetector,
                     module_manager.get_module(
                         "DefaultTacticsAmbulanceTeam.HumanDetector",
-                        "adf_core_python.implement.module.complex.DefaultHumanDetector",
+                        "adf_core_python.core.component.module.complex.human_detector.HumanDetector",
                     ),
                 )
                 self._action_transport = module_manager.get_ext_action(
                     "DefaultTacticsAmbulanceTeam.ExtActionTransport",
-                    "adf_core_python.implement.extaction.DefaultExtActionTransport",
+                    "adf_core_python.implement.extend_action.default_extend_action_transport.DefaultExtActionTransport",
                 )
                 self._action_ext_move = module_manager.get_ext_action(
                     "DefaultTacticsAmbulanceTeam.ExtActionMove",
-                    "adf_core_python.implement.extaction.DefaultExtActionMove",
+                    "adf_core_python.implement.extend_action.default_extend_action_move.DefaultExtActionMove",
                 )
         self.register_module(self._search)
         self.register_module(self._human_detector)
