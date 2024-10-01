@@ -1,3 +1,4 @@
+import threading
 from logging import Logger, getLogger
 
 from rcrs_core.connection.componentLauncher import ComponentLauncher
@@ -24,10 +25,12 @@ class ConnectorAmbulanceTeam(Connector):
         component_launcher: ComponentLauncher,
         config: Config,
         loader: AbstractLoader,
-    ) -> None:
+    ) -> list[threading.Thread]:
         count: int = config.get_value(ConfigKey.KEY_AMBULANCE_CENTRE_COUNT, 0)
         if count == 0:
-            return
+            return []
+
+        threads: list[threading.Thread] = []
 
         for _ in range(count):
             if loader.get_tactics_ambulance_team() is None:
@@ -52,17 +55,23 @@ class ConnectorAmbulanceTeam(Connector):
             )
 
             # TODO: component_launcher.generate_request_ID can cause race condition
-            component_launcher.connect(
-                PlatoonAmbulance(
-                    tactics_ambulance_team,
-                    "ambulance_team",
-                    config.get_value(ConfigKey.KEY_PRECOMPUTE, False),
-                    config.get_value(ConfigKey.KEY_DEBUG_FLAG, False),
-                    "test",
-                    module_config,
-                    develop_data,
+            # threading
+            thread = threading.Thread(
+                target=component_launcher.connect,
+                args=(
+                    PlatoonAmbulance(
+                        tactics_ambulance_team,
+                        "ambulance_team",
+                        config.get_value(ConfigKey.KEY_PRECOMPUTE, False),
+                        config.get_value(ConfigKey.KEY_DEBUG_FLAG, False),
+                        "test",
+                        module_config,
+                        develop_data,
+                    ),
+                    component_launcher.generate_request_ID(),
                 ),
-                component_launcher.generate_request_ID(),
             )
+            threads.append(thread)
 
         self.logger.info("Connected ambulance team (count: %d)" % count)
+        return threads
