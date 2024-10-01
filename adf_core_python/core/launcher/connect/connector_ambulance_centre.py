@@ -1,3 +1,4 @@
+import threading
 from logging import Logger, getLogger
 
 from rcrs_core.agents.ambulanceCenterAgent import AmbulanceCenterAgent
@@ -21,10 +22,12 @@ class ConnectorAmbulanceCentre(Connector):
         component_launcher: ComponentLauncher,
         config: Config,
         loader: AbstractLoader,
-    ) -> None:
+    ) -> list[threading.Thread]:
         count: int = config.get_value(ConfigKey.KEY_AMBULANCE_CENTRE_COUNT, 0)
         if count == 0:
-            return
+            return []
+
+        threads: list[threading.Thread] = []
 
         for _ in range(count):
             # tactics_ambulance_centre: TacticsAmbulanceCentre
@@ -50,12 +53,16 @@ class ConnectorAmbulanceCentre(Connector):
             )
 
             # TODO: component_launcher.generate_request_ID can cause race condition
-            component_launcher.connect(
-                # TODO: AmbulanceCenterAgent is not implemented precompute method and other methods
-                AmbulanceCenterAgent(
-                    config.get_value(ConfigKey.KEY_PRECOMPUTE, False),
-                ),  # type: ignore
-                component_launcher.generate_request_ID(),
+            thread = threading.Thread(
+                target=component_launcher.connect,
+                args=(
+                    AmbulanceCenterAgent(
+                        config.get_value(ConfigKey.KEY_PRECOMPUTE, False),
+                    ),  # type: ignore
+                    component_launcher.generate_request_ID(),
+                ),
             )
+            threads.append(thread)
 
         self.logger.info("Connected ambulance centre (count: %d)" % count)
+        return threads

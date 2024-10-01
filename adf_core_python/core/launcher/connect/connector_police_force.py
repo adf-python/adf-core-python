@@ -1,3 +1,4 @@
+import threading
 from logging import Logger, getLogger
 
 from rcrs_core.agents.policeForceAgent import PoliceForceAgent
@@ -21,10 +22,12 @@ class ConnectorPoliceForce(Connector):
         component_launcher: ComponentLauncher,
         config: Config,
         loader: AbstractLoader,
-    ) -> None:
+    ) -> list[threading.Thread]:
         count: int = config.get_value(ConfigKey.KEY_AMBULANCE_CENTRE_COUNT, 0)
         if count == 0:
-            return
+            return []
+
+        threads: list[threading.Thread] = []
 
         for _ in range(count):
             # tactics_police_force: TacticsPoliceForce
@@ -50,11 +53,16 @@ class ConnectorPoliceForce(Connector):
             )
 
             # TODO: component_launcher.generate_request_ID can cause race condition
-            component_launcher.connect(
-                PoliceForceAgent(
-                    config.get_value(ConfigKey.KEY_PRECOMPUTE, False),
+            thread = threading.Thread(
+                target=component_launcher.connect,
+                args=(
+                    PoliceForceAgent(
+                        config.get_value(ConfigKey.KEY_PRECOMPUTE, False),
+                    ),
+                    component_launcher.generate_request_ID(),
                 ),
-                component_launcher.generate_request_ID(),
             )
+            threads.append(thread)
 
         self.logger.info("Connected ambulance centre (count: %d)" % count)
+        return threads
