@@ -1,5 +1,3 @@
-from typing import TYPE_CHECKING
-
 from adf_core_python.core.component.abstract_loader import AbstractLoader
 from adf_core_python.core.component.tactics.tactics_ambulance_center import (
     TacticsAmbulanceCenter,

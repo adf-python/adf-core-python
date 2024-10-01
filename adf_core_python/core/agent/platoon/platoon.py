@@ -2,6 +2,7 @@ from logging import Logger, getLogger
 
 from rcrs_core.agents.agent import Agent
 from rcrs_core.commands.Command import Command
+from rcrs_core.config.config import Config as RCRSConfig
 from rcrs_core.worldmodel.changeSet import ChangeSet
 
 from adf_core_python.core.agent.action.action import Action
@@ -14,6 +15,7 @@ from adf_core_python.core.agent.info.world_info import WorldInfo
 from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
 from adf_core_python.core.component.tactics.tactics_agent import TacticsAgent
+from adf_core_python.core.config.config import Config
 
 
 class Platoon(Agent):
@@ -53,7 +55,21 @@ class Platoon(Agent):
             #     self._mode = Mode.NON_PRECOMPUTE
             self._mode = Mode.NON_PRECOMPUTE
 
-        self._scenario_info: ScenarioInfo = ScenarioInfo(self.config, self._mode)  # type: ignore
+        config = Config()
+        if self.config is not None:
+            rcrc_config: RCRSConfig = self.config
+            for key, value in rcrc_config.data.items():
+                config.set_value(key, value)
+            for key, value in rcrc_config.int_data.items():
+                config.set_value(key, value)
+            for key, value in rcrc_config.float_data.items():
+                config.set_value(key, value)
+            for key, value in rcrc_config.boolean_data.items():
+                config.set_value(key, value)
+            for key, value in rcrc_config.array_data.items():
+                config.set_value(key, value)
+
+        self._scenario_info: ScenarioInfo = ScenarioInfo(config, self._mode)
         self._module_manager: ModuleManager = ModuleManager(
             self._agent_info,
             self._world_info,
@@ -88,6 +104,8 @@ class Platoon(Agent):
                 )
 
     def think(self, time: int, change_set: ChangeSet, hear: list[Command]) -> None:
+        self._agent_info.set_change_set(change_set)
+        self._world_info.set_change_set(change_set)
         action: Action = self._tactics_agent.think(
             self._agent_info,
             self._world_info,
@@ -99,4 +117,4 @@ class Platoon(Agent):
         )
         if action is not None and self.agent_id is not None:
             self._agent_info.set_executed_action(time, action)
-            self.send_msg(action.get_command(self.agent_id, time))
+            self.send_msg(action.get_command(self.agent_id, time).prepare_cmd())

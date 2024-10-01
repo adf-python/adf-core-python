@@ -125,8 +125,8 @@ class WorldInfo:
                 f"One or both entities are invalid: entity_id1={entity_id1}, entity_id2={entity_id2}, entity1={entity1}, entity2={entity2}"
             )
 
-        location1_x, location1_y = entity1.get_location()
-        location2_x, location2_y = entity2.get_location()
+        location1_x, location1_y = entity1.get_x(), entity1.get_y()
+        location2_x, location2_y = entity2.get_x(), entity2.get_y()
         if (
             location1_x is None
             or location1_y is None

@@ -1,4 +1,4 @@
-from rcrs_core.connection import URN
+from rcrs_core.connection.URN import Entity as EntityURN
 
 from adf_core_python.core.agent.config.module_config import ModuleConfig
 from adf_core_python.core.agent.develop.develop_data import DevelopData
@@ -30,5 +30,5 @@ class PlatoonAmbulance(Platoon):
     def precompute(self) -> None:
         pass
 
-    def get_requested_entities(self) -> list[str]:
-        return [URN.Entity.AMBULANCE_TEAM]
+    def get_requested_entities(self) -> list[EntityURN]:
+        return [EntityURN.AMBULANCE_TEAM]

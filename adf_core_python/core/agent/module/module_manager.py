@@ -3,6 +3,7 @@ from __future__ import annotations
 import importlib
 from typing import TYPE_CHECKING, Any
 
+from adf_core_python.core.component.extaction.ext_action import ExtAction
 from adf_core_python.core.component.module.abstract_module import AbstractModule
 
 if TYPE_CHECKING:
@@ -11,7 +12,6 @@ if TYPE_CHECKING:
     from adf_core_python.core.agent.info.agent_info import AgentInfo
     from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
     from adf_core_python.core.agent.info.world_info import WorldInfo
-    from adf_core_python.core.component.extaction.ext_action import ExtAction
 
 
 class ModuleManager:

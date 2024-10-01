@@ -1,9 +1,9 @@
 ## DefaultTacticsAmbulanceTeam
 DefaultTacticsAmbulanceTeam:
-  HumanDetector: adf_core_python.core.component.module.complex.human_detector.HumanDetector
-  Search: adf_core_python.core.component.module.complex.search.Search
-  ExtActionTransport: adf_core_python.implement.extend_action.default_extend_action_transport.DefaultExtActionTransport
-  ExtActionMove: adf_core_python.implement.extend_action.default_extend_action_move.DefaultExtActionMove
+  HumanDetector: adf_core_python.implement.module.complex.default_human_detector.DefaultHumanDetector
+  Search: adf_core_python.implement.module.complex.default_search.DefaultSearch
+  ExtActionTransport: adf_core_python.implement.extend_action.default_extend_action_transport.DefaultExtendActionTransport
+  ExtActionMove: adf_core_python.implement.extend_action.default_extend_action_move.DefaultExtendActionMove
   CommandExecutorAmbulance: adf.impl.centralized.DefaultCommandExecutorAmbulance
   CommandExecutorScout: adf.impl.centralized.DefaultCommandExecutorScout
 
@@ -42,47 +42,41 @@ DefaultTacticsAmbulanceTeam:
 
 ## SampleSearch
 SampleSearch:
-  PathPlanning:
-    Ambulance: adf.impl.module.algorithm.DijkstraPathPlanning
-    Fire: adf.impl.module.algorithm.DijkstraPathPlanning
-    Police: adf.impl.module.algorithm.DijkstraPathPlanning
-  Clustering:
-    Ambulance: adf.impl.module.algorithm.KMeansClustering
-    Fire: adf.impl.module.algorithm.KMeansClustering
-    Police: adf.impl.module.algorithm.KMeansClustering
+  PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
+  Clustering: adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering
 
-## SampleBuildDetector
-SampleBuildingDetector:
-  Clustering: adf.impl.module.algorithm.KMeansClustering
+# ## SampleBuildDetector
+# SampleBuildingDetector:
+#   Clustering: adf.impl.module.algorithm.KMeansClustering
 
-## SampleRoadDetector
-SampleRoadDetector:
-  Clustering: adf.impl.module.algorithm.KMeansClustering
-  PathPlanning: adf.impl.module.algorithm.DijkstraPathPlanning
+# ## SampleRoadDetector
+# SampleRoadDetector:
+#   Clustering: adf.impl.module.algorithm.KMeansClustering
+#   PathPlanning: adf.impl.module.algorithm.DijkstraPathPlanning
 
-## SampleHumanDetector
-SampleHumanDetector:
-  Clustering: adf.impl.module.algorithm.KMeansClustering
+# ## SampleHumanDetector
+# SampleHumanDetector:
+#   Clustering: adf.impl.module.algorithm.KMeansClustering
 
-## DefaultExtActionClear
-DefaultExtActionClear:
-  PathPlanning: adf.impl.module.algorithm.DijkstraPathPlanning
+# ## DefaultExtActionClear
+# DefaultExtActionClear:
+#   PathPlanning: adf.impl.module.algorithm.DijkstraPathPlanning
 
-## DefaultExtActionFireFighting
-DefaultExtActionFireFighting:
-  PathPlanning: adf.impl.module.algorithm.DijkstraPathPlanning
+# ## DefaultExtActionFireFighting
+# DefaultExtActionFireFighting:
+#   PathPlanning: adf.impl.module.algorithm.DijkstraPathPlanning
 
-## DefaultExtActionFireRescue
-DefaultExtActionFireRescue:
-  PathPlanning: adf.impl.module.algorithm.DijkstraPathPlanning
+# ## DefaultExtActionFireRescue
+# DefaultExtActionFireRescue:
+#   PathPlanning: adf.impl.module.algorithm.DijkstraPathPlanning
 
-## DefaultExtActionMove
-DefaultExtActionMove:
-  PathPlanning: adf.impl.module.algorithm.DijkstraPathPlanning
+# ## DefaultExtActionMove
+# DefaultExtActionMove:
+#   PathPlanning: adf.impl.module.algorithm.DijkstraPathPlanning
 
-## DefaultExtActionTransport
-DefaultExtActionTransport:
-  PathPlanning: adf.impl.module.algorithm.DijkstraPathPlanning
+# ## DefaultExtActionTransport
+# DefaultExtActionTransport:
+#   PathPlanning: adf.impl.module.algorithm.DijkstraPathPlanning
 # ## DefaultCommandExecutorAmbulance
 # DefaultCommandExecutorAmbulance:
 #   PathPlanning: adf.impl.module.algorithm.DijkstraPathPlanning
