@@ -1,3 +1,4 @@
+from logging import Logger, getLogger
 from typing import Optional, cast
 
 from rcrs_core.entities.area import Area
@@ -32,6 +33,7 @@ class DefaultExtendActionMove(ExtAction):
         )
         self._target_entity_id: Optional[EntityID] = None
         self._threshold_to_rest: int = develop_data.get_value("threshold_to_rest", 100)
+        self._logger: Logger = getLogger(__name__)
 
         match self.scenario_info.get_mode():
             case Mode.NON_PRECOMPUTE:
@@ -39,7 +41,7 @@ class DefaultExtendActionMove(ExtAction):
                     PathPlanning,
                     self.module_manager.get_module(
                         "DefaultExtendActionMove.PathPlanning",
-                        "adf_core_python.implement.module.astar_path_planning.AStarPathPlanning",
+                        "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
                     ),
                 )
             case Mode.PRECOMPUTATION:
@@ -87,20 +89,20 @@ class DefaultExtendActionMove(ExtAction):
         elif isinstance(entity, Human):
             entity = entity.get_position()
 
-        if entity is None and isinstance(entity, Area):
-            self._target_entity_id = None
+        if entity is not None and isinstance(entity, Area):
+            self._target_entity_id = entity.get_id()
 
         return self
 
     def calc(self) -> ExtAction:
-        self._result = None
+        self.result = None
         agent: Human = cast(Human, self.agent_info.get_myself())
 
         path: list[EntityID] = self._path_planning.get_path(
             agent.get_position(), self._target_entity_id
         )
 
-        if path is not None or len(path) != 0:
+        if path is not None and len(path) != 0:
             self.result = ActionMove(path)
 
         return self

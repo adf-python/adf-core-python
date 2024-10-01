@@ -113,29 +113,43 @@ class TacticsAgent(ABC):
             module.precompute(precompute_data)
         for action in self._actions:
             action.precompute(precompute_data)
-        for executor in self._command_executor:
-            executor.precompute(precompute_data)
+        # for executor in self._command_executor:
+        #     executor.precompute(precompute_data)
 
     def module_resume(self, precompute_data: PrecomputeData) -> None:
         for module in self._modules:
             module.resume(precompute_data)
         for action in self._actions:
             action.resume(precompute_data)
-        for executor in self._command_executor:
-            executor.resume(precompute_data)
+        # for executor in self._command_executor:
+        #     executor.resume(precompute_data)
 
     def module_prepare(self) -> None:
         for module in self._modules:
             module.prepare()
         for action in self._actions:
             action.prepare()
-        for executor in self._command_executor:
-            executor.prepare()
+        # for executor in self._command_executor:
+        #     executor.prepare()
 
     def module_update_info(self, message_manager: MessageManager) -> None:
         for module in self._modules:
             module.update_info(message_manager)
         for action in self._actions:
             action.update_info(message_manager)
-        for executor in self._command_executor:
-            executor.update_info(message_manager)
+        # for executor in self._command_executor:
+        #     executor.update_info(message_manager)
+
+    def reset_count(self) -> None:
+        for module in self._modules:
+            module.reset_count_precompute()
+            module.reset_count_resume()
+            module.reset_count_prepare()
+            module.reset_count_update_info()
+        for action in self._actions:
+            action.reset_count_precompute()
+            action.reset_count_resume()
+            action.reset_count_prepare()
+            action.reset_count_update_info()
+        # for executor in self._command_executor:
+        #     executor.reset_count()

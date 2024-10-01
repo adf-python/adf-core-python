@@ -1,3 +1,4 @@
+import threading
 from abc import ABC, abstractmethod
 
 from rcrs_core.connection.componentLauncher import ComponentLauncher
@@ -16,7 +17,7 @@ class Connector(ABC):
         component_launcher: ComponentLauncher,
         config: Config,
         loader: AbstractLoader,
-    ) -> None:
+    ) -> list[threading.Thread]:
         raise NotImplementedError
 
     def get_connected_agent_count(self) -> int:

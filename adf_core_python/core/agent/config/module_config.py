@@ -35,9 +35,6 @@ class ModuleConfig(Config):
         for key, value in flatten_data.items():
             self.set_value(key, value)
 
-        for key, value in flatten_data.items():
-            print(f"{key}: {self.get_value(key)}")
-
     def _read_from_yaml(self, file_name: str) -> dict[str, Any]:
         """
         Read configuration from yaml file

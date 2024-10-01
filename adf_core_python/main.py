@@ -1,4 +1,5 @@
 import argparse
+import logging
 
 from adf_core_python.core.config.config import Config
 from adf_core_python.core.launcher.agent_launcher import AgentLauncher
@@ -77,5 +78,10 @@ class Main:
 
 
 if __name__ == "__main__":
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="%(threadName)s[%(levelname)s][%(name)s]: %(message)s",
+    )
+
     main = Main()
     main.launch()

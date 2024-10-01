@@ -30,4 +30,5 @@ class ActionMove(Action):
             return AKMove(agent_id, time, path)
 
     def __str__(self) -> str:
-        return f"ActionMove(path={self.path}, destination_x={self.destination_x}, destination_y{self.destination_y})"
+        path: str = ", ".join([str(p) for p in self.path])
+        return f"ActionMove(path={path}, destination_x={self.destination_x}, destination_y={self.destination_y})"
