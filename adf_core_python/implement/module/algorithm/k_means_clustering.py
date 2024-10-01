@@ -34,19 +34,25 @@ class KMeansClustering(Clustering):
         )
         match agent_info.get_myself().get_urn():
             case EntityURN.AMBULANCE_TEAM:
-                self._cluster_number = scenario_info.get_value(
-                    "scenario.agents.at",
-                    1,
+                self._cluster_number = int(
+                    scenario_info.get_value(
+                        "scenario.agents.at",
+                        1,
+                    )
                 )
             case EntityURN.POLICE_FORCE:
-                self._cluster_number = scenario_info.get_value(
-                    "scenario.agents.pf",
-                    1,
+                self._cluster_number = int(
+                    scenario_info.get_value(
+                        "scenario.agents.pf",
+                        1,
+                    )
                 )
             case EntityURN.FIRE_BRIGADE:
-                self._cluster_number = scenario_info.get_value(
-                    "scenario.agents.fb",
-                    1,
+                self._cluster_number = int(
+                    scenario_info.get_value(
+                        "scenario.agents.fb",
+                        1,
+                    )
                 )
             case _:
                 self._cluster_number = 1

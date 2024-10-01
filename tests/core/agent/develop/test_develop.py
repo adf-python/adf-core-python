@@ -10,7 +10,6 @@ class TestDevelopData:
         script_dir = os.path.dirname(os.path.abspath(__file__))
         develop_file_path = os.path.join(script_dir, "develop.json")
         develop_data = DevelopData(True, develop_file_path)
-        print(develop_data._develop_data)
 
         assert develop_data.get_value("string") == "test"
         assert develop_data.get_value("number") == 1
