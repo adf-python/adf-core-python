@@ -111,21 +111,23 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
         entity_id = agent_info.get_entity_id()  # noqa: F841
 
         target_entity_id = self._human_detector.calculate().get_target_entity_id()
-        action = (
-            self._action_transport.set_target_entity_id(target_entity_id)
-            .calc()
-            .get_action()
-        )
-        if action is not None:
-            return action
+        if target_entity_id is not None:
+            action = (
+                self._action_transport.set_target_entity_id(target_entity_id)
+                .calc()
+                .get_action()
+            )
+            if action is not None:
+                return action
 
         target_entity_id = self._search.calculate().get_target_entity_id()
-        action = (
-            self._action_ext_move.set_target_entity_id(target_entity_id)
-            .calc()
-            .get_action()
-        )
-        if action is not None:
-            return action
+        if target_entity_id is not None:
+            action = (
+                self._action_ext_move.set_target_entity_id(target_entity_id)
+                .calc()
+                .get_action()
+            )
+            if action is not None:
+                return action
 
         return ActionRest()

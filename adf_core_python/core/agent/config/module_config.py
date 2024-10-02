@@ -79,11 +79,12 @@ class ModuleConfig(Config):
         dict[str, Any]
             Flattened dictionary
         """
-        flatten_data = {}
+        flatten_data: dict[str, Any] = {}
         for key, value in data.items():
             new_key = f"{parent_key}{sep}{key}" if parent_key else key
             if isinstance(value, dict):
-                flatten_data.update(self._flatten(value, new_key, sep=sep))
+                v: dict[str, Any] = value
+                flatten_data.update(self._flatten(v, new_key, sep=sep))
             else:
                 flatten_data[new_key] = value
         return flatten_data
