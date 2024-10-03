@@ -39,7 +39,7 @@ class DefaultExtendActionMove(ExtAction):
                     PathPlanning,
                     self.module_manager.get_module(
                         "DefaultExtendActionMove.PathPlanning",
-                        "adf_core_python.implement.module.astar_path_planning.AStarPathPlanning",
+                        "adf_core_python.implement.module.algorithm.astar_path_planning.AStarPathPlanning",
                     ),
                 )
             case Mode.PRECOMPUTATION:

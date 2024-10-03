@@ -12,7 +12,7 @@ class TestModuleManager:
         config = ModuleConfig(config_file_path)
         config.set_value(
             "test_module",
-            "adf_core_python.implement.module.astar_path_planning.AStarPathPlanning",
+            "adf_core_python.implement.module.algorithm.astar_path_planning.AStarPathPlanning",
         )
         module_manager = self.create_module_manager(config)
         module = module_manager.get_module("test_module", "test_module")
