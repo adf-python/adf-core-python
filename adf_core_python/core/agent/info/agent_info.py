@@ -2,8 +2,11 @@ from time import time
 from typing import Any
 
 from rcrs_core.agents.agent import Agent
+from rcrs_core.entities.entity import Entity
 from rcrs_core.entities.human import Human
-from rcrs_core.worldmodel.worldmodel import ChangeSet, Entity, EntityID, WorldModel
+from rcrs_core.worldmodel.changeSet import ChangeSet
+from rcrs_core.worldmodel.entityID import EntityID
+from rcrs_core.worldmodel.worldmodel import WorldModel
 
 from adf_core_python.core.agent.action.action import Action
 
@@ -97,7 +100,7 @@ class AgentInfo:
         """
         entity = self._world_model.get_entity(self.get_entity_id())
         if isinstance(entity, Human):
-            return entity.get_position_property()
+            return entity.get_position()
         else:
             return entity.get_id()
 

@@ -31,7 +31,7 @@ class DefaultTacticsPoliceForce(TacticsPoliceForce):
     ) -> None:
         # world_info.index_class()
         self._clear_distance = int(
-            scenario_info.get_config_value("clear.repair.distance", "null")
+            scenario_info.get_value("clear.repair.distance", "null")
         )
 
         match scenario_info.get_mode():
@@ -114,21 +114,23 @@ class DefaultTacticsPoliceForce(TacticsPoliceForce):
         entity_id = agent_info.get_entity_id()  # noqa: F841
 
         target_entity_id = self._road_detector.calculate().get_target_entity_id()
-        action = (
-            self._action_ext_clear.set_target_entity_id(target_entity_id)
-            .calc()
-            .get_action()
-        )
-        if action is not None:
-            return action
+        if target_entity_id is not None:
+            action = (
+                self._action_ext_clear.set_target_entity_id(target_entity_id)
+                .calc()
+                .get_action()
+            )
+            if action is not None:
+                return action
 
         target_entity_id = self._search.calculate().get_target_entity_id()
-        action = (
-            self._action_ext_clear.set_target_entity_id(target_entity_id)
-            .calc()
-            .get_action()
-        )
-        if action is not None:
-            return action
+        if target_entity_id is not None:
+            action = (
+                self._action_ext_clear.set_target_entity_id(target_entity_id)
+                .calc()
+                .get_action()
+            )
+            if action is not None:
+                return action
 
         return ActionRest()

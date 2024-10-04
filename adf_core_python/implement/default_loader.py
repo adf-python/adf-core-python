@@ -1,6 +1,22 @@
-from typing import TYPE_CHECKING
-
 from adf_core_python.core.component.abstract_loader import AbstractLoader
+from adf_core_python.core.component.tactics.tactics_ambulance_center import (
+    TacticsAmbulanceCenter,
+)
+from adf_core_python.core.component.tactics.tactics_ambulance_team import (
+    TacticsAmbulanceTeam,
+)
+from adf_core_python.core.component.tactics.tactics_fire_brigade import (
+    TacticsFireBrigade,
+)
+from adf_core_python.core.component.tactics.tactics_fire_station import (
+    TacticsFireStation,
+)
+from adf_core_python.core.component.tactics.tactics_police_force import (
+    TacticsPoliceForce,
+)
+from adf_core_python.core.component.tactics.tactics_police_office import (
+    TacticsPoliceOffice,
+)
 from adf_core_python.implement.tactics.default_tactics_ambulance_center import (
     DefaultTacticsAmbulanceCenter,
 )
@@ -20,26 +36,6 @@ from adf_core_python.implement.tactics.default_tactics_police_office import (
     DefaultTacticsPoliceOffice,
 )
 
-if TYPE_CHECKING:
-    from adf_core_python.core.component.tactics.tactics_ambulance_center import (
-        TacticsAmbulanceCenter,
-    )
-    from adf_core_python.core.component.tactics.tactics_ambulance_team import (
-        TacticsAmbulanceTeam,
-    )
-    from adf_core_python.core.component.tactics.tactics_fire_brigade import (
-        TacticsFireBrigade,
-    )
-    from adf_core_python.core.component.tactics.tactics_fire_station import (
-        TacticsFireStation,
-    )
-    from adf_core_python.core.component.tactics.tactics_police_force import (
-        TacticsPoliceForce,
-    )
-    from adf_core_python.core.component.tactics.tactics_police_office import (
-        TacticsPoliceOffice,
-    )
-
 
 class DefaultLoader(AbstractLoader):
     def get_tactics_ambulance_team(self) -> TacticsAmbulanceTeam:
@@ -51,7 +47,7 @@ class DefaultLoader(AbstractLoader):
     def get_tactics_police_force(self) -> TacticsPoliceForce:
         return DefaultTacticsPoliceForce()
 
-    def get_tactics_ambulance_centre(self) -> TacticsAmbulanceCenter:
+    def get_tactics_ambulance_center(self) -> TacticsAmbulanceCenter:
         return DefaultTacticsAmbulanceCenter()
 
     def get_tactics_fire_station(self) -> TacticsFireStation:

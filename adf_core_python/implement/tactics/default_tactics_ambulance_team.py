@@ -36,23 +36,23 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
                     Search,
                     module_manager.get_module(
                         "DefaultTacticsAmbulanceTeam.Search",
-                        "adf_core_python.implement.module.complex.DefaultSearch",
+                        "adf_core_python.core.component.module.complex.search.Search",
                     ),
                 )
                 self._human_detector: HumanDetector = cast(
                     HumanDetector,
                     module_manager.get_module(
                         "DefaultTacticsAmbulanceTeam.HumanDetector",
-                        "adf_core_python.implement.module.complex.DefaultHumanDetector",
+                        "adf_core_python.core.component.module.complex.human_detector.HumanDetector",
                     ),
                 )
                 self._action_transport = module_manager.get_ext_action(
                     "DefaultTacticsAmbulanceTeam.ExtActionTransport",
-                    "adf_core_python.implement.extaction.DefaultExtActionTransport",
+                    "adf_core_python.implement.extend_action.default_extend_action_transport.DefaultExtendActionTransport",
                 )
                 self._action_ext_move = module_manager.get_ext_action(
                     "DefaultTacticsAmbulanceTeam.ExtActionMove",
-                    "adf_core_python.implement.extaction.DefaultExtActionMove",
+                    "adf_core_python.implement.extend_action.default_extend_action_move.DefaultExtendActionMove",
                 )
         self.register_module(self._search)
         self.register_module(self._human_detector)
@@ -104,27 +104,30 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
         message_manager: MessageManager,
         develop_data: DevelopData,
     ) -> Action:
+        self.reset_count()
         self.module_update_info(message_manager)
 
         agent: AmbulanceTeamEntity = cast(AmbulanceTeamEntity, agent_info.get_myself())  # noqa: F841
         entity_id = agent_info.get_entity_id()  # noqa: F841
 
         target_entity_id = self._human_detector.calculate().get_target_entity_id()
-        action = (
-            self._action_transport.set_target_entity_id(target_entity_id)
-            .calc()
-            .get_action()
-        )
-        if action is not None:
-            return action
+        if target_entity_id is not None:
+            action = (
+                self._action_transport.set_target_entity_id(target_entity_id)
+                .calc()
+                .get_action()
+            )
+            if action is not None:
+                return action
 
         target_entity_id = self._search.calculate().get_target_entity_id()
-        action = (
-            self._action_ext_move.set_target_entity_id(target_entity_id)
-            .calc()
-            .get_action()
-        )
-        if action is not None:
-            return action
+        if target_entity_id is not None:
+            action = (
+                self._action_ext_move.set_target_entity_id(target_entity_id)
+                .calc()
+                .get_action()
+            )
+            if action is not None:
+                return action
 
         return ActionRest()

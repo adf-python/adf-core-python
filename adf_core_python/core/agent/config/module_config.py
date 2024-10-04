@@ -35,9 +35,6 @@ class ModuleConfig(Config):
         for key, value in flatten_data.items():
             self.set_value(key, value)
 
-        for key, value in flatten_data.items():
-            print(f"{key}: {self.get_value(key)}")
-
     def _read_from_yaml(self, file_name: str) -> dict[str, Any]:
         """
         Read configuration from yaml file
@@ -82,11 +79,12 @@ class ModuleConfig(Config):
         dict[str, Any]
             Flattened dictionary
         """
-        flatten_data = {}
+        flatten_data: dict[str, Any] = {}
         for key, value in data.items():
             new_key = f"{parent_key}{sep}{key}" if parent_key else key
             if isinstance(value, dict):
-                flatten_data.update(self._flatten(value, new_key, sep=sep))
+                v: dict[str, Any] = value
+                flatten_data.update(self._flatten(v, new_key, sep=sep))
             else:
                 flatten_data[new_key] = value
         return flatten_data

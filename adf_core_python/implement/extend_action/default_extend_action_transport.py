@@ -23,6 +23,7 @@ from adf_core_python.core.component.extaction.ext_action import ExtAction
 from adf_core_python.core.component.module.algorithm.path_planning import PathPlanning
 
 
+# TODO: refactor this class
 class DefaultExtendActionTransport(ExtAction):
     def __init__(
         self,
@@ -44,7 +45,7 @@ class DefaultExtendActionTransport(ExtAction):
                     PathPlanning,
                     self.module_manager.get_module(
                         "DefaultExtendActionMove.PathPlanning",
-                        "adf_core_python.implement.module.algorithm.astar_path_planning.AStarPathPlanning",
+                        "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
                     ),
                 )
             case Mode.PRECOMPUTATION:
@@ -99,7 +100,7 @@ class DefaultExtendActionTransport(ExtAction):
         agent: AmbulanceTeamEntity = cast(
             AmbulanceTeamEntity, self.agent_info.get_myself()
         )
-        transport_human: Human = self.agent_info.some_one_on_board()
+        transport_human: Optional[Human] = self.agent_info.some_one_on_board()
         if transport_human is not None:
             self.result = self.calc_unload(
                 agent, self._path_planning, transport_human, self._target_entity_id
@@ -134,9 +135,7 @@ class DefaultExtendActionTransport(ExtAction):
 
             target_position = human.get_position()
             if agent_position == target_position:
-                if isinstance(human, Civilian) and (
-                    human.get_buriedness() is not None and human.get_buriedness() > 0
-                ):
+                if isinstance(human, Civilian) and ((human.get_buriedness() or 0) > 0):
                     return ActionLoad(human.get_id())
             else:
                 path = path_planning.get_path(agent_position, target_position)
@@ -176,9 +175,7 @@ class DefaultExtendActionTransport(ExtAction):
             if isinstance(position, Refuge):
                 return ActionUnload()
             else:
-                path = path_planning.get_path(
-                    agent_position, self.world_info.get_entity_ids_of_type(Refuge)
-                )
+                path = self.get_nearest_refuge_path(agent, path_planning)
                 if path is not None and len(path) > 0:
                     return ActionMove(path)
 
@@ -191,7 +188,7 @@ class DefaultExtendActionTransport(ExtAction):
             human = cast(Human, target_entity)
             if human.get_position() is not None:
                 return self.calc_refuge_action(
-                    agent, path_planning, [human.get_position()], True
+                    agent, path_planning, human.get_position(), True
                 )
             path = self.get_nearest_refuge_path(agent, path_planning)
             if path is not None and len(path) > 0:
@@ -207,7 +204,7 @@ class DefaultExtendActionTransport(ExtAction):
         is_unload: bool,
     ) -> Optional[ActionMove | ActionUnload | ActionRest]:
         position = human.get_position()
-        refuges = self.world_info.get_entity_ids_of_type(Refuge)
+        refuges = self.world_info.get_entity_ids_of_types([Refuge])
         size = len(refuges)
 
         if position in refuges:
@@ -242,7 +239,7 @@ class DefaultExtendActionTransport(ExtAction):
         self, human: Human, path_planning: PathPlanning
     ) -> list[EntityID]:
         position = human.get_position()
-        refuges = self.world_info.get_entity_ids_of_type(Refuge)
+        refuges = self.world_info.get_entity_ids_of_types([Refuge])
         nearest_path = None
 
         for refuge_id in refuges:

@@ -1,3 +1,4 @@
+import threading
 from logging import Logger, getLogger
 
 from rcrs_core.agents.fireStationAgent import FireStationAgent
@@ -21,10 +22,12 @@ class ConnectorFireStation(Connector):
         component_launcher: ComponentLauncher,
         config: Config,
         loader: AbstractLoader,
-    ) -> None:
+    ) -> list[threading.Thread]:
         count: int = config.get_value(ConfigKey.KEY_AMBULANCE_CENTRE_COUNT, 0)
         if count == 0:
-            return
+            return []
+
+        threads: list[threading.Thread] = []
 
         for _ in range(count):
             # tactics_fire_station: TacticsFireStation
@@ -50,11 +53,16 @@ class ConnectorFireStation(Connector):
             )
 
             # TODO: component_launcher.generate_request_ID can cause race condition
-            component_launcher.connect(
-                FireStationAgent(
-                    config.get_value(ConfigKey.KEY_PRECOMPUTE, False),
-                ),  # type: ignore
-                component_launcher.generate_request_ID(),
+            thread = threading.Thread(
+                target=component_launcher.connect,
+                args=(
+                    FireStationAgent(
+                        config.get_value(ConfigKey.KEY_PRECOMPUTE, False),
+                    ),  # type: ignore
+                    component_launcher.generate_request_ID(),
+                ),
             )
+            threads.append(thread)
 
         self.logger.info("Connected fire station (count: %d)" % count)
+        return threads
