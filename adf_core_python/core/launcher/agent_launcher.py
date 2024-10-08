@@ -1,6 +1,5 @@
 import importlib
 import threading
-from logging import Logger, getLogger
 
 from rcrs_core.connection.componentLauncher import ComponentLauncher
 
@@ -15,6 +14,7 @@ from adf_core_python.core.launcher.connect.connector import Connector
 from adf_core_python.core.launcher.connect.connector_ambulance_team import (
     ConnectorAmbulanceTeam,
 )
+from adf_core_python.core.logger.logger import get_logger
 
 # from adf_core_python.core.launcher.connect.connector_fire_brigade import (
 #     ConnectorFireBrigade,
@@ -33,7 +33,7 @@ from adf_core_python.core.launcher.connect.connector_ambulance_team import (
 class AgentLauncher:
     def __init__(self, config: Config):
         self.config = config
-        self.logger: Logger = getLogger(__name__)
+        self.logger = get_logger(__name__)
         self.connectors: list[Connector] = []
         self.thread_list: list[threading.Thread] = []
 
@@ -67,14 +67,9 @@ class AgentLauncher:
         for connector in self.connectors:
             threads = connector.connect(component_launcher, self.config, self.loader)
             for thread in threads:
+                thread.daemon = True
                 thread.start()
             self.thread_list.extend(threads)
 
         for thread in self.thread_list:
             thread.join()
-
-        connected_agent_count = 0
-        for connector in self.connectors:
-            connected_agent_count += connector.get_connected_agent_count()
-
-        self.logger.info(f"Connected agent count: {connected_agent_count}")

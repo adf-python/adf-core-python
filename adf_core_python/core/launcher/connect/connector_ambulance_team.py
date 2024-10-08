@@ -1,5 +1,4 @@
 import threading
-from logging import Logger, getLogger
 
 from rcrs_core.connection.componentLauncher import ComponentLauncher
 
@@ -13,12 +12,13 @@ from adf_core_python.core.component.tactics.tactics_ambulance_team import (
 from adf_core_python.core.config.config import Config
 from adf_core_python.core.launcher.config_key import ConfigKey
 from adf_core_python.core.launcher.connect.connector import Connector
+from adf_core_python.core.logger.logger import get_logger
 
 
 class ConnectorAmbulanceTeam(Connector):
     def __init__(self) -> None:
         super().__init__()
-        self.logger: Logger = getLogger(__name__)
+        self.logger = get_logger(__name__)
 
     def connect(
         self,

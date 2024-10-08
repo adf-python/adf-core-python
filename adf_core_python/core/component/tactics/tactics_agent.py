@@ -3,6 +3,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any, Optional
 
+from adf_core_python.core.logger.logger import get_agent_logger
+
 if TYPE_CHECKING:
     from adf_core_python.core.agent.action.action import Action
     from adf_core_python.core.agent.communication.message_manager import MessageManager
@@ -34,7 +36,9 @@ class TacticsAgent(ABC):
         message_manager: MessageManager,
         develop_data: DevelopData,
     ) -> None:
-        raise NotImplementedError
+        self._logger = get_agent_logger(
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}", agent_info
+        )
 
     @abstractmethod
     def precompute(

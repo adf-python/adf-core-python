@@ -1,13 +1,14 @@
 import argparse
-import logging
 
 from adf_core_python.core.config.config import Config
 from adf_core_python.core.launcher.agent_launcher import AgentLauncher
 from adf_core_python.core.launcher.config_key import ConfigKey
+from adf_core_python.core.logger.logger import configure_logger, get_logger
 
 
 class Main:
     def __init__(self) -> None:
+        self.logger = get_logger(__name__)
         parser = argparse.ArgumentParser(description="Agent Launcher")
 
         parser.add_argument(
@@ -56,10 +57,11 @@ class Main:
             metavar="",
         )
         parser.add_argument(
-            "--verbose", type=bool, default=False, help="verbose flag", metavar=""
+            "--debug", type=bool, default=False, help="debug flag", metavar=""
         )
         args = parser.parse_args()
-        print(args)
+        self.logger.info(f"Arguments: {args}")
+
         self.config = Config()
         self.config.set_value(ConfigKey.KEY_KERNEL_HOST, args.host)
         self.config.set_value(ConfigKey.KEY_KERNEL_PORT, args.port)
@@ -67,21 +69,29 @@ class Main:
         self.config.set_value(ConfigKey.KEY_FIRE_STATION_COUNT, args.firebrigade)
         self.config.set_value(ConfigKey.KEY_POLICE_OFFICE_COUNT, args.policeforce)
         self.config.set_value(ConfigKey.KEY_PRECOMPUTE, args.precompute)
-        self.config.set_value(ConfigKey.KEY_DEBUG_FLAG, args.verbose)
+        self.config.set_value(ConfigKey.KEY_DEBUG_FLAG, args.debug)
+        self.logger.info(f"Config: {self.config}")
 
     def launch(self) -> None:
         agent_launcher: AgentLauncher = AgentLauncher(
             self.config,
         )
         agent_launcher.init_connector()
-        agent_launcher.launch()
+
+        try:
+            agent_launcher.launch()
+        except KeyboardInterrupt:
+            self.logger.info("Agent launcher interrupted")
+        except Exception as e:
+            self.logger.exception("Agent launcher failed", exc_info=e)
+            raise e
+        self.logger.info("Agent launcher finished")
 
 
 if __name__ == "__main__":
-    logging.basicConfig(
-        level=logging.DEBUG,
-        format="%(threadName)s[%(levelname)s][%(name)s]: %(message)s",
-    )
+    configure_logger()
+    logger = get_logger(__name__)
+    logger.info("Starting the agent launcher")
 
     main = Main()
     main.launch()

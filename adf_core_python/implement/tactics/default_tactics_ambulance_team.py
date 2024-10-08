@@ -30,6 +30,15 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
         develop_data: DevelopData,
     ) -> None:
         # world_info.index_class()
+        super().initialize(
+            agent_info,
+            world_info,
+            scenario_info,
+            module_manager,
+            precompute_data,
+            message_manager,
+            develop_data,
+        )
         match scenario_info.get_mode():
             case Mode.NON_PRECOMPUTE:
                 self._search: Search = cast(
@@ -118,6 +127,7 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
                 .get_action()
             )
             if action is not None:
+                self._logger.debug(f"action: {action}", time=agent_info.get_time())
                 return action
 
         target_entity_id = self._search.calculate().get_target_entity_id()
@@ -128,6 +138,7 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
                 .get_action()
             )
             if action is not None:
+                self._logger.debug(f"action: {action}", time=agent_info.get_time())
                 return action
 
         return ActionRest()
