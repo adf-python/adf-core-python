@@ -1,12 +1,21 @@
 from functools import cmp_to_key
+from typing import Callable, Optional, cast
 
-from rcrs_core.entities.policeForce import PoliceForceEntity
-from rcrs_core.worldmodel.entityID import EntityID
-from rcrs_core.entities.refuge import Refuge
 from rcrs_core.entities.building import Building
+from rcrs_core.entities.entity import Entity
 from rcrs_core.entities.gassStation import GasStation
+from rcrs_core.entities.policeForce import PoliceForceEntity
+from rcrs_core.entities.refuge import Refuge
 from rcrs_core.entities.road import Road
+from rcrs_core.worldmodel.entityID import EntityID
 
+from adf_core_python.core.agent.communication.message_manager import MessageManager
+from adf_core_python.core.agent.develop.develop_data import DevelopData
+from adf_core_python.core.agent.info.agent_info import AgentInfo
+from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
+from adf_core_python.core.agent.info.world_info import WorldInfo
+from adf_core_python.core.agent.module.module_manager import ModuleManager
+from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
 from adf_core_python.core.component.module.complex.police_target_allocator import (
     PoliceTargetAllocator,
 )
@@ -15,76 +24,78 @@ from adf_core_python.core.component.module.complex.police_target_allocator impor
 class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
     def __init__(
         self,
-        agent_info,
-        world_info,
-        scenario_info,
-        module_manager,
-        develop_data,
-    ):
+        agent_info: AgentInfo,
+        world_info: WorldInfo,
+        scenario_info: ScenarioInfo,
+        module_manager: ModuleManager,
+        develop_data: DevelopData,
+    ) -> None:
         super().__init__(
             agent_info, world_info, scenario_info, module_manager, develop_data
         )
-        self._priority_areas = set()
-        self._target_areas = set()
-        self._agent_info_map = {}
+        self._priority_areas: set[EntityID] = set()
+        self._target_areas: set[EntityID] = set()
+        self._agent_info_map: dict[
+            EntityID, DefaultPoliceTargetAllocator.PoliceForceInfo
+        ] = {}
 
-    def resume(self, precompute_data):
+    def resume(self, precompute_data: PrecomputeData) -> PoliceTargetAllocator:
         super().resume(precompute_data)
         if self.get_count_resume() >= 2:
             return self
 
-        for entity_id in self._world_info.get_entity_ids_of_type(PoliceForceEntity):
+        for entity_id in self._world_info.get_entity_ids_of_types([PoliceForceEntity]):
             self._agent_info_map[entity_id] = self.PoliceForceInfo(entity_id)
-            for entity in (
-                self._world_info.get_entities_of_type(Refuge)
-                + self._world_info.get_entities_of_type(Building)
-                + self._world_info.get_entities_of_type(GasStation)
+            for entity in self._world_info.get_entities_of_types(
+                [Refuge, Building, GasStation]
             ):
-                for entity_id in entity.get_neighbours():
+                building: Building = cast(Building, entity)
+                for entity_id in building.get_neighbours():
                     neighbour = self._world_info.get_entity(entity_id)
                     if isinstance(neighbour, Road):
                         self._target_areas.add(entity_id)
 
-            for entity in self._world_info.get_entities_of_type(Refuge):
-                for entity_id in entity.get_neighbours():
+            for entity in self._world_info.get_entities_of_types([Refuge]):
+                refuge: Refuge = cast(Refuge, entity)
+                for entity_id in refuge.get_neighbours():
                     neighbour = self._world_info.get_entity(entity_id)
                     if isinstance(neighbour, Road):
                         self._priority_areas.add(entity_id)
         return self
 
-    def prepare(self):
+    def prepare(self) -> PoliceTargetAllocator:
         super().prepare()
         if self.get_count_prepare() >= 2:
             return self
 
-        for entity_id in self._world_info.get_entity_ids_of_type(PoliceForceEntity):
+        for entity_id in self._world_info.get_entity_ids_of_types([PoliceForceEntity]):
             self._agent_info_map[entity_id] = self.PoliceForceInfo(entity_id)
 
-        for entity in (
-            self._world_info.get_entities_of_type(Refuge)
-            + self._world_info.get_entities_of_type(Building)
-            + self._world_info.get_entities_of_type(GasStation)
+        for entity in self._world_info.get_entities_of_types(
+            [Refuge, Building, GasStation]
         ):
-            for entity_id in entity.get_neighbours():
+            building: Building = cast(Building, entity)
+            for entity_id in building.get_neighbours():
                 neighbour = self._world_info.get_entity(entity_id)
                 if isinstance(neighbour, Road):
                     self._target_areas.add(entity_id)
 
-        for entity in self._world_info.get_entities_of_type(Refuge):
-            for entity_id in entity.get_neighbours():
+        for entity in self._world_info.get_entities_of_types([Refuge]):
+            refuge: Refuge = cast(Refuge, entity)
+            for entity_id in refuge.get_neighbours():
                 neighbour = self._world_info.get_entity(entity_id)
                 if isinstance(neighbour, Road):
                     self._priority_areas.add(entity_id)
 
         return self
 
-    def update_info(self, message_manager):
+    def update_info(self, message_manager: MessageManager) -> PoliceTargetAllocator:
         super().update_info(message_manager)
         # TODO: implement after message_manager is implemented
         return self
 
-    def calculate(self):
-        agents = self.get_action_agents(self._agent_info_map)
+    def calculate(self) -> PoliceTargetAllocator:
+        agents = self._get_action_agents(self._agent_info_map)
         removes = []
         current_time = self._agent_info.get_time()
 
@@ -127,13 +138,29 @@ class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
 
         return self
 
-    def get_result(self):
+    def get_result(self) -> dict[EntityID, EntityID]:
         return self._convert(self._agent_info_map)
 
-    def _compare_by_distance(self, target_entity):
-        def _cmp_func(self, entity_a, entity_b):
-            distance_a = self._world_info.get_distance(target_entity, entity_a)
-            distance_b = self._world_info.get_distance(target_entity, entity_b)
+    def _get_action_agents(
+        self, info_map: dict[EntityID, "DefaultPoliceTargetAllocator.PoliceForceInfo"]
+    ) -> list[PoliceForceEntity]:
+        result = []
+        for entity in self._world_info.get_entities_of_types([PoliceForceEntity]):
+            info = info_map[entity.get_id()]
+            if info is not None and info._can_new_action:
+                result.append(entity)
+        return result
+
+    def _compare_by_distance(
+        self, target_entity: Entity
+    ) -> Callable[[Entity, Entity], int]:
+        def _cmp_func(entity_a: Entity, entity_b: Entity) -> int:
+            distance_a = self._world_info.get_distance(
+                target_entity.get_id(), entity_a.get_id()
+            )
+            distance_b = self._world_info.get_distance(
+                target_entity.get_id(), entity_b.get_id()
+            )
             if distance_a < distance_b:
                 return -1
             elif distance_a > distance_b:
@@ -141,16 +168,21 @@ class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
             else:
                 return 0
 
-    def _convert(self, info_map):
-        result = {}
+        return _cmp_func
+
+    def _convert(
+        self, info_map: dict[EntityID, "DefaultPoliceTargetAllocator.PoliceForceInfo"]
+    ) -> dict[EntityID, EntityID]:
+        result: dict[EntityID, EntityID] = {}
         for entity_id in info_map.keys():
             info = info_map[entity_id]
             if info is not None and info._target is not None:
                 result[entity_id] = info._target
+        return result
 
     class PoliceForceInfo:
-        def __init__(self, entity_id: EntityID):
-            self._agent_id = entity_id
-            self._target = None
-            self._can_new_action = True
-            self.command_time = -1
+        def __init__(self, entity_id: EntityID) -> None:
+            self._agent_id: EntityID = entity_id
+            self._target: Optional[EntityID] = None
+            self._can_new_action: bool = True
+            self.command_time: int = -1

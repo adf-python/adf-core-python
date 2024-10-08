@@ -1,27 +1,24 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, cast
+from typing import Optional, cast
 
-from rcrs_core.entities.refuge import Refuge
 from rcrs_core.entities.building import Building
 from rcrs_core.entities.gassStation import GasStation
+from rcrs_core.entities.refuge import Refuge
 from rcrs_core.entities.road import Road
 from rcrs_core.worldmodel.entityID import EntityID
 
 from adf_core_python.core.agent.communication.message_manager import MessageManager
+from adf_core_python.core.agent.develop.develop_data import DevelopData
+from adf_core_python.core.agent.info.agent_info import AgentInfo
+from adf_core_python.core.agent.info.scenario_info import Mode, ScenarioInfo
+from adf_core_python.core.agent.info.world_info import WorldInfo
+from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
+from adf_core_python.core.component.module.algorithm.path_planning import (
+    PathPlanning,
+)
 from adf_core_python.core.component.module.complex.road_detector import RoadDetector
-
-if TYPE_CHECKING:
-    from adf_core_python.core.agent.develop.develop_data import DevelopData
-    from adf_core_python.core.agent.info.agent_info import AgentInfo
-    from adf_core_python.core.agent.info.scenario_info import Mode, ScenarioInfo
-    from adf_core_python.core.agent.info.world_info import WorldInfo
-    from adf_core_python.core.agent.module.module_manager import ModuleManager
-    from adf_core_python.core.component.module.algorithm.path_planning import (
-        PathPlanning,
-    )
-    from adf_core_python.core.component.module.complex.road_detector import RoadDetector
 
 
 class DefaultRoadDetector(RoadDetector):
@@ -58,11 +55,9 @@ class DefaultRoadDetector(RoadDetector):
         if self.get_count_resume() >= 2:
             return self
 
-        self._target_areas = set()
-        entities = (
-            self._world_info.get_entities_of_type(Refuge)
-            + self._world_info.get_entities_of_type(Building)
-            + self._world_info.get_entities_of_type(GasStation)
+        self._target_areas: set[EntityID] = set()
+        entities = self._world_info.get_entities_of_types(
+            [Refuge, Building, GasStation]
         )
         for entity in entities:
             if not isinstance(entity, Building):
@@ -73,10 +68,11 @@ class DefaultRoadDetector(RoadDetector):
                     self._target_areas.add(entity_id)
 
         self._priority_roads = set()
-        for entity in self._world_info.get_entities_of_type(Refuge):
+        for entity in self._world_info.get_entities_of_types([Refuge]):
             if not isinstance(entity, Building):
                 continue
             for entity_id in entity.get_neighbours():
+                neighbour = self._world_info.get_entity(entity_id)
                 if isinstance(neighbour, Road):
                     self._priority_roads.add(entity_id)
 
@@ -88,10 +84,8 @@ class DefaultRoadDetector(RoadDetector):
             return self
 
         self._target_areas = set()
-        entities = (
-            self._world_info.get_entities_of_type(Refuge)
-            + self._world_info.get_entities_of_type(Building)
-            + self._world_info.get_entities_of_type(GasStation)
+        entities = self._world_info.get_entities_of_types(
+            [Refuge, Building, GasStation]
         )
         for entity in entities:
             building: Building = cast(Building, entity)
@@ -101,9 +95,10 @@ class DefaultRoadDetector(RoadDetector):
                     self._target_areas.add(entity_id)
 
         self._priority_roads = set()
-        for entity in self._world_info.get_entities_of_type(Refuge):
+        for entity in self._world_info.get_entities_of_types([Refuge]):
             refuge: Refuge = cast(Refuge, entity)
             for entity_id in refuge.get_neighbours():
+                neighbour = self._world_info.get_entity(entity_id)
                 if isinstance(neighbour, Road):
                     self._priority_roads.add(entity_id)
 
@@ -140,13 +135,26 @@ class DefaultRoadDetector(RoadDetector):
 
             self._priority_roads = self._priority_roads - set(remove_list)
             if len(self._priority_roads) > 0:
-                self._path_planning.set_from(position_entity_id)
-                self._path_planning.set_destination(list(self._target_areas))
-                path: list[EntityID] = self._path_planning.calculate().get_result()
+                _nearest_target_area = self._agent_info.get_position_entity_id()
+                _nearest_distance = float("inf")
+                for target_area in self._target_areas:
+                    if (
+                        self._world_info.get_distance(
+                            self._agent_info.get_position_entity_id(), target_area
+                        )
+                        < _nearest_distance
+                    ):
+                        _nearest_target_area = target_area
+                        _nearest_distance = self._world_info.get_distance(
+                            self._agent_info.get_position_entity_id(), target_area
+                        )
+                path: list[EntityID] = self._path_planning.get_path(
+                    self._agent_info.get_position_entity_id(), _nearest_target_area
+                )
                 if path is not None and len(path) > 0:
                     self._result = path[-1]
 
         return self
 
-    def get_target(self) -> EntityID:
+    def get_target(self) -> Optional[EntityID]:
         return self._result

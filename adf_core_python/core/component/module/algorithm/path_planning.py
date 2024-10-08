@@ -31,10 +31,6 @@ class PathPlanning(AbstractModule):
         )
 
     @abstractmethod
-    def get_result(self) -> list[EntityID]:
-        pass
-
-    @abstractmethod
     def get_path(
         self, from_entity_id: EntityID, to_entity_id: EntityID
     ) -> list[EntityID]:
@@ -42,14 +38,6 @@ class PathPlanning(AbstractModule):
 
     @abstractmethod
     def get_distance(self, from_entity_id: EntityID, to_entity_id: EntityID) -> float:
-        pass
-
-    @abstractmethod
-    def set_from(self, from_entity_id: EntityID) -> PathPlanning:
-        pass
-
-    @abstractmethod
-    def set_destination(self, destination_entity_ids: list[EntityID]) -> PathPlanning:
         pass
 
     def precompute(self, precompute_data: PrecomputeData) -> PathPlanning:

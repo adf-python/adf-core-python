@@ -1,5 +1,7 @@
 from abc import abstractmethod
+
 from rcrs_core.worldmodel.entityID import EntityID
+
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
