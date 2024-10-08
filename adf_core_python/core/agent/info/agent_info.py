@@ -2,6 +2,7 @@ from time import time
 from typing import Any
 
 from rcrs_core.agents.agent import Agent
+from rcrs_core.entities.civilian import Civilian
 from rcrs_core.entities.entity import Entity
 from rcrs_core.entities.human import Human
 from rcrs_core.worldmodel.changeSet import ChangeSet
@@ -137,8 +138,8 @@ class AgentInfo:
         """
         entity_id: EntityID = self.get_entity_id()
         for entity in self._world_model.get_entities():
-            if isinstance(entity, Human):
-                if entity.get_position_property() == entity_id:
+            if isinstance(entity, Civilian):
+                if entity.get_position() == entity_id:
                     return entity
         return None
 
