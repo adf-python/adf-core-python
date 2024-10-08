@@ -40,13 +40,14 @@ class Platoon(Agent):
         self._develop_data = develop_data
 
     def post_connect(self) -> None:
+        self._agent_info: AgentInfo = AgentInfo(self, self.world_model)
+        self._world_info: WorldInfo = WorldInfo(self.world_model)
+        self._precompute_data: PrecomputeData = PrecomputeData(self._data_storage_name)
+
         self._logger = get_agent_logger(
             f"{self.__class__.__module__}.{self.__class__.__qualname__}",
             self._agent_info,
         )
-        self._agent_info: AgentInfo = AgentInfo(self, self.world_model)
-        self._world_info: WorldInfo = WorldInfo(self.world_model)
-        self._precompute_data: PrecomputeData = PrecomputeData(self._data_storage_name)
 
         if self._is_precompute:
             self._mode = Mode.PRECOMPUTATION
