@@ -3,7 +3,7 @@ from typing import Final
 
 class ConfigKey:
     # General
-    KEY_LOADER_CLASS: Final[str] = "adf.launcher.loader"
+    KEY_LOADER_CLASS: Final[str] = "adf_core_python.launcher.loader"
     KEY_KERNEL_HOST: Final[str] = "kernel.host"
     KEY_KERNEL_PORT: Final[str] = "kernel.port"
     KEY_TEAM_NAME: Final[str] = "team.name"

@@ -55,13 +55,13 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
                         "adf_core_python.core.component.module.complex.human_detector.HumanDetector",
                     ),
                 )
-                self._action_transport = module_manager.get_ext_action(
-                    "DefaultTacticsAmbulanceTeam.ExtActionTransport",
-                    "adf_core_python.implement.extend_action.default_extend_action_transport.DefaultExtendActionTransport",
+                self._action_transport = module_manager.get_extend_action(
+                    "DefaultTacticsAmbulanceTeam.ExtendActionTransport",
+                    "adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport",
                 )
-                self._action_ext_move = module_manager.get_ext_action(
-                    "DefaultTacticsAmbulanceTeam.ExtActionMove",
-                    "adf_core_python.implement.extend_action.default_extend_action_move.DefaultExtendActionMove",
+                self._action_ext_move = module_manager.get_extend_action(
+                    "DefaultTacticsAmbulanceTeam.ExtendActionMove",
+                    "adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove",
                 )
         self.register_module(self._search)
         self.register_module(self._human_detector)
