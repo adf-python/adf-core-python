@@ -112,7 +112,7 @@ class KMeansClustering(Clustering):
     def create_cluster(
         self, cluster_number: int, entities: list[Entity]
     ) -> list[list[Entity]]:
-        kmeans = KMeans(n_clusters=cluster_number)
+        kmeans = KMeans(n_clusters=cluster_number, random_state=0)
         entity_positions: np.ndarray = np.array([])
         for entity in entities:
             location1_x, location1_y = entity.get_location()

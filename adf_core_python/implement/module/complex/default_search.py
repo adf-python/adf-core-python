@@ -1,7 +1,8 @@
 from typing import Optional, cast
 
-from rcrs_core.connection.URN import Entity as EntityURN
+from rcrs_core.entities.building import Building
 from rcrs_core.entities.entity import Entity
+from rcrs_core.entities.refuge import Refuge
 from rcrs_core.worldmodel.entityID import EntityID
 
 from adf_core_python.core.agent.communication.message_manager import MessageManager
@@ -13,6 +14,7 @@ from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.component.module.algorithm.clustering import Clustering
 from adf_core_python.core.component.module.algorithm.path_planning import PathPlanning
 from adf_core_python.core.component.module.complex.search import Search
+from adf_core_python.core.logger.logger import get_agent_logger
 
 
 class DefaultSearch(Search):
@@ -28,7 +30,7 @@ class DefaultSearch(Search):
             agent_info, world_info, scenario_info, module_manager, develop_data
         )
 
-        self._unsearched_building_ids: set[EntityID] = set()
+        self._unreached_building_ids: set[EntityID] = set()
         self._result: Optional[EntityID] = None
 
         self._clustering: Clustering = cast(
@@ -47,6 +49,11 @@ class DefaultSearch(Search):
             ),
         )
 
+        self._logger = get_agent_logger(
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}",
+            self._agent_info,
+        )
+
         self.register_sub_module(self._clustering)
         self.register_sub_module(self._path_planning)
 
@@ -55,20 +62,22 @@ class DefaultSearch(Search):
         if self.get_count_update_info() > 1:
             return self
 
-        searched_building_ids = self._world_info.get_change_set().get_changed_entities()
-        self._unsearched_building_ids = self._unsearched_building_ids.difference(
-            searched_building_ids
+        self._logger.debug(
+            f"unreached_building_ids: {[str(id) for id in self._unreached_building_ids]}"
         )
 
-        if len(self._unsearched_building_ids) == 0:
-            self._unsearched_building_ids = self._get_search_targets()
+        searched_building_id = self._agent_info.get_position_entity_id()
+        self._unreached_building_ids.discard(searched_building_id)
+
+        if len(self._unreached_building_ids) == 0:
+            self._unreached_building_ids = self._get_search_targets()
 
         return self
 
     def calculate(self) -> Search:
         nearest_building_id: Optional[EntityID] = None
         nearest_distance: Optional[float] = None
-        for building_id in self._unsearched_building_ids:
+        for building_id in self._unreached_building_ids:
             distance = self._world_info.get_distance(
                 self._agent_info.get_entity_id(), building_id
             )
@@ -91,8 +100,7 @@ class DefaultSearch(Search):
         building_entity_ids: list[EntityID] = [
             entity.get_id()
             for entity in cluster_entities
-            if entity.get_urn() == EntityURN.BUILDING
-            and entity.get_urn() != EntityURN.REFUGE
+            if isinstance(entity, Building) and not isinstance(entity, Refuge)
         ]
 
         return set(building_entity_ids)

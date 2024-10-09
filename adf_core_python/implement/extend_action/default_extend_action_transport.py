@@ -21,6 +21,7 @@ from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
 from adf_core_python.core.component.extaction.ext_action import ExtAction
 from adf_core_python.core.component.module.algorithm.path_planning import PathPlanning
+from adf_core_python.core.logger.logger import get_agent_logger
 
 
 # TODO: refactor this class
@@ -38,6 +39,10 @@ class DefaultExtendActionTransport(ExtAction):
         )
         self._target_entity_id: Optional[EntityID] = None
         self._threshold_to_rest: int = develop_data.get_value("threshold_to_rest", 100)
+        self._logger = get_agent_logger(
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}",
+            self.agent_info,
+        )
 
         match self.scenario_info.get_mode():
             case Mode.NON_PRECOMPUTE:
@@ -102,6 +107,7 @@ class DefaultExtendActionTransport(ExtAction):
         )
         transport_human: Optional[Human] = self.agent_info.some_one_on_board()
         if transport_human is not None:
+            self._logger.debug(f"transport_human: {transport_human.get_id()}")
             self.result = self.calc_unload(
                 agent, self._path_planning, transport_human, self._target_entity_id
             )
@@ -135,7 +141,7 @@ class DefaultExtendActionTransport(ExtAction):
 
             target_position = human.get_position()
             if agent_position == target_position:
-                if isinstance(human, Civilian) and ((human.get_buriedness() or 0) > 0):
+                if isinstance(human, Civilian) and ((human.get_buriedness() or 0) == 0):
                     return ActionLoad(human.get_id())
             else:
                 path = path_planning.get_path(agent_position, target_position)
