@@ -10,12 +10,7 @@ on:
       - main
       - develop
 
-env:
-  PYTHON_VERSION: 3.12
-  PYTHON_CACHE_TYPE: 'poetry'
-
 jobs:
-  # これ以降のジョブでキャッシュが使えるようにする
   setup:
     runs-on: ubuntu-latest
     steps:
@@ -25,8 +20,23 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: ${{ env.PYTHON_CACHE_TYPE }}
+          python-version: 3.12
+
+      - name: Cache virtual environment
+        id: cached-virtualenv
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Install dependencies
+        if: steps.cached-virtualenv.outputs.cache-hit != 'true'
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install poetry
+          poetry install
 
   ruff-format:
     needs: setup
@@ -35,17 +45,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Restore virtual environment cache
+        uses: actions/cache@v4
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: ${{ env.PYTHON_CACHE_TYPE }}
+          path: .venv
+          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
 
       - name: Check ruff version
-        run: poetry run ruff --version
+        run: |
+          source .venv/bin/activate
+          ruff --version
 
       - name: Run ruff format check
-        run: poetry run ruff format --check .
+        run: |
+          source .venv/bin/activate
+          ruff format --check .
 
   ruff-lint:
     needs: setup
@@ -54,17 +68,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Restore virtual environment cache
+        uses: actions/cache@v4
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: ${{ env.PYTHON_CACHE_TYPE }}
+          path: .venv
+          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Set up Python environment
+        run: source .venv/bin/activate
 
       - name: Check ruff version
-        run: poetry run ruff --version
+        run: |
+          source .venv/bin/activate
+          poetry run ruff --version
 
       - name: Run ruff lint
-        run: poetry run ruff check --output-format=github .
+        run: |
+          source .venv/bin/activate
+          poetry run ruff check --output-format=github .
 
   mypy-type-check:
     needs: setup
@@ -73,17 +94,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Restore virtual environment cache
+        uses: actions/cache@v4
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: ${{ env.PYTHON_CACHE_TYPE }}
+          path: .venv
+          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
 
       - name: Check mypy version
-        run: poetry run mypy --version
+        run: |
+          source .venv/bin/activate
+          poetry run mypy --version
 
       - name: Run mypy type check
-        run: poetry run mypy .
+        run: |
+          source .venv/bin/activate
+          poetry run mypy .
 
   pytest:
     needs: setup
@@ -92,12 +117,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Restore virtual environment cache
+        uses: actions/cache@v4
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: ${{ env.PYTHON_CACHE_TYPE }}
+          path: .venv
+          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
 
       - name: Run pytest
         run: |
+          source .venv/bin/activate
           poetry run pytest tests/
