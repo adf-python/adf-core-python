@@ -23,14 +23,14 @@ jobs:
           python-version: 3.12
 
       - name: Cache virtual environment
+        id: cached-virtualenv
         uses: actions/cache@v4
         with:
           path: .venv
           key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-venv-
 
       - name: Install dependencies
+        if: steps.cached-virtualenv.outputs.cache-hit != 'true'
         run: |
           python -m venv .venv
           source .venv/bin/activate
@@ -50,8 +50,6 @@ jobs:
         with:
           path: .venv
           key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-venv-
 
       - name: Check ruff version
         run: |
@@ -75,11 +73,6 @@ jobs:
         with:
           path: .venv
           key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-venv-
-
-      - name: Set up Python environment
-        run: source .venv/bin/activate
 
       - name: Check ruff version
         run: |
@@ -103,8 +96,6 @@ jobs:
         with:
           path: .venv
           key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-venv-
 
       - name: Check mypy version
         run: |
@@ -128,8 +119,6 @@ jobs:
         with:
           path: .venv
           key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-venv-
 
       - name: Run pytest
         run: |
