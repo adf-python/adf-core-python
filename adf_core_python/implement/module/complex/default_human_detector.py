@@ -69,10 +69,6 @@ class DefaultHumanDetector(HumanDetector):
             cluster_index
         )
 
-        self._logger.debug(
-            f"cluster_entities: {[str(entity.get_id()) for entity in cluster_entities]}"
-        )
-
         cluster_valid_human_entities: list[Entity] = [
             entity
             for entity in cluster_entities
