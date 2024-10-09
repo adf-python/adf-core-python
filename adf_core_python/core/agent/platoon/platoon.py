@@ -1,5 +1,3 @@
-from logging import Logger, getLogger
-
 from rcrs_core.agents.agent import Agent
 from rcrs_core.commands.Command import Command
 from rcrs_core.config.config import Config as RCRSConfig
@@ -16,6 +14,7 @@ from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
 from adf_core_python.core.component.tactics.tactics_agent import TacticsAgent
 from adf_core_python.core.config.config import Config
+from adf_core_python.core.logger.logger import get_agent_logger
 
 
 class Platoon(Agent):
@@ -41,10 +40,14 @@ class Platoon(Agent):
         self._develop_data = develop_data
 
     def post_connect(self) -> None:
-        self._logger: Logger = getLogger(__name__)
         self._agent_info: AgentInfo = AgentInfo(self, self.world_model)
         self._world_info: WorldInfo = WorldInfo(self.world_model)
         self._precompute_data: PrecomputeData = PrecomputeData(self._data_storage_name)
+
+        self._logger = get_agent_logger(
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}",
+            self._agent_info,
+        )
 
         if self._is_precompute:
             self._mode = Mode.PRECOMPUTATION
@@ -106,6 +109,9 @@ class Platoon(Agent):
     def think(self, time: int, change_set: ChangeSet, hear: list[Command]) -> None:
         self._agent_info.set_change_set(change_set)
         self._world_info.set_change_set(change_set)
+        self._agent_info.set_time(time)
+        self._agent_info.set_heard_commands(hear)
+
         action: Action = self._tactics_agent.think(
             self._agent_info,
             self._world_info,
