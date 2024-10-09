@@ -51,15 +51,14 @@ jobs:
           path: .venv
           key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
 
+      - name: Set path
+        run: echo ${{ github.workspace }}/.venv/bin >> $GITHUB_PATH
+
       - name: Check ruff version
-        run: |
-          source .venv/bin/activate
-          poetry run ruff --version
+        run: ruff --version
 
       - name: Run ruff format check
-        run: |
-          source .venv/bin/activate
-          poetry run ruff format --check .
+        run: ruff format --check .
 
   ruff-lint:
     needs: setup
@@ -74,15 +73,14 @@ jobs:
           path: .venv
           key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
 
+      - name: Set path
+        run: echo ${{ github.workspace }}/.venv/bin >> $GITHUB_PATH
+
       - name: Check ruff version
-        run: |
-          source .venv/bin/activate
-          poetry run ruff --version
+        run: ruff --version
 
       - name: Run ruff lint
-        run: |
-          source .venv/bin/activate
-          poetry run ruff check --output-format=github .
+        run: ruff check --output-format=github .
 
   mypy-type-check:
     needs: setup
@@ -97,15 +95,14 @@ jobs:
           path: .venv
           key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
 
+      - name: Set path
+        run: echo ${{ github.workspace }}/.venv/bin >> $GITHUB_PATH
+
       - name: Check mypy version
-        run: |
-          source .venv/bin/activate
-          poetry run mypy --version
+        run: mypy --version
 
       - name: Run mypy type check
-        run: |
-          source .venv/bin/activate
-          poetry run mypy .
+        run: mypy .
 
   pytest:
     needs: setup
@@ -120,7 +117,8 @@ jobs:
           path: .venv
           key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
 
+      - name: Set path
+        run: echo ${{ github.workspace }}/.venv/bin >> $GITHUB_PATH
+
       - name: Run pytest
-        run: |
-          source .venv/bin/activate
-          poetry run pytest tests/
+        run: pytest tests/
