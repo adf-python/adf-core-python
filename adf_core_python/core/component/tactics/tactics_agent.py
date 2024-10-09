@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from adf_core_python.core.agent.info.world_info import WorldInfo
     from adf_core_python.core.agent.module.module_manager import ModuleManager
     from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
-    from adf_core_python.core.component.extaction.ext_action import ExtAction
+    from adf_core_python.core.component.action.extend_action import ExtendAction
     from adf_core_python.core.component.module.abstract_module import AbstractModule
 
 
@@ -22,7 +22,7 @@ class TacticsAgent(ABC):
     def __init__(self, parent: Optional[TacticsAgent] = None) -> None:
         self._parent = parent
         self._modules: list[AbstractModule] = []
-        self._actions: list[ExtAction] = []
+        self._actions: list[ExtendAction] = []
         self._command_executor: Any = None
 
     @abstractmethod
@@ -100,10 +100,10 @@ class TacticsAgent(ABC):
     def unregister_module(self, module: AbstractModule) -> None:
         self._modules.remove(module)
 
-    def register_action(self, action: ExtAction) -> None:
+    def register_action(self, action: ExtendAction) -> None:
         self._actions.append(action)
 
-    def unregister_action(self, action: ExtAction) -> None:
+    def unregister_action(self, action: ExtendAction) -> None:
         self._actions.remove(action)
 
     def register_command_executor(self, command_executor: Any) -> None:

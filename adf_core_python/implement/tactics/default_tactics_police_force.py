@@ -50,13 +50,13 @@ class DefaultTacticsPoliceForce(TacticsPoliceForce):
                         "adf_core_python.implement.module.complex.DefaultRoadDetector",
                     ),
                 )
-                self._action_ext_clear = module_manager.get_ext_action(
-                    "DefaultTacticsPoliceForce.ExtActionClear",
-                    "adf_core_python.implement.extaction.DefaultExtActionClear",
+                self._action_ext_clear = module_manager.get_extend_action(
+                    "DefaultTacticsPoliceForce.ExtendActionClear",
+                    "adf_core_python.implement.action.DefaultExtendActionClear",
                 )
-                self._action_ext_move = module_manager.get_ext_action(
-                    "DefaultTacticsPoliceForce.ExtActionMove",
-                    "adf_core_python.implement.extaction.DefaultExtActionMove",
+                self._action_ext_move = module_manager.get_extend_action(
+                    "DefaultTacticsPoliceForce.ExtendActionMove",
+                    "adf_core_python.implement.action.DefaultExtendActionMove",
                 )
         self.register_module(self._search)
         self.register_module(self._road_detector)

@@ -16,31 +16,31 @@ class TestModuleConfig:
         )
         assert (
             config.get_value("DefaultTacticsPoliceOffice.CommandPicker")
-            == "adf.impl.centralized.DefaultCommandPickerPolice"
+            == "adf_core_python.implement.centralized.DefaultCommandPickerPolice"
         )
         assert (
             config.get_value("SampleSearch.PathPlanning.Ambulance")
-            == "adf.impl.module.algorithm.DijkstraPathPlanning"
+            == "adf_core_python.implement.module.algorithm.DijkstraPathPlanning"
         )
         assert (
             config.get_value("SampleSearch.PathPlanning.Fire")
-            == "adf.impl.module.algorithm.DijkstraPathPlanning"
+            == "adf_core_python.implement.module.algorithm.DijkstraPathPlanning"
         )
         assert (
             config.get_value("SampleSearch.PathPlanning.Police")
-            == "adf.impl.module.algorithm.DijkstraPathPlanning"
+            == "adf_core_python.implement.module.algorithm.DijkstraPathPlanning"
         )
         assert (
             config.get_value("SampleSearch.Clustering.Ambulance")
-            == "adf.impl.module.algorithm.KMeansClustering"
+            == "adf_core_python.implement.module.algorithm.KMeansClustering"
         )
         assert (
             config.get_value("SampleSearch.Clustering.Fire")
-            == "adf.impl.module.algorithm.KMeansClustering"
+            == "adf_core_python.implement.module.algorithm.KMeansClustering"
         )
         assert (
             config.get_value("SampleSearch.Clustering.Police")
-            == "adf.impl.module.algorithm.KMeansClustering"
+            == "adf_core_python.implement.module.algorithm.KMeansClustering"
         )
 
     def test_if_file_not_found(self) -> None:

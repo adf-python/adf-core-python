@@ -15,11 +15,11 @@ from adf_core_python.core.agent.info.scenario_info import Mode, ScenarioInfo
 from adf_core_python.core.agent.info.world_info import WorldInfo
 from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
-from adf_core_python.core.component.extaction.ext_action import ExtAction
+from adf_core_python.core.component.action.extend_action import ExtendAction
 from adf_core_python.core.component.module.algorithm.path_planning import PathPlanning
 
 
-class DefaultExtendActionMove(ExtAction):
+class DefaultExtendActionMove(ExtendAction):
     def __init__(
         self,
         agent_info: AgentInfo,
@@ -49,35 +49,35 @@ class DefaultExtendActionMove(ExtAction):
             case Mode.PRECOMPUTED:
                 pass
 
-    def precompute(self, precompute_data: PrecomputeData) -> ExtAction:
+    def precompute(self, precompute_data: PrecomputeData) -> ExtendAction:
         super().precompute(precompute_data)
         if self.get_count_precompute() > 1:
             return self
         self._path_planning.precompute(precompute_data)
         return self
 
-    def resume(self, precompute_data: PrecomputeData) -> ExtAction:
+    def resume(self, precompute_data: PrecomputeData) -> ExtendAction:
         super().resume(precompute_data)
         if self.get_count_resume() > 1:
             return self
         self._path_planning.resume(precompute_data)
         return self
 
-    def prepare(self) -> ExtAction:
+    def prepare(self) -> ExtendAction:
         super().prepare()
         if self.get_count_prepare() > 1:
             return self
         self._path_planning.prepare()
         return self
 
-    def update_info(self, message_manager: MessageManager) -> ExtAction:
+    def update_info(self, message_manager: MessageManager) -> ExtendAction:
         super().update_info(message_manager)
         if self.get_count_update_info() > 1:
             return self
         self._path_planning.update_info(message_manager)
         return self
 
-    def set_target_entity_id(self, target_entity_id: EntityID) -> ExtAction:
+    def set_target_entity_id(self, target_entity_id: EntityID) -> ExtendAction:
         entity: Optional[Entity] = self.world_info.get_entity(target_entity_id)
         self._target_entity_id = None
 
@@ -94,7 +94,7 @@ class DefaultExtendActionMove(ExtAction):
 
         return self
 
-    def calc(self) -> ExtAction:
+    def calc(self) -> ExtendAction:
         self.result = None
         agent: Human = cast(Human, self.agent_info.get_myself())
 

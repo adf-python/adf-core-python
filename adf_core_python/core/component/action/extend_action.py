@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
 
 
-class ExtAction(ABC):
+class ExtendAction(ABC):
     def __init__(
         self,
         agent_info: AgentInfo,
@@ -38,29 +38,29 @@ class ExtAction(ABC):
         self.count_update_info_current_time: int = 0
 
     @abstractmethod
-    def set_target_entity_id(self, target_entity_id: EntityID) -> ExtAction:
+    def set_target_entity_id(self, target_entity_id: EntityID) -> ExtendAction:
         raise NotImplementedError
 
     @abstractmethod
-    def calc(self) -> ExtAction:
+    def calc(self) -> ExtendAction:
         raise NotImplementedError
 
     def get_action(self) -> Optional[Action]:
         return self.result
 
-    def precompute(self, precompute_data: PrecomputeData) -> ExtAction:
+    def precompute(self, precompute_data: PrecomputeData) -> ExtendAction:
         self.count_precompute += 1
         return self
 
-    def resume(self, precompute_data: PrecomputeData) -> ExtAction:
+    def resume(self, precompute_data: PrecomputeData) -> ExtendAction:
         self.count_resume += 1
         return self
 
-    def prepare(self) -> ExtAction:
+    def prepare(self) -> ExtendAction:
         self.count_prepare += 1
         return self
 
-    def update_info(self, message_manager: MessageManager) -> ExtAction:
+    def update_info(self, message_manager: MessageManager) -> ExtendAction:
         self.count_update_info += 1
         return self
 

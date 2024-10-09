@@ -3,7 +3,7 @@ from __future__ import annotations
 import importlib
 from typing import TYPE_CHECKING, Any
 
-from adf_core_python.core.component.extaction.ext_action import ExtAction
+from adf_core_python.core.component.action.extend_action import ExtendAction
 from adf_core_python.core.component.module.abstract_module import AbstractModule
 
 if TYPE_CHECKING:
@@ -29,7 +29,7 @@ class ModuleManager:
         self._module_config = module_config
         self._develop_data = develop_data
         self._modules: dict[str, AbstractModule] = {}
-        self._actions: dict[str, ExtAction] = {}
+        self._actions: dict[str, ExtendAction] = {}
 
         self._executors: dict[str, Any] = {}
         self._pickers: dict[str, Any] = {}
@@ -63,7 +63,9 @@ class ModuleManager:
 
         raise RuntimeError(f"Module {class_name} is not a subclass of AbstractModule")
 
-    def get_ext_action(self, action_name: str, default_action_name: str) -> ExtAction:
+    def get_extend_action(
+        self, action_name: str, default_action_name: str
+    ) -> ExtendAction:
         class_name = self._module_config.get_value_or_default(
             action_name, default_action_name
         )
@@ -77,7 +79,7 @@ class ModuleManager:
         if instance is not None:
             return instance
 
-        if issubclass(action_class, ExtAction):
+        if issubclass(action_class, ExtendAction):
             instance = action_class(
                 self._agent_info,
                 self._world_info,
@@ -88,7 +90,7 @@ class ModuleManager:
             self._actions[action_name] = instance
             return instance
 
-        raise RuntimeError(f"Action {class_name} is not a subclass of ExtAction")
+        raise RuntimeError(f"Action {class_name} is not a subclass of ExtendAction")
 
     def _load_module(self, class_name: str) -> type:
         module_name, module_class_name = class_name.rsplit(".", 1)

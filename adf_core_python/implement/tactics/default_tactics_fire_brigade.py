@@ -46,13 +46,13 @@ class DefaultTacticsFireBrigade(TacticsFireBrigade):
                         "adf_core_python.impl.module.complex.DefaultHumanDetector",
                     ),
                 )
-                self._action_fire_rescue = module_manager.get_ext_action(
-                    "DefaultTacticsFireBrigade.ExtActionFireRescue",
-                    "adf_core_python.impl.extaction.DefaultExtActionFireRescue",
+                self._action_fire_rescue = module_manager.get_extend_action(
+                    "DefaultTacticsFireBrigade.ExtendActionRescue",
+                    "adf_core_python.implement.action.DefaultExtendActionRescue",
                 )
-                self._action_ext_move = module_manager.get_ext_action(
-                    "DefaultTacticsAmbulanceTeam.ExtActionMove",
-                    "adf_core_python.impl.extaction.DefaultExtActionMove",
+                self._action_ext_move = module_manager.get_extend_action(
+                    "DefaultTacticsAmbulanceTeam.ExtendActionMove",
+                    "adf_core_python.implement.action.DefaultExtendActionMove",
                 )
         self.register_module(self._search)
         self.register_module(self._human_detector)
