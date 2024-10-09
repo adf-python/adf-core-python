@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from typing import Optional, cast
 
 from rcrs_core.entities.building import Building
