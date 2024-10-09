@@ -49,7 +49,7 @@ def get_agent_logger(name: str, agent_info: AgentInfo) -> structlog.BoundLogger:
     )
 
 
-def configure_logger():
+def configure_logger() -> None:
     structlog.configure(
         processors=[
             structlog.stdlib.add_log_level,
