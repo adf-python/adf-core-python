@@ -54,12 +54,12 @@ jobs:
       - name: Check ruff version
         run: |
           source .venv/bin/activate
-          ruff --version
+          poetry run ruff --version
 
       - name: Run ruff format check
         run: |
           source .venv/bin/activate
-          ruff format --check .
+          poetry run ruff format --check .
 
   ruff-lint:
     needs: setup
@@ -73,9 +73,6 @@ jobs:
         with:
           path: .venv
           key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
-
-      - name: Set up Python environment
-        run: source .venv/bin/activate
 
       - name: Check ruff version
         run: |
