@@ -84,10 +84,11 @@ class DefaultExtendActionMove(ExtendAction):
         if entity is None:
             return self
 
-        if isinstance(entity, Blockade):
-            entity = self.world_info.get_entity(cast(Blockade, entity).get_position())
-        elif isinstance(entity, Human):
-            entity = entity.get_position()
+        if isinstance(entity, Blockade) or isinstance(entity, Human):
+            position: Optional[EntityID] = entity.get_position()
+            if position is None:
+                return self
+            entity = self.world_info.get_entity(position)
 
         if entity is not None and isinstance(entity, Area):
             self._target_entity_id = entity.get_id()
@@ -97,6 +98,9 @@ class DefaultExtendActionMove(ExtendAction):
     def calc(self) -> ExtendAction:
         self.result = None
         agent: Human = cast(Human, self.agent_info.get_myself())
+
+        if self._target_entity_id is None:
+            return self
 
         path: list[EntityID] = self._path_planning.get_path(
             agent.get_position(), self._target_entity_id

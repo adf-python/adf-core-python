@@ -126,7 +126,7 @@ class DefaultTacticsPoliceForce(TacticsPoliceForce):
         target_entity_id = self._search.calculate().get_target_entity_id()
         if target_entity_id is not None:
             action = (
-                self._action_ext_clear.set_target_entity_id(target_entity_id)
+                self._action_ext_move.set_target_entity_id(target_entity_id)
                 .calc()
                 .get_action()
             )

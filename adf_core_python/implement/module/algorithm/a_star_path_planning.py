@@ -26,14 +26,14 @@ class AStarPathPlanning(PathPlanning):
         super().__init__(
             agent_info, world_info, scenario_info, module_manager, develop_data
         )
-        entitites: list[Entity] = self._world_info.get_entities_of_types([Area])
+        entities: list[Entity] = self._world_info.get_entities_of_types([Area])
         self._graph: dict[EntityID, set[EntityID]] = {}
-        for entity in entitites:
+        for entity in entities:
             if isinstance(entity, Area):
                 self._graph[entity.get_id()] = set(
-                    neighbour
-                    for neighbour in entity.get_neighbours()
-                    if neighbour != EntityID(0)
+                    neighbor
+                    for neighbor in entity.get_neighbours()  # TODO: Fix rcrs_core typo
+                    if neighbor != EntityID(0)
                 )
 
     def get_path(
