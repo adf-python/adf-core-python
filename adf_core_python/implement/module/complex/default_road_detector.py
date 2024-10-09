@@ -61,8 +61,8 @@ class DefaultRoadDetector(RoadDetector):
             if not isinstance(entity, Building):
                 continue
             for entity_id in entity.get_neighbours():
-                neighbour = self._world_info.get_entity(entity_id)
-                if isinstance(neighbour, Road):
+                neighbor = self._world_info.get_entity(entity_id)
+                if isinstance(neighbor, Road):
                     self._target_areas.add(entity_id)
 
         self._priority_roads = set()
@@ -70,8 +70,8 @@ class DefaultRoadDetector(RoadDetector):
             if not isinstance(entity, Building):
                 continue
             for entity_id in entity.get_neighbours():
-                neighbour = self._world_info.get_entity(entity_id)
-                if isinstance(neighbour, Road):
+                neighbor = self._world_info.get_entity(entity_id)
+                if isinstance(neighbor, Road):
                     self._priority_roads.add(entity_id)
 
         return self
@@ -88,16 +88,16 @@ class DefaultRoadDetector(RoadDetector):
         for entity in entities:
             building: Building = cast(Building, entity)
             for entity_id in building.get_neighbours():
-                neighbour = self._world_info.get_entity(entity_id)
-                if isinstance(neighbour, Road):
+                neighbor = self._world_info.get_entity(entity_id)
+                if isinstance(neighbor, Road):
                     self._target_areas.add(entity_id)
 
         self._priority_roads = set()
         for entity in self._world_info.get_entities_of_types([Refuge]):
             refuge: Refuge = cast(Refuge, entity)
             for entity_id in refuge.get_neighbours():
-                neighbour = self._world_info.get_entity(entity_id)
-                if isinstance(neighbour, Road):
+                neighbor = self._world_info.get_entity(entity_id)
+                if isinstance(neighbor, Road):
                     self._priority_roads.add(entity_id)
 
         return self
