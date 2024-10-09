@@ -10,6 +10,10 @@ on:
       - main
       - develop
 
+env:
+  PYTHON_VERSION: 3.12
+  PYTHON_CACHE_TYPE: 'poetry'
+
 jobs:
   # これ以降のジョブでキャッシュが使えるようにする
   setup:
@@ -18,12 +22,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - &setup-python
-        name: Set up Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.12
-          cache: 'poetry'
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: ${{ env.PYTHON_CACHE_TYPE }}
 
   ruff-format:
     needs: setup
@@ -32,7 +35,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - *setup-python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: ${{ env.PYTHON_CACHE_TYPE }}
 
       - name: Check ruff version
         run: poetry run ruff --version
@@ -47,7 +54,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - *setup-python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: ${{ env.PYTHON_CACHE_TYPE }}
 
       - name: Check ruff version
         run: poetry run ruff --version
@@ -62,7 +73,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - *setup-python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: ${{ env.PYTHON_CACHE_TYPE }}
 
       - name: Check mypy version
         run: poetry run mypy --version
@@ -77,9 +92,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - *setup-python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: ${{ env.PYTHON_CACHE_TYPE }}
 
       - name: Run pytest
         run: |
-          source .venv/bin/activate
           poetry run pytest tests/
