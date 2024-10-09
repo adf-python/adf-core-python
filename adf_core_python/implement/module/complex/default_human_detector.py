@@ -75,13 +75,13 @@ class DefaultHumanDetector(HumanDetector):
             if self._is_valid_human(entity.get_id()) and isinstance(entity, Civilian)
         ]
         if len(cluster_valid_human_entities) != 0:
-            nearest_human_entity: Optional[Entity] = cluster_valid_human_entities[0]
-            nearest_distance: float = self._world_info.get_distance(
+            nearest_human_entity = cluster_valid_human_entities[0]
+            nearest_distance = self._world_info.get_distance(
                 self._agent_info.get_entity_id(),
                 nearest_human_entity.get_id(),
             )
             for entity in cluster_valid_human_entities:
-                distance: float = self._world_info.get_distance(
+                distance = self._world_info.get_distance(
                     self._agent_info.get_entity_id(),
                     entity.get_id(),
                 )
@@ -96,13 +96,13 @@ class DefaultHumanDetector(HumanDetector):
             if self._is_valid_human(entity.get_id())
         ]
         if len(world_valid_human_entities) != 0:
-            nearest_human_entity: Optional[Entity] = world_valid_human_entities[0]
-            nearest_distance: float = self._world_info.get_distance(
+            nearest_human_entity = world_valid_human_entities[0]
+            nearest_distance = self._world_info.get_distance(
                 self._agent_info.get_entity_id(),
                 nearest_human_entity.get_id(),
             )
             for entity in world_valid_human_entities:
-                distance: float = self._world_info.get_distance(
+                distance = self._world_info.get_distance(
                     self._agent_info.get_entity_id(),
                     entity.get_id(),
                 )
