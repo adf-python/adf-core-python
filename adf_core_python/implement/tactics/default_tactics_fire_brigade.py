@@ -104,6 +104,7 @@ class DefaultTacticsFireBrigade(TacticsFireBrigade):
         message_manager: MessageManager,
         develop_data: DevelopData,
     ) -> Action:
+        self.reset_count()
         self.module_update_info(message_manager)
 
         agent: FireBrigadeEntity = cast(FireBrigadeEntity, agent_info.get_myself())  # noqa: F841

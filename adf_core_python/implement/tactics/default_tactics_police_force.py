@@ -108,6 +108,7 @@ class DefaultTacticsPoliceForce(TacticsPoliceForce):
         message_manager: MessageManager,
         develop_data: DevelopData,
     ) -> Action:
+        self.reset_count()
         self.module_update_info(message_manager)
 
         agent: PoliceForceEntity = cast(PoliceForceEntity, agent_info.get_myself())  # noqa: F841
