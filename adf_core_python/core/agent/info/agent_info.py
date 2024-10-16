@@ -13,6 +13,27 @@ from adf_core_python.core.agent.action.action import Action
 
 
 class AgentInfo:
+    """
+    Class to store information about the agent
+
+    Attributes
+    ----------
+    _agent : Agent
+        Agent
+    _world_model : WorldModel
+        World model
+    _time : int
+        Current time
+    _action_history : dict[int, Action]
+        History of actions executed by the agent
+    _heard_commands : list[Any]
+        Heard commands
+    _change_set : ChangeSet
+        Change set
+    _start_think_time : float
+        Start time of thinking
+    """
+
     # TODO: Replace Any with the actual type
     def __init__(self, agent: Agent, world_model: WorldModel):
         self._agent: Agent = agent
