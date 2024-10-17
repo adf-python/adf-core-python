@@ -10,6 +10,37 @@ class Mode(Enum):
     PRECOMPUTATION = 2
 
 
+class ScenarioInfoKeys:
+    KERNEL_PERCEPTION = "kernel.perception"
+    PERCEPTION_LOS_PRECISION_HP = "perception.los.precision.hp"
+    CLEAR_REPAIR_RAD = "clear.repair.rad"
+    FIRE_TANK_REFILL_HYDRANT_RATE = "fire.tank.refill_hydrant_rate"
+    SCENARIO_AGENTS_PF = "scenario.agents.pf"
+    SCENARIO_AGENTS_FS = "scenario.agents.fs"
+    VOICE_MESSAGES_SIZE = "comms.channels.0.messages.size"
+    FIRE_TANK_REFILL_RATE = "fire.tank.refill_rate"
+    KERNEL_TIMESTEPS = "kernel.timesteps"
+    FIRE_EXTINGUISH_MAX_SUM = "fire.extinguish.max-sum"
+    COMMS_CHANNELS_MAX_PLATOON = "comms.channels.max.platoon"
+    KERNEL_AGENTS_THINK_TIME = "kernel.agents.think-time"
+    FIRE_TANK_MAXIMUM = "fire.tank.maximum"
+    CLEAR_REPAIR_RATE = "clear.repair.rate"
+    KERNEL_STARTUP_CONNECT_TIME = "kernel.startup.connect-time"
+    KERNEL_HOST = "kernel.host"
+    SCENARIO_AGENTS_AT = "scenario.agents.at"
+    PERCEPTION_LOS_MAX_DISTANCE = "perception.los.max-distance"
+    SCENARIO_AGENTS_FB = "scenario.agents.fb"
+    SCENARIO_AGENTS_PO = "scenario.agents.po"
+    KERNEL_COMMUNICATION_MODEL = "kernel.communication-model"
+    PERCEPTION_LOS_PRECISION_DAMAGE = "perception.los.precision.damage"
+    SCENARIO_AGENTS_AC = "scenario.agents.ac"
+    COMMS_CHANNELS_MAX_OFFICE = "comms.channels.max.centre"
+    FIRE_EXTINGUISH_MAX_DISTANCE = "fire.extinguish.max-distance"
+    KERNEL_AGENTS_IGNOREUNTIL = "kernel.agents.ignoreuntil"
+    CLEAR_REPAIR_DISTANCE = "clear.repair.distance"
+    COMMS_CHANNELS_COUNT = "comms.channels.count"
+
+
 class ScenarioInfo:
     def __init__(self, config: Config, mode: Mode):
         """
