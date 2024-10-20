@@ -1,5 +1,6 @@
 from typing import Optional
 
+from bitarray import bitarray
 from rcrs_core.worldmodel.entityID import EntityID
 
 from adf_core_python.core.agent.communication.standard.bundle.standard_message_priority import (
@@ -14,14 +15,14 @@ class StandardMessage(CommunicationMessage):
     def __init__(
         self,
         is_wireless_message: bool,
-        sender_id: int,
-        ttl: int,
         priority: StandardMessagePriority,
+        sender_id: int = -1,
+        ttl: int = -1,
     ):
         super().__init__(is_wireless_message)
+        self._priority = priority
         self._sender_id = sender_id
         self._ttl = ttl
-        self._priority = priority
 
     def get_sender_entity_id(self) -> EntityID:
         return EntityID(self._sender_id)
@@ -32,22 +33,24 @@ class StandardMessage(CommunicationMessage):
     def get_priority(self) -> StandardMessagePriority:
         return self._priority
 
+    @staticmethod
     def write_with_exist_flag(
-        self, byte_array: bytearray, value: Optional[int], size: int
+        bit_array: bitarray, value: Optional[int], size: int
     ) -> None:
         if value is None:
-            byte_array.extend(b"\b0")
+            bit_array.extend([False])
         else:
-            byte_array.extend(b"\b1")
-            byte_array.extend(value.to_bytes(size, "big"))
+            bit_array.extend([True])
+            bit_array.frombytes(value.to_bytes(size, "big"))
 
-    def read_with_exist_flag(self, byte_array: bytearray, size: int) -> Optional[int]:
-        exist_flag = byte_array.pop(0)
+    @staticmethod
+    def read_with_exist_flag(bit_array: bitarray, size: int) -> Optional[int]:
+        exist_flag = bit_array.pop(0)
         if exist_flag == 0:
             return None
         elif exist_flag == 1:
-            value = int.from_bytes(byte_array[:size], "big")
-            del byte_array[:size]
+            value = int.from_bytes(bit_array.tobytes()[:size], "big")
+            del bit_array[:size]
             return value
         else:
             raise ValueError("Invalid exist flag")

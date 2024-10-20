@@ -115,7 +115,7 @@ class Agent(RCRSAgent):
         )
         sys.exit(1)
 
-    def precompute(self):
+    def precompute(self) -> None:
         pass
 
     @abstractmethod
