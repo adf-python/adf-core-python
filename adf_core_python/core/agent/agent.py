@@ -95,7 +95,7 @@ class Agent(RCRSAgent):
         # if time == 1:
         #     self.message_manager.register_message_class()
 
-    def precompute(self):
+    def precompute(self) -> None:
         pass
 
     @abstractmethod

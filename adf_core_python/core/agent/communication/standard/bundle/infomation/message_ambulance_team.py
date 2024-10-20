@@ -1,5 +1,9 @@
-from typing import TYPE_CHECKING, Optional
+from __future__ import annotations
 
+from typing import Optional
+
+from bitarray import bitarray
+from rcrs_core.entities.ambulanceTeam import AmbulanceTeamEntity
 from rcrs_core.worldmodel.entityID import EntityID
 
 from adf_core_python.core.agent.communication.standard.bundle.standard_message import (
@@ -8,9 +12,6 @@ from adf_core_python.core.agent.communication.standard.bundle.standard_message i
 from adf_core_python.core.agent.communication.standard.bundle.standard_message_priority import (
     StandardMessagePriority,
 )
-
-if TYPE_CHECKING:
-    from rcrs_core.entities.ambulanceTeam import AmbulanceTeamEntity
 
 
 class MessageAmbulanceTeam(StandardMessage):
@@ -31,22 +32,22 @@ class MessageAmbulanceTeam(StandardMessage):
     def __init__(
         self,
         is_wireless_message: bool,
-        sender_id: int,
-        ttl: int,
         priority: StandardMessagePriority,
         ambulance_team: AmbulanceTeamEntity,
         action: int,
         target_entity_id: EntityID,
+        sender_id: int = -1,
+        ttl: int = -1,
     ):
-        super().__init__(is_wireless_message, sender_id, ttl, priority)
+        super().__init__(is_wireless_message, priority, sender_id, ttl)
         self._ambulance_team_entity_id: Optional[EntityID] = ambulance_team.get_id()
-        self._ambulance_team_hp: Optional[int] = ambulance_team.get_hp() or -1
+        self._ambulance_team_hp: Optional[int] = ambulance_team.get_hp() or None
         self._ambulance_team_buriedness: Optional[int] = (
-            ambulance_team.get_buriedness() or -1
+            ambulance_team.get_buriedness() or None
         )
-        self._ambulance_team_damage: Optional[int] = ambulance_team.get_damage() or -1
+        self._ambulance_team_damage: Optional[int] = ambulance_team.get_damage() or None
         self._ambulance_team_position: Optional[EntityID] = (
-            ambulance_team.get_position() or EntityID(-1)
+            ambulance_team.get_position() or None
         )
         self._target_entity_id: Optional[EntityID] = target_entity_id
         self._action: Optional[int] = action
@@ -55,74 +56,92 @@ class MessageAmbulanceTeam(StandardMessage):
         return self.to_bytes().__len__()
 
     def to_bytes(self) -> bytes:
-        byte_array = bytearray()
+        bit_array = bitarray()
         self.write_with_exist_flag(
-            byte_array,
+            bit_array,
             self._ambulance_team_entity_id.get_value()
             if self._ambulance_team_entity_id
             else None,
             self.SIZE_AMBULANCE_TEAM_ENTITY_ID,
         )
         self.write_with_exist_flag(
-            byte_array, self._ambulance_team_hp, self.SIZE_AMBULANCE_TEAM_HP
+            bit_array, self._ambulance_team_hp, self.SIZE_AMBULANCE_TEAM_HP
         )
         self.write_with_exist_flag(
-            byte_array,
+            bit_array,
             self._ambulance_team_buriedness,
             self.SIZE_AMBULANCE_TEAM_BURIEDNESS,
         )
         self.write_with_exist_flag(
-            byte_array, self._ambulance_team_damage, self.SIZE_AMBULANCE_TEAM_DAMAGE
+            bit_array, self._ambulance_team_damage, self.SIZE_AMBULANCE_TEAM_DAMAGE
         )
         self.write_with_exist_flag(
-            byte_array,
+            bit_array,
             self._ambulance_team_position.get_value()
             if self._ambulance_team_position
             else None,
             self.SIZE_AMBULANCE_TEAM_POSITION,
         )
         self.write_with_exist_flag(
-            byte_array,
+            bit_array,
             self._target_entity_id.get_value() if self._target_entity_id else None,
             self.SIZE_TARGET_ENTITY_ID,
         )
-        self.write_with_exist_flag(byte_array, self._action, self.SIZE_ACTION)
-        return bytes(byte_array)
+        self.write_with_exist_flag(bit_array, self._action, self.SIZE_ACTION)
+        return bit_array.tobytes()
 
-    def from_bytes(self, bytes: bytes) -> None:
-        byte_array = bytearray(bytes)
-        raw_ambulance_team_entity_id = self.read_with_exist_flag(
-            byte_array, self.SIZE_AMBULANCE_TEAM_ENTITY_ID
+    @classmethod
+    def from_bytes(cls, bytes: bytes) -> MessageAmbulanceTeam:
+        bit_array = bitarray()
+        bit_array.frombytes(bytes)
+        raw_ambulance_team_entity_id = cls.read_with_exist_flag(
+            bit_array, cls.SIZE_AMBULANCE_TEAM_ENTITY_ID
         )
-        self._ambulance_team_entity_id = (
+        ambulance_team_entity_id = (
             EntityID(raw_ambulance_team_entity_id)
-            if raw_ambulance_team_entity_id
+            if raw_ambulance_team_entity_id is not None
             else None
         )
-        self._ambulance_team_hp = self.read_with_exist_flag(
-            byte_array, self.SIZE_AMBULANCE_TEAM_HP
+        ambulance_team_hp = cls.read_with_exist_flag(
+            bit_array, cls.SIZE_AMBULANCE_TEAM_HP
         )
-        self._ambulance_team_buriedness = self.read_with_exist_flag(
-            byte_array, self.SIZE_AMBULANCE_TEAM_BURIEDNESS
+        ambulance_team_buriedness = cls.read_with_exist_flag(
+            bit_array, cls.SIZE_AMBULANCE_TEAM_BURIEDNESS
         )
-        self._ambulance_team_damage = self.read_with_exist_flag(
-            byte_array, self.SIZE_AMBULANCE_TEAM_DAMAGE
+        ambulance_team_damage = cls.read_with_exist_flag(
+            bit_array, cls.SIZE_AMBULANCE_TEAM_DAMAGE
         )
-        raw_ambulance_team_position = self.read_with_exist_flag(
-            byte_array, self.SIZE_AMBULANCE_TEAM_POSITION
+
+        raw_ambulance_team_position = cls.read_with_exist_flag(
+            bit_array, cls.SIZE_AMBULANCE_TEAM_POSITION
         )
-        self._ambulance_team_position = (
+        ambulance_team_position = (
             EntityID(raw_ambulance_team_position)
-            if raw_ambulance_team_position
+            if raw_ambulance_team_position is not None
             else None
         )
-        raw_target_entity_id = self.read_with_exist_flag(
-            byte_array, self.SIZE_TARGET_ENTITY_ID
+
+        raw_target_entity_id = cls.read_with_exist_flag(
+            bit_array, cls.SIZE_TARGET_ENTITY_ID
         )
-        self._target_entity_id = (
-            EntityID(raw_target_entity_id) if raw_target_entity_id else None
+        target_entity_id = (
+            EntityID(raw_target_entity_id) if raw_target_entity_id is not None else None
         )
-        self._action = self.read_with_exist_flag(byte_array, self.SIZE_ACTION)
+        action = cls.read_with_exist_flag(bit_array, cls.SIZE_ACTION)
+        ambulance_team = AmbulanceTeamEntity(
+            ambulance_team_entity_id,
+        )
+        ambulance_team.set_hp(ambulance_team_hp)
+        ambulance_team.set_buriedness(ambulance_team_buriedness)
+        ambulance_team.set_damage(ambulance_team_damage)
+        ambulance_team.set_position(ambulance_team_position)
+        return MessageAmbulanceTeam(
+            False,
+            StandardMessagePriority.NORMAL,
+            ambulance_team,
+            action or -1,
+            target_entity_id or EntityID(-1),
+        )
 
     def get_check_key(self) -> str:
         target_id_value: str = (
