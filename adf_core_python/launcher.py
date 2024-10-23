@@ -66,7 +66,7 @@ class Launcher:
         config_map = {
             args.host: ConfigKey.KEY_KERNEL_HOST,
             args.port: ConfigKey.KEY_KERNEL_PORT,
-            args.ambulance: ConfigKey.KEY_AMBULANCE_TEAM_COUNT,
+            args.ambulanceteam: ConfigKey.KEY_AMBULANCE_TEAM_COUNT,
             args.firebrigade: ConfigKey.KEY_FIRE_BRIGADE_COUNT,
             args.policeforce: ConfigKey.KEY_POLICE_FORCE_COUNT,
             args.precompute: ConfigKey.KEY_PRECOMPUTE,
