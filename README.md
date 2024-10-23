@@ -13,6 +13,15 @@
 poetry install
 ```
 
+### Run Agent
+
+```bash
+poetry run python ./adf_core_python/launcher.py
+
+# get help
+poetry run python ./adf_core_python/launcher.py -h
+```
+
 ### Build
 
 ```bash
