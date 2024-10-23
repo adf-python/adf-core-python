@@ -123,7 +123,12 @@ class DefaultHumanDetector(HumanDetector):
         if hp is None or hp <= 0:
             return False
         buriedness: Optional[int] = target.get_buriedness()
-        if buriedness is None or buriedness > 0:
+        if buriedness is None:
+            return False
+        myself = self._agent_info.get_myself()
+        if myself.get_urn() == EntityURN.FIRE_BRIGADE and buriedness == 0:
+            return False
+        if myself.get_urn() == EntityURN.AMBULANCE_TEAM and buriedness > 0:
             return False
         damage: Optional[int] = target.get_damage()
         if damage is None or damage == 0:
