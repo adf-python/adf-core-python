@@ -6,22 +6,27 @@ from adf_core_python.core.launcher.config_key import ConfigKey
 from adf_core_python.core.logger.logger import configure_logger, get_logger
 
 
-class Main:
-    def __init__(self) -> None:
+class Launcher:
+    def __init__(
+        self,
+        launcher_config_file: str,
+    ) -> None:
+        configure_logger()
+
         self.logger = get_logger(__name__)
+        self.launcher_config = Config(launcher_config_file)
+
         parser = argparse.ArgumentParser(description="Agent Launcher")
 
         parser.add_argument(
             "--host",
             type=str,
-            default="localhost",
             help="host name(Default: localhost)",
             metavar="",
         )
         parser.add_argument(
             "--port",
             type=int,
-            default=27931,
             help="port number(Default: 27931)",
             metavar="",
         )
@@ -29,30 +34,26 @@ class Main:
             "-a",
             "--ambulanceteam",
             type=int,
-            default=-1,
-            help="number of ambulance agents(Default: -1 means all ambulance)",
+            help="number of ambulance agents(Default: all ambulance)",
             metavar="",
         )
         parser.add_argument(
             "-f",
             "--firebrigade",
             type=int,
-            default=-1,
-            help="number of firebrigade agents(Default: -1 means all firebrigade)",
+            help="number of firebrigade agents(Default: all firebrigade)",
             metavar="",
         )
         parser.add_argument(
             "-p",
             "--policeforce",
             type=int,
-            default=-1,
-            help="number of policeforce agents(Default: -1 means all policeforce)",
+            help="number of policeforce agents(Default: all policeforce)",
             metavar="",
         )
         parser.add_argument(
             "--precompute",
             type=bool,
-            default=False,
             help="precompute flag",
             metavar="",
         )
@@ -62,19 +63,25 @@ class Main:
         args = parser.parse_args()
         self.logger.info(f"Arguments: {args}")
 
-        self.config = Config()
-        self.config.set_value(ConfigKey.KEY_KERNEL_HOST, args.host)
-        self.config.set_value(ConfigKey.KEY_KERNEL_PORT, args.port)
-        self.config.set_value(ConfigKey.KEY_AMBULANCE_TEAM_COUNT, args.ambulanceteam)
-        self.config.set_value(ConfigKey.KEY_FIRE_BRIGADE_COUNT, args.firebrigade)
-        self.config.set_value(ConfigKey.KEY_POLICE_FORCE_COUNT, args.policeforce)
-        self.config.set_value(ConfigKey.KEY_PRECOMPUTE, args.precompute)
-        self.config.set_value(ConfigKey.KEY_DEBUG_FLAG, args.debug)
-        self.logger.info(f"Config: {self.config}")
+        config_map = {
+            args.host: ConfigKey.KEY_KERNEL_HOST,
+            args.port: ConfigKey.KEY_KERNEL_PORT,
+            args.ambulance: ConfigKey.KEY_AMBULANCE_TEAM_COUNT,
+            args.firebrigade: ConfigKey.KEY_FIRE_BRIGADE_COUNT,
+            args.policeforce: ConfigKey.KEY_POLICE_FORCE_COUNT,
+            args.precompute: ConfigKey.KEY_PRECOMPUTE,
+            args.debug: ConfigKey.KEY_DEBUG_FLAG,
+        }
+
+        for arg, key in config_map.items():
+            if arg is not None:
+                self.launcher_config.set_value(key, arg)
+
+        self.logger.info(f"Config: {self.launcher_config}")
 
     def launch(self) -> None:
         agent_launcher: AgentLauncher = AgentLauncher(
-            self.config,
+            self.launcher_config,
         )
         agent_launcher.init_connector()
 
@@ -89,9 +96,8 @@ class Main:
 
 
 if __name__ == "__main__":
-    configure_logger()
-    logger = get_logger(__name__)
-    logger.info("Starting the agent launcher")
+    launcher = Launcher(
+        "config/launcher.yaml",
+    )
 
-    main = Main()
-    main.launch()
+    launcher.launch()
