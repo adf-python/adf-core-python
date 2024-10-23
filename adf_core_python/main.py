@@ -27,7 +27,7 @@ class Main:
         )
         parser.add_argument(
             "-a",
-            "--ambulance",
+            "--ambulanceteam",
             type=int,
             default=-1,
             help="number of ambulance agents(Default: -1 means all ambulance)",
@@ -65,9 +65,9 @@ class Main:
         self.config = Config()
         self.config.set_value(ConfigKey.KEY_KERNEL_HOST, args.host)
         self.config.set_value(ConfigKey.KEY_KERNEL_PORT, args.port)
-        self.config.set_value(ConfigKey.KEY_AMBULANCE_CENTRE_COUNT, args.ambulance)
-        self.config.set_value(ConfigKey.KEY_FIRE_STATION_COUNT, args.firebrigade)
-        self.config.set_value(ConfigKey.KEY_POLICE_OFFICE_COUNT, args.policeforce)
+        self.config.set_value(ConfigKey.KEY_AMBULANCE_TEAM_COUNT, args.ambulanceteam)
+        self.config.set_value(ConfigKey.KEY_FIRE_BRIGADE_COUNT, args.firebrigade)
+        self.config.set_value(ConfigKey.KEY_POLICE_FORCE_COUNT, args.policeforce)
         self.config.set_value(ConfigKey.KEY_PRECOMPUTE, args.precompute)
         self.config.set_value(ConfigKey.KEY_DEBUG_FLAG, args.debug)
         self.logger.info(f"Config: {self.config}")

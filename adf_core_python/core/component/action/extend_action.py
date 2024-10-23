@@ -42,7 +42,7 @@ class ExtendAction(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def calc(self) -> ExtendAction:
+    def calculate(self) -> ExtendAction:
         raise NotImplementedError
 
     def get_action(self) -> Optional[Action]:

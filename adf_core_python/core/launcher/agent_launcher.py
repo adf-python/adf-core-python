@@ -14,20 +14,21 @@ from adf_core_python.core.launcher.connect.connector import Connector
 from adf_core_python.core.launcher.connect.connector_ambulance_team import (
     ConnectorAmbulanceTeam,
 )
-from adf_core_python.core.logger.logger import get_logger
+from adf_core_python.core.launcher.connect.connector_fire_brigade import (
+    ConnectorFireBrigade,
+)
 
-# from adf_core_python.core.launcher.connect.connector_fire_brigade import (
-#     ConnectorFireBrigade,
-# )
 # from adf_core_python.core.launcher.connect.connector_fire_station import (
 #     ConnectorFireStation,
 # )
-# from adf_core_python.core.launcher.connect.connector_police_force import (
-#     ConnectorPoliceForce,
-# )
+from adf_core_python.core.launcher.connect.connector_police_force import (
+    ConnectorPoliceForce,
+)
 # from adf_core_python.core.launcher.connect.connector_police_office import (
 #     ConnectorPoliceOffice,
 # )
+
+from adf_core_python.core.logger.logger import get_logger
 
 
 class AgentLauncher:
@@ -50,11 +51,11 @@ class AgentLauncher:
             self.config.get_value(ConfigKey.KEY_TEAM_NAME),
         )
 
-        # self.connectors.append(ConnectorAmbulanceCentre())
         self.connectors.append(ConnectorAmbulanceTeam())
-        # self.connectors.append(ConnectorFireBrigade())
+        # self.connectors.append(ConnectorAmbulanceCentre())
+        self.connectors.append(ConnectorFireBrigade())
         # self.connectors.append(ConnectorFireStation())
-        # self.connectors.append(ConnectorPoliceForce())
+        self.connectors.append(ConnectorPoliceForce())
         # self.connectors.append(ConnectorPoliceOffice())
 
     def launch(self) -> None:

@@ -30,33 +30,43 @@ class DefaultTacticsFireBrigade(TacticsFireBrigade):
         develop_data: DevelopData,
     ) -> None:
         # world_info.index_class()
+        super().initialize(
+            agent_info,
+            world_info,
+            scenario_info,
+            module_manager,
+            precompute_data,
+            message_manager,
+            develop_data,
+        )
+
         match scenario_info.get_mode():
             case Mode.NON_PRECOMPUTE:
                 self._search: Search = cast(
                     Search,
                     module_manager.get_module(
                         "DefaultTacticsFireBrigade.Search",
-                        "adf_core_python.impl.module.complex.DefaultSearch",
+                        "adf_core_python.core.component.module.complex.search.Search",
                     ),
                 )
                 self._human_detector: HumanDetector = cast(
                     HumanDetector,
                     module_manager.get_module(
                         "DefaultTacticsFireBrigade.HumanDetector",
-                        "adf_core_python.impl.module.complex.DefaultHumanDetector",
+                        "adf_core_python.core.component.module.complex.human_detector.HumanDetector",
                     ),
                 )
-                self._action_fire_rescue = module_manager.get_extend_action(
+                self._action_rescue = module_manager.get_extend_action(
                     "DefaultTacticsFireBrigade.ExtendActionRescue",
-                    "adf_core_python.implement.action.DefaultExtendActionRescue",
+                    "adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue",
                 )
                 self._action_ext_move = module_manager.get_extend_action(
                     "DefaultTacticsAmbulanceTeam.ExtendActionMove",
-                    "adf_core_python.implement.action.DefaultExtendActionMove",
+                    "adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove",
                 )
         self.register_module(self._search)
         self.register_module(self._human_detector)
-        self.register_action(self._action_fire_rescue)
+        self.register_action(self._action_rescue)
         self.register_action(self._action_ext_move)
 
     def precompute(
@@ -111,23 +121,32 @@ class DefaultTacticsFireBrigade(TacticsFireBrigade):
         entity_id = agent_info.get_entity_id()  # noqa: F841
 
         target_entity_id = self._human_detector.calculate().get_target_entity_id()
+        self._logger.debug(
+            f"human detector target_entity_id: {target_entity_id}",
+            time=agent_info.get_time(),
+        )
         if target_entity_id is not None:
             action = (
-                self._action_fire_rescue.set_target_entity_id(target_entity_id)
-                .calc()
+                self._action_rescue.set_target_entity_id(target_entity_id)
+                .calculate()
                 .get_action()
             )
             if action is not None:
+                self._logger.debug(f"action: {action}", time=agent_info.get_time())
                 return action
 
         target_entity_id = self._search.calculate().get_target_entity_id()
+        self._logger.debug(
+            f"search target_entity_id: {target_entity_id}", time=agent_info.get_time()
+        )
         if target_entity_id is not None:
             action = (
                 self._action_ext_move.set_target_entity_id(target_entity_id)
-                .calc()
+                .calculate()
                 .get_action()
             )
             if action is not None:
+                self._logger.debug(f"action: {action}", time=agent_info.get_time())
                 return action
 
         return ActionRest()

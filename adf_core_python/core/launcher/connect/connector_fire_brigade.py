@@ -1,21 +1,24 @@
 import threading
-from logging import Logger, getLogger
 
-from rcrs_core.agents.fireBrigadeAgent import FireBrigadeAgent
 from rcrs_core.connection.componentLauncher import ComponentLauncher
 
 from adf_core_python.core.agent.config.module_config import ModuleConfig
 from adf_core_python.core.agent.develop.develop_data import DevelopData
+from adf_core_python.core.agent.platoon.platoon_fire import PlatoonFire
 from adf_core_python.core.component.abstract_loader import AbstractLoader
+from adf_core_python.core.component.tactics.tactics_fire_brigade import (
+    TacticsFireBrigade,
+)
 from adf_core_python.core.config.config import Config
 from adf_core_python.core.launcher.config_key import ConfigKey
 from adf_core_python.core.launcher.connect.connector import Connector
+from adf_core_python.core.logger.logger import get_logger
 
 
 class ConnectorFireBrigade(Connector):
     def __init__(self) -> None:
         super().__init__()
-        self.logger: Logger = getLogger(__name__)
+        self.logger = get_logger(__name__)
 
     def connect(
         self,
@@ -23,20 +26,19 @@ class ConnectorFireBrigade(Connector):
         config: Config,
         loader: AbstractLoader,
     ) -> list[threading.Thread]:
-        count: int = config.get_value(ConfigKey.KEY_AMBULANCE_CENTRE_COUNT, 0)
+        count: int = config.get_value(ConfigKey.KEY_FIRE_BRIGADE_COUNT, 0)
         if count == 0:
             return []
 
         threads: list[threading.Thread] = []
 
         for _ in range(count):
-            # tactics_fire_brigade: TacticsFireBrigade
-            if loader.get_tactics_fire_brigade() is not None:
+            if loader.get_tactics_fire_brigade() is None:
                 self.logger.error("Cannot load fire brigade tactics")
-                # tactics_fire_brigade = loader.get_tactics_fire_brigade()
-            else:
-                # tactics_fire_brigade = DummyTacticsFireBrigade()
-                pass
+
+            tactics_fire_brigade: TacticsFireBrigade = (  # noqa: F841
+                loader.get_tactics_fire_brigade()
+            )
 
             module_config: ModuleConfig = ModuleConfig(  # noqa: F841
                 config.get_value(
@@ -56,8 +58,14 @@ class ConnectorFireBrigade(Connector):
             thread = threading.Thread(
                 target=component_launcher.connect,
                 args=(
-                    FireBrigadeAgent(
+                    PlatoonFire(
+                        tactics_fire_brigade,
+                        "fire_brigade",
                         config.get_value(ConfigKey.KEY_PRECOMPUTE, False),
+                        config.get_value(ConfigKey.KEY_DEBUG_FLAG, False),
+                        "test",
+                        module_config,
+                        develop_data,
                     ),
                     component_launcher.generate_request_ID(),
                 ),

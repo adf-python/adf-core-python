@@ -127,7 +127,7 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
         if target_entity_id is not None:
             action = (
                 self._action_transport.set_target_entity_id(target_entity_id)
-                .calc()
+                .calculate()
                 .get_action()
             )
             if action is not None:
@@ -141,7 +141,7 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
         if target_entity_id is not None:
             action = (
                 self._action_ext_move.set_target_entity_id(target_entity_id)
-                .calc()
+                .calculate()
                 .get_action()
             )
             if action is not None:

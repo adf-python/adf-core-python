@@ -37,7 +37,7 @@ class DefaultRoadDetector(RoadDetector):
                     PathPlanning,
                     module_manager.get_module(
                         "DefaultRoadDetector.PathPlanning",
-                        "adf_core_python.implement.module.algorithm.DijkstraPathPlanning",
+                        "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
                     ),
                 )
 
@@ -120,7 +120,7 @@ class DefaultRoadDetector(RoadDetector):
 
         return self
 
-    def calc(self) -> RoadDetector:
+    def calculate(self) -> RoadDetector:
         if self._result is None:
             position_entity_id: EntityID = self._agent_info.get_position_entity_id()
             if position_entity_id in self._target_areas:
@@ -154,5 +154,5 @@ class DefaultRoadDetector(RoadDetector):
 
         return self
 
-    def get_target(self) -> Optional[EntityID]:
+    def get_target_entity_id(self) -> Optional[EntityID]:
         return self._result
