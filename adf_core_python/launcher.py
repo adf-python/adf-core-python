@@ -32,7 +32,7 @@ class Launcher:
         )
         parser.add_argument(
             "-a",
-            "--ambulance",
+            "--ambulanceteam",
             type=int,
             help="number of ambulance agents(Default: all ambulance)",
             metavar="",
