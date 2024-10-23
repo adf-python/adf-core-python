@@ -1,10 +1,9 @@
 import threading
 from abc import ABC, abstractmethod
 
-from rcrs_core.connection.componentLauncher import ComponentLauncher
-
 from adf_core_python.core.component.abstract_loader import AbstractLoader
 from adf_core_python.core.config.config import Config
+from adf_core_python.core.launcher.connect.component_launcher import ComponentLauncher
 
 
 class Connector(ABC):

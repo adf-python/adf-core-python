@@ -57,9 +57,7 @@ class Launcher:
             help="precompute flag",
             metavar="",
         )
-        parser.add_argument(
-            "--debug", type=bool, default=False, help="debug flag", metavar=""
-        )
+        parser.add_argument("--debug", type=bool, help="debug flag", metavar="")
         args = parser.parse_args()
         self.logger.info(f"Arguments: {args}")
 
@@ -72,6 +70,8 @@ class Launcher:
             args.precompute: ConfigKey.KEY_PRECOMPUTE,
             args.debug: ConfigKey.KEY_DEBUG_FLAG,
         }
+
+        self.logger.info(f"Config map: {config_map}")
 
         for arg, key in config_map.items():
             if arg is not None:
