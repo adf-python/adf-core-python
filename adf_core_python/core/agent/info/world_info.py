@@ -1,5 +1,7 @@
-from typing import Any, Optional
+from typing import Any, Optional, cast
 
+from rcrs_core.entities.area import Area
+from rcrs_core.entities.blockade import Blockade
 from rcrs_core.entities.entity import Entity
 from rcrs_core.worldmodel.changeSet import ChangeSet
 from rcrs_core.worldmodel.entityID import EntityID
@@ -153,3 +155,19 @@ class WorldInfo:
             Change set
         """
         return self._change_set
+
+    def get_bloackades(self, area: Area) -> set[Blockade]:
+        """
+        Get the blockades in the area
+
+        Returns
+        -------
+        ChangeSet
+            Blockade
+        """
+        bloakcades = set()
+        for blockade_entity_id in area.get_blockades():
+            bloackde_entity = self.get_entity(blockade_entity_id)
+            if isinstance(bloackde_entity, Blockade):
+                bloakcades.add(cast(Blockade, bloackde_entity))
+        return bloakcades

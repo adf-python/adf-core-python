@@ -95,7 +95,7 @@ class DefaultExtendActionMove(ExtendAction):
 
         return self
 
-    def calc(self) -> ExtendAction:
+    def calculate(self) -> ExtendAction:
         self.result = None
         agent: Human = cast(Human, self.agent_info.get_myself())
 

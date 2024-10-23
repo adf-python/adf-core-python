@@ -8,22 +8,22 @@ DefaultTacticsAmbulanceTeam:
   CommandExecutorScout: adf_core_python.implement.centralized.DefaultCommandExecutorScout
 
 # ## DefaultTacticsFireBrigade
-# DefaultTacticsFireBrigade:
-#   HumanDetector: sample_team.module.complex.SampleHumanDetector
-#   Search: sample_team.module.complex.SampleSearch
-#   ExtendActionRescue: adf_core_python.implement.action.DefaultExtendActionRescue
-#   ExtendActionMove: adf_core_python.implement.action.DefaultExtendActionMove
-#   CommandExecutorFire: adf_core_python.implement.centralized.DefaultCommandExecutorFire
-#   CommandExecutorScout: adf_core_python.implement.centralized.DefaultCommandExecutorScout
+DefaultTacticsFireBrigade:
+  HumanDetector: adf_core_python.implement.module.complex.default_human_detector.DefaultHumanDetector
+  Search: adf_core_python.implement.module.complex.default_search.DefaultSearch
+  ExtendActionRescue: adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue
+  ExtendActionMove: adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove
+  CommandExecutorFire: adf_core_python.implement.centralized.DefaultCommandExecutorFire
+  CommandExecutorScout: adf_core_python.implement.centralized.DefaultCommandExecutorScout
 
 # ## DefaultTacticsPoliceForce
-# DefaultTacticsPoliceForce:
-#   RoadDetector: sample_team.module.complex.SampleRoadDetector
-#   Search: sample_team.module.complex.SampleSearch
-#   ExtendActionClear: adf_core_python.implement.action.DefaultExtendActionClear
-#   ExtendActionMove: adf_core_python.implement.action.DefaultExtendActionMove
-#   CommandExecutorPolice: adf_core_python.implement.centralized.DefaultCommandExecutorPolice
-#   CommandExecutorScout: adf_core_python.implement.centralized.DefaultCommandExecutorScoutPolice
+DefaultTacticsPoliceForce:
+  RoadDetector: adf_core_python.implement.module.complex.default_road_detector.DefaultRoadDetector
+  Search: adf_core_python.implement.module.complex.default_search.DefaultSearch
+  ExtendActionClear: adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear
+  ExtendActionMove: adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove
+  CommandExecutorPolice: adf_core_python.implement.centralized.DefaultCommandExecutorPolice
+  CommandExecutorScout: adf_core_python.implement.centralized.DefaultCommandExecutorScoutPolice
 
 # ## DefaultTacticsAmbulanceCentre
 # DefaultTacticsAmbulanceCentre:

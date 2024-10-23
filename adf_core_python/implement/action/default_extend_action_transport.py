@@ -100,7 +100,7 @@ class DefaultExtendActionTransport(ExtendAction):
 
         return self
 
-    def calc(self) -> ExtendAction:
+    def calculate(self) -> ExtendAction:
         self._result = None
         agent: AmbulanceTeamEntity = cast(
             AmbulanceTeamEntity, self.agent_info.get_myself()

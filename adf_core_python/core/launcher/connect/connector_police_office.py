@@ -23,7 +23,7 @@ class ConnectorPoliceOffice(Connector):
         config: Config,
         loader: AbstractLoader,
     ) -> list[threading.Thread]:
-        count: int = config.get_value(ConfigKey.KEY_AMBULANCE_CENTRE_COUNT, 0)
+        count: int = config.get_value(ConfigKey.KEY_POLICE_OFFICE_COUNT, 0)
         if count == 0:
             return []
 
@@ -64,5 +64,5 @@ class ConnectorPoliceOffice(Connector):
             )
             threads.append(thread)
 
-        self.logger.info("Connected ambulance centre (count: %d)" % count)
+        self.logger.info("Connected police office (count: %d)" % count)
         return threads

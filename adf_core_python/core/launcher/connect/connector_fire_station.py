@@ -23,7 +23,7 @@ class ConnectorFireStation(Connector):
         config: Config,
         loader: AbstractLoader,
     ) -> list[threading.Thread]:
-        count: int = config.get_value(ConfigKey.KEY_AMBULANCE_CENTRE_COUNT, 0)
+        count: int = config.get_value(ConfigKey.KEY_FIRE_STATION_COUNT, 0)
         if count == 0:
             return []
 
