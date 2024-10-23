@@ -36,25 +36,22 @@ class ConnectorPoliceForce(Connector):
             if loader.get_tactics_police_force() is None:
                 self.logger.error("Cannot load police force tactics")
 
-            tactics_police_force: TacticsPoliceForce = (  # noqa: F841
-                loader.get_tactics_police_force()
-            )
+            tactics_police_force: TacticsPoliceForce = loader.get_tactics_police_force()
 
-            module_config: ModuleConfig = ModuleConfig(  # noqa: F841
+            module_config: ModuleConfig = ModuleConfig(
                 config.get_value(
                     ConfigKey.KEY_MODULE_CONFIG_FILE_NAME,
                     ModuleConfig.DEFAULT_CONFIG_FILE_NAME,
                 )
             )
 
-            develop_data: DevelopData = DevelopData(  # noqa: F841
+            develop_data: DevelopData = DevelopData(
                 config.get_value(ConfigKey.KEY_DEBUG_FLAG, False),
                 config.get_value(
                     ConfigKey.KEY_DEVELOP_DATA_FILE_NAME, DevelopData.DEFAULT_FILE_NAME
                 ),
             )
 
-            # TODO: component_launcher.generate_request_ID can cause race condition
             thread = threading.Thread(
                 target=component_launcher.connect,
                 args=(
