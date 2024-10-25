@@ -1,4 +1,3 @@
-from logging import Logger, getLogger
 from typing import Optional, cast
 
 from rcrs_core.entities.area import Area
@@ -33,7 +32,6 @@ class DefaultExtendActionMove(ExtendAction):
         )
         self._target_entity_id: Optional[EntityID] = None
         self._threshold_to_rest: int = develop_data.get_value("threshold_to_rest", 100)
-        self._logger: Logger = getLogger(__name__)
 
         match self.scenario_info.get_mode():
             case Mode.NON_PRECOMPUTE:
