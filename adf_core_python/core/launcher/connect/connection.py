@@ -1,5 +1,4 @@
 import socket
-import sys
 
 import rcrs_core.connection.rcrs_encoding_utils as rcrs_encoding_utils
 
