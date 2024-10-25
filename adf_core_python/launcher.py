@@ -59,23 +59,20 @@ class Launcher:
         )
         parser.add_argument("--debug", type=bool, help="debug flag", metavar="")
         args = parser.parse_args()
-        self.logger.info(f"Arguments: {args}")
 
         config_map = {
-            args.host: ConfigKey.KEY_KERNEL_HOST,
-            args.port: ConfigKey.KEY_KERNEL_PORT,
-            args.ambulanceteam: ConfigKey.KEY_AMBULANCE_TEAM_COUNT,
-            args.firebrigade: ConfigKey.KEY_FIRE_BRIGADE_COUNT,
-            args.policeforce: ConfigKey.KEY_POLICE_FORCE_COUNT,
-            args.precompute: ConfigKey.KEY_PRECOMPUTE,
-            args.debug: ConfigKey.KEY_DEBUG_FLAG,
+            ConfigKey.KEY_KERNEL_HOST: args.host,
+            ConfigKey.KEY_KERNEL_PORT: args.port,
+            ConfigKey.KEY_AMBULANCE_TEAM_COUNT: args.ambulanceteam,
+            ConfigKey.KEY_FIRE_BRIGADE_COUNT: args.firebrigade,
+            ConfigKey.KEY_POLICE_FORCE_COUNT: args.policeforce,
+            ConfigKey.KEY_PRECOMPUTE: args.precompute,
+            ConfigKey.KEY_DEBUG_FLAG: args.debug,
         }
 
-        self.logger.info(f"Config map: {config_map}")
-
-        for arg, key in config_map.items():
-            if arg is not None:
-                self.launcher_config.set_value(key, arg)
+        for key, value in config_map.items():
+            if value is not None:
+                self.launcher_config.set_value(key, value)
 
         self.logger.info(f"Config: {self.launcher_config}")
 
