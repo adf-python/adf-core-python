@@ -20,5 +20,7 @@ class Agent(RCRSAgent):
         )
 
     def handle_connect_error(self, msg):
-        self.logger.warning("failed {0} : {1}".format(msg.request_id, msg.reason))
+        self.logger.warning(
+            "Failed to connect agent: %s(request_id: %s)", msg.reason, msg.request_id
+        )
         sys.exit(1)

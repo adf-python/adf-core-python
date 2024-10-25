@@ -16,6 +16,8 @@ class ComponentLauncher:
         return Connection(self.host, self.port)
 
     def connect(self, agent: Agent, _request_id) -> None:
+        self.logger.bind(agent_id=agent.get_id())
+
         self.logger.info(
             f"{agent.__class__.__name__} connecting to {self.host}:{self.port} request_id: {_request_id}"
         )
