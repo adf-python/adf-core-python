@@ -1,7 +1,5 @@
 import threading
 
-from rcrs_core.connection.componentLauncher import ComponentLauncher
-
 from adf_core_python.core.agent.config.module_config import ModuleConfig
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.platoon.platoon_fire import PlatoonFire
@@ -11,6 +9,7 @@ from adf_core_python.core.component.tactics.tactics_fire_brigade import (
 )
 from adf_core_python.core.config.config import Config
 from adf_core_python.core.launcher.config_key import ConfigKey
+from adf_core_python.core.launcher.connect.component_launcher import ComponentLauncher
 from adf_core_python.core.launcher.connect.connector import Connector
 from adf_core_python.core.logger.logger import get_logger
 
@@ -64,7 +63,7 @@ class ConnectorFireBrigade(Connector):
                         module_config,
                         develop_data,
                     ),
-                    component_launcher.generate_request_ID(),
+                    component_launcher.generate_request_id(),
                 ),
             )
             threads.append(thread)

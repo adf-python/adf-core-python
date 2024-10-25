@@ -1,9 +1,10 @@
-from rcrs_core.agents.agent import Agent
+# from rcrs_core.agents.agent import Agent
 from rcrs_core.commands.Command import Command
 from rcrs_core.config.config import Config as RCRSConfig
 from rcrs_core.worldmodel.changeSet import ChangeSet
 
 from adf_core_python.core.agent.action.action import Action
+from adf_core_python.core.agent.agent import Agent
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.config.module_config import ModuleConfig
 from adf_core_python.core.agent.develop.develop_data import DevelopData
@@ -28,9 +29,7 @@ class Platoon(Agent):
         module_config: ModuleConfig,
         develop_data: DevelopData,
     ) -> None:
-        super().__init__(
-            is_precompute,
-        )
+        super().__init__(is_precompute, self.__class__.__qualname__)
         self._tactics_agent = tactics_agent
         self._team_name = team_name
         self._is_precompute = is_precompute
@@ -61,15 +60,15 @@ class Platoon(Agent):
         config = Config()
         if self.config is not None:
             rcrc_config: RCRSConfig = self.config
-            for key, value in rcrc_config.data.items():
+            for key, value in rcrc_config.data.items():  # type: ignore
                 config.set_value(key, value)
-            for key, value in rcrc_config.int_data.items():
+            for key, value in rcrc_config.int_data.items():  # type: ignore
                 config.set_value(key, value)
-            for key, value in rcrc_config.float_data.items():
+            for key, value in rcrc_config.float_data.items():  # type: ignore
                 config.set_value(key, value)
-            for key, value in rcrc_config.boolean_data.items():
+            for key, value in rcrc_config.boolean_data.items():  # type: ignore
                 config.set_value(key, value)
-            for key, value in rcrc_config.array_data.items():
+            for key, value in rcrc_config.array_data.items():  # type: ignore
                 config.set_value(key, value)
 
         self._scenario_info: ScenarioInfo = ScenarioInfo(config, self._mode)

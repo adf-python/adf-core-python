@@ -1,5 +1,6 @@
 import logging
 import sys
+from logging.handlers import RotatingFileHandler
 
 import structlog
 from structlog.dev import ConsoleRenderer
@@ -69,7 +70,10 @@ def configure_logger() -> None:
         structlog.stdlib.ProcessorFormatter(processor=ConsoleRenderer())
     )
 
-    handler_file = logging.FileHandler("agent.log")
+    handler_file = RotatingFileHandler(
+        "agent.log", maxBytes=10 * 1024 * 1024, backupCount=5
+    )
+    handler_file.doRollover()
     handler_file.setFormatter(
         structlog.stdlib.ProcessorFormatter(processor=JSONRenderer())
     )

@@ -1,21 +1,21 @@
 import threading
-from logging import Logger, getLogger
 
 from rcrs_core.agents.fireStationAgent import FireStationAgent
-from rcrs_core.connection.componentLauncher import ComponentLauncher
 
 from adf_core_python.core.agent.config.module_config import ModuleConfig
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.component.abstract_loader import AbstractLoader
 from adf_core_python.core.config.config import Config
 from adf_core_python.core.launcher.config_key import ConfigKey
+from adf_core_python.core.launcher.connect.component_launcher import ComponentLauncher
 from adf_core_python.core.launcher.connect.connector import Connector
+from adf_core_python.core.logger.logger import get_logger
 
 
 class ConnectorFireStation(Connector):
     def __init__(self) -> None:
         super().__init__()
-        self.logger: Logger = getLogger(__name__)
+        self.logger = get_logger(__name__)
 
     def connect(
         self,
@@ -59,7 +59,7 @@ class ConnectorFireStation(Connector):
                     FireStationAgent(
                         config.get_value(ConfigKey.KEY_PRECOMPUTE, False),
                     ),  # type: ignore
-                    component_launcher.generate_request_ID(),
+                    component_launcher.generate_request_id(),
                 ),
             )
             threads.append(thread)
