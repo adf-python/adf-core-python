@@ -1,4 +1,5 @@
 import sys
+from typing import Any, NoReturn
 
 from rcrs_core.agents.agent import Agent as RCRSAgent
 from rcrs_core.worldmodel.worldmodel import WorldModel
@@ -19,8 +20,8 @@ class Agent(RCRSAgent):
             f"{self.__class__.__module__}.{self.__class__.__qualname__}"
         )
 
-    def handle_connect_error(self, msg):
-        self.logger.warning(
+    def handle_connect_error(self, msg: Any) -> NoReturn:
+        self.logger.error(
             "Failed to connect agent: %s(request_id: %s)", msg.reason, msg.request_id
         )
         sys.exit(1)

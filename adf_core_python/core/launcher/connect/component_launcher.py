@@ -1,12 +1,13 @@
 import socket
 
 from rcrs_core.agents.agent import Agent
+from structlog import BoundLogger
 
 from adf_core_python.core.launcher.connect.connection import Connection
 
 
 class ComponentLauncher:
-    def __init__(self, host: str, port: int, logger) -> None:
+    def __init__(self, host: str, port: int, logger: BoundLogger) -> None:
         self.request_id = 0
         self.port = port
         self.host = host
@@ -15,7 +16,7 @@ class ComponentLauncher:
     def make_connection(self) -> Connection:
         return Connection(self.host, self.port)
 
-    def connect(self, agent: Agent, _request_id) -> None:
+    def connect(self, agent: Agent, _request_id: int) -> None:
         self.logger.bind(agent_id=agent.get_id())
 
         self.logger.info(
