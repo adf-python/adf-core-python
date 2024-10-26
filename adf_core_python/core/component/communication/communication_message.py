@@ -16,4 +16,8 @@ class CommunicationMessage(ABC):
     def to_bytes(self) -> bytes:
         raise NotImplementedError
 
+    @abstractmethod
+    def get_check_key(self) -> str:
+        raise NotImplementedError
+
     # TODO: Implement the toBitOutputStream and getCheckKey methods
