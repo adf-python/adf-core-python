@@ -1,7 +1,9 @@
 from enum import Enum
-from typing import Any
+from typing import TypeVar
 
 from adf_core_python.core.config.config import Config
+
+T = TypeVar("T")
 
 
 class Mode(Enum):
@@ -21,7 +23,7 @@ class ScenarioInfoKeys:
     FIRE_TANK_REFILL_RATE = "fire.tank.refill_rate"
     KERNEL_TIMESTEPS = "kernel.timesteps"
     FIRE_EXTINGUISH_MAX_SUM = "fire.extinguish.max-sum"
-    COMMS_CHANNELS_MAX_PLATOON = "comms.channels.max.platoon"
+    COMMUNICATION_CHANNELS_MAX_PLATOON = "comms.channels.max.platoon"
     KERNEL_AGENTS_THINK_TIME = "kernel.agents.think-time"
     FIRE_TANK_MAXIMUM = "fire.tank.maximum"
     CLEAR_REPAIR_RATE = "clear.repair.rate"
@@ -34,11 +36,11 @@ class ScenarioInfoKeys:
     KERNEL_COMMUNICATION_MODEL = "kernel.communication-model"
     PERCEPTION_LOS_PRECISION_DAMAGE = "perception.los.precision.damage"
     SCENARIO_AGENTS_AC = "scenario.agents.ac"
-    COMMS_CHANNELS_MAX_OFFICE = "comms.channels.max.centre"
+    COMMUNICATION_CHANNELS_MAX_OFFICE = "comms.channels.max.centre"
     FIRE_EXTINGUISH_MAX_DISTANCE = "fire.extinguish.max-distance"
     KERNEL_AGENTS_IGNOREUNTIL = "kernel.agents.ignoreuntil"
     CLEAR_REPAIR_DISTANCE = "clear.repair.distance"
-    COMMS_CHANNELS_COUNT = "comms.channels.count"
+    COMMUNICATION_CHANNELS_COUNT = "comms.channels.count"
 
 
 class ScenarioInfo:
@@ -89,7 +91,7 @@ class ScenarioInfo:
         """
         return self._mode
 
-    def get_value(self, key: str, default: Any) -> Any:
+    def get_value(self, key: str, default: T) -> T:
         """
         Get the value of the configuration
 
@@ -105,4 +107,11 @@ class ScenarioInfo:
         Any
             Value of the configuration
         """
-        return self._config.get_value(key, default)
+        value = self._config.get_value(key, default)
+        if not isinstance(value, type(default)):
+            try:
+                return type(default)(value)  # type: ignore
+            except (ValueError, TypeError):
+                # 型変換に失敗した場合はそのままデフォルト値を返す
+                return default
+        return value

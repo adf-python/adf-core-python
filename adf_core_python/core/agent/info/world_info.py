@@ -171,3 +171,14 @@ class WorldInfo:
             if isinstance(bloackde_entity, Blockade):
                 bloakcades.add(cast(Blockade, bloackde_entity))
         return bloakcades
+
+    def add_entity(self, entity: Entity) -> None:
+        """
+        Add the entity
+
+        Parameters
+        ----------
+        entity : Entity
+            Entity
+        """
+        self._world_model.add_entity(entity)

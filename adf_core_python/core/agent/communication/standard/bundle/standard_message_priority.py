@@ -12,3 +12,11 @@ class StandardMessagePriority(Enum):
 
     def __str__(self) -> str:
         return self.name.lower()
+
+    def __lt__(self, other):
+        if isinstance(other, StandardMessagePriority):
+            return self.value < other.value
+
+    def __le__(self, other):
+        if isinstance(other, StandardMessagePriority):
+            return self.value <= other.value

@@ -13,10 +13,14 @@ from adf_core_python.core.agent.communication.standard.bundle.standard_message i
 from adf_core_python.core.agent.communication.standard.bundle.standard_message_priority import (
     StandardMessagePriority,
 )
+from adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag import (
+    read_with_exist_flag,
+    write_with_exist_flag,
+)
 
 
 class MessageRoad(StandardMessage):
-    CTION_REST: int = 0
+    ACTION_REST: int = 0
     ACTION_MOVE: int = 1
     ACTION_CLEAR: int = 2
 
@@ -34,11 +38,11 @@ class MessageRoad(StandardMessage):
         is_send_blockade_location: bool,
         is_passable: Optional[bool],
         blockade: Optional[Blockade],
-        priority: StandardMessagePriority = StandardMessagePriority.NORMAL,
-        sender_id: int = -1,
-        ttl: int = -1,
+        priority: StandardMessagePriority,
+        sender_entity_id: EntityID,
+        ttl: Optional[int] = None,
     ):
-        super().__init__(is_wireless_message, priority, sender_id, ttl)
+        super().__init__(is_wireless_message, priority, sender_entity_id, ttl)
         self._road_entity_id: Optional[EntityID] = road.get_id()
         self._road_blockade_entity_id: Optional[EntityID] = None
         self._road_blockade_repair_cost: Optional[int] = None
@@ -54,96 +58,6 @@ class MessageRoad(StandardMessage):
 
         self._is_passable: Optional[bool] = is_passable
         self._is_send_blockade_location: bool = is_send_blockade_location
-
-    def get_byte_size(self) -> int:
-        return self.to_bytes().__len__()
-
-    def to_bytes(self) -> bytes:
-        bit_array = bitarray()
-        self.write_with_exist_flag(
-            bit_array,
-            self._road_entity_id.get_value() if self._road_entity_id else None,
-            self.SIZE_ROAD_ENTITY_ID,
-        )
-        self.write_with_exist_flag(
-            bit_array,
-            self._road_blockade_entity_id.get_value()
-            if self._road_blockade_entity_id
-            else None,
-            self.SIZE_ROAD_BLOCKADE_ENTITY_ID,
-        )
-        self.write_with_exist_flag(
-            bit_array,
-            self._road_blockade_repair_cost
-            if self._road_blockade_repair_cost
-            else None,
-            self.SIZE_ROAD_BLOCKADE_REPAIR_COST,
-        )
-        if self._is_send_blockade_location:
-            self.write_with_exist_flag(
-                bit_array,
-                self._road_blockade_x if self._road_blockade_x else None,
-                self.SIZE_ROAD_BLOCKADE_X,
-            )
-            self.write_with_exist_flag(
-                bit_array,
-                self._road_blockade_y if self._road_blockade_y else None,
-                self.SIZE_ROAD_BLOCKADE_Y,
-            )
-        else:
-            self.write_with_exist_flag(bit_array, None, self.SIZE_ROAD_BLOCKADE_X)
-            self.write_with_exist_flag(bit_array, None, self.SIZE_ROAD_BLOCKADE_Y)
-        self.write_with_exist_flag(
-            bit_array,
-            self._is_passable if self._is_passable else None,
-            self.SIZE_PASSABLE,
-        )
-        return bit_array.tobytes()
-
-    @classmethod
-    def from_bytes(cls, bytes: bytes) -> MessageRoad:
-        bit_array = bitarray()
-        bit_array.frombytes(bytes)
-        raw_road_entity_id = cls.read_with_exist_flag(
-            bit_array, cls.SIZE_ROAD_ENTITY_ID
-        )
-        road_entity_id = EntityID(raw_road_entity_id) if raw_road_entity_id else None
-        raw_road_blockade_entity_id = cls.read_with_exist_flag(
-            bit_array, cls.SIZE_ROAD_BLOCKADE_ENTITY_ID
-        )
-        road_blockade_entity_id = (
-            EntityID(raw_road_blockade_entity_id)
-            if raw_road_blockade_entity_id
-            else None
-        )
-        road_blockade_repair_cost = cls.read_with_exist_flag(
-            bit_array, cls.SIZE_ROAD_BLOCKADE_REPAIR_COST
-        )
-        road_blockade_x = cls.read_with_exist_flag(bit_array, cls.SIZE_ROAD_BLOCKADE_X)
-        road_blockade_y = cls.read_with_exist_flag(bit_array, cls.SIZE_ROAD_BLOCKADE_Y)
-        is_passable = (
-            True if cls.read_with_exist_flag(bit_array, cls.SIZE_PASSABLE) else False
-        )
-        road = Road(road_entity_id.get_value() if road_entity_id else None)
-        blockade = Blockade(
-            road_blockade_entity_id.get_value() if road_blockade_entity_id else None
-        )
-        blockade.set_repaire_cost(road_blockade_repair_cost)
-        blockade.set_x(road_blockade_x)
-        blockade.set_y(road_blockade_y)
-        return MessageRoad(
-            False,
-            road,
-            False,
-            is_passable,
-            blockade,
-        )
-
-    def get_check_key(self) -> str:
-        road_entity_id_value = (
-            self._road_entity_id.get_value() if self._road_entity_id else None
-        )
-        return f"{self.__class__.__name__} > road: {road_entity_id_value}"
 
     def get_road_entity_id(self) -> Optional[EntityID]:
         return self._road_entity_id
@@ -165,3 +79,101 @@ class MessageRoad(StandardMessage):
 
     def get_is_send_blockade_location(self) -> bool:
         return self._is_send_blockade_location
+
+    def get_bit_size(self) -> int:
+        return self.to_bits().__len__()
+
+    def to_bits(self) -> bitarray:
+        bit_array = super().to_bits()
+        write_with_exist_flag(
+            bit_array,
+            self._road_entity_id.get_value() if self._road_entity_id else None,
+            self.SIZE_ROAD_ENTITY_ID,
+        )
+        write_with_exist_flag(
+            bit_array,
+            self._road_blockade_entity_id.get_value()
+            if self._road_blockade_entity_id
+            else None,
+            self.SIZE_ROAD_BLOCKADE_ENTITY_ID,
+        )
+        write_with_exist_flag(
+            bit_array,
+            self._road_blockade_repair_cost
+            if self._road_blockade_repair_cost
+            else None,
+            self.SIZE_ROAD_BLOCKADE_REPAIR_COST,
+        )
+        if self._is_send_blockade_location:
+            write_with_exist_flag(
+                bit_array,
+                self._road_blockade_x if self._road_blockade_x else None,
+                self.SIZE_ROAD_BLOCKADE_X,
+            )
+            write_with_exist_flag(
+                bit_array,
+                self._road_blockade_y if self._road_blockade_y else None,
+                self.SIZE_ROAD_BLOCKADE_Y,
+            )
+        else:
+            write_with_exist_flag(bit_array, None, self.SIZE_ROAD_BLOCKADE_X)
+            write_with_exist_flag(bit_array, None, self.SIZE_ROAD_BLOCKADE_Y)
+        write_with_exist_flag(
+            bit_array,
+            self._is_passable if self._is_passable else None,
+            self.SIZE_PASSABLE,
+        )
+        return bit_array
+
+    @classmethod
+    def from_bits(
+        cls, bit_array: bitarray, is_wireless_message: bool, sender_entity_id: EntityID
+    ) -> MessageRoad:
+        std_message = super().from_bits(
+            bit_array, is_wireless_message, sender_entity_id
+        )
+        road_id = read_with_exist_flag(bit_array, cls.SIZE_ROAD_ENTITY_ID)
+        road_blockade_id = read_with_exist_flag(
+            bit_array, cls.SIZE_ROAD_BLOCKADE_ENTITY_ID
+        )
+        road_blockade_repair_cost = read_with_exist_flag(
+            bit_array, cls.SIZE_ROAD_BLOCKADE_REPAIR_COST
+        )
+        road_blockade_x = read_with_exist_flag(bit_array, cls.SIZE_ROAD_BLOCKADE_X)
+        road_blockade_y = read_with_exist_flag(bit_array, cls.SIZE_ROAD_BLOCKADE_Y)
+        is_passable = (
+            True if read_with_exist_flag(bit_array, cls.SIZE_PASSABLE) else False
+        )
+        road = Road(road_id or -1)
+        blockade = Blockade(road_blockade_id or -1)
+        blockade.set_repaire_cost(road_blockade_repair_cost)
+        blockade.set_x(road_blockade_x)
+        blockade.set_y(road_blockade_y)
+        return MessageRoad(
+            is_wireless_message,
+            road,
+            False,
+            is_passable,
+            blockade,
+            StandardMessagePriority.NORMAL,
+            sender_entity_id,
+            std_message.get_ttl(),
+        )
+
+    def __hash__(self):
+        h = super().__hash__()
+        return hash(
+            (
+                h,
+                self._road_entity_id,
+                self._road_blockade_entity_id,
+                self._road_blockade_repair_cost,
+                self._road_blockade_x,
+                self._road_blockade_y,
+                self._is_passable,
+                self._is_send_blockade_location,
+            )
+        )
+
+    def __str__(self):
+        return f"MessageRoad(road_entity_id={self._road_entity_id}, road_blockade_entity_id={self._road_blockade_entity_id}, road_blockade_repair_cost={self._road_blockade_repair_cost}, road_blockade_x={self._road_blockade_x}, road_blockade_y={self._road_blockade_y}, is_passable={self._is_passable}, is_send_blockade_location={self._is_send_blockade_location})"

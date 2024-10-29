@@ -1,8 +1,8 @@
 import socket
 
-from rcrs_core.agents.agent import Agent
 from structlog import BoundLogger
 
+from adf_core_python.core.agent.agent import Agent
 from adf_core_python.core.launcher.connect.connection import Connection
 
 
@@ -17,7 +17,7 @@ class ComponentLauncher:
         return Connection(self.host, self.port)
 
     def connect(self, agent: Agent, _request_id: int) -> None:
-        self.logger.bind(agent_id=agent.get_id())
+        # self.logger.bind(agent_id=agent.get_id())
 
         self.logger.info(
             f"{agent.__class__.__name__} connecting to {self.host}:{self.port} request_id: {_request_id}"
@@ -33,8 +33,10 @@ class ComponentLauncher:
         except socket.timeout:
             self.logger.warning(f"Connection to {self.host}:{self.port} timed out")
             return
-        except socket.error:
-            self.logger.error(f"Failed to connect to {self.host}:{self.port}")
+        except socket.error as e:
+            self.logger.exception(
+                f"Failed to connect to {self.host}:{self.port}", exception=str(e)
+            )
             return
 
         connection.message_received(agent.message_received)
@@ -44,7 +46,10 @@ class ComponentLauncher:
         try:
             connection.parse_message_from_kernel()
         except Exception as e:
-            self.logger.error(f"Failed to connect agent: {self.host}:{self.port} {e}")
+            self.logger.exception(
+                f"Failed to connect agent: {self.host}:{self.port} {e}",
+                exception=str(e),
+            )
 
     def generate_request_id(self) -> int:
         self.request_id += 1

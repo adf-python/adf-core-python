@@ -12,10 +12,14 @@ from adf_core_python.core.agent.communication.standard.bundle.standard_message i
 from adf_core_python.core.agent.communication.standard.bundle.standard_message_priority import (
     StandardMessagePriority,
 )
+from adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag import (
+    read_with_exist_flag,
+    write_with_exist_flag,
+)
 
 
 class MessagePoliceForce(StandardMessage):
-    CTION_REST: int = 0
+    ACTION_REST: int = 0
     ACTION_MOVE: int = 1
     ACTION_CLEAR: int = 2
 
@@ -33,11 +37,11 @@ class MessagePoliceForce(StandardMessage):
         police_force: PoliceForceEntity,
         action: int,
         target_entity_id: EntityID,
-        priority: StandardMessagePriority = StandardMessagePriority.NORMAL,
-        sender_id: int = -1,
-        ttl: int = -1,
+        priority: StandardMessagePriority,
+        sender_entity_id: EntityID,
+        ttl: Optional[int] = None,
     ):
-        super().__init__(is_wireless_message, priority, sender_id, ttl)
+        super().__init__(is_wireless_message, priority, sender_entity_id, ttl)
         self._police_force_entity_id: Optional[EntityID] = police_force.get_id()
         self._police_force_hp: Optional[int] = police_force.get_hp() or None
         self._police_force_buriedness: Optional[int] = (
@@ -49,103 +53,6 @@ class MessagePoliceForce(StandardMessage):
         )
         self._target_entity_id: Optional[EntityID] = target_entity_id
         self._action: Optional[int] = action
-
-    def get_byte_size(self) -> int:
-        return self.to_bytes().__len__()
-
-    def to_bytes(self) -> bytes:
-        bit_array = bitarray()
-        self.write_with_exist_flag(
-            bit_array,
-            self._police_force_entity_id.get_value()
-            if self._police_force_entity_id
-            else None,
-            self.SIZE_POLICE_FORCE_ENTITY_ID,
-        )
-        self.write_with_exist_flag(
-            bit_array,
-            self._police_force_hp,
-            self.SIZE_POLICE_FORCE_HP,
-        )
-        self.write_with_exist_flag(
-            bit_array,
-            self._police_force_buriedness,
-            self.SIZE_POLICE_FORCE_BURIEDNESS,
-        )
-        self.write_with_exist_flag(
-            bit_array,
-            self._police_force_damage,
-            self.SIZE_POLICE_FORCE_DAMAGE,
-        )
-        self.write_with_exist_flag(
-            bit_array,
-            self._police_force_position.get_value()
-            if self._police_force_position
-            else None,
-            self.SIZE_POLICE_FORCE_POSITION,
-        )
-        self.write_with_exist_flag(
-            bit_array,
-            self._target_entity_id.get_value() if self._target_entity_id else None,
-            self.SIZE_TARGET_ENTITY_ID,
-        )
-        self.write_with_exist_flag(bit_array, self._action, self.SIZE_ACTION)
-        return bit_array.tobytes()
-
-    @classmethod
-    def from_bytes(cls, bytes: bytes) -> MessagePoliceForce:
-        bit_array = bitarray()
-        bit_array.frombytes(bytes)
-        raw_police_force_entity_id = cls.read_with_exist_flag(
-            bit_array, cls.SIZE_POLICE_FORCE_ENTITY_ID
-        )
-        police_force_entity_id = (
-            EntityID(raw_police_force_entity_id) if raw_police_force_entity_id else None
-        )
-        police_force_hp = cls.read_with_exist_flag(bit_array, cls.SIZE_POLICE_FORCE_HP)
-        police_force_buriedness = cls.read_with_exist_flag(
-            bit_array, cls.SIZE_POLICE_FORCE_BURIEDNESS
-        )
-        police_force_damage = cls.read_with_exist_flag(
-            bit_array, cls.SIZE_POLICE_FORCE_DAMAGE
-        )
-        raw_police_force_position = cls.read_with_exist_flag(
-            bit_array, cls.SIZE_POLICE_FORCE_POSITION
-        )
-        police_force_position = (
-            EntityID(raw_police_force_position) if raw_police_force_position else None
-        )
-        raw_target_entity_id = cls.read_with_exist_flag(
-            bit_array, cls.SIZE_TARGET_ENTITY_ID
-        )
-        target_entity_id = (
-            EntityID(raw_target_entity_id) if raw_target_entity_id else None
-        )
-        action = cls.read_with_exist_flag(bit_array, cls.SIZE_ACTION)
-        police_force = PoliceForceEntity(
-            police_force_entity_id.get_value() if police_force_entity_id else None
-        )
-        police_force.set_hp(police_force_hp)
-        police_force.set_buriedness(police_force_buriedness)
-        police_force.set_damage(police_force_damage)
-        police_force.set_position(police_force_position)
-        return MessagePoliceForce(
-            False,
-            police_force,
-            action or -1,
-            target_entity_id or EntityID(-1),
-        )
-
-    def get_check_key(self) -> str:
-        police_force_entity_id_value = (
-            self._police_force_entity_id.get_value()
-            if self._police_force_entity_id
-            else None
-        )
-        target_entity_id_value = (
-            self._target_entity_id.get_value() if self._target_entity_id else None
-        )
-        return f"{self.__class__.__name__} > police force: {police_force_entity_id_value} > target: {target_entity_id_value} > action: {self._action}"
 
     def get_police_force_entity_id(self) -> Optional[EntityID]:
         return self._police_force_entity_id
@@ -167,3 +74,108 @@ class MessagePoliceForce(StandardMessage):
 
     def get_action(self) -> Optional[int]:
         return self._action
+
+    def get_bit_size(self) -> int:
+        return self.to_bits().__len__()
+
+    def to_bits(self) -> bitarray:
+        bit_array = super().to_bits()
+        write_with_exist_flag(
+            bit_array,
+            self._police_force_entity_id.get_value()
+            if self._police_force_entity_id
+            else None,
+            self.SIZE_POLICE_FORCE_ENTITY_ID,
+        )
+        write_with_exist_flag(
+            bit_array,
+            self._police_force_hp,
+            self.SIZE_POLICE_FORCE_HP,
+        )
+        write_with_exist_flag(
+            bit_array,
+            self._police_force_buriedness,
+            self.SIZE_POLICE_FORCE_BURIEDNESS,
+        )
+        write_with_exist_flag(
+            bit_array,
+            self._police_force_damage,
+            self.SIZE_POLICE_FORCE_DAMAGE,
+        )
+        write_with_exist_flag(
+            bit_array,
+            self._police_force_position.get_value()
+            if self._police_force_position
+            else None,
+            self.SIZE_POLICE_FORCE_POSITION,
+        )
+        write_with_exist_flag(
+            bit_array,
+            self._target_entity_id.get_value() if self._target_entity_id else None,
+            self.SIZE_TARGET_ENTITY_ID,
+        )
+        write_with_exist_flag(bit_array, self._action, self.SIZE_ACTION)
+        return bit_array
+
+    @classmethod
+    def from_bits(
+        cls, bit_array: bitarray, is_wireless_message: bool, sender_entity_id: EntityID
+    ) -> MessagePoliceForce:
+        std_message = super().from_bits(
+            bit_array, is_wireless_message, sender_entity_id
+        )
+        police_force_id = read_with_exist_flag(
+            bit_array, cls.SIZE_POLICE_FORCE_ENTITY_ID
+        )
+        police_force_hp = read_with_exist_flag(bit_array, cls.SIZE_POLICE_FORCE_HP)
+        police_force_buriedness = read_with_exist_flag(
+            bit_array, cls.SIZE_POLICE_FORCE_BURIEDNESS
+        )
+        police_force_damage = read_with_exist_flag(
+            bit_array, cls.SIZE_POLICE_FORCE_DAMAGE
+        )
+        raw_police_force_position = read_with_exist_flag(
+            bit_array, cls.SIZE_POLICE_FORCE_POSITION
+        )
+        police_force_position = (
+            EntityID(raw_police_force_position) if raw_police_force_position else None
+        )
+        raw_target_entity_id = read_with_exist_flag(
+            bit_array, cls.SIZE_TARGET_ENTITY_ID
+        )
+        target_entity_id = (
+            EntityID(raw_target_entity_id) if raw_target_entity_id else EntityID(-1)
+        )
+        action = read_with_exist_flag(bit_array, cls.SIZE_ACTION)
+        police_force = PoliceForceEntity(police_force_id or -1)
+        police_force.set_hp(police_force_hp)
+        police_force.set_buriedness(police_force_buriedness)
+        police_force.set_damage(police_force_damage)
+        police_force.set_position(police_force_position)
+        return MessagePoliceForce(
+            False,
+            police_force,
+            action if action is not None else -1,
+            target_entity_id,
+            StandardMessagePriority.NORMAL,
+            sender_entity_id,
+            std_message.get_ttl(),
+        )
+
+    def __hash__(self):
+        h = super().__hash__()
+        return hash(
+            (
+                h,
+                self._police_force_entity_id,
+                self._police_force_hp,
+                self._police_force_buriedness,
+                self._police_force_damage,
+                self._police_force_position,
+                self._target_entity_id,
+                self._action,
+            )
+        )
+
+    def __str__(self):
+        return f"MessagePoliceForce(police_force_entity_id={self._police_force_entity_id}, police_force_hp={self._police_force_hp}, police_force_buriedness={self._police_force_buriedness}, police_force_damage={self._police_force_damage}, police_force_position={self._police_force_position}, target_entity_id={self._target_entity_id}, action={self._action})"

@@ -1,15 +1,21 @@
-from adf_core_python.core.agent.info.agent_info import AgentInfo
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 from adf_core_python.core.agent.info.scenario_info import ScenarioInfo, ScenarioInfoKeys
 from adf_core_python.core.agent.info.world_info import WorldInfo
-from adf_core_python.core.component.communication.channel_subscriber import (
-    ChannelSubscriber,
-)
-from adf_core_python.core.component.communication.communication_message import (
-    CommunicationMessage,
-)
-from adf_core_python.core.component.communication.message_coordinator import (
-    MessageCoordinator,
-)
+
+if TYPE_CHECKING:
+    from adf_core_python.core.agent.info.agent_info import AgentInfo
+    from adf_core_python.core.component.communication.channel_subscriber import (
+        ChannelSubscriber,
+    )
+    from adf_core_python.core.component.communication.communication_message import (
+        CommunicationMessage,
+    )
+    from adf_core_python.core.component.communication.message_coordinator import (
+        MessageCoordinator,
+    )
 
 
 class MessageManager:
@@ -34,7 +40,7 @@ class MessageManager:
         """
         self.__standard_message_class_count = 0b0000_0001
         self.__custom_message_class_count = 0b0001_0000
-        self.__message_classes: dict[int, CommunicationMessage] = {}
+        self.__message_classes: dict[int, type[CommunicationMessage]] = {}
         self.__send_message_list: list[CommunicationMessage] = []
         self.__received_message_list: list[CommunicationMessage] = []
         self.__channel_send_message_list: list[list[CommunicationMessage]] = []
@@ -106,6 +112,18 @@ class MessageManager:
         """
         self.__channel_subscriber = channel_subscriber
 
+    def set_message_coordinator(self, message_coordinator: MessageCoordinator) -> None:
+        """
+        Set the message coordinator.
+
+        Parameters
+        ----------
+        message_coordinator : MessageCoordinator
+            The message coordinator.
+
+        """
+        self.__message_coordinator = message_coordinator
+
     def get_channel_subscriber(self) -> ChannelSubscriber:
         """
         Get the channel subscriber.
@@ -161,6 +179,18 @@ class MessageManager:
         """
         return self.__received_message_list
 
+    def get_channel_send_message_list(self) -> list[list[CommunicationMessage]]:
+        """
+        Get the channel send message list.
+
+        Returns
+        -------
+        list[list[CommunicationMessage]]
+            The channel send message list.
+
+        """
+        return self.__channel_send_message_list
+
     def subscribe(
         self, agent_info: AgentInfo, world_info: WorldInfo, scenario_info: ScenarioInfo
     ) -> None:
@@ -185,10 +215,13 @@ class MessageManager:
         if self.__channel_subscriber is None:
             raise ValueError("ChannelSubscriber is not set.")
 
-        self.__channel_subscriber.subscribe(agent_info, world_info, scenario_info, self)
+        if agent_info.get_time() == 1:
+            self.__subscribed_channels = self.__channel_subscriber.subscribe(
+                agent_info, world_info, scenario_info
+            )
 
     def register_message_class(
-        self, index: int, message_class: CommunicationMessage
+        self, index: int, message_class: type[CommunicationMessage]
     ) -> None:
         """
         Register the message class.
@@ -205,6 +238,43 @@ class MessageManager:
             )
         self.__message_classes[index] = message_class
 
+    def get_message_class(self, index: int) -> type[CommunicationMessage]:
+        """
+        Get the message class.
+
+        Parameters
+        ----------
+        index : int
+            The index.
+
+        Returns
+        -------
+        type[CommunicationMessage]
+            The message class.
+
+        """
+        return self.__message_classes[index]
+
+    def get_message_class_index(self, message_class: type[CommunicationMessage]) -> int:
+        """
+        Get the message class index.
+
+        Parameters
+        ----------
+        message_class : type[CommunicationMessage]
+            The message class.
+
+        Returns
+        -------
+        int
+            The message class index.
+
+        """
+        for index, cls in self.__message_classes.items():
+            if cls == message_class:
+                return index
+        return -1
+
     def add_message(
         self, message: CommunicationMessage, check_duplicate: bool = True
     ) -> None:
@@ -217,7 +287,7 @@ class MessageManager:
             The message.
 
         """
-        check_key = message.get_check_key()
+        check_key = message.__hash__()
         # TODO:両方同じコードになっているが、なぜなのか調査する
         if check_duplicate and check_key not in self.__check_duplicate_cache:
             self.__send_message_list.append(message)
@@ -225,6 +295,18 @@ class MessageManager:
         else:
             self.__send_message_list.append(message)
             self.__check_duplicate_cache.add(check_key)
+
+    def get_send_message_list(self) -> list[CommunicationMessage]:
+        """
+        Get the send message list.
+
+        Returns
+        -------
+        list[CommunicationMessage]
+            The send message list.
+
+        """
+        return self.__send_message_list
 
     def coordinate_message(
         self, agent_info: AgentInfo, world_info: WorldInfo, scenario_info: ScenarioInfo
@@ -248,7 +330,11 @@ class MessageManager:
         self.__channel_send_message_list = [
             []
             for _ in range(
-                scenario_info.get_value(ScenarioInfoKeys.COMMS_CHANNELS_COUNT, 1)
+                int(
+                    scenario_info.get_value(
+                        ScenarioInfoKeys.COMMUNICATION_CHANNELS_COUNT, 1
+                    )
+                )
             )
         ]
 
@@ -267,5 +353,23 @@ class MessageManager:
 
         """
         self.__send_message_list = []
+        self.__received_message_list = []
         self.__check_duplicate_cache = set()
         self.__heard_agent_help_message_count = 0
+
+    def __str__(self) -> str:
+        return (
+            f"MessageManager("
+            f"standard_message_class_count={self.__standard_message_class_count}, "
+            f"custom_message_class_count={self.__custom_message_class_count}, "
+            f"message_classes={self.__message_classes}, "
+            f"send_message_list={self.__send_message_list}, "
+            f"received_message_list={self.__received_message_list}, "
+            f"channel_send_message_list={self.__channel_send_message_list}, "
+            f"check_duplicate_cache={self.__check_duplicate_cache}, "
+            f"message_coordinator={self.__message_coordinator}, "
+            f"channel_subscriber={self.__channel_subscriber}, "
+            f"heard_agent_help_message_count={self.__heard_agent_help_message_count}, "
+            f"subscribed_channels={self.__subscribed_channels}, "
+            f"is_subscribed={self.__is_subscribed})"
+        )

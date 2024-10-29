@@ -53,6 +53,7 @@ class ConnectorAmbulanceTeam(Connector):
                 ),
             )
 
+            request_id: int = component_launcher.generate_request_id()
             thread = threading.Thread(
                 target=component_launcher.connect,
                 args=(
@@ -65,8 +66,9 @@ class ConnectorAmbulanceTeam(Connector):
                         module_config,
                         develop_data,
                     ),
-                    component_launcher.generate_request_id(),
+                    request_id,
                 ),
+                name=f"AmbulanceTeam-{request_id}",
             )
             threads.append(thread)
 

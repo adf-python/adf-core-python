@@ -1,7 +1,9 @@
-from time import time
-from typing import Any
+from __future__ import annotations
 
-from rcrs_core.agents.agent import Agent
+from time import time
+from typing import TYPE_CHECKING, Any
+
+from rcrs_core.commands.Command import Command
 from rcrs_core.entities.civilian import Civilian
 from rcrs_core.entities.entity import Entity
 from rcrs_core.entities.human import Human
@@ -10,6 +12,9 @@ from rcrs_core.worldmodel.entityID import EntityID
 from rcrs_core.worldmodel.worldmodel import WorldModel
 
 from adf_core_python.core.agent.action.action import Action
+
+if TYPE_CHECKING:
+    from adf_core_python.core.agent.agent import Agent
 
 
 class AgentInfo:
@@ -45,24 +50,24 @@ class AgentInfo:
         """
         return self._time
 
-    def set_heard_commands(self, heard_commands: list[Any]) -> None:
+    def set_heard_commands(self, heard_commands: list[Command]) -> None:
         """
         Set the heard commands
 
         Parameters
         ----------
-        heard_commands : list[Any]
+        heard_commands : list[Command]
             Heard commands
         """
         self._heard_commands = heard_commands
 
-    def get_heard_commands(self) -> list[Any]:
+    def get_heard_commands(self) -> list[Command]:
         """
         Get the heard commands
 
         Returns
         -------
-        list[Any]
+        list[Command]
             Heard commands
         """
         return self._heard_commands
@@ -77,7 +82,7 @@ class AgentInfo:
             Entity ID of the agent
         """
         # TODO: Agent class should return EntityID instead of EntityID | None
-        return self._agent.get_id()  # type: ignore
+        return self._agent.get_entity_id()
 
     def get_myself(self) -> Entity:
         """

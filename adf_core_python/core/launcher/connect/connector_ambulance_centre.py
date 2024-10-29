@@ -52,6 +52,7 @@ class ConnectorAmbulanceCentre(Connector):
                 ),
             )
 
+            request_id: int = component_launcher.generate_request_id()
             # TODO: component_launcher.generate_request_ID can cause race condition
             thread = threading.Thread(
                 target=component_launcher.connect,
@@ -59,8 +60,9 @@ class ConnectorAmbulanceCentre(Connector):
                     AmbulanceCenterAgent(
                         config.get_value(ConfigKey.KEY_PRECOMPUTE, False),
                     ),  # type: ignore
-                    component_launcher.generate_request_id(),
+                    request_id,
                 ),
+                name=f"AmbulanceCentreAgent-{request_id}",
             )
             threads.append(thread)
 

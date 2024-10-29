@@ -5,6 +5,24 @@ from rcrs_core.entities.ambulanceTeam import AmbulanceTeamEntity
 from adf_core_python.core.agent.action.action import Action
 from adf_core_python.core.agent.action.common.action_rest import ActionRest
 from adf_core_python.core.agent.communication.message_manager import MessageManager
+from adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance import (
+    CommandAmbulance,
+)
+from adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire import (
+    CommandFire,
+)
+from adf_core_python.core.agent.communication.standard.bundle.centralized.command_police import (
+    CommandPolice,
+)
+from adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout import (
+    CommandScout,
+)
+from adf_core_python.core.agent.communication.standard.bundle.centralized.message_report import (
+    CommandReport,
+)
+from adf_core_python.core.agent.communication.standard.bundle.standard_message_priority import (
+    StandardMessagePriority,
+)
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
 from adf_core_python.core.agent.info.scenario_info import Mode, ScenarioInfo
@@ -118,6 +136,61 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
 
         agent: AmbulanceTeamEntity = cast(AmbulanceTeamEntity, agent_info.get_myself())  # noqa: F841
         entity_id = agent_info.get_entity_id()  # noqa: F841
+
+        message_manager.add_message(
+            CommandAmbulance(
+                False,
+                entity_id,
+                entity_id,
+                CommandAmbulance.ACTION_REST,
+                StandardMessagePriority.NORMAL,
+                entity_id,
+            )
+        )
+        message_manager.add_message(
+            CommandFire(
+                False,
+                entity_id,
+                entity_id,
+                CommandFire.ACTION_REST,
+                StandardMessagePriority.NORMAL,
+                entity_id,
+            )
+        )
+        message_manager.add_message(
+            CommandPolice(
+                False,
+                entity_id,
+                entity_id,
+                CommandPolice.ACTION_REST,
+                StandardMessagePriority.NORMAL,
+                entity_id,
+            )
+        )
+        message_manager.add_message(
+            CommandScout(
+                False,
+                entity_id,
+                entity_id,
+                20000,
+                StandardMessagePriority.NORMAL,
+                entity_id,
+            )
+        )
+        message_manager.add_message(
+            CommandReport(
+                False,
+                True,
+                True,
+                entity_id,
+                StandardMessagePriority.NORMAL,
+            )
+        )
+
+        self._logger.debug(
+            f"received messages: {[str(message) for message in message_manager.get_received_message_list()]}, help: {message_manager.get_heard_agent_help_message_count()}",
+            message_manager=message_manager,
+        )
 
         target_entity_id = self._human_detector.calculate().get_target_entity_id()
         self._logger.debug(

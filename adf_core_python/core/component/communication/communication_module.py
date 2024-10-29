@@ -1,8 +1,11 @@
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
+from typing import TYPE_CHECKING
 
-from rcrs_core.agents.agent import Agent
-
-from adf_core_python.core.agent.communication.message_manager import MessageManager
+if TYPE_CHECKING:
+    from adf_core_python.core.agent.agent import Agent
+    from adf_core_python.core.agent.communication.message_manager import MessageManager
 
 
 class CommunicationModule(ABC):
