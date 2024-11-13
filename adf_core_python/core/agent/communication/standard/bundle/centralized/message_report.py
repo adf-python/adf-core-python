@@ -15,7 +15,7 @@ from adf_core_python.core.agent.communication.standard.utility.bitarray_with_exi
 )
 
 
-class CommandReport(StandardMessage):
+class MessageReport(StandardMessage):
     SIZE_DONE: int = 1
     SIZE_BLOADCAST: int = 1
 
@@ -60,7 +60,7 @@ class CommandReport(StandardMessage):
         bit_array: bitarray,
         is_wireless_message: bool,
         sender_entity_id: EntityID,
-    ) -> CommandReport:
+    ) -> MessageReport:
         std_message = super().from_bits(
             bit_array, is_wireless_message, sender_entity_id
         )
@@ -74,7 +74,7 @@ class CommandReport(StandardMessage):
             std_message.get_priority(),
         )
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         h = super().__hash__()
         return hash(
             (

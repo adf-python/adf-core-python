@@ -1,4 +1,4 @@
-from typing import cast, Optional
+from typing import Optional, cast
 
 from rcrs_core.entities.area import Area
 from rcrs_core.entities.blockade import Blockade
@@ -12,7 +12,11 @@ from adf_core_python.core.agent.action.common.action_move import ActionMove
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
-from adf_core_python.core.agent.info.scenario_info import ScenarioInfo, Mode
+from adf_core_python.core.agent.info.scenario_info import (
+    Mode,
+    ScenarioInfo,
+    ScenarioInfoKeys,
+)
 from adf_core_python.core.agent.info.world_info import WorldInfo
 from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
@@ -32,8 +36,8 @@ class DefaultExtendActionRescue(ExtendAction):
         super().__init__(
             agent_info, world_info, scenario_info, module_manager, develop_data
         )
-        self._kernel_time = None
-        self._target_entity_id = None
+        self._kernel_time: int = -1
+        self._target_entity_id: Optional[EntityID] = None
         self._threshold_rest = develop_data.get_value(
             "adf_core_python.implement.action.DefaultExtendActionRescue.rest", 100
         )
@@ -57,7 +61,9 @@ class DefaultExtendActionRescue(ExtendAction):
         if self.get_count_precompute() >= 2:
             return self
         self._path_planning.precompute(precompute_data)
-        self._kernel_time = self.scenario_info.get_value("kernel.timesteps", -1)
+        self._kernel_time = self.scenario_info.get_value(
+            ScenarioInfoKeys.KERNEL_TIMESTEPS, -1
+        )
         return self
 
     def resume(self, precompute_data: PrecomputeData) -> ExtendAction:
@@ -65,7 +71,9 @@ class DefaultExtendActionRescue(ExtendAction):
         if self.get_count_resume() >= 2:
             return self
         self._path_planning.resume(precompute_data)
-        self._kernel_time = self.scenario_info.get_value("kernel.timesteps", -1)
+        self._kernel_time = self.scenario_info.get_value(
+            ScenarioInfoKeys.KERNEL_TIMESTEPS, -1
+        )
         return self
 
     def prepare(self) -> ExtendAction:
@@ -73,7 +81,9 @@ class DefaultExtendActionRescue(ExtendAction):
         if self.get_count_prepare() >= 2:
             return self
         self._path_planning.prepare()
-        self._kernel_time = self.scenario_info.get_value("kernel.timesteps", -1)
+        self._kernel_time = self.scenario_info.get_value(
+            ScenarioInfoKeys.KERNEL_TIMESTEPS, -1
+        )
         return self
 
     def update_info(self, message_manager: MessageManager) -> ExtendAction:

@@ -64,7 +64,7 @@ class StandardMessage(CommunicationMessage):
     def get_bit_size(self) -> int:
         raise NotImplementedError
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash((self._sender_entity_id, self._priority, self._ttl))
 
     def __str__(self) -> str:

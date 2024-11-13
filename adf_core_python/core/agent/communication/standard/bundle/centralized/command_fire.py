@@ -121,7 +121,7 @@ class CommandFire(StandardMessage):
             command_target_id,
         )
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         h = super().__hash__()
         return hash(
             (

@@ -44,7 +44,7 @@ class MessageManager:
         self.__send_message_list: list[CommunicationMessage] = []
         self.__received_message_list: list[CommunicationMessage] = []
         self.__channel_send_message_list: list[list[CommunicationMessage]] = []
-        self.__check_duplicate_cache: set[str] = set()
+        self.__check_duplicate_cache: set[int] = set()
         self.__message_coordinator: MessageCoordinator
         self.__channel_subscriber: ChannelSubscriber
         self.__heard_agent_help_message_count: int = 0

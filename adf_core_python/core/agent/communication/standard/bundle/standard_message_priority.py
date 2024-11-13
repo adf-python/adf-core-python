@@ -13,10 +13,12 @@ class StandardMessagePriority(Enum):
     def __str__(self) -> str:
         return self.name.lower()
 
-    def __lt__(self, other):
+    def __lt__(self, other: object) -> bool:
         if isinstance(other, StandardMessagePriority):
             return self.value < other.value
+        return NotImplemented
 
-    def __le__(self, other):
+    def __le__(self, other: object) -> bool:
         if isinstance(other, StandardMessagePriority):
             return self.value <= other.value
+        return NotImplemented

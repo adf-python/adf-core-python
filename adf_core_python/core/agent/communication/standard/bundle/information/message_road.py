@@ -160,7 +160,7 @@ class MessageRoad(StandardMessage):
             std_message.get_ttl(),
         )
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         h = super().__hash__()
         return hash(
             (
@@ -175,5 +175,5 @@ class MessageRoad(StandardMessage):
             )
         )
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"MessageRoad(road_entity_id={self._road_entity_id}, road_blockade_entity_id={self._road_blockade_entity_id}, road_blockade_repair_cost={self._road_blockade_repair_cost}, road_blockade_x={self._road_blockade_x}, road_blockade_y={self._road_blockade_y}, is_passable={self._is_passable}, is_send_blockade_location={self._is_send_blockade_location})"

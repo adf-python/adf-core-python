@@ -119,7 +119,7 @@ class MessageCivilian(StandardMessage):
             std_message.get_ttl(),
         )
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         h = super().__hash__()
         return hash(
             (
@@ -132,5 +132,5 @@ class MessageCivilian(StandardMessage):
             )
         )
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"MessageCivilian(civilian_entity_id={self._civilian_entity_id}, civilian_hp={self._civilian_hp}, civilian_buriedness={self._civilian_buriedness}, civilian_damage={self._civilian_damage}, civilian_position={self._civilian_position})"

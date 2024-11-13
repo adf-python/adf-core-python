@@ -1,6 +1,5 @@
 from adf_core_python.core.agent.action.action import Action
 from adf_core_python.core.agent.agent import Agent
-from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.config.module_config import ModuleConfig
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.scenario_info import Mode

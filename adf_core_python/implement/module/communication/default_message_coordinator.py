@@ -1,5 +1,23 @@
+from typing import Optional
+
 from rcrs_core.connection.URN import Entity as EntityURN
 
+from adf_core_python.core.agent.communication.message_manager import MessageManager
+from adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance import (
+    CommandAmbulance,
+)
+from adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire import (
+    CommandFire,
+)
+from adf_core_python.core.agent.communication.standard.bundle.centralized.command_police import (
+    CommandPolice,
+)
+from adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout import (
+    CommandScout,
+)
+from adf_core_python.core.agent.communication.standard.bundle.centralized.message_report import (
+    MessageReport,
+)
 from adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team import (
     MessageAmbulanceTeam,
 )
@@ -27,6 +45,9 @@ from adf_core_python.core.agent.communication.standard.bundle.standard_message_p
 from adf_core_python.core.agent.info.agent_info import AgentInfo
 from adf_core_python.core.agent.info.scenario_info import ScenarioInfo, ScenarioInfoKeys
 from adf_core_python.core.agent.info.world_info import WorldInfo
+from adf_core_python.core.component.communication.communication_message import (
+    CommunicationMessage,
+)
 from adf_core_python.core.component.communication.message_coordinator import (
     MessageCoordinator,
 )
@@ -38,17 +59,17 @@ from adf_core_python.implement.module.communication.default_channel_subscriber i
 class DefaultMessageCoordinator(MessageCoordinator):
     def coordinate(
         self,
-        agent_info,
-        world_info,
-        scenario_info,
-        message_manager,
-        send_message_list,
-        channel_send_message_list,
-    ):
-        police_messages = []
-        ambulance_messages = []
-        fire_brigade_messages = []
-        voice_messages = []
+        agent_info: AgentInfo,
+        world_info: WorldInfo,
+        scenario_info: ScenarioInfo,
+        message_manager: MessageManager,
+        send_message_list: list[CommunicationMessage],
+        channel_send_message_list: list[list[CommunicationMessage]],
+    ) -> None:
+        police_messages: list[StandardMessage] = []
+        ambulance_messages: list[StandardMessage] = []
+        fire_brigade_messages: list[StandardMessage] = []
+        voice_messages: list[StandardMessage] = []
 
         agent_type = self.get_agent_type(agent_info, world_info)
 
@@ -64,26 +85,26 @@ class DefaultMessageCoordinator(MessageCoordinator):
                     fire_brigade_messages.append(msg)
                     ambulance_messages.append(msg)
                     police_messages.append(msg)
-                # elif isinstance(msg, CommandAmbulance):
-                #   ambulance_messages.append(msg)
-                # elif isinstance(msg, CommandFire):
-                #   fire_brigade_messages.append(msg)
-                # elif isinstance(msg, CommandPolice):
-                #   police_messages.append(msg)
-                # elif isinstance(msg, CommandScout):
-                #   if agent_type == EntityURN.FIRE_STATION:
-                #     fire_brigade_messages.append(msg)
-                #   elif agent_type == EntityURN.POLICE_OFFICE:
-                #     police_messages.append(msg)
-                #   elif agent_type == EntityURN.AMBULANCE_CENTRE:
-                #     ambulance_messages.append(msg)
-                # elif isinstance(msg, MessageReport):
-                #   if agent_type == EntityURN.FIRE_BRIGADE:
-                #     fire_brigade_messages.append(msg)
-                #   elif agent_type == EntityURN.POLICE_FORCE:
-                #     police_messages.append(msg)
-                #   elif agent_type == EntityURN.AMBULANCE_TEAM:
-                #     ambulance_messages.append(msg)
+                elif isinstance(msg, CommandAmbulance):
+                    ambulance_messages.append(msg)
+                elif isinstance(msg, CommandFire):
+                    fire_brigade_messages.append(msg)
+                elif isinstance(msg, CommandPolice):
+                    police_messages.append(msg)
+                elif isinstance(msg, CommandScout):
+                    if agent_type == EntityURN.FIRE_STATION:
+                        fire_brigade_messages.append(msg)
+                    elif agent_type == EntityURN.POLICE_OFFICE:
+                        police_messages.append(msg)
+                    elif agent_type == EntityURN.AMBULANCE_CENTRE:
+                        ambulance_messages.append(msg)
+                elif isinstance(msg, MessageReport):
+                    if agent_type == EntityURN.FIRE_BRIGADE:
+                        fire_brigade_messages.append(msg)
+                    elif agent_type == EntityURN.POLICE_FORCE:
+                        police_messages.append(msg)
+                    elif agent_type == EntityURN.AMBULANCE_TEAM:
+                        ambulance_messages.append(msg)
                 elif isinstance(msg, MessageFireBrigade):
                     fire_brigade_messages.append(msg)
                     ambulance_messages.append(msg)
@@ -146,11 +167,11 @@ class DefaultMessageCoordinator(MessageCoordinator):
 
     def get_channels_by_agent_type(
         self,
-        agent_type,
+        agent_type: EntityURN,
         agent_info: AgentInfo,
         world_info: WorldInfo,
         scenario_info: ScenarioInfo,
-    ):
+    ) -> list[int]:
         num_channels = (
             scenario_info.get_value(ScenarioInfoKeys.COMMUNICATION_CHANNELS_COUNT, 1)
             - 1
@@ -171,7 +192,7 @@ class DefaultMessageCoordinator(MessageCoordinator):
         ]
         return channels
 
-    def is_platoon_agent(self, agent_info, world_info):
+    def is_platoon_agent(self, agent_info: AgentInfo, world_info: WorldInfo) -> bool:
         agent_type = self.get_agent_type(agent_info, world_info)
         return agent_type in [
             EntityURN.FIRE_BRIGADE,
@@ -179,7 +200,9 @@ class DefaultMessageCoordinator(MessageCoordinator):
             EntityURN.AMBULANCE_TEAM,
         ]
 
-    def get_agent_type(self, agent_info: AgentInfo, world_info: WorldInfo):
+    def get_agent_type(
+        self, agent_info: AgentInfo, world_info: WorldInfo
+    ) -> Optional[EntityURN]:
         entity = world_info.get_entity(agent_info.get_entity_id())
         if entity is None:
             return None
@@ -192,9 +215,9 @@ class DefaultMessageCoordinator(MessageCoordinator):
         agent_info: AgentInfo,
         world_info: WorldInfo,
         messages: list[StandardMessage],
-        channel_send_message_list,
-        channel_size,
-    ):
+        channel_send_message_list: list[list[CommunicationMessage]],
+        channel_size: list[int],
+    ) -> None:
         channels = self.get_channels_by_agent_type(
             agent_type, agent_info, world_info, scenario_info
         )

@@ -167,7 +167,7 @@ class MessageAmbulanceTeam(StandardMessage):
             std_message.get_ttl(),
         )
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         h = super().__hash__()
         return hash(
             (

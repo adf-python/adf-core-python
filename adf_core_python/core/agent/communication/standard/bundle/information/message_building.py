@@ -106,7 +106,7 @@ class MessageBuilding(StandardMessage):
             std_message.get_ttl(),
         )
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         h = super().__hash__()
         return hash(
             (
@@ -118,5 +118,5 @@ class MessageBuilding(StandardMessage):
             )
         )
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"MessageBuilding(building_entity_id={self._building_entity_id}, building_brokenness={self._building_brokenness}, building_fireyness={self._building_fireyness}, building_temperature={self._building_temperature})"

@@ -1,6 +1,6 @@
 import sys
 from abc import abstractmethod
-from typing import Any, NoReturn
+from typing import Any, Callable, NoReturn
 
 from bitarray import bitarray
 from rcrs_core.commands.AKClear import AKClear
@@ -16,6 +16,9 @@ from rcrs_core.commands.AKTell import AKTell
 from rcrs_core.commands.AKUnload import AKUnload
 from rcrs_core.commands.Command import Command
 from rcrs_core.config.config import Config as RCRSConfig
+from rcrs_core.connection.URN import Command as CommandURN
+from rcrs_core.connection.URN import ComponentCommand as ComponentCommandMessageID
+from rcrs_core.connection.URN import ComponentControlMSG as ComponentControlMessageID
 from rcrs_core.connection.URN import Entity as EntityURN
 from rcrs_core.messages.AKAcknowledge import AKAcknowledge
 from rcrs_core.messages.AKConnect import AKConnect
@@ -27,7 +30,6 @@ from rcrs_core.worldmodel.changeSet import ChangeSet
 from rcrs_core.worldmodel.entityID import EntityID
 from rcrs_core.worldmodel.worldmodel import WorldModel
 
-from adf_core_python.core.agent.command_factory import CommandFactory
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance import (
     CommandAmbulance,
@@ -42,7 +44,7 @@ from adf_core_python.core.agent.communication.standard.bundle.centralized.comman
     CommandScout,
 )
 from adf_core_python.core.agent.communication.standard.bundle.centralized.message_report import (
-    CommandReport,
+    MessageReport,
 )
 from adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team import (
     MessageAmbulanceTeam,
@@ -118,7 +120,7 @@ class Agent:
     def get_entity_id(self) -> EntityID:
         return self.agent_id
 
-    def set_send_msg(self, connection_send_func):
+    def set_send_msg(self, connection_send_func: Callable) -> None:
         self.send_msg = connection_send_func
 
     def post_connect(self) -> None:
@@ -165,7 +167,7 @@ class Agent:
             self._message_manager.register_message_class(7, CommandFire)
             self._message_manager.register_message_class(8, CommandPolice)
             self._message_manager.register_message_class(9, CommandScout)
-            self._message_manager.register_message_class(10, CommandReport)
+            self._message_manager.register_message_class(10, MessageReport)
 
         if time > self._ignore_time:
             self._message_manager.subscribe(
@@ -212,11 +214,11 @@ class Agent:
     def get_requested_entities(self) -> list[EntityURN]:
         pass
 
-    def start_up(self, request_id):
+    def start_up(self, request_id: int) -> None:
         ak_connect = AKConnect()
         self.send_msg(ak_connect.write(request_id, self))
 
-    def message_received(self, msg):
+    def message_received(self, msg: Any) -> None:
         c_msg = ControlMessageFactory().make_message(msg)
         if isinstance(c_msg, KASense):
             self.handler_sense(c_msg)
@@ -231,7 +233,7 @@ class Agent:
         )
         sys.exit(1)
 
-    def handle_connect_ok(self, msg):
+    def handle_connect_ok(self, msg: Any) -> None:
         self.agent_id = EntityID(msg.agent_id)
         self.world_model.add_entities(msg.world)
         config: RCRSConfig = msg.config
@@ -253,76 +255,94 @@ class Agent:
             print("self.precompute_flag: ", self.precompute_flag)
             self.precompute()
 
-    def handler_sense(self, msg):
+    def handler_sense(self, msg: Any) -> None:
         _id = EntityID(msg.agent_id)
         time = msg.time
         change_set = msg.change_set
-        hear = msg.hear.commands
+        heard = msg.hear.commands
 
         if _id != self.get_entity_id():
             self.logger.error("Agent ID mismatch: %s != %s", _id, self.get_entity_id())
             return
 
-        hear_commands = [CommandFactory.create_command(cmd) for cmd in hear]
+        heard_commands: list[Command] = []
+        for herad_command in heard:
+            if herad_command.urn == CommandURN.AK_SPEAK:
+                heard_commands.append(
+                    AKSpeak(
+                        herad_command.components[
+                            ComponentControlMessageID.AgentID
+                        ].entityID,
+                        herad_command.components[
+                            ComponentControlMessageID.Time
+                        ].intValue,
+                        herad_command.components[
+                            ComponentCommandMessageID.Message
+                        ].rawData,
+                        herad_command.components[
+                            ComponentCommandMessageID.Channel
+                        ].intValue,
+                    )
+                )
 
         self.world_model.merge(change_set)
-        self.update_step_info(time, change_set, hear_commands)
+        self.update_step_info(time, change_set, heard_commands)
 
-    def send_acknowledge(self, request_id):
+    def send_acknowledge(self, request_id: int) -> None:
         ak_ack = AKAcknowledge()
         self.send_msg(ak_ack.write(request_id, self.agent_id))
 
-    def send_clear(self, time, target):
+    def send_clear(self, time: int, target: EntityID) -> None:
         cmd = AKClear(self.get_entity_id(), time, target)
         msg = cmd.prepare_cmd()
         self.send_msg(msg)
 
-    def send_clear_area(self, time, x=-1, y=-1):
+    def send_clear_area(self, time: int, x: int = -1, y: int = -1) -> None:
         cmd = AKClearArea(self.get_entity_id(), time, x, y)
         msg = cmd.prepare_cmd()
         self.send_msg(msg)
 
-    def send_load(self, time, target):
+    def send_load(self, time: int, target: EntityID) -> None:
         cmd = AKLoad(self.get_entity_id(), time, target)
         msg = cmd.prepare_cmd()
         self.send_msg(msg)
 
-    def send_move(self, time, path, x=-1, y=-1):
+    def send_move(self, time: int, path: list[int], x: int = -1, y: int = -1) -> None:
         cmd = AKMove(self.get_entity_id(), time, path[:], x, y)
         msg = cmd.prepare_cmd()
         self.send_msg(msg)
 
-    def send_rescue(self, time, target):
+    def send_rescue(self, time: int, target: EntityID) -> None:
         cmd = AKRescue(self.get_entity_id(), time, target)
         msg = cmd.prepare_cmd()
         self.send_msg(msg)
 
-    def send_rest(self, time_step):
-        cmd = AKRest(self.get_entity_id(), time_step)
+    def send_rest(self, time: int) -> None:
+        cmd = AKRest(self.get_entity_id(), time)
         msg = cmd.prepare_cmd()
         self.send_msg(msg)
 
-    def send_say(self, time_step: int, message: str):
+    def send_say(self, time_step: int, message: str) -> None:
         cmd = AKSay(self.get_entity_id(), time_step, message)
         msg = cmd.prepare_cmd()
         self.send_msg(msg)
 
-    def send_speak(self, time_step: int, message: bitarray, channel: int):
+    def send_speak(self, time_step: int, message: bitarray, channel: int) -> None:
         cmd = AKSpeak(self.get_entity_id(), time_step, bytes(message), channel)  # type: ignore
         msg = cmd.prepare_cmd()
         self.send_msg(msg)
 
-    def send_subscribe(self, time, channel):
-        cmd = AKSubscribe(self.get_entity_id(), time, channel)
+    def send_subscribe(self, time: int, channels: list[int]) -> None:
+        cmd = AKSubscribe(self.get_entity_id(), time, channels)
         msg = cmd.prepare_cmd()
         self.send_msg(msg)
 
-    def send_tell(self, time_step: int, message: str):
-        cmd = AKTell(self.get_entity_id(), time_step, message)
+    def send_tell(self, time: int, message: str) -> None:
+        cmd = AKTell(self.get_entity_id(), time, message)
         msg = cmd.prepare_cmd()
         self.send_msg(msg)
 
-    def send_unload(self, time):
+    def send_unload(self, time: int) -> None:
         cmd = AKUnload(self.get_entity_id(), time)
         msg = cmd.prepare_cmd()
         self.send_msg(msg)

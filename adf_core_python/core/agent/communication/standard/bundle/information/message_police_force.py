@@ -162,7 +162,7 @@ class MessagePoliceForce(StandardMessage):
             std_message.get_ttl(),
         )
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         h = super().__hash__()
         return hash(
             (
@@ -177,5 +177,5 @@ class MessagePoliceForce(StandardMessage):
             )
         )
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"MessagePoliceForce(police_force_entity_id={self._police_force_entity_id}, police_force_hp={self._police_force_hp}, police_force_buriedness={self._police_force_buriedness}, police_force_damage={self._police_force_damage}, police_force_position={self._police_force_position}, target_entity_id={self._target_entity_id}, action={self._action})"

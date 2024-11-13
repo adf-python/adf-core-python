@@ -21,5 +21,5 @@ class CommunicationMessage(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def __hash__(self):
+    def __hash__(self) -> int:
         raise NotImplementedError

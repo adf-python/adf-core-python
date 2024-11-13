@@ -1,4 +1,3 @@
-import re
 import threading
 
 from rcrs_core.agents.policeOfficeAgent import PoliceOfficeAgent

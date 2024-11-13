@@ -180,7 +180,7 @@ class MessageFireBrigade(StandardMessage):
             std_message.get_ttl(),
         )
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         h = super().__hash__()
         return hash(
             (
@@ -196,5 +196,5 @@ class MessageFireBrigade(StandardMessage):
             )
         )
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"MessageFireBrigade(fire_brigade_entity_id={self._fire_brigade_entity_id}, fire_brigade_hp={self._fire_brigade_hp}, fire_brigade_buriedness={self._fire_brigade_buriedness}, fire_brigade_damage={self._fire_brigade_damage}, fire_brigade_position={self._fire_brigade_position}, fire_brigade_water={self._fire_brigade_water}, target_entity_id={self._target_entity_id}, action={self._action})"

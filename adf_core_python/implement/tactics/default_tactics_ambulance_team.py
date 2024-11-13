@@ -18,7 +18,7 @@ from adf_core_python.core.agent.communication.standard.bundle.centralized.comman
     CommandScout,
 )
 from adf_core_python.core.agent.communication.standard.bundle.centralized.message_report import (
-    CommandReport,
+    MessageReport,
 )
 from adf_core_python.core.agent.communication.standard.bundle.standard_message_priority import (
     StandardMessagePriority,
@@ -178,7 +178,7 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
             )
         )
         message_manager.add_message(
-            CommandReport(
+            MessageReport(
                 False,
                 True,
                 True,
