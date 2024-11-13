@@ -106,11 +106,10 @@ SampleSearch:
 #   ExtendActionClear: adf_core_python.implement.action.DefaultExtendActionClear
 
 # ## MessageManager
-# MessageManager:
-#   PlatoonChannelSubscriber: adf_core_python.implement.module.comm.DefaultChannelSubscriber
-#   CenterChannelSubscriber: adf_core_python.implement.module.comm.DefaultChannelSubscriber
-#   PlatoonMessageCoordinator: adf_core_python.implement.module.comm.DefaultMessageCoordinator
-#   CenterMessageCoordinator: adf_core_python.implement.module.comm.DefaultMessageCoordinator
-
+MessageManager:
+  PlatoonChannelSubscriber: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber
+  CenterChannelSubscriber: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber
+  PlatoonMessageCoordinator: adf_core_python.implement.module.communication.default_message_coordinator.DefaultMessageCoordinator
+  CenterMessageCoordinator: adf_core_python.implement.module.communication.default_message_coordinator.DefaultMessageCoordinator
 # ## VisualDebug
 # VisualDebug: true

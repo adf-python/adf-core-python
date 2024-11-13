@@ -51,6 +51,7 @@ class ConnectorPoliceForce(Connector):
                 ),
             )
 
+            request_id: int = component_launcher.generate_request_id()
             thread = threading.Thread(
                 target=component_launcher.connect,
                 args=(
@@ -63,8 +64,9 @@ class ConnectorPoliceForce(Connector):
                         module_config,
                         develop_data,
                     ),
-                    component_launcher.generate_request_id(),
+                    request_id,
                 ),
+                name=f"PoliceForceAgent-{request_id}",
             )
             threads.append(thread)
 

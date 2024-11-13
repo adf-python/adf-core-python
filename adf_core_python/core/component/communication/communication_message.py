@@ -1,4 +1,8 @@
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
+
+from bitarray import bitarray
 
 
 class CommunicationMessage(ABC):
@@ -9,11 +13,13 @@ class CommunicationMessage(ABC):
         return self._is_wireless_message
 
     @abstractmethod
-    def get_byte_size(self) -> int:
+    def get_bit_size(self) -> int:
         raise NotImplementedError
 
     @abstractmethod
-    def to_bytes(self) -> bytes:
+    def to_bits(self) -> bitarray:
         raise NotImplementedError
 
-    # TODO: Implement the toBitOutputStream and getCheckKey methods
+    @abstractmethod
+    def __hash__(self) -> int:
+        raise NotImplementedError

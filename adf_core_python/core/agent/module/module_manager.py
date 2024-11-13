@@ -4,6 +4,12 @@ import importlib
 from typing import TYPE_CHECKING, Any
 
 from adf_core_python.core.component.action.extend_action import ExtendAction
+from adf_core_python.core.component.communication.channel_subscriber import (
+    ChannelSubscriber,
+)
+from adf_core_python.core.component.communication.message_coordinator import (
+    MessageCoordinator,
+)
 from adf_core_python.core.component.module.abstract_module import AbstractModule
 
 if TYPE_CHECKING:
@@ -91,6 +97,58 @@ class ModuleManager:
             return instance
 
         raise RuntimeError(f"Action {class_name} is not a subclass of ExtendAction")
+
+    def get_channel_subscriber(
+        self, channel_subscriber_name: str, default_channel_subscriber_name: str
+    ) -> ChannelSubscriber:
+        class_name = self._module_config.get_value_or_default(
+            channel_subscriber_name, default_channel_subscriber_name
+        )
+
+        try:
+            channel_subscriber_class: type = self._load_module(class_name)
+        except (ImportError, AttributeError) as e:
+            raise RuntimeError(f"Failed to load channel subscriber {class_name}") from e
+
+        instance = self._channel_subscribers.get(channel_subscriber_name)
+        if instance is not None:
+            return instance
+
+        if issubclass(channel_subscriber_class, ChannelSubscriber):
+            instance = channel_subscriber_class()
+            self._channel_subscribers[channel_subscriber_name] = instance
+            return instance
+
+        raise RuntimeError(
+            f"Channel subscriber {class_name} is not a subclass of ChannelSubscriber"
+        )
+
+    def get_message_coordinator(
+        self, message_coordinator_name: str, default_message_coordinator_name: str
+    ) -> MessageCoordinator:
+        class_name = self._module_config.get_value_or_default(
+            message_coordinator_name, default_message_coordinator_name
+        )
+
+        try:
+            message_coordinator_class: type = self._load_module(class_name)
+        except (ImportError, AttributeError) as e:
+            raise RuntimeError(
+                f"Failed to load message coordinator {class_name}"
+            ) from e
+
+        instance = self._message_coordinators.get(message_coordinator_name)
+        if instance is not None:
+            return instance
+
+        if issubclass(message_coordinator_class, MessageCoordinator):
+            instance = message_coordinator_class()
+            self._message_coordinators[message_coordinator_name] = instance
+            return instance
+
+        raise RuntimeError(
+            f"Message coordinator {class_name} is not a subclass of MessageCoordinator"
+        )
 
     def _load_module(self, class_name: str) -> type:
         module_name, module_class_name = class_name.rsplit(".", 1)

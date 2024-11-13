@@ -21,11 +21,11 @@ adf:
   team:
     platoon:
       ambulance:
-        count: 100
+        count: 1
       fire:
-        count: 100
+        count: 0
       police:
-        count: 100
+        count: 0
     office:
       ambulance:
         count: -1

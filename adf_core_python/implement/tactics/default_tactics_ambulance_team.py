@@ -119,6 +119,11 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
         agent: AmbulanceTeamEntity = cast(AmbulanceTeamEntity, agent_info.get_myself())  # noqa: F841
         entity_id = agent_info.get_entity_id()  # noqa: F841
 
+        self._logger.debug(
+            f"received messages: {[str(message) for message in message_manager.get_received_message_list()]}, help: {message_manager.get_heard_agent_help_message_count()}",
+            message_manager=message_manager,
+        )
+
         target_entity_id = self._human_detector.calculate().get_target_entity_id()
         self._logger.debug(
             f"human detector target_entity_id: {target_entity_id}",

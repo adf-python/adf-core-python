@@ -1,4 +1,4 @@
 {
   "typeCheckingMode": "standard",
-  "exclude": ["**/site-packages"]
+  "exclude": [".venv", ".git"]
 }

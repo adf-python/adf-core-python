@@ -52,15 +52,16 @@ class ConnectorPoliceOffice(Connector):
                 ),
             )
 
-            # TODO: component_launcher.generate_request_ID can cause race condition
+            request_id: int = component_launcher.generate_request_id()
             thread = threading.Thread(
                 target=component_launcher.connect,
                 args=(
                     PoliceOfficeAgent(
                         config.get_value(ConfigKey.KEY_PRECOMPUTE, False),
                     ),  # type: ignore
-                    component_launcher.generate_request_id(),
+                    request_id,
                 ),
+                name=f"PoliceOfficeAgent-{request_id}",
             )
             threads.append(thread)
 
