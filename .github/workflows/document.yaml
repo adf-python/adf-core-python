@@ -8,6 +8,12 @@ on:
       - develop
     paths:
       - 'docs/**'
+  pull_request:
+    branches:
+      - main
+      - develop
+    paths:
+      - 'docs/**'
 
 concurrency:
   group: 'pages'
