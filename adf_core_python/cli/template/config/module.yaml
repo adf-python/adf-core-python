@@ -1,7 +1,7 @@
 ## DefaultTacticsAmbulanceTeam
 DefaultTacticsAmbulanceTeam:
-  HumanDetector: <team-name>.module.complex.<team-name>_human_detector.<Team-Name>HumanDetector
-  Search: <team-name>.module.complex.<team-name>_search.<Team-Name>Search
+  HumanDetector: team_name.module.complex.team_name_human_detector.TeamNameHumanDetector
+  Search: team_name.module.complex.team_name_search.TeamNameSearch
   ExtendActionTransport: adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport
   ExtendActionMove: adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove
   CommandExecutorAmbulance: adf_core_python.implement.centralized.DefaultCommandExecutorAmbulance
@@ -9,8 +9,8 @@ DefaultTacticsAmbulanceTeam:
 
 # ## DefaultTacticsFireBrigade
 DefaultTacticsFireBrigade:
-  HumanDetector: <team-name>.module.complex.<team-name>_human_detector.<Team-Name>HumanDetector
-  Search: <team-name>.module.complex.<team-name>_search.<Team-Name>Search
+  HumanDetector: team_name.module.complex.team_name_human_detector.TeamNameHumanDetector
+  Search: team_name.module.complex.team_name_search.TeamNameSearch
   ExtendActionRescue: adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue
   ExtendActionMove: adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove
   CommandExecutorFire: adf_core_python.implement.centralized.DefaultCommandExecutorFire
@@ -18,8 +18,8 @@ DefaultTacticsFireBrigade:
 
 # ## DefaultTacticsPoliceForce
 DefaultTacticsPoliceForce:
-  RoadDetector: <team-name>.module.complex.<team-name>_road_detector.<Team-Name>RoadDetector
-  Search: <team-name>.module.complex.<team-name>_search.<Team-Name>Search
+  RoadDetector: team_name.module.complex.team_name_road_detector.TeamNameRoadDetector
+  Search: team_name.module.complex.team_name_search.TeamNameSearch
   ExtendActionClear: adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear
   ExtendActionMove: adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove
   CommandExecutorPolice: adf_core_python.implement.centralized.DefaultCommandExecutorPolice

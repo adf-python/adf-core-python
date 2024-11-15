@@ -2,8 +2,8 @@ import os
 
 import click
 
-LOWER_NAME_PLACEHOLDER = "<team-name>"
-UPPER_NAME_PLACEHOLDER = "<Team-name>"
+LOWER_NAME_PLACEHOLDER = "team_name"
+UPPER_NAME_PLACEHOLDER = "TeamName"
 
 
 @click.command()
@@ -47,3 +47,8 @@ def _copy_template(src, dest, lower_name, upper_name):
                     UPPER_NAME_PLACEHOLDER, upper_name
                 )
             )
+        new_dest = dest.replace(LOWER_NAME_PLACEHOLDER, lower_name).replace(
+            UPPER_NAME_PLACEHOLDER, upper_name
+        )
+        if new_dest != dest:
+            os.rename(dest, new_dest)

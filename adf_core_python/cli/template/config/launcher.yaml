@@ -3,7 +3,7 @@ kernel:
   port: 27931
 
 team:
-  name: <team-name>
+  name: team_name
 
 adf:
   launcher:

@@ -19,7 +19,7 @@ from adf_core_python.core.component.module.algorithm.path_planning import (
 from adf_core_python.core.component.module.complex.road_detector import RoadDetector
 
 
-class DefaultRoadDetector(RoadDetector):
+class TeamNameRoadDetector(RoadDetector):
     def __init__(
         self,
         agent_info: AgentInfo,
