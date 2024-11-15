@@ -7,7 +7,7 @@ Welcome to adf-core-python's documentation!
 ============================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    introduction/introduction

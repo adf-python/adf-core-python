@@ -1,43 +1,43 @@
 .. _installation:
 
-Installation
+インストール
 ============
 
-This section provides instructions on how to install the package.
+このセクションでは、パッケージのインストール方法について説明します。
 
-.. contents:: Table of Contents
+.. contents:: 目次
   :depth: 2
   :local:
 
-Prerequisites
--------------
+前提条件
+--------
 
-Before installing, ensure you have the following prerequisites:
+インストールする前に、以下の前提条件を確認してください：
 
-- Python 3.6 or higher
+- Python 3.12 以上
 - pip
 
-Installing the Package
-----------------------
-
-To install the package, run the following command:
-
-.. code-block:: bash
-
-  pip install your-package-name
-
-Verifying the Installation
+パッケージのインストール
 --------------------------
 
-To verify the installation, you can run:
+パッケージをインストールするには、次のコマンドを実行します：
 
 .. code-block:: bash
 
-  python -c "import your_package_name; print(your_package_name.__version__)"
+  pip install adf_core_python
 
-If the package is installed correctly, this should print the version number of the package.
+インストールの確認
+------------------
 
-Troubleshooting
----------------
+インストールを確認するには、次のコマンドを実行します：
 
-If you encounter any issues during installation, please refer to the troubleshooting section or contact support.
+.. code-block:: bash
+
+  python -c "import adf_core_python; print(adf_core_python.__version__)"
+
+パッケージが正しくインストールされている場合、パッケージのバージョン番号が表示されます。
+
+トラブルシューティング
+-----------------------
+
+インストール中に問題が発生した場合は、トラブルシューティングセクションを参照するか、サポートに連絡してください。

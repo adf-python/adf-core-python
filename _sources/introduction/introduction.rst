@@ -1,44 +1,26 @@
 .. _introduction:
 
-Introduction
-============
+イントロダクション
+==================
 
-Welcome to the ADF Core Python Documentation
+ADF Core Python ドキュメントへようこそ
 
-.. contents:: Table of Contents
+.. contents:: 目次
   :depth: 2
   :local:
 
 --------------------------------------------
 
-This documentation is built using the `Sphinx <https://www.sphinx-doc.org/>`_ documentation generator and the `sphinx_book_theme <https://sphinx-book-theme.readthedocs.io/>`_.
+特徴
+----
 
-Features
+- **モジュール単位での開発**: モジュール単位でエージェント開発を行い、モジュールの入れ替えが容易です。
+- **モジュールの再利用**: 他のエージェントで使用されているモジュールを再利用することができます。
+- **エージェントの開発に集中**: シミュレーションサーバーとの通信やログ出力などの共通処理をライブラリが提供します。
+
+はじめに
 --------
 
-- **Easy to navigate**: The theme provides a clean and modern interface for your documentation.
-- **Responsive design**: Works well on both desktop and mobile devices.
-- **Search functionality**: Quickly find the information you need.
+ADF Core Python を始めるには、インストール手順に従い、このドキュメントに記載されている例を参照してください。
 
-Getting Started
----------------
 
-To get started with ADF Core Python, follow the installation instructions and explore the examples provided in this documentation.
-
-.. toctree::
-  :maxdepth: 2
-  :caption: Contents:
-
-  installation
-  usage
-  examples
-
-Contributing
-------------
-
-We welcome contributions! Please read our `contributing guide <../contributing.rst>`_ to learn how you can help.
-
-Contact
--------
-
-If you have any questions or feedback, please reach out to us at `support@example.com <mailto:support@example.com>`_.
