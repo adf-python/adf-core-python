@@ -10,7 +10,7 @@ UPPER_NAME_PLACEHOLDER = "<Team-name>"
 @click.option(
     "--name", prompt="Your agent team name", help="The name of your agent team"
 )
-def main(name):
+def cli(name):
     # load template dir and create a new agent team
     click.echo(f"Creating a new agent team with name: {name}")
     lower_name = name.lower()
@@ -47,7 +47,3 @@ def _copy_template(src, dest, lower_name, upper_name):
                     UPPER_NAME_PLACEHOLDER, upper_name
                 )
             )
-
-
-if __name__ == "__main__":
-    main()

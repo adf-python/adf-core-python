@@ -32,8 +32,8 @@ ruff = "^0.4.4"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.script]
-adf-core-python = "adf_core_python.cli.cli:main"
+[tool.poetry.scripts]
+adf-core-python = "adf_core_python.cli.cli:cli"
 
 [tool.taskipy.tasks]
 format = "ruff format ."
