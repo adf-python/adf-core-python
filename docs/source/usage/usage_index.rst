@@ -1,37 +1,36 @@
 .. _usage_index:
 
-Usage
-=====
+使用方法
+========
 
-This section provides an overview of how to use the `adf-core-python` library.
+このセクションでは、`adf-core-python` ライブラリの使用方法の概要を提供します。
 
 .. toctree::
   :maxdepth: 2
-  :caption: Contents:
+  :caption: 目次:
 
   installation
   quickstart
   examples
 
-.. note::
-  This documentation is built using the `sphinx_book_theme`.
 
-Getting Started
----------------
+はじめに
+--------
 
-To get started with `adf-core-python`, follow the instructions in the sections below.
+`adf-core-python` を始めるには、以下のセクションの指示に従ってください。
 
-Installation
+インストール
 ------------
 
 .. include:: installation.rst
 
-Quickstart
-----------
+クイックスタート
+----------------
 
 .. include:: quickstart.rst
 
-Examples
---------
+例
+--
 
 .. include:: examples.rst
+

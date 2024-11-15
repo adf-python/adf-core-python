@@ -1,14 +1,15 @@
 .. _example_index:
 
-Example Index
+例
 =============
 
-Welcome to the example index for the ADF Core Python documentation. This section provides various examples to help you understand how to use the library effectively.
+ADF Core Python ドキュメントの例のインデックスへようこそ。このセクションでは、ライブラリの効果的な使用方法を理解するためのさまざまな例を提供します。
 
 .. toctree::
   :maxdepth: 2
-  :caption: Examples
+  :caption: 例
 
   example1
   example2
   example3
+
