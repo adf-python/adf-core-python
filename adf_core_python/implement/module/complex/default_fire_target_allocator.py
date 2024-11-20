@@ -2,7 +2,7 @@ from functools import cmp_to_key
 from typing import Callable, Optional
 
 from rcrs_core.entities.entity import Entity
-from rcrs_core.entities.fireBrigade import FireBrigadeEntity
+from rcrs_core.entities.fireBrigade import FireBrigade
 from rcrs_core.entities.human import Human
 from rcrs_core.worldmodel.entityID import EntityID
 
@@ -40,7 +40,7 @@ class DefaultFireTargetAllocator(FireTargetAllocator):
         super().resume(precompute_data)
         if self.get_count_resume() >= 2:
             return self
-        for entity_id in self._world_info.get_entity_ids_of_types([FireBrigadeEntity]):
+        for entity_id in self._world_info.get_entity_ids_of_types([FireBrigade]):
             self._fire_brigade_info_map[entity_id] = self.FireBrigadeInfo(entity_id)
         return self
 
@@ -48,7 +48,7 @@ class DefaultFireTargetAllocator(FireTargetAllocator):
         super().prepare()
         if self.get_count_prepare() >= 2:
             return self
-        for entity_id in self._world_info.get_entity_ids_of_types([FireBrigadeEntity]):
+        for entity_id in self._world_info.get_entity_ids_of_types([FireBrigade]):
             self._fire_brigade_info_map[entity_id] = self.FireBrigadeInfo(entity_id)
         return self
 
@@ -108,9 +108,9 @@ class DefaultFireTargetAllocator(FireTargetAllocator):
 
     def _get_action_agents(
         self, info_map: dict[EntityID, "DefaultFireTargetAllocator.FireBrigadeInfo"]
-    ) -> list[FireBrigadeEntity]:
+    ) -> list[FireBrigade]:
         result = []
-        for entity in self._world_info.get_entities_of_types([FireBrigadeEntity]):
+        for entity in self._world_info.get_entities_of_types([FireBrigade]):
             info = info_map[entity.get_id()]
             if info is not None and info._can_new_action:
                 result.append(entity)

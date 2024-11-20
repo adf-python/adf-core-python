@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Optional
 
 from bitarray import bitarray
-from rcrs_core.entities.policeForce import PoliceForceEntity
+from rcrs_core.entities.policeForce import PoliceForce
 from rcrs_core.worldmodel.entityID import EntityID
 
 from adf_core_python.core.agent.communication.standard.bundle.standard_message import (
@@ -34,7 +34,7 @@ class MessagePoliceForce(StandardMessage):
     def __init__(
         self,
         is_wireless_message: bool,
-        police_force: PoliceForceEntity,
+        police_force: PoliceForce,
         action: int,
         target_entity_id: EntityID,
         priority: StandardMessagePriority,
@@ -147,7 +147,7 @@ class MessagePoliceForce(StandardMessage):
             EntityID(raw_target_entity_id) if raw_target_entity_id else EntityID(-1)
         )
         action = read_with_exist_flag(bit_array, cls.SIZE_ACTION)
-        police_force = PoliceForceEntity(police_force_id or -1)
+        police_force = PoliceForce(police_force_id or -1)
         police_force.set_hp(police_force_hp)
         police_force.set_buriedness(police_force_buriedness)
         police_force.set_damage(police_force_damage)

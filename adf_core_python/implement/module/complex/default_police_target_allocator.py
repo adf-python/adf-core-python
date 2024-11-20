@@ -4,7 +4,7 @@ from typing import Callable, Optional, cast
 from rcrs_core.entities.building import Building
 from rcrs_core.entities.entity import Entity
 from rcrs_core.entities.gassStation import GasStation
-from rcrs_core.entities.policeForce import PoliceForceEntity
+from rcrs_core.entities.policeForce import PoliceForce
 from rcrs_core.entities.refuge import Refuge
 from rcrs_core.entities.road import Road
 from rcrs_core.worldmodel.entityID import EntityID
@@ -44,7 +44,7 @@ class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
         if self.get_count_resume() >= 2:
             return self
 
-        for entity_id in self._world_info.get_entity_ids_of_types([PoliceForceEntity]):
+        for entity_id in self._world_info.get_entity_ids_of_types([PoliceForce]):
             self._agent_info_map[entity_id] = self.PoliceForceInfo(entity_id)
             for entity in self._world_info.get_entities_of_types(
                 [Refuge, Building, GasStation]
@@ -68,7 +68,7 @@ class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
         if self.get_count_prepare() >= 2:
             return self
 
-        for entity_id in self._world_info.get_entity_ids_of_types([PoliceForceEntity]):
+        for entity_id in self._world_info.get_entity_ids_of_types([PoliceForce]):
             self._agent_info_map[entity_id] = self.PoliceForceInfo(entity_id)
 
         for entity in self._world_info.get_entities_of_types(
@@ -143,9 +143,9 @@ class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
 
     def _get_action_agents(
         self, info_map: dict[EntityID, "DefaultPoliceTargetAllocator.PoliceForceInfo"]
-    ) -> list[PoliceForceEntity]:
+    ) -> list[PoliceForce]:
         result = []
-        for entity in self._world_info.get_entities_of_types([PoliceForceEntity]):
+        for entity in self._world_info.get_entities_of_types([PoliceForce]):
             info = info_map[entity.get_id()]
             if info is not None and info._can_new_action:
                 result.append(entity)

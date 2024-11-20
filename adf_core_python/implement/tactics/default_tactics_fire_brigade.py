@@ -1,6 +1,6 @@
 from typing import cast
 
-from rcrs_core.entities.fireBrigade import FireBrigadeEntity
+from rcrs_core.entities.fireBrigade import FireBrigade
 
 from adf_core_python.core.agent.action.action import Action
 from adf_core_python.core.agent.action.common.action_rest import ActionRest
@@ -117,7 +117,7 @@ class DefaultTacticsFireBrigade(TacticsFireBrigade):
         self.reset_count()
         self.module_update_info(message_manager)
 
-        agent: FireBrigadeEntity = cast(FireBrigadeEntity, agent_info.get_myself())  # noqa: F841
+        agent: FireBrigade = cast(FireBrigade, agent_info.get_myself())  # noqa: F841
         entity_id = agent_info.get_entity_id()  # noqa: F841
 
         target_entity_id = self._human_detector.calculate().get_target_entity_id()

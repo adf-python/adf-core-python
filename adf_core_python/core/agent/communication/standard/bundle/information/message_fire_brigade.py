@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Optional
 
 from bitarray import bitarray
-from rcrs_core.entities.fireBrigade import FireBrigadeEntity
+from rcrs_core.entities.fireBrigade import FireBrigade
 from rcrs_core.worldmodel.entityID import EntityID
 
 from adf_core_python.core.agent.communication.standard.bundle.standard_message import (
@@ -37,7 +37,7 @@ class MessageFireBrigade(StandardMessage):
     def __init__(
         self,
         is_wireless_message: bool,
-        fire_brigade: FireBrigadeEntity,
+        fire_brigade: FireBrigade,
         action: int,
         target_entity_id: EntityID,
         priority: StandardMessagePriority,
@@ -162,7 +162,7 @@ class MessageFireBrigade(StandardMessage):
             EntityID(raw_target_entity_id) if raw_target_entity_id else EntityID(-1)
         )
         action = read_with_exist_flag(bit_array, cls.SIZE_ACTION)
-        fire_brigade = FireBrigadeEntity(
+        fire_brigade = FireBrigade(
             fire_brigade_id or -1,
         )
         fire_brigade.set_hp(fire_brigade_hp)

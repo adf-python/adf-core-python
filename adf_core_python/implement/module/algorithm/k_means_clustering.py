@@ -1,12 +1,12 @@
 import numpy as np
 from rcrs_core.connection.URN import Entity as EntityURN
-from rcrs_core.entities.ambulanceCenter import AmbulanceCentreEntity
+from rcrs_core.entities.ambulanceCenter import AmbulanceCentre
 from rcrs_core.entities.building import Building
 from rcrs_core.entities.entity import Entity
-from rcrs_core.entities.fireStation import FireStationEntity
-from rcrs_core.entities.gassStation import GasStation
+from rcrs_core.entities.fireStation import FireStation
+from rcrs_core.entities.gasStation import GasStation
 from rcrs_core.entities.hydrant import Hydrant
-from rcrs_core.entities.policeOffice import PoliceOfficeEntity
+from rcrs_core.entities.policeOffice import PoliceOffice
 from rcrs_core.entities.refuge import Refuge
 from rcrs_core.entities.road import Road
 from rcrs_core.worldmodel.entityID import EntityID
@@ -72,11 +72,11 @@ class KMeansClustering(Clustering):
         self.cluster_entities: list[list[Entity]] = []
         self.entities: list[Entity] = world_info.get_entities_of_types(
             [
-                AmbulanceCentreEntity,
-                FireStationEntity,
+                AmbulanceCentre,
+                FireStation,
                 GasStation,
                 Hydrant,
-                PoliceOfficeEntity,
+                PoliceOffice,
                 Refuge,
                 Road,
                 Building,

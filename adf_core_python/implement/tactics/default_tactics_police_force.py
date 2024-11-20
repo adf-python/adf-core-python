@@ -1,6 +1,6 @@
 from typing import cast
 
-from rcrs_core.entities.policeForce import PoliceForceEntity
+from rcrs_core.entities.policeForce import PoliceForce
 
 from adf_core_python.core.agent.action.action import Action
 from adf_core_python.core.agent.action.common.action_rest import ActionRest
@@ -120,7 +120,7 @@ class DefaultTacticsPoliceForce(TacticsPoliceForce):
         self.reset_count()
         self.module_update_info(message_manager)
 
-        agent: PoliceForceEntity = cast(PoliceForceEntity, agent_info.get_myself())  # noqa: F841
+        agent: PoliceForce = cast(PoliceForce, agent_info.get_myself())  # noqa: F841
         entity_id = agent_info.get_entity_id()  # noqa: F841
 
         target_entity_id = self._road_detector.calculate().get_target_entity_id()

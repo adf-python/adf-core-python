@@ -2,7 +2,7 @@ from typing import Optional, cast
 
 from rcrs_core.entities.area import Area
 from rcrs_core.entities.blockade import Blockade
-from rcrs_core.entities.fireBrigade import FireBrigadeEntity
+from rcrs_core.entities.fireBrigade import FireBrigade
 from rcrs_core.entities.human import Human
 from rcrs_core.worldmodel.entityID import EntityID
 
@@ -104,7 +104,7 @@ class DefaultExtendActionRescue(ExtendAction):
 
     def calculate(self) -> ExtendAction:
         self.result = None
-        agent = cast(FireBrigadeEntity, self.agent_info.get_myself())
+        agent = cast(FireBrigade, self.agent_info.get_myself())
 
         if self._target_entity_id is not None:
             self.result = self._calc_rescue(
@@ -115,7 +115,7 @@ class DefaultExtendActionRescue(ExtendAction):
 
     def _calc_rescue(
         self,
-        agent: FireBrigadeEntity,
+        agent: FireBrigade,
         path_planning: PathPlanning,
         target_entity_id: EntityID,
     ) -> Optional[Action]:

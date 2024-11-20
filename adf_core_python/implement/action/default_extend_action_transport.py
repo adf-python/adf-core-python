@@ -1,6 +1,6 @@
 from typing import Optional, Union, cast
 
-from rcrs_core.entities.ambulanceTeam import AmbulanceTeamEntity
+from rcrs_core.entities.ambulanceTeam import AmbulanceTeam
 from rcrs_core.entities.area import Area
 from rcrs_core.entities.civilian import Civilian
 from rcrs_core.entities.entity import Entity
@@ -102,9 +102,7 @@ class DefaultExtendActionTransport(ExtendAction):
 
     def calculate(self) -> ExtendAction:
         self._result = None
-        agent: AmbulanceTeamEntity = cast(
-            AmbulanceTeamEntity, self.agent_info.get_myself()
-        )
+        agent: AmbulanceTeam = cast(AmbulanceTeam, self.agent_info.get_myself())
         transport_human: Optional[Human] = self.agent_info.some_one_on_board()
         if transport_human is not None:
             self._logger.debug(f"transport_human: {transport_human.get_id()}")
@@ -123,7 +121,7 @@ class DefaultExtendActionTransport(ExtendAction):
 
     def calc_rescue(
         self,
-        agent: AmbulanceTeamEntity,
+        agent: AmbulanceTeam,
         path_planning: PathPlanning,
         target_id: EntityID,
     ) -> Optional[Union[ActionMove, ActionLoad]]:
@@ -158,7 +156,7 @@ class DefaultExtendActionTransport(ExtendAction):
 
     def calc_unload(
         self,
-        agent: AmbulanceTeamEntity,
+        agent: AmbulanceTeam,
         path_planning: PathPlanning,
         transport_human: Optional[Human],
         target_id: Optional[EntityID],

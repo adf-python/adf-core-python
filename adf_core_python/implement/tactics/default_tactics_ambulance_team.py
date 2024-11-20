@@ -1,6 +1,6 @@
 from typing import cast
 
-from rcrs_core.entities.ambulanceTeam import AmbulanceTeamEntity
+from rcrs_core.entities.ambulanceTeam import AmbulanceTeam
 
 from adf_core_python.core.agent.action.action import Action
 from adf_core_python.core.agent.action.common.action_rest import ActionRest
@@ -116,7 +116,7 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
         self.reset_count()
         self.module_update_info(message_manager)
 
-        agent: AmbulanceTeamEntity = cast(AmbulanceTeamEntity, agent_info.get_myself())  # noqa: F841
+        agent: AmbulanceTeam = cast(AmbulanceTeam, agent_info.get_myself())  # noqa: F841
         entity_id = agent_info.get_entity_id()  # noqa: F841
 
         self._logger.debug(

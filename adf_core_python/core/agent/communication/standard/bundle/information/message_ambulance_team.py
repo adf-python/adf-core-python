@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Optional
 
 from bitarray import bitarray
-from rcrs_core.entities.ambulanceTeam import AmbulanceTeamEntity
+from rcrs_core.entities.ambulanceTeam import AmbulanceTeam
 from rcrs_core.worldmodel.entityID import EntityID
 
 from adf_core_python.core.agent.communication.standard.bundle.standard_message import (
@@ -36,7 +36,7 @@ class MessageAmbulanceTeam(StandardMessage):
     def __init__(
         self,
         is_wireless_message: bool,
-        ambulance_team: AmbulanceTeamEntity,
+        ambulance_team: AmbulanceTeam,
         action: int,
         target_entity_id: EntityID,
         priority: StandardMessagePriority,
@@ -152,7 +152,7 @@ class MessageAmbulanceTeam(StandardMessage):
             else EntityID(-1)
         )
         action = read_with_exist_flag(bit_array, cls.SIZE_ACTION)
-        ambulance_team = AmbulanceTeamEntity(ambulance_team_id or -1)
+        ambulance_team = AmbulanceTeam(ambulance_team_id or -1)
         ambulance_team.set_hp(ambulance_team_hp)
         ambulance_team.set_buriedness(ambulance_team_buriedness)
         ambulance_team.set_damage(ambulance_team_damage)

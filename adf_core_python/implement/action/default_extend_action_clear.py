@@ -2,13 +2,13 @@ import math
 import sys
 from typing import Optional, cast
 
-from rcrs_core.entities.ambulanceTeam import AmbulanceTeamEntity
+from rcrs_core.entities.ambulanceTeam import AmbulanceTeam
 from rcrs_core.entities.area import Area
 from rcrs_core.entities.blockade import Blockade
 from rcrs_core.entities.building import Building
-from rcrs_core.entities.fireBrigade import FireBrigadeEntity
+from rcrs_core.entities.fireBrigade import FireBrigade
 from rcrs_core.entities.human import Human
-from rcrs_core.entities.policeForce import PoliceForceEntity
+from rcrs_core.entities.policeForce import PoliceForce
 from rcrs_core.entities.refuge import Refuge
 from rcrs_core.entities.road import Road
 from rcrs_core.worldmodel.entityID import EntityID
@@ -122,7 +122,7 @@ class DefaultExtendActionClear(ExtendAction):
 
     def calculate(self) -> ExtendAction:
         self.result = None
-        police_force = cast(PoliceForceEntity, self.agent_info.get_myself())
+        police_force = cast(PoliceForce, self.agent_info.get_myself())
 
         if self._need_rest(police_force):
             target_entity_ids: list[EntityID] = []
@@ -193,7 +193,7 @@ class DefaultExtendActionClear(ExtendAction):
 
         return self
 
-    def _need_rest(self, police_force: PoliceForceEntity) -> bool:
+    def _need_rest(self, police_force: PoliceForce) -> bool:
         hp = police_force.get_hp()
         damage = police_force.get_damage()
 
@@ -210,7 +210,7 @@ class DefaultExtendActionClear(ExtendAction):
 
     def _calc_rest(
         self,
-        police_force: PoliceForceEntity,
+        police_force: PoliceForce,
         path_planning: PathPlanning,
         target_entity_ids: list[EntityID],
     ) -> Optional[Action]:
@@ -246,7 +246,7 @@ class DefaultExtendActionClear(ExtendAction):
         return ActionMove(first_result) if first_result != [] else None
 
     def _get_rescue_action(
-        self, police_entity: PoliceForceEntity, road: Road
+        self, police_entity: PoliceForce, road: Road
     ) -> Optional[Action]:
         blockades = set(
             []
@@ -257,9 +257,7 @@ class DefaultExtendActionClear(ExtendAction):
             ]
         )
         agent_entities = set(
-            self.world_info.get_entities_of_types(
-                [AmbulanceTeamEntity, FireBrigadeEntity]
-            )
+            self.world_info.get_entities_of_types([AmbulanceTeam, FireBrigade])
         )
 
         police_x = police_entity.get_x()
@@ -462,7 +460,7 @@ class DefaultExtendActionClear(ExtendAction):
                 return action_move
 
         action = self._get_area_clear_action(
-            cast(PoliceForceEntity, self.agent_info.get_myself()), road
+            cast(PoliceForce, self.agent_info.get_myself()), road
         )
         if action is None:
             action = ActionMove([road.get_id()], int(point_x), int(point_y))
@@ -560,7 +558,7 @@ class DefaultExtendActionClear(ExtendAction):
         return False
 
     def _get_area_clear_action(
-        self, police_entity: PoliceForceEntity, road: Road
+        self, police_entity: PoliceForce, road: Road
     ) -> Optional[Action]:
         if road.get_blockades() == []:
             return None
@@ -631,7 +629,7 @@ class DefaultExtendActionClear(ExtendAction):
         return list.index(x) if x in list else -1
 
     def _get_neighbour_position_action(
-        self, police_entity: PoliceForceEntity, target: Area
+        self, police_entity: PoliceForce, target: Area
     ) -> Optional[Action]:
         agent_x = police_entity.get_x()
         agent_y = police_entity.get_y()

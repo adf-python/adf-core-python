@@ -1,7 +1,7 @@
 from functools import cmp_to_key
 from typing import Callable, Optional
 
-from rcrs_core.entities.ambulanceTeam import AmbulanceTeamEntity
+from rcrs_core.entities.ambulanceTeam import AmbulanceTeam
 from rcrs_core.entities.entity import Entity
 from rcrs_core.entities.human import Human
 from rcrs_core.worldmodel.entityID import EntityID
@@ -40,9 +40,7 @@ class DefaultAmbulanceTargetAllocator(AmbulanceTargetAllocator):
         super().resume(precompute_data)
         if self.get_count_resume() >= 2:
             return self
-        for entity_id in self._world_info.get_entity_ids_of_types(
-            [AmbulanceTeamEntity]
-        ):
+        for entity_id in self._world_info.get_entity_ids_of_types([AmbulanceTeam]):
             self._ambulance_team_info_map[entity_id] = self.AmbulanceTeamInfo(entity_id)
         return self
 
@@ -50,9 +48,7 @@ class DefaultAmbulanceTargetAllocator(AmbulanceTargetAllocator):
         super().prepare()
         if self.get_count_prepare() >= 2:
             return self
-        for entity_id in self._world_info.get_entity_ids_of_types(
-            [AmbulanceTeamEntity]
-        ):
+        for entity_id in self._world_info.get_entity_ids_of_types([AmbulanceTeam]):
             self._ambulance_team_info_map[entity_id] = self.AmbulanceTeamInfo(entity_id)
         return self
 
@@ -113,9 +109,9 @@ class DefaultAmbulanceTargetAllocator(AmbulanceTargetAllocator):
     def _get_action_agents(
         self,
         info_map: dict[EntityID, "DefaultAmbulanceTargetAllocator.AmbulanceTeamInfo"],
-    ) -> list[AmbulanceTeamEntity]:
+    ) -> list[AmbulanceTeam]:
         result = []
-        for entity in self._world_info.get_entities_of_types([AmbulanceTeamEntity]):
+        for entity in self._world_info.get_entities_of_types([AmbulanceTeam]):
             info = info_map[entity.get_id()]
             if info is not None and info._can_new_action:
                 result.append(entity)

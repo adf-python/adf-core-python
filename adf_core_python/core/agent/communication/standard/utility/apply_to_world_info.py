@@ -1,9 +1,9 @@
-from rcrs_core.entities.ambulanceTeam import AmbulanceTeamEntity
+from rcrs_core.entities.ambulanceTeam import AmbulanceTeam
 from rcrs_core.entities.blockade import Blockade
 from rcrs_core.entities.building import Building
 from rcrs_core.entities.civilian import Civilian
-from rcrs_core.entities.fireBrigade import FireBrigadeEntity
-from rcrs_core.entities.policeForce import PoliceForceEntity
+from rcrs_core.entities.fireBrigade import FireBrigade
+from rcrs_core.entities.policeForce import PoliceForce
 from rcrs_core.entities.road import Road
 
 from adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team import (
@@ -80,7 +80,7 @@ def _apply_to_world_info_ambulance_team(
         return
     entity = world_info.get_entity(entity_id)
     if entity is None:
-        ambulance = AmbulanceTeamEntity(entity_id.get_value())
+        ambulance = AmbulanceTeam(entity_id.get_value())
         if (hp := message_ambulance_team.get_ambulance_team_hp()) is not None:
             ambulance.set_hp(hp)
         if (damege := message_ambulance_team.get_ambulance_team_damage()) is not None:
@@ -95,7 +95,7 @@ def _apply_to_world_info_ambulance_team(
             ambulance.set_position(position)
         world_info.add_entity(ambulance)
     else:
-        if isinstance(entity, AmbulanceTeamEntity):
+        if isinstance(entity, AmbulanceTeam):
             if (hp := message_ambulance_team.get_ambulance_team_hp()) is not None:
                 entity.set_hp(hp)
             if (
@@ -131,7 +131,7 @@ def _apply_to_world_info_fire_brigade(
         return
     entity = world_info.get_entity(entity_id)
     if entity is None:
-        fire_brigade = FireBrigadeEntity(entity_id.get_value())
+        fire_brigade = FireBrigade(entity_id.get_value())
         if (hp := message_fire_brigade.get_fire_brigade_hp()) is not None:
             fire_brigade.set_hp(hp)
         if (damage := message_fire_brigade.get_fire_brigade_damage()) is not None:
@@ -146,7 +146,7 @@ def _apply_to_world_info_fire_brigade(
             fire_brigade.set_water(water)
         world_info.add_entity(fire_brigade)
     else:
-        if isinstance(entity, FireBrigadeEntity):
+        if isinstance(entity, FireBrigade):
             if (hp := message_fire_brigade.get_fire_brigade_hp()) is not None:
                 entity.set_hp(hp)
             if (damage := message_fire_brigade.get_fire_brigade_damage()) is not None:
@@ -182,7 +182,7 @@ def _apply_to_world_info_police_force(
         return
     entity = world_info.get_entity(entity_id)
     if entity is None:
-        police_force = PoliceForceEntity(entity_id.get_value())
+        police_force = PoliceForce(entity_id.get_value())
         if (hp := message_police_force.get_police_force_hp()) is not None:
             police_force.set_hp(hp)
         if (damage := message_police_force.get_police_force_damage()) is not None:
@@ -195,7 +195,7 @@ def _apply_to_world_info_police_force(
             police_force.set_position(position)
         world_info.add_entity(police_force)
     else:
-        if isinstance(entity, PoliceForceEntity):
+        if isinstance(entity, PoliceForce):
             if (hp := message_police_force.get_police_force_hp()) is not None:
                 entity.set_hp(hp)
             if (damage := message_police_force.get_police_force_damage()) is not None:
