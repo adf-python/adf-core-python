@@ -17,7 +17,7 @@ from adf_core_python.core.component.module.complex.search import Search
 from adf_core_python.core.logger.logger import get_agent_logger
 
 
-class TeamNameSearch(Search):
+class SampleSearch(Search):
     def __init__(
         self,
         agent_info: AgentInfo,

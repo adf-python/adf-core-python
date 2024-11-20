@@ -16,7 +16,7 @@ from adf_core_python.core.component.module.complex.human_detector import HumanDe
 from adf_core_python.core.logger.logger import get_agent_logger
 
 
-class TeamNameHumanDetector(HumanDetector):
+class SampleHumanDetector(HumanDetector):
     def __init__(
         self,
         agent_info: AgentInfo,
