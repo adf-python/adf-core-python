@@ -5,13 +5,13 @@ description = "Agent Development Framework for Python"
 authors = [
     "Haruki Uehara <k19016kk@maslab.aitech.ac.jp>",
     "Yuki Shimada <shimapaca@maslab.aitech.ac.jp>",
-    ]
+]
 readme = "README.md"
 package-mode = true
 
 [tool.poetry.dependencies]
 python = "^3.12"
-rcrs_core = {git = "https://github.com/adf-python/rcrs-core-python"}
+rcrs_core = { git = "https://github.com/adf-python/rcrs-core-python" }
 pyyaml = "^6.0.2"
 pytest = "^8.3.2"
 types-pyyaml = "^6.0.12.20240808"
@@ -19,6 +19,7 @@ scikit-learn = "^1.5.2"
 structlog = "^24.4.0"
 bitarray = "^3.0.0"
 shapely = "^2.0.6"
+click = "^8.1.7"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -30,6 +31,9 @@ ruff = "^0.4.4"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+adf-core-python = "adf_core_python.cli.cli:cli"
 
 [tool.taskipy.tasks]
 format = "ruff format ."
@@ -120,9 +124,9 @@ docstring-code-line-length = "dynamic"
 
 [tool.mypy]
 ignore_missing_imports = true
-show_error_context = true  # エラー時のメッセージを詳細表示
-show_column_numbers = true  # エラー発生箇所の行数/列数を表示
+show_error_context = true     # エラー時のメッセージを詳細表示
+show_column_numbers = true    # エラー発生箇所の行数/列数を表示
 disallow_untyped_defs = true  # 関数定義の引数/戻り値に型アノテーション必須
-no_implicit_optional = true  # デフォルト引数に None を取る場合型アノテーションに Optional 必須
-check_untyped_defs = true  # 型注釈がない関数やメソッドに対して型チェックを行う
-warn_redundant_casts = true  # 冗長なキャストに警告
+no_implicit_optional = true   # デフォルト引数に None を取る場合型アノテーションに Optional 必須
+check_untyped_defs = true     # 型注釈がない関数やメソッドに対して型チェックを行う
+warn_redundant_casts = true   # 冗長なキャストに警告

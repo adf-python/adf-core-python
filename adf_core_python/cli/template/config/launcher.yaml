@@ -1,0 +1,35 @@
+kernel:
+  host: localhost
+  port: 27931
+
+team:
+  name: team_name
+
+adf:
+  launcher:
+    precompute: 0
+  debug:
+    flag: 0
+  agent:
+    moduleconfig:
+      filename: config/module.yaml
+
+  develop:
+    flag: 1
+    filename: config/development.json
+
+  team:
+    platoon:
+      ambulance:
+        count: 100
+      fire:
+        count: 100
+      police:
+        count: 100
+    office:
+      ambulance:
+        count: -1
+      fire:
+        count: -1
+      police:
+        count: -1
