@@ -9,15 +9,13 @@ NAME_PLACEHOLDER = "team_name"
 @click.option(
     "--name", prompt="Your agent team name", help="The name of your agent team"
 )
-def cli(name):
+def cli(name: str) -> None:
     # load template dir and create a new agent team
     click.echo(f"Creating a new agent team with name: {name}")
     # 自身がいるディレクトリを取得
     template_dir = os.path.join(os.path.abspath(os.path.dirname(__file__)), "template")
-    click.echo(f"Current file path: {template_dir}")
     # コマンドラインのカレントディレクトリを取得
     current_dir = os.getcwd()
-    click.echo(f"Current directory: {current_dir}")
 
     _copy_template(
         template_dir,
@@ -27,10 +25,10 @@ def cli(name):
 
 
 def _copy_template(
-    src,
-    dest,
-    name,
-):
+    src: str,
+    dest: str,
+    name: str,
+) -> None:
     if os.path.isdir(src):
         if not os.path.exists(dest):
             os.makedirs(dest)
