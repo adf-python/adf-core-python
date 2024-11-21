@@ -1,7 +1,7 @@
 ## DefaultTacticsAmbulanceTeam
 DefaultTacticsAmbulanceTeam:
-  HumanDetector: team_name.module.complex.sample_human_detector.SampleHumanDetector
-  Search: team_name.module.complex.sample_search.SampleSearch
+  HumanDetector: src.team_name.module.complex.sample_human_detector.SampleHumanDetector
+  Search: src.team_name.module.complex.sample_search.SampleSearch
   ExtendActionTransport: adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport
   ExtendActionMove: adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove
   CommandExecutorAmbulance: adf_core_python.implement.centralized.DefaultCommandExecutorAmbulance
@@ -9,8 +9,8 @@ DefaultTacticsAmbulanceTeam:
 
 # ## DefaultTacticsFireBrigade
 DefaultTacticsFireBrigade:
-  HumanDetector: team_name.module.complex.sample_human_detector.SampleHumanDetector
-  Search: team_name.module.complex.sample_search.SampleSearch
+  HumanDetector: src.team_name.module.complex.sample_human_detector.SampleHumanDetector
+  Search: src.team_name.module.complex.sample_search.SampleSearch
   ExtendActionRescue: adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue
   ExtendActionMove: adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove
   CommandExecutorFire: adf_core_python.implement.centralized.DefaultCommandExecutorFire
@@ -18,8 +18,8 @@ DefaultTacticsFireBrigade:
 
 # ## DefaultTacticsPoliceForce
 DefaultTacticsPoliceForce:
-  RoadDetector: team_name.module.complex.sample_road_detector.SampleRoadDetector
-  Search: team_name.module.complex.sample_search.SampleSearch
+  RoadDetector: src.team_name.module.complex.sample_road_detector.SampleRoadDetector
+  Search: src.team_name.module.complex.sample_search.SampleSearch
   ExtendActionClear: adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear
   ExtendActionMove: adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove
   CommandExecutorPolice: adf_core_python.implement.centralized.DefaultCommandExecutorPolice
