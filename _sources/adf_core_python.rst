@@ -7,6 +7,7 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
+   adf_core_python.cli
    adf_core_python.core
    adf_core_python.implement
 
