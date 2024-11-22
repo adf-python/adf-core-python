@@ -32,6 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -42,6 +43,8 @@
     <script src="../../_static/documentation_options.js?v=2327a732"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../_static/translations.js?v=4755f45a"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'usage/module/module';</script>
@@ -206,7 +209,7 @@
       
       
       
-      <li><a href="../../_sources/usage/module/module.rst" target="_blank"
+      <li><a href="../../_sources/usage/module/module.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="ソースファイルをダウンロード"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -216,7 +219,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.rst</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -306,18 +309,18 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="module">
-<span id="id1"></span><h1>モジュールについて<a class="headerlink" href="#module" title="Link to this heading">#</a></h1>
+  <section id="id1">
+<h1>モジュールについて<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
 <h2>モジュールの指定方法<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>モジュールを指定するには、module.yamlにモジュールの名前とパスを記述します。</p>
 <p>例えば、以下のように記述します：</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">SampleSearch</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">PathPlanning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.my-agent.module.complex.sample_search.SampleSearch</span>
-<span class="w">  </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.my-agent.module.complex.sample_search.SampleClustering</span>
+<span class="w">    </span><span class="nt">PathPlanning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.my-agent.module.complex.sample_search.SampleSearch</span>
+<span class="w">    </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.my-agent.module.complex.sample_search.SampleClustering</span>
 </pre></div>
 </div>
-<p>この場合、<cite>SampleSearch</cite> というモジュールで使用される、<cite>PathPlanning</cite> と <cite>Clustering</cite> というモジュールを指定しています。</p>
+<p>この場合、<code class="docutils literal notranslate"><span class="pre">SampleSearch</span></code> というモジュールで使用される、<code class="docutils literal notranslate"><span class="pre">PathPlanning</span></code> と <code class="docutils literal notranslate"><span class="pre">Clustering</span></code> というモジュールを指定しています。</p>
 </section>
 <section id="id3">
 <h2>モジュールの読み込み方法<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
@@ -421,7 +424,7 @@
 </tbody>
 </table>
 </div>
-<p>自分で上記の役割以外のモジュールを作成する際は、<cite>AbstractModule</cite> を継承してください。</p>
+<p>自分で上記の役割以外のモジュールを作成する際は、<code class="docutils literal notranslate"><span class="pre">AbstractModule</span></code> を継承してください。</p>
 </section>
 </section>
 

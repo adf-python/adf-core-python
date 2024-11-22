@@ -32,6 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -42,6 +43,8 @@
     <script src="../_static/documentation_options.js?v=2327a732"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../_static/translations.js?v=4755f45a"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'installation/installation';</script>
@@ -206,7 +209,7 @@
       
       
       
-      <li><a href="../_sources/installation/installation.rst" target="_blank"
+      <li><a href="../_sources/installation/installation.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="ソースファイルをダウンロード"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -216,7 +219,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.rst</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -292,10 +295,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">前提条件</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">パッケージのインストール</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">インストールの確認</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">トラブルシューティング</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">前提条件</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">パッケージのインストール</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">インストールの確認</a></li>
 </ul>
             </nav>
         </div>
@@ -307,44 +309,31 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="installation">
-<span id="id1"></span><h1>インストール<a class="headerlink" href="#installation" title="Link to this heading">#</a></h1>
+  <section id="id1">
+<h1>インストール<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>このセクションでは、パッケージのインストール方法について説明します。</p>
-<nav class="contents local" id="id2">
-<p class="topic-title">目次</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#id3" id="id7">前提条件</a></p></li>
-<li><p><a class="reference internal" href="#id4" id="id8">パッケージのインストール</a></p></li>
-<li><p><a class="reference internal" href="#id5" id="id9">インストールの確認</a></p></li>
-<li><p><a class="reference internal" href="#id6" id="id10">トラブルシューティング</a></p></li>
-</ul>
-</nav>
-<section id="id3">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">前提条件</a><a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id2">
+<h2>前提条件<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>インストールする前に、以下の前提条件を確認してください：</p>
 <ul class="simple">
 <li><p>Python 3.12 以上</p></li>
 <li><p>pip</p></li>
 </ul>
 </section>
-<section id="id4">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">パッケージのインストール</a><a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h2>パッケージのインストール<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>パッケージをインストールするには、次のコマンドを実行します：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>adf_core_python
 </pre></div>
 </div>
 </section>
-<section id="id5">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">インストールの確認</a><a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h2>インストールの確認<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>インストールを確認するには、次のコマンドを実行します：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import adf_core_python; print(adf_core_python.__version__)&quot;</span>
 </pre></div>
 </div>
 <p>パッケージが正しくインストールされている場合、パッケージのバージョン番号が表示されます。</p>
-</section>
-<section id="id6">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">トラブルシューティング</a><a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<p>インストール中に問題が発生した場合は、トラブルシューティングセクションを参照するか、サポートに連絡してください。</p>
 </section>
 </section>
 
@@ -394,10 +383,9 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">前提条件</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">パッケージのインストール</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">インストールの確認</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">トラブルシューティング</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">前提条件</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">パッケージのインストール</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">インストールの確認</a></li>
 </ul>
   </nav></div>
 
