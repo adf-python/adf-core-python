@@ -11,6 +11,7 @@ from adf_core_python.core.component.communication.message_coordinator import (
     MessageCoordinator,
 )
 from adf_core_python.core.component.module.abstract_module import AbstractModule
+from adf_core_python.core.logger.logger import get_logger
 
 if TYPE_CHECKING:
     from adf_core_python.core.agent.config.module_config import ModuleConfig
@@ -43,9 +44,12 @@ class ModuleManager:
         self._message_coordinators: dict[str, Any] = {}
 
     def get_module(self, module_name: str, default_module_name: str) -> AbstractModule:
-        class_name = self._module_config.get_value_or_default(
-            module_name, default_module_name
-        )
+        class_name = self._module_config.get_value(module_name)
+        if class_name is None:
+            get_logger("ModuleManager").warning(
+                f"Module key {module_name} not found in config, using default module {default_module_name}"
+            )
+            class_name = default_module_name
 
         try:
             module_class: type = self._load_module(class_name)
