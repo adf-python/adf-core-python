@@ -197,8 +197,6 @@ class Agent:
             message_manager=self._message_manager,
         )
 
-        a = 1 / 0
-
         self._message_manager.coordinate_message(
             self._agent_info, self._world_info, self._scenario_info
         )
