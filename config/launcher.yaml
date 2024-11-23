@@ -7,25 +7,25 @@ team:
 
 adf:
   launcher:
-    precompute: 0
+    precompute: false
   debug:
-    flag: 0
+    flag: false
   agent:
     moduleconfig:
       filename: config/module.yaml
 
   develop:
-    flag: 1
+    flag: true
     filename: config/development.json
 
   team:
     platoon:
       ambulance:
-        count: 1
+        count: 100
       fire:
-        count: 0
+        count: 100
       police:
-        count: 0
+        count: 100
     office:
       ambulance:
         count: -1

@@ -47,7 +47,7 @@ class DefaultExtendActionRescue(ExtendAction):
                 self._path_planning = cast(
                     PathPlanning,
                     self.module_manager.get_module(
-                        "DefaultExtendActionMove.PathPlanning",
+                        "DefaultExtendActionRescue.PathPlanning",
                         "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
                     ),
                 )

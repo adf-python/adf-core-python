@@ -1,4 +1,3 @@
-## DefaultTacticsAmbulanceTeam
 DefaultTacticsAmbulanceTeam:
   HumanDetector: src.team_name.module.complex.sample_human_detector.SampleHumanDetector
   Search: src.team_name.module.complex.sample_search.SampleSearch
@@ -7,7 +6,6 @@ DefaultTacticsAmbulanceTeam:
   CommandExecutorAmbulance: adf_core_python.implement.centralized.DefaultCommandExecutorAmbulance
   CommandExecutorScout: adf_core_python.implement.centralized.DefaultCommandExecutorScout
 
-# ## DefaultTacticsFireBrigade
 DefaultTacticsFireBrigade:
   HumanDetector: src.team_name.module.complex.sample_human_detector.SampleHumanDetector
   Search: src.team_name.module.complex.sample_search.SampleSearch
@@ -16,7 +14,6 @@ DefaultTacticsFireBrigade:
   CommandExecutorFire: adf_core_python.implement.centralized.DefaultCommandExecutorFire
   CommandExecutorScout: adf_core_python.implement.centralized.DefaultCommandExecutorScout
 
-# ## DefaultTacticsPoliceForce
 DefaultTacticsPoliceForce:
   RoadDetector: src.team_name.module.complex.sample_road_detector.SampleRoadDetector
   Search: src.team_name.module.complex.sample_search.SampleSearch
@@ -25,87 +22,63 @@ DefaultTacticsPoliceForce:
   CommandExecutorPolice: adf_core_python.implement.centralized.DefaultCommandExecutorPolice
   CommandExecutorScout: adf_core_python.implement.centralized.DefaultCommandExecutorScoutPolice
 
-# ## DefaultTacticsAmbulanceCentre
 # DefaultTacticsAmbulanceCentre:
 #   TargetAllocator: sample_team.module.complex.SampleAmbulanceTargetAllocator
 #   CommandPicker: adf_core_python.implement.centralized.DefaultCommandPickerAmbulance
 
-# ## DefaultTacticsFireStation
 # DefaultTacticsFireStation:
 #   TargetAllocator: sample_team.module.complex.SampleFireTargetAllocator
 #   CommandPicker: adf_core_python.implement.centralized.DefaultCommandPickerFire
 
-# ## DefaultTacticsPoliceOffice
 # DefaultTacticsPoliceOffice:
 #   TargetAllocator: sample_team.module.complex.SamplePoliceTargetAllocator
 #   CommandPicker: adf_core_python.implement.centralized.DefaultCommandPickerPolice
 
-## SampleSearch
 SampleSearch:
   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
   Clustering: adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering
 
-# ## SampleBuildDetector
-# SampleBuildingDetector:
-#   Clustering: adf_core_python.implement.module.algorithm.KMeansClustering
+SampleRoadDetector:
+  PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
 
-# ## SampleRoadDetector
-# SampleRoadDetector:
-#   Clustering: adf_core_python.implement.module.algorithm.KMeansClustering
-#   PathPlanning: adf_core_python.implement.module.algorithm.DijkstraPathPlanning
+SampleHumanDetector:
+  Clustering: adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering
 
-# ## SampleHumanDetector
-# SampleHumanDetector:
-#   Clustering: adf_core_python.implement.module.algorithm.KMeansClustering
+DefaultExtendActionClear:
+  PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
 
-# ## DefaultExtendActionClear
-# DefaultExtendActionClear:
-#   PathPlanning: adf_core_python.implement.module.algorithm.DijkstraPathPlanning
+DefaultExtendActionRescue:
+  PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
 
-# ## DefaultExtendActionFireFighting
-# DefaultExtendActionFireFighting:
-#   PathPlanning: adf_core_python.implement.module.algorithm.DijkstraPathPlanning
+DefaultExtendActionMove:
+  PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
 
-# ## DefaultExtendActionRescue
-# DefaultExtendActionRescue:
-#   PathPlanning: adf_core_python.implement.module.algorithm.DijkstraPathPlanning
+DefaultExtendActionTransport:
+  PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
 
-# ## DefaultExtendActionMove
-# DefaultExtendActionMove:
-#   PathPlanning: adf_core_python.implement.module.algorithm.DijkstraPathPlanning
-
-# ## DefaultExtendActionTransport
-# DefaultExtendActionTransport:
-#   PathPlanning: adf_core_python.implement.module.algorithm.DijkstraPathPlanning
-# ## DefaultCommandExecutorAmbulance
 # DefaultCommandExecutorAmbulance:
-#   PathPlanning: adf_core_python.implement.module.algorithm.DijkstraPathPlanning
+#   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
 #   ExtendActionTransport: adf_core_python.implement.action.DefaultExtendActionTransport
 #   ExtendActionMove: adf_core_python.implement.action.DefaultExtendActionMove
 
-# ## DefaultCommandExecutorFire
 # DefaultCommandExecutorFire:
-#   PathPlanning: adf_core_python.implement.module.algorithm.DijkstraPathPlanning
+#   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
 #   EtxActionFireRescue: adf_core_python.implement.action.DefaultExtendActionRescue
 #   EtxActionFireFighting: adf_core_python.implement.action.DefaultExtendActionFireFighting
 #   ExtendActionMove: adf_core_python.implement.action.DefaultExtendActionMove
 
-# ## DefaultCommandExecutorPolice
 # DefaultCommandExecutorPolice:
-#   PathPlanning: adf_core_python.implement.module.algorithm.DijkstraPathPlanning
+#   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
 #   ExtendActionClear: adf_core_python.implement.action.DefaultExtendActionClear
 #   ExtendActionMove: adf_core_python.implement.action.DefaultExtendActionMove
 
-# ## DefaultCommandExecutorScout
 # DefaultCommandExecutorScout:
-#   PathPlanning: adf_core_python.implement.module.algorithm.DijkstraPathPlanning
+#   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
 
-# ## DefaultCommandExecutorScoutPolice
 # DefaultCommandExecutorScoutPolice:
-#   PathPlanning: adf_core_python.implement.module.algorithm.DijkstraPathPlanning
+#   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
 #   ExtendActionClear: adf_core_python.implement.action.DefaultExtendActionClear
 
-# ## MessageManager
 MessageManager:
   PlatoonChannelSubscriber: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber
   CenterChannelSubscriber: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber

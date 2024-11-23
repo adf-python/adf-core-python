@@ -36,7 +36,7 @@ class DefaultSearch(Search):
         self._clustering: Clustering = cast(
             Clustering,
             module_manager.get_module(
-                "DefaultSearch.Clustering",
+                "SampleSearch.Clustering",
                 "adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering",
             ),
         )
@@ -44,7 +44,7 @@ class DefaultSearch(Search):
         self._path_planning: PathPlanning = cast(
             PathPlanning,
             module_manager.get_module(
-                "DefaultSearch.PathPlanning",
+                "SampleSearch.PathPlanning",
                 "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
             ),
         )
