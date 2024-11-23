@@ -47,7 +47,7 @@ class ComponentLauncher:
             connection.parse_message_from_kernel()
         except Exception as e:
             self.logger.exception(
-                f"Failed to connect agent: {self.host}:{self.port} {e}",
+                f"Agent threw an exception {e}",
                 exception=str(e),
             )
 

@@ -197,6 +197,8 @@ class Agent:
             message_manager=self._message_manager,
         )
 
+        a = 1 / 0
+
         self._message_manager.coordinate_message(
             self._agent_info, self._world_info, self._scenario_info
         )
@@ -228,9 +230,18 @@ class Agent:
             self.handle_connect_error(c_msg)
 
     def handle_connect_error(self, msg: Any) -> NoReturn:
-        self.logger.error(
-            "Failed to connect agent: %s(request_id: %s)", msg.reason, msg.request_id
-        )
+        if msg.reason.startswith("No more agents"):
+            self.logger.debug(
+                "Agent already connected: %s(request_id: %s)",
+                msg.reason,
+                msg.request_id,
+            )
+        else:
+            self.logger.error(
+                "Failed to connect agent: %s(request_id: %s)",
+                msg.reason,
+                msg.request_id,
+            )
         sys.exit(1)
 
     def handle_connect_ok(self, msg: Any) -> None:
