@@ -69,6 +69,7 @@ def configure_logger() -> None:
     handler_stdout.setFormatter(
         structlog.stdlib.ProcessorFormatter(processor=ConsoleRenderer())
     )
+    handler_stdout.setLevel(logging.INFO)
 
     handler_file = RotatingFileHandler(
         "agent.log", maxBytes=10 * 1024 * 1024, backupCount=5
@@ -77,6 +78,7 @@ def configure_logger() -> None:
     handler_file.setFormatter(
         structlog.stdlib.ProcessorFormatter(processor=JSONRenderer())
     )
+    handler_file.setLevel(logging.DEBUG)
 
     root_logger = logging.getLogger()
     root_logger.addHandler(handler_stdout)
