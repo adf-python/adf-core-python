@@ -34,14 +34,14 @@ DefaultTacticsPoliceForce:
 #   TargetAllocator: sample_team.module.complex.SamplePoliceTargetAllocator
 #   CommandPicker: adf_core_python.implement.centralized.DefaultCommandPickerPolice
 
-SampleSearch:
+DefaultSearch:
   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
   Clustering: adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering
 
-SampleRoadDetector:
+DefaultRoadDetector:
   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
 
-SampleHumanDetector:
+DefaultHumanDetector:
   Clustering: adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering
 
 DefaultExtendActionClear:

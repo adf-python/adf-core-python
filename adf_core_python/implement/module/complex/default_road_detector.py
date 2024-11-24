@@ -36,7 +36,7 @@ class DefaultRoadDetector(RoadDetector):
                 self._path_planning: PathPlanning = cast(
                     PathPlanning,
                     module_manager.get_module(
-                        "SampleRoadDetector.PathPlanning",
+                        "DefaultRoadDetector.PathPlanning",
                         "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
                     ),
                 )
