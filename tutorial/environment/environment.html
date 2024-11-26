@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>コンフィグについて &#8212; adf-core-python 0.1.0 ドキュメント</title>
+    <title>環境構築 &#8212; adf-core-python 0.1.0 ドキュメント</title>
   
   
   
@@ -47,11 +47,11 @@
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../_static/translations.js?v=4755f45a"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'usage/config/config';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial/environment/environment';</script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="モジュールについて" href="../module/module.html" />
-    <link rel="prev" title="エージェントの作成" href="../agent/agent.html" />
+    <link rel="next" title="インストール" href="../install/install.html" />
+    <link rel="prev" title="adf-core-pythonのドキュメント" href="../../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
   <meta name="docsearch:version" content="" />
@@ -143,9 +143,10 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">チュートリアル:</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../installation/installation.html">インストール</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">環境構築</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html">インストール</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../agent/agent.html">エージェントの作成</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">コンフィグについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../config/config.html">コンフィグについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/module.html">モジュールについて</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ハンズオン:</span></p>
@@ -209,7 +210,7 @@
       
       
       
-      <li><a href="../../_sources/usage/config/config.md" target="_blank"
+      <li><a href="../../_sources/tutorial/environment/environment.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="ソースファイルをダウンロード"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -285,7 +286,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>コンフィグについて</h1>
+    <h1>環境構築</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -295,12 +296,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">コンフィグについての説明</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#launcher-yaml">launcher.yaml</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-yaml">module.yaml</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-json">development.json</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">必要なもの</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">シミュレーションサーバーのインストール</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">シュミレーションサーバーの動作確認</a></li>
 </ul>
             </nav>
         </div>
@@ -313,26 +311,41 @@
                 <article class="bd-article">
                   
   <section id="id1">
-<h1>コンフィグについて<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>環境構築<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
-<h2>コンフィグについての説明<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<section id="launcher-yaml">
-<h3>launcher.yaml<a class="headerlink" href="#launcher-yaml" title="Link to this heading">#</a></h3>
-<p>launcher.yaml は、エージェントの起動時に読み込まれる設定ファイルです。
-シミュレーションサーバーの指定や読み込むモジュールが記述されたファイルの指定などが記述されています。</p>
+<h2>必要なもの<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Git</p></li>
+<li><p>Python 3.12 以上</p></li>
+<li><p>OpenJDK 17</p></li>
+</ul>
+<p><a class="reference internal" href="windows/install.html"><span class="std std-doc">Windowsでの必要なもののインストール方法</span></a></p>
 </section>
-<section id="module-yaml">
-<h3>module.yaml<a class="headerlink" href="#module-yaml" title="Link to this heading">#</a></h3>
-<p>module.yaml は、エージェントが読み込むモジュールの設定ファイルです。
-読み込むモジュールのパスなどが記述されています。
-パスを指定する際は、プロジェクトのmain.pyからの相対パスで指定してください。</p>
+<section id="id3">
+<h2>シミュレーションサーバーのインストール<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>WORKING_DIR は任意のディレクトリを指定してください。</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>WORKING_DIR
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/roborescue/rcrs-server.git
+<span class="nb">cd</span><span class="w"> </span>rcrs-server
+./gradlew<span class="w"> </span>completeBuild
+</pre></div>
+</div>
+<p>ビルドした際に以下のようなメッセージが表示されたら成功です。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>BUILD<span class="w"> </span>SUCCESSFUL<span class="w"> </span><span class="k">in</span><span class="w"> </span>...
+</pre></div>
+</div>
 </section>
-<section id="development-json">
-<h3>development.json<a class="headerlink" href="#development-json" title="Link to this heading">#</a></h3>
-<p>development.json は、開発時に使用する設定ファイルです。
-エージェントの開発時に外部から値を取得する際に使用します。
-そのため、競技時には使用することができません。</p>
-</section>
+<section id="id4">
+<h2>シュミレーションサーバーの動作確認<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>WORKING_DIR/rcrs-server/scripts
+./start-comprun.sh<span class="w"> </span>-m<span class="w"> </span>../maps/test/map<span class="w"> </span>-c<span class="w"> </span>../maps/test/config
+</pre></div>
+</div>
+<p>何個かのウィンドウが表示されたら成功です。
+コマンドラインで <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">C</span></code> を押すとシミュレーションサーバーが終了します。</p>
 </section>
 </section>
 
@@ -348,20 +361,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../agent/agent.html"
+       href="../../index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">前へ</p>
-        <p class="prev-next-title">エージェントの作成</p>
+        <p class="prev-next-title">adf-core-pythonのドキュメント</p>
       </div>
     </a>
     <a class="right-next"
-       href="../module/module.html"
+       href="../install/install.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">次へ</p>
-        <p class="prev-next-title">モジュールについて</p>
+        <p class="prev-next-title">インストール</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -382,12 +395,9 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">コンフィグについての説明</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#launcher-yaml">launcher.yaml</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-yaml">module.yaml</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-json">development.json</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">必要なもの</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">シミュレーションサーバーのインストール</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">シュミレーションサーバーの動作確認</a></li>
 </ul>
   </nav></div>
 

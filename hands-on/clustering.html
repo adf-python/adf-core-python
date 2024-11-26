@@ -51,7 +51,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="クイックスタート" href="../quickstart/quickstart.html" />
-    <link rel="prev" title="モジュールについて" href="../usage/module/module.html" />
+    <link rel="prev" title="モジュールについて" href="../tutorial/module/module.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
   <meta name="docsearch:version" content="" />
@@ -143,10 +143,11 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">チュートリアル:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../installation/installation.html">インストール</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/agent/agent.html">エージェントの作成</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/config/config.html">コンフィグについて</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/module/module.html">モジュールについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">環境構築</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install/install.html">インストール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">エージェントの作成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">コンフィグについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">モジュールについて</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ハンズオン:</span></p>
 <ul class="current nav bd-sidenav">
@@ -327,9 +328,10 @@
 </section>
 <section id="id4">
 <h2>クラスタリングモジュールの実装<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>:::{note}
-以降の作業では、カレントディレクトリがプロジェクトのルートディレクトリであることを前提としています。
-:::</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>以降の作業では、カレントディレクトリがプロジェクトのルートディレクトリであることを前提としています。</p>
+</div>
 <p>まず、クラスタリングモジュールを記述するためのファイルを作成します。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>src/&lt;your_team_name&gt;/module/algorithm
 touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/algorithm/k_means_pp_clustering.py
@@ -616,7 +618,7 @@ touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/algorithm/k_means
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../usage/module/module.html"
+       href="../tutorial/module/module.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">

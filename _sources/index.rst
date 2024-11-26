@@ -35,10 +35,11 @@ ADF Core Python を始めるには、インストール手順に従い、この�
    :maxdepth: 1
    :caption: チュートリアル:
 
-   installation/installation
-   usage/agent/agent
-   usage/config/config
-   usage/module/module
+   tutorial/environment/environment
+   tutorial/install/install
+   tutorial/agent/agent
+   tutorial/config/config
+   tutorial/module/module
 
 .. toctree::
    :maxdepth: 1

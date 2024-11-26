@@ -47,11 +47,11 @@
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../_static/translations.js?v=4755f45a"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'usage/agent/agent';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial/agent/agent';</script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="コンフィグについて" href="../config/config.html" />
-    <link rel="prev" title="インストール" href="../../installation/installation.html" />
+    <link rel="prev" title="インストール" href="../install/install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
   <meta name="docsearch:version" content="" />
@@ -143,7 +143,8 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">チュートリアル:</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../installation/installation.html">インストール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environment/environment.html">環境構築</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html">インストール</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">エージェントの作成</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../config/config.html">コンフィグについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/module.html">モジュールについて</a></li>
@@ -209,7 +210,7 @@
       
       
       
-      <li><a href="../../_sources/usage/agent/agent.md" target="_blank"
+      <li><a href="../../_sources/tutorial/agent/agent.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="ソースファイルをダウンロード"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -296,7 +297,7 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">新規エージェントの作成</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">エージェントを実行する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">シミュレーションを実行する</a></li>
 </ul>
             </nav>
         </div>
@@ -324,31 +325,43 @@ Creating<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </s
 </div>
 <p>入力後、下記のようなエージェントのテンプレートがカレントディレクトリに作成されます。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
-├──<span class="w"> </span>config
-│<span class="w">   </span>├──<span class="w"> </span>development.json
-│<span class="w">   </span>├──<span class="w"> </span>launcher.yaml
-│<span class="w">   </span>└──<span class="w"> </span>module.yaml
-├──<span class="w"> </span>main.py
-└──<span class="w"> </span>src
-<span class="w">    </span>└──<span class="w"> </span>my-agent
-<span class="w">        </span>├──<span class="w"> </span>__init__.py
-<span class="w">        </span>└──<span class="w"> </span>module
+└──<span class="w"> </span>my-agent
+<span class="w">    </span>├──<span class="w"> </span>config
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>development.json
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>launcher.yaml
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>module.yaml
+<span class="w">    </span>├──<span class="w"> </span>main.py
+<span class="w">    </span>└──<span class="w"> </span>src
+<span class="w">        </span>└──<span class="w"> </span>my-agent
 <span class="w">            </span>├──<span class="w"> </span>__init__.py
-<span class="w">            </span>└──<span class="w"> </span>complex
+<span class="w">            </span>└──<span class="w"> </span>module
 <span class="w">                </span>├──<span class="w"> </span>__init__.py
-<span class="w">                </span>├──<span class="w"> </span>sample_human_detector.py
-<span class="w">                </span>├──<span class="w"> </span>sample_road_detector.py
-<span class="w">                </span>└──<span class="w"> </span>sample_search.py
+<span class="w">                </span>└──<span class="w"> </span>complex
+<span class="w">                    </span>├──<span class="w"> </span>__init__.py
+<span class="w">                    </span>├──<span class="w"> </span>sample_human_detector.py
+<span class="w">                    </span>├──<span class="w"> </span>sample_road_detector.py
+<span class="w">                    </span>└──<span class="w"> </span>sample_search.py
 </pre></div>
 </div>
 </section>
 <section id="id3">
-<h2>エージェントを実行する<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>エージェントを実行するには、シミュレーションサーバーを起動し、次のコマンドを実行します：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py
+<h2>シミュレーションを実行する<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>シミュレーションサーバーを以下のコマンドで起動します：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>WORKING_DIR/rcrs-server/scripts
+./start-comprun.sh<span class="w"> </span>-m<span class="w"> </span>../maps/test/map<span class="w"> </span>-c<span class="w"> </span>../maps/test/config
 </pre></div>
 </div>
-<p>エージェントの実行が開始され、シミュレーションサーバーとの通信が開始されます。</p>
+<p>その後、エージェントを起動します：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>WORKING_DIR/my-agent
+python<span class="w"> </span>main.py
+</pre></div>
+</div>
+<p>エージェントが正常に起動すると、シミュレーションサーバーに接続され、エージェントがシミュレーションに参加し、エージェントが動き出します。
+途中で止めたい場合は、それぞれのコマンドラインで <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">C</span></code> を押してください。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>シミュレーションサーバーを停止させたあとは、プロセスが残ってしまう場合があるので<code class="docutils literal notranslate"><span class="pre">./kill.sh</span></code> を実行してください。</p>
+</div>
 </section>
 </section>
 
@@ -364,7 +377,7 @@ Creating<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </s
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../installation/installation.html"
+       href="../install/install.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -399,7 +412,7 @@ Creating<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </s
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">新規エージェントの作成</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">エージェントを実行する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">シミュレーションを実行する</a></li>
 </ul>
   </nav></div>
 

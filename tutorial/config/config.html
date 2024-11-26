@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>モジュールについて &#8212; adf-core-python 0.1.0 ドキュメント</title>
+    <title>コンフィグについて &#8212; adf-core-python 0.1.0 ドキュメント</title>
   
   
   
@@ -47,11 +47,11 @@
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../../_static/translations.js?v=4755f45a"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'usage/module/module';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial/config/config';</script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="クラスタリングモジュール" href="../../hands-on/clustering.html" />
-    <link rel="prev" title="コンフィグについて" href="../config/config.html" />
+    <link rel="next" title="モジュールについて" href="../module/module.html" />
+    <link rel="prev" title="エージェントの作成" href="../agent/agent.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
   <meta name="docsearch:version" content="" />
@@ -143,10 +143,11 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">チュートリアル:</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../installation/installation.html">インストール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environment/environment.html">環境構築</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install.html">インストール</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../agent/agent.html">エージェントの作成</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../config/config.html">コンフィグについて</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">モジュールについて</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">コンフィグについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/module.html">モジュールについて</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ハンズオン:</span></p>
 <ul class="nav bd-sidenav">
@@ -209,7 +210,7 @@
       
       
       
-      <li><a href="../../_sources/usage/module/module.md" target="_blank"
+      <li><a href="../../_sources/tutorial/config/config.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="ソースファイルをダウンロード"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -285,7 +286,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>モジュールについて</h1>
+    <h1>コンフィグについて</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -295,9 +296,12 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">モジュールの指定方法</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">モジュールの読み込み方法</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">モジュールの種類について</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">コンフィグについての説明</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#launcher-yaml">launcher.yaml</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-yaml">module.yaml</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-json">development.json</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -310,121 +314,26 @@
                 <article class="bd-article">
                   
   <section id="id1">
-<h1>モジュールについて<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>コンフィグについて<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
-<h2>モジュールの指定方法<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>モジュールを指定するには、module.yamlにモジュールの名前とパスを記述します。</p>
-<p>例えば、以下のように記述します：</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">SampleSearch</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">PathPlanning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.my-agent.module.complex.sample_search.SampleSearch</span>
-<span class="w">    </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.my-agent.module.complex.sample_search.SampleClustering</span>
-</pre></div>
-</div>
-<p>この場合、<code class="docutils literal notranslate"><span class="pre">SampleSearch</span></code> というモジュールで使用される、<code class="docutils literal notranslate"><span class="pre">PathPlanning</span></code> と <code class="docutils literal notranslate"><span class="pre">Clustering</span></code> というモジュールを指定しています。</p>
+<h2>コンフィグについての説明<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="launcher-yaml">
+<h3>launcher.yaml<a class="headerlink" href="#launcher-yaml" title="Link to this heading">#</a></h3>
+<p>launcher.yaml は、エージェントの起動時に読み込まれる設定ファイルです。
+シミュレーションサーバーの指定や読み込むモジュールが記述されたファイルの指定などが記述されています。</p>
 </section>
-<section id="id3">
-<h2>モジュールの読み込み方法<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>モジュール内で、他のモジュールを読み込む場合は、次のように記述します：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">adf_core_python.core.agent.module.module_manager</span> <span class="kn">import</span> <span class="n">ModuleManager</span>
-
-<span class="k">class</span> <span class="nc">SampleSearch</span><span class="p">(</span><span class="n">Search</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">agent_info</span><span class="p">:</span> <span class="n">AgentInfo</span><span class="p">,</span>
-        <span class="n">world_info</span><span class="p">:</span> <span class="n">WorldInfo</span><span class="p">,</span>
-        <span class="n">scenario_info</span><span class="p">:</span> <span class="n">ScenarioInfo</span><span class="p">,</span>
-        <span class="n">module_manager</span><span class="p">:</span> <span class="n">ModuleManager</span><span class="p">,</span>
-        <span class="n">develop_data</span><span class="p">:</span> <span class="n">DevelopData</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="n">agent_info</span><span class="p">,</span> <span class="n">world_info</span><span class="p">,</span> <span class="n">scenario_info</span><span class="p">,</span> <span class="n">module_manager</span><span class="p">,</span> <span class="n">develop_data</span>
-        <span class="p">)</span>
-
-        <span class="c1"># クラスタリングモジュールの取得</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="p">:</span> <span class="n">Clustering</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
-            <span class="c1"># モジュールの型を指定</span>
-            <span class="n">Clustering</span><span class="p">,</span>
-            <span class="c1"># モジュールの取得</span>
-            <span class="n">module_manager</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span>
-                <span class="c1"># モジュールの名前</span>
-                <span class="s2">&quot;DefaultSearch.Clustering&quot;</span><span class="p">,</span>
-                <span class="c1"># 上記のモジュールの名前が指定されていない場合のデフォルトのモジュールのパス</span>
-                <span class="s2">&quot;adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering&quot;</span><span class="p">,</span>
-            <span class="p">),</span>
-        <span class="p">)</span>
-
-        <span class="c1"># パスプランニングモジュールの取得</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_path_planning</span><span class="p">:</span> <span class="n">PathPlanning</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
-            <span class="c1"># モジュールの型を指定</span>
-            <span class="n">PathPlanning</span><span class="p">,</span>
-            <span class="c1"># モジュールの取得</span>
-            <span class="n">module_manager</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span>
-                <span class="c1"># モジュールの名前</span>
-                <span class="s2">&quot;DefaultSearch.PathPlanning&quot;</span><span class="p">,</span>
-                <span class="c1"># 上記のモジュールの名前が指定されていない場合のデフォルトのモジュールのパス</span>
-                <span class="s2">&quot;adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning&quot;</span><span class="p">,</span>
-            <span class="p">),</span>
-        <span class="p">)</span>
-
-        <span class="c1"># モジュールの登録(これをしないと、モジュール内のシュミレーション環境の情報が更新されません)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">register_sub_module</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">register_sub_module</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_path_planning</span><span class="p">)</span>
-</pre></div>
-</div>
+<section id="module-yaml">
+<h3>module.yaml<a class="headerlink" href="#module-yaml" title="Link to this heading">#</a></h3>
+<p>module.yaml は、エージェントが読み込むモジュールの設定ファイルです。
+読み込むモジュールのパスなどが記述されています。
+パスを指定する際は、プロジェクトのmain.pyからの相対パスで指定してください。</p>
 </section>
-<section id="id4">
-<h2>モジュールの種類について<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>adf-core-pythonでは、以下のモジュールが提供されています。</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>クラス</p></th>
-<th class="head"><p>役割</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>TacticsFireBrigade</p></td>
-<td><p>消防隊用のモジュール呼び出し (競技では変更不可)</p></td>
-</tr>
-<tr class="row-odd"><td><p>TacticsPoliceForce</p></td>
-<td><p>土木隊用のモジュール呼び出し (競技では変更不可)</p></td>
-</tr>
-<tr class="row-even"><td><p>TacticsAmbulanceTeam</p></td>
-<td><p>救急隊用のモジュール呼び出し (競技では変更不可)</p></td>
-</tr>
-<tr class="row-odd"><td><p>BuildingDetector</p></td>
-<td><p>消防隊の活動対象の選択</p></td>
-</tr>
-<tr class="row-even"><td><p>RoadDetector</p></td>
-<td><p>土木隊の活動対象の選択</p></td>
-</tr>
-<tr class="row-odd"><td><p>HumanDetector</p></td>
-<td><p>救急隊の活動対象の選択</p></td>
-</tr>
-<tr class="row-even"><td><p>Search</p></td>
-<td><p>情報探索に向けた活動対象の選択</p></td>
-</tr>
-<tr class="row-odd"><td><p>PathPlanning</p></td>
-<td><p>経路探索</p></td>
-</tr>
-<tr class="row-even"><td><p>DynamicClustering</p></td>
-<td><p>シミュレーションの進行によってクラスタが変化するクラスタリング</p></td>
-</tr>
-<tr class="row-odd"><td><p>StaticClustering</p></td>
-<td><p>シミュレーション開始時にクラスタが定まるクラスタリング</p></td>
-</tr>
-<tr class="row-even"><td><p>ExtAction</p></td>
-<td><p>活動対象決定後のエージェントの動作決定</p></td>
-</tr>
-<tr class="row-odd"><td><p>MessageCoordinator</p></td>
-<td><p>通信でメッセージ(情報)を送信する経路である，チャンネルへのメッセージの分配</p></td>
-</tr>
-<tr class="row-even"><td><p>ChannelSubscriber</p></td>
-<td><p>通信によってメッセージを受け取るチャンネルの選択</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>自分で上記の役割以外のモジュールを作成する際は、<code class="docutils literal notranslate"><span class="pre">AbstractModule</span></code> を継承してください。</p>
+<section id="development-json">
+<h3>development.json<a class="headerlink" href="#development-json" title="Link to this heading">#</a></h3>
+<p>development.json は、開発時に使用する設定ファイルです。
+エージェントの開発時に外部から値を取得する際に使用します。
+そのため、競技時には使用することができません。</p>
+</section>
 </section>
 </section>
 
@@ -440,20 +349,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../config/config.html"
+       href="../agent/agent.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">前へ</p>
-        <p class="prev-next-title">コンフィグについて</p>
+        <p class="prev-next-title">エージェントの作成</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../hands-on/clustering.html"
+       href="../module/module.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">次へ</p>
-        <p class="prev-next-title">クラスタリングモジュール</p>
+        <p class="prev-next-title">モジュールについて</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -474,9 +383,12 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">モジュールの指定方法</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">モジュールの読み込み方法</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">モジュールの種類について</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">コンフィグについての説明</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#launcher-yaml">launcher.yaml</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-yaml">module.yaml</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-json">development.json</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
