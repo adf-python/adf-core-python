@@ -38,6 +38,7 @@ ADF Core Python を始めるには、インストール手順に従い、この�
    tutorial/environment/environment
    tutorial/install/install
    tutorial/agent/agent
+   tutorial/agent/agent_control
    tutorial/config/config
    tutorial/module/module
 
