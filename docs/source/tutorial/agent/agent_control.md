@@ -1,7 +1,8 @@
 # エージェントの制御
+
 このセクションでは、エージェントの制御用のプログラムを作成する方法について説明します。
 
-## エージェントの制御
+## エージェントの制御について
 
 RRSの災害救助エージェントは3種類あり、種類毎にそれぞれ異なるプログラムを書く必要があります。しかし、初めから全てのプログラムを書くことは困難です。ここではまず初めに、消防隊エージェントを操作するプログラムの一部を書いてみましょう．
 
@@ -88,11 +89,12 @@ class FireBrigadeHumanDetector(HumanDetector):
         return self._result
 ```
 
-## モジュールの登錍
+## モジュールの登録
 
 次に、作成したモジュールを登録します．
 
 `WORKING_DIR/<your_team_name>/config/module.yaml` ファイルを開き，以下の部分を
+
 ```yaml
 DefaultTacticsFireBrigade:
   HumanDetector: src.<your_team_name>.module.complex.sample_human_detector.SampleHumanDetector
@@ -126,7 +128,6 @@ python main.py
 
 このフローチャート中の各処理を，次小節で紹介する各クラス・メソッド等で置き換えたものを，`fire_brigade_human_detector.py` に記述していくことで，救助対象選択プログラムを完成させます．
 
-
 ## `Human Detector` モジュールの実装で使用するクラス・メソッド
 
 ### WorldInfo
@@ -146,6 +147,7 @@ python main.py
 `EntityID` クラスは，全てのエージェント/オブジェクトを一意に識別するためのID(識別子)を表すクラスです． RRSではエージェントとオブジェクトをまとめて，エンティティと呼んでいます．
 
 - 自分自身のエンティティIDを取得する
+
 ```python
 self._agent_info.get_entity_id()
 ```
@@ -155,11 +157,13 @@ self._agent_info.get_entity_id()
 `Entity` クラスは，エンティティの基底クラスです． このクラスは，エンティティの基本情報を保持します．
 
 - エンティティIDからエンティティを取得する
+
 ```python
 self._world_info.get_entity(entity_id)
 ```
 
 - 同じクラスのエンティティを全て取得する
+
 ```python
 self._world_info.get_entities_by_type([Building, Road])
 ```
@@ -169,11 +173,13 @@ self._world_info.get_entities_by_type([Building, Road])
 `Civilian` クラスは，市民を表すクラスです．このクラスからは，エージェントの位置や負傷の進行状況を取得することができます．
 
 - `entity` が市民であるかどうかを判定する
+
 ```python
 isinstance(entity, Civilian)
 ```
 
 - 市民が生きているかどうかを判定する
+
 ```python
 hp: Optional[int] = entity.get_hp()
 if hp is None or hp <= 0:
@@ -181,6 +187,7 @@ if hp is None or hp <= 0:
 ```
 
 - 市民が埋まっているかどうかを判定する
+
 ```python
 buriedness: Optional[int] = entity.get_buriedness()
 if buriedness is None or buriedness <= 0:
@@ -194,7 +201,6 @@ RRS上のエンティティは下図のように Entity を継承したクラス
 例: Road クラスのインスタンスの中には， Hydrant クラスを継承してない通常の道路を表すものも存在しています．
 
 ![エンティティの継承関係](./../../images/entity.png)
-
 
 ## `Human Detector` モジュールの実装
 
