@@ -297,10 +297,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">エージェントの制御</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">エージェントの制御について</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">エージェントの動作フロー</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-detector"><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装の準備</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">モジュールの登錍</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">モジュールの登録</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの設計</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装で使用するクラス・メソッド</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#worldinfo">WorldInfo</a></li>
@@ -327,7 +327,7 @@
 <h1>エージェントの制御<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>このセクションでは、エージェントの制御用のプログラムを作成する方法について説明します。</p>
 <section id="id2">
-<h2>エージェントの制御<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2>エージェントの制御について<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>RRSの災害救助エージェントは3種類あり、種類毎にそれぞれ異なるプログラムを書く必要があります。しかし、初めから全てのプログラムを書くことは困難です。ここではまず初めに、消防隊エージェントを操作するプログラムの一部を書いてみましょう．</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
@@ -407,7 +407,7 @@ touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/complex/fire_brig
 </div>
 </section>
 <section id="id4">
-<h2>モジュールの登錍<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2>モジュールの登録<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>次に、作成したモジュールを登録します．</p>
 <p><code class="docutils literal notranslate"><span class="pre">WORKING_DIR/&lt;your_team_name&gt;/config/module.yaml</span></code> ファイルを開き，以下の部分を</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">DefaultTacticsFireBrigade</span><span class="p">:</span>
@@ -640,10 +640,10 @@ python<span class="w"> </span>main.py
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">エージェントの制御</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">エージェントの制御について</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">エージェントの動作フロー</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-detector"><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装の準備</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">モジュールの登錍</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">モジュールの登録</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの設計</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装で使用するクラス・メソッド</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#worldinfo">WorldInfo</a></li>

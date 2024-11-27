@@ -20,6 +20,7 @@ git clone https://github.com/roborescue/rcrs-server.git
 cd rcrs-server
 ./gradlew completeBuild
 ```
+
 ビルドした際に以下のようなメッセージが表示されたら成功です。
 
 ```bash
