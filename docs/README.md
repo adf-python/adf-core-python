@@ -1,4 +1,4 @@
-# sqhinx-documentation
+# sphinx-documentation
 
 ## Generate documentation
 
