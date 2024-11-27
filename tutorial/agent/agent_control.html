@@ -303,15 +303,14 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">モジュールの登録</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの設計</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装で使用するクラス・メソッド</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entity">Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entityid">EntityID</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#civilian">Civilian</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#worldinfo">WorldInfo</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agentinfo">AgentInfo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entityid">EntityID</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entity">Entity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#civilian">Civilian</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">entityの継承</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装</a></li>
 </ul>
             </nav>
         </div>
@@ -436,41 +435,16 @@ python<span class="w"> </span>main.py
 </section>
 <section id="id6">
 <h2><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装で使用するクラス・メソッド<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<section id="worldinfo">
-<h3>WorldInfo<a class="headerlink" href="#worldinfo" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">WorldInfo</span></code> クラスは，エージェントが把握している情報とそれに関する操作をおこなうメソッドをもったクラスです． エージェントはこのクラスのインスタンスを通して，他のエージェントやオブジェクトの状態を確認します．</p>
-<p>モジュール内では，<code class="docutils literal notranslate"><span class="pre">WorldInfo</span></code> クラスのインスタンスを <code class="docutils literal notranslate"><span class="pre">self._world_info</span></code> として保持しています．</p>
-</section>
-<section id="agentinfo">
-<h3>AgentInfo<a class="headerlink" href="#agentinfo" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">AgentInfo</span></code> クラスは，エージェント自身の情報とそれに関する操作をおこなうメソッドをもったクラスです． エージェントはこのクラスのインスタンスを通して，エージェント自身の状態を取得します．</p>
-<p>モジュール内では，<code class="docutils literal notranslate"><span class="pre">AgentInfo</span></code> クラスのインスタンスを <code class="docutils literal notranslate"><span class="pre">self._agent_info</span></code> として保持しています．</p>
+<section id="entity">
+<h3>Entity<a class="headerlink" href="#entity" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Entity</span></code> クラスは，エンティティの基底クラスです． このクラスは，エンティティの基本情報を保持します．</p>
+<p>RRS上のエンティティは下図のように <code class="docutils literal notranslate"><span class="pre">Entity</span></code> を継承したクラスで表現されています． 赤枠で囲まれたクラスは，クラスの意味がそのままRRSの直接的な構成要素を表しています．</p>
+<p>例: Road クラスのインスタンスの中には， Hydrant クラスを継承してない通常の道路を表すものも存在しています．</p>
+<p><img alt="エンティティの継承関係" src="../../_images/entity.png" /></p>
 </section>
 <section id="entityid">
 <h3>EntityID<a class="headerlink" href="#entityid" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">EntityID</span></code> クラスは，全てのエージェント/オブジェクトを一意に識別するためのID(識別子)を表すクラスです． RRSではエージェントとオブジェクトをまとめて，エンティティと呼んでいます．</p>
-<ul class="simple">
-<li><p>自分自身のエンティティIDを取得する</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
-</pre></div>
-</div>
-</section>
-<section id="entity">
-<h3>Entity<a class="headerlink" href="#entity" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">Entity</span></code> クラスは，エンティティの基底クラスです． このクラスは，エンティティの基本情報を保持します．</p>
-<ul class="simple">
-<li><p>エンティティIDからエンティティを取得する</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entity</span><span class="p">(</span><span class="n">entity_id</span><span class="p">)</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>同じクラスのエンティティを全て取得する</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entities_by_type</span><span class="p">([</span><span class="n">Building</span><span class="p">,</span> <span class="n">Road</span><span class="p">])</span>
-</pre></div>
-</div>
 </section>
 <section id="civilian">
 <h3>Civilian<a class="headerlink" href="#civilian" title="Link to this heading">#</a></h3>
@@ -479,6 +453,12 @@ python<span class="w"> </span>main.py
 <li><p><code class="docutils literal notranslate"><span class="pre">entity</span></code> が市民であるかどうかを判定する</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">Civilian</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>エンティティIDを取得する</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entity</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -498,16 +478,47 @@ python<span class="w"> </span>main.py
 </pre></div>
 </div>
 </section>
+<section id="worldinfo">
+<h3>WorldInfo<a class="headerlink" href="#worldinfo" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">WorldInfo</span></code> クラスは，エージェントが把握している情報とそれに関する操作をおこなうメソッドをもったクラスです． エージェントはこのクラスのインスタンスを通して，他のエージェントやオブジェクトの状態を確認します．</p>
+<p>モジュール内では，<code class="docutils literal notranslate"><span class="pre">WorldInfo</span></code> クラスのインスタンスを <code class="docutils literal notranslate"><span class="pre">self._world_info</span></code> として保持しています．</p>
+<ul class="simple">
+<li><p>エンティティIDからエンティティを取得する</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entity</span><span class="p">(</span><span class="n">entity_id</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>指定したクラスのエンティティを全て取得する</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entities_by_type</span><span class="p">([</span><span class="n">Building</span><span class="p">,</span> <span class="n">Road</span><span class="p">])</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>エージェントの位置から指定したエンティティまでの距離を取得する</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_distance</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">civilian</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../adf_core_python.core.agent.info.html"><span class="std std-doc">詳細はこちら</span></a></p>
+</section>
+<section id="agentinfo">
+<h3>AgentInfo<a class="headerlink" href="#agentinfo" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">AgentInfo</span></code> クラスは，エージェント自身の情報とそれに関する操作をおこなうメソッドをもったクラスです． エージェントはこのクラスのインスタンスを通して，エージェント自身の状態を取得します．</p>
+<p>モジュール内では，<code class="docutils literal notranslate"><span class="pre">AgentInfo</span></code> クラスのインスタンスを <code class="docutils literal notranslate"><span class="pre">self._agent_info</span></code> として保持しています．</p>
+<ul class="simple">
+<li><p>自分自身のエンティティIDを取得する</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../adf_core_python.core.agent.info.html"><span class="std std-doc">詳細はこちら</span></a></p>
+</section>
+</section>
 <section id="id7">
-<h3>entityの継承<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
-<p>RRS上のエンティティは下図のように Entity を継承したクラスで表現されています． 赤枠で囲まれたクラスは，クラスの意味がそのままRRSの直接的な構成要素を表しています．</p>
-<p>例: Road クラスのインスタンスの中には， Hydrant クラスを継承してない通常の道路を表すものも存在しています．</p>
-<p><img alt="エンティティの継承関係" src="../../_images/entity.png" /></p>
-</section>
-</section>
-<section id="id8">
-<h2><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装を行います．</p>
+<h2><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装を行います．
+以下のコードを<code class="docutils literal notranslate"><span class="pre">fire_brigade_human_detector.py</span></code> に記述してください。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">rcrs_core.worldmodel.entityID</span> <span class="kn">import</span> <span class="n">EntityID</span>
@@ -591,6 +602,12 @@ python<span class="w"> </span>main.py
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span>
 </pre></div>
 </div>
+<p>シミュレーションサーバーを起動し，エージェントを実行してみましょう．</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
+python<span class="w"> </span>main.py
+</pre></div>
+</div>
+<p>埋没している市民を消防隊エージェントが救出できるようになっていれば成功です．</p>
 </section>
 </section>
 
@@ -646,15 +663,14 @@ python<span class="w"> </span>main.py
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">モジュールの登録</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの設計</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装で使用するクラス・メソッド</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entity">Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entityid">EntityID</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#civilian">Civilian</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#worldinfo">WorldInfo</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agentinfo">AgentInfo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entityid">EntityID</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entity">Entity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#civilian">Civilian</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">entityの継承</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装</a></li>
 </ul>
   </nav></div>
 

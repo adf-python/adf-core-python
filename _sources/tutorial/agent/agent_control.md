@@ -130,43 +130,19 @@ python main.py
 
 ## `Human Detector` モジュールの実装で使用するクラス・メソッド
 
-### WorldInfo
-
-`WorldInfo` クラスは，エージェントが把握している情報とそれに関する操作をおこなうメソッドをもったクラスです． エージェントはこのクラスのインスタンスを通して，他のエージェントやオブジェクトの状態を確認します．
-
-モジュール内では，`WorldInfo` クラスのインスタンスを `self._world_info` として保持しています．
-
-### AgentInfo
-
-`AgentInfo` クラスは，エージェント自身の情報とそれに関する操作をおこなうメソッドをもったクラスです． エージェントはこのクラスのインスタンスを通して，エージェント自身の状態を取得します．
-
-モジュール内では，`AgentInfo` クラスのインスタンスを `self._agent_info` として保持しています．
-
-### EntityID
-
-`EntityID` クラスは，全てのエージェント/オブジェクトを一意に識別するためのID(識別子)を表すクラスです． RRSではエージェントとオブジェクトをまとめて，エンティティと呼んでいます．
-
-- 自分自身のエンティティIDを取得する
-
-```python
-self._agent_info.get_entity_id()
-```
-
 ### Entity
 
 `Entity` クラスは，エンティティの基底クラスです． このクラスは，エンティティの基本情報を保持します．
 
-- エンティティIDからエンティティを取得する
+RRS上のエンティティは下図のように `Entity` を継承したクラスで表現されています． 赤枠で囲まれたクラスは，クラスの意味がそのままRRSの直接的な構成要素を表しています．
 
-```python
-self._world_info.get_entity(entity_id)
-```
+例: Road クラスのインスタンスの中には， Hydrant クラスを継承してない通常の道路を表すものも存在しています．
 
-- 同じクラスのエンティティを全て取得する
+![エンティティの継承関係](./../../images/entity.png)
 
-```python
-self._world_info.get_entities_by_type([Building, Road])
-```
+### EntityID
+
+`EntityID` クラスは，全てのエージェント/オブジェクトを一意に識別するためのID(識別子)を表すクラスです． RRSではエージェントとオブジェクトをまとめて，エンティティと呼んでいます．
 
 ### Civilian
 
@@ -176,6 +152,12 @@ self._world_info.get_entities_by_type([Building, Road])
 
 ```python
 isinstance(entity, Civilian)
+```
+
+- エンティティIDを取得する
+
+```python
+entity.get_id()
 ```
 
 - 市民が生きているかどうかを判定する
@@ -194,17 +176,50 @@ if buriedness is None or buriedness <= 0:
     return False
 ```
 
-### entityの継承
+### WorldInfo
 
-RRS上のエンティティは下図のように Entity を継承したクラスで表現されています． 赤枠で囲まれたクラスは，クラスの意味がそのままRRSの直接的な構成要素を表しています．
+`WorldInfo` クラスは，エージェントが把握している情報とそれに関する操作をおこなうメソッドをもったクラスです． エージェントはこのクラスのインスタンスを通して，他のエージェントやオブジェクトの状態を確認します．
 
-例: Road クラスのインスタンスの中には， Hydrant クラスを継承してない通常の道路を表すものも存在しています．
+モジュール内では，`WorldInfo` クラスのインスタンスを `self._world_info` として保持しています．
 
-![エンティティの継承関係](./../../images/entity.png)
+- エンティティIDからエンティティを取得する
+
+```python
+self._world_info.get_entity(entity_id)
+```
+
+- 指定したクラスのエンティティを全て取得する
+
+```python
+self._world_info.get_entities_by_type([Building, Road])
+```
+
+- エージェントの位置から指定したエンティティまでの距離を取得する
+
+```python
+self._world_info.get_distance(me, civilian.get_id())
+```
+
+[詳細はこちら](../../adf_core_python.core.agent.info.rst)
+
+### AgentInfo
+
+`AgentInfo` クラスは，エージェント自身の情報とそれに関する操作をおこなうメソッドをもったクラスです． エージェントはこのクラスのインスタンスを通して，エージェント自身の状態を取得します．
+
+モジュール内では，`AgentInfo` クラスのインスタンスを `self._agent_info` として保持しています．
+
+- 自分自身のエンティティIDを取得する
+
+```python
+self._agent_info.get_entity_id()
+```
+
+[詳細はこちら](../../adf_core_python.core.agent.info.rst)
 
 ## `Human Detector` モジュールの実装
 
 `Human Detector` モジュールの実装を行います．
+以下のコードを`fire_brigade_human_detector.py` に記述してください。
 
 ```python
 from typing import Optional
@@ -289,3 +304,12 @@ class SampleHumanDetector(HumanDetector):
         """
         return self._result
 ```
+
+シミュレーションサーバーを起動し，エージェントを実行してみましょう．
+
+```bash
+cd WORKING_DIR/<your_team_name>
+python main.py
+```
+
+埋没している市民を消防隊エージェントが救出できるようになっていれば成功です．
