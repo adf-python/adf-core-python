@@ -319,20 +319,29 @@
 <h1>コンフィグについて<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
 <h2>コンフィグについての説明<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
+└──<span class="w"> </span>&lt;team-name&gt;
+<span class="w">    </span>└──<span class="w"> </span>config
+<span class="w">        </span>├──<span class="w"> </span>development.json
+<span class="w">        </span>├──<span class="w"> </span>launcher.yaml
+<span class="w">        </span>└──<span class="w"> </span>module.yaml
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">config</span></code> ディレクトリには、エージェントの設定ファイルが格納されています。</p>
 <section id="launcher-yaml">
 <h3>launcher.yaml<a class="headerlink" href="#launcher-yaml" title="Link to this heading">#</a></h3>
-<p>launcher.yaml は、エージェントの起動時に読み込まれる設定ファイルです。
+<p><code class="docutils literal notranslate"><span class="pre">launcher.yaml</span></code> は、エージェントの起動時に読み込まれる設定ファイルです。
 シミュレーションサーバーの指定や読み込むモジュールが記述されたファイルの指定などが記述されています。</p>
 </section>
 <section id="module-yaml">
 <h3>module.yaml<a class="headerlink" href="#module-yaml" title="Link to this heading">#</a></h3>
-<p>module.yaml は、エージェントが読み込むモジュールの設定ファイルです。
+<p><code class="docutils literal notranslate"><span class="pre">module.yaml</span></code> は、エージェントが読み込むモジュールの設定ファイルです。
 読み込むモジュールのパスなどが記述されています。
-パスを指定する際は、プロジェクトのmain.pyからの相対パスで指定してください。</p>
+パスを指定する際は、プロジェクトの<code class="docutils literal notranslate"><span class="pre">main.py</span></code>からの相対パスで指定してください。</p>
 </section>
 <section id="development-json">
 <h3>development.json<a class="headerlink" href="#development-json" title="Link to this heading">#</a></h3>
-<p>development.json は、開発時に使用する設定ファイルです。
+<p><code class="docutils literal notranslate"><span class="pre">development.json</span></code> は、開発時に使用する設定ファイルです。
 エージェントの開発時に外部から値を取得する際に使用します。
 そのため、競技時には使用することができません。</p>
 </section>
