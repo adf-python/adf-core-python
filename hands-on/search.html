@@ -332,8 +332,7 @@
 <p>以降の作業では、カレントディレクトリがプロジェクトのルートディレクトリであることを前提としています。</p>
 </div>
 <p>まず、サーチモジュールを記述するためのファイルを作成します。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>src/&lt;your_team_name&gt;/module/search
-touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/complex/k_means_pp_search.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/complex/k_means_pp_search.py
 </pre></div>
 </div>
 <p>次に、サーチモジュールの実装を行います。 以下のコードを <code class="docutils literal notranslate"><span class="pre">k_means_pp_search.py</span></code> に記述してください。
@@ -346,14 +345,12 @@ touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/complex/k_means_p
 <span class="kn">from</span> <span class="nn">rcrs_core.entities.refuge</span> <span class="kn">import</span> <span class="n">Refuge</span>
 <span class="kn">from</span> <span class="nn">rcrs_core.worldmodel.entityID</span> <span class="kn">import</span> <span class="n">EntityID</span>
 
-<span class="kn">from</span> <span class="nn">adf_core_python.core.agent.communication.message_manager</span> <span class="kn">import</span> <span class="n">MessageManager</span>
 <span class="kn">from</span> <span class="nn">adf_core_python.core.agent.develop.develop_data</span> <span class="kn">import</span> <span class="n">DevelopData</span>
 <span class="kn">from</span> <span class="nn">adf_core_python.core.agent.info.agent_info</span> <span class="kn">import</span> <span class="n">AgentInfo</span>
 <span class="kn">from</span> <span class="nn">adf_core_python.core.agent.info.scenario_info</span> <span class="kn">import</span> <span class="n">ScenarioInfo</span>
 <span class="kn">from</span> <span class="nn">adf_core_python.core.agent.info.world_info</span> <span class="kn">import</span> <span class="n">WorldInfo</span>
 <span class="kn">from</span> <span class="nn">adf_core_python.core.agent.module.module_manager</span> <span class="kn">import</span> <span class="n">ModuleManager</span>
 <span class="kn">from</span> <span class="nn">adf_core_python.core.component.module.algorithm.clustering</span> <span class="kn">import</span> <span class="n">Clustering</span>
-<span class="kn">from</span> <span class="nn">adf_core_python.core.component.module.algorithm.path_planning</span> <span class="kn">import</span> <span class="n">PathPlanning</span>
 <span class="kn">from</span> <span class="nn">adf_core_python.core.component.module.complex.search</span> <span class="kn">import</span> <span class="n">Search</span>
 <span class="kn">from</span> <span class="nn">adf_core_python.core.logger.logger</span> <span class="kn">import</span> <span class="n">get_agent_logger</span>
 

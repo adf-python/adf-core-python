@@ -13,7 +13,6 @@
 まず、サーチモジュールを記述するためのファイルを作成します。
 
 ```bash
-mkdir -p src/<your_team_name>/module/search
 touch src/<your_team_name>/module/complex/k_means_pp_search.py
 ```
 
@@ -29,14 +28,12 @@ from rcrs_core.entities.entity import Entity
 from rcrs_core.entities.refuge import Refuge
 from rcrs_core.worldmodel.entityID import EntityID
 
-from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
 from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
 from adf_core_python.core.agent.info.world_info import WorldInfo
 from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.component.module.algorithm.clustering import Clustering
-from adf_core_python.core.component.module.algorithm.path_planning import PathPlanning
 from adf_core_python.core.component.module.complex.search import Search
 from adf_core_python.core.logger.logger import get_agent_logger
 

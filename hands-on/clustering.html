@@ -599,12 +599,13 @@ touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/algorithm/k_means
 <p>次に、作成したモジュールを登録します。<code class="docutils literal notranslate"><span class="pre">config/module.yaml</span></code> を以下のように編集してください。</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">SampleSearch</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">PathPlanning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning</span>
-<span class="w">  </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.test-agent.module.algorithm.k_means_pp_clustering.KMeansPPClustering</span>
+<span class="w">  </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.algorithm.k_means_pp_clustering.KMeansPPClustering</span>
 
 <span class="nt">SampleHumanDetector</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.test-agent.module.algorithm.k_means_pp_clustering.KMeansPPClustering</span>
+<span class="w">  </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.algorithm.k_means_pp_clustering.KMeansPPClustering</span>
 </pre></div>
 </div>
+<p>シミュレーションサーバーを起動して、エージェントを起動してください。エージェントが起動すると、標準出力にクラスタリング結果が表示されます。</p>
 </section>
 </section>
 
