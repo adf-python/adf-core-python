@@ -82,7 +82,7 @@ adf-core-pythonでは、以下のモジュールが提供されています。
 | DynamicClustering    | シミュレーションの進行によってクラスタが変化するクラスタリング             |
 | StaticClustering     | シミュレーション開始時にクラスタが定まるクラスタリング                     |
 | ExtAction            | 活動対象決定後のエージェントの動作決定                                     |
-| MessageCoordinator   | 通信でメッセージ(情報)を送信する経路である，チャンネルへのメッセージの分配 |
+| MessageCoordinator   | 通信でメッセージ(情報)を送信する経路である、チャンネルへのメッセージの分配 |
 | ChannelSubscriber    | 通信によってメッセージを受け取るチャンネルの選択                           |
 
 自分で上記の役割以外のモジュールを作成する際は、`AbstractModule` を継承してください。
