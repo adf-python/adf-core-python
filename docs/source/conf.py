@@ -24,6 +24,7 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.autosummary",
     "sphinx_copybutton",
+    "sphinx_togglebutton",
     "myst_parser",
     "sphinxcontrib.mermaid",
 ]
