@@ -327,28 +327,28 @@
 <p>このセクションでは、エージェントの制御用のプログラムを作成する方法について説明します。</p>
 <section id="id2">
 <h2>エージェントの制御について<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>RRSの災害救助エージェントは3種類あり、種類毎にそれぞれ異なるプログラムを書く必要があります。しかし、初めから全てのプログラムを書くことは困難です。ここではまず初めに、消防隊エージェントを操作するプログラムの一部を書いてみましょう．</p>
+<p>RRSの災害救助エージェントは3種類あり、種類毎にそれぞれ異なるプログラムを書く必要があります。しかし、初めから全てのプログラムを書くことは困難です。ここではまず初めに、消防隊エージェントを操作するプログラムの一部を書いてみましょう。</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>エージェントを操作するプログラムは，エージェントの種類毎に同一です． プログラムは各エージェントに配られ，そのエージェントのみの操作を担います． 消防隊エージェントを操作するプログラムを書けば，それがすべての消防隊エージェント上でそれぞれ動作します．</p>
+<p>エージェントを操作するプログラムは、エージェントの種類毎に同一です。 プログラムは各エージェントに配られ、そのエージェントのみの操作を担います。 消防隊エージェントを操作するプログラムを書けば、それがすべての消防隊エージェント上でそれぞれ動作します。</p>
 </div>
 <p><img alt="消防隊エージェント" src="../../_images/agent_control.jpg" /></p>
 </section>
 <section id="id3">
 <h2>エージェントの動作フロー<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>エージェントの動作を決めているのはTacticsというプログラムです．</p>
-<p>消防隊の思考ルーチンは下の図の通りにおおよそおこなわれます． 消防隊の動作としては，まず救助対象の市民を捜索し(<code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code>)，見つかった市民を救助します(<code class="docutils literal notranslate"><span class="pre">Action</span> <span class="pre">Rescue</span></code>)． 救助対象の市民が見つからない場合は，探索場所を変更して市民を捜索するため，次の捜索場所を決定して(<code class="docutils literal notranslate"><span class="pre">Search</span></code>)移動します(<code class="docutils literal notranslate"><span class="pre">Action</span> <span class="pre">Ext</span> <span class="pre">move</span></code>)． なお，エージェントは1ステップ内で，移動と救助活動を同時におこなうことが出来ません．つまり，ステップごとに更新される自身の周辺情報を確認して，動作の対象と動作内容を決定していくということになります． これらそれぞれの機能が，モジュールと呼ばれるプログラムとして分割して表現されています．</p>
-<p>今回はこの中で，救助（掘り起こし）対象を決定する <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールを開発します．</p>
+<p>エージェントの動作を決めているのはTacticsというプログラムです。</p>
+<p>消防隊の思考ルーチンは下の図の通りにおおよそおこなわれます。 消防隊の動作としては、まず救助対象の市民を捜索し(<code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code>)、見つかった市民を救助します(<code class="docutils literal notranslate"><span class="pre">Action</span> <span class="pre">Rescue</span></code>)。 救助対象の市民が見つからない場合は、探索場所を変更して市民を捜索するため、次の捜索場所を決定して(<code class="docutils literal notranslate"><span class="pre">Search</span></code>)移動します(<code class="docutils literal notranslate"><span class="pre">Action</span> <span class="pre">Ext</span> <span class="pre">move</span></code>)。 なお、エージェントは1ステップ内で、移動と救助活動を同時におこなうことが出来ません。つまり、ステップごとに更新される自身の周辺情報を確認して、動作の対象と動作内容を決定していくということになります。 これらそれぞれの機能が、モジュールと呼ばれるプログラムとして分割して表現されています。</p>
+<p>今回はこの中で、救助（掘り起こし）対象を決定する <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールを開発します。</p>
 <p><img alt="消防隊エージェントの動作フロー" src="../../_images/agent_flow.png" /></p>
 </section>
 <section id="human-detector">
 <h2><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装の準備<a class="headerlink" href="#human-detector" title="Link to this heading">#</a></h2>
-<p>まず、<code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールを記述するためのファイルを作成します．</p>
+<p>まず、<code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールを記述するためのファイルを作成します。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
 touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/complex/fire_brigade_human_detector.py
 </pre></div>
 </div>
-<p>次に、<code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの雛形の実装を行います． 以下のコードを<code class="docutils literal notranslate"><span class="pre">fire_brigade_human_detector.py</span></code> に記述してください．</p>
+<p>次に、<code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの雛形の実装を行います。 以下のコードを<code class="docutils literal notranslate"><span class="pre">fire_brigade_human_detector.py</span></code> に記述してください。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">rcrs_core.worldmodel.entityID</span> <span class="kn">import</span> <span class="n">EntityID</span>
@@ -407,48 +407,48 @@ touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/complex/fire_brig
 </section>
 <section id="id4">
 <h2>モジュールの登録<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>次に、作成したモジュールを登録します．</p>
-<p><code class="docutils literal notranslate"><span class="pre">WORKING_DIR/&lt;your_team_name&gt;/config/module.yaml</span></code> ファイルを開き，以下の部分を</p>
+<p>次に、作成したモジュールを登録します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">WORKING_DIR/&lt;your_team_name&gt;/config/module.yaml</span></code> ファイルを開き、以下の部分を</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">DefaultTacticsFireBrigade</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">HumanDetector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.sample_human_detector.SampleHumanDetector</span>
 </pre></div>
 </div>
-<p>以下のように変更してください．</p>
+<p>以下のように変更してください。</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">DefaultTacticsFireBrigade</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">HumanDetector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.fire_brigade_human_detector.FireBrigadeHumanDetector</span>
 </pre></div>
 </div>
-<p>シミュレーションサーバーを起動し、エージェントを実行してみましょう．</p>
+<p>シミュレーションサーバーを起動し、エージェントを実行してみましょう。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
 python<span class="w"> </span>main.py
 </pre></div>
 </div>
-<p>標準出力に <code class="docutils literal notranslate"><span class="pre">Calculate</span> <span class="pre">FireBrigadeHumanDetector</span></code> と表示されれば成功です．</p>
+<p>標準出力に <code class="docutils literal notranslate"><span class="pre">Calculate</span> <span class="pre">FireBrigadeHumanDetector</span></code> と表示されれば成功です。</p>
 </section>
 <section id="id5">
 <h2><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの設計<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p>救助対象選択プログラムの中身を書き，消防隊エージェントが救助活動をおこなえるように修正します．</p>
-<p>消防隊エージェントの救助対象を最も簡単に選択する方法は，埋没している市民の中で最も自身に近い市民を選択する方法です． 今回は，この方法を採用した消防隊エージェントの行動対象決定モジュールを書いてみましょう．</p>
-<p>埋没している市民の中で最も自身に近い市民を救助対象として選択する方法は，フローチャートで表すと下図のようになります．</p>
+<p>救助対象選択プログラムの中身を書き、消防隊エージェントが救助活動をおこなえるように修正します。</p>
+<p>消防隊エージェントの救助対象を最も簡単に選択する方法は、埋没している市民の中で最も自身に近い市民を選択する方法です。 今回は、この方法を採用した消防隊エージェントの行動対象決定モジュールを書いてみましょう。</p>
+<p>埋没している市民の中で最も自身に近い市民を救助対象として選択する方法は、フローチャートで表すと下図のようになります。</p>
 <p><img alt="救助対象選択フローチャート" src="../../_images/human_detector_flow.png" /></p>
-<p>このフローチャート中の各処理を，次小節で紹介する各クラス・メソッド等で置き換えたものを，<code class="docutils literal notranslate"><span class="pre">fire_brigade_human_detector.py</span></code> に記述していくことで，救助対象選択プログラムを完成させます．</p>
+<p>このフローチャート中の各処理を、次小節で紹介する各クラス・メソッド等で置き換えたものを、<code class="docutils literal notranslate"><span class="pre">fire_brigade_human_detector.py</span></code> に記述していくことで、救助対象選択プログラムを完成させます。</p>
 </section>
 <section id="id6">
 <h2><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装で使用するクラス・メソッド<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <section id="entity">
 <h3>Entity<a class="headerlink" href="#entity" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">Entity</span></code> クラスは，エンティティの基底クラスです． このクラスは，エンティティの基本情報を保持します．</p>
-<p>RRS上のエンティティは下図のように <code class="docutils literal notranslate"><span class="pre">Entity</span></code> を継承したクラスで表現されています． 赤枠で囲まれたクラスは，クラスの意味がそのままRRSの直接的な構成要素を表しています．</p>
-<p>例: Road クラスのインスタンスの中には， Hydrant クラスを継承してない通常の道路を表すものも存在しています．</p>
+<p><code class="docutils literal notranslate"><span class="pre">Entity</span></code> クラスは、エンティティの基底クラスです。 このクラスは、エンティティの基本情報を保持します。</p>
+<p>RRS上のエンティティは下図のように <code class="docutils literal notranslate"><span class="pre">Entity</span></code> を継承したクラスで表現されています。 赤枠で囲まれたクラスは、クラスの意味がそのままRRSの直接的な構成要素を表しています。</p>
+<p>例: Road クラスのインスタンスの中には、 Hydrant クラスを継承してない通常の道路を表すものも存在しています。</p>
 <p><img alt="エンティティの継承関係" src="../../_images/entity.png" /></p>
 </section>
 <section id="entityid">
 <h3>EntityID<a class="headerlink" href="#entityid" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">EntityID</span></code> クラスは，全てのエージェント/オブジェクトを一意に識別するためのID(識別子)を表すクラスです． RRSではエージェントとオブジェクトをまとめて，エンティティと呼んでいます．</p>
+<p><code class="docutils literal notranslate"><span class="pre">EntityID</span></code> クラスは、全てのエージェント/オブジェクトを一意に識別するためのID(識別子)を表すクラスです。 RRSではエージェントとオブジェクトをまとめて、エンティティと呼んでいます。</p>
 </section>
 <section id="civilian">
 <h3>Civilian<a class="headerlink" href="#civilian" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">Civilian</span></code> クラスは，市民を表すクラスです．このクラスからは，エージェントの位置や負傷の進行状況を取得することができます．</p>
+<p><code class="docutils literal notranslate"><span class="pre">Civilian</span></code> クラスは、市民を表すクラスです。このクラスからは、エージェントの位置や負傷の進行状況を取得することができます。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">entity</span></code> が市民であるかどうかを判定する</p></li>
 </ul>
@@ -480,8 +480,8 @@ python<span class="w"> </span>main.py
 </section>
 <section id="worldinfo">
 <h3>WorldInfo<a class="headerlink" href="#worldinfo" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">WorldInfo</span></code> クラスは，エージェントが把握している情報とそれに関する操作をおこなうメソッドをもったクラスです． エージェントはこのクラスのインスタンスを通して，他のエージェントやオブジェクトの状態を確認します．</p>
-<p>モジュール内では，<code class="docutils literal notranslate"><span class="pre">WorldInfo</span></code> クラスのインスタンスを <code class="docutils literal notranslate"><span class="pre">self._world_info</span></code> として保持しています．</p>
+<p><code class="docutils literal notranslate"><span class="pre">WorldInfo</span></code> クラスは、エージェントが把握している情報とそれに関する操作をおこなうメソッドをもったクラスです。 エージェントはこのクラスのインスタンスを通して、他のエージェントやオブジェクトの状態を確認します。</p>
+<p>モジュール内では、<code class="docutils literal notranslate"><span class="pre">WorldInfo</span></code> クラスのインスタンスを <code class="docutils literal notranslate"><span class="pre">self._world_info</span></code> として保持しています。</p>
 <ul class="simple">
 <li><p>エンティティIDからエンティティを取得する</p></li>
 </ul>
@@ -504,8 +504,8 @@ python<span class="w"> </span>main.py
 </section>
 <section id="agentinfo">
 <h3>AgentInfo<a class="headerlink" href="#agentinfo" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">AgentInfo</span></code> クラスは，エージェント自身の情報とそれに関する操作をおこなうメソッドをもったクラスです． エージェントはこのクラスのインスタンスを通して，エージェント自身の状態を取得します．</p>
-<p>モジュール内では，<code class="docutils literal notranslate"><span class="pre">AgentInfo</span></code> クラスのインスタンスを <code class="docutils literal notranslate"><span class="pre">self._agent_info</span></code> として保持しています．</p>
+<p><code class="docutils literal notranslate"><span class="pre">AgentInfo</span></code> クラスは、エージェント自身の情報とそれに関する操作をおこなうメソッドをもったクラスです。 エージェントはこのクラスのインスタンスを通して、エージェント自身の状態を取得します。</p>
+<p>モジュール内では、<code class="docutils literal notranslate"><span class="pre">AgentInfo</span></code> クラスのインスタンスを <code class="docutils literal notranslate"><span class="pre">self._agent_info</span></code> として保持しています。</p>
 <ul class="simple">
 <li><p>自分自身のエンティティIDを取得する</p></li>
 </ul>
@@ -517,7 +517,7 @@ python<span class="w"> </span>main.py
 </section>
 <section id="id7">
 <h2><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装を行います．
+<p><code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> モジュールの実装を行います。
 以下のコードを<code class="docutils literal notranslate"><span class="pre">fire_brigade_human_detector.py</span></code> に記述してください。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 
@@ -602,12 +602,12 @@ python<span class="w"> </span>main.py
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span>
 </pre></div>
 </div>
-<p>シミュレーションサーバーを起動し，エージェントを実行してみましょう．</p>
+<p>シミュレーションサーバーを起動し、エージェントを実行してみましょう。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
 python<span class="w"> </span>main.py
 </pre></div>
 </div>
-<p>埋没している市民を消防隊エージェントが救出できるようになっていれば成功です．</p>
+<p>埋没している市民を消防隊エージェントが救出できるようになっていれば成功です。</p>
 </section>
 </section>
 
