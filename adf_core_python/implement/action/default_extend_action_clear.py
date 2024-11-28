@@ -432,7 +432,7 @@ class DefaultExtendActionClear(ExtendAction):
             start_x = int(agent_x + vector[0])
             start_y = int(agent_y + vector[1])
 
-            for blockade in self.world_info.get_bloackades(road):
+            for blockade in self.world_info.get_blockades(road):
                 if self._is_intersecting_blockade(
                     start_x, start_y, bp_x, bp_y, blockade
                 ):
@@ -563,7 +563,7 @@ class DefaultExtendActionClear(ExtendAction):
         if road.get_blockades() == []:
             return None
 
-        blockades = set(self.world_info.get_bloackades(road))
+        blockades = set(self.world_info.get_blockades(road))
         min_distance = sys.float_info.max
         clear_blockade: Optional[Blockade] = None
         for blockade in blockades:
@@ -662,7 +662,7 @@ class DefaultExtendActionClear(ExtendAction):
                 start_x = int(agent_x + vector[0])
                 start_y = int(agent_y + vector[1])
 
-                for blockade in self.world_info.get_bloackades(road):
+                for blockade in self.world_info.get_blockades(road):
                     if self._is_intersecting_blockade(
                         start_x, start_y, mid_x, mid_y, blockade
                     ):
@@ -715,7 +715,7 @@ class DefaultExtendActionClear(ExtendAction):
             min_point_distance = sys.float_info.max
             clear_x = 0
             clear_y = 0
-            for blockade in self.world_info.get_bloackades(road):
+            for blockade in self.world_info.get_blockades(road):
                 apexes = blockade.get_apexes()
                 for i in range(0, len(apexes) - 2, 2):
                     distance = self._get_distance(

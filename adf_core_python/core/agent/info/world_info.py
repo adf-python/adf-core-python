@@ -3,6 +3,7 @@ from typing import Any, Optional, cast
 from rcrs_core.entities.area import Area
 from rcrs_core.entities.blockade import Blockade
 from rcrs_core.entities.entity import Entity
+from rcrs_core.entities.human import Human
 from rcrs_core.worldmodel.changeSet import ChangeSet
 from rcrs_core.worldmodel.entityID import EntityID
 from rcrs_core.worldmodel.worldmodel import WorldModel
@@ -145,6 +146,36 @@ class WorldInfo:
 
         return distance
 
+    def get_entity_position(self, entity_id: EntityID) -> EntityID:
+        """
+        Get the entity position
+
+        Parameters
+        ----------
+        entity_id : EntityID
+            Entity ID
+
+        Returns
+        -------
+        EntityID
+            Entity position
+
+        Raises
+        ------
+        ValueError
+            If the entity is invalid
+        """
+        entity = self.get_entity(entity_id)
+        if entity is None:
+            raise ValueError(f"Invalid entity: entity_id={entity_id}, entity={entity}")
+        if isinstance(entity, Area):
+            return entity.get_id()
+        if isinstance(entity, Human):
+            return entity.get_position()
+        if isinstance(entity, Blockade):
+            return entity.get_position()
+        raise ValueError(f"Invalid entity type: entity_id={entity_id}, entity={entity}")
+
     def get_change_set(self) -> ChangeSet:
         """
         Get the change set
@@ -156,7 +187,7 @@ class WorldInfo:
         """
         return self._change_set
 
-    def get_bloackades(self, area: Area) -> set[Blockade]:
+    def get_blockades(self, area: Area) -> set[Blockade]:
         """
         Get the blockades in the area
 
@@ -165,12 +196,12 @@ class WorldInfo:
         ChangeSet
             Blockade
         """
-        bloakcades = set()
+        blockades = set()
         for blockade_entity_id in area.get_blockades():
-            bloackde_entity = self.get_entity(blockade_entity_id)
-            if isinstance(bloackde_entity, Blockade):
-                bloakcades.add(cast(Blockade, bloackde_entity))
-        return bloakcades
+            blockades_entity = self.get_entity(blockade_entity_id)
+            if isinstance(blockades_entity, Blockade):
+                blockades.add(cast(Blockade, blockades_entity))
+        return blockades
 
     def add_entity(self, entity: Entity) -> None:
         """
