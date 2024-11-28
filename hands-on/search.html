@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -45,8 +46,14 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script src="../_static/translations.js?v=4755f45a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'hands-on/search';</script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -306,6 +313,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">課題</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">探索対象がステップごとに変わってしまう問題</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">すでに探索したエンティティを再度探索対象として選択してしまう問題</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう</a></li>
 </ul>
 </li>
 </ul>
@@ -447,9 +455,8 @@
             <span class="n">allocated_cluster_index</span>
         <span class="p">)</span>
         <span class="c1"># 乱数で選択</span>
-        <span class="n">index</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cluster_entity_ids</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="c1"># 選択したエンティティIDを結果として設定</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="n">cluster_entity_ids</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">cluster_entity_ids</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">cluster_entity_ids</span><span class="p">)</span>
         
         <span class="k">return</span> <span class="bp">self</span>
 </pre></div>
@@ -469,17 +476,176 @@
 </ul>
 </li>
 <li><p>すでに探索したエンティティを再度探索対象として選択してしまうため、効率的な探索ができない</p></li>
+<li><p>近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう</p></li>
 </ul>
 <p>などの問題があります。</p>
 </section>
 <section id="id7">
 <h2>課題<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> モジュールを改善し、より効率的な探索を行うモジュールを実装して見てください。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>ここに上げた問題以外にも、改善すべき点が存在すると思うので、それを改善していただいても構いません。</p>
+</div>
 <section id="id8">
 <h3>探索対象がステップごとに変わってしまう問題<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<div class="tip dropdown admonition">
+<p class="admonition-title">方針のヒント</p>
+<p>一度選択した探索対象に到達するまで、探索対象を変更しないようにする</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">プログラム例</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Search</span><span class="p">:</span>
+        <span class="c1"># 自エージェントのエンティティIDを取得</span>
+        <span class="n">me</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
+        <span class="c1"># 自エージェントが所属するクラスターのインデックスを取得</span>
+        <span class="n">allocated_cluster_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="o">.</span><span class="n">get_cluster_index</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+        <span class="c1"># クラスター内のエンティティIDを取得</span>
+        <span class="n">cluster_entity_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="o">.</span><span class="n">get_cluster_entity_ids</span><span class="p">(</span>
+            <span class="n">allocated_cluster_index</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 探索対象をすでに選んでいる場合</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">:</span>
+            <span class="c1"># 自エージェントのいる場所のエンティティIDを取得</span>
+            <span class="n">my_position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_position_entity_id</span><span class="p">()</span>
+            <span class="c1"># 探索対象の場所のエンティティIDを取得</span>
+            <span class="n">target_position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entity_position</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">)</span>
+            <span class="c1"># 自エージェントのいる場所と探索対象の場所が一致している場合、探索対象をリセット</span>
+            <span class="k">if</span> <span class="n">my_position</span> <span class="o">==</span> <span class="n">target_position</span><span class="p">:</span>
+                <span class="c1"># 探索対象をリセット</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># 探索対象が未選択の場合</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="ow">and</span> <span class="n">cluster_entity_ids</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">cluster_entity_ids</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+</pre></div>
+</div>
+</div>
 </section>
 <section id="id9">
 <h3>すでに探索したエンティティを再度探索対象として選択してしまう問題<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<div class="tip dropdown admonition">
+<p class="admonition-title">方針のヒント</p>
+<p>すでに探索したエンティティを何かしらの方法で記録し、再度探索対象として選択しないようにする</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">プログラム例</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">agent_info</span><span class="p">:</span> <span class="n">AgentInfo</span><span class="p">,</span>
+        <span class="n">world_info</span><span class="p">:</span> <span class="n">WorldInfo</span><span class="p">,</span>
+        <span class="n">scenario_info</span><span class="p">:</span> <span class="n">ScenarioInfo</span><span class="p">,</span>
+        <span class="n">module_manager</span><span class="p">:</span> <span class="n">ModuleManager</span><span class="p">,</span>
+        <span class="n">develop_data</span><span class="p">:</span> <span class="n">DevelopData</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">agent_info</span><span class="p">,</span> <span class="n">world_info</span><span class="p">,</span> <span class="n">scenario_info</span><span class="p">,</span> <span class="n">module_manager</span><span class="p">,</span> <span class="n">develop_data</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">get_agent_logger</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="p">:</span> <span class="n">Clustering</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
+            <span class="n">Clustering</span><span class="p">,</span>
+            <span class="n">module_manager</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span>
+                <span class="s2">&quot;KMeansPPSearch.Clustering&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_sub_module</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="p">)</span>
+
+        <span class="c1"># 探索したいエンティティIDのリスト(追加)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Search</span><span class="p">:</span>
+        <span class="c1"># 探索したいエンティティIDのリストが空の場合</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span>
+            <span class="c1"># 自エージェントのエンティティIDを取得</span>
+            <span class="n">me</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
+            <span class="c1"># 自エージェントが所属するクラスターのインデックスを取得</span>
+            <span class="n">allocated_cluster_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="o">.</span><span class="n">get_cluster_index</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+            <span class="c1"># クラスター内のエンティティIDを取得(変更)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="o">.</span><span class="n">get_cluster_entity_ids</span><span class="p">(</span><span class="n">allocated_cluster_index</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="c1"># 探索対象をすでに選んでいる場合</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">:</span>
+            <span class="c1"># 自エージェントのいる場所のエンティティIDを取得</span>
+            <span class="n">my_position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_position_entity_id</span><span class="p">()</span>
+            <span class="c1"># 探索対象の場所のエンティティIDを取得</span>
+            <span class="n">target_position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entity_position</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">)</span>
+            <span class="c1"># 自エージェントのいる場所と探索対象の場所が一致している場合、探索対象をリセット</span>
+            <span class="k">if</span> <span class="n">my_position</span> <span class="o">==</span> <span class="n">target_position</span><span class="p">:</span>
+                <span class="c1"># 探索したいエンティティIDのリストから探索対象を削除</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">)</span>
+                <span class="c1"># 探索対象をリセット</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># 探索対象が未選択の場合(変更)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id10">
+<h3>近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<div class="tip dropdown admonition">
+<p class="admonition-title">方針のヒント</p>
+<p>エンティティ間の距離を計算し、もっとも近いエンティティを探索対象として選択する</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">プログラム例</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Search</span><span class="p">:</span>
+        <span class="c1"># 探索したいエンティティIDのリストが空の場合</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span>
+            <span class="c1"># 自エージェントのエンティティIDを取得</span>
+            <span class="n">me</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
+            <span class="c1"># 自エージェントが所属するクラスターのインデックスを取得</span>
+            <span class="n">allocated_cluster_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="o">.</span><span class="n">get_cluster_index</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+            <span class="c1"># クラスター内のエンティティIDを取得</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="o">.</span><span class="n">get_cluster_entity_ids</span><span class="p">(</span><span class="n">allocated_cluster_index</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="c1"># 探索対象をすでに選んでいる場合</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">:</span>
+            <span class="c1"># 自エージェントのいる場所のエンティティIDを取得</span>
+            <span class="n">my_position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_position_entity_id</span><span class="p">()</span>
+            <span class="c1"># 探索対象の場所のエンティティIDを取得</span>
+            <span class="n">target_position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entity_position</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">)</span>
+            <span class="c1"># 自エージェントのいる場所と探索対象の場所が一致している場合、探索対象をリセット</span>
+            <span class="k">if</span> <span class="n">my_position</span> <span class="o">==</span> <span class="n">target_position</span><span class="p">:</span>
+                <span class="c1"># 探索したいエンティティIDのリストから探索対象を削除</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">)</span>
+                <span class="c1"># 探索対象をリセット</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># 探索対象が未選択の場合</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span>
+            <span class="n">nearest_entity_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">nearest_distance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+            <span class="n">me</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
+            <span class="c1"># 探索対象の中で自エージェントに最も近いエンティティIDを選択(変更)</span>
+            <span class="k">for</span> <span class="n">entity_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span>
+                <span class="n">distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_distance</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">entity_id</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">nearest_distance</span><span class="p">:</span>
+                    <span class="n">nearest_entity_id</span> <span class="o">=</span> <span class="n">entity_id</span>
+                    <span class="n">nearest_distance</span> <span class="o">=</span> <span class="n">distance</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="n">nearest_entity_id</span>
+</pre></div>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -538,6 +704,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">課題</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">探索対象がステップごとに変わってしまう問題</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">すでに探索したエンティティを再度探索対象として選択してしまう問題</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう</a></li>
 </ul>
 </li>
 </ul>

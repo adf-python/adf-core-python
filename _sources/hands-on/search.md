@@ -138,9 +138,8 @@ class KMeansPPSearch(Search):
             allocated_cluster_index
         )
         # 乱数で選択
-        index = random.randint(0, len(cluster_entity_ids) - 1)
-        # 選択したエンティティIDを結果として設定
-        self._result = cluster_entity_ids[index]
+        if cluster_entity_ids:
+            self._result = random.choice(cluster_entity_ids)
         
         return self
 ```
@@ -158,6 +157,7 @@ class KMeansPPSearch(Search):
   - 目標にたどり着く前に探索対象が変わってしまうため、なかなか目標にたどり着けない
   - 色んなところにランダムに探索対象を選択することで、効率的な探索ができない
 - すでに探索したエンティティを再度探索対象として選択してしまうため、効率的な探索ができない
+- 近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう
 
 などの問題があります。
 
@@ -165,6 +165,172 @@ class KMeansPPSearch(Search):
 
 `KMeansPPSearch` モジュールを改善し、より効率的な探索を行うモジュールを実装して見てください。
 
+```{warning}
+ここに上げた問題以外にも、改善すべき点が存在すると思うので、それを改善していただいても構いません。
+```
+
 ### 探索対象がステップごとに変わってしまう問題
 
+```{admonition} 方針のヒント
+:class: tip dropdown
+
+一度選択した探索対象に到達するまで、探索対象を変更しないようにする
+```
+
+```{admonition} プログラム例
+:class: tip dropdown
+
+````python
+    def calculate(self) -> Search:
+        # 自エージェントのエンティティIDを取得
+        me: EntityID = self._agent_info.get_entity_id()
+        # 自エージェントが所属するクラスターのインデックスを取得
+        allocated_cluster_index: int = self._clustering.get_cluster_index(me)
+        # クラスター内のエンティティIDを取得
+        cluster_entity_ids: list[EntityID] = self._clustering.get_cluster_entity_ids(
+            allocated_cluster_index
+        )
+
+        # 探索対象をすでに選んでいる場合
+        if self._result:
+            # 自エージェントのいる場所のエンティティIDを取得
+            my_position = self._agent_info.get_position_entity_id()
+            # 探索対象の場所のエンティティIDを取得
+            target_position = self._world_info.get_entity_position(self._result)
+            # 自エージェントのいる場所と探索対象の場所が一致している場合、探索対象をリセット
+            if my_position == target_position:
+                # 探索対象をリセット
+                self._result = None
+
+        # 探索対象が未選択の場合
+        if not self._result and cluster_entity_ids:
+            self._result = random.choice(cluster_entity_ids)
+
+        return self
+```
+
 ### すでに探索したエンティティを再度探索対象として選択してしまう問題
+
+```{admonition} 方針のヒント
+:class: tip dropdown
+
+すでに探索したエンティティを何かしらの方法で記録し、再度探索対象として選択しないようにする
+```
+
+```{admonition} プログラム例
+:class: tip dropdown
+
+````python
+    def __init__(
+        self,
+        agent_info: AgentInfo,
+        world_info: WorldInfo,
+        scenario_info: ScenarioInfo,
+        module_manager: ModuleManager,
+        develop_data: DevelopData,
+    ) -> None:
+        super().__init__(
+            agent_info, world_info, scenario_info, module_manager, develop_data
+        )
+        self._result: Optional[EntityID] = None
+
+        self._logger = get_agent_logger(
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}",
+            self._agent_info,
+        )
+
+        self._clustering: Clustering = cast(
+            Clustering,
+            module_manager.get_module(
+                "KMeansPPSearch.Clustering",
+                "adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering",
+            ),
+        )
+
+        self.register_sub_module(self._clustering)
+
+        # 探索したいエンティティIDのリスト(追加)
+        self._search_entity_ids: list[EntityID] = []
+
+    def calculate(self) -> Search:
+        # 探索したいエンティティIDのリストが空の場合
+        if not self._search_entity_ids:
+            # 自エージェントのエンティティIDを取得
+            me: EntityID = self._agent_info.get_entity_id()
+            # 自エージェントが所属するクラスターのインデックスを取得
+            allocated_cluster_index: int = self._clustering.get_cluster_index(me)
+            # クラスター内のエンティティIDを取得(変更)
+            self._search_entity_ids: list[EntityID] = (
+                self._clustering.get_cluster_entity_ids(allocated_cluster_index)
+            )
+
+        # 探索対象をすでに選んでいる場合
+        if self._result:
+            # 自エージェントのいる場所のエンティティIDを取得
+            my_position = self._agent_info.get_position_entity_id()
+            # 探索対象の場所のエンティティIDを取得
+            target_position = self._world_info.get_entity_position(self._result)
+            # 自エージェントのいる場所と探索対象の場所が一致している場合、探索対象をリセット
+            if my_position == target_position:
+                # 探索したいエンティティIDのリストから探索対象を削除
+                self._search_entity_ids.remove(self._result)
+                # 探索対象をリセット
+                self._result = None
+
+        # 探索対象が未選択の場合(変更)
+        if not self._result and self._search_entity_ids:
+            self._result = random.choice(self._search_entity_ids)
+
+        return self
+```
+
+### 近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう
+
+```{admonition} 方針のヒント
+:class: tip dropdown
+
+エンティティ間の距離を計算し、もっとも近いエンティティを探索対象として選択する
+```
+
+```{admonition} プログラム例
+:class: tip dropdown
+
+````python
+    def calculate(self) -> Search:
+        # 探索したいエンティティIDのリストが空の場合
+        if not self._search_entity_ids:
+            # 自エージェントのエンティティIDを取得
+            me: EntityID = self._agent_info.get_entity_id()
+            # 自エージェントが所属するクラスターのインデックスを取得
+            allocated_cluster_index: int = self._clustering.get_cluster_index(me)
+            # クラスター内のエンティティIDを取得
+            self._search_entity_ids: list[EntityID] = (
+                self._clustering.get_cluster_entity_ids(allocated_cluster_index)
+            )
+
+        # 探索対象をすでに選んでいる場合
+        if self._result:
+            # 自エージェントのいる場所のエンティティIDを取得
+            my_position = self._agent_info.get_position_entity_id()
+            # 探索対象の場所のエンティティIDを取得
+            target_position = self._world_info.get_entity_position(self._result)
+            # 自エージェントのいる場所と探索対象の場所が一致している場合、探索対象をリセット
+            if my_position == target_position:
+                # 探索したいエンティティIDのリストから探索対象を削除
+                self._search_entity_ids.remove(self._result)
+                # 探索対象をリセット
+                self._result = None
+
+        # 探索対象が未選択の場合
+        if not self._result and self._search_entity_ids:
+            nearest_entity_id: Optional[EntityID] = None
+            nearest_distance: float = float("inf")
+            me: EntityID = self._agent_info.get_entity_id()
+            # 探索対象の中で自エージェントに最も近いエンティティIDを選択(変更)
+            for entity_id in self._search_entity_ids:
+                distance = self._world_info.get_distance(me, entity_id)
+                if distance < nearest_distance:
+                    nearest_entity_id = entity_id
+                    nearest_distance = distance
+            self._result = nearest_entity_id
+```
