@@ -38,6 +38,8 @@ def _copy_template(
         for file in files:
             file_path = os.path.join(root, file)
             with open(file_path, "r") as f:
+                if not file_path.endswith((".py", ".yaml")):
+                    continue
                 content = f.read()
             with open(file_path, "w") as f:
                 f.write(content.replace(NAME_PLACEHOLDER, name))
