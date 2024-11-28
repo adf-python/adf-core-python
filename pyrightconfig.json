@@ -1,4 +1,4 @@
 {
   "typeCheckingMode": "standard",
-  "exclude": [".venv", ".git"]
+  "include": ["adf_core_python"]
 }
