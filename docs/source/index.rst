@@ -47,6 +47,7 @@ ADF Core Python を始めるには、インストール手順に従い、この�
    :caption: ハンズオン:
 
    hands-on/clustering
+   hands-on/search
 
 .. toctree::
    :maxdepth: 1
