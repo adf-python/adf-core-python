@@ -1,4 +1,5 @@
 import os
+import shutil
 
 import click
 
@@ -29,25 +30,24 @@ def _copy_template(
     dest: str,
     name: str,
 ) -> None:
-    if os.path.isdir(src):
-        if not os.path.exists(dest):
-            os.makedirs(dest)
-        for item in os.listdir(src):
-            s = os.path.join(src, item)
-            d = os.path.join(
-                dest,
-                item.replace(NAME_PLACEHOLDER, name),
-            )
-            _copy_template(s, d, name)
-    else:
-        with open(src, "r") as f:
-            content = f.read()
-        with open(dest, "w") as f:
-            f.write(content.replace(NAME_PLACEHOLDER, name))
-        new_dest = dest.replace(NAME_PLACEHOLDER, name)
-        if new_dest != dest:
-            os.rename(dest, new_dest)
+    dest = os.path.join(dest, name)
+    shutil.copytree(src, dest)
+    
+    # dest以下のファイル内のNAME_PLACEHOLDERをnameに置換
+    for root, dirs, files in os.walk(dest):
+        for file in files:
+            file_path = os.path.join(root, file)
+            with open(file_path, "r") as f:
+                content = f.read()
+            with open(file_path, "w") as f:
+                f.write(content.replace(NAME_PLACEHOLDER, name))
 
+    # ディレクトリ名のNAME_PLACEHOLDERをnameに置換
+    for root, dirs, files in os.walk(dest):
+        for dir in dirs:
+            dir_path = os.path.join(root, dir)
+            new_dir_path = dir_path.replace(NAME_PLACEHOLDER, name)
+            os.rename(dir_path, new_dir_path)
 
 if __name__ == "__main__":
     cli()
