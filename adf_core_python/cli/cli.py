@@ -32,7 +32,7 @@ def _copy_template(
 ) -> None:
     dest = os.path.join(dest, name)
     shutil.copytree(src, dest)
-    
+
     # dest以下のファイル内のNAME_PLACEHOLDERをnameに置換
     for root, dirs, files in os.walk(dest):
         for file in files:
@@ -48,6 +48,7 @@ def _copy_template(
             dir_path = os.path.join(root, dir)
             new_dir_path = dir_path.replace(NAME_PLACEHOLDER, name)
             os.rename(dir_path, new_dir_path)
+
 
 if __name__ == "__main__":
     cli()
