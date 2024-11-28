@@ -38,7 +38,7 @@ def _copy_template(
         for file in files:
             file_path = os.path.join(root, file)
             with open(file_path, "r") as f:
-                if not file_path.endswith((".py", ".yaml")):
+                if not file_path.endswith((".py", ".yaml", ".json")):
                     continue
                 content = f.read()
             with open(file_path, "w") as f:
