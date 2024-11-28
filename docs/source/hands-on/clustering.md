@@ -292,8 +292,10 @@ class KMeansPPClustering(Clustering):
 ```yaml
 SampleSearch:
   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
-  Clustering: src.test-agent.module.algorithm.k_means_pp_clustering.KMeansPPClustering
+  Clustering: src.<your_team_name>.module.algorithm.k_means_pp_clustering.KMeansPPClustering
 
 SampleHumanDetector:
-  Clustering: src.test-agent.module.algorithm.k_means_pp_clustering.KMeansPPClustering
+  Clustering: src.<your_team_name>.module.algorithm.k_means_pp_clustering.KMeansPPClustering
 ```
+
+シミュレーションサーバーを起動して、エージェントを起動してください。エージェントが起動すると、標準出力にクラスタリング結果が表示されます。
