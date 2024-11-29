@@ -28,10 +28,10 @@ adf\_core\_python.core.launcher.connect.connector module
    :undoc-members:
    :show-inheritance:
 
-adf\_core\_python.core.launcher.connect.connector\_ambulance\_centre module
+adf\_core\_python.core.launcher.connect.connector\_ambulance\_center module
 ---------------------------------------------------------------------------
 
-.. automodule:: adf_core_python.core.launcher.connect.connector_ambulance_centre
+.. automodule:: adf_core_python.core.launcher.connect.connector_ambulance_center
    :members:
    :undoc-members:
    :show-inheritance:

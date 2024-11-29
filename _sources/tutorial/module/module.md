@@ -60,7 +60,7 @@ class SampleSearch(Search):
             ),
         )
 
-        # モジュールの登録(これをしないと、モジュール内のシュミレーション環境の情報が更新されません)
+        # モジュールの登録(これをしないと、モジュール内のシミュレーション環境の情報が更新されません)
         self.register_sub_module(self._clustering)
         self.register_sub_module(self._path_planning)
 ```

@@ -57,8 +57,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial/environment/environment';</script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="インストール" href="../install/install.html" />
-    <link rel="prev" title="adf-core-pythonのドキュメント" href="../../index.html" />
+    <link rel="next" title="エージェントの作成" href="../agent/agent.html" />
+    <link rel="prev" title="クイックスタート" href="../../quickstart/quickstart.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
   <meta name="docsearch:version" content="" />
@@ -148,10 +148,18 @@
 </button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">チュートリアル:</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">インストール:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../install/environment/environment.html">環境構築</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install/install/install.html">インストール</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">クイックスタート:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/quickstart.html">クイックスタート</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">チュートリアル:</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">環境構築</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../install/install.html">インストール</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../agent/agent.html">エージェントの作成</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../agent/agent_control.html">エージェントの制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../config/config.html">コンフィグについて</a></li>
@@ -159,12 +167,14 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ハンズオン:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../hands-on/clustering.html">クラスタリングモジュール</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../hands-on/search.html">サーチモジュール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hands-on/clustering.html">クラスタリングモジュール</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">クイックスタート:</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">APIドキュメント:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../quickstart/quickstart.html">クイックスタート</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex.html">索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../py-modindex.html">モジュール索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../search.html">検索ページ</a></li>
 </ul>
 
     </div>
@@ -305,10 +315,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">必要なもの</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">シミュレーションサーバーのインストール</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">チュートリアルで使用するマップのダウンロード</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">シュミレーションサーバーの動作確認</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">チュートリアルで使用するマップのダウンロード</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">シミュレーションサーバーの動作確認</a></li>
 </ul>
             </nav>
         </div>
@@ -322,46 +330,21 @@
                   
   <section id="id1">
 <h1>環境構築<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>今回はチュートリアル用のシナリオを使用してチュートリアルを行います。</p>
 <section id="id2">
-<h2>必要なもの<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Git</p></li>
-<li><p>Python 3.12 以上</p></li>
-<li><p>OpenJDK 17</p></li>
-</ul>
-<p><a class="reference internal" href="windows/install.html"><span class="std std-doc">Windowsでの必要なもののインストール方法</span></a></p>
-</section>
-<section id="id3">
-<h2>シミュレーションサーバーのインストール<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<div class="admonition note">
-<p class="admonition-title">注釈</p>
-<p>WORKING_DIR は任意のディレクトリを指定してください。</p>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>WORKING_DIR
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/roborescue/rcrs-server.git
-<span class="nb">cd</span><span class="w"> </span>rcrs-server
-./gradlew<span class="w"> </span>completeBuild
-</pre></div>
-</div>
-<p>ビルドした際に以下のようなメッセージが表示されたら成功です。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>BUILD<span class="w"> </span>SUCCESSFUL<span class="w"> </span><span class="k">in</span><span class="w"> </span>...
-</pre></div>
-</div>
-</section>
-<section id="id4">
-<h2>チュートリアルで使用するマップのダウンロード<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2>チュートリアルで使用するマップのダウンロード<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p><a class="reference download internal" download="" href="../../_downloads/aa76b8a24222734b29097eef70ef9f9f/tutorial_map.zip"><code class="xref download docutils literal notranslate"><span class="pre">マップのダウンロード</span></code></a>
 をクリックしてダウンロードしてください。</p>
-<p>ダウンロードしたファイルを解凍し、中のファイルを <code class="docutils literal notranslate"><span class="pre">WORKING_DIR/rcrs-server/maps/</span></code> の中に移動させてください。</p>
+<p>ダウンロードしたファイルを解凍し、中のファイルを <code class="docutils literal notranslate"><span class="pre">rcrs-server/maps/</span></code> の中に移動させてください。</p>
 </section>
-<section id="id5">
-<h2>シュミレーションサーバーの動作確認<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h2>シミュレーションサーバーの動作確認<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>WORKING_DIR/rcrs-server/scripts
 ./start-comprun.sh<span class="w"> </span>-m<span class="w"> </span>../maps/tutorial_fire_brigade_only/map<span class="w"> </span>-c<span class="w"> </span>../maps/tutorial_fire_brigade_only/config
 </pre></div>
 </div>
 <p>何個かのウィンドウが表示されたら成功です。
-コマンドラインで <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">C</span></code> を押すとシミュレーションサーバーが終了します。</p>
+コマンドラインで <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">C</span></code> (MacOSの場合は <code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">+</span> <span class="pre">C</span></code> ) を押すとシミュレーションサーバーが終了します。</p>
 </section>
 </section>
 
@@ -377,20 +360,20 @@ git<span class="w"> </span>clone<span class="w"> </span>https://github.com/robor
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../index.html"
+       href="../../quickstart/quickstart.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">前へ</p>
-        <p class="prev-next-title">adf-core-pythonのドキュメント</p>
+        <p class="prev-next-title">クイックスタート</p>
       </div>
     </a>
     <a class="right-next"
-       href="../install/install.html"
+       href="../agent/agent.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">次へ</p>
-        <p class="prev-next-title">インストール</p>
+        <p class="prev-next-title">エージェントの作成</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -411,10 +394,8 @@ git<span class="w"> </span>clone<span class="w"> </span>https://github.com/robor
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">必要なもの</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">シミュレーションサーバーのインストール</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">チュートリアルで使用するマップのダウンロード</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">シュミレーションサーバーの動作確認</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">チュートリアルで使用するマップのダウンロード</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">シミュレーションサーバーの動作確認</a></li>
 </ul>
   </nav></div>
 
