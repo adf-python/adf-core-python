@@ -14,7 +14,7 @@
 パッケージをインストールするには、次のコマンドを実行します：
 
 ```bash
-pip install adf_core_python
+pip install git+https://github.com/adf-python/adf-core-python.git
 ```
 
 ## インストールの確認
@@ -22,7 +22,7 @@ pip install adf_core_python
 インストールを確認するには、次のコマンドを実行します：
 
 ```bash
-python -c "import adf_core_python; print(adf_core_python.__version__)"
+pip show adf_core_python
 ```
 
-パッケージが正しくインストールされている場合、パッケージのバージョン番号が表示されます。
+パッケージが正しくインストールされている場合、パッケージのバージョン番号などが表示されます。
