@@ -17,6 +17,11 @@ Your agent team name: my-agent
 Creating a new agent team with name: my-agent
 ```
 
+```{note}
+エージェントチーム名は、エージェントのディレクトリ名として使用されます。
+以後、エージェントチーム名を `<your_team_name>` として参照します。
+```
+
 入力後、下記のようなエージェントのテンプレートがカレントディレクトリに作成されます。
 
 ```bash
@@ -55,7 +60,7 @@ cd WORKING_DIR/rcrs-server/scripts
 
 ```bash
 # Terminal B
-cd WORKING_DIR/my-agent
+cd WORKING_DIR/<your_team_name>
 python main.py
 ```
 
