@@ -32,7 +32,7 @@ class DefaultTacticsAmbulanceCenter(TacticsAmbulanceCenter):
                     TargetAllocator,
                     module_manager.get_module(
                         "DefaultTacticsAmbulanceCenter.TargetAllocator",
-                        "adf_core_python.implement.module.complex.DefaultTargetAllocator",
+                        "adf_core_python.implement.module.complex.default_ambulance_target_allocator.DefaultAmbulanceTargetAllocator",
                     ),
                 )
         self.register_module(self._allocator)
@@ -70,4 +70,5 @@ class DefaultTacticsAmbulanceCenter(TacticsAmbulanceCenter):
         message_manager: MessageManager,
         develop_data: DevelopData,
     ) -> None:
-        raise NotImplementedError
+        # TODO: implement
+        pass

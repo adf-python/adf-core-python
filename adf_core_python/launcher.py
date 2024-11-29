@@ -52,6 +52,27 @@ class Launcher:
             metavar="",
         )
         parser.add_argument(
+            "-ac",
+            "--ambulancecenter",
+            type=int,
+            help="number of ambulance center agents(Default: all ambulance center)",
+            metavar="",
+        )
+        parser.add_argument(
+            "-fs",
+            "--firestation",
+            type=int,
+            help="number of fire station agents(Default: all fire station)",
+            metavar="",
+        )
+        parser.add_argument(
+            "-po",
+            "--policeoffice",
+            type=int,
+            help="number of police office agents(Default: all police office)",
+            metavar="",
+        )
+        parser.add_argument(
             "--precompute",
             type=bool,
             help="precompute flag",
@@ -66,6 +87,9 @@ class Launcher:
             ConfigKey.KEY_AMBULANCE_TEAM_COUNT: args.ambulanceteam,
             ConfigKey.KEY_FIRE_BRIGADE_COUNT: args.firebrigade,
             ConfigKey.KEY_POLICE_FORCE_COUNT: args.policeforce,
+            ConfigKey.KEY_AMBULANCE_CENTRE_COUNT: args.ambulancecenter,
+            ConfigKey.KEY_FIRE_STATION_COUNT: args.firestation,
+            ConfigKey.KEY_POLICE_OFFICE_COUNT: args.policeoffice,
             ConfigKey.KEY_PRECOMPUTE: args.precompute,
             ConfigKey.KEY_DEBUG_FLAG: args.debug,
         }

@@ -32,7 +32,7 @@ class DefaultTacticsPoliceOffice(TacticsPoliceOffice):
                     TargetAllocator,
                     module_manager.get_module(
                         "DefaultTacticsPoliceOffice.TargetAllocator",
-                        "adf_core_python.implement.module.complex.DefaultPoliceTargetAllocator",
+                        "adf_core_python.implement.module.complex.default_police_target_allocator.DefaultPoliceTargetAllocator",
                     ),
                 )
         self.register_module(self._allocator)
@@ -70,4 +70,5 @@ class DefaultTacticsPoliceOffice(TacticsPoliceOffice):
         message_manager: MessageManager,
         develop_data: DevelopData,
     ) -> None:
-        raise NotImplementedError
+        # TODO: implement
+        pass

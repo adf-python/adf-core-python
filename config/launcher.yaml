@@ -28,8 +28,8 @@ adf:
         count: 100
     office:
       ambulance:
-        count: -1
+        count: 5
       fire:
-        count: -1
+        count: 5
       police:
-        count: -1
+        count: 5

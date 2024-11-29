@@ -32,7 +32,7 @@ class DefaultTacticsFireStation(TacticsFireStation):
                     TargetAllocator,
                     module_manager.get_module(
                         "DefaultTacticsFireStation.TargetAllocator",
-                        "adf_core_python.implement.module.complex.DefaultFireTargetAllocator",
+                        "adf_core_python.implement.module.complex.default_fire_target_allocator.DefaultFireTargetAllocator",
                     ),
                 )
         self.register_module(self._allocator)
@@ -70,4 +70,5 @@ class DefaultTacticsFireStation(TacticsFireStation):
         message_manager: MessageManager,
         develop_data: DevelopData,
     ) -> None:
-        raise NotImplementedError
+        # TODO: implement
+        pass
