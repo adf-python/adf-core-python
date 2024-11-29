@@ -107,9 +107,20 @@ DefaultTacticsFireBrigade:
   HumanDetector: src.<your_team_name>.module.complex.fire_brigade_human_detector.FireBrigadeHumanDetector
 ```
 
-シミュレーションサーバーを起動し、エージェントを実行してみましょう。
+ターミナルを2つ起動します。
+
+片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します：
 
 ```bash
+# Terminal A
+cd WORKING_DIR/rcrs-server/scripts
+./start-comprun.sh -m ../maps/tutorial_fire_brigade_only/map -c ../maps/tutorial_fire_brigade_only/config
+```
+
+その後、別のターミナルを開き、エージェントを起動します：
+
+```bash
+# Terminal B
 cd WORKING_DIR/<your_team_name>
 python main.py
 ```
@@ -151,13 +162,13 @@ RRS上のエンティティは下図のように `Entity` を継承したクラ�
 - `entity` が市民であるかどうかを判定する
 
 ```python
-isinstance(entity, Civilian)
+is_civilian: bool = isinstance(entity, Civilian)
 ```
 
 - エンティティIDを取得する
 
 ```python
-entity.get_id()
+entity_id: EntityID = entity.get_id()
 ```
 
 - 市民が生きているかどうかを判定する
@@ -185,19 +196,19 @@ if buriedness is None or buriedness <= 0:
 - エンティティIDからエンティティを取得する
 
 ```python
-self._world_info.get_entity(entity_id)
+entity: Entity = self._world_info.get_entity(entity_id)
 ```
 
 - 指定したクラスのエンティティを全て取得する
 
 ```python
-self._world_info.get_entities_by_type([Building, Road])
+entities: list[Entity] = self._world_info.get_entities_by_type([Building, Road])
 ```
 
 - エージェントの位置から指定したエンティティまでの距離を取得する
 
 ```python
-self._world_info.get_distance(me, civilian.get_id())
+distance: float = self._world_info.get_distance(me, civilian.get_id())
 ```
 
 [詳細はこちら](../../adf_core_python.core.agent.info.rst)
@@ -211,7 +222,7 @@ self._world_info.get_distance(me, civilian.get_id())
 - 自分自身のエンティティIDを取得する
 
 ```python
-self._agent_info.get_entity_id()
+my_entity_id: EntityID = self._agent_info.get_entity_id()
 ```
 
 [詳細はこちら](../../adf_core_python.core.agent.info.rst)
@@ -305,9 +316,20 @@ class SampleHumanDetector(HumanDetector):
         return self._result
 ```
 
-シミュレーションサーバーを起動し、エージェントを実行してみましょう。
+ターミナルを2つ起動します。
+
+片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します：
 
 ```bash
+# Terminal A
+cd WORKING_DIR/rcrs-server/scripts
+./start-comprun.sh -m ../maps/tutorial_fire_brigade_only/map -c ../maps/tutorial_fire_brigade_only/config
+```
+
+その後、別のターミナルを開き、エージェントを起動します：
+
+```bash
+# Terminal B
 cd WORKING_DIR/<your_team_name>
 python main.py
 ```

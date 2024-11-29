@@ -436,8 +436,16 @@ touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/complex/fire_brig
 <span class="w">  </span><span class="nt">HumanDetector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.fire_brigade_human_detector.FireBrigadeHumanDetector</span>
 </pre></div>
 </div>
-<p>シミュレーションサーバーを起動し、エージェントを実行してみましょう。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
+<p>ターミナルを2つ起動します。</p>
+<p>片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal A</span>
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/rcrs-server/scripts
+./start-comprun.sh<span class="w"> </span>-m<span class="w"> </span>../maps/tutorial_fire_brigade_only/map<span class="w"> </span>-c<span class="w"> </span>../maps/tutorial_fire_brigade_only/config
+</pre></div>
+</div>
+<p>その後、別のターミナルを開き、エージェントを起動します：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal B</span>
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
 python<span class="w"> </span>main.py
 </pre></div>
 </div>
@@ -470,13 +478,13 @@ python<span class="w"> </span>main.py
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">entity</span></code> が市民であるかどうかを判定する</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">Civilian</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">is_civilian</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">Civilian</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>エンティティIDを取得する</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entity</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entity_id</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -503,19 +511,19 @@ python<span class="w"> </span>main.py
 <ul class="simple">
 <li><p>エンティティIDからエンティティを取得する</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entity</span><span class="p">(</span><span class="n">entity_id</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entity</span><span class="p">:</span> <span class="n">Entity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entity</span><span class="p">(</span><span class="n">entity_id</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>指定したクラスのエンティティを全て取得する</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entities_by_type</span><span class="p">([</span><span class="n">Building</span><span class="p">,</span> <span class="n">Road</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entities</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Entity</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entities_by_type</span><span class="p">([</span><span class="n">Building</span><span class="p">,</span> <span class="n">Road</span><span class="p">])</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>エージェントの位置から指定したエンティティまでの距離を取得する</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_distance</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">civilian</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">distance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_distance</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">civilian</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../../adf_core_python.core.agent.info.html"><span class="std std-doc">詳細はこちら</span></a></p>
@@ -527,7 +535,7 @@ python<span class="w"> </span>main.py
 <ul class="simple">
 <li><p>自分自身のエンティティIDを取得する</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_entity_id</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../../adf_core_python.core.agent.info.html"><span class="std std-doc">詳細はこちら</span></a></p>
@@ -620,8 +628,16 @@ python<span class="w"> </span>main.py
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span>
 </pre></div>
 </div>
-<p>シミュレーションサーバーを起動し、エージェントを実行してみましょう。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
+<p>ターミナルを2つ起動します。</p>
+<p>片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal A</span>
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/rcrs-server/scripts
+./start-comprun.sh<span class="w"> </span>-m<span class="w"> </span>../maps/tutorial_fire_brigade_only/map<span class="w"> </span>-c<span class="w"> </span>../maps/tutorial_fire_brigade_only/config
+</pre></div>
+</div>
+<p>その後、別のターミナルを開き、エージェントを起動します：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal B</span>
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
 python<span class="w"> </span>main.py
 </pre></div>
 </div>

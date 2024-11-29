@@ -403,13 +403,13 @@
 <p>次に、作成したモジュールを登録します。
 以下のように<code class="docutils literal notranslate"><span class="pre">config/module.yaml</span></code>の該当箇所を変更してください</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">DefaultTacticsAmbulanceTeam</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">Search</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;team-name&gt;.module.complex.k_means_pp_search.KMeansPPSearch</span>
+<span class="w">  </span><span class="nt">Search</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.k_means_pp_search.KMeansPPSearch</span>
 
 <span class="nt">DefaultTacticsFireBrigade</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">Search</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;team-name&gt;.module.complex.k_means_pp_search.KMeansPPSearch</span>
+<span class="w">  </span><span class="nt">Search</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.k_means_pp_search.KMeansPPSearch</span>
 
 <span class="nt">DefaultTacticsPoliceForce</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">Search</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;team-name&gt;.module.complex.k_means_pp_search.KMeansPPSearch</span>
+<span class="w">  </span><span class="nt">Search</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.k_means_pp_search.KMeansPPSearch</span>
 </pre></div>
 </div>
 </section>
@@ -418,7 +418,7 @@
 <p>まず、<code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> モジュールを呼び出せるようにします。</p>
 <p>以下のコードを<code class="docutils literal notranslate"><span class="pre">config/module.yaml</span></code>に追記してください。</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">KMeansPPSearch</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;team-name&gt;.module.algorithm.k_means_pp_clustering.KMeansPPClustering</span>
+<span class="w">  </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.algorithm.k_means_pp_clustering.KMeansPPClustering</span>
 </pre></div>
 </div>
 <p>次に、<code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> モジュールで <code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> モジュールを呼び出せるようにします。</p>
@@ -471,7 +471,19 @@
 </pre></div>
 </div>
 <p>以上で、<code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> モジュールを用いた <code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> モジュールの実装が完了しました。</p>
-<p>実行すると、各エージェントが担当地域内からランダムに探索対象を選択し、探索を行います。</p>
+<p>ターミナルを2つ起動します。</p>
+<p>片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal A</span>
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/rcrs-server/scripts
+./start-comprun.sh<span class="w"> </span>-m<span class="w"> </span>../maps/tutorial_ambulance_team_only/map<span class="w"> </span>-c<span class="w"> </span>../maps/tutorial_ambulance_team_only/config
+</pre></div>
+</div>
+<p>その後、別のターミナルを開き、エージェントを起動します：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal B</span>
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
+python<span class="w"> </span>main.py
+</pre></div>
+</div>
 </section>
 <section id="id6">
 <h2>モジュールの改善<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
@@ -498,11 +510,11 @@
 </div>
 <section id="id8">
 <h3>探索対象がステップごとに変わってしまう問題<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<div class="tip dropdown admonition">
+<div class="hint dropdown admonition">
 <p class="admonition-title">方針のヒント</p>
 <p>一度選択した探索対象に到達するまで、探索対象を変更しないようにする</p>
 </div>
-<div class="tip dropdown admonition">
+<div class="hint dropdown admonition">
 <p class="admonition-title">プログラム例</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Search</span><span class="p">:</span>
         <span class="c1"># 自エージェントのエンティティIDを取得</span>
@@ -536,11 +548,11 @@
 </section>
 <section id="id9">
 <h3>すでに探索したエンティティを再度探索対象として選択してしまう問題<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
-<div class="tip dropdown admonition">
+<div class="hint dropdown admonition">
 <p class="admonition-title">方針のヒント</p>
 <p>すでに探索したエンティティを何かしらの方法で記録し、再度探索対象として選択しないようにする</p>
 </div>
-<div class="tip dropdown admonition">
+<div class="hint dropdown admonition">
 <p class="admonition-title">プログラム例</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -609,11 +621,11 @@
 </section>
 <section id="id10">
 <h3>近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
-<div class="tip dropdown admonition">
+<div class="hint dropdown admonition">
 <p class="admonition-title">方針のヒント</p>
 <p>エンティティ間の距離を計算し、もっとも近いエンティティを探索対象として選択する</p>
 </div>
-<div class="tip dropdown admonition">
+<div class="hint dropdown admonition">
 <p class="admonition-title">プログラム例</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Search</span><span class="p">:</span>
         <span class="c1"># 探索したいエンティティIDのリストが空の場合</span>

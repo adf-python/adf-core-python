@@ -342,6 +342,11 @@
 Creating<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>agent<span class="w"> </span>team<span class="w"> </span>with<span class="w"> </span>name:<span class="w"> </span>my-agent
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>エージェントチーム名は、エージェントのディレクトリ名として使用されます。
+以後、エージェントチーム名を <code class="docutils literal notranslate"><span class="pre">&lt;your_team_name&gt;</span></code> として参照します。</p>
+</div>
 <p>入力後、下記のようなエージェントのテンプレートがカレントディレクトリに作成されます。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
 └──<span class="w"> </span>my-agent
@@ -374,7 +379,7 @@ Creating<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </s
 </div>
 <p>その後、別のターミナルを開き、エージェントを起動します：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal B</span>
-<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/my-agent
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
 python<span class="w"> </span>main.py
 </pre></div>
 </div>
