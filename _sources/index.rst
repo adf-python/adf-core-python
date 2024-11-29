@@ -15,10 +15,6 @@ adf-core-pythonのドキュメント
    パッケージとしてまだ公開していないため、pip でインストールすることはできません。
 
 
-.. contents:: 目次
-   :depth: 2
-   :local:
-
 概要
 ----
 adf-core-pythonは、RoboCup Rescue Simulation(RRS)におけるエージェント開発を支援するためのライブラリ及びフレームワークです。
@@ -38,20 +34,20 @@ adf-core-pythonを始めるには、インストールに従い、このドキ�
 
 .. toctree::
    :maxdepth: 1
-   :caption: インストール:
+   :caption: インストール
 
    install/environment/environment
    install/install/install
 
 .. toctree::
    :maxdepth: 1
-   :caption: クイックスタート:
+   :caption: クイックスタート
 
    quickstart/quickstart
 
 .. toctree::
    :maxdepth: 1
-   :caption: チュートリアル:
+   :caption: チュートリアル
 
    tutorial/environment/environment
    tutorial/agent/agent
@@ -61,14 +57,14 @@ adf-core-pythonを始めるには、インストールに従い、このドキ�
 
 .. toctree::
    :maxdepth: 1
-   :caption: ハンズオン:
+   :caption: ハンズオン
 
-   hands-on/search
    hands-on/clustering
+   hands-on/search
 
 .. toctree::
    :maxdepth: 1
-   :caption: APIドキュメント:
+   :caption: APIドキュメント
 
    genindex
    modindex
