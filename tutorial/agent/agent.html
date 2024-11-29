@@ -365,13 +365,16 @@ Creating<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </s
 </section>
 <section id="id3">
 <h2>シミュレーションを実行する<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>シミュレーションサーバーを以下のコマンドで起動します：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>WORKING_DIR/rcrs-server/scripts
-./start-comprun.sh<span class="w"> </span>-m<span class="w"> </span>../maps/test/map<span class="w"> </span>-c<span class="w"> </span>../maps/test/config
+<p>ターミナルを2つ起動します。</p>
+<p>片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal A</span>
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/rcrs-server/scripts
+./start-comprun.sh<span class="w"> </span>-m<span class="w"> </span>../maps/tutorial_fire_brigade_only/map<span class="w"> </span>-c<span class="w"> </span>../maps/tutorial_fire_brigade_only/config
 </pre></div>
 </div>
-<p>その後、エージェントを起動します：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>WORKING_DIR/my-agent
+<p>その後、別のターミナルを開き、エージェントを起動します：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal B</span>
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/my-agent
 python<span class="w"> </span>main.py
 </pre></div>
 </div>

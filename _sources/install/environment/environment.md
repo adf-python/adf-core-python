@@ -40,7 +40,7 @@ BUILD SUCCESSFUL in ...
 ## シミュレーションサーバーの動作確認
 
 ```bash
-cd WORKING_DIR/rcrs-server/scripts
+cd scripts
 ./start-comprun.sh -m ../maps/test/map -c ../maps/test/config
 ```
 
