@@ -4,31 +4,26 @@ import threading
 from adf_core_python.core.component.abstract_loader import AbstractLoader
 from adf_core_python.core.config.config import Config
 from adf_core_python.core.launcher.config_key import ConfigKey
-
-# from rcrs_core.connection.componentLauncher import ComponentLauncher
 from adf_core_python.core.launcher.connect.component_launcher import ComponentLauncher
 from adf_core_python.core.launcher.connect.connector import Connector
-
-# from adf_core_python.core.launcher.connect.connector_ambulance_centre import (
-#     ConnectorAmbulanceCentre,
-# )
+from adf_core_python.core.launcher.connect.connector_ambulance_center import (
+    ConnectorAmbulanceCenter,
+)
 from adf_core_python.core.launcher.connect.connector_ambulance_team import (
     ConnectorAmbulanceTeam,
 )
 from adf_core_python.core.launcher.connect.connector_fire_brigade import (
     ConnectorFireBrigade,
 )
-
-# from adf_core_python.core.launcher.connect.connector_fire_station import (
-#     ConnectorFireStation,
-# )
+from adf_core_python.core.launcher.connect.connector_fire_station import (
+    ConnectorFireStation,
+)
 from adf_core_python.core.launcher.connect.connector_police_force import (
     ConnectorPoliceForce,
 )
-
-# from adf_core_python.core.launcher.connect.connector_police_office import (
-#     ConnectorPoliceOffice,
-# )
+from adf_core_python.core.launcher.connect.connector_police_office import (
+    ConnectorPoliceOffice,
+)
 from adf_core_python.core.logger.logger import get_logger
 
 
@@ -53,11 +48,11 @@ class AgentLauncher:
         )
 
         self.connectors.append(ConnectorAmbulanceTeam())
-        # self.connectors.append(ConnectorAmbulanceCentre())
+        self.connectors.append(ConnectorAmbulanceCenter())
         self.connectors.append(ConnectorFireBrigade())
-        # self.connectors.append(ConnectorFireStation())
+        self.connectors.append(ConnectorFireStation())
         self.connectors.append(ConnectorPoliceForce())
-        # self.connectors.append(ConnectorPoliceOffice())
+        self.connectors.append(ConnectorPoliceOffice())
 
     def launch(self) -> None:
         host: str = self.config.get_value(ConfigKey.KEY_KERNEL_HOST, "localhost")
