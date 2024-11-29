@@ -332,7 +332,7 @@
 <section id="id3">
 <h2>パッケージのインストール<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>パッケージをインストールするには、次のコマンドを実行します：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>adf_core_python
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/adf-python/adf-core-python.git
 </pre></div>
 </div>
 </section>
@@ -349,21 +349,22 @@ Creating<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </s
 </div>
 <p>入力後、下記のようなエージェントのテンプレートがカレントディレクトリに作成されます。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
-├──<span class="w"> </span>config
-│<span class="w">   </span>├──<span class="w"> </span>development.json
-│<span class="w">   </span>├──<span class="w"> </span>launcher.yaml
-│<span class="w">   </span>└──<span class="w"> </span>module.yaml
-├──<span class="w"> </span>main.py
-└──<span class="w"> </span>src
-<span class="w">    </span>└──<span class="w"> </span>my-agent
-<span class="w">        </span>├──<span class="w"> </span>__init__.py
-<span class="w">        </span>└──<span class="w"> </span>module
+└──<span class="w"> </span>my-agent
+<span class="w">    </span>├──<span class="w"> </span>config
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>development.json
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>launcher.yaml
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>module.yaml
+<span class="w">    </span>├──<span class="w"> </span>main.py
+<span class="w">    </span>└──<span class="w"> </span>src
+<span class="w">        </span>└──<span class="w"> </span>my-agent
 <span class="w">            </span>├──<span class="w"> </span>__init__.py
-<span class="w">            </span>└──<span class="w"> </span>complex
+<span class="w">            </span>└──<span class="w"> </span>module
 <span class="w">                </span>├──<span class="w"> </span>__init__.py
-<span class="w">                </span>├──<span class="w"> </span>sample_human_detector.py
-<span class="w">                </span>├──<span class="w"> </span>sample_road_detector.py
-<span class="w">                </span>└──<span class="w"> </span>sample_search.py
+<span class="w">                </span>└──<span class="w"> </span>complex
+<span class="w">                    </span>├──<span class="w"> </span>__init__.py
+<span class="w">                    </span>├──<span class="w"> </span>sample_human_detector.py
+<span class="w">                    </span>├──<span class="w"> </span>sample_road_detector.py
+<span class="w">                    </span>└──<span class="w"> </span>sample_search.py
 </pre></div>
 </div>
 </section>

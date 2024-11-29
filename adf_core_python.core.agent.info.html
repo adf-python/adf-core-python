@@ -374,12 +374,13 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core.agent.info.world_info">adf_core_python.core.agent.info.world_info module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo"><code class="docutils literal notranslate"><span class="pre">WorldInfo</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.add_entity"><code class="docutils literal notranslate"><span class="pre">WorldInfo.add_entity()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_bloackades"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_bloackades()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_blockades"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_blockades()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_change_set"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_change_set()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_distance"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_distance()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_types"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_entities_of_types()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entity"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_entity()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_types"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_entity_ids_of_types()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_entity_position()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_world_model"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_world_model()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.set_change_set"><code class="docutils literal notranslate"><span class="pre">WorldInfo.set_change_set()</span></code></a></li>
 </ul>
@@ -841,8 +842,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="adf_core_python.core.agent.info.world_info.WorldInfo.get_bloackades">
-<span class="sig-name descname"><span class="pre">get_bloackades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Area</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">Blockade</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_bloackades" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.world_info.WorldInfo.get_blockades">
+<span class="sig-name descname"><span class="pre">get_blockades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Area</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">Blockade</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_blockades" title="Link to this definition">#</a></dt>
 <dd><p>Get the blockades in the area</p>
 <dl class="field-list simple">
 <dt class="field-odd">戻り値<span class="colon">:</span></dt>
@@ -938,6 +939,26 @@
 </dd>
 <dt class="field-odd">戻り値の型<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list[EntityID]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position">
+<span class="sig-name descname"><span class="pre">get_entity_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EntityID</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">EntityID</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position" title="Link to this definition">#</a></dt>
+<dd><p>Get the entity position</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entity_id</strong> (<em>EntityID</em>) -- Entity ID</p>
+</dd>
+<dt class="field-even">戻り値<span class="colon">:</span></dt>
+<dd class="field-even"><p>Entity position</p>
+</dd>
+<dt class="field-odd">戻り値の型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>EntityID</p>
+</dd>
+<dt class="field-even">例外<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> -- If the entity is invalid</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1074,12 +1095,13 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core.agent.info.world_info">adf_core_python.core.agent.info.world_info module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo"><code class="docutils literal notranslate"><span class="pre">WorldInfo</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.add_entity"><code class="docutils literal notranslate"><span class="pre">WorldInfo.add_entity()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_bloackades"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_bloackades()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_blockades"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_blockades()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_change_set"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_change_set()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_distance"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_distance()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_types"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_entities_of_types()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entity"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_entity()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_types"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_entity_ids_of_types()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_entity_position()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_world_model"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_world_model()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.set_change_set"><code class="docutils literal notranslate"><span class="pre">WorldInfo.set_change_set()</span></code></a></li>
 </ul>

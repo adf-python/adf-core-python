@@ -12,7 +12,7 @@
 パッケージをインストールするには、次のコマンドを実行します：
 
 ```bash
-pip install adf_core_python
+pip install git+https://github.com/adf-python/adf-core-python.git
 ```
 
 ## 新規エージェントの作成
@@ -34,21 +34,22 @@ Creating a new agent team with name: my-agent
 
 ```bash
 .
-├── config
-│   ├── development.json
-│   ├── launcher.yaml
-│   └── module.yaml
-├── main.py
-└── src
-    └── my-agent
-        ├── __init__.py
-        └── module
+└── my-agent
+    ├── config
+    │   ├── development.json
+    │   ├── launcher.yaml
+    │   └── module.yaml
+    ├── main.py
+    └── src
+        └── my-agent
             ├── __init__.py
-            └── complex
+            └── module
                 ├── __init__.py
-                ├── sample_human_detector.py
-                ├── sample_road_detector.py
-                └── sample_search.py
+                └── complex
+                    ├── __init__.py
+                    ├── sample_human_detector.py
+                    ├── sample_road_detector.py
+                    └── sample_search.py
 ```
 
 ## エージェントを実行する
