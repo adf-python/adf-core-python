@@ -1,7 +1,7 @@
 from typing import Optional, cast
 
 from rcrs_core.entities.building import Building
-from rcrs_core.entities.gassStation import GasStation
+from rcrs_core.entities.gasStation import GasStation
 from rcrs_core.entities.refuge import Refuge
 from rcrs_core.entities.road import Road
 from rcrs_core.worldmodel.entityID import EntityID

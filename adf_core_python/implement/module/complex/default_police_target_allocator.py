@@ -3,7 +3,7 @@ from typing import Callable, Optional, cast
 
 from rcrs_core.entities.building import Building
 from rcrs_core.entities.entity import Entity
-from rcrs_core.entities.gassStation import GasStation
+from rcrs_core.entities.gasStation import GasStation
 from rcrs_core.entities.policeForce import PoliceForce
 from rcrs_core.entities.refuge import Refuge
 from rcrs_core.entities.road import Road
