@@ -37,7 +37,7 @@ cd rcrs-server
 BUILD SUCCESSFUL in ...
 ```
 
-## シュミレーションサーバーの動作確認
+## シミュレーションサーバーの動作確認
 
 ```bash
 cd WORKING_DIR/rcrs-server/scripts

@@ -8,7 +8,7 @@
 
 ダウンロードしたファイルを解凍し、中のファイルを `rcrs-server/maps/` の中に移動させてください。
 
-## シュミレーションサーバーの動作確認
+## シミュレーションサーバーの動作確認
 
 ```bash
 cd WORKING_DIR/rcrs-server/scripts
