@@ -41,16 +41,20 @@ Creating a new agent team with name: my-agent
 
 ## シミュレーションを実行する
 
-シミュレーションサーバーを以下のコマンドで起動します：
+ターミナルを2つ起動します。
+
+片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します：
 
 ```bash
+# Terminal A
 cd WORKING_DIR/rcrs-server/scripts
-./start-comprun.sh -m ../maps/test/map -c ../maps/test/config
+./start-comprun.sh -m ../maps/tutorial_fire_brigade_only/map -c ../maps/tutorial_fire_brigade_only/config
 ```
 
-その後、エージェントを起動します：
+その後、別のターミナルを開き、エージェントを起動します：
 
 ```bash
+# Terminal B
 cd WORKING_DIR/my-agent
 python main.py
 ```
