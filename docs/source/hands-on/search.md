@@ -70,13 +70,13 @@ class KMeansPPSearch(Search):
 
 ```yaml
 DefaultTacticsAmbulanceTeam:
-  Search: src.<team-name>.module.complex.k_means_pp_search.KMeansPPSearch
+  Search: src.<your_team_name>.module.complex.k_means_pp_search.KMeansPPSearch
 
 DefaultTacticsFireBrigade:
-  Search: src.<team-name>.module.complex.k_means_pp_search.KMeansPPSearch
+  Search: src.<your_team_name>.module.complex.k_means_pp_search.KMeansPPSearch
 
 DefaultTacticsPoliceForce:
-  Search: src.<team-name>.module.complex.k_means_pp_search.KMeansPPSearch
+  Search: src.<your_team_name>.module.complex.k_means_pp_search.KMeansPPSearch
 ```
 
 ## モジュールの実装
@@ -87,7 +87,7 @@ DefaultTacticsPoliceForce:
 
 ```yaml
 KMeansPPSearch:
-  Clustering: src.<team-name>.module.algorithm.k_means_pp_clustering.KMeansPPClustering
+  Clustering: src.<your_team_name>.module.algorithm.k_means_pp_clustering.KMeansPPClustering
 ```
 
 次に、`KMeansPPSearch` モジュールで `KMeansPPClustering` モジュールを呼び出せるようにします。
@@ -146,7 +146,23 @@ class KMeansPPSearch(Search):
 
 以上で、`KMeansPPClustering` モジュールを用いた `KMeansPPSearch` モジュールの実装が完了しました。
 
-実行すると、各エージェントが担当地域内からランダムに探索対象を選択し、探索を行います。
+ターミナルを2つ起動します。
+
+片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します：
+
+```bash
+# Terminal A
+cd WORKING_DIR/rcrs-server/scripts
+./start-comprun.sh -m ../maps/tutorial_ambulance_team_only/map -c ../maps/tutorial_ambulance_team_only/config
+```
+
+その後、別のターミナルを開き、エージェントを起動します：
+
+```bash
+# Terminal B
+cd WORKING_DIR/<your_team_name>
+python main.py
+```
 
 ## モジュールの改善
 
@@ -172,13 +188,13 @@ class KMeansPPSearch(Search):
 ### 探索対象がステップごとに変わってしまう問題
 
 ```{admonition} 方針のヒント
-:class: tip dropdown
+:class: hint dropdown
 
 一度選択した探索対象に到達するまで、探索対象を変更しないようにする
 ```
 
 ```{admonition} プログラム例
-:class: tip dropdown
+:class: hint dropdown
 
 ````python
     def calculate(self) -> Search:
@@ -212,13 +228,13 @@ class KMeansPPSearch(Search):
 ### すでに探索したエンティティを再度探索対象として選択してしまう問題
 
 ```{admonition} 方針のヒント
-:class: tip dropdown
+:class: hint dropdown
 
 すでに探索したエンティティを何かしらの方法で記録し、再度探索対象として選択しないようにする
 ```
 
 ```{admonition} プログラム例
-:class: tip dropdown
+:class: hint dropdown
 
 ````python
     def __init__(
@@ -287,13 +303,13 @@ class KMeansPPSearch(Search):
 ### 近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう
 
 ```{admonition} 方針のヒント
-:class: tip dropdown
+:class: hint dropdown
 
 エンティティ間の距離を計算し、もっとも近いエンティティを探索対象として選択する
 ```
 
 ```{admonition} プログラム例
-:class: tip dropdown
+:class: hint dropdown
 
 ````python
     def calculate(self) -> Search:

@@ -4,7 +4,7 @@
 
 ```bash
 .
-└── <team-name>
+└── <your_team_name>
     └── config
         ├── development.json
         ├── launcher.yaml
