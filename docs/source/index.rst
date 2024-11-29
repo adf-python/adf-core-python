@@ -74,11 +74,3 @@ adf-core-pythonを始めるには、インストールに従い、このドキ�
    :members:
    :undoc-members:
    :show-inheritance:
-
-
-パッケージの詳細
----------------------
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
