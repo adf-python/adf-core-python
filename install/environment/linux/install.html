@@ -342,7 +342,9 @@
 <li><p>もし、<code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code>などのエラーが出た場合、OS標準のパッケージマネージャーを使用してインストールします。</p>
 <ul>
 <li><p>DebianベースのOSの場合(Ubuntuなど)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git
 </pre></div>
 </div>
 </li>
@@ -368,32 +370,82 @@
 <ol class="arabic">
 <li><p>Terminalを起動し、以下のコマンドを実行します。また、バージョンが3.12以上になっていることを確認します。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>--version
-<span class="c1"># OR</span>
-python3<span class="w"> </span>--version
 </pre></div>
 </div>
 </li>
-<li><p>もし、<code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code>などのエラーが出た場合やバージョンが低い場合、OS標準のパッケージマネージャーを使用してインストールします</p>
+<li><p>もし、<code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code>などのエラーが出た場合やバージョンが低い場合、Pythonのバージョン管理ツールであるpyenvを使用してインストールします</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>インストール方法の内容が最新ではない場合があるため、<a class="github reference external" href="https://github.com/pyenv/pyenv">pyenv/pyenv</a>を参照してください。</p>
+</div>
+<ol class="arabic">
+<li><p>以下のコマンドを実行します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://pyenv.run<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</pre></div>
+</div>
+</li>
+<li><p>次に以下のコマンドを実行して、使用しているShellを確認します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="nv">$SHELL</span>
+</pre></div>
+</div>
+</li>
+<li><p>表示されたShellに従ってコマンドを実行してください。</p>
+<p><code class="docutils literal notranslate"><span class="pre">bash</span></code>が表示された方は以下のコマンドを実行してください</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;command -v pyenv &gt;/dev/null || export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;eval &quot;$(pyenv init -)&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.profile
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;command -v pyenv &gt;/dev/null || export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.profile
+
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;[[ -d $PYENV_ROOT/bin ]] &amp;&amp; export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;eval &quot;$(pyenv init -)&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">zsh</span></code>が表示された方は以下のコマンドを実行してください</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.zshrc
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;[[ -d $PYENV_ROOT/bin ]] &amp;&amp; export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.zshrc
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;eval &quot;$(pyenv init -)&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.zshrc
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">fish</span></code>が表示された方は以下のコマンドを実行してください</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="w"> </span>-Ux<span class="w"> </span>PYENV_ROOT<span class="w"> </span><span class="nv">$HOME</span>/.pyenv
+fish_add_path<span class="w"> </span><span class="nv">$PYENV_ROOT</span>/bin
+pyenv<span class="w"> </span>init<span class="w"> </span>-<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nb">source</span>
+</pre></div>
+</div>
+</li>
+<li><p>必要パッケージのインストール</p>
 <ul>
 <li><p>DebianベースのOSの場合(Ubuntuなど)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3.12<span class="w"> </span>python3.12-pip
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>make<span class="w"> </span>libssl-dev<span class="w"> </span>build-essential<span class="w"> </span>zlib1g-dev<span class="w"> </span>libbz2-dev<span class="w"> </span>libreadline-dev<span class="w"> </span>libsqlite3-dev<span class="w"> </span>wget<span class="w"> </span>llvm<span class="w"> </span>libncursesw5-dev<span class="w"> </span>xz-utils<span class="w"> </span>tk-dev<span class="w"> </span>libxml2-dev<span class="w"> </span>libxmlsec1-dev<span class="w"> </span>libffi-dev<span class="w"> </span>liblzma-dev
 </pre></div>
 </div>
 </li>
 <li><p>Red HatベースのOSの場合(Fedoraなど)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>python3.12<span class="w"> </span>python3.12-pip
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>gcc<span class="w"> </span>bzip2<span class="w"> </span>bzip2-devel<span class="w"> </span>openssl<span class="w"> </span>openssl-devel<span class="w"> </span>readline<span class="w"> </span>readline-devel<span class="w"> </span>sqlite-devel<span class="w"> </span>tk-devel
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>python3.12<span class="w"> </span>python3.12-pip
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>gcc<span class="w"> </span>bzip2<span class="w"> </span>bzip2-devel<span class="w"> </span>openssl<span class="w"> </span>openssl-devel<span class="w"> </span>readline<span class="w"> </span>readline-devel<span class="w"> </span>sqlite-devel<span class="w"> </span>tk-devel
 </pre></div>
 </div>
 </li>
 </ul>
 </li>
+<li><p>python3.12のインストール</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">exec</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SHELL</span><span class="s2">&quot;</span>
+pyenv<span class="w"> </span>install<span class="w"> </span><span class="m">3</span>.12
+pyenv<span class="w"> </span>global<span class="w"> </span><span class="m">3</span>.12
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
 <li><p>以下のコマンドを入力し、バージョンが表示されたら成功です。(表示されない方はTerminalを再起動してください)</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>--version
-<span class="c1"># OR</span>
-python3<span class="w"> </span>--version
 </pre></div>
 </div>
 </li>
@@ -410,7 +462,9 @@ python3<span class="w"> </span>--version
 <li><p>もし、<code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code>などのエラーが出た場合やバージョンが異なる場合、OS標準のパッケージマネージャーを使用してインストールします</p>
 <ul>
 <li><p>DebianベースのOSの場合(Ubuntuなど)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>openjdk-17-jdk
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>openjdk-17-jdk
 </pre></div>
 </div>
 </li>

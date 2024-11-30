@@ -335,25 +335,54 @@
 <h2>1. Gitのインストール<a class="headerlink" href="#git" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://gitforwindows.org/">Git for Windows</a>の公式サイトにアクセスします。</p></li>
-<li><p>ダウンロードページから最新のバージョンをダウンロードします。</p></li>
-<li><p>ダウンロードしたファイルを開き、インストールを開始します。</p></li>
+<li><p>トップページの&quot;Download&quot;をクリックします</p></li>
+<li><p>ダウンロードが完了した後、インストーラーを実行します。</p></li>
+<li><p>全て&quot;Next&quot;をクリックします。</p></li>
+<li><p>インストールが完了するまで待ちます。</p></li>
+<li><p>インストールが完了したら&quot;Finish&quot;をクリックします。</p></li>
+<li><p>検索バーに&quot;Git Bash&quot;と入力し、Git Bashを実行します。</p></li>
+<li><p>画面が表示されていたらインストール成功です。</p></li>
 </ol>
 </section>
 <section id="python">
 <h2>2. Pythonのインストール<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p><a class="reference external" href="https://www.python.org/downloads/">Python</a>の公式サイトにアクセスします。</p></li>
-<li><p>ダウンロードページから最新のバージョンをダウンロードします。</p></li>
-<li><p>ダウンロードしたファイルを開き、インストールを開始します。</p></li>
-<li><p>インストール時に「Add python.exe to PATH」にチェックを入れてください。</p></li>
+<li><p><a class="reference external" href="https://www.python.org/">Python</a>の公式サイトにアクセスします。</p></li>
+<li><p>トップページの&quot;Download Python ~&quot;をクリックします</p></li>
+<li><p>ダウンロードが完了した後、インストーラーを実行します。</p></li>
+<li><p>&quot;Add python.exe to PATH&quot;にチェックが入っていることを確認した後、&quot;Install Now&quot;をクリックします。</p></li>
+<li><p>インストールが完了するまで待ちます。</p></li>
+<li><p>インストールが完了したら&quot;Close&quot;をクリックします。</p></li>
+<li><p>Git Bashを開き、<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">--version</span></code>と入力し、<code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">[バージョン]</span></code>が表示されたら成功です。(もし表示されない場合はGit Bashを開き直してください)</p></li>
 </ol>
 </section>
 <section id="openjdk">
 <h2>3. OpenJDKのインストール<a class="headerlink" href="#openjdk" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://jdk.java.net/archive/">OpenJDK</a>の公式サイトにアクセスします。</p></li>
-<li><p>ダウンロードページから17.0.2のバージョンをダウンロードします。</p></li>
-<li><p>ダウンロードしたファイルを開き、インストールを開始します。</p></li>
+<ol class="arabic">
+<li><p><a class="reference external" href="https://jdk.java.net/archive/">OpenJDK</a>のダウンロードページにアクセスします。</p></li>
+<li><p>17.0.2のWindowsの横にある&quot;zip&quot;をクリックします。</p></li>
+<li><p>ダウンロードしたzipを展開(解凍)します。</p></li>
+<li><p>展開(解凍)すると&quot;jdk-17.0.2&quot;のようなフォルダができるのを確認します。</p></li>
+<li><p>このフォルダ&quot;jdk-17.0.2&quot;を<code class="docutils literal notranslate"><span class="pre">C:¥</span></code>の直下に移動させます。</p></li>
+<li><p>Windowsでコマンドプロンプトを管理者として実行します。</p></li>
+<li><p>開いたら以下のコマンドを実行します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">powershell</span> <span class="o">-</span><span class="n">command</span> <span class="s2">&quot;[System.Environment]::SetEnvironmentVariable(</span><span class="se">\&quot;</span><span class="s2">JAVA_HOME</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">c:\jdk-17.0.2</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">Machine</span><span class="se">\&quot;</span><span class="s2">)&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>次に以下のコマンドを実行します。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">powershell</span> <span class="o">-</span><span class="n">command</span> <span class="s2">&quot;$oldpath = [System.Environment]::GetEnvironmentVariable(</span><span class="se">\&quot;</span><span class="s2">Path</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">Machine</span><span class="se">\&quot;</span><span class="s2">); $oldpath += </span><span class="se">\&quot;</span><span class="s2">;c:\jdk-17.0.2</span><span class="se">\b</span><span class="s2">in</span><span class="se">\&quot;</span><span class="s2">; [System.Environment]::SetEnvironmentVariable(</span><span class="se">\&quot;</span><span class="s2">Path</span><span class="se">\&quot;</span><span class="s2">, $oldpath, </span><span class="se">\&quot;</span><span class="s2">Machine</span><span class="se">\&quot;</span><span class="s2">)&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Git Bashを開き、<code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">-version</span></code>と入力します。
+以下のような文字が表示されたらインストール成功です。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openjdk</span> <span class="n">version</span> <span class="s2">&quot;17.0.2&quot;</span> <span class="mi">2022</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">18</span>
+<span class="n">OpenJDK</span> <span class="n">Runtime</span> <span class="n">Environment</span> <span class="p">(</span><span class="n">build</span> <span class="mf">17.0.2</span><span class="o">+</span><span class="mi">8</span><span class="o">-</span><span class="mi">86</span><span class="p">)</span>
+<span class="n">OpenJDK</span> <span class="mi">64</span><span class="o">-</span><span class="n">Bit</span> <span class="n">Server</span> <span class="n">VM</span> <span class="p">(</span><span class="n">build</span> <span class="mf">17.0.2</span><span class="o">+</span><span class="mi">8</span><span class="o">-</span><span class="mi">86</span><span class="p">,</span> <span class="n">mixed</span> <span class="n">mode</span><span class="p">,</span> <span class="n">sharing</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
 </ol>
 </section>
 </section>
