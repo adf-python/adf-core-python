@@ -395,11 +395,13 @@ touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/algorithm/k_means
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">agent_info</span><span class="p">,</span> <span class="n">world_info</span><span class="p">,</span> <span class="n">scenario_info</span><span class="p">,</span> <span class="n">module_manager</span><span class="p">,</span> <span class="n">develop_data</span>
         <span class="p">)</span>
+        <span class="c1"># ロガーの取得</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="c1"># クラスター数の設定</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cluster_number</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">match</span> <span class="n">agent_info</span><span class="o">.</span><span class="n">get_myself</span><span class="p">()</span><span class="o">.</span><span class="n">get_urn</span><span class="p">():</span>
+            <span class="c1"># エージェントのクラスに応じてクラスター数を設定</span>
             <span class="k">case</span> <span class="n">EntityURN</span><span class="o">.</span><span class="n">AMBULANCE_TEAM</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_cluster_number</span> <span class="o">=</span> <span class="n">scenario_info</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span>
                     <span class="n">ScenarioInfoKeys</span><span class="o">.</span><span class="n">SCENARIO_AGENTS_AT</span><span class="p">,</span>
@@ -597,6 +599,7 @@ touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/algorithm/k_means
 <span class="sd">        np.ndarray</span>
 <span class="sd">            エージェントとクラスターの対応付け結果</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># エージェントの位置のリストを取得</span>
         <span class="n">agent_positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="p">[</span><span class="n">agent</span><span class="o">.</span><span class="n">get_x</span><span class="p">(),</span> <span class="n">agent</span><span class="o">.</span><span class="n">get_y</span><span class="p">()]</span>
@@ -605,10 +608,12 @@ touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/algorithm/k_means
             <span class="p">]</span>
         <span class="p">)</span>
 
+        <span class="c1"># エージェントとクラスターの距離行列を計算</span>
         <span class="n">agent_positions</span> <span class="o">=</span> <span class="n">agent_positions</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
         <span class="n">cost_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span>
             <span class="n">agent_positions</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">-</span> <span class="n">cluster_positions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span>
         <span class="p">)</span>
+        <span class="c1"># ハンガリアンアルゴリズムによりエージェントとクラスターの対応付けを行う</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">col_ind</span> <span class="o">=</span> <span class="n">linear_sum_assignment</span><span class="p">(</span><span class="n">cost_matrix</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">col_ind</span>
 </pre></div>
@@ -643,7 +648,7 @@ python<span class="w"> </span>main.py
 </pre></div>
 </div>
 <p>このままだと、クラスタリング結果がわかりにくいので、クラスタリング結果を地図上に表示してみましょう。</p>
-<p><a class="reference download internal" download="" href="../_downloads/3a5f9008a07336d7227e96be15803593/cluster_plot.zip"><code class="xref download docutils literal notranslate"><span class="pre">クラスターの可視化用スクリプト</span></code></a>をダウンロードして解凍し、<code class="docutils literal notranslate"><span class="pre">main.py</span></code>の以下の部分に</p>
+<p><a class="reference download internal" download="" href="../_downloads/3a5f9008a07336d7227e96be15803593/cluster_plot.zip"><code class="xref download docutils literal notranslate"><span class="pre">クラスターの可視化用スクリプト</span></code></a>をダウンロードして解凍し、中の<code class="docutils literal notranslate"><span class="pre">main.py</span></code>の以下の部分に</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># クラスタリング結果</span>
 <span class="n">clusters</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
@@ -655,7 +660,8 @@ python<span class="w"> </span>main.py
 </pre></div>
 </div>
 <p>貼り付けたら、以下のコマンドを実行してください。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+python<span class="w"> </span>main.py
 </pre></div>
 </div>
 <p>以下のような画像が出力されます。</p>

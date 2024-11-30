@@ -453,7 +453,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">register_sub_module</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>そして、<code class="docutils literal notranslate"><span class="pre">calculate</span></code> メソッドでクラスタリングモジュールを呼び出し、探索対象を決定します。</p>
+<p>そして、<code class="docutils literal notranslate"><span class="pre">calculate</span></code> メソッドでクラスタリングモジュールを呼び出し、探索対象を決定するように変更します。</p>
+<p>以下のコードを <code class="docutils literal notranslate"><span class="pre">k_means_pp_search.py</span></code> に追記してください。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Search</span><span class="p">:</span>
         <span class="c1"># 自エージェントのエンティティIDを取得</span>
         <span class="n">me</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
@@ -466,6 +467,9 @@
         <span class="c1"># 乱数で選択</span>
         <span class="k">if</span> <span class="n">cluster_entity_ids</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">cluster_entity_ids</span><span class="p">)</span>
+        
+        <span class="c1"># ログ出力</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Target entity ID: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         
         <span class="k">return</span> <span class="bp">self</span>
 </pre></div>
@@ -507,6 +511,10 @@ python<span class="w"> </span>main.py
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
 <p>ここに上げた問題以外にも、改善すべき点が存在すると思うので、それを改善していただいても構いません。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>プログラム例のプログラムにも一部問題があるので、余裕があったら修正してみてください。</p>
 </div>
 <section id="id8">
 <h3>探索対象がステップごとに変わってしまう問題<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>

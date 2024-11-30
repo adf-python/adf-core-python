@@ -547,10 +547,6 @@ python<span class="w"> </span>main.py
 以下のコードを<code class="docutils literal notranslate"><span class="pre">fire_brigade_human_detector.py</span></code> に記述してください。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">rcrs_core.worldmodel.entityID</span> <span class="kn">import</span> <span class="n">EntityID</span>
-<span class="kn">from</span> <span class="nn">rcrs_core.entities.civilian</span> <span class="kn">import</span> <span class="n">Civilian</span>
-<span class="kn">from</span> <span class="nn">rcrs_core.entities.entity</span> <span class="kn">import</span> <span class="n">Entity</span>
-
 <span class="kn">from</span> <span class="nn">adf_core_python.core.agent.develop.develop_data</span> <span class="kn">import</span> <span class="n">DevelopData</span>
 <span class="kn">from</span> <span class="nn">adf_core_python.core.agent.info.agent_info</span> <span class="kn">import</span> <span class="n">AgentInfo</span>
 <span class="kn">from</span> <span class="nn">adf_core_python.core.agent.info.scenario_info</span> <span class="kn">import</span> <span class="n">ScenarioInfo</span>
@@ -558,9 +554,12 @@ python<span class="w"> </span>main.py
 <span class="kn">from</span> <span class="nn">adf_core_python.core.agent.module.module_manager</span> <span class="kn">import</span> <span class="n">ModuleManager</span>
 <span class="kn">from</span> <span class="nn">adf_core_python.core.component.module.complex.human_detector</span> <span class="kn">import</span> <span class="n">HumanDetector</span>
 <span class="kn">from</span> <span class="nn">adf_core_python.core.logger.logger</span> <span class="kn">import</span> <span class="n">get_agent_logger</span>
+<span class="kn">from</span> <span class="nn">rcrs_core.entities.civilian</span> <span class="kn">import</span> <span class="n">Civilian</span>
+<span class="kn">from</span> <span class="nn">rcrs_core.entities.entity</span> <span class="kn">import</span> <span class="n">Entity</span>
+<span class="kn">from</span> <span class="nn">rcrs_core.worldmodel.entityID</span> <span class="kn">import</span> <span class="n">EntityID</span>
 
 
-<span class="k">class</span> <span class="nc">SampleHumanDetector</span><span class="p">(</span><span class="n">HumanDetector</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">FireBrigadeHumanDetector</span><span class="p">(</span><span class="n">HumanDetector</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">agent_info</span><span class="p">:</span> <span class="n">AgentInfo</span><span class="p">,</span>
@@ -583,44 +582,56 @@ python<span class="w"> </span>main.py
     <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HumanDetector</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        行動対象を決定する</span>
-<span class="sd">        </span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">            HumanDetector: 自身のインスタンス</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 自分自身のEntityIDを取得</span>
         <span class="n">me</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
+        <span class="c1"># すべてのCivilianを取得</span>
         <span class="n">civilians</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Entity</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entities_of_types</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="n">Civilian</span><span class="p">,</span>
             <span class="p">]</span>
         <span class="p">)</span>
-        
+
+        <span class="c1"># 最も近いCivilianを探す</span>
         <span class="n">nearest_civilian</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">nearest_distance</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">for</span> <span class="n">civilian</span> <span class="ow">in</span> <span class="n">civilians</span><span class="p">:</span>
+            <span class="c1"># civilianがCivilianクラスのインスタンスでない場合はスキップ</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">civilian</span><span class="p">,</span> <span class="n">Civilian</span><span class="p">):</span>
                 <span class="k">continue</span>
-            
+
+            <span class="c1"># civilianのHPが0以下の場合はすでに死んでしまっているのでスキップ</span>
             <span class="k">if</span> <span class="n">civilian</span><span class="o">.</span><span class="n">get_hp</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">continue</span>
-            
+
+            <span class="c1"># civilianの埋没度が0以下の場合は掘り起こす必要がないのでスキップ</span>
             <span class="k">if</span> <span class="n">civilian</span><span class="o">.</span><span class="n">get_buriedness</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">continue</span>
-            
+
+            <span class="c1"># 自分自身との距離を計算</span>
             <span class="n">distance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_distance</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">civilian</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
-            
+
+            <span class="c1"># 最も近いCivilianを更新</span>
             <span class="k">if</span> <span class="n">nearest_distance</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">nearest_distance</span><span class="p">:</span>
                 <span class="n">nearest_civilian</span> <span class="o">=</span> <span class="n">civilian</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span>
                 <span class="n">nearest_distance</span> <span class="o">=</span> <span class="n">distance</span>
-        
+
+        <span class="c1"># 計算結果を格納</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="n">nearest_civilian</span>
         
+        <span class="c1"># ロガーに出力</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Target: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
         <span class="k">return</span> <span class="bp">self</span>
 
     <span class="k">def</span> <span class="nf">get_target_entity_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        行動対象のEntityIDを取得する</span>
-<span class="sd">        </span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">            Optional[EntityID]: 行動対象のEntityID</span>

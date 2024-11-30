@@ -8,8 +8,8 @@
 
 ```yaml
 SampleSearch:
-    PathPlanning: src.my-agent.module.complex.sample_search.SampleSearch
-    Clustering: src.my-agent.module.complex.sample_search.SampleClustering
+    PathPlanning: src.<your_team_name>.module.complex.sample_search.SampleSearch
+    Clustering: src.<your_team_name>.module.complex.sample_search.SampleClustering
 ```
 
 この場合、`SampleSearch` というモジュールで使用される、`PathPlanning` と `Clustering` というモジュールを指定しています。

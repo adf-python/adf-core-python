@@ -24,6 +24,15 @@
 読み込むモジュールのパスなどが記述されています。
 パスを指定する際は、プロジェクトの`main.py`からの相対パスで指定してください。
 
+```{admonition} 例
+:class: note
+
+```yaml
+DefaultSearch:
+    PathPlanning: src.<your_team_name>.module.complex.sample_search.SampleSearch
+    Clustering: src.<your_team_name>.module.complex.sample_search.SampleClustering
+```
+
 ### development.json
 
 `development.json` は、開発時に使用する設定ファイルです。

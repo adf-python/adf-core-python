@@ -355,6 +355,14 @@
 <p><code class="docutils literal notranslate"><span class="pre">module.yaml</span></code> は、エージェントが読み込むモジュールの設定ファイルです。
 読み込むモジュールのパスなどが記述されています。
 パスを指定する際は、プロジェクトの<code class="docutils literal notranslate"><span class="pre">main.py</span></code>からの相対パスで指定してください。</p>
+<div class="note admonition">
+<p class="admonition-title">例</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">DefaultSearch</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">PathPlanning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.sample_search.SampleSearch</span>
+<span class="w">    </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.sample_search.SampleClustering</span>
+</pre></div>
+</div>
+</div>
 </section>
 <section id="development-json">
 <h3>development.json<a class="headerlink" href="#development-json" title="Link to this heading">#</a></h3>
