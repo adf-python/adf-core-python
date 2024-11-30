@@ -125,7 +125,9 @@ class KMeansPPSearch(Search):
         self.register_sub_module(self._clustering)
 ```
 
-そして、`calculate` メソッドでクラスタリングモジュールを呼び出し、探索対象を決定します。
+そして、`calculate` メソッドでクラスタリングモジュールを呼び出し、探索対象を決定するように変更します。
+
+以下のコードを `k_means_pp_search.py` に追記してください。
 
 ```python
     def calculate(self) -> Search:
@@ -140,6 +142,9 @@ class KMeansPPSearch(Search):
         # 乱数で選択
         if cluster_entity_ids:
             self._result = random.choice(cluster_entity_ids)
+        
+        # ログ出力
+        self._logger.info(f"Target entity ID: {self._result}")
         
         return self
 ```
@@ -183,6 +188,10 @@ python main.py
 
 ```{warning}
 ここに上げた問題以外にも、改善すべき点が存在すると思うので、それを改善していただいても構いません。
+```
+
+```{warning}
+プログラム例のプログラムにも一部問題があるので、余裕があったら修正してみてください。
 ```
 
 ### 探索対象がステップごとに変わってしまう問題

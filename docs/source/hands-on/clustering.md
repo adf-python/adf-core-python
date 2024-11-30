@@ -69,11 +69,13 @@ class KMeansPPClustering(Clustering):
         super().__init__(
             agent_info, world_info, scenario_info, module_manager, develop_data
         )
+        # ロガーの取得
         self._logger = get_logger(f"{self.__class__.__name__}")
 
         # クラスター数の設定
         self._cluster_number: int = 1
         match agent_info.get_myself().get_urn():
+            # エージェントのクラスに応じてクラスター数を設定
             case EntityURN.AMBULANCE_TEAM:
                 self._cluster_number = scenario_info.get_value(
                     ScenarioInfoKeys.SCENARIO_AGENTS_AT,
@@ -271,6 +273,7 @@ class KMeansPPClustering(Clustering):
         np.ndarray
             エージェントとクラスターの対応付け結果
         """
+        # エージェントの位置のリストを取得
         agent_positions = np.array(
             [
                 [agent.get_x(), agent.get_y()]
@@ -279,10 +282,12 @@ class KMeansPPClustering(Clustering):
             ]
         )
 
+        # エージェントとクラスターの距離行列を計算
         agent_positions = agent_positions.reshape(-1, 2)
         cost_matrix = np.linalg.norm(
             agent_positions[:, np.newaxis] - cluster_positions, axis=2
         )
+        # ハンガリアンアルゴリズムによりエージェントとクラスターの対応付けを行う
         _, col_ind = linear_sum_assignment(cost_matrix)
         return col_ind
 ```
@@ -329,7 +334,7 @@ python main.py
 
 このままだと、クラスタリング結果がわかりにくいので、クラスタリング結果を地図上に表示してみましょう。
 
-{download}`クラスターの可視化用スクリプト <./../download/cluster_plot.zip>`をダウンロードして解凍し、`main.py`の以下の部分に
+{download}`クラスターの可視化用スクリプト <./../download/cluster_plot.zip>`をダウンロードして解凍し、中の`main.py`の以下の部分に
 
 ```python
 # クラスタリング結果
@@ -348,6 +353,7 @@ clusters = [[257, 259, 262, 263, 270, 278, 280, 297, 336, 913, 914, 915, 916, 91
 貼り付けたら、以下のコマンドを実行してください。
 
 ```bash
+pip install -r requirements.txt
 python main.py
 ```
 

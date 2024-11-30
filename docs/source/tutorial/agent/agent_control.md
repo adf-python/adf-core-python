@@ -235,10 +235,6 @@ my_entity_id: EntityID = self._agent_info.get_entity_id()
 ```python
 from typing import Optional
 
-from rcrs_core.worldmodel.entityID import EntityID
-from rcrs_core.entities.civilian import Civilian
-from rcrs_core.entities.entity import Entity
-
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
 from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
@@ -246,9 +242,12 @@ from adf_core_python.core.agent.info.world_info import WorldInfo
 from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.component.module.complex.human_detector import HumanDetector
 from adf_core_python.core.logger.logger import get_agent_logger
+from rcrs_core.entities.civilian import Civilian
+from rcrs_core.entities.entity import Entity
+from rcrs_core.worldmodel.entityID import EntityID
 
 
-class SampleHumanDetector(HumanDetector):
+class FireBrigadeHumanDetector(HumanDetector):
     def __init__(
         self,
         agent_info: AgentInfo,
@@ -271,44 +270,56 @@ class SampleHumanDetector(HumanDetector):
     def calculate(self) -> HumanDetector:
         """
         行動対象を決定する
-        
+
         Returns
         -------
             HumanDetector: 自身のインスタンス
         """
+        # 自分自身のEntityIDを取得
         me: EntityID = self._agent_info.get_entity_id()
+        # すべてのCivilianを取得
         civilians: list[Entity] = self._world_info.get_entities_of_types(
             [
                 Civilian,
             ]
         )
-        
+
+        # 最も近いCivilianを探す
         nearest_civilian: Optional[EntityID] = None
         nearest_distance: Optional[float] = None
         for civilian in civilians:
+            # civilianがCivilianクラスのインスタンスでない場合はスキップ
             if not isinstance(civilian, Civilian):
                 continue
-            
+
+            # civilianのHPが0以下の場合はすでに死んでしまっているのでスキップ
             if civilian.get_hp() <= 0:
                 continue
-            
+
+            # civilianの埋没度が0以下の場合は掘り起こす必要がないのでスキップ
             if civilian.get_buriedness() <= 0:
                 continue
-            
+
+            # 自分自身との距離を計算
             distance: float = self._world_info.get_distance(me, civilian.get_id())
-            
+
+            # 最も近いCivilianを更新
             if nearest_distance is None or distance < nearest_distance:
                 nearest_civilian = civilian.get_id()
                 nearest_distance = distance
-        
+
+        # 計算結果を格納
         self._result = nearest_civilian
         
+        # ロガーに出力
+        self._logger.info(f"Target: {self._result}")
+
         return self
 
     def get_target_entity_id(self) -> Optional[EntityID]:
         """
         行動対象のEntityIDを取得する
-        
+
         Returns
         -------
             Optional[EntityID]: 行動対象のEntityID
