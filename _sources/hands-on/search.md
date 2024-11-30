@@ -51,6 +51,7 @@ class KMeansPPSearch(Search):
             agent_info, world_info, scenario_info, module_manager, develop_data
         )
         self._result: Optional[EntityID] = None
+        # ロガーの取得
         self._logger = get_agent_logger(
             f"{self.__class__.__module__}.{self.__class__.__qualname__}",
             self._agent_info,
@@ -108,20 +109,25 @@ class KMeansPPSearch(Search):
             agent_info, world_info, scenario_info, module_manager, develop_data
         )
         self._result: Optional[EntityID] = None
-
+        
+        # ロガーの取得
         self._logger = get_agent_logger(
             f"{self.__class__.__module__}.{self.__class__.__qualname__}",
             self._agent_info,
         )
-        
+
+        # クラスタリングモジュールの読み込み
         self._clustering: Clustering = cast(
             Clustering,
             module_manager.get_module(
+                # config.yamlに登録したkey
                 "KMeansPPSearch.Clustering",
+                # 上記のkeyが登録されていなかった場合のデフォルトモジュール
                 "adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering",
             ),
         )
 
+        # クラスタリングモジュールの登録
         self.register_sub_module(self._clustering)
 ```
 
@@ -191,7 +197,7 @@ python main.py
 ```
 
 ```{warning}
-プログラム例のプログラムにも一部問題があるので、余裕があったら修正してみてください。
+プログラム例のプログラムにも一部改善点があるので、余裕があったら修正してみてください。
 ```
 
 ### 探索対象がステップごとに変わってしまう問題
@@ -230,6 +236,9 @@ python main.py
         # 探索対象が未選択の場合
         if not self._result and cluster_entity_ids:
             self._result = random.choice(cluster_entity_ids)
+        
+        # ログ出力
+        self._logger.info(f"Target entity ID: {self._result}")
 
         return self
 ```
@@ -259,19 +268,24 @@ python main.py
         )
         self._result: Optional[EntityID] = None
 
+        # ロガーの取得
         self._logger = get_agent_logger(
             f"{self.__class__.__module__}.{self.__class__.__qualname__}",
             self._agent_info,
         )
 
+        # クラスタリングモジュールの読み込み
         self._clustering: Clustering = cast(
             Clustering,
             module_manager.get_module(
+                # config.yamlに登録したkey
                 "KMeansPPSearch.Clustering",
+                # 上記のkeyが登録されていなかった場合のデフォルトモジュール
                 "adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering",
             ),
         )
 
+        # クラスタリングモジュールの要録
         self.register_sub_module(self._clustering)
 
         # 探索したいエンティティIDのリスト(追加)
@@ -305,6 +319,9 @@ python main.py
         # 探索対象が未選択の場合(変更)
         if not self._result and self._search_entity_ids:
             self._result = random.choice(self._search_entity_ids)
+        
+        # ログ出力
+        self._logger.info(f"Target entity ID: {self._result}")
 
         return self
 ```
@@ -358,4 +375,9 @@ python main.py
                     nearest_entity_id = entity_id
                     nearest_distance = distance
             self._result = nearest_entity_id
+        
+        # ログ出力
+        self._logger.info(f"Target entity ID: {self._result}")
+
+        return self
 ```

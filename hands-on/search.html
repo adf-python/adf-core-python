@@ -385,6 +385,7 @@
             <span class="n">agent_info</span><span class="p">,</span> <span class="n">world_info</span><span class="p">,</span> <span class="n">scenario_info</span><span class="p">,</span> <span class="n">module_manager</span><span class="p">,</span> <span class="n">develop_data</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># ロガーの取得</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">get_agent_logger</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="p">,</span>
@@ -436,20 +437,25 @@
             <span class="n">agent_info</span><span class="p">,</span> <span class="n">world_info</span><span class="p">,</span> <span class="n">scenario_info</span><span class="p">,</span> <span class="n">module_manager</span><span class="p">,</span> <span class="n">develop_data</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-
+        
+        <span class="c1"># ロガーの取得</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">get_agent_logger</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="p">,</span>
         <span class="p">)</span>
-        
+
+        <span class="c1"># クラスタリングモジュールの読み込み</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="p">:</span> <span class="n">Clustering</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
             <span class="n">Clustering</span><span class="p">,</span>
             <span class="n">module_manager</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span>
+                <span class="c1"># config.yamlに登録したkey</span>
                 <span class="s2">&quot;KMeansPPSearch.Clustering&quot;</span><span class="p">,</span>
+                <span class="c1"># 上記のkeyが登録されていなかった場合のデフォルトモジュール</span>
                 <span class="s2">&quot;adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering&quot;</span><span class="p">,</span>
             <span class="p">),</span>
         <span class="p">)</span>
 
+        <span class="c1"># クラスタリングモジュールの登録</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">register_sub_module</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -514,7 +520,7 @@ python<span class="w"> </span>main.py
 </div>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
-<p>プログラム例のプログラムにも一部問題があるので、余裕があったら修正してみてください。</p>
+<p>プログラム例のプログラムにも一部改善点があるので、余裕があったら修正してみてください。</p>
 </div>
 <section id="id8">
 <h3>探索対象がステップごとに変わってしまう問題<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
@@ -548,6 +554,9 @@ python<span class="w"> </span>main.py
         <span class="c1"># 探索対象が未選択の場合</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="ow">and</span> <span class="n">cluster_entity_ids</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">cluster_entity_ids</span><span class="p">)</span>
+        
+        <span class="c1"># ログ出力</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Target entity ID: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span>
 </pre></div>
@@ -575,19 +584,24 @@ python<span class="w"> </span>main.py
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
+        <span class="c1"># ロガーの取得</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">get_agent_logger</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="p">,</span>
         <span class="p">)</span>
 
+        <span class="c1"># クラスタリングモジュールの読み込み</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="p">:</span> <span class="n">Clustering</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
             <span class="n">Clustering</span><span class="p">,</span>
             <span class="n">module_manager</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span>
+                <span class="c1"># config.yamlに登録したkey</span>
                 <span class="s2">&quot;KMeansPPSearch.Clustering&quot;</span><span class="p">,</span>
+                <span class="c1"># 上記のkeyが登録されていなかった場合のデフォルトモジュール</span>
                 <span class="s2">&quot;adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering&quot;</span><span class="p">,</span>
             <span class="p">),</span>
         <span class="p">)</span>
 
+        <span class="c1"># クラスタリングモジュールの要録</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">register_sub_module</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="p">)</span>
 
         <span class="c1"># 探索したいエンティティIDのリスト(追加)</span>
@@ -621,6 +635,9 @@ python<span class="w"> </span>main.py
         <span class="c1"># 探索対象が未選択の場合(変更)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">)</span>
+        
+        <span class="c1"># ログ出力</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Target entity ID: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span>
 </pre></div>
@@ -672,6 +689,11 @@ python<span class="w"> </span>main.py
                     <span class="n">nearest_entity_id</span> <span class="o">=</span> <span class="n">entity_id</span>
                     <span class="n">nearest_distance</span> <span class="o">=</span> <span class="n">distance</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="n">nearest_entity_id</span>
+        
+        <span class="c1"># ログ出力</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Target entity ID: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
 </pre></div>
 </div>
 </div>
