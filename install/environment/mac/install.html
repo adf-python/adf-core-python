@@ -315,8 +315,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git">1. Gitのインストール</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">2. Pythonのインストール</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homebrew">1. Homebrewのインストール</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git">2. Gitのインストール</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">3. Pythonのインストール</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#openjdk">3. OpenJDKのインストール</a></li>
 </ul>
             </nav>
@@ -331,31 +332,84 @@
                   
   <section id="mac">
 <h1>Macでの環境構築<a class="headerlink" href="#mac" title="Link to this heading">#</a></h1>
-<section id="git">
-<h2>1. Gitのインストール<a class="headerlink" href="#git" title="Link to this heading">#</a></h2>
+<section id="homebrew">
+<h2>1. Homebrewのインストール<a class="headerlink" href="#homebrew" title="Link to this heading">#</a></h2>
 <ol class="arabic">
-<li><p>Terminalを起動します。</p></li>
-<li><p>XcodeのCommand Line Toolsをインストールします。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xcode-select<span class="w"> </span>--install
+<li><p>Terminalを起動し、以下のコマンドを実行します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>-v
+</pre></div>
+</div>
+</li>
+<li><p>もし、<code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code>などのエラーが出た場合、以下のコマンドを実行します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>もう一度、以下のコマンドを実行してバージョンが表示されたら成功です。(表示されない方はTerminalを再起動してください)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>-v
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="git">
+<h2>2. Gitのインストール<a class="headerlink" href="#git" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Terminalを起動し、以下のコマンドを実行します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>--version
+</pre></div>
+</div>
+</li>
+<li><p>もし、<code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code>などのエラーが出た場合、以下のコマンドを実行します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>git
+</pre></div>
+</div>
+</li>
+<li><p>以下のコマンドを入力し、バージョンが表示されたら成功です。(表示されない方はTerminalを再起動してください)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>--version
 </pre></div>
 </div>
 </li>
 </ol>
 </section>
 <section id="python">
-<h2>2. Pythonのインストール<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://www.python.org/downloads/">Python</a>の公式サイトにアクセスします。</p></li>
-<li><p>ダウンロードページから最新のバージョンをダウンロードします。</p></li>
-<li><p>ダウンロードしたファイルを開き、インストールを開始します。</p></li>
+<h2>3. Pythonのインストール<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Terminalを起動し、以下のコマンドを実行します。また、バージョンが3.12以上になっていることを確認します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>--version
+</pre></div>
+</div>
+</li>
+<li><p>もし、<code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code>などのエラーが出た場合やバージョンが低い場合、以下のコマンドを実行します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>python
+</pre></div>
+</div>
+</li>
+<li><p>以下のコマンドを入力し、バージョンが表示されたら成功です。(表示されない方はTerminalを再起動してください)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>--version
+</pre></div>
+</div>
+</li>
 </ol>
 </section>
 <section id="openjdk">
 <h2>3. OpenJDKのインストール<a class="headerlink" href="#openjdk" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://jdk.java.net/archive/">OpenJDK</a>の公式サイトにアクセスします。</p></li>
-<li><p>ダウンロードページから17.0.2のバージョンをダウンロードします。</p></li>
-<li><p>ダウンロードしたファイルを開き、インストールを開始します。</p></li>
+<ol class="arabic">
+<li><p>Terminalを起動し、以下のコマンドを実行します。また、バージョンが17になっていることを確認します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>java<span class="w"> </span>--version
+</pre></div>
+</div>
+</li>
+<li><p>もし、<code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code>などのエラーが出た場合やバージョンが異なる場合、以下のコマンドを実行します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>openjdk@17
+</pre></div>
+</div>
+</li>
+<li><p>以下のコマンドを入力し、バージョンが表示されたら成功です。(表示されない方はTerminalを再起動してください)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>java<span class="w"> </span>--version
+</pre></div>
+</div>
+</li>
 </ol>
 </section>
 </section>
@@ -388,8 +442,9 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git">1. Gitのインストール</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">2. Pythonのインストール</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homebrew">1. Homebrewのインストール</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git">2. Gitのインストール</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">3. Pythonのインストール</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#openjdk">3. OpenJDKのインストール</a></li>
 </ul>
   </nav></div>
