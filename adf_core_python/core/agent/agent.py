@@ -112,8 +112,13 @@ class Agent:
         self.is_precompute = is_precompute
 
         if is_precompute:
-            # PrecomputeData.remove_date(data_storage_name)
             self.mode = Mode.PRECOMPUTATION
+
+        try:
+            precompute_data = PrecomputeData(data_storage_name)
+            precompute_data.remove_precompute_data()
+        except Exception as _:
+            pass
 
         self._module_config = module_config
         self._develop_data = develop_data
