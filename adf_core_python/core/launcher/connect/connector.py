@@ -16,7 +16,7 @@ class Connector(ABC):
         component_launcher: ComponentLauncher,
         config: Config,
         loader: AbstractLoader,
-    ) -> list[threading.Thread]:
+    ) -> dict[threading.Thread, threading.Event]:
         raise NotImplementedError
 
     def get_connected_agent_count(self) -> int:

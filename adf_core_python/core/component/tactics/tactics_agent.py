@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import time
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any, Optional
 
@@ -130,9 +131,17 @@ class TacticsAgent(ABC):
 
     def module_prepare(self) -> None:
         for module in self._modules:
+            start_time = time.time()
             module.prepare()
+            self._logger.info(
+                f"module {module.__class__.__name__} prepare time: {time.time() - start_time:.3f}",
+            )
         for action in self._actions:
+            start_time = time.time()
             action.prepare()
+            self._logger.info(
+                f"action {action.__class__.__name__} prepare time: {time.time() - start_time:.3f}",
+            )
         # for executor in self._command_executor:
         #     executor.prepare()
 

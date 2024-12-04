@@ -24,12 +24,12 @@ class ConnectorFireBrigade(Connector):
         component_launcher: ComponentLauncher,
         config: Config,
         loader: AbstractLoader,
-    ) -> list[threading.Thread]:
+    ) -> dict[threading.Thread, threading.Event]:
         count: int = config.get_value(ConfigKey.KEY_FIRE_BRIGADE_COUNT, 0)
         if count == 0:
-            return []
+            return {}
 
-        threads: list[threading.Thread] = []
+        threads: dict[threading.Thread, threading.Event] = {}
 
         for _ in range(count):
             if loader.get_tactics_fire_brigade() is None:
@@ -52,6 +52,7 @@ class ConnectorFireBrigade(Connector):
             )
 
             request_id: int = component_launcher.generate_request_id()
+            finish_post_connect_event = threading.Event()
             thread = threading.Thread(
                 target=component_launcher.connect,
                 args=(
@@ -68,7 +69,7 @@ class ConnectorFireBrigade(Connector):
                 ),
                 name=f"FireBrigadeAgent-{request_id}",
             )
-            threads.append(thread)
+            threads[thread] = finish_post_connect_event
 
         self.logger.info("Connected fire brigade (count: %d)" % count)
         return threads

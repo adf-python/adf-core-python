@@ -24,12 +24,12 @@ class ConnectorAmbulanceTeam(Connector):
         component_launcher: ComponentLauncher,
         config: Config,
         loader: AbstractLoader,
-    ) -> list[threading.Thread]:
+    ) -> dict[threading.Thread, threading.Event]:
         count: int = config.get_value(ConfigKey.KEY_AMBULANCE_TEAM_COUNT, 0)
         if count == 0:
-            return []
+            return {}
 
-        threads: list[threading.Thread] = []
+        threads: dict[threading.Thread, threading.Event] = {}
 
         for _ in range(count):
             if loader.get_tactics_ambulance_team() is None:
@@ -54,6 +54,7 @@ class ConnectorAmbulanceTeam(Connector):
             )
 
             request_id: int = component_launcher.generate_request_id()
+            finish_post_connect_event = threading.Event()
             thread = threading.Thread(
                 target=component_launcher.connect,
                 args=(
@@ -70,7 +71,7 @@ class ConnectorAmbulanceTeam(Connector):
                 ),
                 name=f"AmbulanceTeam-{request_id}",
             )
-            threads.append(thread)
+            threads[thread] = finish_post_connect_event
 
         self.logger.info("Connected ambulance team (count: %d)" % count)
         return threads

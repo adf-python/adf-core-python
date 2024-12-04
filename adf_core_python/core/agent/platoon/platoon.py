@@ -1,3 +1,6 @@
+import time
+from threading import Event
+
 from adf_core_python.core.agent.action.action import Action
 from adf_core_python.core.agent.agent import Agent
 from adf_core_python.core.agent.config.module_config import ModuleConfig
@@ -19,6 +22,7 @@ class Platoon(Agent):
         data_storage_name: str,
         module_config: ModuleConfig,
         develop_data: DevelopData,
+        finish_post_connect_event: Event,
     ) -> None:
         super().__init__(
             is_precompute,
@@ -28,6 +32,7 @@ class Platoon(Agent):
             data_storage_name,
             module_config,
             develop_data,
+            finish_post_connect_event,
         )
         self._tactics_agent = tactics_agent
         self._team_name = team_name
@@ -83,6 +88,10 @@ class Platoon(Agent):
             case Mode.PRECOMPUTED:
                 pass
             case Mode.NON_PRECOMPUTE:
+                start_time = time.time()
+                self._logger.info(
+                    f"Prepare start {self._agent_info.get_entity_id().get_value()}"
+                )
                 self._tactics_agent.prepare(
                     self._agent_info,
                     self._world_info,
@@ -91,6 +100,7 @@ class Platoon(Agent):
                     self.precompute_data,
                     self._develop_data,
                 )
+                self._logger.info(f"Prepare time: {time.time() - start_time:.3f} sec")
 
     def think(self) -> None:
         action: Action = self._tactics_agent.think(
