@@ -1,6 +1,5 @@
 import importlib
 import threading
-import time
 
 from adf_core_python.core.component.abstract_loader import AbstractLoader
 from adf_core_python.core.config.config import Config
@@ -69,7 +68,7 @@ class AgentLauncher:
             threads = connector.connect(component_launcher, self.config, self.loader)
             self.agent_thread_list.extend(threads)
 
-            def connect():
+            def connect() -> None:
                 for thread, event in threads.items():
                     thread.daemon = True
                     thread.start()

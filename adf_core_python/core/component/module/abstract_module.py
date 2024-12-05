@@ -4,7 +4,7 @@ import time
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
-from adf_core_python.core.logger.logger import get_agent_logger, get_logger
+from adf_core_python.core.logger.logger import get_agent_logger
 
 if TYPE_CHECKING:
     from adf_core_python.core.agent.communication.message_manager import MessageManager

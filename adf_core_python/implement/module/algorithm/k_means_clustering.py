@@ -1,5 +1,3 @@
-import time
-
 import numpy as np
 from rcrs_core.connection.URN import Entity as EntityURN
 from rcrs_core.entities.ambulanceCenter import AmbulanceCentre
@@ -114,7 +112,7 @@ class KMeansClustering(Clustering):
     def create_cluster(
         self, cluster_number: int, entities: list[Entity]
     ) -> list[list[Entity]]:
-        kmeans = KMeans(n_clusters=cluster_number, random_state=0, init="k-means++")
+        kmeans = KMeans(n_clusters=cluster_number, random_state=0)
         entity_positions: np.ndarray = np.array([])
         for entity in entities:
             location1_x, location1_y = entity.get_location()
