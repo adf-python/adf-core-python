@@ -98,7 +98,7 @@ class Launcher:
             if value is not None:
                 self.launcher_config.set_value(key, value)
 
-        self.logger.info(f"Config: {self.launcher_config}")
+        self.logger.debug(f"launcher_config: {self.launcher_config}")
 
     def launch(self) -> None:
         agent_launcher: AgentLauncher = AgentLauncher(

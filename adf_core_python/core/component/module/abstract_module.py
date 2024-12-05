@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import time
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
+
+from adf_core_python.core.logger.logger import get_agent_logger
 
 if TYPE_CHECKING:
     from adf_core_python.core.agent.communication.message_manager import MessageManager
@@ -32,6 +35,10 @@ class AbstractModule(ABC):
         self._count_prepare: int = 0
         self._count_update_info: int = 0
         self._count_update_info_current_time: int = 0
+        self._logger = get_agent_logger(
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}",
+            self._agent_info,
+        )
 
         self._sub_modules: list[AbstractModule] = []
 
@@ -56,7 +63,11 @@ class AbstractModule(ABC):
     def prepare(self) -> AbstractModule:
         self._count_prepare += 1
         for sub_module in self._sub_modules:
+            start_time = time.time()
             sub_module.prepare()
+            self._logger.debug(
+                f"{self.__class__.__name__}'s sub_module {sub_module.__class__.__name__} prepare time: {time.time() - start_time:.3f}",
+            )
         return self
 
     def update_info(self, message_manager: MessageManager) -> AbstractModule:

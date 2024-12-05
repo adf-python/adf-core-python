@@ -1,3 +1,5 @@
+from threading import Event
+
 from rcrs_core.connection.URN import Entity as EntityURN
 
 from adf_core_python.core.agent.config.module_config import ModuleConfig
@@ -16,6 +18,7 @@ class OfficeFire(Office):
         data_storage_name: str,
         module_config: ModuleConfig,
         develop_data: DevelopData,
+        finish_post_connect_event: Event,
     ) -> None:
         super().__init__(
             tactics_center,
@@ -25,6 +28,7 @@ class OfficeFire(Office):
             data_storage_name,
             module_config,
             develop_data,
+            finish_post_connect_event,
         )
 
     def precompute(self) -> None:

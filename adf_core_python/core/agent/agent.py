@@ -1,5 +1,7 @@
 import sys
+import time as _time
 from abc import abstractmethod
+from threading import Event
 from typing import Any, Callable, NoReturn
 
 from bitarray import bitarray
@@ -91,6 +93,7 @@ class Agent:
         data_storage_name: str,
         module_config: ModuleConfig,
         develop_data: DevelopData,
+        finish_post_connect_event: Event,
     ) -> None:
         self.name = name
         self.connect_request_id = None
@@ -102,6 +105,7 @@ class Agent:
         self.logger = get_logger(
             f"{self.__class__.__module__}.{self.__class__.__qualname__}"
         )
+        self.finish_post_connect_event = finish_post_connect_event
 
         self.team_name = team_name
         self.is_debug = is_debug
@@ -148,7 +152,7 @@ class Agent:
             self._agent_info,
         )
 
-        self.logger.info(f"config: {self.config}")
+        self.logger.debug(f"agent_config: {self.config}")
 
     def update_step_info(
         self, time: int, change_set: ChangeSet, hear: list[Command]
@@ -293,9 +297,12 @@ class Agent:
                         ].intValue,
                     )
                 )
-
         self.world_model.merge(change_set)
+        start_update_info_time = _time.time()
         self.update_step_info(time, change_set, heard_commands)
+        self.logger.debug(
+            f"{time} step calculation time: {_time.time() - start_update_info_time}"
+        )
 
     def send_acknowledge(self, request_id: int) -> None:
         ak_ack = AKAcknowledge()

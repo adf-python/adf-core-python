@@ -1,3 +1,5 @@
+from threading import Event
+
 from adf_core_python.core.agent.action.action import Action
 from adf_core_python.core.agent.agent import Agent
 from adf_core_python.core.agent.config.module_config import ModuleConfig
@@ -19,6 +21,7 @@ class Platoon(Agent):
         data_storage_name: str,
         module_config: ModuleConfig,
         develop_data: DevelopData,
+        finish_post_connect_event: Event,
     ) -> None:
         super().__init__(
             is_precompute,
@@ -28,6 +31,7 @@ class Platoon(Agent):
             data_storage_name,
             module_config,
             develop_data,
+            finish_post_connect_event,
         )
         self._tactics_agent = tactics_agent
         self._team_name = team_name
@@ -91,6 +95,8 @@ class Platoon(Agent):
                     self.precompute_data,
                     self._develop_data,
                 )
+
+        self.finish_post_connect_event.set()
 
     def think(self) -> None:
         action: Action = self._tactics_agent.think(
