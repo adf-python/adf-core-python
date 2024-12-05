@@ -74,5 +74,4 @@ class ConnectorPoliceOffice(Connector):
             )
             threads[thread] = finish_post_connect_event
 
-        self.logger.info("Connected police office (count: %d)" % count)
         return threads

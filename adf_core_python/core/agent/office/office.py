@@ -94,7 +94,6 @@ class Office(Agent):
                     self.precompute_data,
                     self._develop_data,
                 )
-        self.finish_post_connect_event.set()
 
     def think(self) -> None:
         self._tactics_center.think(

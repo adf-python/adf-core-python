@@ -74,5 +74,4 @@ class ConnectorAmbulanceTeam(Connector):
             )
             threads[thread] = finish_post_connect_event
 
-        self.logger.info("Connected ambulance team (count: %d)" % count)
         return threads

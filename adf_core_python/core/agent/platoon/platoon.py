@@ -96,8 +96,6 @@ class Platoon(Agent):
                     self._develop_data,
                 )
 
-        self.finish_post_connect_event.set()
-
     def think(self) -> None:
         action: Action = self._tactics_agent.think(
             self._agent_info,
