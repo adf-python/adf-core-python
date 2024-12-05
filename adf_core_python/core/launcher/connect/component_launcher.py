@@ -4,6 +4,8 @@ from structlog import BoundLogger
 
 from adf_core_python.core.agent.agent import Agent
 from adf_core_python.core.launcher.connect.connection import Connection
+from adf_core_python.core.launcher.connect.error.agent_error import AgentError
+from adf_core_python.core.launcher.connect.error.server_error import ServerError
 
 
 class ComponentLauncher:
@@ -35,11 +37,18 @@ class ComponentLauncher:
 
         try:
             connection.parse_message_from_kernel()
-        except Exception as e:
+        except AgentError as e:
             self.logger.exception(
-                f"Agent threw an exception {e}",
+                f"Agent error: {e}",
                 exception=str(e),
             )
+        except ServerError as e:
+            if isinstance(e.__cause__, EOFError):
+                self.logger.info(
+                    f"Connection closed by server (request_id={_request_id})"
+                )
+            else:
+                self.logger.exception("Server error", exception=str(e))
 
     def generate_request_id(self) -> int:
         self.request_id += 1

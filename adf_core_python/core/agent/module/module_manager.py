@@ -51,10 +51,7 @@ class ModuleManager:
             )
             class_name = default_module_name
 
-        try:
-            module_class: type = self._load_module(class_name)
-        except (ImportError, AttributeError) as e:
-            raise RuntimeError(f"Failed to load module {class_name}") from e
+        module_class: type = self._load_module(class_name)
 
         instance = self._modules.get(module_name)
         if instance is not None:
@@ -80,10 +77,7 @@ class ModuleManager:
             action_name, default_action_name
         )
 
-        try:
-            action_class: type = self._load_module(class_name)
-        except (ImportError, AttributeError) as e:
-            raise RuntimeError(f"Failed to load action {class_name}") from e
+        action_class: type = self._load_module(class_name)
 
         instance = self._actions.get(action_name)
         if instance is not None:
@@ -109,10 +103,7 @@ class ModuleManager:
             channel_subscriber_name, default_channel_subscriber_name
         )
 
-        try:
-            channel_subscriber_class: type = self._load_module(class_name)
-        except (ImportError, AttributeError) as e:
-            raise RuntimeError(f"Failed to load channel subscriber {class_name}") from e
+        channel_subscriber_class: type = self._load_module(class_name)
 
         instance = self._channel_subscribers.get(channel_subscriber_name)
         if instance is not None:
@@ -134,12 +125,7 @@ class ModuleManager:
             message_coordinator_name, default_message_coordinator_name
         )
 
-        try:
-            message_coordinator_class: type = self._load_module(class_name)
-        except (ImportError, AttributeError) as e:
-            raise RuntimeError(
-                f"Failed to load message coordinator {class_name}"
-            ) from e
+        message_coordinator_class: type = self._load_module(class_name)
 
         instance = self._message_coordinators.get(message_coordinator_name)
         if instance is not None:
