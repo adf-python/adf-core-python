@@ -122,10 +122,7 @@ class KMeansClustering(Clustering):
                 continue
             entity_positions = np.append(entity_positions, [location1_x, location1_y])
 
-        self._logger.info(f"Entity positions: {len(entity_positions) // 2}")
-        start_time = time.time()
         kmeans.fit(entity_positions.reshape(-1, 2))
-        self._logger.info(f"KMeans clustering time: {time.time() - start_time:.3f} sec")
 
         clusters: list[list[Entity]] = [[] for _ in range(cluster_number)]
         for entity, label in zip(entities, kmeans.labels_):

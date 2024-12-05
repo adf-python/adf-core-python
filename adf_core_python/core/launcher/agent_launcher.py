@@ -33,7 +33,7 @@ class AgentLauncher:
         self.config = config
         self.logger = get_logger(__name__)
         self.connectors: list[Connector] = []
-        self.thread_list: list[threading.Thread] = []
+        self.agent_thread_list: list[threading.Thread] = []
 
     def init_connector(self) -> None:
         loader_name, loader_class_name = self.config.get_value(
@@ -64,13 +64,27 @@ class AgentLauncher:
             host, port, self.logger
         )
 
+        connector_thread_list: list[threading.Thread] = []
         for connector in self.connectors:
             threads = connector.connect(component_launcher, self.config, self.loader)
-            for thread in threads:
-                thread.daemon = True
-                thread.start()
-                time.sleep(0.5)
-            self.thread_list.extend(threads)
+            self.agent_thread_list.extend(threads)
 
-        for thread in self.thread_list:
+            def connect():
+                for thread, event in threads.items():
+                    thread.daemon = True
+                    thread.start()
+                    is_not_timeout = event.wait(5)
+                    if not is_not_timeout:
+                        break
+
+            connector_thread = threading.Thread(target=connect)
+            connector_thread_list.append(connector_thread)
+            connector_thread.start()
+
+        for thread in connector_thread_list:
+            thread.join()
+
+        self.logger.info("All agents have been launched")
+
+        for thread in self.agent_thread_list:
             thread.join()

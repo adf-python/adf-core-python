@@ -152,7 +152,7 @@ class Agent:
             self._agent_info,
         )
 
-        self.logger.info(f"config: {self.config}")
+        self.logger.debug(f"agent_config: {self.config}")
 
     def update_step_info(
         self, time: int, change_set: ChangeSet, hear: list[Command]
@@ -297,15 +297,11 @@ class Agent:
                         ].intValue,
                     )
                 )
-        start_marge_time = _time.time()
         self.world_model.merge(change_set)
-        end_marge_time = _time.time()
-        self.logger.debug(
-            f"Time to merge: {end_marge_time - start_marge_time:.2f} seconds"
-        )
+        start_update_info_time = _time.time()
         self.update_step_info(time, change_set, heard_commands)
-        self.logger.info(
-            f"Time to update_step_info: {_time.time() - end_marge_time:.2f} seconds"
+        self.logger.debug(
+            f"{time} step calculation time: {_time.time() - start_update_info_time}"
         )
 
     def send_acknowledge(self, request_id: int) -> None:

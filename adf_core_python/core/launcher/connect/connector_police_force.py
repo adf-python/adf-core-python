@@ -64,6 +64,7 @@ class ConnectorPoliceForce(Connector):
                         "test",
                         module_config,
                         develop_data,
+                        finish_post_connect_event,
                     ),
                     request_id,
                 ),

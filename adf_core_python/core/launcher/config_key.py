@@ -22,3 +22,4 @@ class ConfigKey:
     KEY_AMBULANCE_CENTRE_COUNT: Final[str] = "adf.team.office.ambulance.count"
     KEY_FIRE_STATION_COUNT: Final[str] = "adf.team.office.fire.count"
     KEY_POLICE_OFFICE_COUNT: Final[str] = "adf.team.office.police.count"
+    # adf-core-python

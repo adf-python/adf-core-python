@@ -88,10 +88,6 @@ class Platoon(Agent):
             case Mode.PRECOMPUTED:
                 pass
             case Mode.NON_PRECOMPUTE:
-                start_time = time.time()
-                self._logger.info(
-                    f"Prepare start {self._agent_info.get_entity_id().get_value()}"
-                )
                 self._tactics_agent.prepare(
                     self._agent_info,
                     self._world_info,
@@ -100,7 +96,8 @@ class Platoon(Agent):
                     self.precompute_data,
                     self._develop_data,
                 )
-                self._logger.info(f"Prepare time: {time.time() - start_time:.3f} sec")
+
+        self.finish_post_connect_event.set()
 
     def think(self) -> None:
         action: Action = self._tactics_agent.think(

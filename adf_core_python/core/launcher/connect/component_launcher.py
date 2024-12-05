@@ -17,19 +17,12 @@ class ComponentLauncher:
         return Connection(self.host, self.port)
 
     def connect(self, agent: Agent, _request_id: int) -> None:
-        # self.logger.bind(agent_id=agent.get_id())
-
         self.logger.info(
-            f"{agent.__class__.__name__} connecting to {self.host}:{self.port} request_id: {_request_id}"
+            f"{agent.__class__.__name__} trying to connect to {self.host}:{self.port} request_id: {_request_id}"
         )
         connection = self.make_connection()
         try:
             connection.connect()
-            # ソケットが使用しているPORT番号を取得
-            if connection.socket is not None:
-                self.logger.info(
-                    f"Connected to {self.host}:{self.port} on port {connection.socket.getsockname()[1]}"
-                )
         except socket.timeout:
             self.logger.warning(f"Connection to {self.host}:{self.port} timed out")
             return

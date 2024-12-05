@@ -1,3 +1,5 @@
+from threading import Event
+
 from adf_core_python.core.agent.agent import Agent
 from adf_core_python.core.agent.config.module_config import ModuleConfig
 from adf_core_python.core.agent.develop.develop_data import DevelopData
@@ -18,6 +20,7 @@ class Office(Agent):
         data_storage_name: str,
         module_config: ModuleConfig,
         develop_data: DevelopData,
+        finish_post_connect_event: Event,
     ) -> None:
         super().__init__(
             is_precompute,
@@ -27,6 +30,7 @@ class Office(Agent):
             data_storage_name,
             module_config,
             develop_data,
+            finish_post_connect_event,
         )
         self._tactics_center = tactics_center
         self._team_name = team_name
@@ -90,6 +94,7 @@ class Office(Agent):
                     self.precompute_data,
                     self._develop_data,
                 )
+        self.finish_post_connect_event.set()
 
     def think(self) -> None:
         self._tactics_center.think(

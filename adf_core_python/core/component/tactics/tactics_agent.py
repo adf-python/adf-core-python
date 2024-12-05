@@ -133,14 +133,14 @@ class TacticsAgent(ABC):
         for module in self._modules:
             start_time = time.time()
             module.prepare()
-            self._logger.info(
+            self._logger.debug(
                 f"module {module.__class__.__name__} prepare time: {time.time() - start_time:.3f}",
             )
         for action in self._actions:
             start_time = time.time()
             action.prepare()
-            self._logger.info(
-                f"action {action.__class__.__name__} prepare time: {time.time() - start_time:.3f}",
+            self._logger.debug(
+                f"module {action.__class__.__name__} prepare time: {time.time() - start_time:.3f}",
             )
         # for executor in self._command_executor:
         #     executor.prepare()
