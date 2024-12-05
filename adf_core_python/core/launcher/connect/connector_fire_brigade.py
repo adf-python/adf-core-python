@@ -72,5 +72,4 @@ class ConnectorFireBrigade(Connector):
             )
             threads[thread] = finish_post_connect_event
 
-        self.logger.info("Connected fire brigade (count: %d)" % count)
         return threads

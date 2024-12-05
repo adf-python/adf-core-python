@@ -72,9 +72,7 @@ class AgentLauncher:
                 for thread, event in threads.items():
                     thread.daemon = True
                     thread.start()
-                    is_not_timeout = event.wait(5)
-                    if not is_not_timeout:
-                        break
+                    event.wait(5)
 
             connector_thread = threading.Thread(target=connect)
             connector_thread_list.append(connector_thread)

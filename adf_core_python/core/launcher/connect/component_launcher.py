@@ -17,9 +17,6 @@ class ComponentLauncher:
         return Connection(self.host, self.port)
 
     def connect(self, agent: Agent, _request_id: int) -> None:
-        self.logger.info(
-            f"{agent.__class__.__name__} trying to connect to {self.host}:{self.port} request_id: {_request_id}"
-        )
         connection = self.make_connection()
         try:
             connection.connect()

@@ -238,6 +238,7 @@ class Agent:
                 msg.reason,
                 msg.request_id,
             )
+            self.finish_post_connect_event.set()
         else:
             self.logger.error(
                 "Failed to connect agent: %s(request_id: %s)",
@@ -264,9 +265,15 @@ class Agent:
                 self.config.set_value(key, value)
         self.send_acknowledge(msg.request_id)
         self.post_connect()
+        self.logger.info(
+            f"Connected to kernel: {self.__class__.__qualname__} (request_id: {msg.request_id})",
+            request_id=msg.request_id,
+        )
         if self.precompute_flag:
             print("self.precompute_flag: ", self.precompute_flag)
             self.precompute()
+
+        self.finish_post_connect_event.set()
 
     def handler_sense(self, msg: Any) -> None:
         _id = EntityID(msg.agent_id)
