@@ -2,6 +2,10 @@ kernel:
   host: localhost
   port: 27931
 
+gateway:
+  host: localhost
+  port: 27920
+
 team:
   name: AIT-Rescue
 

@@ -7,6 +7,7 @@ from adf_core_python.core.component.abstract_loader import AbstractLoader
 from adf_core_python.core.component.tactics.tactics_police_office import (
     TacticsPoliceOffice,
 )
+from adf_core_python.core.component.gateway.gateway_launcher import GatewayLauncher
 from adf_core_python.core.config.config import Config
 from adf_core_python.core.launcher.config_key import ConfigKey
 from adf_core_python.core.launcher.connect.component_launcher import ComponentLauncher
@@ -22,6 +23,7 @@ class ConnectorPoliceOffice(Connector):
     def connect(
         self,
         component_launcher: ComponentLauncher,
+        gateway_launcher: GatewayLauncher,
         config: Config,
         loader: AbstractLoader,
     ) -> dict[threading.Thread, threading.Event]:

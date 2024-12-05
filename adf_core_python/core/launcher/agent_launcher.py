@@ -2,6 +2,7 @@ import importlib
 import threading
 
 from adf_core_python.core.component.abstract_loader import AbstractLoader
+from adf_core_python.core.component.gateway.gateway_launcher import GatewayLauncher
 from adf_core_python.core.config.config import Config
 from adf_core_python.core.launcher.config_key import ConfigKey
 from adf_core_python.core.launcher.connect.component_launcher import ComponentLauncher
@@ -55,17 +56,33 @@ class AgentLauncher:
         self.connectors.append(ConnectorPoliceOffice())
 
     def launch(self) -> None:
-        host: str = self.config.get_value(ConfigKey.KEY_KERNEL_HOST, "localhost")
-        port: int = self.config.get_value(ConfigKey.KEY_KERNEL_PORT, 27931)
-        self.logger.info(f"Start agent launcher (host: {host}, port: {port})")
+        kernel_host: str = self.config.get_value(ConfigKey.KEY_KERNEL_HOST, "localhost")
+        kernel_port: int = self.config.get_value(ConfigKey.KEY_KERNEL_PORT, 27931)
+        self.logger.info(
+            f"Start agent launcher (host: {kernel_host}, port: {kernel_port})"
+        )
 
         component_launcher: ComponentLauncher = ComponentLauncher(
-            host, port, self.logger
+            kernel_host, kernel_port, self.logger
+        )
+
+        gateway_host: str = self.config.get_value(
+            ConfigKey.KEY_GATEWAY_HOST, "localhost"
+        )
+        gateway_port: int = self.config.get_value(ConfigKey.KEY_GATEWAY_PORT, 27930)
+        self.logger.info(
+            f"Start gateway launcher (host: {kernel_host}, port: {kernel_port})"
+        )
+
+        gateway_launcher: GatewayLauncher = GatewayLauncher(
+            gateway_host, gateway_port, self.logger
         )
 
         connector_thread_list: list[threading.Thread] = []
         for connector in self.connectors:
-            threads = connector.connect(component_launcher, self.config, self.loader)
+            threads = connector.connect(
+                component_launcher, gateway_launcher, self.config, self.loader
+            )
             self.agent_thread_list.extend(threads)
 
             def connect() -> None:

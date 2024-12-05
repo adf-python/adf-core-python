@@ -196,7 +196,7 @@ class Agent:
         self._message_manager.refresh()
         self._communication_module.receive(self, self._message_manager)
 
-        self.think()
+        self.think(time, change_set, hear)
 
         self.logger.debug(
             f"send messages: {self._message_manager.get_send_message_list()}",
@@ -209,7 +209,7 @@ class Agent:
         self._communication_module.send(self, self._message_manager)
 
     @abstractmethod
-    def think(self) -> None:
+    def think(self, time: int, change_set: ChangeSet, hear: list[Command]) -> None:
         pass
 
     @abstractmethod

@@ -24,3 +24,6 @@ class ConfigKey:
     KEY_POLICE_OFFICE_COUNT: Final[str] = "adf.team.office.police.count"
     # adf-core-python
     KEY_PRECOMPUTE_DATA_DIR: Final[str] = "adf.agent.precompute.dir_name"
+    # Gateway
+    KEY_GATEWAY_HOST: Final[str] = "gateway.host"
+    KEY_GATEWAY_PORT: Final[str] = "gateway.port"
