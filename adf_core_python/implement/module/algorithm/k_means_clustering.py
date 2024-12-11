@@ -100,7 +100,7 @@ class KMeansClustering(Clustering):
         )
         return self
 
-    def resume(self, precompute_data):
+    def resume(self, precompute_data: PrecomputeData) -> Clustering:
         data = precompute_data.read_json_data(self.__class__.__name__)
         self.cluster_entities = [
             [

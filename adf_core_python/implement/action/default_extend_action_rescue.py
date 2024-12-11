@@ -13,7 +13,6 @@ from adf_core_python.core.agent.communication.message_manager import MessageMana
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
 from adf_core_python.core.agent.info.scenario_info import (
-    Mode,
     ScenarioInfo,
     ScenarioInfoKeys,
 )
