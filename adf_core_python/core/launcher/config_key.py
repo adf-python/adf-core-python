@@ -23,3 +23,4 @@ class ConfigKey:
     KEY_FIRE_STATION_COUNT: Final[str] = "adf.team.office.fire.count"
     KEY_POLICE_OFFICE_COUNT: Final[str] = "adf.team.office.police.count"
     # adf-core-python
+    KEY_PRECOMPUTE_DATA_DIR: Final[str] = "adf.agent.precompute.dir_name"

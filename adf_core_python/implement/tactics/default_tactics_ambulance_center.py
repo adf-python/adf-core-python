@@ -26,16 +26,26 @@ class DefaultTacticsAmbulanceCenter(TacticsAmbulanceCenter):
         message_manager: MessageManager,
         develop_data: DevelopData,
     ) -> None:
-        match scenario_info.get_mode():
-            case Mode.NON_PRECOMPUTE:
-                self._allocator: TargetAllocator = cast(
-                    TargetAllocator,
-                    module_manager.get_module(
-                        "DefaultTacticsAmbulanceCenter.TargetAllocator",
-                        "adf_core_python.implement.module.complex.default_ambulance_target_allocator.DefaultAmbulanceTargetAllocator",
-                    ),
-                )
+        self._allocator: TargetAllocator = cast(
+            TargetAllocator,
+            module_manager.get_module(
+                "DefaultTacticsAmbulanceCenter.TargetAllocator",
+                "adf_core_python.implement.module.complex.default_ambulance_target_allocator.DefaultAmbulanceTargetAllocator",
+            ),
+        )
         self.register_module(self._allocator)
+
+    def precompute(
+        self,
+        agent_info: AgentInfo,
+        world_info: WorldInfo,
+        scenario_info: ScenarioInfo,
+        module_manager: ModuleManager,
+        precompute_data: PrecomputeData,
+        message_manager: MessageManager,
+        develop_data: DevelopData,
+    ) -> None:
+        self.module_precompute(precompute_data)
 
     def resume(
         self,

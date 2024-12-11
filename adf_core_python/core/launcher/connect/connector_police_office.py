@@ -53,6 +53,8 @@ class ConnectorPoliceOffice(Connector):
                 ),
             )
 
+            precompute_data_dir: str = f"{config.get_value(ConfigKey.KEY_PRECOMPUTE_DATA_DIR, 'precompute')}/police_office"
+
             request_id: int = component_launcher.generate_request_id()
             finish_post_connect_event = threading.Event()
             thread = threading.Thread(
@@ -63,7 +65,7 @@ class ConnectorPoliceOffice(Connector):
                         "police_office",
                         config.get_value(ConfigKey.KEY_PRECOMPUTE, False),
                         config.get_value(ConfigKey.KEY_DEBUG_FLAG, False),
-                        "test",
+                        precompute_data_dir,
                         module_config,
                         develop_data,
                         finish_post_connect_event,

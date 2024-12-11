@@ -83,9 +83,25 @@ class Platoon(Agent):
 
         match self._scenario_info.get_mode():
             case Mode.PRECOMPUTATION:
-                pass
+                self._tactics_agent.precompute(
+                    self._agent_info,
+                    self._world_info,
+                    self._scenario_info,
+                    self._module_manager,
+                    self._precompute_data,
+                    self._message_manager,
+                    self._develop_data,
+                )
             case Mode.PRECOMPUTED:
-                pass
+                self._tactics_agent.resume(
+                    self._agent_info,
+                    self._world_info,
+                    self._scenario_info,
+                    self._module_manager,
+                    self._precompute_data,
+                    self._message_manager,
+                    self._develop_data,
+                )
             case Mode.NON_PRECOMPUTE:
                 self._tactics_agent.prepare(
                     self._agent_info,

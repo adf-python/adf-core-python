@@ -115,14 +115,12 @@ class Agent:
             self.mode = Mode.PRECOMPUTATION
 
         try:
-            precompute_data = PrecomputeData(data_storage_name)
-            precompute_data.remove_precompute_data()
+            self._precompute_data = PrecomputeData(data_storage_name)
         except Exception as _:
             pass
 
         self._module_config = module_config
         self._develop_data = develop_data
-        self._precompute_data = PrecomputeData(data_storage_name)
         self._message_manager: MessageManager = MessageManager()
         self._communication_module: CommunicationModule = StandardCommunicationModule()
 
@@ -136,11 +134,10 @@ class Agent:
         if self.is_precompute:
             self._mode = Mode.PRECOMPUTATION
         else:
-            # if self._precompute_data.is_ready():
-            #     self._mode = Mode.PRECOMPUTED
-            # else:
-            #     self._mode = Mode.NON_PRECOMPUTE
-            self._mode = Mode.NON_PRECOMPUTE
+            if self._precompute_data.is_available():
+                self._mode = Mode.PRECOMPUTED
+            else:
+                self._mode = Mode.NON_PRECOMPUTE
 
         self.config.set_value(ConfigKey.KEY_DEBUG_FLAG, self.is_debug)
         self.config.set_value(
@@ -157,6 +154,7 @@ class Agent:
             self._agent_info,
         )
 
+        self.logger.info("Agent running in %s mode", self._mode)
         self.logger.debug(f"agent_config: {self.config}")
 
     def update_step_info(

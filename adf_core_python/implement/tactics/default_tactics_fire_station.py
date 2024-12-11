@@ -26,15 +26,13 @@ class DefaultTacticsFireStation(TacticsFireStation):
         message_manager: MessageManager,
         develop_data: DevelopData,
     ) -> None:
-        match scenario_info.get_mode():
-            case Mode.NON_PRECOMPUTE:
-                self._allocator: TargetAllocator = cast(
-                    TargetAllocator,
-                    module_manager.get_module(
-                        "DefaultTacticsFireStation.TargetAllocator",
-                        "adf_core_python.implement.module.complex.default_fire_target_allocator.DefaultFireTargetAllocator",
-                    ),
-                )
+        self._allocator: TargetAllocator = cast(
+            TargetAllocator,
+            module_manager.get_module(
+                "DefaultTacticsFireStation.TargetAllocator",
+                "adf_core_python.implement.module.complex.default_fire_target_allocator.DefaultFireTargetAllocator",
+            ),
+        )
         self.register_module(self._allocator)
 
     def resume(
@@ -48,6 +46,18 @@ class DefaultTacticsFireStation(TacticsFireStation):
         develop_data: DevelopData,
     ) -> None:
         self.module_resume(precompute_data)
+
+    def precompute(
+        self,
+        agent_info: AgentInfo,
+        world_info: WorldInfo,
+        scenario_info: ScenarioInfo,
+        module_manager: ModuleManager,
+        precompute_data: PrecomputeData,
+        message_manager: MessageManager,
+        develop_data: DevelopData,
+    ) -> None:
+        self.module_precompute(precompute_data)
 
     def prepare(
         self,

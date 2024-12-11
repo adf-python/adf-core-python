@@ -26,15 +26,13 @@ class DefaultTacticsPoliceOffice(TacticsPoliceOffice):
         message_manager: MessageManager,
         develop_data: DevelopData,
     ) -> None:
-        match scenario_info.get_mode():
-            case Mode.NON_PRECOMPUTE:
-                self._allocator: TargetAllocator = cast(
-                    TargetAllocator,
-                    module_manager.get_module(
-                        "DefaultTacticsPoliceOffice.TargetAllocator",
-                        "adf_core_python.implement.module.complex.default_police_target_allocator.DefaultPoliceTargetAllocator",
-                    ),
-                )
+        self._allocator: TargetAllocator = cast(
+            TargetAllocator,
+            module_manager.get_module(
+                "DefaultTacticsPoliceOffice.TargetAllocator",
+                "adf_core_python.implement.module.complex.default_police_target_allocator.DefaultPoliceTargetAllocator",
+            ),
+        )
         self.register_module(self._allocator)
 
     def resume(
@@ -48,6 +46,18 @@ class DefaultTacticsPoliceOffice(TacticsPoliceOffice):
         develop_data: DevelopData,
     ) -> None:
         self.module_resume(precompute_data)
+
+    def precompute(
+        self,
+        agent_info: AgentInfo,
+        world_info: WorldInfo,
+        scenario_info: ScenarioInfo,
+        module_manager: ModuleManager,
+        precompute_data: PrecomputeData,
+        message_manager: MessageManager,
+        develop_data: DevelopData,
+    ) -> None:
+        self.module_precompute(precompute_data)
 
     def prepare(
         self,

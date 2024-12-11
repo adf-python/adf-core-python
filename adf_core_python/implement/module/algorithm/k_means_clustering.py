@@ -17,6 +17,7 @@ from adf_core_python.core.agent.info.agent_info import AgentInfo
 from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
 from adf_core_python.core.agent.info.world_info import WorldInfo
 from adf_core_python.core.agent.module.module_manager import ModuleManager
+from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
 from adf_core_python.core.component.module.algorithm.clustering import Clustering
 
 
@@ -84,6 +85,35 @@ class KMeansClustering(Clustering):
         )
 
     def calculate(self) -> Clustering:
+        return self
+
+    def precompute(self, precompute_data: PrecomputeData) -> Clustering:
+        cluster_entities = self.create_cluster(self._cluster_number, self.entities)
+        precompute_data.write_json_data(
+            {
+                "cluster_entities": [
+                    [entity.get_id().get_value() for entity in cluster]
+                    for cluster in cluster_entities
+                ]
+            },
+            self.__class__.__name__,
+        )
+        return self
+
+    def resume(self, precompute_data):
+        data = precompute_data.read_json_data(self.__class__.__name__)
+        self.cluster_entities = [
+            [
+                entity
+                for entity_id in cluster
+                if (entity := self._world_info.get_entity(EntityID(entity_id)))
+                is not None
+            ]
+            for cluster in data["cluster_entities"]
+        ]
+        self._logger.info(
+            f"Resume {self.__class__.__name__} with {len(self.cluster_entities)} clusters"
+        )
         return self
 
     def get_cluster_number(self) -> int:
