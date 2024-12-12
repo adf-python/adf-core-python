@@ -111,9 +111,6 @@ class KMeansClustering(Clustering):
             ]
             for cluster in data["cluster_entities"]
         ]
-        self._logger.info(
-            f"Resume {self.__class__.__name__} with {len(self.cluster_entities)} clusters"
-        )
         return self
 
     def get_cluster_number(self) -> int:

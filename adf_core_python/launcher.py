@@ -74,11 +74,10 @@ class Launcher:
         )
         parser.add_argument(
             "--precompute",
-            type=bool,
+            action="store_true",
             help="precompute flag",
-            metavar="",
         )
-        parser.add_argument("--debug", type=bool, help="debug flag", metavar="")
+        parser.add_argument("--debug", action="store_true", help="debug flag")
         args = parser.parse_args()
 
         config_map = {
