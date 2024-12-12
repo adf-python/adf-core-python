@@ -9,7 +9,7 @@ from rcrs_core.worldmodel.entityID import EntityID
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
-from adf_core_python.core.agent.info.scenario_info import Mode, ScenarioInfo
+from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
 from adf_core_python.core.agent.info.world_info import WorldInfo
 from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
@@ -31,15 +31,14 @@ class SampleRoadDetector(RoadDetector):
         super().__init__(
             agent_info, world_info, scenario_info, module_manager, develop_data
         )
-        match scenario_info.get_mode():
-            case Mode.NON_PRECOMPUTE:
-                self._path_planning: PathPlanning = cast(
-                    PathPlanning,
-                    module_manager.get_module(
-                        "SampleRoadDetector.PathPlanning",
-                        "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
-                    ),
-                )
+
+        self._path_planning: PathPlanning = cast(
+            PathPlanning,
+            module_manager.get_module(
+                "SampleRoadDetector.PathPlanning",
+                "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
+            ),
+        )
 
         self.register_sub_module(self._path_planning)
         self._result = None

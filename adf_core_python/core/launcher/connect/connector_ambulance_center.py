@@ -53,8 +53,10 @@ class ConnectorAmbulanceCenter(Connector):
                 ),
             )
 
-            request_id: int = component_launcher.generate_request_id()
+            precompute_data_dir: str = f"{config.get_value(ConfigKey.KEY_PRECOMPUTE_DATA_DIR, 'precompute')}/ambulance_center"
+
             finish_post_connect_event = threading.Event()
+            request_id: int = component_launcher.generate_request_id()
             thread = threading.Thread(
                 target=component_launcher.connect,
                 args=(
@@ -63,7 +65,7 @@ class ConnectorAmbulanceCenter(Connector):
                         "ambulance_center",
                         config.get_value(ConfigKey.KEY_PRECOMPUTE, False),
                         config.get_value(ConfigKey.KEY_DEBUG_FLAG, False),
-                        "test",
+                        precompute_data_dir,
                         module_config,
                         develop_data,
                         finish_post_connect_event,

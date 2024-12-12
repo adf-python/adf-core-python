@@ -31,8 +31,5 @@ class PlatoonAmbulance(Platoon):
             finish_post_connect_event,
         )
 
-    def precompute(self) -> None:
-        pass
-
     def get_requested_entities(self) -> list[EntityURN]:
         return [EntityURN.AMBULANCE_TEAM]

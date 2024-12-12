@@ -112,12 +112,15 @@ class Agent:
         self.is_precompute = is_precompute
 
         if is_precompute:
-            # PrecomputeData.remove_date(data_storage_name)
-            self.mode = Mode.PRECOMPUTATION
+            self._mode = Mode.PRECOMPUTATION
+
+        try:
+            self._precompute_data = PrecomputeData(data_storage_name)
+        except Exception as _:
+            pass
 
         self._module_config = module_config
         self._develop_data = develop_data
-        self._precompute_data = PrecomputeData(data_storage_name)
         self._message_manager: MessageManager = MessageManager()
         self._communication_module: CommunicationModule = StandardCommunicationModule()
 
@@ -131,11 +134,10 @@ class Agent:
         if self.is_precompute:
             self._mode = Mode.PRECOMPUTATION
         else:
-            # if self._precompute_data.is_ready():
-            #     self._mode = Mode.PRECOMPUTED
-            # else:
-            #     self._mode = Mode.NON_PRECOMPUTE
-            self._mode = Mode.NON_PRECOMPUTE
+            if self._precompute_data.is_available():
+                self._mode = Mode.PRECOMPUTED
+            else:
+                self._mode = Mode.NON_PRECOMPUTE
 
         self.config.set_value(ConfigKey.KEY_DEBUG_FLAG, self.is_debug)
         self.config.set_value(
@@ -211,10 +213,6 @@ class Agent:
         pass
 
     @abstractmethod
-    def precompute(self) -> None:
-        pass
-
-    @abstractmethod
     def get_requested_entities(self) -> list[EntityURN]:
         pass
 
@@ -266,12 +264,12 @@ class Agent:
         self.send_acknowledge(msg.request_id)
         self.post_connect()
         self.logger.info(
-            f"Connected to kernel: {self.__class__.__qualname__} (request_id: {msg.request_id})",
+            f"Connected to kernel: {self.__class__.__qualname__} (request_id: {msg.request_id}, agent_id: {self.agent_id}, mode: {self._mode})",
             request_id=msg.request_id,
         )
-        if self.precompute_flag:
-            print("self.precompute_flag: ", self.precompute_flag)
-            self.precompute()
+        if self.is_precompute:
+            self.logger.info("Precompute finished")
+            exit(0)
 
         self.finish_post_connect_event.set()
 

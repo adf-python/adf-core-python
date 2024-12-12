@@ -7,7 +7,7 @@ from adf_core_python.core.agent.action.common.action_rest import ActionRest
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
-from adf_core_python.core.agent.info.scenario_info import Mode, ScenarioInfo
+from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
 from adf_core_python.core.agent.info.world_info import WorldInfo
 from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
@@ -43,30 +43,28 @@ class DefaultTacticsPoliceForce(TacticsPoliceForce):
         #     scenario_info.get_value("clear.repair.distance", "null")
         # )
 
-        match scenario_info.get_mode():
-            case Mode.NON_PRECOMPUTE:
-                self._search: Search = cast(
-                    Search,
-                    module_manager.get_module(
-                        "DefaultTacticsPoliceForce.Search",
-                        "adf_core_python.core.component.module.complex.search.Search",
-                    ),
-                )
-                self._road_detector: RoadDetector = cast(
-                    RoadDetector,
-                    module_manager.get_module(
-                        "DefaultTacticsPoliceForce.RoadDetector",
-                        "adf_core_python.core.component.module.complex.road_detector.RoadDetector",
-                    ),
-                )
-                self._action_ext_clear = module_manager.get_extend_action(
-                    "DefaultTacticsPoliceForce.ExtendActionClear",
-                    "adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear",
-                )
-                self._action_ext_move = module_manager.get_extend_action(
-                    "DefaultTacticsPoliceForce.ExtendActionMove",
-                    "adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove",
-                )
+        self._search: Search = cast(
+            Search,
+            module_manager.get_module(
+                "DefaultTacticsPoliceForce.Search",
+                "adf_core_python.core.component.module.complex.search.Search",
+            ),
+        )
+        self._road_detector: RoadDetector = cast(
+            RoadDetector,
+            module_manager.get_module(
+                "DefaultTacticsPoliceForce.RoadDetector",
+                "adf_core_python.core.component.module.complex.road_detector.RoadDetector",
+            ),
+        )
+        self._action_ext_clear = module_manager.get_extend_action(
+            "DefaultTacticsPoliceForce.ExtendActionClear",
+            "adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear",
+        )
+        self._action_ext_move = module_manager.get_extend_action(
+            "DefaultTacticsPoliceForce.ExtendActionMove",
+            "adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove",
+        )
         self.register_module(self._search)
         self.register_module(self._road_detector)
         self.register_action(self._action_ext_clear)

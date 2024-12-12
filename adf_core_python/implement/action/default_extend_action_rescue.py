@@ -13,7 +13,6 @@ from adf_core_python.core.agent.communication.message_manager import MessageMana
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
 from adf_core_python.core.agent.info.scenario_info import (
-    Mode,
     ScenarioInfo,
     ScenarioInfoKeys,
 )
@@ -42,19 +41,13 @@ class DefaultExtendActionRescue(ExtendAction):
             "adf_core_python.implement.action.DefaultExtendActionRescue.rest", 100
         )
 
-        match self.scenario_info.get_mode():
-            case Mode.NON_PRECOMPUTE:
-                self._path_planning = cast(
-                    PathPlanning,
-                    self.module_manager.get_module(
-                        "DefaultExtendActionRescue.PathPlanning",
-                        "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
-                    ),
-                )
-            case Mode.PRECOMPUTATION:
-                pass
-            case Mode.PRECOMPUTED:
-                pass
+        self._path_planning = cast(
+            PathPlanning,
+            self.module_manager.get_module(
+                "DefaultExtendActionRescue.PathPlanning",
+                "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
+            ),
+        )
 
     def precompute(self, precompute_data: PrecomputeData) -> ExtendAction:
         super().precompute(precompute_data)

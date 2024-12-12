@@ -13,6 +13,8 @@ adf:
   agent:
     moduleconfig:
       filename: config/module.yaml
+    precompute:
+      dir_name: precompute
 
   develop:
     flag: true

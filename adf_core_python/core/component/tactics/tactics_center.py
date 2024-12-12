@@ -47,6 +47,19 @@ class TacticsCenter(ABC):
         raise NotImplementedError
 
     @abstractmethod
+    def precompute(
+        self,
+        agent_info: AgentInfo,
+        world_info: WorldInfo,
+        scenario_info: ScenarioInfo,
+        module_manager: ModuleManager,
+        precompute_data: PrecomputeData,
+        message_manager: MessageManager,
+        develop_data: DevelopData,
+    ) -> None:
+        raise NotImplementedError
+
+    @abstractmethod
     def prepare(
         self,
         agent_info: AgentInfo,

@@ -22,7 +22,7 @@ from adf_core_python.core.agent.action.police.action_clear_area import ActionCle
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
-from adf_core_python.core.agent.info.scenario_info import Mode, ScenarioInfo
+from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
 from adf_core_python.core.agent.info.world_info import WorldInfo
 from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
@@ -63,19 +63,13 @@ class DefaultExtendActionClear(ExtendAction):
         self._old_clear_y = 0
         self.count = 0
 
-        match self.scenario_info.get_mode():
-            case Mode.NON_PRECOMPUTE:
-                self._path_planning = cast(
-                    PathPlanning,
-                    self.module_manager.get_module(
-                        "DefaultExtendActionClear.PathPlanning",
-                        "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
-                    ),
-                )
-            case Mode.PRECOMPUTATION:
-                pass
-            case Mode.PRECOMPUTED:
-                pass
+        self._path_planning = cast(
+            PathPlanning,
+            self.module_manager.get_module(
+                "DefaultExtendActionClear.PathPlanning",
+                "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
+            ),
+        )
 
     def precompute(self, precompute_data: PrecomputeData) -> ExtendAction:
         super().precompute(precompute_data)

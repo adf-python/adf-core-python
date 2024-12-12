@@ -31,8 +31,5 @@ class OfficePolice(Office):
             finish_post_connect_event,
         )
 
-    def precompute(self) -> None:
-        pass
-
     def get_requested_entities(self) -> list[EntityURN]:
         return [EntityURN.POLICE_OFFICE]
