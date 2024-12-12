@@ -112,7 +112,7 @@ class Agent:
         self.is_precompute = is_precompute
 
         if is_precompute:
-            self.mode = Mode.PRECOMPUTATION
+            self._mode = Mode.PRECOMPUTATION
 
         try:
             self._precompute_data = PrecomputeData(data_storage_name)
@@ -264,7 +264,7 @@ class Agent:
         self.send_acknowledge(msg.request_id)
         self.post_connect()
         self.logger.info(
-            f"Connected to kernel: {self.__class__.__qualname__} (request_id: {msg.request_id}, agent_id: {self.agent_id}, mode: {self.mode})",
+            f"Connected to kernel: {self.__class__.__qualname__} (request_id: {msg.request_id}, agent_id: {self.agent_id}, mode: {self._mode})",
             request_id=msg.request_id,
         )
         if self.is_precompute:
