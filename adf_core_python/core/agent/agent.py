@@ -154,7 +154,6 @@ class Agent:
             self._agent_info,
         )
 
-        self.logger.info("Agent running in %s mode", self._mode)
         self.logger.debug(f"agent_config: {self.config}")
 
     def update_step_info(
@@ -214,10 +213,6 @@ class Agent:
         pass
 
     @abstractmethod
-    def precompute(self) -> None:
-        pass
-
-    @abstractmethod
     def get_requested_entities(self) -> list[EntityURN]:
         pass
 
@@ -269,12 +264,12 @@ class Agent:
         self.send_acknowledge(msg.request_id)
         self.post_connect()
         self.logger.info(
-            f"Connected to kernel: {self.__class__.__qualname__} (request_id: {msg.request_id})",
+            f"Connected to kernel: {self.__class__.__qualname__} (request_id: {msg.request_id}, agent_id: {self.agent_id}, mode: {self.mode})",
             request_id=msg.request_id,
         )
-        if self.precompute_flag:
-            print("self.precompute_flag: ", self.precompute_flag)
-            self.precompute()
+        if self.is_precompute:
+            self.logger.info("Precompute finished")
+            exit(0)
 
         self.finish_post_connect_event.set()
 
