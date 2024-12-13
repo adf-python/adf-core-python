@@ -304,9 +304,11 @@ class Agent:
             if herad_command.urn == CommandURN.AK_SPEAK:
                 heard_commands.append(
                     AKSpeak(
-                        EntityID(herad_command.components[
-                            ComponentControlMessageID.AgentID
-                        ].entityID),
+                        EntityID(
+                            herad_command.components[
+                                ComponentControlMessageID.AgentID
+                            ].entityID
+                        ),
                         herad_command.components[
                             ComponentControlMessageID.Time
                         ].intValue,

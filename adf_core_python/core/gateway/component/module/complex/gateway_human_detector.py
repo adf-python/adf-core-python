@@ -4,6 +4,13 @@ from typing import TYPE_CHECKING
 
 from rcrs_core.entities.human import Human
 
+from adf_core_python.core.component.module.complex.human_detector import (
+    HumanDetector,
+)
+from adf_core_python.core.gateway.component.module.complex.gateway_target_detector import (
+    GatewayTargetDetector,
+)
+
 if TYPE_CHECKING:
     from adf_core_python.core.agent.communication.message_manager import MessageManager
     from adf_core_python.core.agent.develop.develop_data import DevelopData
@@ -12,12 +19,6 @@ if TYPE_CHECKING:
     from adf_core_python.core.agent.info.world_info import WorldInfo
     from adf_core_python.core.agent.module.module_manager import ModuleManager
     from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
-    from adf_core_python.core.component.module.complex.human_detector import (
-        HumanDetector,
-    )
-    from adf_core_python.core.gateway.component.module.complex.gateway_target_detector import (
-        GatewayTargetDetector,
-    )
     from adf_core_python.core.gateway.gateway_module import GatewayModule
 
 

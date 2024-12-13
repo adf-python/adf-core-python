@@ -5,6 +5,16 @@ plugins {
 
 repositories {
     mavenCentral()
+
+    maven {
+        url = 'https://sourceforge.net/projects/jsi/files/m2_repo'
+    }
+    maven {
+        url = 'https://repo.enonic.com/public/'
+    }
+    maven {
+        url 'https://jitpack.io'
+    }
 }
 
 dependencies {
@@ -19,7 +29,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.18.1'
 
     // Protobuf
-    implementation 'com.google.protobuf:protobuf-java:4.28.3'
+    implementation 'com.google.protobuf:protobuf-java:3.19.1'
 
     // Annotation
     implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
@@ -30,20 +40,6 @@ dependencies {
 
     testImplementation libs.junit.jupiter
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-}
-
-repositories {
-    mavenCentral()
-
-    maven {
-        url = 'https://sourceforge.net/projects/jsi/files/m2_repo'
-    }
-    maven {
-        url = 'https://repo.enonic.com/public/'
-    }
-    maven {
-        url 'https://jitpack.io'
-    }
 }
 
 java {

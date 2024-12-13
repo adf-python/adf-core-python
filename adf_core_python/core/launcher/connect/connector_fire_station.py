@@ -63,6 +63,13 @@ class ConnectorFireStation(Connector):
             gateway_agent: Optional[GatewayAgent] = None
             if isinstance(gateway_launcher, GatewayLauncher):
                 gateway_agent = GatewayAgent(gateway_launcher)
+                if isinstance(gateway_agent, GatewayAgent):
+                    gateway_thread = threading.Thread(
+                        target=gateway_launcher.connect,
+                        args=(gateway_agent,),
+                    )
+                    gateway_thread.daemon = True
+                    gateway_thread.start()
 
             component_thread = threading.Thread(
                 target=component_launcher.connect,
@@ -83,12 +90,5 @@ class ConnectorFireStation(Connector):
                 name=f"FireStationAgent-{request_id}",
             )
             threads[component_thread] = finish_post_connect_event
-
-            if isinstance(gateway_launcher, GatewayLauncher) and isinstance(gateway_agent, GatewayAgent):
-                gateway_thread = threading.Thread(
-                    target=gateway_launcher.connect,
-                    args=(gateway_agent,),
-                )
-                threads[gateway_thread] = finish_post_connect_event
 
         return threads

@@ -80,7 +80,7 @@ class Launcher:
         parser.add_argument("--debug", action="store_true", help="debug flag")
         parser.add_argument(
             "--java",
-            action="store_true", 
+            action="store_true",
             help="using java module flag",
         )
         args = parser.parse_args()

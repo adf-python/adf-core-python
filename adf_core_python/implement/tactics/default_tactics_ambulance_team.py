@@ -39,7 +39,7 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
             message_manager,
             develop_data,
         )
-        
+
         self._search: Search = cast(
             Search,
             module_manager.get_module(
