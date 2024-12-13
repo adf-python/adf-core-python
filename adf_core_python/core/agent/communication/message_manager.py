@@ -234,7 +234,7 @@ class MessageManager:
         """
         if index >= self.MAX_MESSAGE_CLASS_COUNT:
             raise ValueError(
-                f"Possible index values are 0 to {self.MAX_MESSAGE_CLASS_COUNT-1}"
+                f"Possible index values are 0 to {self.MAX_MESSAGE_CLASS_COUNT - 1}"
             )
         self.__message_classes[index] = message_class
 

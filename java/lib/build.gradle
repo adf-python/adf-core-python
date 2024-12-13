@@ -1,0 +1,53 @@
+plugins {
+    id('java-library')
+    id('com.google.protobuf') version "0.9.4"
+}
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url = 'https://sourceforge.net/projects/jsi/files/m2_repo'
+    }
+    maven {
+        url = 'https://repo.enonic.com/public/'
+    }
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+
+dependencies {
+    implementation 'com.github.roborescue:rcrs-server:master-SNAPSHOT'
+    implementation 'com.github.roborescue:adf-core-java:master-SNAPSHOT'
+
+    // PrecomputeData
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.0'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.1'
+    implementation 'org.msgpack:jackson-dataformat-msgpack:0.9.0'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.18.1'
+
+    // Protobuf
+    implementation 'com.google.protobuf:protobuf-java:3.19.1'
+
+    // Annotation
+    implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
+
+    // Logger
+    implementation 'org.apache.logging.log4j:log4j-core:2.24.2'
+    implementation 'org.apache.logging.log4j:log4j-api:2.24.2'
+
+    testImplementation libs.junit.jupiter
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

@@ -1,4 +1,5 @@
 import threading
+from typing import Optional
 
 from adf_core_python.core.agent.config.module_config import ModuleConfig
 from adf_core_python.core.agent.develop.develop_data import DevelopData
@@ -8,6 +9,8 @@ from adf_core_python.core.component.tactics.tactics_ambulance_team import (
     TacticsAmbulanceTeam,
 )
 from adf_core_python.core.config.config import Config
+from adf_core_python.core.gateway.gateway_agent import GatewayAgent
+from adf_core_python.core.gateway.gateway_launcher import GatewayLauncher
 from adf_core_python.core.launcher.config_key import ConfigKey
 from adf_core_python.core.launcher.connect.component_launcher import ComponentLauncher
 from adf_core_python.core.launcher.connect.connector import Connector
@@ -22,6 +25,7 @@ class ConnectorAmbulanceTeam(Connector):
     def connect(
         self,
         component_launcher: ComponentLauncher,
+        gateway_launcher: Optional[GatewayLauncher],
         config: Config,
         loader: AbstractLoader,
     ) -> dict[threading.Thread, threading.Event]:
@@ -57,7 +61,19 @@ class ConnectorAmbulanceTeam(Connector):
 
             finish_post_connect_event = threading.Event()
             request_id: int = component_launcher.generate_request_id()
-            thread = threading.Thread(
+
+            gateway_agent: Optional[GatewayAgent] = None
+            if isinstance(gateway_launcher, GatewayLauncher):
+                gateway_agent = GatewayAgent(gateway_launcher)
+                if isinstance(gateway_agent, GatewayAgent):
+                    gateway_thread = threading.Thread(
+                        target=gateway_launcher.connect,
+                        args=(gateway_agent,),
+                    )
+                    gateway_thread.daemon = True
+                    gateway_thread.start()
+
+            component_thread = threading.Thread(
                 target=component_launcher.connect,
                 args=(
                     PlatoonAmbulance(
@@ -69,11 +85,12 @@ class ConnectorAmbulanceTeam(Connector):
                         module_config,
                         develop_data,
                         finish_post_connect_event,
+                        gateway_agent,
                     ),
                     request_id,
                 ),
                 name=f"AmbulanceTeam-{request_id}",
             )
-            threads[thread] = finish_post_connect_event
+            threads[component_thread] = finish_post_connect_event
 
         return threads

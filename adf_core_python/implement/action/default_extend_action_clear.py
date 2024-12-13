@@ -541,7 +541,7 @@ class DefaultExtendActionClear(ExtendAction):
             if line1.intersects(line2):
                 return True
 
-        for i in range(0, len(apexes1) - 2, 2):
+        for i in range(0, len(apexes2) - 2, 2):
             line1 = LineString([(apexes1[-2], apexes1[-1]), (apexes1[0], apexes1[1])])
             line2 = LineString(
                 [(apexes2[i], apexes2[i + 1]), (apexes2[i + 2], apexes2[i + 3])]

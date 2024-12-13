@@ -47,7 +47,7 @@ class DefaultTacticsPoliceForce(TacticsPoliceForce):
             Search,
             module_manager.get_module(
                 "DefaultTacticsPoliceForce.Search",
-                "adf_core_python.core.component.module.complex.search.Search",
+                "adf_core_python.implement.module.complex.default_search.DefaultSearch",
             ),
         )
         self._road_detector: RoadDetector = cast(
@@ -65,6 +65,7 @@ class DefaultTacticsPoliceForce(TacticsPoliceForce):
             "DefaultTacticsPoliceForce.ExtendActionMove",
             "adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove",
         )
+
         self.register_module(self._search)
         self.register_module(self._road_detector)
         self.register_action(self._action_ext_clear)

@@ -1,9 +1,7 @@
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import TYPE_CHECKING, Generic, TypeVar
-
-from rcrs_core.entities.entity import Entity
+from typing import TYPE_CHECKING
 
 from adf_core_python.core.component.module.abstract_module import AbstractModule
 
@@ -18,10 +16,8 @@ if TYPE_CHECKING:
     from adf_core_python.core.agent.module.module_manager import ModuleManager
     from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
 
-T = TypeVar("T", bound=Entity)
 
-
-class TargetAllocator(AbstractModule, Generic[T]):
+class TargetAllocator(AbstractModule):
     def __init__(
         self,
         agent_info: AgentInfo,
@@ -39,21 +35,21 @@ class TargetAllocator(AbstractModule, Generic[T]):
         pass
 
     @abstractmethod
-    def calculate(self) -> TargetAllocator[T]:
+    def calculate(self) -> TargetAllocator:
         pass
 
-    def precompute(self, precompute_data: PrecomputeData) -> TargetAllocator[T]:
+    def precompute(self, precompute_data: PrecomputeData) -> TargetAllocator:
         super().precompute(precompute_data)
         return self
 
-    def resume(self, precompute_data: PrecomputeData) -> TargetAllocator[T]:
+    def resume(self, precompute_data: PrecomputeData) -> TargetAllocator:
         super().resume(precompute_data)
         return self
 
-    def prepare(self) -> TargetAllocator[T]:
+    def prepare(self) -> TargetAllocator:
         super().prepare()
         return self
 
-    def update_info(self, message_manager: MessageManager) -> TargetAllocator[T]:
+    def update_info(self, message_manager: MessageManager) -> TargetAllocator:
         super().update_info(message_manager)
         return self
