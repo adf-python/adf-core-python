@@ -78,6 +78,11 @@ class Launcher:
             help="precompute flag",
         )
         parser.add_argument("--debug", action="store_true", help="debug flag")
+        parser.add_argument(
+            "--java",
+            action="store_true", 
+            help="using java module flag",
+        )
         args = parser.parse_args()
 
         config_map = {
@@ -91,6 +96,7 @@ class Launcher:
             ConfigKey.KEY_POLICE_OFFICE_COUNT: args.policeoffice,
             ConfigKey.KEY_PRECOMPUTE: args.precompute,
             ConfigKey.KEY_DEBUG_FLAG: args.debug,
+            ConfigKey.KEY_GATEWAY_FLAG: args.java,
         }
 
         for key, value in config_map.items():

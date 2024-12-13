@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import importlib
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Optional
 
 from adf_core_python.core.component.action.extend_action import ExtendAction
 from adf_core_python.core.component.communication.channel_subscriber import (
@@ -10,10 +10,14 @@ from adf_core_python.core.component.communication.channel_subscriber import (
 from adf_core_python.core.component.communication.message_coordinator import (
     MessageCoordinator,
 )
-from adf_core_python.core.component.gateway.gateway_agent import GatewayAgent
-from adf_core_python.core.component.gateway.gateway_module import GatewayModule
 from adf_core_python.core.component.module.abstract_module import AbstractModule
-from adf_core_python.core.logger.logger import get_logger
+from adf_core_python.core.gateway.component.module.gateway_abstract_module import (
+    GatewayAbstractModule,
+)
+from adf_core_python.core.gateway.gateway_agent import GatewayAgent
+from adf_core_python.core.gateway.gateway_module import GatewayModule
+from adf_core_python.core.gateway.module_dict import ModuleDict
+from adf_core_python.core.logger.logger import get_agent_logger
 
 if TYPE_CHECKING:
     from adf_core_python.core.agent.config.module_config import ModuleConfig
@@ -31,7 +35,7 @@ class ModuleManager:
         scenario_info: ScenarioInfo,
         module_config: ModuleConfig,
         develop_data: DevelopData,
-        gateway_agent: GatewayAgent,
+        gateway_agent: Optional[GatewayAgent] = None,
     ) -> None:
         self._agent_info = agent_info
         self._world_info = world_info
@@ -47,30 +51,71 @@ class ModuleManager:
         self._channel_subscribers: dict[str, Any] = {}
         self._message_coordinators: dict[str, Any] = {}
 
-    def get_module(self, module_name: str, default_class_name: str) -> AbstractModule:
-        class_name = self._module_config.get_value(module_name)
-        if class_name is None:
-            get_logger("ModuleManager").warning(
-                f"Module key {module_name} not found in config, using default module {default_class_name}"
-            )
-            class_name = default_class_name
+        self._module_dict: ModuleDict = ModuleDict()
 
-        module_class: type = self._load_module(class_name)
+        self._logger = get_agent_logger(
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}",
+            self._agent_info,
+        )
 
+    def get_module(
+        self, module_name: str, default_module_class_name: str
+    ) -> AbstractModule:
         instance = self._modules.get(module_name)
         if instance is not None:
             return instance
 
-        if issubclass(module_class, AbstractModule):
-            instance = module_class(
-                self._agent_info,
-                self._world_info,
-                self._scenario_info,
-                self,
-                self._develop_data,
-            )
-            self._modules[module_name] = instance
-            return instance
+        class_name = self._module_config.get_value(module_name)
+        if class_name is not None:
+            try:
+                module_class: type = self._load_module(class_name)
+                if issubclass(module_class, AbstractModule):
+                    instance = module_class(
+                        self._agent_info,
+                        self._world_info,
+                        self._scenario_info,
+                        self,
+                        self._develop_data,
+                    )
+                    self._modules[module_name] = instance
+                    return instance
+            except ModuleNotFoundError:
+                self._logger.warning(
+                    f"Module {module_name} not found in python. "
+                    f"If gateway flag is active, using module {module_name} in java"
+                )
+
+            if isinstance(self._gateway_agent, GatewayAgent):
+                gateway_module = GatewayModule(self._gateway_agent)
+                java_class_name = gateway_module.initialize(module_name, "")
+                class_name = self._module_dict[java_class_name]
+                if class_name is not None:
+                    module_class = self._load_module(class_name)
+                    if issubclass(module_class, GatewayAbstractModule):
+                        instance = module_class(
+                            self._agent_info,
+                            self._world_info,
+                            self._scenario_info,
+                            self,
+                            self._develop_data,
+                            gateway_module,
+                        )
+                        self._modules[module_name] = instance
+                        return instance
+
+        class_name = default_module_class_name
+        if class_name is not None:
+            module_class = self._load_module(class_name)
+            if issubclass(module_class, AbstractModule):
+                instance = module_class(
+                    self._agent_info,
+                    self._world_info,
+                    self._scenario_info,
+                    self,
+                    self._develop_data,
+                )
+                self._modules[module_name] = instance
+                return instance
 
         raise RuntimeError(f"Module {class_name} is not a subclass of AbstractModule")
 
@@ -143,16 +188,6 @@ class ModuleManager:
         raise RuntimeError(
             f"Message coordinator {class_name} is not a subclass of MessageCoordinator"
         )
-
-    def get_java_module(
-        self, module_name: str, default_class_name: str
-    ) -> AbstractModule:  # type: ignore
-        # TODO: Implement this method
-        gateway_module = GatewayModule(self._gateway_agent)
-        gateway_module.initialize(module_name, default_class_name)
-        self._gateway_agent.add_gateway_module(gateway_module)
-        a = gateway_module.get_class_names()
-        pass
 
     def _load_module(self, class_name: str) -> type:
         module_name, module_class_name = class_name.rsplit(".", 1)

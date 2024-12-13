@@ -1,4 +1,5 @@
 from threading import Event
+from typing import Optional
 
 from adf_core_python.core.agent.action.action import Action
 from adf_core_python.core.agent.agent import Agent
@@ -7,11 +8,9 @@ from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.scenario_info import Mode
 from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
-from adf_core_python.core.component.gateway.gateway_agent import GatewayAgent
 from adf_core_python.core.component.tactics.tactics_agent import TacticsAgent
+from adf_core_python.core.gateway.gateway_agent import GatewayAgent
 from adf_core_python.core.logger.logger import get_agent_logger
-from rcrs_core.worldmodel.changeSet import ChangeSet
-from rcrs_core.commands.Command import Command
 
 
 class Platoon(Agent):
@@ -25,7 +24,7 @@ class Platoon(Agent):
         module_config: ModuleConfig,
         develop_data: DevelopData,
         finish_post_connect_event: Event,
-        gateway_agent: GatewayAgent,
+        gateway_agent: Optional[GatewayAgent],
     ) -> None:
         super().__init__(
             is_precompute,
@@ -36,6 +35,7 @@ class Platoon(Agent):
             module_config,
             develop_data,
             finish_post_connect_event,
+            gateway_agent,
         )
         self._tactics_agent = tactics_agent
         self._team_name = team_name
@@ -118,14 +118,7 @@ class Platoon(Agent):
                     self._develop_data,
                 )
 
-        self._gateway_agent.set_initialize_data(self._agent_info, self._world_info)
-        self._gateway_agent.initialize()
-
-    def think(self, time: int, change_set: ChangeSet, hear: list[Command]) -> None:
-        self._gateway_agent.set_update_data(time, change_set, hear)
-        # if self._gateway_agent.get_module_count() > 0:
-        self._gateway_agent.update()
-
+    def think(self) -> None:
         action: Action = self._tactics_agent.think(
             self._agent_info,
             self._world_info,

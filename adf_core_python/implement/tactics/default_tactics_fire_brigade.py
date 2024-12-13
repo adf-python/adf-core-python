@@ -44,14 +44,14 @@ class DefaultTacticsFireBrigade(TacticsFireBrigade):
             Search,
             module_manager.get_module(
                 "DefaultTacticsFireBrigade.Search",
-                "adf_core_python.core.component.module.complex.search.Search",
+                "adf_core_python.implement.module.complex.default_search.DefaultSearch",
             ),
         )
         self._human_detector: HumanDetector = cast(
             HumanDetector,
             module_manager.get_module(
                 "DefaultTacticsFireBrigade.HumanDetector",
-                "adf_core_python.core.component.module.complex.human_detector.HumanDetector",
+                "adf_core_python.implement.module.complex.default_human_detector.DefaultHumanDetector",
             ),
         )
         self._action_rescue = module_manager.get_extend_action(
@@ -62,6 +62,7 @@ class DefaultTacticsFireBrigade(TacticsFireBrigade):
             "DefaultTacticsAmbulanceTeam.ExtendActionMove",
             "adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove",
         )
+
         self.register_module(self._search)
         self.register_module(self._human_detector)
         self.register_action(self._action_rescue)

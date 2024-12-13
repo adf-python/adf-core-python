@@ -4,7 +4,7 @@ kernel:
 
 gateway:
   host: localhost
-  port: 27920
+  port: 27941
 
 team:
   name: AIT-Rescue
@@ -39,3 +39,6 @@ adf:
         count: 5
       police:
         count: 5
+
+  gateway:
+    flag: false

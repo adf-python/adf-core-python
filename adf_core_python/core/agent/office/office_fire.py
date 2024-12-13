@@ -1,4 +1,5 @@
 from threading import Event
+from typing import Optional
 
 from rcrs_core.connection.URN import Entity as EntityURN
 
@@ -6,6 +7,7 @@ from adf_core_python.core.agent.config.module_config import ModuleConfig
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.office.office import Office
 from adf_core_python.core.component.tactics.tactics_center import TacticsCenter
+from adf_core_python.core.gateway.gateway_agent import GatewayAgent
 
 
 class OfficeFire(Office):
@@ -19,6 +21,7 @@ class OfficeFire(Office):
         module_config: ModuleConfig,
         develop_data: DevelopData,
         finish_post_connect_event: Event,
+        gateway_agent: Optional[GatewayAgent],
     ) -> None:
         super().__init__(
             tactics_center,
@@ -29,6 +32,7 @@ class OfficeFire(Office):
             module_config,
             develop_data,
             finish_post_connect_event,
+            gateway_agent,
         )
 
     def get_requested_entities(self) -> list[EntityURN]:

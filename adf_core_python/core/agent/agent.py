@@ -2,7 +2,7 @@ import sys
 import time as _time
 from abc import abstractmethod
 from threading import Event
-from typing import Any, Callable, NoReturn
+from typing import Any, Callable, NoReturn, Optional
 
 from bitarray import bitarray
 from rcrs_core.commands.AKClear import AKClear
@@ -24,10 +24,10 @@ from rcrs_core.connection.URN import ComponentControlMSG as ComponentControlMess
 from rcrs_core.connection.URN import Entity as EntityURN
 from rcrs_core.messages.AKAcknowledge import AKAcknowledge
 from rcrs_core.messages.AKConnect import AKConnect
-from rcrs_core.messages.controlMessageFactory import ControlMessageFactory
 from rcrs_core.messages.KAConnectError import KAConnectError
 from rcrs_core.messages.KAConnectOK import KAConnectOK
 from rcrs_core.messages.KASense import KASense
+from rcrs_core.messages.controlMessageFactory import ControlMessageFactory
 from rcrs_core.worldmodel.changeSet import ChangeSet
 from rcrs_core.worldmodel.entityID import EntityID
 from rcrs_core.worldmodel.worldmodel import WorldModel
@@ -79,6 +79,7 @@ from adf_core_python.core.component.communication.communication_module import (
     CommunicationModule,
 )
 from adf_core_python.core.config.config import Config
+from adf_core_python.core.gateway.gateway_agent import GatewayAgent
 from adf_core_python.core.launcher.config_key import ConfigKey
 from adf_core_python.core.logger.logger import get_agent_logger, get_logger
 
@@ -94,6 +95,7 @@ class Agent:
         module_config: ModuleConfig,
         develop_data: DevelopData,
         finish_post_connect_event: Event,
+        gateway_agent: Optional[GatewayAgent],
     ) -> None:
         self.name = name
         self.connect_request_id = None
@@ -124,6 +126,8 @@ class Agent:
         self._message_manager: MessageManager = MessageManager()
         self._communication_module: CommunicationModule = StandardCommunicationModule()
 
+        self._gateway_agent: Optional[GatewayAgent] = gateway_agent
+
     def get_entity_id(self) -> EntityID:
         return self.agent_id
 
@@ -146,14 +150,20 @@ class Agent:
         self._ignore_time: int = int(
             self.config.get_value("kernel.agents.ignoreuntil", 3)
         )
+
         self._scenario_info: ScenarioInfo = ScenarioInfo(self.config, self._mode)
         self._world_info: WorldInfo = WorldInfo(self.world_model)
         self._agent_info = AgentInfo(self, self.world_model)
+
+        if isinstance(self._gateway_agent, GatewayAgent):
+            self._gateway_agent.set_initialize_data(
+                self._agent_info, self._world_info, self._scenario_info
+            )
+
         self.logger = get_agent_logger(
             f"{self.__class__.__module__}.{self.__class__.__qualname__}",
             self._agent_info,
         )
-
         self.logger.debug(f"agent_config: {self.config}")
 
     def update_step_info(
@@ -193,10 +203,16 @@ class Agent:
         self._agent_info.set_change_set(change_set)
         self._world_info.set_change_set(change_set)
 
+        if (
+            isinstance(self._gateway_agent, GatewayAgent)
+            and self._gateway_agent.is_initialized()
+        ):
+            self._gateway_agent.update()
+
         self._message_manager.refresh()
         self._communication_module.receive(self, self._message_manager)
 
-        self.think(time, change_set, hear)
+        self.think()
 
         self.logger.debug(
             f"send messages: {self._message_manager.get_send_message_list()}",
@@ -209,7 +225,7 @@ class Agent:
         self._communication_module.send(self, self._message_manager)
 
     @abstractmethod
-    def think(self, time: int, change_set: ChangeSet, hear: list[Command]) -> None:
+    def think(self) -> None:
         pass
 
     @abstractmethod
@@ -288,9 +304,9 @@ class Agent:
             if herad_command.urn == CommandURN.AK_SPEAK:
                 heard_commands.append(
                     AKSpeak(
-                        herad_command.components[
+                        EntityID(herad_command.components[
                             ComponentControlMessageID.AgentID
-                        ].entityID,
+                        ].entityID),
                         herad_command.components[
                             ComponentControlMessageID.Time
                         ].intValue,

@@ -27,3 +27,4 @@ class ConfigKey:
     # Gateway
     KEY_GATEWAY_HOST: Final[str] = "gateway.host"
     KEY_GATEWAY_PORT: Final[str] = "gateway.port"
+    KEY_GATEWAY_FLAG: Final[str] = "adf.gateway.flag"

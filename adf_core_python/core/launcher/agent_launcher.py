@@ -1,9 +1,10 @@
 import importlib
 import threading
+from typing import Optional
 
 from adf_core_python.core.component.abstract_loader import AbstractLoader
-from adf_core_python.core.component.gateway.gateway_launcher import GatewayLauncher
 from adf_core_python.core.config.config import Config
+from adf_core_python.core.gateway.gateway_launcher import GatewayLauncher
 from adf_core_python.core.launcher.config_key import ConfigKey
 from adf_core_python.core.launcher.connect.component_launcher import ComponentLauncher
 from adf_core_python.core.launcher.connect.connector import Connector
@@ -66,17 +67,18 @@ class AgentLauncher:
             kernel_host, kernel_port, self.logger
         )
 
-        gateway_host: str = self.config.get_value(
-            ConfigKey.KEY_GATEWAY_HOST, "localhost"
-        )
-        gateway_port: int = self.config.get_value(ConfigKey.KEY_GATEWAY_PORT, 27930)
-        self.logger.info(
-            f"Start gateway launcher (host: {kernel_host}, port: {kernel_port})"
-        )
+        gateway_launcher: Optional[GatewayLauncher] = None
+        gateway_flag: bool = self.config.get_value(ConfigKey.KEY_GATEWAY_FLAG, False)
+        if gateway_flag:
+            gateway_host: str = self.config.get_value(
+                ConfigKey.KEY_GATEWAY_HOST, "localhost"
+            )
+            gateway_port: int = self.config.get_value(ConfigKey.KEY_GATEWAY_PORT, 27941)
+            self.logger.info(
+                f"Start gateway launcher (host: {gateway_host}, port: {gateway_port})"
+            )
 
-        gateway_launcher: GatewayLauncher = GatewayLauncher(
-            gateway_host, gateway_port, self.logger
-        )
+            gateway_launcher = GatewayLauncher(gateway_host, gateway_port, self.logger)
 
         connector_thread_list: list[threading.Thread] = []
         for connector in self.connectors:

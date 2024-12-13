@@ -1,15 +1,16 @@
 import threading
+from typing import Optional
 
 from adf_core_python.core.agent.config.module_config import ModuleConfig
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.platoon.platoon_police import PlatoonPolice
 from adf_core_python.core.component.abstract_loader import AbstractLoader
-from adf_core_python.core.component.gateway.gateway_agent import GatewayAgent
-from adf_core_python.core.component.gateway.gateway_launcher import GatewayLauncher
 from adf_core_python.core.component.tactics.tactics_police_force import (
     TacticsPoliceForce,
 )
 from adf_core_python.core.config.config import Config
+from adf_core_python.core.gateway.gateway_agent import GatewayAgent
+from adf_core_python.core.gateway.gateway_launcher import GatewayLauncher
 from adf_core_python.core.launcher.config_key import ConfigKey
 from adf_core_python.core.launcher.connect.component_launcher import ComponentLauncher
 from adf_core_python.core.launcher.connect.connector import Connector
@@ -24,7 +25,7 @@ class ConnectorPoliceForce(Connector):
     def connect(
         self,
         component_launcher: ComponentLauncher,
-        gateway_launcher: GatewayLauncher,
+        gateway_launcher: Optional[GatewayLauncher],
         config: Config,
         loader: AbstractLoader,
     ) -> dict[threading.Thread, threading.Event]:
@@ -59,7 +60,9 @@ class ConnectorPoliceForce(Connector):
             finish_post_connect_event = threading.Event()
             request_id: int = component_launcher.generate_request_id()
 
-            gateway_agent: GatewayAgent = GatewayAgent(gateway_launcher)
+            gateway_agent: Optional[GatewayAgent] = None
+            if isinstance(gateway_launcher, GatewayLauncher):
+                gateway_agent = GatewayAgent(gateway_launcher)
 
             component_thread = threading.Thread(
                 target=component_launcher.connect,
@@ -81,10 +84,13 @@ class ConnectorPoliceForce(Connector):
             )
             threads[component_thread] = finish_post_connect_event
 
-            gateway_thread = threading.Thread(
-                target=gateway_launcher.connect,
-                args=(gateway_agent,),
-            )
-            threads[gateway_thread] = finish_post_connect_event
+            if isinstance(gateway_launcher, GatewayLauncher) and isinstance(
+                gateway_agent, GatewayAgent
+            ):
+                gateway_thread = threading.Thread(
+                    target=gateway_launcher.connect,
+                    args=(gateway_agent,),
+                )
+                threads[gateway_thread] = finish_post_connect_event
 
         return threads
