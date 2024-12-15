@@ -65,7 +65,7 @@ class DefaultCommandPickerAmbulance(CommandPicker):
                 command = CommandAmbulance(
                     True,
                     ambulance_id,
-                    agent.get_id(),
+                    self._agent_info.get_entity_id(),
                     CommandAmbulance.ACTION_RESCUE,
                     StandardMessagePriority.NORMAL,
                     target.get_id(),
@@ -76,7 +76,7 @@ class DefaultCommandPickerAmbulance(CommandPicker):
                 command = CommandScout(
                     True,
                     ambulance_id,
-                    agent.get_id(),
+                    self._agent_info.get_entity_id(),
                     self.scout_distance,
                     StandardMessagePriority.NORMAL,
                     target.get_id(),

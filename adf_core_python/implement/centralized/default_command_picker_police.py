@@ -64,16 +64,15 @@ class DefaultCommandPickerPolice(CommandPicker):
                 continue
 
             if isinstance(target, Area):
-                # TODO: Implement the command
-                # command = CommandPolice(
-                #     True,
-                #     agent.get_id(),
-
-                #     target.get_id(),
-                #     StandardMessagePriority.NORMAL,
-                # )
-                # self.messages.append(command)
-                pass
+                command = CommandPolice(
+                    True,
+                    agent.get_id(),
+                    self._agent_info.get_entity_id(),
+                    CommandPolice.ACTION_AUTONOMY,
+                    StandardMessagePriority.NORMAL,
+                    target.get_id(),
+                )
+                self.messages.append(command)
         return self
 
     def get_result(self) -> list[CommunicationMessage]:
