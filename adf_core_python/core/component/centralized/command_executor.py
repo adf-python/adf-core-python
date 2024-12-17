@@ -1,14 +1,18 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, Optional, TypeVar
+from typing import TYPE_CHECKING, Generic, Optional, TypeVar
+
+if TYPE_CHECKING:
+    from adf_core_python.core.agent.communication.message_manager import MessageManager
+    from adf_core_python.core.agent.develop.develop_data import DevelopData
+    from adf_core_python.core.agent.info.agent_info import AgentInfo
+    from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
+    from adf_core_python.core.agent.info.world_info import WorldInfo
+    from adf_core_python.core.agent.module.module_manager import ModuleManager
+    from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
 
 from adf_core_python.core.agent.action.action import Action
-from adf_core_python.core.agent.develop.develop_data import DevelopData
-from adf_core_python.core.agent.info.agent_info import AgentInfo
-from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
-from adf_core_python.core.agent.info.world_info import WorldInfo
-from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.component.communication.communication_message import (
     CommunicationMessage,
 )
@@ -50,7 +54,7 @@ class CommandExecutor(ABC, Generic[T]):
     def get_action(self) -> Optional[Action]:
         return self._result
 
-    def precompute(self) -> CommandExecutor:
+    def precompute(self, precompute_data: PrecomputeData) -> CommandExecutor:
         self._count_precompute += 1
         return self
 
@@ -58,11 +62,11 @@ class CommandExecutor(ABC, Generic[T]):
         self._count_prepare += 1
         return self
 
-    def resume(self) -> CommandExecutor:
+    def resume(self, precompute_data: PrecomputeData) -> CommandExecutor:
         self._count_resume += 1
         return self
 
-    def update_info(self) -> CommandExecutor:
+    def update_info(self, message_manager: MessageManager) -> CommandExecutor:
         if self._count_update_info_current_time != self._agent_info.get_time():
             self._count_update_info_current_time = self._agent_info.get_time()
             self._count_update_info += 1

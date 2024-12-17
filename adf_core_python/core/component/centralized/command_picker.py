@@ -1,14 +1,19 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from typing import TYPE_CHECKING
 
 from rcrs_core.worldmodel.entityID import EntityID
 
-from adf_core_python.core.agent.develop.develop_data import DevelopData
-from adf_core_python.core.agent.info.agent_info import AgentInfo
-from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
-from adf_core_python.core.agent.info.world_info import WorldInfo
-from adf_core_python.core.agent.module.module_manager import ModuleManager
+if TYPE_CHECKING:
+    from adf_core_python.core.agent.develop.develop_data import DevelopData
+    from adf_core_python.core.agent.info.agent_info import AgentInfo
+    from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
+    from adf_core_python.core.agent.info.world_info import WorldInfo
+    from adf_core_python.core.agent.module.module_manager import ModuleManager
+
+from adf_core_python.core.agent.communication.message_manager import MessageManager
+from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
 from adf_core_python.core.component.communication.communication_message import (
     CommunicationMessage,
 )
@@ -48,7 +53,7 @@ class CommandPicker(ABC):
     def get_result(self) -> list[CommunicationMessage]:
         pass
 
-    def precompute(self) -> CommandPicker:
+    def precompute(self, precompute_data: PrecomputeData) -> CommandPicker:
         self._count_precompute += 1
         return self
 
@@ -56,11 +61,11 @@ class CommandPicker(ABC):
         self._count_prepare += 1
         return self
 
-    def resume(self) -> CommandPicker:
+    def resume(self, precompute_data: PrecomputeData) -> CommandPicker:
         self._count_resume += 1
         return self
 
-    def update_info(self) -> CommandPicker:
+    def update_info(self, message_manager: MessageManager) -> CommandPicker:
         if self._count_update_info_current_time != self._agent_info.get_time():
             self._count_update_info_current_time = self._agent_info.get_time()
             self._count_update_info = 0
