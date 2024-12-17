@@ -4,6 +4,8 @@ import importlib
 from typing import TYPE_CHECKING, Any, Optional
 
 from adf_core_python.core.component.action.extend_action import ExtendAction
+from adf_core_python.core.component.centralized.command_executor import CommandExecutor
+from adf_core_python.core.component.centralized.command_picker import CommandPicker
 from adf_core_python.core.component.communication.channel_subscriber import (
     ChannelSubscriber,
 )
@@ -188,6 +190,58 @@ class ModuleManager:
         raise RuntimeError(
             f"Message coordinator {class_name} is not a subclass of MessageCoordinator"
         )
+
+    def get_command_executor(
+        self, command_executor_name: str, default_command_executor_name: str
+    ) -> CommandExecutor:
+        class_name = self._module_config.get_value_or_default(
+            command_executor_name, default_command_executor_name
+        )
+
+        command_executor_class: type = self._load_module(class_name)
+
+        instance = self._executors.get(command_executor_name)
+        if instance is not None:
+            return instance
+
+        if issubclass(command_executor_class, CommandExecutor):
+            instance = command_executor_class(
+                self._agent_info,
+                self._world_info,
+                self._scenario_info,
+                self,
+                self._develop_data,
+            )
+            self._executors[command_executor_name] = instance
+            return instance
+
+        raise RuntimeError(f"Command executor {class_name} is not a subclass of object")
+
+    def get_command_picker(
+        self, command_picker_name: str, default_command_picker_name: str
+    ) -> CommandPicker:
+        class_name = self._module_config.get_value_or_default(
+            command_picker_name, default_command_picker_name
+        )
+
+        command_picker_class: type = self._load_module(class_name)
+
+        instance = self._pickers.get(command_picker_name)
+        if instance is not None:
+            return instance
+
+        if issubclass(command_picker_class, CommandPicker):
+            instance = command_picker_class(
+                self._agent_info,
+                self._world_info,
+                self._scenario_info,
+                self,
+                self._develop_data,
+            )
+            self._pickers[command_picker_name] = instance
+            return instance
+
+        raise RuntimeError(f"Command picker {class_name} is not a subclass of object")
 
     def _load_module(self, class_name: str) -> type:
         module_name, module_class_name = class_name.rsplit(".", 1)

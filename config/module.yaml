@@ -3,36 +3,36 @@ DefaultTacticsAmbulanceTeam:
   Search: adf_core_python.implement.module.complex.default_search.DefaultSearch
   ExtendActionTransport: adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport
   ExtendActionMove: adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove
-  CommandExecutorAmbulance: adf_core_python.implement.centralized.DefaultCommandExecutorAmbulance
-  CommandExecutorScout: adf_core_python.implement.centralized.DefaultCommandExecutorScout
+  CommandExecutorAmbulance: adf_core_python.implement.centralized.default_command_executor_ambulance.DefaultCommandExecutorAmbulance
+  CommandExecutorScout: adf_core_python.implement.centralized.default_command_executor_scout.DefaultCommandExecutorScout
 
 DefaultTacticsFireBrigade:
   HumanDetector: adf_core_python.implement.module.complex.default_human_detector.DefaultHumanDetector
   Search: adf_core_python.implement.module.complex.default_search.DefaultSearch
   ExtendActionRescue: adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue
   ExtendActionMove: adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove
-  CommandExecutorFire: adf_core_python.implement.centralized.DefaultCommandExecutorFire
-  CommandExecutorScout: adf_core_python.implement.centralized.DefaultCommandExecutorScout
+  CommandExecutorFire: adf_core_python.implement.centralized.default_command_executor_fire.DefaultCommandExecutorFire
+  CommandExecutorScout: adf_core_python.implement.centralized.default_command_executor_scout.DefaultCommandExecutorScout
 
 DefaultTacticsPoliceForce:
   RoadDetector: adf_core_python.implement.module.complex.default_road_detector.DefaultRoadDetector
   Search: adf_core_python.implement.module.complex.default_search.DefaultSearch
   ExtendActionClear: adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear
   ExtendActionMove: adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove
-  CommandExecutorPolice: adf_core_python.implement.centralized.DefaultCommandExecutorPolice
-  CommandExecutorScout: adf_core_python.implement.centralized.DefaultCommandExecutorScoutPolice
+  CommandExecutorPolice: adf_core_python.implement.centralized.default_command_executor_police.DefaultCommandExecutorPolice
+  CommandExecutorScout: adf_core_python.implement.centralized.default_command_executor_scout.DefaultCommandExecutorScout
 
 DefaultTacticsAmbulanceCenter:
   TargetAllocator: adf_core_python.implement.module.complex.default_ambulance_target_allocator.DefaultAmbulanceTargetAllocator
-  # CommandPicker: adf_core_python.implement.centralized.DefaultCommandPickerAmbulance
+  CommandPicker: adf_core_python.implement.centralized.default_command_picker_ambulance.DefaultCommandPickerAmbulance
 
 DefaultTacticsFireStation:
   TargetAllocator: adf_core_python.implement.module.complex.default_fire_target_allocator.DefaultFireTargetAllocator
-  # CommandPicker: adf_core_python.implement.centralized.DefaultCommandPickerFire
+  CommandPicker: adf_core_python.implement.centralized.default_command_picker_fire.DefaultCommandPickerFire
 
 DefaultTacticsPoliceOffice:
   TargetAllocator: adf_core_python.implement.module.complex.default_police_target_allocator.DefaultPoliceTargetAllocator
-  # CommandPicker: adf_core_python.implement.centralized.DefaultCommandPickerPolice
+  CommandPicker: adf_core_python.implement.centralized.default_command_picker_police.DefaultCommandPickerPolice
 
 DefaultSearch:
   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
@@ -56,28 +56,27 @@ DefaultExtendActionMove:
 DefaultExtendActionTransport:
   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
 
-# DefaultCommandExecutorAmbulance:
-#   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
-#   ExtendActionTransport: adf_core_python.implement.action.DefaultExtendActionTransport
-#   ExtendActionMove: adf_core_python.implement.action.DefaultExtendActionMove
+DefaultCommandExecutorAmbulance:
+  PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
+  ExtendActionTransport: adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport
+  ExtendActionMove: adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove
 
-# DefaultCommandExecutorFire:
-#   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
-#   EtxActionFireRescue: adf_core_python.implement.action.DefaultExtendActionRescue
-#   EtxActionFireFighting: adf_core_python.implement.action.DefaultExtendActionFireFighting
-#   ExtendActionMove: adf_core_python.implement.action.DefaultExtendActionMove
+DefaultCommandExecutorFire:
+  PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
+  EtxActionFireRescue: adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue
+  ExtendActionMove: adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove
 
-# DefaultCommandExecutorPolice:
-#   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
-#   ExtendActionClear: adf_core_python.implement.action.DefaultExtendActionClear
-#   ExtendActionMove: adf_core_python.implement.action.DefaultExtendActionMove
+DefaultCommandExecutorPolice:
+  PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
+  ExtendActionClear: adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear
+  ExtendActionMove: adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove
 
-# DefaultCommandExecutorScout:
-#   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
+DefaultCommandExecutorScout:
+  PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
 
-# DefaultCommandExecutorScoutPolice:
-#   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
-#   ExtendActionClear: adf_core_python.implement.action.DefaultExtendActionClear
+DefaultCommandExecutorScoutPolice:
+  PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
+  ExtendActionClear: adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear
 
 MessageManager:
   PlatoonChannelSubscriber: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber

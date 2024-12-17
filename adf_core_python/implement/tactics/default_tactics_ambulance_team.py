@@ -1,10 +1,19 @@
-from typing import cast
+from typing import Optional, cast
 
 from rcrs_core.entities.ambulanceTeam import AmbulanceTeam
 
 from adf_core_python.core.agent.action.action import Action
 from adf_core_python.core.agent.action.common.action_rest import ActionRest
 from adf_core_python.core.agent.communication.message_manager import MessageManager
+from adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance import (
+    CommandAmbulance,
+)
+from adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout import (
+    CommandScout,
+)
+from adf_core_python.core.agent.communication.standard.bundle.standard_message import (
+    StandardMessage,
+)
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
 from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
@@ -62,11 +71,23 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
             "DefaultTacticsAmbulanceTeam.ExtendActionMove",
             "adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove",
         )
+        self._command_executor_ambulance = module_manager.get_command_executor(
+            "DefaultTacticsAmbulanceTeam.CommandExecutorAmbulance",
+            "adf_core_python.implement.centralized.default_command_executor_ambulance.DefaultCommandExecutorAmbulance",
+        )
+        self._command_executor_scout = module_manager.get_command_executor(
+            "DefaultTacticsAmbulanceTeam.CommandExecutorScout",
+            "adf_core_python.implement.centralized.default_command_executor_scout.DefaultCommandExecutorScout",
+        )
 
         self.register_module(self._search)
         self.register_module(self._human_detector)
         self.register_action(self._action_transport)
         self.register_action(self._action_ext_move)
+        self.register_command_executor(self._command_executor_ambulance)
+        self.register_command_executor(self._command_executor_scout)
+
+        self._recent_command: Optional[StandardMessage] = None
 
     def precompute(
         self,
@@ -123,6 +144,34 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
             f"received messages: {[str(message) for message in message_manager.get_received_message_list()]}, help: {message_manager.get_heard_agent_help_message_count()}",
             message_manager=message_manager,
         )
+
+        for message in message_manager.get_received_message_list():
+            if isinstance(message, CommandScout):
+                if (
+                    message.get_command_executor_agent_entity_id()
+                    == agent_info.get_entity_id()
+                ):
+                    self._recent_command = message
+                    self._command_executor_scout.set_command(message)
+            if isinstance(message, CommandAmbulance):
+                if (
+                    message.get_command_executor_agent_entity_id()
+                    == agent_info.get_entity_id()
+                ):
+                    self._recent_command = message
+                    self._command_executor_ambulance.set_command(message)
+
+        if self._recent_command is not None:
+            action: Optional[Action] = None
+            if isinstance(self._recent_command, CommandScout):
+                action = self._command_executor_scout.calculate().get_action()
+            elif isinstance(self._recent_command, CommandAmbulance):
+                action = self._command_executor_ambulance.calculate().get_action()
+            if action is not None:
+                self._logger.debug(
+                    f"action decided by command: {action}", time=agent_info.get_time()
+                )
+                return action
 
         target_entity_id = self._human_detector.calculate().get_target_entity_id()
         self._logger.debug(
