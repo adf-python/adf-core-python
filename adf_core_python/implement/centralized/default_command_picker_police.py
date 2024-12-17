@@ -1,18 +1,11 @@
 from __future__ import annotations
 
 from rcrs_core.entities.area import Area
-from rcrs_core.entities.human import Human
 from rcrs_core.entities.policeForce import PoliceForce
 from rcrs_core.worldmodel.entityID import EntityID
 
-from adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance import (
-    CommandAmbulance,
-)
 from adf_core_python.core.agent.communication.standard.bundle.centralized.command_police import (
     CommandPolice,
-)
-from adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout import (
-    CommandScout,
 )
 from adf_core_python.core.agent.communication.standard.bundle.standard_message_priority import (
     StandardMessagePriority,

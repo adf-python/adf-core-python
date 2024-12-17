@@ -47,7 +47,6 @@ class DefaultCommandExecutorPolice(CommandExecutor):
         super().__init__(
             agent_info, world_info, scenario_info, module_manager, develop_data
         )
-        self._command_type = self.ACTION_UNKNOWN
 
         self._path_planning: PathPlanning = cast(
             PathPlanning,

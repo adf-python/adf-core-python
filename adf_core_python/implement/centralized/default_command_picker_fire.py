@@ -61,6 +61,7 @@ class DefaultCommandPickerFire(CommandPicker):
             if target is None:
                 continue
 
+            command: CommunicationMessage
             if isinstance(target, Human):
                 command = CommandAmbulance(
                     True,
