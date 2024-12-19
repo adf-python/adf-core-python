@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>エージェントの作成 &mdash; adf-core-python 0.1.0 ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=98e9f989"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script src="../../_static/translations.js?v=4755f45a"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="エージェントの制御" href="agent_control.html" />
+    <link rel="prev" title="環境構築" href="../environment/environment.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            adf-core-python
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">インストール</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install/environment/environment.html">環境構築</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install/install/install.html">インストール</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">クイックスタート</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/quickstart.html">クイックスタート</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">チュートリアル</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../environment/environment.html">環境構築</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">エージェントの作成</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">新規エージェントの作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">シミュレーションを実行する</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="agent_control.html">エージェントの制御</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../config/config.html">コンフィグについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/module.html">モジュールについて</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ハンズオン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hands-on/clustering.html">クラスタリングモジュール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hands-on/search.html">サーチモジュール</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">APIドキュメント</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex.html">索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../py-modindex.html">モジュール索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../search.html">検索ページ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">adf-core-python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">エージェントの作成</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/tutorial/agent/agent.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>エージェントの作成<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>このセクションでは、<code class="docutils literal notranslate"><span class="pre">adf-core-python</span></code> ライブラリの使用方法の概要を提供します。</p>
+<section id="id2">
+<h2>新規エージェントの作成<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>新規エージェントを作成するには、次のコマンドを実行します：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>adf-core-python
+</pre></div>
+</div>
+<p>実行すると、下記のような対話形式のプロンプトが表示されます：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Your<span class="w"> </span>agent<span class="w"> </span>team<span class="w"> </span>name:<span class="w"> </span>my-agent
+Creating<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>agent<span class="w"> </span>team<span class="w"> </span>with<span class="w"> </span>name:<span class="w"> </span>my-agent
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>エージェントチーム名は、エージェントのディレクトリ名として使用されます。
+以後、エージェントチーム名を <code class="docutils literal notranslate"><span class="pre">&lt;your_team_name&gt;</span></code> として参照します。</p>
+</div>
+<p>入力後、下記のようなエージェントのテンプレートがカレントディレクトリに作成されます。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
+└──<span class="w"> </span>my-agent
+<span class="w">    </span>├──<span class="w"> </span>config
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>development.json
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>launcher.yaml
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>module.yaml
+<span class="w">    </span>├──<span class="w"> </span>main.py
+<span class="w">    </span>└──<span class="w"> </span>src
+<span class="w">        </span>└──<span class="w"> </span>my-agent
+<span class="w">            </span>├──<span class="w"> </span>__init__.py
+<span class="w">            </span>└──<span class="w"> </span>module
+<span class="w">                </span>├──<span class="w"> </span>__init__.py
+<span class="w">                </span>└──<span class="w"> </span>complex
+<span class="w">                    </span>├──<span class="w"> </span>__init__.py
+<span class="w">                    </span>├──<span class="w"> </span>sample_human_detector.py
+<span class="w">                    </span>├──<span class="w"> </span>sample_road_detector.py
+<span class="w">                    </span>└──<span class="w"> </span>sample_search.py
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>シミュレーションを実行する<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>ターミナルを2つ起動します。</p>
+<p>片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal A</span>
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/rcrs-server/scripts
+./start-comprun.sh<span class="w"> </span>-m<span class="w"> </span>../maps/tutorial_fire_brigade_only/map<span class="w"> </span>-c<span class="w"> </span>../maps/tutorial_fire_brigade_only/config
+</pre></div>
+</div>
+<p>その後、別のターミナルを開き、エージェントを起動します：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal B</span>
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
+python<span class="w"> </span>main.py
+</pre></div>
+</div>
+<p>エージェントが正常に起動すると、シミュレーションサーバーに接続され、エージェントがシミュレーションに参加し、エージェントが動き出します。
+途中で止めたい場合は、それぞれのコマンドラインで <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">C</span></code> (MacOSの場合は <code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">+</span> <span class="pre">C</span></code> ) を押してください。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>シミュレーションサーバーを停止させたあとは、プロセスが残ってしまう場合があるので<code class="docutils literal notranslate"><span class="pre">./kill.sh</span></code> を実行してください。</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../environment/environment.html" class="btn btn-neutral float-left" title="環境構築" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="agent_control.html" class="btn btn-neutral float-right" title="エージェントの制御" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Haruki Uehara, Yuki Shimada.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div
+  class="rst-versions"
+  data-toggle="rst-versions"
+  role="note"
+  aria-label="versions"
+>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    Language: ja
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    
+    <dl>
+      <dt>Languages</dt>
+      
+      <dd><a href="http://127.0.0.1:5500/docs/pages/index.html">en</a></dd>
+      
+      <dd><a href="http://127.0.0.1:5500/docs/pages/ja/index.html">ja</a></dd>
+      
+    </dl>
+    
+    <!-- 
+    <dl>
+      <dt>Versions</dt>
+      
+        <dd><a href="http://127.0.0.1:5500/docs/pages/ja/index.html">latest</a></dd>
+      
+        <dd><a href="http://127.0.0.1:5500/docs/pages/1.0/ja/index.html">1.0</a></dd>
+      
+        <dd><a href="http://127.0.0.1:5500/docs/pages/2.0/ja/index.html">2.0</a></dd>
+      
+    </dl>
+    
+    <br>
+    </dl> -->
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

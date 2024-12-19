@@ -1,359 +1,139 @@
 
+
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-
-<html lang="ja" data-content_root="../" >
-
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>サーチモジュール &#8212; adf-core-python 0.1.0 ドキュメント</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
-  </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
-  
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-  
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
-
-    <script src="../_static/documentation_options.js?v=2327a732"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script src="../_static/translations.js?v=4755f45a"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'hands-on/search';</script>
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
-    <link rel="prev" title="クラスタリングモジュール" href="clustering.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="ja"/>
-  <meta name="docsearch:version" content="" />
-  </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Module &mdash; adf-core-python 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
 
   
-  
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Clustering Module" href="clustering.html" /> 
+</head>
 
-  
-  <dialog id="pst-search-dialog">
-    
-<form class="bd-search d-flex align-items-center"
-      action="../search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search..."
-         aria-label="Search..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
 
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            adf-core-python
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
-
-  
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
-  
-
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
-      
-      
-      
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
-        
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-
-  
-    
-  
-
-<a class="navbar-brand logo" href="../index.html">
-  
-  
-  
-  
-  
-  
-    <p class="title logo__title">adf-core-python 0.1.0 ドキュメント</p>
-  
-</a></div>
-        <div class="sidebar-primary-item">
-
-<button class="btn search-button-field search-button__button pst-js-only" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">検索</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">インストール</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../install/environment/environment.html">環境構築</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../install/install/install.html">インストール</a></li>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install/environment/environment.html">Environment Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install/install.html">Installation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">クイックスタート</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../quickstart/quickstart.html">クイックスタート</a></li>
+<p class="caption" role="heading"><span class="caption-text">Quick Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart/quickstart.html">Quick Start</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">チュートリアル</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">環境構築</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">エージェントの作成</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">エージェントの制御</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">コンフィグについて</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">モジュールについて</a></li>
+<p class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">Environment Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">Agent Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">About Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">About Modules</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">ハンズオン</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="clustering.html">クラスタリングモジュール</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">サーチモジュール</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">APIドキュメント</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../genindex.html">索引</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../py-modindex.html">モジュール索引</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../search.html">検索ページ</a></li>
-</ul>
-
-    </div>
-</nav></div>
-    </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-  </div>
-  
-  <div id="rtd-footer-container"></div>
-
-
-      </div>
-      
-      <main id="main-content" class="bd-main" role="main">
-        
-        
-
-<div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article d-print-none">
-<div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
-</button></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
-<div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="このページをダウンロード">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../_sources/hands-on/search.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="ソースファイルをダウンロード"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="PDFに印刷"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="全画面モード"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
-
-
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
-</div></div>
-      
-    </div>
-  
-</div>
-</div>
-              
-              
-
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>サーチモジュール</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
-            
-            <div>
-                <h2> 目次 </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">サーチモジュールの概要</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">サーチモジュールの実装の準備</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">モジュールの登録</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">モジュールの実装</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">モジュールの改善</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">課題</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">探索対象がステップごとに変わってしまう問題</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">すでに探索したエンティティを再度探索対象として選択してしまう問題</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう</a></li>
+<p class="caption" role="heading"><span class="caption-text">Hands-On</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">Clustering Module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Search Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Overview of the Search Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Preparation for Implementing the Search Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Module Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Module Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Module Improvement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Challenges</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Issue of the search target changing with each step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Issue of selecting already searched entities as search targets again</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Selecting distant entities as search targets even though there are unexplored entities nearby</a></li>
 </ul>
 </li>
 </ul>
-            </nav>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../py-modindex.html">Module Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../search.html">Search Page</a></li>
+</ul>
+
         </div>
-    </div>
-</div>
+      </div>
+    </nav>
 
-              
-                
-<div id="searchbox"></div>
-                <article class="bd-article">
-                  
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">adf-core-python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Search Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/hands-on/search.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="id1">
-<h1>サーチモジュール<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>Search Module<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <section id="id2">
-<h2>サーチモジュールの概要<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>今回開発するモジュールは、<code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> モジュールを用いた情報探索対象決定 (<code class="docutils literal notranslate"><span class="pre">Search</span></code>) モジュールです。 クラスタリングモジュールによってエージェント間で担当地域の分割をおこない、 担当地域内からランダムに探索対象として選択します。</p>
+<h2>Overview of the Search Module<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>The module to be developed this time is the information search target determination (<code class="docutils literal notranslate"><span class="pre">Search</span></code>) module using the <code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> module. The clustering module divides the areas of responsibility among agents and randomly selects search targets within the assigned areas.</p>
 </section>
 <section id="id3">
-<h2>サーチモジュールの実装の準備<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2>Preparation for Implementing the Search Module<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <div class="admonition note">
-<p class="admonition-title">注釈</p>
-<p>以降の作業では、カレントディレクトリがプロジェクトのルートディレクトリであることを前提としています。</p>
+<p class="admonition-title">Note</p>
+<p>The following tasks assume that the current directory is the root directory of the project.</p>
 </div>
-<p>まず、サーチモジュールを記述するためのファイルを作成します。</p>
+<p>First, create a file to write the search module.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/complex/k_means_pp_search.py
 </pre></div>
 </div>
-<p>次に、サーチモジュールの実装を行います。 以下のコードを <code class="docutils literal notranslate"><span class="pre">k_means_pp_search.py</span></code> に記述してください。
-これが今回実装するサーチモジュールの雛形になります。</p>
+<p>Next, implement the search module. Write the following code into <code class="docutils literal notranslate"><span class="pre">k_means_pp_search.py</span></code>. This will be the template for the search module to be implemented this time.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">cast</span>
 
@@ -400,9 +180,8 @@
 </div>
 </section>
 <section id="id4">
-<h2>モジュールの登録<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>次に、作成したモジュールを登録します。
-以下のように<code class="docutils literal notranslate"><span class="pre">config/module.yaml</span></code>の該当箇所を変更してください</p>
+<h2>Module Registration<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>Next, register the created module. Modify the relevant section of <code class="docutils literal notranslate"><span class="pre">config/module.yaml</span></code> as follows.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">DefaultTacticsAmbulanceTeam</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">Search</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.k_means_pp_search.KMeansPPSearch</span>
 
@@ -415,15 +194,15 @@
 </div>
 </section>
 <section id="id5">
-<h2>モジュールの実装<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p>まず、<code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> モジュールを呼び出せるようにします。</p>
-<p>以下のコードを<code class="docutils literal notranslate"><span class="pre">config/module.yaml</span></code>に追記してください。</p>
+<h2>Module Implementation<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>First, make it possible to call the <code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> module.</p>
+<p>Add the following code to <code class="docutils literal notranslate"><span class="pre">config/module.yaml</span></code>.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">KMeansPPSearch</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.algorithm.k_means_pp_clustering.KMeansPPClustering</span>
 </pre></div>
 </div>
-<p>次に、<code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> モジュールで <code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> モジュールを呼び出せるようにします。</p>
-<p>以下のコードを <code class="docutils literal notranslate"><span class="pre">k_means_pp_search.py</span></code> に追記してください。</p>
+<p>Next, make it possible to call the <code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> module in the <code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> module.</p>
+<p>Add the following code to <code class="docutils literal notranslate"><span class="pre">k_means_pp_search.py</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">KMeansPPSearch</span><span class="p">(</span><span class="n">Search</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -459,8 +238,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">register_sub_module</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>そして、<code class="docutils literal notranslate"><span class="pre">calculate</span></code> メソッドでクラスタリングモジュールを呼び出し、探索対象を決定するように変更します。</p>
-<p>以下のコードを <code class="docutils literal notranslate"><span class="pre">k_means_pp_search.py</span></code> に追記してください。</p>
+<p>Then, modify the <code class="docutils literal notranslate"><span class="pre">calculate</span></code> method to call the clustering module and determine the search target.</p>
+<p>Add the following code to <code class="docutils literal notranslate"><span class="pre">k_means_pp_search.py</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Search</span><span class="p">:</span>
         <span class="c1"># 自エージェントのエンティティIDを取得</span>
         <span class="n">me</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
@@ -480,15 +259,15 @@
         <span class="k">return</span> <span class="bp">self</span>
 </pre></div>
 </div>
-<p>以上で、<code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> モジュールを用いた <code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> モジュールの実装が完了しました。</p>
-<p>ターミナルを2つ起動します。</p>
-<p>片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します：</p>
+<p>This completes the implementation of the <code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> module using the <code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> module.</p>
+<p>Open two terminals.</p>
+<p>Open one terminal and start the simulation server with the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal A</span>
 <span class="nb">cd</span><span class="w"> </span>WORKING_DIR/rcrs-server/scripts
 ./start-comprun.sh<span class="w"> </span>-m<span class="w"> </span>../maps/tutorial_ambulance_team_only/map<span class="w"> </span>-c<span class="w"> </span>../maps/tutorial_ambulance_team_only/config
 </pre></div>
 </div>
-<p>その後、別のターミナルを開き、エージェントを起動します：</p>
+<p>Then open another terminal and start the agent:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal B</span>
 <span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
 python<span class="w"> </span>main.py
@@ -496,40 +275,39 @@ python<span class="w"> </span>main.py
 </div>
 </section>
 <section id="id6">
-<h2>モジュールの改善<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> モジュールは、クラスタリングモジュールを用いて担当地域内からランダムに探索対象を選択しています。
-そのため、以下のような問題があります。</p>
+<h2>Module Improvement<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> module randomly selects search targets within the assigned areas using the clustering module. As a result, the following issues arise:</p>
 <ul class="simple">
-<li><p>探索対象がステップごとに変わってしまう</p>
+<li><p>The search target changes with each step</p>
 <ul>
-<li><p>目標にたどり着く前に探索対象が変わってしまうため、なかなか目標にたどり着けない</p></li>
-<li><p>色んなところにランダムに探索対象を選択することで、効率的な探索ができない</p></li>
+<li><p>The search target changes before reaching the goal, making it difficult to reach the goal</p></li>
+<li><p>Randomly selecting search targets in various places makes efficient searching impossible</p></li>
 </ul>
 </li>
-<li><p>すでに探索したエンティティを再度探索対象として選択してしまうため、効率的な探索ができない</p></li>
-<li><p>近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう</p></li>
+<li><p>Selecting already searched entities as search targets again makes efficient searching impossible</p></li>
+<li><p>Selecting distant entities as search targets even though there are unexplored entities nearby</p></li>
 </ul>
-<p>などの問題があります。</p>
+<p>These are some of the issues.</p>
 </section>
 <section id="id7">
-<h2>課題<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> モジュールを改善し、より効率的な探索を行うモジュールを実装して見てください。</p>
+<h2>Challenges<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p>Improve the <code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> module and implement a module that performs more efficient searches.</p>
 <div class="admonition warning">
-<p class="admonition-title">警告</p>
-<p>ここに上げた問題以外にも、改善すべき点が存在すると思うので、それを改善していただいても構いません。</p>
+<p class="admonition-title">Warning</p>
+<p>There may be other points for improvement besides the issues listed here, so feel free to address them as well.</p>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">警告</p>
-<p>プログラム例のプログラムにも一部改善点があるので、余裕があったら修正してみてください。</p>
+<p class="admonition-title">Warning</p>
+<p>There are also some points for improvement in the example program, so try to fix them if you have time.</p>
 </div>
 <section id="id8">
-<h3>探索対象がステップごとに変わってしまう問題<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<h3>Issue of the search target changing with each step<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <div class="hint dropdown admonition">
-<p class="admonition-title">方針のヒント</p>
-<p>一度選択した探索対象に到達するまで、探索対象を変更しないようにする</p>
+<p class="admonition-title">Hints for the Approach</p>
+<p>Do not change the search target until the initially selected target is reached</p>
 </div>
 <div class="hint dropdown admonition">
-<p class="admonition-title">プログラム例</p>
+<p class="admonition-title">Example Program</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Search</span><span class="p">:</span>
         <span class="c1"># 自エージェントのエンティティIDを取得</span>
         <span class="n">me</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
@@ -564,13 +342,13 @@ python<span class="w"> </span>main.py
 </div>
 </section>
 <section id="id9">
-<h3>すでに探索したエンティティを再度探索対象として選択してしまう問題<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<h3>Issue of selecting already searched entities as search targets again<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <div class="hint dropdown admonition">
-<p class="admonition-title">方針のヒント</p>
-<p>すでに探索したエンティティを何かしらの方法で記録し、再度探索対象として選択しないようにする</p>
+<p class="admonition-title">Hints for the Approach</p>
+<p>Record already searched entities in some way to avoid selecting them as search targets again</p>
 </div>
 <div class="hint dropdown admonition">
-<p class="admonition-title">プログラム例</p>
+<p class="admonition-title">Example Program</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">agent_info</span><span class="p">:</span> <span class="n">AgentInfo</span><span class="p">,</span>
@@ -645,13 +423,13 @@ python<span class="w"> </span>main.py
 </div>
 </section>
 <section id="id10">
-<h3>近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<h3>Selecting distant entities as search targets even though there are unexplored entities nearby<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <div class="hint dropdown admonition">
-<p class="admonition-title">方針のヒント</p>
-<p>エンティティ間の距離を計算し、もっとも近いエンティティを探索対象として選択する</p>
+<p class="admonition-title">Hints for the Approach</p>
+<p>Calculate the distance between entities and select the closest entity as the search target</p>
 </div>
 <div class="hint dropdown admonition">
-<p class="admonition-title">プログラム例</p>
+<p class="admonition-title">Example Program</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Search</span><span class="p">:</span>
         <span class="c1"># 探索したいエンティティIDのリストが空の場合</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span>
@@ -702,105 +480,69 @@ python<span class="w"> </span>main.py
 </section>
 
 
-                </article>
-              
-
-              
-              
-              
-              
-                <footer class="prev-next-footer d-print-none">
-                  
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="clustering.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">前へ</p>
-        <p class="prev-next-title">クラスタリングモジュール</p>
-      </div>
-    </a>
-</div>
-                </footer>
-              
-            </div>
-            
-            
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> 目次
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">サーチモジュールの概要</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">サーチモジュールの実装の準備</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">モジュールの登録</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">モジュールの実装</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">モジュールの改善</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">課題</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">探索対象がステップごとに変わってしまう問題</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">すでに探索したエンティティを再度探索対象として選択してしまう問題</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう</a></li>
-</ul>
-</li>
-</ul>
-  </nav></div>
-
-</div></div>
-              
-            
+           </div>
           </div>
-          <footer class="bd-footer-content">
-            
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-<p class="component-author">
-著者 Haruki Uehara, Yuki Shimada
-</p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-
-  <p class="copyright">
-    
-      © Copyright 2024, Haruki Uehara, Yuki Shimada.
-      <br/>
-    
-  </p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-</div>
-          </footer>
-        
-
-      </main>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="clustering.html" class="btn btn-neutral float-left" title="Clustering Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
-  <footer class="bd-footer">
-  </footer>
-  </body>
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Haruki Uehara, Yuki Shimada.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div
+  class="rst-versions"
+  data-toggle="rst-versions"
+  role="note"
+  aria-label="versions"
+>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    Language: en
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    
+    <dl>
+      <dt>Languages</dt>
+      
+      <dd><a href="http://127.0.0.1:5500/docs/pages/index.html">en</a></dd>
+      
+      <dd><a href="http://127.0.0.1:5500/docs/pages/ja/index.html">ja</a></dd>
+      
+    </dl>
+    
+    <!-- 
+    <dl>
+      <dt>Versions</dt>
+      
+        <dd><a href="http://127.0.0.1:5500/docs/pages/index.html">latest</a></dd>
+      
+        <dd><a href="http://127.0.0.1:5500/docs/pages/1.0/en/index.html">1.0</a></dd>
+      
+        <dd><a href="http://127.0.0.1:5500/docs/pages/2.0/en/index.html">2.0</a></dd>
+      
+    </dl>
+    
+    <br>
+    </dl> -->
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

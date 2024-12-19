@@ -1,362 +1,143 @@
 
+
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-
-<html lang="ja" data-content_root="../" >
-
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>クラスタリングモジュール &#8212; adf-core-python 0.1.0 ドキュメント</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
-  </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
-  
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-  
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
-
-    <script src="../_static/documentation_options.js?v=2327a732"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script src="../_static/translations.js?v=4755f45a"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'hands-on/clustering';</script>
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="サーチモジュール" href="search.html" />
-    <link rel="prev" title="モジュールについて" href="../tutorial/module/module.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="ja"/>
-  <meta name="docsearch:version" content="" />
-  </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clustering Module &mdash; adf-core-python 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
 
   
-  
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Search Module" href="search.html" />
+    <link rel="prev" title="About Modules" href="../tutorial/module/module.html" /> 
+</head>
 
-  
-  <dialog id="pst-search-dialog">
-    
-<form class="bd-search d-flex align-items-center"
-      action="../search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search..."
-         aria-label="Search..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
 
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            adf-core-python
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
-
-  
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
-  
-
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
-      
-      
-      
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
-        
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-
-  
-    
-  
-
-<a class="navbar-brand logo" href="../index.html">
-  
-  
-  
-  
-  
-  
-    <p class="title logo__title">adf-core-python 0.1.0 ドキュメント</p>
-  
-</a></div>
-        <div class="sidebar-primary-item">
-
-<button class="btn search-button-field search-button__button pst-js-only" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">検索</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">インストール</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../install/environment/environment.html">環境構築</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../install/install/install.html">インストール</a></li>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install/environment/environment.html">Environment Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install/install.html">Installation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">クイックスタート</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../quickstart/quickstart.html">クイックスタート</a></li>
+<p class="caption" role="heading"><span class="caption-text">Quick Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart/quickstart.html">Quick Start</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">チュートリアル</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">環境構築</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">エージェントの作成</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">エージェントの制御</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">コンフィグについて</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">モジュールについて</a></li>
+<p class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">Environment Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">Agent Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">About Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">About Modules</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">ハンズオン</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">クラスタリングモジュール</a></li>
-<li class="toctree-l1"><a class="reference internal" href="search.html">サーチモジュール</a></li>
+<p class="caption" role="heading"><span class="caption-text">Hands-On</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Clustering Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Purpose of the Clustering Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Overview of the Clustering Module to Be Developed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Implementation of the Clustering Module</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">APIドキュメント</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../genindex.html">索引</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../py-modindex.html">モジュール索引</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../search.html">検索ページ</a></li>
-</ul>
-
-    </div>
-</nav></div>
-    </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-  </div>
-  
-  <div id="rtd-footer-container"></div>
-
-
-      </div>
-      
-      <main id="main-content" class="bd-main" role="main">
-        
-        
-
-<div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article d-print-none">
-<div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
-</button></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
-<div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="このページをダウンロード">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../_sources/hands-on/clustering.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="ソースファイルをダウンロード"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
 </li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="PDFに印刷"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="全画面モード"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
-
-
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
-</div></div>
-      
-    </div>
-  
-</div>
-</div>
-              
-              
-
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>クラスタリングモジュール</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
-            
-            <div>
-                <h2> 目次 </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">クラスタリングモジュールの目的</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">開発するクラスタリングモジュールの概要</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">クラスタリングモジュールの実装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search.html">Search Module</a></li>
 </ul>
-            </nav>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../py-modindex.html">Module Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../search.html">Search Page</a></li>
+</ul>
+
         </div>
-    </div>
-</div>
+      </div>
+    </nav>
 
-              
-                
-<div id="searchbox"></div>
-                <article class="bd-article">
-                  
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">adf-core-python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Clustering Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/hands-on/clustering.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="id1">
-<h1>クラスタリングモジュール<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>Clustering Module<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <section id="id2">
-<h2>クラスタリングモジュールの目的<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>複数のエージェントを動かす場合は、それらのエージェントにどのように協調させるかが重要になります。RRSでは多くのチームが、エージェントに各々の担当地域を持たせ役割分担をおこなう協調を取り入れています(他の手段による協調も取り入れています)。担当地域を割り振るためには、地図上のオブジェクトをいくつかのグループに分ける必要があります。このようなグループ分けをしてそれらを管理する場合には、クラスタリングモジュールと呼ばれるモジュールを用います。</p>
-<p>本資料では、多くの世界大会参加チームが使用しているアルゴリズムを用いたクラスタリングモジュールの実装をおこないます。</p>
+<h2>Purpose of the Clustering Module<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>When operating multiple agents, it is crucial to determine how to coordinate them. In RRS, many teams adopt coordination methods that assign each agent a designated area of responsibility (as well as other coordination methods). To assign these areas, objects on the map need to be divided into several groups. A module called the clustering module is used to manage these groupings.</p>
+<p>In this document, we will implement a clustering module using algorithms commonly employed by many teams participating in world championships.</p>
 </section>
 <section id="id3">
-<h2>開発するクラスタリングモジュールの概要<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>本資料で開発するモジュールは下の画像のように、</p>
+<h2>Overview of the Clustering Module to Be Developed<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>The module developed in this document, as shown in the image below,</p>
 <ol class="arabic simple">
-<li><p>k-means++アルゴリズムによって地図上のオブジェクトをエージェント数分の区画に分けます。</p></li>
-<li><p>Hungarianアルゴリズムによってそれらの区画とエージェントを (間の距離の総和が最も小さくなるように)1対1で結びつけます。</p></li>
+<li><p>Divides the objects on the map into sections equal to the number of agents using the k-means++ algorithm.</p></li>
+<li><p>Assigns the sections to the agents in a one-to-one manner using the Hungarian algorithm, minimizing the total distance between them.</p></li>
 </ol>
-<p><img alt="クラスタリングの画像" src="../_images/clustering_image.jpg" /></p>
+<p><img alt="Clustering Image" src="../_images/clustering_image.jpg" /></p>
 </section>
 <section id="id4">
-<h2>クラスタリングモジュールの実装<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2>Implementation of the Clustering Module<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <div class="admonition note">
-<p class="admonition-title">注釈</p>
-<p>以降の作業では、カレントディレクトリがプロジェクトのルートディレクトリであることを前提としています。</p>
+<p class="admonition-title">Note</p>
+<p>The following tasks assume that the current directory is the root directory of the project.</p>
 </div>
-<p>まず、クラスタリングモジュールを記述するためのファイルを作成します。</p>
+<p>First, create a file to write the clustering module.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>src/&lt;your_team_name&gt;/module/algorithm
 touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/algorithm/k_means_pp_clustering.py
 </pre></div>
 </div>
-<p>次に、クラスタリングモジュールの実装を行います。 以下のコードを <code class="docutils literal notranslate"><span class="pre">k_means_pp_clustering.py</span></code> に記述してください。</p>
+<p>Next, implement the clustering module. Write the following code into <code class="docutils literal notranslate"><span class="pre">k_means_pp_clustering.py</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">adf_core_python.core.agent.develop.develop_data</span> <span class="kn">import</span> <span class="n">DevelopData</span>
 <span class="kn">from</span> <span class="nn">adf_core_python.core.agent.info.agent_info</span> <span class="kn">import</span> <span class="n">AgentInfo</span>
@@ -618,9 +399,9 @@ touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/algorithm/k_means
         <span class="k">return</span> <span class="n">col_ind</span>
 </pre></div>
 </div>
-<p>k-means++の実装は、scikit-learnの<code class="docutils literal notranslate"><span class="pre">KMeans</span></code>クラスを使用しています。<code class="docutils literal notranslate"><span class="pre">KMeans</span></code>クラスは、<code class="docutils literal notranslate"><span class="pre">n_clusters</span></code>で指定したクラスター数によって地図上のオブジェクトをクラスタリングします。クラスタリング結果は、<code class="docutils literal notranslate"><span class="pre">labels_</span></code>属性に格納されます。また、<code class="docutils literal notranslate"><span class="pre">cluster_centers_</span></code>属性には各クラスターの中心座標が格納されます。</p>
-<p>hungarianアルゴリズムの実装は、scipyの<code class="docutils literal notranslate"><span class="pre">linear_sum_assignment</span></code>関数を使用しています。<code class="docutils literal notranslate"><span class="pre">linear_sum_assignment</span></code>関数は、コスト行列を引数として受け取り、最適な割り当てを行います。</p>
-<p>次に、作成したモジュールを登録します。<code class="docutils literal notranslate"><span class="pre">config/module.yaml</span></code> を以下のように編集してください。</p>
+<p>The implementation of k-means++ uses the <code class="docutils literal notranslate"><span class="pre">KMeans</span></code> class from scikit-learn. The <code class="docutils literal notranslate"><span class="pre">KMeans</span></code> class clusters objects on the map based on the number of clusters specified by <code class="docutils literal notranslate"><span class="pre">n_clusters</span></code>. The clustering results are stored in the <code class="docutils literal notranslate"><span class="pre">labels_</span></code> attribute, and the coordinates of each cluster center are stored in the <code class="docutils literal notranslate"><span class="pre">cluster_centers_</span></code> attribute.</p>
+<p>The implementation of the Hungarian algorithm uses the <code class="docutils literal notranslate"><span class="pre">linear_sum_assignment</span></code> function from scipy. The <code class="docutils literal notranslate"><span class="pre">linear_sum_assignment</span></code> function takes a cost matrix as an argument and performs optimal assignment.</p>
+<p>Next, register the created module. Edit <code class="docutils literal notranslate"><span class="pre">config/module.yaml</span></code> as follows.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">SampleSearch</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">PathPlanning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning</span>
 <span class="w">  </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.algorithm.k_means_pp_clustering.KMeansPPClustering</span>
@@ -629,147 +410,111 @@ touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/algorithm/k_means
 <span class="w">  </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.algorithm.k_means_pp_clustering.KMeansPPClustering</span>
 </pre></div>
 </div>
-<p>ターミナルを2つ起動します。</p>
-<p>片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します：</p>
+<p>Open two terminals.</p>
+<p>Open one terminal and start the simulation server with the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal A</span>
 <span class="nb">cd</span><span class="w"> </span>WORKING_DIR/rcrs-server/scripts
 ./start-comprun.sh<span class="w"> </span>-m<span class="w"> </span>../maps/tutorial_ambulance_team_only/map<span class="w"> </span>-c<span class="w"> </span>../maps/tutorial_ambulance_team_only/config
 </pre></div>
 </div>
-<p>その後、別のターミナルを開き、エージェントを起動します：</p>
+<p>Then open another terminal and start the agent:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal B</span>
 <span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
 python<span class="w"> </span>main.py
 </pre></div>
 </div>
-<p>エージェントが起動すると、標準出力にクラスタリング結果が表示されます。</p>
+<p>When the agent starts, the clustering results will be displayed in the standard output.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>info<span class="w">     </span><span class="o">]</span><span class="w"> </span>Clustered<span class="w"> </span>entities:<span class="w"> </span><span class="o">[[</span><span class="m">257</span>,<span class="w"> </span><span class="m">259</span>,<span class="w"> </span><span class="m">262</span>,<span class="w"> </span><span class="m">263</span>,<span class="w"> </span><span class="m">270</span>,<span class="w"> </span><span class="m">278</span>,<span class="w"> </span><span class="m">280</span>,<span class="w"> </span><span class="m">297</span>,<span class="w"> </span><span class="m">336</span>,<span class="w"> </span><span class="m">913</span>,<span class="w"> </span><span class="m">914</span>,<span class="w"> </span><span class="m">915</span>,<span class="w"> </span><span class="m">916</span>,<span class="w"> </span><span class="m">917</span>,<span class="w"> </span><span class="m">918</span>,<span class="w"> </span><span class="m">919</span>,<span class="w"> </span><span class="m">933</span>,<span class="w"> </span><span class="m">941</span>,<span class="w"> </span><span class="m">942</span>,<span class="w"> </span><span class="m">943</span>,<span class="w"> </span><span class="m">944</span>,<span class="w"> </span><span class="m">945</span>,<span class="w"> </span><span class="m">946</span>,<span class="w"> </span><span class="m">947</span>,<span class="w"> </span><span class="m">974</span>,<span class="w"> </span><span class="m">250</span>,<span class="w"> </span><span class="m">253</span><span class="o">]</span>,<span class="w"> </span><span class="o">[</span><span class="m">349</span>,<span class="w"> </span><span class="m">896</span>,<span class="w"> </span><span class="m">899</span>,<span class="w"> </span><span class="m">902</span>,<span class="w"> </span><span class="m">934</span>,<span class="w"> </span><span class="m">960</span>,<span class="w"> </span><span class="m">968</span>,<span class="w"> </span><span class="m">969</span>,<span class="w"> </span><span class="m">970</span>,<span class="w"> </span><span class="m">971</span>,<span class="w"> </span><span class="m">248</span>,<span class="w"> </span><span class="m">251</span><span class="o">]</span>,<span class="w"> </span><span class="o">[</span><span class="m">258</span>,<span class="w"> </span><span class="m">266</span>,<span class="w"> </span><span class="m">268</span>,<span class="w"> </span><span class="m">269</span>,<span class="w"> </span><span class="m">274</span>,<span class="w"> </span><span class="m">275</span>,<span class="w"> </span><span class="m">279</span>,<span class="w"> </span><span class="m">920</span>,<span class="w"> </span><span class="m">921</span>,<span class="w"> </span><span class="m">922</span>,<span class="w"> </span><span class="m">923</span>,<span class="w"> </span><span class="m">924</span>,<span class="w"> </span><span class="m">925</span>,<span class="w"> </span><span class="m">926</span>,<span class="w"> </span><span class="m">927</span>,<span class="w"> </span><span class="m">928</span>,<span class="w"> </span><span class="m">929</span>,<span class="w"> </span><span class="m">932</span>,<span class="w"> </span><span class="m">948</span>,<span class="w"> </span><span class="m">949</span>,<span class="w"> </span><span class="m">950</span>,<span class="w"> </span><span class="m">951</span>,<span class="w"> </span><span class="m">952</span>,<span class="w"> </span><span class="m">953</span>,<span class="w"> </span><span class="m">954</span>,<span class="w"> </span><span class="m">955</span>,<span class="w"> </span><span class="m">956</span>,<span class="w"> </span><span class="m">957</span>,<span class="w"> </span><span class="m">958</span>,<span class="w"> </span><span class="m">959</span>,<span class="w"> </span><span class="m">975</span>,<span class="w"> </span><span class="m">976</span>,<span class="w"> </span><span class="m">254</span>,<span class="w"> </span><span class="m">255</span><span class="o">]</span>,<span class="w"> </span><span class="o">[</span><span class="m">256</span>,<span class="w"> </span><span class="m">271</span>,<span class="w"> </span><span class="m">273</span>,<span class="w"> </span><span class="m">281</span>,<span class="w"> </span><span class="m">296</span>,<span class="w"> </span><span class="m">298</span>,<span class="w"> </span><span class="m">314</span>,<span class="w"> </span><span class="m">330</span>,<span class="w"> </span><span class="m">903</span>,<span class="w"> </span><span class="m">904</span>,<span class="w"> </span><span class="m">905</span>,<span class="w"> </span><span class="m">910</span>,<span class="w"> </span><span class="m">911</span>,<span class="w"> </span><span class="m">912</span>,<span class="w"> </span><span class="m">935</span>,<span class="w"> </span><span class="m">936</span>,<span class="w"> </span><span class="m">937</span>,<span class="w"> </span><span class="m">938</span>,<span class="w"> </span><span class="m">939</span>,<span class="w"> </span><span class="m">940</span>,<span class="w"> </span><span class="m">247</span>,<span class="w"> </span><span class="m">249</span><span class="o">]]</span><span class="w"> </span><span class="o">[</span>KMeansPPClustering<span class="o">]</span>
 <span class="o">[</span>info<span class="w">     </span><span class="o">]</span><span class="w"> </span>Agent<span class="w"> </span>cluster<span class="w"> </span>indices:<span class="w"> </span><span class="o">[([</span><span class="m">89544</span>,<span class="w"> </span><span class="m">19925</span><span class="o">]</span>,<span class="w"> </span><span class="m">1</span><span class="o">)</span>,<span class="w"> </span><span class="o">([</span><span class="m">69989</span>,<span class="w"> </span><span class="m">120063</span><span class="o">]</span>,<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span><span class="o">([</span><span class="m">130029</span>,<span class="w"> </span><span class="m">50380</span><span class="o">]</span>,<span class="w"> </span><span class="m">2</span><span class="o">)</span>,<span class="w"> </span><span class="o">([</span><span class="m">29898</span>,<span class="w"> </span><span class="m">59056</span><span class="o">]</span>,<span class="w"> </span><span class="m">3</span><span class="o">)]</span><span class="w"> </span><span class="o">[</span>KMeansPPClustering<span class="o">]</span>
 </pre></div>
 </div>
-<p>このままだと、クラスタリング結果がわかりにくいので、クラスタリング結果を地図上に表示してみましょう。</p>
-<p><a class="reference download internal" download="" href="../_downloads/3a5f9008a07336d7227e96be15803593/cluster_plot.zip"><code class="xref download docutils literal notranslate"><span class="pre">クラスターの可視化用スクリプト</span></code></a>をダウンロードして解凍し、中の<code class="docutils literal notranslate"><span class="pre">main.py</span></code>の以下の部分に</p>
+<p>As it is, the clustering results are not very clear, so let’s display the clustering results on the map.</p>
+<p><a class="reference download internal" download="" href="../_downloads/3a5f9008a07336d7227e96be15803593/cluster_plot.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">the</span> <span class="pre">cluster</span> <span class="pre">visualization</span> <span class="pre">script</span></code></a> and extract it. Then, in <code class="docutils literal notranslate"><span class="pre">main.py</span></code>, modify the following part.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># クラスタリング結果</span>
 <span class="n">clusters</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
-<p>出力の<code class="docutils literal notranslate"><span class="pre">Clustered</span> <span class="pre">entities:</span> </code>の後ろの部分の配列をコピーして貼り付けてください。</p>
-<p>例</p>
+<p>Copy the array after <code class="docutils literal notranslate"><span class="pre">Clustered</span> <span class="pre">entities:</span></code> in the output and paste it.</p>
+<p>Example</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># クラスタリング結果</span>
 <span class="n">clusters</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">257</span><span class="p">,</span> <span class="mi">259</span><span class="p">,</span> <span class="mi">262</span><span class="p">,</span> <span class="mi">263</span><span class="p">,</span> <span class="mi">270</span><span class="p">,</span> <span class="mi">278</span><span class="p">,</span> <span class="mi">280</span><span class="p">,</span> <span class="mi">297</span><span class="p">,</span> <span class="mi">336</span><span class="p">,</span> <span class="mi">913</span><span class="p">,</span> <span class="mi">914</span><span class="p">,</span> <span class="mi">915</span><span class="p">,</span> <span class="mi">916</span><span class="p">,</span> <span class="mi">917</span><span class="p">,</span> <span class="mi">918</span><span class="p">,</span> <span class="mi">919</span><span class="p">,</span> <span class="mi">933</span><span class="p">,</span> <span class="mi">941</span><span class="p">,</span> <span class="mi">942</span><span class="p">,</span> <span class="mi">943</span><span class="p">,</span> <span class="mi">944</span><span class="p">,</span> <span class="mi">945</span><span class="p">,</span> <span class="mi">946</span><span class="p">,</span> <span class="mi">947</span><span class="p">,</span> <span class="mi">974</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">253</span><span class="p">],</span> <span class="p">[</span><span class="mi">349</span><span class="p">,</span> <span class="mi">896</span><span class="p">,</span> <span class="mi">899</span><span class="p">,</span> <span class="mi">902</span><span class="p">,</span> <span class="mi">934</span><span class="p">,</span> <span class="mi">960</span><span class="p">,</span> <span class="mi">968</span><span class="p">,</span> <span class="mi">969</span><span class="p">,</span> <span class="mi">970</span><span class="p">,</span> <span class="mi">971</span><span class="p">,</span> <span class="mi">248</span><span class="p">,</span> <span class="mi">251</span><span class="p">],</span> <span class="p">[</span><span class="mi">258</span><span class="p">,</span> <span class="mi">266</span><span class="p">,</span> <span class="mi">268</span><span class="p">,</span> <span class="mi">269</span><span class="p">,</span> <span class="mi">274</span><span class="p">,</span> <span class="mi">275</span><span class="p">,</span> <span class="mi">279</span><span class="p">,</span> <span class="mi">920</span><span class="p">,</span> <span class="mi">921</span><span class="p">,</span> <span class="mi">922</span><span class="p">,</span> <span class="mi">923</span><span class="p">,</span> <span class="mi">924</span><span class="p">,</span> <span class="mi">925</span><span class="p">,</span> <span class="mi">926</span><span class="p">,</span> <span class="mi">927</span><span class="p">,</span> <span class="mi">928</span><span class="p">,</span> <span class="mi">929</span><span class="p">,</span> <span class="mi">932</span><span class="p">,</span> <span class="mi">948</span><span class="p">,</span> <span class="mi">949</span><span class="p">,</span> <span class="mi">950</span><span class="p">,</span> <span class="mi">951</span><span class="p">,</span> <span class="mi">952</span><span class="p">,</span> <span class="mi">953</span><span class="p">,</span> <span class="mi">954</span><span class="p">,</span> <span class="mi">955</span><span class="p">,</span> <span class="mi">956</span><span class="p">,</span> <span class="mi">957</span><span class="p">,</span> <span class="mi">958</span><span class="p">,</span> <span class="mi">959</span><span class="p">,</span> <span class="mi">975</span><span class="p">,</span> <span class="mi">976</span><span class="p">,</span> <span class="mi">254</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span> <span class="p">[</span><span class="mi">256</span><span class="p">,</span> <span class="mi">271</span><span class="p">,</span> <span class="mi">273</span><span class="p">,</span> <span class="mi">281</span><span class="p">,</span> <span class="mi">296</span><span class="p">,</span> <span class="mi">298</span><span class="p">,</span> <span class="mi">314</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">903</span><span class="p">,</span> <span class="mi">904</span><span class="p">,</span> <span class="mi">905</span><span class="p">,</span> <span class="mi">910</span><span class="p">,</span> <span class="mi">911</span><span class="p">,</span> <span class="mi">912</span><span class="p">,</span> <span class="mi">935</span><span class="p">,</span> <span class="mi">936</span><span class="p">,</span> <span class="mi">937</span><span class="p">,</span> <span class="mi">938</span><span class="p">,</span> <span class="mi">939</span><span class="p">,</span> <span class="mi">940</span><span class="p">,</span> <span class="mi">247</span><span class="p">,</span> <span class="mi">249</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>貼り付けたら、以下のコマンドを実行してください。</p>
+<p>After pasting, execute the following command.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 python<span class="w"> </span>main.py
 </pre></div>
 </div>
-<p>以下のような画像が出力されます。</p>
-<p><img alt="クラスタリングの画像" src="../_images/cluster.png" /></p>
+<p>An image like the one below will be output.</p>
+<p><img alt="Clustering Image" src="../_images/cluster.png" /></p>
 </section>
 </section>
 
 
-                </article>
-              
-
-              
-              
-              
-              
-                <footer class="prev-next-footer d-print-none">
-                  
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="../tutorial/module/module.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">前へ</p>
-        <p class="prev-next-title">モジュールについて</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="search.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">次へ</p>
-        <p class="prev-next-title">サーチモジュール</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
-</div>
-                </footer>
-              
-            </div>
-            
-            
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> 目次
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">クラスタリングモジュールの目的</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">開発するクラスタリングモジュールの概要</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">クラスタリングモジュールの実装</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
-              
-            
+           </div>
           </div>
-          <footer class="bd-footer-content">
-            
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-<p class="component-author">
-著者 Haruki Uehara, Yuki Shimada
-</p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-
-  <p class="copyright">
-    
-      © Copyright 2024, Haruki Uehara, Yuki Shimada.
-      <br/>
-    
-  </p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-</div>
-          </footer>
-        
-
-      </main>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../tutorial/module/module.html" class="btn btn-neutral float-left" title="About Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="search.html" class="btn btn-neutral float-right" title="Search Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
-  <footer class="bd-footer">
-  </footer>
-  </body>
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Haruki Uehara, Yuki Shimada.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div
+  class="rst-versions"
+  data-toggle="rst-versions"
+  role="note"
+  aria-label="versions"
+>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    Language: en
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    
+    <dl>
+      <dt>Languages</dt>
+      
+      <dd><a href="http://127.0.0.1:5500/docs/pages/index.html">en</a></dd>
+      
+      <dd><a href="http://127.0.0.1:5500/docs/pages/ja/index.html">ja</a></dd>
+      
+    </dl>
+    
+    <!-- 
+    <dl>
+      <dt>Versions</dt>
+      
+        <dd><a href="http://127.0.0.1:5500/docs/pages/index.html">latest</a></dd>
+      
+        <dd><a href="http://127.0.0.1:5500/docs/pages/1.0/en/index.html">1.0</a></dd>
+      
+        <dd><a href="http://127.0.0.1:5500/docs/pages/2.0/en/index.html">2.0</a></dd>
+      
+    </dl>
+    
+    <br>
+    </dl> -->
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

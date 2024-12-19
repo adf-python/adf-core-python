@@ -1,0 +1,552 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>サーチモジュール &mdash; adf-core-python 0.1.0 ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=98e9f989"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="prev" title="クラスタリングモジュール" href="clustering.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            adf-core-python
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">インストール</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install/environment/environment.html">環境構築</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install/install.html">インストール</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">クイックスタート</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart/quickstart.html">クイックスタート</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">チュートリアル</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">環境構築</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">エージェントの作成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">エージェントの制御</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">コンフィグについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">モジュールについて</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ハンズオン</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">クラスタリングモジュール</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">サーチモジュール</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">サーチモジュールの概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">サーチモジュールの実装の準備</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">モジュールの登録</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">モジュールの実装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">モジュールの改善</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">課題</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">探索対象がステップごとに変わってしまう問題</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">すでに探索したエンティティを再度探索対象として選択してしまう問題</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">APIドキュメント</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../py-modindex.html">モジュール索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../search.html">検索ページ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">adf-core-python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">サーチモジュール</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/hands-on/search.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>サーチモジュール<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<section id="id2">
+<h2>サーチモジュールの概要<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>今回開発するモジュールは、<code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> モジュールを用いた情報探索対象決定 (<code class="docutils literal notranslate"><span class="pre">Search</span></code>) モジュールです。 クラスタリングモジュールによってエージェント間で担当地域の分割をおこない、 担当地域内からランダムに探索対象として選択します。</p>
+</section>
+<section id="id3">
+<h2>サーチモジュールの実装の準備<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>以降の作業では、カレントディレクトリがプロジェクトのルートディレクトリであることを前提としています。</p>
+</div>
+<p>まず、サーチモジュールを記述するためのファイルを作成します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/complex/k_means_pp_search.py
+</pre></div>
+</div>
+<p>次に、サーチモジュールの実装を行います。 以下のコードを <code class="docutils literal notranslate"><span class="pre">k_means_pp_search.py</span></code> に記述してください。
+これが今回実装するサーチモジュールの雛形になります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">cast</span>
+
+<span class="kn">from</span> <span class="nn">rcrs_core.entities.building</span> <span class="kn">import</span> <span class="n">Building</span>
+<span class="kn">from</span> <span class="nn">rcrs_core.entities.entity</span> <span class="kn">import</span> <span class="n">Entity</span>
+<span class="kn">from</span> <span class="nn">rcrs_core.entities.refuge</span> <span class="kn">import</span> <span class="n">Refuge</span>
+<span class="kn">from</span> <span class="nn">rcrs_core.worldmodel.entityID</span> <span class="kn">import</span> <span class="n">EntityID</span>
+
+<span class="kn">from</span> <span class="nn">adf_core_python.core.agent.develop.develop_data</span> <span class="kn">import</span> <span class="n">DevelopData</span>
+<span class="kn">from</span> <span class="nn">adf_core_python.core.agent.info.agent_info</span> <span class="kn">import</span> <span class="n">AgentInfo</span>
+<span class="kn">from</span> <span class="nn">adf_core_python.core.agent.info.scenario_info</span> <span class="kn">import</span> <span class="n">ScenarioInfo</span>
+<span class="kn">from</span> <span class="nn">adf_core_python.core.agent.info.world_info</span> <span class="kn">import</span> <span class="n">WorldInfo</span>
+<span class="kn">from</span> <span class="nn">adf_core_python.core.agent.module.module_manager</span> <span class="kn">import</span> <span class="n">ModuleManager</span>
+<span class="kn">from</span> <span class="nn">adf_core_python.core.component.module.algorithm.clustering</span> <span class="kn">import</span> <span class="n">Clustering</span>
+<span class="kn">from</span> <span class="nn">adf_core_python.core.component.module.complex.search</span> <span class="kn">import</span> <span class="n">Search</span>
+<span class="kn">from</span> <span class="nn">adf_core_python.core.logger.logger</span> <span class="kn">import</span> <span class="n">get_agent_logger</span>
+
+
+<span class="k">class</span> <span class="nc">KMeansPPSearch</span><span class="p">(</span><span class="n">Search</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">agent_info</span><span class="p">:</span> <span class="n">AgentInfo</span><span class="p">,</span>
+        <span class="n">world_info</span><span class="p">:</span> <span class="n">WorldInfo</span><span class="p">,</span>
+        <span class="n">scenario_info</span><span class="p">:</span> <span class="n">ScenarioInfo</span><span class="p">,</span>
+        <span class="n">module_manager</span><span class="p">:</span> <span class="n">ModuleManager</span><span class="p">,</span>
+        <span class="n">develop_data</span><span class="p">:</span> <span class="n">DevelopData</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">agent_info</span><span class="p">,</span> <span class="n">world_info</span><span class="p">,</span> <span class="n">scenario_info</span><span class="p">,</span> <span class="n">module_manager</span><span class="p">,</span> <span class="n">develop_data</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># ロガーの取得</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">get_agent_logger</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Search</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">get_target_entity_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>モジュールの登録<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>次に、作成したモジュールを登録します。
+以下のように<code class="docutils literal notranslate"><span class="pre">config/module.yaml</span></code>の該当箇所を変更してください</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">DefaultTacticsAmbulanceTeam</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Search</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.k_means_pp_search.KMeansPPSearch</span>
+
+<span class="nt">DefaultTacticsFireBrigade</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Search</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.k_means_pp_search.KMeansPPSearch</span>
+
+<span class="nt">DefaultTacticsPoliceForce</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Search</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.k_means_pp_search.KMeansPPSearch</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>モジュールの実装<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>まず、<code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> モジュールを呼び出せるようにします。</p>
+<p>以下のコードを<code class="docutils literal notranslate"><span class="pre">config/module.yaml</span></code>に追記してください。</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">KMeansPPSearch</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.algorithm.k_means_pp_clustering.KMeansPPClustering</span>
+</pre></div>
+</div>
+<p>次に、<code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> モジュールで <code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> モジュールを呼び出せるようにします。</p>
+<p>以下のコードを <code class="docutils literal notranslate"><span class="pre">k_means_pp_search.py</span></code> に追記してください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">KMeansPPSearch</span><span class="p">(</span><span class="n">Search</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">agent_info</span><span class="p">:</span> <span class="n">AgentInfo</span><span class="p">,</span>
+        <span class="n">world_info</span><span class="p">:</span> <span class="n">WorldInfo</span><span class="p">,</span>
+        <span class="n">scenario_info</span><span class="p">:</span> <span class="n">ScenarioInfo</span><span class="p">,</span>
+        <span class="n">module_manager</span><span class="p">:</span> <span class="n">ModuleManager</span><span class="p">,</span>
+        <span class="n">develop_data</span><span class="p">:</span> <span class="n">DevelopData</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">agent_info</span><span class="p">,</span> <span class="n">world_info</span><span class="p">,</span> <span class="n">scenario_info</span><span class="p">,</span> <span class="n">module_manager</span><span class="p">,</span> <span class="n">develop_data</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        
+        <span class="c1"># ロガーの取得</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">get_agent_logger</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># クラスタリングモジュールの読み込み</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="p">:</span> <span class="n">Clustering</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
+            <span class="n">Clustering</span><span class="p">,</span>
+            <span class="n">module_manager</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span>
+                <span class="c1"># config.yamlに登録したkey</span>
+                <span class="s2">&quot;KMeansPPSearch.Clustering&quot;</span><span class="p">,</span>
+                <span class="c1"># 上記のkeyが登録されていなかった場合のデフォルトモジュール</span>
+                <span class="s2">&quot;adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="c1"># クラスタリングモジュールの登録</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_sub_module</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>そして、<code class="docutils literal notranslate"><span class="pre">calculate</span></code> メソッドでクラスタリングモジュールを呼び出し、探索対象を決定するように変更します。</p>
+<p>以下のコードを <code class="docutils literal notranslate"><span class="pre">k_means_pp_search.py</span></code> に追記してください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Search</span><span class="p">:</span>
+        <span class="c1"># 自エージェントのエンティティIDを取得</span>
+        <span class="n">me</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
+        <span class="c1"># 自エージェントが所属するクラスターのインデックスを取得</span>
+        <span class="n">allocated_cluster_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="o">.</span><span class="n">get_cluster_index</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+        <span class="c1"># クラスター内のエンティティIDを取得</span>
+        <span class="n">cluster_entity_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="o">.</span><span class="n">get_cluster_entity_ids</span><span class="p">(</span>
+            <span class="n">allocated_cluster_index</span>
+        <span class="p">)</span>
+        <span class="c1"># 乱数で選択</span>
+        <span class="k">if</span> <span class="n">cluster_entity_ids</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">cluster_entity_ids</span><span class="p">)</span>
+        
+        <span class="c1"># ログ出力</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Target entity ID: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="bp">self</span>
+</pre></div>
+</div>
+<p>以上で、<code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> モジュールを用いた <code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> モジュールの実装が完了しました。</p>
+<p>ターミナルを2つ起動します。</p>
+<p>片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal A</span>
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/rcrs-server/scripts
+./start-comprun.sh<span class="w"> </span>-m<span class="w"> </span>../maps/tutorial_ambulance_team_only/map<span class="w"> </span>-c<span class="w"> </span>../maps/tutorial_ambulance_team_only/config
+</pre></div>
+</div>
+<p>その後、別のターミナルを開き、エージェントを起動します：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal B</span>
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
+python<span class="w"> </span>main.py
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2>モジュールの改善<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> モジュールは、クラスタリングモジュールを用いて担当地域内からランダムに探索対象を選択しています。
+そのため、以下のような問題があります。</p>
+<ul class="simple">
+<li><p>探索対象がステップごとに変わってしまう</p>
+<ul>
+<li><p>目標にたどり着く前に探索対象が変わってしまうため、なかなか目標にたどり着けない</p></li>
+<li><p>色んなところにランダムに探索対象を選択することで、効率的な探索ができない</p></li>
+</ul>
+</li>
+<li><p>すでに探索したエンティティを再度探索対象として選択してしまうため、効率的な探索ができない</p></li>
+<li><p>近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう</p></li>
+</ul>
+<p>などの問題があります。</p>
+</section>
+<section id="id7">
+<h2>課題<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> モジュールを改善し、より効率的な探索を行うモジュールを実装して見てください。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>ここに上げた問題以外にも、改善すべき点が存在すると思うので、それを改善していただいても構いません。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>プログラム例のプログラムにも一部改善点があるので、余裕があったら修正してみてください。</p>
+</div>
+<section id="id8">
+<h3>探索対象がステップごとに変わってしまう問題<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<div class="hint dropdown admonition">
+<p class="admonition-title">方針のヒント</p>
+<p>一度選択した探索対象に到達するまで、探索対象を変更しないようにする</p>
+</div>
+<div class="hint dropdown admonition">
+<p class="admonition-title">プログラム例</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Search</span><span class="p">:</span>
+        <span class="c1"># 自エージェントのエンティティIDを取得</span>
+        <span class="n">me</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
+        <span class="c1"># 自エージェントが所属するクラスターのインデックスを取得</span>
+        <span class="n">allocated_cluster_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="o">.</span><span class="n">get_cluster_index</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+        <span class="c1"># クラスター内のエンティティIDを取得</span>
+        <span class="n">cluster_entity_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="o">.</span><span class="n">get_cluster_entity_ids</span><span class="p">(</span>
+            <span class="n">allocated_cluster_index</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 探索対象をすでに選んでいる場合</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">:</span>
+            <span class="c1"># 自エージェントのいる場所のエンティティIDを取得</span>
+            <span class="n">my_position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_position_entity_id</span><span class="p">()</span>
+            <span class="c1"># 探索対象の場所のエンティティIDを取得</span>
+            <span class="n">target_position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entity_position</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">)</span>
+            <span class="c1"># 自エージェントのいる場所と探索対象の場所が一致している場合、探索対象をリセット</span>
+            <span class="k">if</span> <span class="n">my_position</span> <span class="o">==</span> <span class="n">target_position</span><span class="p">:</span>
+                <span class="c1"># 探索対象をリセット</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># 探索対象が未選択の場合</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="ow">and</span> <span class="n">cluster_entity_ids</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">cluster_entity_ids</span><span class="p">)</span>
+        
+        <span class="c1"># ログ出力</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Target entity ID: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id9">
+<h3>すでに探索したエンティティを再度探索対象として選択してしまう問題<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<div class="hint dropdown admonition">
+<p class="admonition-title">方針のヒント</p>
+<p>すでに探索したエンティティを何かしらの方法で記録し、再度探索対象として選択しないようにする</p>
+</div>
+<div class="hint dropdown admonition">
+<p class="admonition-title">プログラム例</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">agent_info</span><span class="p">:</span> <span class="n">AgentInfo</span><span class="p">,</span>
+        <span class="n">world_info</span><span class="p">:</span> <span class="n">WorldInfo</span><span class="p">,</span>
+        <span class="n">scenario_info</span><span class="p">:</span> <span class="n">ScenarioInfo</span><span class="p">,</span>
+        <span class="n">module_manager</span><span class="p">:</span> <span class="n">ModuleManager</span><span class="p">,</span>
+        <span class="n">develop_data</span><span class="p">:</span> <span class="n">DevelopData</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">agent_info</span><span class="p">,</span> <span class="n">world_info</span><span class="p">,</span> <span class="n">scenario_info</span><span class="p">,</span> <span class="n">module_manager</span><span class="p">,</span> <span class="n">develop_data</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># ロガーの取得</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">get_agent_logger</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># クラスタリングモジュールの読み込み</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="p">:</span> <span class="n">Clustering</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
+            <span class="n">Clustering</span><span class="p">,</span>
+            <span class="n">module_manager</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span>
+                <span class="c1"># config.yamlに登録したkey</span>
+                <span class="s2">&quot;KMeansPPSearch.Clustering&quot;</span><span class="p">,</span>
+                <span class="c1"># 上記のkeyが登録されていなかった場合のデフォルトモジュール</span>
+                <span class="s2">&quot;adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering&quot;</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="c1"># クラスタリングモジュールの要録</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_sub_module</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="p">)</span>
+
+        <span class="c1"># 探索したいエンティティIDのリスト(追加)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Search</span><span class="p">:</span>
+        <span class="c1"># 探索したいエンティティIDのリストが空の場合</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span>
+            <span class="c1"># 自エージェントのエンティティIDを取得</span>
+            <span class="n">me</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
+            <span class="c1"># 自エージェントが所属するクラスターのインデックスを取得</span>
+            <span class="n">allocated_cluster_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="o">.</span><span class="n">get_cluster_index</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+            <span class="c1"># クラスター内のエンティティIDを取得(変更)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="o">.</span><span class="n">get_cluster_entity_ids</span><span class="p">(</span><span class="n">allocated_cluster_index</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="c1"># 探索対象をすでに選んでいる場合</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">:</span>
+            <span class="c1"># 自エージェントのいる場所のエンティティIDを取得</span>
+            <span class="n">my_position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_position_entity_id</span><span class="p">()</span>
+            <span class="c1"># 探索対象の場所のエンティティIDを取得</span>
+            <span class="n">target_position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entity_position</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">)</span>
+            <span class="c1"># 自エージェントのいる場所と探索対象の場所が一致している場合、探索対象をリセット</span>
+            <span class="k">if</span> <span class="n">my_position</span> <span class="o">==</span> <span class="n">target_position</span><span class="p">:</span>
+                <span class="c1"># 探索したいエンティティIDのリストから探索対象を削除</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">)</span>
+                <span class="c1"># 探索対象をリセット</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># 探索対象が未選択の場合(変更)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">)</span>
+        
+        <span class="c1"># ログ出力</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Target entity ID: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id10">
+<h3>近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<div class="hint dropdown admonition">
+<p class="admonition-title">方針のヒント</p>
+<p>エンティティ間の距離を計算し、もっとも近いエンティティを探索対象として選択する</p>
+</div>
+<div class="hint dropdown admonition">
+<p class="admonition-title">プログラム例</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Search</span><span class="p">:</span>
+        <span class="c1"># 探索したいエンティティIDのリストが空の場合</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span>
+            <span class="c1"># 自エージェントのエンティティIDを取得</span>
+            <span class="n">me</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
+            <span class="c1"># 自エージェントが所属するクラスターのインデックスを取得</span>
+            <span class="n">allocated_cluster_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="o">.</span><span class="n">get_cluster_index</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+            <span class="c1"># クラスター内のエンティティIDを取得</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="o">.</span><span class="n">get_cluster_entity_ids</span><span class="p">(</span><span class="n">allocated_cluster_index</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="c1"># 探索対象をすでに選んでいる場合</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">:</span>
+            <span class="c1"># 自エージェントのいる場所のエンティティIDを取得</span>
+            <span class="n">my_position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_position_entity_id</span><span class="p">()</span>
+            <span class="c1"># 探索対象の場所のエンティティIDを取得</span>
+            <span class="n">target_position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entity_position</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">)</span>
+            <span class="c1"># 自エージェントのいる場所と探索対象の場所が一致している場合、探索対象をリセット</span>
+            <span class="k">if</span> <span class="n">my_position</span> <span class="o">==</span> <span class="n">target_position</span><span class="p">:</span>
+                <span class="c1"># 探索したいエンティティIDのリストから探索対象を削除</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">)</span>
+                <span class="c1"># 探索対象をリセット</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># 探索対象が未選択の場合</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span>
+            <span class="n">nearest_entity_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">nearest_distance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+            <span class="n">me</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
+            <span class="c1"># 探索対象の中で自エージェントに最も近いエンティティIDを選択(変更)</span>
+            <span class="k">for</span> <span class="n">entity_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_entity_ids</span><span class="p">:</span>
+                <span class="n">distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_distance</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">entity_id</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">nearest_distance</span><span class="p">:</span>
+                    <span class="n">nearest_entity_id</span> <span class="o">=</span> <span class="n">entity_id</span>
+                    <span class="n">nearest_distance</span> <span class="o">=</span> <span class="n">distance</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="n">nearest_entity_id</span>
+        
+        <span class="c1"># ログ出力</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Target entity ID: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="clustering.html" class="btn btn-neutral float-left" title="クラスタリングモジュール" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Haruki Uehara, Yuki Shimada.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div
+  class="rst-versions"
+  data-toggle="rst-versions"
+  role="note"
+  aria-label="versions"
+>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    Language: ja
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    
+    <dl>
+      <dt>Languages</dt>
+      
+      <dd><a href="http://127.0.0.1:5500/docs/pages/index.html">en</a></dd>
+      
+      <dd><a href="http://127.0.0.1:5500/docs/pages/ja/index.html">ja</a></dd>
+      
+    </dl>
+    
+    <!-- 
+    <dl>
+      <dt>Versions</dt>
+      
+        <dd><a href="http://127.0.0.1:5500/docs/pages/ja/index.html">latest</a></dd>
+      
+        <dd><a href="http://127.0.0.1:5500/docs/pages/1.0/ja/index.html">1.0</a></dd>
+      
+        <dd><a href="http://127.0.0.1:5500/docs/pages/2.0/ja/index.html">2.0</a></dd>
+      
+    </dl>
+    
+    <br>
+    </dl> -->
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
