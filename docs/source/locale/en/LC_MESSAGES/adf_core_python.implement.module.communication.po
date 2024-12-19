@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Haruki Uehara, Yuki Shimada
+# This file is distributed under the same license as the adf-core-python
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: adf-core-python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-19 13:59+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../source/adf_core_python.implement.module.communication.rst:2
+msgid "adf\\_core\\_python.implement.module.communication package"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.communication.rst:5
+msgid "Submodules"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.communication.rst:8
+msgid ""
+"adf\\_core\\_python.implement.module.communication.default\\_channel\\_subscriber"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.communication.channel_subscriber.ChannelSubscriber`"
+msgstr ""
+
+#: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber.subscribe:1
+#: of
+msgid "Subscribe to the channel."
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.communication.rst
+msgid "Parameters"
+msgstr ""
+
+#: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber.subscribe:3
+#: of
+msgid "The agent info."
+msgstr ""
+
+#: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber.subscribe:5
+#: of
+msgid "The world info."
+msgstr ""
+
+#: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber.subscribe:7
+#: of
+msgid "The scenario info."
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.communication.rst
+msgid "Returns"
+msgstr ""
+
+#: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber.subscribe:10
+#: of
+msgid "The list of subscribed channels."
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.communication.rst
+msgid "Return type"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.communication.rst:16
+msgid ""
+"adf\\_core\\_python.implement.module.communication.default\\_message\\_coordinator"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.module.communication.default_message_coordinator.DefaultMessageCoordinator:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.communication.message_coordinator.MessageCoordinator`"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.communication.rst:24
+msgid "Module contents"
+msgstr ""
+

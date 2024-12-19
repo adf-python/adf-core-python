@@ -54,13 +54,11 @@ jobs:
       - name: Build documentation
         run: |
           source .venv/bin/activate
-          sphinx-apidoc -f -o ./docs/source ./adf_core_python
           cd docs
-          make html
-          ls build/html
+          python build.py
 
       - name: Deploy documentation
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/build/html
+          publish_dir: ./docs/pages

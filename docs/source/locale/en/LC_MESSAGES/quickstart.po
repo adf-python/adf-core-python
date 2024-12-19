@@ -1,0 +1,77 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Haruki Uehara, Yuki Shimada
+# This file is distributed under the same license as the adf-core-python
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: adf-core-python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-19 13:59+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../source/quickstart/quickstart.md:1
+msgid "クイックスタート"
+msgstr "Quick Start"
+
+#: ../../source/quickstart/quickstart.md:3
+msgid "前提条件"
+msgstr "Prerequisites"
+
+#: ../../source/quickstart/quickstart.md:5
+msgid "インストールする前に、以下の前提条件を確認してください："
+msgstr "Before installing, please check the following prerequisites:"
+
+#: ../../source/quickstart/quickstart.md:7
+msgid "Python 3.12 以上"
+msgstr "Python 3.12 or higher"
+
+#: ../../source/quickstart/quickstart.md:8
+msgid "pip"
+msgstr "pip"
+
+#: ../../source/quickstart/quickstart.md:10
+msgid "パッケージのインストール"
+msgstr "Package Installation"
+
+#: ../../source/quickstart/quickstart.md:12
+msgid "パッケージをインストールするには、次のコマンドを実行します："
+msgstr "To install the package, run the following command:"
+
+#: ../../source/quickstart/quickstart.md:18
+msgid "新規エージェントの作成"
+msgstr "Creating a New Agent"
+
+#: ../../source/quickstart/quickstart.md:20
+msgid "新規エージェントを作成するには、次のコマンドを実行します："
+msgstr "To create a new agent, run the following command:"
+
+#: ../../source/quickstart/quickstart.md:26
+msgid "実行すると、下記のような対話形式のプロンプトが表示されます："
+msgstr "When executed, an interactive prompt like the one below will be displayed:"
+
+#: ../../source/quickstart/quickstart.md:33
+msgid "入力後、下記のようなエージェントのテンプレートがカレントディレクトリに作成されます。"
+msgstr "After input, an agent template like the one below will be created in the current directory."
+
+#: ../../source/quickstart/quickstart.md:55
+msgid "エージェントを実行する"
+msgstr "Running the Agent"
+
+#: ../../source/quickstart/quickstart.md:57
+msgid "エージェントを実行するには、シミュレーションサーバーを起動し、次のコマンドを実行します："
+msgstr "To run the agent, start the simulation server and run the following command:"
+
+#: ../../source/quickstart/quickstart.md:63
+msgid "エージェントの実行が開始され、シミュレーションサーバーとの通信が開始されます。"
+msgstr "The agent execution will start, and communication with the simulation server will begin."

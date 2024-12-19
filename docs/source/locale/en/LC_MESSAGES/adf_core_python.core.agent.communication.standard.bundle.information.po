@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Haruki Uehara, Yuki Shimada
+# This file is distributed under the same license as the adf-core-python
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: adf-core-python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-19 13:59+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../source/adf_core_python.core.agent.communication.standard.bundle.information.rst:2
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.information "
+"package"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.communication.standard.bundle.information.rst:5
+msgid "Submodules"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.communication.standard.bundle.information.rst:8
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.information.message\\_ambulance\\_team"
+" module"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam:1
+#: adf_core_python.core.agent.communication.standard.bundle.information.message_building.MessageBuilding:1
+#: adf_core_python.core.agent.communication.standard.bundle.information.message_civilian.MessageCivilian:1
+#: adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade:1
+#: adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce:1
+#: adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage`"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.communication.standard.bundle.information.rst:16
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.information.message\\_building"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.communication.standard.bundle.information.rst:24
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.information.message\\_civilian"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.communication.standard.bundle.information.rst:32
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.information.message\\_fire\\_brigade"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.communication.standard.bundle.information.rst:40
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.information.message\\_police\\_force"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.communication.standard.bundle.information.rst:48
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.information.message\\_road"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.communication.standard.bundle.information.rst:56
+msgid "Module contents"
+msgstr ""
+

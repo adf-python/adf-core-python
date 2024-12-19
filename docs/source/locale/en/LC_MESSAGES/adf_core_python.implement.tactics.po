@@ -1,0 +1,112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Haruki Uehara, Yuki Shimada
+# This file is distributed under the same license as the adf-core-python
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: adf-core-python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-19 13:59+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../source/adf_core_python.implement.tactics.rst:2
+msgid "adf\\_core\\_python.implement.tactics package"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.tactics.rst:5
+msgid "Submodules"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.tactics.rst:8
+msgid ""
+"adf\\_core\\_python.implement.tactics.default\\_tactics\\_ambulance\\_center"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.tactics.default_tactics_ambulance_center.DefaultTacticsAmbulanceCenter:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.tactics.tactics_ambulance_center.TacticsAmbulanceCenter`"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.tactics.rst:16
+msgid ""
+"adf\\_core\\_python.implement.tactics.default\\_tactics\\_ambulance\\_team"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.tactics.default_tactics_ambulance_team.DefaultTacticsAmbulanceTeam:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.tactics.tactics_ambulance_team.TacticsAmbulanceTeam`"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.tactics.rst:24
+msgid ""
+"adf\\_core\\_python.implement.tactics.default\\_tactics\\_fire\\_brigade "
+"module"
+msgstr ""
+
+#: adf_core_python.implement.tactics.default_tactics_fire_brigade.DefaultTacticsFireBrigade:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.tactics.tactics_fire_brigade.TacticsFireBrigade`"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.tactics.rst:32
+msgid ""
+"adf\\_core\\_python.implement.tactics.default\\_tactics\\_fire\\_station "
+"module"
+msgstr ""
+
+#: adf_core_python.implement.tactics.default_tactics_fire_station.DefaultTacticsFireStation:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.tactics.tactics_fire_station.TacticsFireStation`"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.tactics.rst:40
+msgid ""
+"adf\\_core\\_python.implement.tactics.default\\_tactics\\_police\\_force "
+"module"
+msgstr ""
+
+#: adf_core_python.implement.tactics.default_tactics_police_force.DefaultTacticsPoliceForce:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.tactics.tactics_police_force.TacticsPoliceForce`"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.tactics.rst:48
+msgid ""
+"adf\\_core\\_python.implement.tactics.default\\_tactics\\_police\\_office"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.tactics.default_tactics_police_office.DefaultTacticsPoliceOffice:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.tactics.tactics_police_office.TacticsPoliceOffice`"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.tactics.rst:56
+msgid "Module contents"
+msgstr ""
+

@@ -1,0 +1,48 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Haruki Uehara, Yuki Shimada
+# This file is distributed under the same license as the adf-core-python
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: adf-core-python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-19 13:59+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../source/adf_core_python.core.agent.action.police.rst:2
+msgid "adf\\_core\\_python.core.agent.action.police package"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.action.police.rst:5
+msgid "Submodules"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.action.police.rst:8
+msgid "adf\\_core\\_python.core.agent.action.police.action\\_clear module"
+msgstr ""
+
+#: adf_core_python.core.agent.action.police.action_clear.ActionClear:1
+#: adf_core_python.core.agent.action.police.action_clear_area.ActionClearArea:1
+#: of
+msgid "Bases: :py:class:`~adf_core_python.core.agent.action.action.Action`"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.action.police.rst:16
+msgid "adf\\_core\\_python.core.agent.action.police.action\\_clear\\_area module"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.action.police.rst:24
+msgid "Module contents"
+msgstr ""
+
