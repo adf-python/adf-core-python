@@ -2,8 +2,9 @@ from __future__ import annotations
 
 import time
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING, Any, Optional
+from typing import TYPE_CHECKING, Optional
 
+from adf_core_python.core.component.centralized.command_executor import CommandExecutor
 from adf_core_python.core.logger.logger import get_agent_logger
 
 if TYPE_CHECKING:
@@ -24,7 +25,7 @@ class TacticsAgent(ABC):
         self._parent = parent
         self._modules: list[AbstractModule] = []
         self._actions: list[ExtendAction] = []
-        self._command_executor: Any = None
+        self._command_executor: list[CommandExecutor] = []
 
     @abstractmethod
     def initialize(
@@ -107,27 +108,27 @@ class TacticsAgent(ABC):
     def unregister_action(self, action: ExtendAction) -> None:
         self._actions.remove(action)
 
-    def register_command_executor(self, command_executor: Any) -> None:
-        self._command_executor = command_executor
+    def register_command_executor(self, command_executor: CommandExecutor) -> None:
+        self._command_executor.append(command_executor)
 
-    def unregister_command_executor(self) -> None:
-        self._command_executor = None
+    def unregister_command_executor(self, command_executor: CommandExecutor) -> None:
+        self._command_executor.remove(command_executor)
 
     def module_precompute(self, precompute_data: PrecomputeData) -> None:
         for module in self._modules:
             module.precompute(precompute_data)
         for action in self._actions:
             action.precompute(precompute_data)
-        # for executor in self._command_executor:
-        #     executor.precompute(precompute_data)
+        for executor in self._command_executor:
+            executor.precompute(precompute_data)
 
     def module_resume(self, precompute_data: PrecomputeData) -> None:
         for module in self._modules:
             module.resume(precompute_data)
         for action in self._actions:
             action.resume(precompute_data)
-        # for executor in self._command_executor:
-        #     executor.resume(precompute_data)
+        for executor in self._command_executor:
+            executor.resume(precompute_data)
 
     def module_prepare(self) -> None:
         for module in self._modules:
@@ -142,16 +143,16 @@ class TacticsAgent(ABC):
             self._logger.debug(
                 f"module {action.__class__.__name__} prepare time: {time.time() - start_time:.3f}",
             )
-        # for executor in self._command_executor:
-        #     executor.prepare()
+        for executor in self._command_executor:
+            executor.prepare()
 
     def module_update_info(self, message_manager: MessageManager) -> None:
         for module in self._modules:
             module.update_info(message_manager)
         for action in self._actions:
             action.update_info(message_manager)
-        # for executor in self._command_executor:
-        #     executor.update_info(message_manager)
+        for executor in self._command_executor:
+            executor.update_info(message_manager)
 
     def reset_count(self) -> None:
         for module in self._modules:
@@ -164,5 +165,8 @@ class TacticsAgent(ABC):
             action.reset_count_resume()
             action.reset_count_prepare()
             action.reset_count_update_info()
-        # for executor in self._command_executor:
-        #     executor.reset_count()
+        for executor in self._command_executor:
+            executor.reset_count_precompute()
+            executor.reset_count_resume()
+            executor.reset_count_prepare()
+            executor.reset_count_update_info()

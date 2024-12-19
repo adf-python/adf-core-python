@@ -17,7 +17,6 @@ class WorldInfo:
         self._rollback: dict[EntityID, dict[int, dict[int, Any]]] = {}
         self._change_set: ChangeSet
 
-    # TODO: Implement the worldmodel access methods
     def get_world_model(self) -> WorldModel:
         """
         Get the world model

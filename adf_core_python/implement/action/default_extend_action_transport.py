@@ -24,7 +24,6 @@ from adf_core_python.core.component.module.algorithm.path_planning import PathPl
 from adf_core_python.core.logger.logger import get_agent_logger
 
 
-# TODO: refactor this class
 class DefaultExtendActionTransport(ExtendAction):
     def __init__(
         self,

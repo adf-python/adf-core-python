@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from time import time
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING
 
 from rcrs_core.commands.Command import Command
 from rcrs_core.entities.civilian import Civilian
@@ -18,13 +18,12 @@ if TYPE_CHECKING:
 
 
 class AgentInfo:
-    # TODO: Replace Any with the actual type
     def __init__(self, agent: Agent, world_model: WorldModel):
         self._agent: Agent = agent
         self._world_model: WorldModel = world_model
         self._time: int = 0
         self._action_history: dict[int, Action] = {}
-        self._heard_commands: list[Any] = []
+        self._heard_commands: list[Command] = []
         self._change_set: ChangeSet = ChangeSet()
         self._start_think_time: float = 0.0
 

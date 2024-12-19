@@ -72,7 +72,7 @@ def configure_logger() -> None:
     handler_stdout.setLevel(logging.INFO)
 
     handler_file = RotatingFileHandler(
-        "agent.log", maxBytes=10 * 1024 * 1024, backupCount=5
+        "agent.log", maxBytes=1024 * 1024 * 1024, backupCount=5
     )
     handler_file.doRollover()
     handler_file.setFormatter(
