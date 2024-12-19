@@ -23,7 +23,7 @@ def move_dir(src, dst):
 
 # to separate a single local build from all builds we have a flag, see conf.py
 os.environ["build_all_docs"] = str(True)
-os.environ["pages_root"] = "http://127.0.0.1:5500/docs/pages" 
+os.environ["pages_root"] = "https://adf-python.github.io/adf-core-python/" 
 
 # manually the main branch build in the current supported languages
 build_doc("latest", "en", "main")
