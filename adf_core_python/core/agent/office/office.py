@@ -1,6 +1,7 @@
 from threading import Event
 from typing import Optional
 
+from adf_core_python.core.agent.action.common.action_rest import ActionRest
 from adf_core_python.core.agent.agent import Agent
 from adf_core_python.core.agent.config.module_config import ModuleConfig
 from adf_core_python.core.agent.develop.develop_data import DevelopData
@@ -124,4 +125,9 @@ class Office(Agent):
             self._precompute_data,
             self._message_manager,
             self._develop_data,
+        )
+        self.send_msg(
+            ActionRest()
+            .get_command(self.agent_id, self._agent_info.get_time())
+            .prepare_cmd()
         )
