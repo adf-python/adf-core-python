@@ -627,8 +627,11 @@ class DefaultExtendActionClear(ExtendAction):
     ) -> Optional[Action]:
         agent_x = police_entity.get_x()
         agent_y = police_entity.get_y()
-        position = police_entity.get_position()
-        edge = target.get_edge_to(position)
+        position = self.world_info.get_entity(police_entity.get_position())
+        if position is None:
+            return None
+
+        edge = target.get_edge_to(position.get_id())
         if edge is None:
             return None
 
@@ -703,7 +706,7 @@ class DefaultExtendActionClear(ExtendAction):
         if isinstance(target, Road):
             road = cast(Road, target)
             if road.get_blockades() == []:
-                return ActionMove([position, target.get_id()])
+                return ActionMove([position.get_id(), target.get_id()])
 
             target_blockade: Optional[Blockade] = None
             min_point_distance = sys.float_info.max
@@ -742,4 +745,4 @@ class DefaultExtendActionClear(ExtendAction):
                 self._old_clear_y = clear_y
                 return ActionClearArea(clear_x, clear_y)
 
-        return ActionMove([position, target.get_id()])
+        return ActionMove([position.get_id(), target.get_id()])
