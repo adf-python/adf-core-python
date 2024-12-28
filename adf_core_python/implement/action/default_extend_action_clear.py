@@ -477,7 +477,8 @@ class DefaultExtendActionClear(ExtendAction):
             for edge in road.get_edges():
                 mid_x = (edge.get_start_x() + edge.get_end_x()) / 2.0
                 mid_y = (edge.get_start_y() + edge.get_end_y()) / 2.0
-                points.remove((mid_x, mid_y))
+                if (mid_x, mid_y) in points:
+                    points.remove((mid_x, mid_y))
 
             self._move_point_cache[road.get_id()] = points
 
