@@ -37,6 +37,12 @@ class PathPlanning(AbstractModule):
         pass
 
     @abstractmethod
+    def get_path_to_multiple_destinations(
+        self, from_entity_id: EntityID, destination_entity_ids: set[EntityID]
+    ) -> list[EntityID]:
+        pass
+
+    @abstractmethod
     def get_distance(self, from_entity_id: EntityID, to_entity_id: EntityID) -> float:
         pass
 

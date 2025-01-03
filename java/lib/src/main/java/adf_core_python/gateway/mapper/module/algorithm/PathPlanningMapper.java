@@ -1,17 +1,18 @@
 package adf_core_python.gateway.mapper.module.algorithm;
 
+import java.util.Collection;
+import java.util.List;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import adf.core.agent.communication.MessageManager;
 import adf_core_python.agent.precompute.PrecomputeData;
 import adf_core_python.component.module.algorithm.PathPlanning;
 import adf_core_python.gateway.mapper.module.AbstractModuleMapper;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import rescuecore2.config.Config;
 import rescuecore2.worldmodel.EntityID;
-
-import java.util.Collection;
-import java.util.List;
 
 public class PathPlanningMapper extends AbstractModuleMapper {
     public PathPlanningMapper(PathPlanning pathPlanning, PrecomputeData precomputeData, MessageManager messageManager) {
@@ -42,10 +43,24 @@ public class PathPlanningMapper extends AbstractModuleMapper {
             result = execGetDistance();
         }
         if (methodName.equals("getDistance(EntityID, EntityID)")) {
-            result = execGetDistance(new EntityID(arguments.getIntValue("From")), new EntityID(arguments.getIntValue("Dest")));
+            result = execGetDistance(new EntityID(arguments.getIntValue("From")),
+                    new EntityID(arguments.getIntValue("Dest")));
         }
         if (methodName.equals("getResult(EntityID, EntityID)")) {
-            result = execGetResult(new EntityID(arguments.getIntValue("From")), new EntityID(arguments.getIntValue("Dest")));
+            result = execGetResult(new EntityID(arguments.getIntValue("From")),
+                    new EntityID(arguments.getIntValue("Dest")));
+        }
+        if (methodName.equals("getResult(EntityID, List[EntityID])")) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Collection<EntityID> destinations;
+            try {
+                destinations = objectMapper.readValue(arguments.getValue("Destinations"),
+                        new TypeReference<List<EntityID>>() {
+                        });
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
+            }
+            result = execGetResult(new EntityID(arguments.getIntValue("From")), destinations);
         }
         return result;
     }
@@ -94,6 +109,23 @@ public class PathPlanningMapper extends AbstractModuleMapper {
     private Config execGetResult(EntityID from, EntityID dest) {
         PathPlanning pathPlanning = (PathPlanning) abstractModule;
         List<EntityID> entityIDs = pathPlanning.getResult(from, dest);
+        Config result = new Config();
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonStr;
+        try {
+            jsonStr = objectMapper.writeValueAsString(entityIDs.stream().map(EntityID::getValue).toArray());
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+        result.setValue("Result", String.valueOf(jsonStr));
+        return result;
+    }
+
+    private Config execGetResult(EntityID from, Collection<EntityID> destinations) {
+        PathPlanning pathPlanning = (PathPlanning) abstractModule;
+        pathPlanning.setFrom(from);
+        pathPlanning.setDestination(destinations);
+        List<EntityID> entityIDs = pathPlanning.getResult();
         Config result = new Config();
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonStr;
