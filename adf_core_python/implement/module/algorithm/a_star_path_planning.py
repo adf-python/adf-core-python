@@ -72,7 +72,7 @@ class AStarPathPlanning(PathPlanning):
     def get_path_to_multiple_destinations(
         self, from_entity_id: EntityID, destination_entity_ids: set[EntityID]
     ) -> list[EntityID]:
-        raise NotImplementedError
+        return []
 
     def heuristic(self, from_entity_id: EntityID, to_entity_id: EntityID) -> float:
         # Implement a heuristic function, for example, Euclidean distance
