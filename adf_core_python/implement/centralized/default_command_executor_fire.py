@@ -55,11 +55,11 @@ class DefaultCommandExecutorFire(CommandExecutor):
             ),
         )
         self._action_fire_rescue = module_manager.get_extend_action(
-            "DefaultCommandExecutorFire.ExtActionFireRescue",
+            "DefaultCommandExecutorFire.ExtendActionFireRescue",
             "adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue",
         )
         self._action_move = module_manager.get_extend_action(
-            "DefaultCommandExecutorFire.ExtActionMove",
+            "DefaultCommandExecutorFire.ExtendActionMove",
             "adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove",
         )
 

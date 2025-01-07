@@ -58,11 +58,11 @@ class DefaultCommandExecutorAmbulance(CommandExecutor):
             ),
         )
         self._action_transport = module_manager.get_extend_action(
-            "DefaultCommandExecutorAmbulance.ExtActionTransport",
+            "DefaultCommandExecutorAmbulance.ExtendActionTransport",
             "adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport",
         )
         self._action_move = module_manager.get_extend_action(
-            "DefaultCommandExecutorAmbulance.ExtActionMove",
+            "DefaultCommandExecutorAmbulance.ExtendActionMove",
             "adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove",
         )
 

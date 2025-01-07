@@ -63,7 +63,7 @@ DefaultCommandExecutorAmbulance:
 
 DefaultCommandExecutorFire:
   PathPlanning: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning
-  EtxActionFireRescue: adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue
+  ExtendActionFireRescue: adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue
   ExtendActionMove: adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove
 
 DefaultCommandExecutorPolice:

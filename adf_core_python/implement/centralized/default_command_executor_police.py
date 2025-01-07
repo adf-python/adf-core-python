@@ -56,11 +56,11 @@ class DefaultCommandExecutorPolice(CommandExecutor):
             ),
         )
         self._action_clear = module_manager.get_extend_action(
-            "DefaultCommandExecutorPolice.ExtActionClear",
+            "DefaultCommandExecutorPolice.ExtendActionClear",
             "adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear",
         )
         self._action_move = module_manager.get_extend_action(
-            "DefaultCommandExecutorPolice.ExtActionMove",
+            "DefaultCommandExecutorPolice.ExtendActionMove",
             "adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove",
         )
 

@@ -68,6 +68,11 @@ class ModuleManager:
             return instance
 
         class_name = self._module_config.get_value(module_name)
+        if class_name is None:
+            self._logger.warning(
+                f"Module {module_name} not found in config. Using default module {default_module_class_name}"
+            )
+
         if class_name is not None:
             try:
                 module_class: type = self._load_module(class_name)
@@ -124,9 +129,12 @@ class ModuleManager:
     def get_extend_action(
         self, action_name: str, default_action_class_name: str
     ) -> ExtendAction:
-        class_name = self._module_config.get_value_or_default(
-            action_name, default_action_class_name
-        )
+        class_name = self._module_config.get_value(action_name)
+        if class_name is None:
+            self._logger.warning(
+                f"Action {action_name} not found in config. Using default action {default_action_class_name}"
+            )
+            class_name = default_action_class_name
 
         action_class: type = self._load_module(class_name)
 
@@ -150,9 +158,12 @@ class ModuleManager:
     def get_channel_subscriber(
         self, channel_subscriber_name: str, default_channel_subscriber_name: str
     ) -> ChannelSubscriber:
-        class_name = self._module_config.get_value_or_default(
-            channel_subscriber_name, default_channel_subscriber_name
-        )
+        class_name = self._module_config.get_value(channel_subscriber_name)
+        if class_name is None:
+            self._logger.warning(
+                f"Channel subscriber {channel_subscriber_name} not found in config. Using default channel subscriber {default_channel_subscriber_name}"
+            )
+            class_name = default_channel_subscriber_name
 
         channel_subscriber_class: type = self._load_module(class_name)
 
@@ -172,9 +183,12 @@ class ModuleManager:
     def get_message_coordinator(
         self, message_coordinator_name: str, default_message_coordinator_name: str
     ) -> MessageCoordinator:
-        class_name = self._module_config.get_value_or_default(
-            message_coordinator_name, default_message_coordinator_name
-        )
+        class_name = self._module_config.get_value(message_coordinator_name)
+        if class_name is None:
+            self._logger.warning(
+                f"Channel subscriber {message_coordinator_name} not found in config. Using default channel subscriber {default_message_coordinator_name}"
+            )
+            class_name = default_message_coordinator_name
 
         message_coordinator_class: type = self._load_module(class_name)
 
@@ -194,9 +208,12 @@ class ModuleManager:
     def get_command_executor(
         self, command_executor_name: str, default_command_executor_name: str
     ) -> CommandExecutor:
-        class_name = self._module_config.get_value_or_default(
-            command_executor_name, default_command_executor_name
-        )
+        class_name = self._module_config.get_value(command_executor_name)
+        if class_name is None:
+            self._logger.warning(
+                f"Command executor {command_executor_name} not found in config. Using default command executor {default_command_executor_name}"
+            )
+            class_name = default_command_executor_name
 
         command_executor_class: type = self._load_module(class_name)
 
@@ -220,9 +237,12 @@ class ModuleManager:
     def get_command_picker(
         self, command_picker_name: str, default_command_picker_name: str
     ) -> CommandPicker:
-        class_name = self._module_config.get_value_or_default(
-            command_picker_name, default_command_picker_name
-        )
+        class_name = self._module_config.get_value(command_picker_name)
+        if class_name is None:
+            self._logger.warning(
+                f"Command picker {command_picker_name} not found in config. Using default command picker {default_command_picker_name}"
+            )
+            class_name = default_command_picker_name
 
         command_picker_class: type = self._load_module(class_name)
 

@@ -51,7 +51,7 @@ class DefaultCommandExecutorScoutPolice(CommandExecutor):
             ),
         )
         self._action_clear: ExtendAction = module_manager.get_extend_action(
-            "DefaultCommandExecutorScoutPolice.ExtActionClear",
+            "DefaultCommandExecutorScoutPolice.ExtendActionClear",
             "adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear",
         )
 
