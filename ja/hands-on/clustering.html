@@ -1,125 +1,444 @@
 
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="ja" data-content_root="../">
-<head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>クラスタリングモジュール &mdash; adf-core-python 0.1.0 ドキュメント</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
 
+<html lang="ja" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>クラスタリングモジュール &#8212; adf-core-python 0.1.0 ドキュメント</title>
   
-      <script src="../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=98e9f989"></script>
-      <script src="../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-      <script src="../_static/copybutton.js?v=f281be69"></script>
-      <script>let toggleHintShow = 'Click to show';</script>
-      <script>let toggleHintHide = 'Click to hide';</script>
-      <script>let toggleOpenOnPrint = 'true';</script>
-      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
-      <script src="../_static/translations.js?v=4755f45a"></script>
-      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/js/theme.js"></script>
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=2327a732"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/translations.js?v=4755f45a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hands-on/clustering';</script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="サーチモジュール" href="search.html" />
-    <link rel="prev" title="モジュールについて" href="../tutorial/module/module.html" /> 
-</head>
+    <link rel="prev" title="モジュールについて" href="../tutorial/module/module.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="ja"/>
+  <meta name="docsearch:version" content="2.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            adf-core-python
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">インストール</span></p>
-<ul>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">adf-core-python 0.1.0 ドキュメント</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><style>
+  .rst-versions {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  .rst-current-version {
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .rst-other-versions {
+    display: none; /* 初期状態では非表示 */
+  }
+
+  .rst-other-versions dl {
+    margin: 0;
+    padding: 0;
+  }
+
+  .rst-other-versions dt {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .rst-other-versions dd {
+    margin: 0;
+    padding: 0 0 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .rst-other-versions a {
+    text-decoration: none;
+    color: #27ae60;
+    margin-right: 10px;
+  }
+
+  .rst-other-versions a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div
+  class="rst-versions"
+  data-toggle="rst-versions"
+  role="note"
+  aria-label="versions"
+>
+  <span
+    class="rst-current-version"
+    data-toggle="rst-current-version"
+    onclick="toggleVersions()"
+  >
+    Language: ja
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    
+    <dl>
+      <dt>Languages</dt>
+      <dd>
+        
+        <a href="https://adf-python.github.io/adf-core-python//index.html">en</a>
+        
+        <a href="https://adf-python.github.io/adf-core-python//ja/index.html">ja</a>
+        
+      </dd>
+    </dl>
+    
+    <!-- 
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://adf-python.github.io/adf-core-python//ja/index.html">latest</a></dd>
+        
+          <dd><a href="https://adf-python.github.io/adf-core-python//1.0/ja/index.html">1.0</a></dd>
+        
+          <dd><a href="https://adf-python.github.io/adf-core-python//2.0/ja/index.html">2.0</a></dd>
+        
+      </dl>
+      
+      <br>
+      </dl> -->
+  </div>
+</div>
+
+<script>
+  function toggleVersions() {
+    var versionsDiv = document.querySelector(".rst-other-versions");
+    if (
+      versionsDiv.style.display === "none" ||
+      versionsDiv.style.display === ""
+    ) {
+      versionsDiv.style.display = "block";
+    } else {
+      versionsDiv.style.display = "none";
+    }
+  }
+</script></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">検索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">インストール</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../install/environment/environment.html">環境構築</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install/install/install.html">インストール</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">クイックスタート</span></p>
-<ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">クイックスタート</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../quickstart/quickstart.html">クイックスタート</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">チュートリアル</span></p>
-<ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">チュートリアル</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">環境構築</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">エージェントの作成</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">エージェントの制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">コンフィグについて</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">モジュールについて</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">ハンズオン</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">クラスタリングモジュール</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">クラスタリングモジュールの目的</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">開発するクラスタリングモジュールの概要</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">クラスタリングモジュールの実装</a></li>
-</ul>
-</li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ハンズオン</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">クラスタリングモジュール</a></li>
 <li class="toctree-l1"><a class="reference internal" href="search.html">サーチモジュール</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">APIドキュメント</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../genindex.html">索引</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">APIドキュメント</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../py-modindex.html">モジュール索引</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../search.html">検索ページ</a></li>
 </ul>
 
-        </div>
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
       </div>
-    </nav>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">adf-core-python</a>
-      </nav>
+<div class="sbt-scroll-pixel-helper"></div>
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">クラスタリングモジュール</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/hands-on/clustering.md.txt" rel="nofollow"> View page source</a>
-      </li>
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="このページをダウンロード">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/hands-on/clustering.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="ソースファイルをダウンロード"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="PDFに印刷"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
   </ul>
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全画面モード"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>クラスタリングモジュール</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目次 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">クラスタリングモジュールの目的</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">開発するクラスタリングモジュールの概要</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">クラスタリングモジュールの実装</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="id1">
-<h1>クラスタリングモジュール<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<h1>クラスタリングモジュール<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
-<h2>クラスタリングモジュールの目的<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<h2>クラスタリングモジュールの目的<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>複数のエージェントを動かす場合は、それらのエージェントにどのように協調させるかが重要になります。RRSでは多くのチームが、エージェントに各々の担当地域を持たせ役割分担をおこなう協調を取り入れています(他の手段による協調も取り入れています)。担当地域を割り振るためには、地図上のオブジェクトをいくつかのグループに分ける必要があります。このようなグループ分けをしてそれらを管理する場合には、クラスタリングモジュールと呼ばれるモジュールを用います。</p>
 <p>本資料では、多くの世界大会参加チームが使用しているアルゴリズムを用いたクラスタリングモジュールの実装をおこないます。</p>
 </section>
 <section id="id3">
-<h2>開発するクラスタリングモジュールの概要<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<h2>開発するクラスタリングモジュールの概要<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>本資料で開発するモジュールは下の画像のように、</p>
 <ol class="arabic simple">
 <li><p>k-means++アルゴリズムによって地図上のオブジェクトをエージェント数分の区画に分けます。</p></li>
@@ -128,7 +447,7 @@
 <p><img alt="クラスタリングの画像" src="../_images/clustering_image.jpg" /></p>
 </section>
 <section id="id4">
-<h2>クラスタリングモジュールの実装<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<h2>クラスタリングモジュールの実装<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
 <p>以降の作業では、カレントディレクトリがプロジェクトのルートディレクトリであることを前提としています。</p>
@@ -452,70 +771,106 @@ python<span class="w"> </span>main.py
 </section>
 
 
-           </div>
-          </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../tutorial/module/module.html" class="btn btn-neutral float-left" title="モジュールについて" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="search.html" class="btn btn-neutral float-right" title="サーチモジュール" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+                </article>
+              
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2024, Haruki Uehara, Yuki Shimada.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
-        </div>
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../tutorial/module/module.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">前へ</p>
+        <p class="prev-next-title">モジュールについて</p>
       </div>
-    </section>
-  </div>
-  <div
-  class="rst-versions"
-  data-toggle="rst-versions"
-  role="note"
-  aria-label="versions"
->
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    Language: ja
-    <span class="fa fa-caret-down"></span>
-  </span>
-  <div class="rst-other-versions">
-    
-    <dl>
-      <dt>Languages</dt>
-      
-      <dd><a href="https://adf-python.github.io/adf-core-python//index.html">en</a></dd>
-      
-      <dd><a href="https://adf-python.github.io/adf-core-python//ja/index.html">ja</a></dd>
-      
-    </dl>
-    
-    <!-- 
-    <dl>
-      <dt>Versions</dt>
-      
-        <dd><a href="https://adf-python.github.io/adf-core-python//ja/index.html">latest</a></dd>
-      
-        <dd><a href="https://adf-python.github.io/adf-core-python//1.0/ja/index.html">1.0</a></dd>
-      
-        <dd><a href="https://adf-python.github.io/adf-core-python//2.0/ja/index.html">2.0</a></dd>
-      
-    </dl>
-    
-    <br>
-    </dl> -->
-  </div>
-</div><script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+    </a>
+    <a class="right-next"
+       href="search.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">次へ</p>
+        <p class="prev-next-title">サーチモジュール</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-</body>
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目次
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">クラスタリングモジュールの目的</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">開発するクラスタリングモジュールの概要</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">クラスタリングモジュールの実装</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+著者 Haruki Uehara, Yuki Shimada
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Haruki Uehara, Yuki Shimada.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>
