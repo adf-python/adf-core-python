@@ -71,7 +71,6 @@ adf-core-pythonを始めるには、インストールに従い、このドキ�
    :maxdepth: 1
    :caption: APIドキュメント
 
-   genindex
    modindex
    search
 

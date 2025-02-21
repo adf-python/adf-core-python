@@ -1,10 +1,59 @@
+<style>
+  .rst-versions {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  .rst-current-version {
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .rst-other-versions {
+    display: none; /* 初期状態では非表示 */
+  }
+
+  .rst-other-versions dl {
+    margin: 0;
+    padding: 0;
+  }
+
+  .rst-other-versions dt {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .rst-other-versions dd {
+    margin: 0;
+    padding: 0 0 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .rst-other-versions a {
+    text-decoration: none;
+    color: #27ae60;
+    margin-right: 10px;
+  }
+
+  .rst-other-versions a:hover {
+    text-decoration: underline;
+  }
+</style>
+
 <div
   class="rst-versions"
   data-toggle="rst-versions"
   role="note"
   aria-label="versions"
 >
-  <span class="rst-current-version" data-toggle="rst-current-version">
+  <span
+    class="rst-current-version"
+    data-toggle="rst-current-version"
+    onclick="toggleVersions()"
+  >
     Language: {{ current_language }}
     <span class="fa fa-caret-down"></span>
   </span>
@@ -12,20 +61,36 @@
     {% if languages|length >= 1 %}
     <dl>
       <dt>{{ _('Languages') }}</dt>
-      {% for the_language, url in languages %}
-      <dd><a href="{{ url }}/index.html">{{ the_language }}</a></dd>
-      {% endfor %}
+      <dd>
+        {% for the_language, url in languages %}
+        <a href="{{ url }}/index.html">{{ the_language }}</a>
+        {% endfor %}
+      </dd>
     </dl>
     {% endif %}
     <!-- {% if versions|length >= 1 %}
-    <dl>
-      <dt>{{ _('Versions') }}</dt>
-      {% for the_version, url in versions %}
-        <dd><a href="{{ url }}/index.html">{{ the_version }}</a></dd>
-      {% endfor %}
-    </dl>
-    {% endif %}
-    <br>
-    </dl> -->
+      <dl>
+        <dt>{{ _('Versions') }}</dt>
+        {% for the_version, url in versions %}
+          <dd><a href="{{ url }}/index.html">{{ the_version }}</a></dd>
+        {% endfor %}
+      </dl>
+      {% endif %}
+      <br>
+      </dl> -->
   </div>
 </div>
+
+<script>
+  function toggleVersions() {
+    var versionsDiv = document.querySelector(".rst-other-versions");
+    if (
+      versionsDiv.style.display === "none" ||
+      versionsDiv.style.display === ""
+    ) {
+      versionsDiv.style.display = "block";
+    } else {
+      versionsDiv.style.display = "none";
+    }
+  }
+</script>

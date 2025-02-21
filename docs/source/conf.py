@@ -37,7 +37,12 @@ exclude_patterns = []
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = "sphinx_rtd_theme"
+html_theme = "sphinx_book_theme"
+
+html_sidebars = {
+    "**": ["navbar-logo.html", "versions.html", "search-button-field.html", "sbt-sidebar-nav.html"]
+}
+
 html_static_path = ["_static"]
 
 locale_dirs = ["locale"]
@@ -53,7 +58,7 @@ if build_all_docs is not None:
     current_language = os.environ.get("current_language")
     current_version = os.environ.get("current_version")
 
-    # we set the html_context wit current language and version 
+    # we set the html_context wit current language and version
     # and empty languages and versions for now
     html_context = {
         'current_language' : current_language,
@@ -63,8 +68,8 @@ if build_all_docs is not None:
     }
 
 
-    # and we append all versions and langauges accordingly 
-    # we treat t he main branch as latest 
+    # and we append all versions and langauges accordingly
+    # we treat t he main branch as latest
     if (current_version == 'latest'):
         html_context['languages'].append(['en', pages_root])
         html_context['languages'].append(['ja', pages_root+'/ja'])
