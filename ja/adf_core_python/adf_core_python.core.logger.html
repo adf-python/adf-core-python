@@ -1,0 +1,228 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>adf_core_python.core.logger package &mdash; adf-core-python 0.1.0 ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=98e9f989"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            adf-core-python
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">インストール</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install/environment/environment.html">環境構築</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install/install.html">インストール</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">クイックスタート</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart/quickstart.html">クイックスタート</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">チュートリアル</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">環境構築</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">エージェントの作成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">エージェントの制御</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">コンフィグについて</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">モジュールについて</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ハンズオン</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hands-on/clustering.html">クラスタリングモジュール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hands-on/search.html">サーチモジュール</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">APIドキュメント</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../py-modindex.html">モジュール索引</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../search.html">検索ページ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">adf-core-python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">adf_core_python.core.logger package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/adf_core_python/adf_core_python.core.logger.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="adf-core-python-core-logger-package">
+<h1>adf_core_python.core.logger package<a class="headerlink" href="#adf-core-python-core-logger-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-adf_core_python.core.logger.logger">
+<span id="adf-core-python-core-logger-logger-module"></span><h2>adf_core_python.core.logger.logger module<a class="headerlink" href="#module-adf_core_python.core.logger.logger" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="adf_core_python.core.logger.logger.configure_logger">
+<span class="sig-prename descclassname"><span class="pre">adf_core_python.core.logger.logger.</span></span><span class="sig-name descname"><span class="pre">configure_logger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.logger.logger.configure_logger" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="adf_core_python.core.logger.logger.get_agent_logger">
+<span class="sig-prename descclassname"><span class="pre">adf_core_python.core.logger.logger.</span></span><span class="sig-name descname"><span class="pre">get_agent_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="adf_core_python.core.agent.info.html#adf_core_python.core.agent.info.agent_info.AgentInfo" title="adf_core_python.core.agent.info.agent_info.AgentInfo"><span class="pre">AgentInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">BoundLogger</span></span></span><a class="headerlink" href="#adf_core_python.core.logger.logger.get_agent_logger" title="Link to this definition"></a></dt>
+<dd><p>Get a logger with the given name and agent information.
+For agent logging, use this function to get a logger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) -- The name of the logger.</p></li>
+<li><p><strong>agent_info</strong> (<a class="reference internal" href="adf_core_python.core.agent.info.html#adf_core_python.core.agent.info.agent_info.AgentInfo" title="adf_core_python.core.agent.info.agent_info.AgentInfo"><em>AgentInfo</em></a>) -- The agent information.</p></li>
+</ul>
+</dd>
+<dt class="field-even">戻り値<span class="colon">:</span></dt>
+<dd class="field-even"><p>The logger with the given name and agent information.</p>
+</dd>
+<dt class="field-odd">戻り値の型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>structlog.BoundLogger</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="adf_core_python.core.logger.logger.get_logger">
+<span class="sig-prename descclassname"><span class="pre">adf_core_python.core.logger.logger.</span></span><span class="sig-name descname"><span class="pre">get_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">BoundLogger</span></span></span><a class="headerlink" href="#adf_core_python.core.logger.logger.get_logger" title="Link to this definition"></a></dt>
+<dd><p>Get a logger with the given name.
+For kernel logging, use this function to get a logger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) -- The name of the logger.</p>
+</dd>
+<dt class="field-even">戻り値<span class="colon">:</span></dt>
+<dd class="field-even"><p>The logger with the given name.</p>
+</dd>
+<dt class="field-odd">戻り値の型<span class="colon">:</span></dt>
+<dd class="field-odd"><p>structlog.BoundLogger</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-adf_core_python.core.logger">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-adf_core_python.core.logger" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Haruki Uehara, Yuki Shimada.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div
+  class="rst-versions"
+  data-toggle="rst-versions"
+  role="note"
+  aria-label="versions"
+>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    Language: ja
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    
+    <dl>
+      <dt>Languages</dt>
+      
+      <dd><a href="https://adf-python.github.io/adf-core-python//index.html">en</a></dd>
+      
+      <dd><a href="https://adf-python.github.io/adf-core-python//ja/index.html">ja</a></dd>
+      
+    </dl>
+    
+    <!-- 
+    <dl>
+      <dt>Versions</dt>
+      
+        <dd><a href="https://adf-python.github.io/adf-core-python//ja/index.html">latest</a></dd>
+      
+        <dd><a href="https://adf-python.github.io/adf-core-python//1.0/ja/index.html">1.0</a></dd>
+      
+        <dd><a href="https://adf-python.github.io/adf-core-python//2.0/ja/index.html">2.0</a></dd>
+      
+    </dl>
+    
+    <br>
+    </dl> -->
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

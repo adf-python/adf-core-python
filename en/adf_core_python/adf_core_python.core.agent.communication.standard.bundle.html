@@ -1,0 +1,504 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>adf_core_python.core.agent.communication.standard.bundle package &mdash; adf-core-python 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            adf-core-python
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install/environment/environment.html">Environment Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install/install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart/quickstart.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">Environment Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">Agent Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">About Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">About Modules</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hands-On</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hands-on/clustering.html">Clustering Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hands-on/search.html">Search Module</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../py-modindex.html">Module Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../search.html">Search Page</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">adf-core-python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">adf_core_python.core.agent.communication.standard.bundle package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="adf-core-python-core-agent-communication-standard-bundle-package">
+<h1>adf_core_python.core.agent.communication.standard.bundle package<a class="headerlink" href="#adf-core-python-core-agent-communication-standard-bundle-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html">adf_core_python.core.agent.communication.standard.bundle.centralized package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#module-adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance">adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance.ACTION_AUTONOMY"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance.ACTION_AUTONOMY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance.ACTION_LOAD"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance.ACTION_LOAD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance.ACTION_MOVE"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance.ACTION_MOVE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance.ACTION_RESCUE"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance.ACTION_RESCUE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance.ACTION_REST"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance.ACTION_REST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance.ACTION_UNLOAD"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance.ACTION_UNLOAD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance.SIZE_ACTION"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance.SIZE_ACTION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance.SIZE_AMBULANCE_TEAM_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance.SIZE_AMBULANCE_TEAM_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance.SIZE_TARGET_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance.SIZE_TARGET_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance.from_bits"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance.from_bits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance.get_bit_size"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance.get_bit_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance.get_command_executor_agent_entity_id"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance.get_command_executor_agent_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance.get_command_target_entity_id"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance.get_command_target_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance.get_execute_action"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance.get_execute_action()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance.is_broadcast"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance.is_broadcast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance.to_bits"><code class="docutils literal notranslate"><span class="pre">CommandAmbulance.to_bits()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#module-adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire">adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire"><code class="docutils literal notranslate"><span class="pre">CommandFire</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire.ACTION_AUTONOMY"><code class="docutils literal notranslate"><span class="pre">CommandFire.ACTION_AUTONOMY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire.ACTION_EXTINGUISH"><code class="docutils literal notranslate"><span class="pre">CommandFire.ACTION_EXTINGUISH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire.ACTION_MOVE"><code class="docutils literal notranslate"><span class="pre">CommandFire.ACTION_MOVE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire.ACTION_REFILL"><code class="docutils literal notranslate"><span class="pre">CommandFire.ACTION_REFILL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire.ACTION_RESCUE"><code class="docutils literal notranslate"><span class="pre">CommandFire.ACTION_RESCUE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire.ACTION_REST"><code class="docutils literal notranslate"><span class="pre">CommandFire.ACTION_REST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire.SIZE_ACTION"><code class="docutils literal notranslate"><span class="pre">CommandFire.SIZE_ACTION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire.SIZE_FIRE_BRIGADE_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">CommandFire.SIZE_FIRE_BRIGADE_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire.SIZE_TARGET_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">CommandFire.SIZE_TARGET_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire.from_bits"><code class="docutils literal notranslate"><span class="pre">CommandFire.from_bits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire.get_bit_size"><code class="docutils literal notranslate"><span class="pre">CommandFire.get_bit_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire.get_command_executor_agent_entity_id"><code class="docutils literal notranslate"><span class="pre">CommandFire.get_command_executor_agent_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire.get_command_target_entity_id"><code class="docutils literal notranslate"><span class="pre">CommandFire.get_command_target_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire.get_execute_action"><code class="docutils literal notranslate"><span class="pre">CommandFire.get_execute_action()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire.is_broadcast"><code class="docutils literal notranslate"><span class="pre">CommandFire.is_broadcast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire.to_bits"><code class="docutils literal notranslate"><span class="pre">CommandFire.to_bits()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#module-adf_core_python.core.agent.communication.standard.bundle.centralized.command_police">adf_core_python.core.agent.communication.standard.bundle.centralized.command_police module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_police.CommandPolice"><code class="docutils literal notranslate"><span class="pre">CommandPolice</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_police.CommandPolice.ACTION_AUTONOMY"><code class="docutils literal notranslate"><span class="pre">CommandPolice.ACTION_AUTONOMY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_police.CommandPolice.ACTION_CLEAR"><code class="docutils literal notranslate"><span class="pre">CommandPolice.ACTION_CLEAR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_police.CommandPolice.ACTION_MOVE"><code class="docutils literal notranslate"><span class="pre">CommandPolice.ACTION_MOVE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_police.CommandPolice.ACTION_REST"><code class="docutils literal notranslate"><span class="pre">CommandPolice.ACTION_REST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_police.CommandPolice.SIZE_ACTION"><code class="docutils literal notranslate"><span class="pre">CommandPolice.SIZE_ACTION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_police.CommandPolice.SIZE_POLICE_FORCE_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">CommandPolice.SIZE_POLICE_FORCE_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_police.CommandPolice.SIZE_TARGET_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">CommandPolice.SIZE_TARGET_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_police.CommandPolice.from_bits"><code class="docutils literal notranslate"><span class="pre">CommandPolice.from_bits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_police.CommandPolice.get_bit_size"><code class="docutils literal notranslate"><span class="pre">CommandPolice.get_bit_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_police.CommandPolice.get_command_executor_agent_entity_id"><code class="docutils literal notranslate"><span class="pre">CommandPolice.get_command_executor_agent_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_police.CommandPolice.get_command_target_entity_id"><code class="docutils literal notranslate"><span class="pre">CommandPolice.get_command_target_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_police.CommandPolice.get_execute_action"><code class="docutils literal notranslate"><span class="pre">CommandPolice.get_execute_action()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_police.CommandPolice.is_broadcast"><code class="docutils literal notranslate"><span class="pre">CommandPolice.is_broadcast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_police.CommandPolice.to_bits"><code class="docutils literal notranslate"><span class="pre">CommandPolice.to_bits()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#module-adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout">adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout.CommandScout"><code class="docutils literal notranslate"><span class="pre">CommandScout</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout.CommandScout.SIZE_AGENT_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">CommandScout.SIZE_AGENT_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout.CommandScout.SIZE_SCOUT_RANGE"><code class="docutils literal notranslate"><span class="pre">CommandScout.SIZE_SCOUT_RANGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout.CommandScout.SIZE_TARGET_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">CommandScout.SIZE_TARGET_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout.CommandScout.from_bits"><code class="docutils literal notranslate"><span class="pre">CommandScout.from_bits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout.CommandScout.get_bit_size"><code class="docutils literal notranslate"><span class="pre">CommandScout.get_bit_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout.CommandScout.get_command_executor_agent_entity_id"><code class="docutils literal notranslate"><span class="pre">CommandScout.get_command_executor_agent_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout.CommandScout.get_command_target_entity_id"><code class="docutils literal notranslate"><span class="pre">CommandScout.get_command_target_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout.CommandScout.get_scout_range"><code class="docutils literal notranslate"><span class="pre">CommandScout.get_scout_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout.CommandScout.is_broadcast"><code class="docutils literal notranslate"><span class="pre">CommandScout.is_broadcast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout.CommandScout.to_bits"><code class="docutils literal notranslate"><span class="pre">CommandScout.to_bits()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#module-adf_core_python.core.agent.communication.standard.bundle.centralized.message_report">adf_core_python.core.agent.communication.standard.bundle.centralized.message_report module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.message_report.MessageReport"><code class="docutils literal notranslate"><span class="pre">MessageReport</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.message_report.MessageReport.SIZE_BLOADCAST"><code class="docutils literal notranslate"><span class="pre">MessageReport.SIZE_BLOADCAST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.message_report.MessageReport.SIZE_DONE"><code class="docutils literal notranslate"><span class="pre">MessageReport.SIZE_DONE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.message_report.MessageReport.from_bits"><code class="docutils literal notranslate"><span class="pre">MessageReport.from_bits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.message_report.MessageReport.get_bit_size"><code class="docutils literal notranslate"><span class="pre">MessageReport.get_bit_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.message_report.MessageReport.is_broadcast"><code class="docutils literal notranslate"><span class="pre">MessageReport.is_broadcast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.message_report.MessageReport.is_done"><code class="docutils literal notranslate"><span class="pre">MessageReport.is_done()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#adf_core_python.core.agent.communication.standard.bundle.centralized.message_report.MessageReport.to_bits"><code class="docutils literal notranslate"><span class="pre">MessageReport.to_bits()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.centralized.html#module-adf_core_python.core.agent.communication.standard.bundle.centralized">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html">adf_core_python.core.agent.communication.standard.bundle.information package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#module-adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team">adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.ACTION_LOAD"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.ACTION_LOAD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.ACTION_MOVE"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.ACTION_MOVE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.ACTION_RESCUE"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.ACTION_RESCUE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.ACTION_REST"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.ACTION_REST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.ACTION_UNLOAD"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.ACTION_UNLOAD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.SIZE_ACTION"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.SIZE_ACTION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.SIZE_AMBULANCE_TEAM_BURIEDNESS"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.SIZE_AMBULANCE_TEAM_BURIEDNESS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.SIZE_AMBULANCE_TEAM_DAMAGE"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.SIZE_AMBULANCE_TEAM_DAMAGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.SIZE_AMBULANCE_TEAM_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.SIZE_AMBULANCE_TEAM_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.SIZE_AMBULANCE_TEAM_HP"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.SIZE_AMBULANCE_TEAM_HP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.SIZE_AMBULANCE_TEAM_POSITION"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.SIZE_AMBULANCE_TEAM_POSITION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.SIZE_TARGET_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.SIZE_TARGET_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.from_bits"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.from_bits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.get_action"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.get_action()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.get_ambulance_team_buriedness"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.get_ambulance_team_buriedness()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.get_ambulance_team_damage"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.get_ambulance_team_damage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.get_ambulance_team_entity_id"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.get_ambulance_team_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.get_ambulance_team_hp"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.get_ambulance_team_hp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.get_ambulance_team_position"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.get_ambulance_team_position()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.get_bit_size"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.get_bit_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.get_target_entity_id"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.get_target_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam.to_bits"><code class="docutils literal notranslate"><span class="pre">MessageAmbulanceTeam.to_bits()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#module-adf_core_python.core.agent.communication.standard.bundle.information.message_building">adf_core_python.core.agent.communication.standard.bundle.information.message_building module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_building.MessageBuilding"><code class="docutils literal notranslate"><span class="pre">MessageBuilding</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_building.MessageBuilding.SIZE_BUILDING_BROKENNESS"><code class="docutils literal notranslate"><span class="pre">MessageBuilding.SIZE_BUILDING_BROKENNESS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_building.MessageBuilding.SIZE_BUILDING_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">MessageBuilding.SIZE_BUILDING_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_building.MessageBuilding.SIZE_BUILDING_FIREYNESS"><code class="docutils literal notranslate"><span class="pre">MessageBuilding.SIZE_BUILDING_FIREYNESS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_building.MessageBuilding.SIZE_BUILDING_TEMPERATURE"><code class="docutils literal notranslate"><span class="pre">MessageBuilding.SIZE_BUILDING_TEMPERATURE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_building.MessageBuilding.from_bits"><code class="docutils literal notranslate"><span class="pre">MessageBuilding.from_bits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_building.MessageBuilding.get_bit_size"><code class="docutils literal notranslate"><span class="pre">MessageBuilding.get_bit_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_building.MessageBuilding.get_building_brokenness"><code class="docutils literal notranslate"><span class="pre">MessageBuilding.get_building_brokenness()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_building.MessageBuilding.get_building_entity_id"><code class="docutils literal notranslate"><span class="pre">MessageBuilding.get_building_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_building.MessageBuilding.get_building_fireyness"><code class="docutils literal notranslate"><span class="pre">MessageBuilding.get_building_fireyness()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_building.MessageBuilding.get_building_temperature"><code class="docutils literal notranslate"><span class="pre">MessageBuilding.get_building_temperature()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_building.MessageBuilding.to_bits"><code class="docutils literal notranslate"><span class="pre">MessageBuilding.to_bits()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#module-adf_core_python.core.agent.communication.standard.bundle.information.message_civilian">adf_core_python.core.agent.communication.standard.bundle.information.message_civilian module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_civilian.MessageCivilian"><code class="docutils literal notranslate"><span class="pre">MessageCivilian</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_civilian.MessageCivilian.SIZE_CIVILIAN_BURIEDNESS"><code class="docutils literal notranslate"><span class="pre">MessageCivilian.SIZE_CIVILIAN_BURIEDNESS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_civilian.MessageCivilian.SIZE_CIVILIAN_DAMAGE"><code class="docutils literal notranslate"><span class="pre">MessageCivilian.SIZE_CIVILIAN_DAMAGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_civilian.MessageCivilian.SIZE_CIVILIAN_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">MessageCivilian.SIZE_CIVILIAN_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_civilian.MessageCivilian.SIZE_CIVILIAN_HP"><code class="docutils literal notranslate"><span class="pre">MessageCivilian.SIZE_CIVILIAN_HP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_civilian.MessageCivilian.SIZE_CIVILIAN_POSITION"><code class="docutils literal notranslate"><span class="pre">MessageCivilian.SIZE_CIVILIAN_POSITION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_civilian.MessageCivilian.from_bits"><code class="docutils literal notranslate"><span class="pre">MessageCivilian.from_bits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_civilian.MessageCivilian.get_bit_size"><code class="docutils literal notranslate"><span class="pre">MessageCivilian.get_bit_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_civilian.MessageCivilian.get_civilian_buriedness"><code class="docutils literal notranslate"><span class="pre">MessageCivilian.get_civilian_buriedness()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_civilian.MessageCivilian.get_civilian_damage"><code class="docutils literal notranslate"><span class="pre">MessageCivilian.get_civilian_damage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_civilian.MessageCivilian.get_civilian_entity_id"><code class="docutils literal notranslate"><span class="pre">MessageCivilian.get_civilian_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_civilian.MessageCivilian.get_civilian_hp"><code class="docutils literal notranslate"><span class="pre">MessageCivilian.get_civilian_hp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_civilian.MessageCivilian.get_civilian_position"><code class="docutils literal notranslate"><span class="pre">MessageCivilian.get_civilian_position()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_civilian.MessageCivilian.to_bits"><code class="docutils literal notranslate"><span class="pre">MessageCivilian.to_bits()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#module-adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade">adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.ACTION_EXTINGUISH"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.ACTION_EXTINGUISH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.ACTION_MOVE"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.ACTION_MOVE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.ACTION_REFILL"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.ACTION_REFILL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.ACTION_RESCUE"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.ACTION_RESCUE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.ACTION_REST"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.ACTION_REST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.SIZE_ACTION"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.SIZE_ACTION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.SIZE_FIRE_BRIGADE_BURIEDNESS"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.SIZE_FIRE_BRIGADE_BURIEDNESS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.SIZE_FIRE_BRIGADE_DAMAGE"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.SIZE_FIRE_BRIGADE_DAMAGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.SIZE_FIRE_BRIGADE_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.SIZE_FIRE_BRIGADE_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.SIZE_FIRE_BRIGADE_HP"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.SIZE_FIRE_BRIGADE_HP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.SIZE_FIRE_BRIGADE_POSITION"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.SIZE_FIRE_BRIGADE_POSITION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.SIZE_FIRE_BRIGADE_WATER"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.SIZE_FIRE_BRIGADE_WATER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.SIZE_TARGET_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.SIZE_TARGET_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.from_bits"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.from_bits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.get_action"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.get_action()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.get_bit_size"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.get_bit_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.get_fire_brigade_buriedness"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.get_fire_brigade_buriedness()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.get_fire_brigade_damage"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.get_fire_brigade_damage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.get_fire_brigade_entity_id"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.get_fire_brigade_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.get_fire_brigade_hp"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.get_fire_brigade_hp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.get_fire_brigade_position"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.get_fire_brigade_position()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.get_fire_brigade_water"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.get_fire_brigade_water()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.get_target_entity_id"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.get_target_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade.to_bits"><code class="docutils literal notranslate"><span class="pre">MessageFireBrigade.to_bits()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#module-adf_core_python.core.agent.communication.standard.bundle.information.message_police_force">adf_core_python.core.agent.communication.standard.bundle.information.message_police_force module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.ACTION_CLEAR"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.ACTION_CLEAR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.ACTION_MOVE"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.ACTION_MOVE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.ACTION_REST"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.ACTION_REST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.SIZE_ACTION"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.SIZE_ACTION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.SIZE_POLICE_FORCE_BURIEDNESS"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.SIZE_POLICE_FORCE_BURIEDNESS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.SIZE_POLICE_FORCE_DAMAGE"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.SIZE_POLICE_FORCE_DAMAGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.SIZE_POLICE_FORCE_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.SIZE_POLICE_FORCE_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.SIZE_POLICE_FORCE_HP"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.SIZE_POLICE_FORCE_HP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.SIZE_POLICE_FORCE_POSITION"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.SIZE_POLICE_FORCE_POSITION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.SIZE_TARGET_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.SIZE_TARGET_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.from_bits"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.from_bits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.get_action"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.get_action()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.get_bit_size"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.get_bit_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.get_police_force_buriedness"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.get_police_force_buriedness()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.get_police_force_damage"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.get_police_force_damage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.get_police_force_entity_id"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.get_police_force_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.get_police_force_hp"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.get_police_force_hp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.get_police_force_position"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.get_police_force_position()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.get_target_entity_id"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.get_target_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce.to_bits"><code class="docutils literal notranslate"><span class="pre">MessagePoliceForce.to_bits()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#module-adf_core_python.core.agent.communication.standard.bundle.information.message_road">adf_core_python.core.agent.communication.standard.bundle.information.message_road module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad"><code class="docutils literal notranslate"><span class="pre">MessageRoad</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.ACTION_CLEAR"><code class="docutils literal notranslate"><span class="pre">MessageRoad.ACTION_CLEAR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.ACTION_MOVE"><code class="docutils literal notranslate"><span class="pre">MessageRoad.ACTION_MOVE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.ACTION_REST"><code class="docutils literal notranslate"><span class="pre">MessageRoad.ACTION_REST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.SIZE_PASSABLE"><code class="docutils literal notranslate"><span class="pre">MessageRoad.SIZE_PASSABLE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.SIZE_ROAD_BLOCKADE_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">MessageRoad.SIZE_ROAD_BLOCKADE_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.SIZE_ROAD_BLOCKADE_REPAIR_COST"><code class="docutils literal notranslate"><span class="pre">MessageRoad.SIZE_ROAD_BLOCKADE_REPAIR_COST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.SIZE_ROAD_BLOCKADE_X"><code class="docutils literal notranslate"><span class="pre">MessageRoad.SIZE_ROAD_BLOCKADE_X</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.SIZE_ROAD_BLOCKADE_Y"><code class="docutils literal notranslate"><span class="pre">MessageRoad.SIZE_ROAD_BLOCKADE_Y</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.SIZE_ROAD_ENTITY_ID"><code class="docutils literal notranslate"><span class="pre">MessageRoad.SIZE_ROAD_ENTITY_ID</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.from_bits"><code class="docutils literal notranslate"><span class="pre">MessageRoad.from_bits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.get_bit_size"><code class="docutils literal notranslate"><span class="pre">MessageRoad.get_bit_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.get_is_passable"><code class="docutils literal notranslate"><span class="pre">MessageRoad.get_is_passable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.get_is_send_blockade_location"><code class="docutils literal notranslate"><span class="pre">MessageRoad.get_is_send_blockade_location()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.get_road_blockade_entity_id"><code class="docutils literal notranslate"><span class="pre">MessageRoad.get_road_blockade_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.get_road_blockade_repair_cost"><code class="docutils literal notranslate"><span class="pre">MessageRoad.get_road_blockade_repair_cost()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.get_road_blockade_x"><code class="docutils literal notranslate"><span class="pre">MessageRoad.get_road_blockade_x()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.get_road_blockade_y"><code class="docutils literal notranslate"><span class="pre">MessageRoad.get_road_blockade_y()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.get_road_entity_id"><code class="docutils literal notranslate"><span class="pre">MessageRoad.get_road_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad.to_bits"><code class="docutils literal notranslate"><span class="pre">MessageRoad.to_bits()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.communication.standard.bundle.information.html#module-adf_core_python.core.agent.communication.standard.bundle.information">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-adf_core_python.core.agent.communication.standard.bundle.standard_message">
+<span id="adf-core-python-core-agent-communication-standard-bundle-standard-message-module"></span><h2>adf_core_python.core.agent.communication.standard.bundle.standard_message module<a class="headerlink" href="#module-adf_core_python.core.agent.communication.standard.bundle.standard_message" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adf_core_python.core.agent.communication.standard.bundle.standard_message.</span></span><span class="sig-name descname"><span class="pre">StandardMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_wireless_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#adf_core_python.core.agent.communication.standard.bundle.standard_message_priority.StandardMessagePriority" title="adf_core_python.core.agent.communication.standard.bundle.standard_message_priority.StandardMessagePriority"><span class="pre">StandardMessagePriority</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sender_entity_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EntityID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ttl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="adf_core_python.core.component.communication.html#adf_core_python.core.component.communication.communication_message.CommunicationMessage" title="adf_core_python.core.component.communication.communication_message.CommunicationMessage"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommunicationMessage</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage.SIZE_TTL">
+<span class="sig-name descname"><span class="pre">SIZE_TTL</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage.SIZE_TTL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage.from_bits">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_bits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bit_array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bitarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_wireless_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sender_entity_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EntityID</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage" title="adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage"><span class="pre">StandardMessage</span></a></span></span><a class="headerlink" href="#adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage.from_bits" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage.get_bit_size">
+<span class="sig-name descname"><span class="pre">get_bit_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage.get_bit_size" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage.get_priority">
+<span class="sig-name descname"><span class="pre">get_priority</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#adf_core_python.core.agent.communication.standard.bundle.standard_message_priority.StandardMessagePriority" title="adf_core_python.core.agent.communication.standard.bundle.standard_message_priority.StandardMessagePriority"><span class="pre">StandardMessagePriority</span></a></span></span><a class="headerlink" href="#adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage.get_priority" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage.get_sender_entity_id">
+<span class="sig-name descname"><span class="pre">get_sender_entity_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">EntityID</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage.get_sender_entity_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage.get_ttl">
+<span class="sig-name descname"><span class="pre">get_ttl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage.get_ttl" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage.to_bits">
+<span class="sig-name descname"><span class="pre">to_bits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bitarray</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage.to_bits" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-adf_core_python.core.agent.communication.standard.bundle.standard_message_priority">
+<span id="adf-core-python-core-agent-communication-standard-bundle-standard-message-priority-module"></span><h2>adf_core_python.core.agent.communication.standard.bundle.standard_message_priority module<a class="headerlink" href="#module-adf_core_python.core.agent.communication.standard.bundle.standard_message_priority" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.communication.standard.bundle.standard_message_priority.StandardMessagePriority">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adf_core_python.core.agent.communication.standard.bundle.standard_message_priority.</span></span><span class="sig-name descname"><span class="pre">StandardMessagePriority</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adf_core_python.core.agent.communication.standard.bundle.standard_message_priority.StandardMessagePriority" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Standard message priorities.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.communication.standard.bundle.standard_message_priority.StandardMessagePriority.HIGH">
+<span class="sig-name descname"><span class="pre">HIGH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#adf_core_python.core.agent.communication.standard.bundle.standard_message_priority.StandardMessagePriority.HIGH" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.communication.standard.bundle.standard_message_priority.StandardMessagePriority.LOW">
+<span class="sig-name descname"><span class="pre">LOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#adf_core_python.core.agent.communication.standard.bundle.standard_message_priority.StandardMessagePriority.LOW" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.communication.standard.bundle.standard_message_priority.StandardMessagePriority.NORMAL">
+<span class="sig-name descname"><span class="pre">NORMAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#adf_core_python.core.agent.communication.standard.bundle.standard_message_priority.StandardMessagePriority.NORMAL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-adf_core_python.core.agent.communication.standard.bundle">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-adf_core_python.core.agent.communication.standard.bundle" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Haruki Uehara, Yuki Shimada.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div
+  class="rst-versions"
+  data-toggle="rst-versions"
+  role="note"
+  aria-label="versions"
+>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    Language: en
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    
+    <dl>
+      <dt>Languages</dt>
+      
+      <dd><a href="https://adf-python.github.io/adf-core-python//index.html">en</a></dd>
+      
+      <dd><a href="https://adf-python.github.io/adf-core-python//ja/index.html">ja</a></dd>
+      
+    </dl>
+    
+    <!-- 
+    <dl>
+      <dt>Versions</dt>
+      
+        <dd><a href="https://adf-python.github.io/adf-core-python//index.html">latest</a></dd>
+      
+        <dd><a href="https://adf-python.github.io/adf-core-python//1.0/en/index.html">1.0</a></dd>
+      
+        <dd><a href="https://adf-python.github.io/adf-core-python//2.0/en/index.html">2.0</a></dd>
+      
+    </dl>
+    
+    <br>
+    </dl> -->
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
