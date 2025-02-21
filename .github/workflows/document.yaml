@@ -7,16 +7,16 @@ on:
       - main
       - develop
     paths:
-      - 'docs/**'
+      - "docs/**"
   pull_request:
     branches:
       - main
       - develop
     paths:
-      - 'docs/**'
+      - "docs/**"
 
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: true
 
 permissions:
@@ -56,6 +56,12 @@ jobs:
           source .venv/bin/activate
           cd docs
           python build.py
+
+      - name: Redirect to the en documentation
+        run: |
+          username=$(echo $GITHUB_REPOSITORY | cut -d '/' -f 1)
+          repository=$(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)
+          echo '<meta http-equiv="refresh" content="0; url=https://'$username'.github.io/'$repository'/en" />' > ./docs/pages/index.html
 
       - name: Deploy documentation
         uses: peaceiris/actions-gh-pages@v4
