@@ -13,9 +13,9 @@ def build_doc(version, language, tag):
     subprocess.run("git checkout main -- versions.yaml", shell=True)
     subprocess.run("doxygen Doxyfile", shell=True)
     os.environ['SPHINXOPTS'] = "-D language='{}'".format(language)
-    subprocess.run("make html", shell=True)    
+    subprocess.run("make html", shell=True)
 
-# a move dir method because we run multiple builds and bring the html folders to a 
+# a move dir method because we run multiple builds and bring the html folders to a
 # location which we then push to github pages
 def move_dir(src, dst):
   subprocess.run(["mkdir", "-p", dst])
@@ -23,11 +23,11 @@ def move_dir(src, dst):
 
 # to separate a single local build from all builds we have a flag, see conf.py
 os.environ["build_all_docs"] = str(True)
-os.environ["pages_root"] = "https://adf-python.github.io/adf-core-python/" 
+os.environ["pages_root"] = "https://adf-python.github.io/adf-core-python/"
 
 # manually the main branch build in the current supported languages
 build_doc("latest", "en", "main")
-move_dir("./build/html/", "./pages/")
+move_dir("./build/html/", "./pages/en")
 build_doc("latest", "ja", "main")
 move_dir("./build/html/", "./pages/ja/")
 
@@ -38,6 +38,6 @@ with open("versions.yaml", "r") as yaml_file:
 # and looping over all values to call our build with version, language and its tag
 # for version, details in docs.items():
 #   tag = details.get('tag', '')
-#   for language in details.get('languages', []): 
+#   for language in details.get('languages', []):
 #     build_doc(version, language, version)
 #     move_dir("./build/html/", "./pages/"+version+'/'+language+'/')
