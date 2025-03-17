@@ -1,4 +1,5 @@
 import argparse
+import resource
 
 from adf_core_python.core.config.config import Config
 from adf_core_python.core.launcher.agent_launcher import AgentLauncher
@@ -11,6 +12,8 @@ class Launcher:
         self,
         launcher_config_file: str,
     ) -> None:
+        resource.setrlimit(resource.RLIMIT_NOFILE, (8192, 9223372036854775807))
+
         configure_logger()
 
         self.logger = get_logger(__name__)

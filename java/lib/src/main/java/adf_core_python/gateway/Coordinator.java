@@ -68,7 +68,7 @@ public class Coordinator extends Thread {
                     mode = ScenarioInfo.Mode.PRECOMPUTATION_PHASE;
                     break;
             }
-            agent = new Agent(amAgent.getAgentID(), amAgent.getEntities(), new ScenarioInfo(amAgent.getConfig(), mode), new DevelopData(), new ModuleConfig());
+            agent = new Agent(amAgent.getAgentID(), amAgent.getEntities(), new ScenarioInfo(amAgent.getConfig(), mode), new DevelopData(), new ModuleConfig(), this);
         } else if (message instanceof AMModule amModule) {
             if (agent == null) {
                 throw new IllegalStateException("Agent not found. Make sure agent has been registered.");
