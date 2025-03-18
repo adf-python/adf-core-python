@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Optional, TYPE_CHECKING, Callable
 
-from rcrs_core.connection import RCRSProto_pb2
+from rcrs_core.connection import RCRSProto_pb2, URN
 
 from adf_core_python.core.agent.info.agent_info import AgentInfo
 from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
@@ -111,3 +111,8 @@ class GatewayAgent:
 
             self._gateway_modules[c_msg.module_id].set_execute_response(c_msg.result)
             self._gateway_modules[c_msg.module_id].set_is_executed(True)
+
+        if msg.urn == URN.Command.AK_SPEAK:
+            if self.send_msg is None:
+                raise RuntimeError("send_msg is None")
+            self.send_msg(msg)

@@ -39,6 +39,9 @@ dependencies {
     implementation 'org.apache.logging.log4j:log4j-core:2.24.2'
     implementation 'org.apache.logging.log4j:log4j-api:2.24.2'
 
+    //Algorithm
+    implementation 'com.google.common:google-collect:0.5'
+
     testImplementation libs.junit.jupiter
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
