@@ -1,6 +1,6 @@
 package adf_core_python;
 
-import adf_core_python.gateway.Gateway;
+import adf_core_python.core.gateway.Gateway;
 
 public class Main {
     public static void main(String[] args) {
