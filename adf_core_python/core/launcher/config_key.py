@@ -6,6 +6,7 @@ class ConfigKey:
     KEY_LOADER_CLASS: Final[str] = "adf_core_python.launcher.loader"
     KEY_KERNEL_HOST: Final[str] = "kernel.host"
     KEY_KERNEL_PORT: Final[str] = "kernel.port"
+    KEY_KERNEL_TIMEOUT: Final[str] = "kernel.timeout"
     KEY_TEAM_NAME: Final[str] = "team.name"
     KEY_DEBUG_FLAG: Final[str] = "adf.debug.flag"
     KEY_DEVELOP_FLAG: Final[str] = "adf.develop.flag"

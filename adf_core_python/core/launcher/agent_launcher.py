@@ -1,4 +1,5 @@
 import importlib
+import socket
 import threading
 from typing import Optional
 
@@ -59,12 +60,26 @@ class AgentLauncher:
     def launch(self) -> None:
         kernel_host: str = self.config.get_value(ConfigKey.KEY_KERNEL_HOST, "localhost")
         kernel_port: int = self.config.get_value(ConfigKey.KEY_KERNEL_PORT, 27931)
-        self.logger.info(
-            f"Start agent launcher (host: {kernel_host}, port: {kernel_port})"
-        )
 
         component_launcher: ComponentLauncher = ComponentLauncher(
             kernel_host, kernel_port, self.logger
+        )
+        timeout: int = self.config.get_value(
+            ConfigKey.KEY_KERNEL_TIMEOUT,
+            30,
+        )
+        if component_launcher.check_kernel_connection(timeout=timeout):
+            self.logger.info(
+                f"Kernel is running (host: {kernel_host}, port: {kernel_port})"
+            )
+        else:
+            self.logger.error(
+                f"Kernel is not running (host: {kernel_host}, port: {kernel_port})"
+            )
+            return
+
+        self.logger.info(
+            f"Start agent launcher (host: {kernel_host}, port: {kernel_port})"
         )
 
         gateway_launcher: Optional[GatewayLauncher] = None
@@ -104,3 +119,14 @@ class AgentLauncher:
 
         for thread in self.agent_thread_list:
             thread.join()
+
+    def check_kernel_connection(self, host: str, port: int, timeout: int = 5) -> bool:
+        try:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(timeout)
+            result = sock.connect_ex((host, port))
+            sock.close()
+            return result == 0
+        except Exception as e:
+            self.logger.error(f"カーネルへの接続確認中にエラーが発生しました: {e}")
+            return False

@@ -12,11 +12,8 @@ class Launcher:
         self,
         launcher_config_file: str,
     ) -> None:
-        resource.setrlimit(resource.RLIMIT_NOFILE, (8192, 9223372036854775807))
+        resource.setrlimit(resource.RLIMIT_NOFILE, (8192, 1048576))
 
-        configure_logger()
-
-        self.logger = get_logger(__name__)
         self.launcher_config = Config(launcher_config_file)
 
         parser = argparse.ArgumentParser(description="Agent Launcher")
@@ -80,6 +77,12 @@ class Launcher:
             action="store_true",
             help="precompute flag",
         )
+        parser.add_argument(
+            "--timeout",
+            type=int,
+            help="timeout in seconds",
+            metavar="",
+        )
         parser.add_argument("--debug", action="store_true", help="debug flag")
         parser.add_argument(
             "--java",
@@ -98,6 +101,7 @@ class Launcher:
             ConfigKey.KEY_FIRE_STATION_COUNT: args.firestation,
             ConfigKey.KEY_POLICE_OFFICE_COUNT: args.policeoffice,
             ConfigKey.KEY_PRECOMPUTE: args.precompute,
+            ConfigKey.KEY_KERNEL_TIMEOUT: args.timeout,
             ConfigKey.KEY_DEBUG_FLAG: args.debug,
             ConfigKey.KEY_GATEWAY_FLAG: args.java,
         }
@@ -105,6 +109,9 @@ class Launcher:
         for key, value in config_map.items():
             if value is not None:
                 self.launcher_config.set_value(key, value)
+
+        configure_logger()
+        self.logger = get_logger(__name__)
 
         self.logger.debug(f"launcher_config: {self.launcher_config}")
 
