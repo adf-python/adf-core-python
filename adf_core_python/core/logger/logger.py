@@ -1,6 +1,7 @@
 import logging
+import os
 import sys
-from logging.handlers import RotatingFileHandler
+from datetime import datetime
 
 import structlog
 from structlog.dev import ConsoleRenderer
@@ -51,6 +52,13 @@ def get_agent_logger(name: str, agent_info: AgentInfo) -> structlog.BoundLogger:
 
 
 def configure_logger() -> None:
+    # 既存のログファイルが存在する場合、日付付きでバックアップする
+    log_file = "agent.log"
+    if os.path.exists(log_file):
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        backup_file = f"agent_{timestamp}.log"
+        os.rename(log_file, backup_file)
+
     structlog.configure(
         processors=[
             structlog.stdlib.add_log_level,
@@ -65,16 +73,14 @@ def configure_logger() -> None:
         wrapper_class=structlog.stdlib.BoundLogger,
         cache_logger_on_first_use=True,
     )
+
     handler_stdout = logging.StreamHandler(sys.stdout)
     handler_stdout.setFormatter(
         structlog.stdlib.ProcessorFormatter(processor=ConsoleRenderer())
     )
     handler_stdout.setLevel(logging.INFO)
 
-    handler_file = RotatingFileHandler(
-        "agent.log", maxBytes=1024 * 1024 * 1024, backupCount=5
-    )
-    handler_file.doRollover()
+    handler_file = logging.FileHandler(log_file)
     handler_file.setFormatter(
         structlog.stdlib.ProcessorFormatter(processor=JSONRenderer())
     )
