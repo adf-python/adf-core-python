@@ -24,10 +24,10 @@ from rcrs_core.connection.URN import ComponentControlMSG as ComponentControlMess
 from rcrs_core.connection.URN import Entity as EntityURN
 from rcrs_core.messages.AKAcknowledge import AKAcknowledge
 from rcrs_core.messages.AKConnect import AKConnect
+from rcrs_core.messages.controlMessageFactory import ControlMessageFactory
 from rcrs_core.messages.KAConnectError import KAConnectError
 from rcrs_core.messages.KAConnectOK import KAConnectOK
 from rcrs_core.messages.KASense import KASense
-from rcrs_core.messages.controlMessageFactory import ControlMessageFactory
 from rcrs_core.worldmodel.changeSet import ChangeSet
 from rcrs_core.worldmodel.entityID import EntityID
 from rcrs_core.worldmodel.worldmodel import WorldModel
@@ -213,11 +213,6 @@ class Agent:
         self._communication_module.receive(self, self._message_manager)
 
         self.think()
-
-        self.logger.debug(
-            f"send messages: {self._message_manager.get_send_message_list()}",
-            message_manager=self._message_manager,
-        )
 
         self._message_manager.coordinate_message(
             self._agent_info, self._world_info, self._scenario_info
