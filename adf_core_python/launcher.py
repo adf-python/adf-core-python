@@ -12,7 +12,13 @@ class Launcher:
         self,
         launcher_config_file: str,
     ) -> None:
-        resource.setrlimit(resource.RLIMIT_NOFILE, (8192, 1048576))
+        try:
+            resource.setrlimit(resource.RLIMIT_NOFILE, (8192, 1048576))
+        except Exception as e:
+            print(
+                f"Failed to set resource limit: {e}. "
+                "This may cause issues with the number of open files."
+            )
 
         self.launcher_config = Config(launcher_config_file)
 
