@@ -125,6 +125,8 @@ class DefaultExtendActionTransport(ExtendAction):
             return None
 
         agent_position = agent.get_position()
+        if agent_position is None:
+            return None
         if isinstance(target_entity, Human):
             human = target_entity
             if human.get_position() is None:
@@ -133,6 +135,8 @@ class DefaultExtendActionTransport(ExtendAction):
                 return None
 
             target_position = human.get_position()
+            if target_position is None:
+                return None
             if agent_position == target_position:
                 if isinstance(human, Civilian) and ((human.get_buriedness() or 0) == 0):
                     return ActionLoad(human.get_entity_id())
@@ -143,6 +147,8 @@ class DefaultExtendActionTransport(ExtendAction):
             return None
 
         if isinstance(target_entity, Area):
+            if agent_position is None:
+                return None
             path = path_planning.get_path(agent_position, target_entity.get_entity_id())
             if path is not None and len(path) > 0:
                 return ActionMove(path)
@@ -163,6 +169,8 @@ class DefaultExtendActionTransport(ExtendAction):
             return ActionUnload()
 
         agent_position = agent.get_position()
+        if agent_position is None:
+            return None
         if target_id is None or transport_human.get_entity_id() == target_id:
             position = self.world_info.get_entity(agent_position)
             if position is None:
@@ -181,10 +189,11 @@ class DefaultExtendActionTransport(ExtendAction):
         target_entity = self.world_info.get_entity(target_id)
 
         if isinstance(target_entity, Human):
-            human = cast(Human, target_entity)
-            if human.get_position() is not None:
+            human = target_entity
+            human_position = human.get_position()
+            if human_position is not None:
                 return self.calc_refuge_action(
-                    agent, path_planning, human.get_position(), True
+                    agent, path_planning, human_position, True
                 )
             path = self.get_nearest_refuge_path(agent, path_planning)
             if path is not None and len(path) > 0:
@@ -200,6 +209,8 @@ class DefaultExtendActionTransport(ExtendAction):
         is_unload: bool,
     ) -> Optional[ActionMove | ActionUnload | ActionRest]:
         position = human.get_position()
+        if position is None:
+            return None
         refuges = self.world_info.get_entity_ids_of_types([Refuge])
         size = len(refuges)
 
@@ -235,6 +246,8 @@ class DefaultExtendActionTransport(ExtendAction):
         self, human: Human, path_planning: PathPlanning
     ) -> list[EntityID]:
         position = human.get_position()
+        if position is None:
+            return []
         refuges = self.world_info.get_entity_ids_of_types([Refuge])
         nearest_path = None
 

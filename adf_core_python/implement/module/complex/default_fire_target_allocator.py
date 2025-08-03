@@ -108,9 +108,10 @@ class DefaultFireTargetAllocator(FireTargetAllocator):
     ) -> list[FireBrigade]:
         result = []
         for entity in self._world_info.get_entities_of_types([FireBrigade]):
-            info = info_map[entity.get_entity_id()]
-            if info is not None and info._can_new_action:
-                result.append(entity)
+            if isinstance(entity, FireBrigade):
+                info = info_map[entity.get_entity_id()]
+                if info is not None and info._can_new_action:
+                    result.append(entity)
         return result
 
     def _compare_by_distance(

@@ -35,7 +35,10 @@ class KMeansClustering(Clustering):
         super().__init__(
             agent_info, world_info, scenario_info, module_manager, develop_data
         )
-        match agent_info.get_myself().get_urn():
+        myself = agent_info.get_myself()
+        if myself is None:
+            raise RuntimeError("Could not get agent entity")
+        match myself.get_urn():
             case EntityURN.AMBULANCE_TEAM:
                 self._cluster_number = int(
                     scenario_info.get_value(
@@ -63,7 +66,7 @@ class KMeansClustering(Clustering):
         sorted_entities = sorted(
             world_info.get_entities_of_types(
                 [
-                    agent_info.get_myself().__class__,
+                    myself.__class__,
                 ]
             ),
             key=lambda entity: entity.get_entity_id().get_value(),

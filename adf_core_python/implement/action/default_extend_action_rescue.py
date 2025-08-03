@@ -117,7 +117,7 @@ class DefaultExtendActionRescue(ExtendAction):
             return None
 
         if isinstance(target_entity, Human):
-            human = cast(Human, target_entity)
+            human = target_entity
             if human.get_hp() == 0:
                 return None
 
@@ -139,7 +139,7 @@ class DefaultExtendActionRescue(ExtendAction):
             return None
 
         if isinstance(target_entity, Blockade):
-            blockade = cast(Blockade, target_entity)
+            blockade = target_entity
             blockade_position = blockade.get_position()
             if blockade_position is None:
                 return None

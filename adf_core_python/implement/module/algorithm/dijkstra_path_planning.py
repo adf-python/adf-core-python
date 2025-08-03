@@ -3,7 +3,7 @@ from __future__ import annotations
 import heapq
 from typing import Optional
 
-from rcrscore.entities import Area, EntityID
+from rcrscore.entities import Area, Building, EntityID, Road
 
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
@@ -27,7 +27,7 @@ class DijkstraPathPlanning(PathPlanning):
         )
         self.graph: dict[EntityID, list[tuple[EntityID, float]]] = {}
         # グラフの構築
-        for area in self._world_info.get_entities_of_types([Area]):
+        for area in self._world_info.get_entities_of_types([Road, Building]):
             if not isinstance(area, Area):
                 continue
             if (neighbors := area.get_neighbors()) is None:
@@ -71,10 +71,10 @@ class DijkstraPathPlanning(PathPlanning):
                     previous[neighbor] = current_node
 
         path: list[EntityID] = []
-        current_node = to_entity_id
-        while current_node is not None:
-            path.append(current_node)
-            current_node = previous[current_node]
+        current_path_node: Optional[EntityID] = to_entity_id
+        while current_path_node is not None:
+            path.append(current_path_node)
+            current_path_node = previous.get(current_path_node)
 
         return path[::-1]
 

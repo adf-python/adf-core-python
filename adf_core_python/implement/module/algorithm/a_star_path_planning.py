@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from rcrscore.entities import Area, Entity, EntityID
+from rcrscore.entities import Area, Building, Entity, EntityID, Road
 
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
@@ -24,7 +24,9 @@ class AStarPathPlanning(PathPlanning):
         super().__init__(
             agent_info, world_info, scenario_info, module_manager, develop_data
         )
-        entities: list[Entity] = self._world_info.get_entities_of_types([Area])
+        entities: list[Entity] = self._world_info.get_entities_of_types(
+            [Building, Road]
+        )
         self._graph: dict[EntityID, set[EntityID]] = {}
         for entity in entities:
             if isinstance(entity, Area):

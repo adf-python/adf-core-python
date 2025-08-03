@@ -254,8 +254,8 @@ class DefaultCommandExecutorAmbulance(CommandExecutor):
                 if isinstance(human, Civilian):
                     self._command_type = self.ACTION_RESCUE
                     return self._is_command_completed()
-                if human.get_position() is not None:
-                    position = human.get_position()
+                position = human.get_position()
+                if position is not None:
                     if position in self._world_info.get_entity_ids_of_types(
                         [AmbulanceTeam]
                     ):

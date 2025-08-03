@@ -1,6 +1,6 @@
 from typing import Optional, cast
 
-from rcrscore.entities import Area, EntityID, Human, Refuge
+from rcrscore.entities import Building, EntityID, Human, Refuge, Road
 
 from adf_core_python.core.agent.action.common.action_move import ActionMove
 from adf_core_python.core.agent.communication.message_manager import MessageManager
@@ -59,6 +59,8 @@ class DefaultCommandExecutorScout(CommandExecutor):
         target = command.get_command_target_entity_id()
         if target is None:
             target = self._agent_info.get_position_entity_id()
+            if target is None:
+                return self
 
         self._command_type = self.ACTION_SCOUT
         self._commander = command.get_sender_entity_id()
@@ -66,7 +68,7 @@ class DefaultCommandExecutorScout(CommandExecutor):
         if (scout_distance := command.get_scout_range()) is None:
             return self
 
-        for entity in self._world_info.get_entities_of_types([Area]):
+        for entity in self._world_info.get_entities_of_types([Road, Building]):
             if isinstance(entity, Refuge):
                 continue
             if (
@@ -83,9 +85,10 @@ class DefaultCommandExecutorScout(CommandExecutor):
             case self.ACTION_SCOUT:
                 if len(self._targets) == 0:
                     return self
-                path = self._path_planning.get_path(
-                    self._agent_info.get_position_entity_id(), self._targets[0]
-                )
+                agent_position = self._agent_info.get_position_entity_id()
+                if agent_position is None:
+                    return self
+                path = self._path_planning.get_path(agent_position, self._targets[0])
                 if path is None:
                     return self
                 self._result = ActionMove(path)
@@ -150,7 +153,9 @@ class DefaultCommandExecutorScout(CommandExecutor):
         match self._command_type:
             case self.ACTION_SCOUT:
                 if len(self._targets) != 0:
-                    for entity in self._world_info.get_entities_of_types([Area]):
+                    for entity in self._world_info.get_entities_of_types(
+                        [Road, Building]
+                    ):
                         self._targets.remove(entity.get_entity_id())
                 return len(self._targets) == 0
             case _:

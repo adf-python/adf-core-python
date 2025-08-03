@@ -37,7 +37,7 @@ class DefaultRoadDetector(RoadDetector):
         )
 
         self.register_sub_module(self._path_planning)
-        self._result = None
+        self._result: Optional[EntityID] = None
 
     def precompute(self, precompute_data: PrecomputeData) -> RoadDetector:
         super().precompute(precompute_data)
@@ -108,7 +108,7 @@ class DefaultRoadDetector(RoadDetector):
                 if isinstance(entity, Building):
                     self._result = None
                 elif isinstance(entity, Road):
-                    road: Road = cast(Road, entity)
+                    road = entity
                     if road.get_blockades() == []:
                         self._target_areas.remove(self._result)
                         self._result = None
@@ -117,7 +117,9 @@ class DefaultRoadDetector(RoadDetector):
 
     def calculate(self) -> RoadDetector:
         if self._result is None:
-            position_entity_id: EntityID = self._agent_info.get_position_entity_id()
+            position_entity_id = self._agent_info.get_position_entity_id()
+            if position_entity_id is None:
+                return self
             if position_entity_id in self._target_areas:
                 self._result = position_entity_id
                 return self
@@ -128,21 +130,22 @@ class DefaultRoadDetector(RoadDetector):
 
             self._priority_roads = self._priority_roads - set(remove_list)
             if len(self._priority_roads) > 0:
-                _nearest_target_area = self._agent_info.get_position_entity_id()
+                agent_position = self._agent_info.get_position_entity_id()
+                if agent_position is None:
+                    return self
+                _nearest_target_area = agent_position
                 _nearest_distance = float("inf")
                 for target_area in self._target_areas:
                     if (
-                        self._world_info.get_distance(
-                            self._agent_info.get_position_entity_id(), target_area
-                        )
+                        self._world_info.get_distance(agent_position, target_area)
                         < _nearest_distance
                     ):
                         _nearest_target_area = target_area
                         _nearest_distance = self._world_info.get_distance(
-                            self._agent_info.get_position_entity_id(), target_area
+                            agent_position, target_area
                         )
                 path: list[EntityID] = self._path_planning.get_path(
-                    self._agent_info.get_position_entity_id(), _nearest_target_area
+                    agent_position, _nearest_target_area
                 )
                 if path is not None and len(path) > 0:
                     self._result = path[-1]

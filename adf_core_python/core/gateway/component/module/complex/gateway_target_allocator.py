@@ -63,11 +63,12 @@ class GatewayTargetAllocator(GatewayAbstractModule, TargetAllocator):
 
     def get_result(self) -> dict[EntityID, EntityID]:
         response = self._gateway_module.execute("getResult")
-        response_keys = response.get_all_keys()
+        response_keys = response.data.keys()
         result: dict[EntityID, EntityID] = {}
         for key in response_keys:
+            value = response.get_value(key)
             result[EntityID(int(key))] = EntityID(
-                int(response.get_value_or_default(key, "-1"))
+                int(value if value is not None else "-1")
             )
 
         return result

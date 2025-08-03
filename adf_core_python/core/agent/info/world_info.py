@@ -1,4 +1,4 @@
-from typing import Any, Optional, cast
+from typing import Any, Optional
 
 from rcrscore.entities import EntityID
 from rcrscore.entities.area import Area
@@ -199,7 +199,7 @@ class WorldInfo:
             for blockade_entity_id in blockade_entity_ids:
                 blockades_entity = self.get_entity(blockade_entity_id)
                 if isinstance(blockades_entity, Blockade):
-                    blockades.add(cast(Blockade, blockades_entity))
+                    blockades.add(blockades_entity)
         return blockades
 
     def add_entity(self, entity: Entity) -> None:

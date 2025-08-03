@@ -59,7 +59,7 @@ class DefaultExtendActionClear(ExtendAction):
             )
         )
 
-        self._target_entity_id = None
+        self._target_entity_id: Optional[EntityID] = None
         self._move_point_cache: dict[EntityID, Optional[set[tuple[float, float]]]] = {}
         self._old_clear_x = 0
         self._old_clear_y = 0
@@ -135,14 +135,14 @@ class DefaultExtendActionClear(ExtendAction):
             return self
 
         agent_position_entity_id = police_force.get_position()
+        if agent_position_entity_id is None:
+            return self
         target_entity = self.world_info.get_entity(self._target_entity_id)
         position_entity = self.world_info.get_entity(agent_position_entity_id)
         if target_entity is None or isinstance(target_entity, Area) is False:
             return self
         if isinstance(position_entity, Road):
-            self.result = self._get_rescue_action(
-                police_force, cast(Road, position_entity)
-            )
+            self.result = self._get_rescue_action(police_force, position_entity)
             if self.result is not None:
                 return self
 
@@ -180,7 +180,7 @@ class DefaultExtendActionClear(ExtendAction):
                         police_force, cast(Area, entity)
                     )
                     if self.result is not None and isinstance(self.result, ActionMove):
-                        action_move = cast(ActionMove, self.result)
+                        action_move = self.result
                         if action_move.is_destination_defined():
                             self.result = None
 
@@ -193,15 +193,16 @@ class DefaultExtendActionClear(ExtendAction):
         hp = police_force.get_hp()
         damage = police_force.get_damage()
 
-        if hp == 0 or damage == 0:
+        if hp is None or damage is None or hp == 0 or damage == 0:
             return False
 
         active_time = (hp / damage) + (1 if (hp % damage) != 0 else 0)
         if self._kernel_time == -1:
             self._kernel_time = self.scenario_info.get_value("kernel.timesteps", -1)
 
-        return damage >= self._threshold_rest or (
-            active_time + self.agent_info.get_time() < self._kernel_time
+        return damage is not None and (
+            damage >= self._threshold_rest
+            or (active_time + self.agent_info.get_time() < self._kernel_time)
         )
 
     def _calc_rest(
@@ -211,6 +212,8 @@ class DefaultExtendActionClear(ExtendAction):
         target_entity_ids: list[EntityID],
     ) -> Optional[Action]:
         position_entity_id = police_force.get_position()
+        if position_entity_id is None:
+            return None
         refuges = self.world_info.get_entity_ids_of_types([Refuge])
         current_size = len(refuges)
         if position_entity_id in refuges:
@@ -244,12 +247,13 @@ class DefaultExtendActionClear(ExtendAction):
     def _get_rescue_action(
         self, police_entity: PoliceForce, road: Road
     ) -> Optional[Action]:
+        road_blockades = road.get_blockades()
         blockades = set(
             []
-            if road.get_blockades() is None
+            if road_blockades is None
             else [
                 cast(Blockade, self.world_info.get_entity(blockade_entity_id))
-                for blockade_entity_id in road.get_blockades()
+                for blockade_entity_id in road_blockades
             ]
         )
         agent_entities = set(
@@ -263,15 +267,30 @@ class DefaultExtendActionClear(ExtendAction):
 
         for agent_entity in agent_entities:
             human = cast(Human, agent_entity)
-            if human.get_position().get_value() != road.get_entity_id().get_value():
+            human_position = human.get_position()
+            if (
+                human_position is None
+                or human_position.get_value() != road.get_entity_id().get_value()
+            ):
                 continue
 
             human_x = human.get_x()
             human_y = human.get_y()
+            if (
+                human_x is None
+                or human_y is None
+                or police_x is None
+                or police_y is None
+            ):
+                continue
+
             action_clear: Optional[ActionClear | ActionClearArea] = None
             clear_blockade: Optional[Blockade] = None
             for blockade in blockades:
-                if not self._is_inside(human_x, human_y, blockade.get_apexes()):
+                blockade_apexes = blockade.get_apexes()
+                if blockade_apexes is None or not self._is_inside(
+                    human_x, human_y, blockade_apexes
+                ):
                     continue
 
                 distance = self._get_distance(police_x, police_y, human_x, human_y)
@@ -373,7 +392,10 @@ class DefaultExtendActionClear(ExtendAction):
     def _is_intersecting_area(
         self, agent_x: float, agent_y: float, point_x: float, point_y: float, area: Area
     ) -> bool:
-        for edge in area.get_edges():
+        edges = area.get_edges()
+        if edges is None:
+            return False
+        for edge in edges:
             start_x = edge.get_start_x()
             start_y = edge.get_start_y()
             end_x = edge.get_end_x()
@@ -483,11 +505,13 @@ class DefaultExtendActionClear(ExtendAction):
                     if self._is_inside(mid_x, mid_y, apex):
                         points.add((mid_x, mid_y))
 
-            for edge in road.get_edges():
-                mid_x = (edge.get_start_x() + edge.get_end_x()) / 2.0
-                mid_y = (edge.get_start_y() + edge.get_end_y()) / 2.0
-                if (mid_x, mid_y) in points:
-                    points.remove((mid_x, mid_y))
+            edges = road.get_edges()
+            if edges is not None:
+                for edge in edges:
+                    mid_x = (edge.get_start_x() + edge.get_end_x()) / 2.0
+                    mid_y = (edge.get_start_y() + edge.get_end_y()) / 2.0
+                    if (mid_x, mid_y) in points:
+                        points.remove((mid_x, mid_y))
 
             self._move_point_cache[road.get_entity_id()] = points
 
@@ -518,6 +542,8 @@ class DefaultExtendActionClear(ExtendAction):
         blockade: Blockade,
     ) -> bool:
         apexes = blockade.get_apexes()
+        if apexes is None or len(apexes) < 4:
+            return False
         for i in range(0, len(apexes) - 3, 2):
             line1 = LineString(
                 [(apexes[i], apexes[i + 1]), (apexes[i + 2], apexes[i + 3])]
@@ -532,6 +558,8 @@ class DefaultExtendActionClear(ExtendAction):
     ) -> bool:
         apexes1 = blockade1.get_apexes()
         apexes2 = blockade2.get_apexes()
+        if apexes1 is None or apexes2 is None or len(apexes1) < 4 or len(apexes2) < 4:
+            return False
         for i in range(0, len(apexes1) - 2, 2):
             for j in range(0, len(apexes2) - 2, 2):
                 line1 = LineString(
@@ -593,20 +621,26 @@ class DefaultExtendActionClear(ExtendAction):
             if min_distance < self._clear_distance:
                 return ActionClear(clear_blockade)
             else:
-                return ActionMove(
-                    [police_entity.get_position()],
-                    clear_blockade.get_x(),
-                    clear_blockade.get_y(),
-                )
+                position = police_entity.get_position()
+                if position is not None:
+                    return ActionMove(
+                        [position],
+                        clear_blockade.get_x(),
+                        clear_blockade.get_y(),
+                    )
 
         agent_x = police_entity.get_x()
         agent_y = police_entity.get_y()
+        if agent_x is None or agent_y is None:
+            return None
         clear_blockade = None
         min_point_distance = sys.float_info.max
         clear_x = 0
         clear_y = 0
         for blockade in blockades:
             apexes = blockade.get_apexes()
+            if apexes is None or len(apexes) < 4:
+                continue
             for i in range(0, len(apexes) - 2, 2):
                 distance = self._get_distance(
                     agent_x, agent_y, apexes[i], apexes[i + 1]
@@ -625,7 +659,9 @@ class DefaultExtendActionClear(ExtendAction):
                 clear_x = int(agent_x + vector[0])
                 clear_y = int(agent_y + vector[1])
                 return ActionClearArea(clear_x, clear_y)
-            return ActionMove([police_entity.get_position()], clear_x, clear_y)
+            position = police_entity.get_position()
+            if position is not None:
+                return ActionMove([position], clear_x, clear_y)
 
         return None
 
@@ -637,7 +673,12 @@ class DefaultExtendActionClear(ExtendAction):
     ) -> Optional[Action]:
         agent_x = police_entity.get_x()
         agent_y = police_entity.get_y()
-        position = self.world_info.get_entity(police_entity.get_position())
+        if agent_x is None or agent_y is None:
+            return None
+        position_id = police_entity.get_position()
+        if position_id is None:
+            return None
+        position = self.world_info.get_entity(position_id)
         if position is None:
             return None
 
@@ -646,7 +687,7 @@ class DefaultExtendActionClear(ExtendAction):
             return None
 
         if isinstance(position, Road):
-            road = cast(Road, position)
+            road = position
             if road.get_blockades() != []:
                 mid_x = (edge.get_start_x() + edge.get_end_x()) / 2.0
                 mid_y = (edge.get_start_y() + edge.get_end_y()) / 2.0
@@ -716,7 +757,7 @@ class DefaultExtendActionClear(ExtendAction):
                     return action_move
 
         if isinstance(target, Road):
-            road = cast(Road, target)
+            road = target
             if road.get_blockades() == []:
                 return ActionMove([position.get_entity_id(), target.get_entity_id()])
 
@@ -726,6 +767,8 @@ class DefaultExtendActionClear(ExtendAction):
             clear_y = 0
             for blockade in self.world_info.get_blockades(road):
                 apexes = blockade.get_apexes()
+                if apexes is None or len(apexes) < 4:
+                    continue
                 for i in range(0, len(apexes) - 2, 2):
                     distance = self._get_distance(
                         agent_x, agent_y, apexes[i], apexes[i + 1]

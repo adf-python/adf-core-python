@@ -78,7 +78,9 @@ class GatewayClustering(GatewayAbstractModule, Clustering):
         entity_ids: list[int] = json.loads(json_str)
         entities: list[Entity] = []
         for entity_id in entity_ids:
-            entities.append(self._world_info.get_entity(EntityID(entity_id)))
+            entity = self._world_info.get_entity(EntityID(entity_id))
+            if entity is not None:
+                entities.append(entity)
         return entities
 
     def get_cluster_entity_ids(self, cluster_index: int) -> list[EntityID]:

@@ -54,6 +54,8 @@ class GatewayModule:
         return self.get_gateway_class_name()
 
     def get_execute_response(self) -> Config:
+        if self._result is None:
+            raise RuntimeError("No execution result available")
         return self._result
 
     def set_execute_response(self, result: Config) -> None:

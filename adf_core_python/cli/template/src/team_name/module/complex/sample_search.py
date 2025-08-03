@@ -64,7 +64,8 @@ class SampleSearch(Search):
         )
 
         searched_building_id = self._agent_info.get_position_entity_id()
-        self._unreached_building_ids.discard(searched_building_id)
+        if searched_building_id is not None:
+            self._unreached_building_ids.discard(searched_building_id)
 
         if len(self._unreached_building_ids) == 0:
             self._unreached_building_ids = self._get_search_targets()

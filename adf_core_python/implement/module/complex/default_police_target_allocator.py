@@ -108,13 +108,13 @@ class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
                     agents = sorted(
                         agents, key=cmp_to_key(self._compare_by_distance(target_entity))
                     )
-                    result = agents.pop(0)
-                    info = self._agent_info_map[result.get_entity_id()]
+                    selected_agent = agents.pop(0)
+                    info = self._agent_info_map[selected_agent.get_entity_id()]
                     if info is not None:
                         info._can_new_action = False
                         info._target = target
                         info.command_time = current_time
-                        self._agent_info_map[result.get_entity_id()] = info
+                        self._agent_info_map[selected_agent.get_entity_id()] = info
                         removes.append(target)
 
         for r in removes:
@@ -129,12 +129,12 @@ class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
         for agent in agents:
             if len(areas) > 0:
                 areas.sort(key=cmp_to_key(self._compare_by_distance(agent)))
-                result = areas.pop(0)
-                self._target_areas.remove(result.get_entity_id())
+                target_area: Entity = areas.pop(0)
+                self._target_areas.remove(target_area.get_entity_id())
                 info = self._agent_info_map[agent.get_entity_id()]
                 if info is not None:
                     info._can_new_action = False
-                    info._target = result.get_entity_id()
+                    info._target = target_area.get_entity_id()
                     info.command_time = current_time
                     self._agent_info_map[agent.get_entity_id()] = info
 
@@ -148,9 +148,10 @@ class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
     ) -> list[PoliceForce]:
         result = []
         for entity in self._world_info.get_entities_of_types([PoliceForce]):
-            info = info_map[entity.get_entity_id()]
-            if info is not None and info._can_new_action:
-                result.append(entity)
+            if isinstance(entity, PoliceForce):
+                info = info_map[entity.get_entity_id()]
+                if info is not None and info._can_new_action:
+                    result.append(entity)
         return result
 
     def _compare_by_distance(

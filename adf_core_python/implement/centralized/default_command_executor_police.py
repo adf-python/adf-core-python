@@ -202,11 +202,13 @@ class DefaultCommandExecutorPolice(CommandExecutor):
         match self._command_type:
             case self.ACTION_REST:
                 if self._target is None:
-                    return agent.get_damage() == 0
+                    damage = agent.get_damage()
+                    return damage is not None and damage == 0
                 if (target_entity := self._world_info.get_entity(self._target)) is None:
                     return False
                 if isinstance(target_entity, Refuge):
-                    return agent.get_damage() == 0
+                    damage = agent.get_damage()
+                    return damage is not None and damage == 0
                 return False
             case self.ACTION_MOVE:
                 return (
@@ -218,17 +220,19 @@ class DefaultCommandExecutorPolice(CommandExecutor):
                     return True
                 entity = self._world_info.get_entity(self._target)
                 if isinstance(entity, Road):
-                    if entity.get_blockades is not None:
-                        return len(entity.get_blockades()) == 0
+                    blockades = entity.get_blockades()
+                    if blockades is not None:
+                        return len(blockades) == 0
                     return self._agent_info.get_position_entity_id() == self._target
                 return True
             case self.ACTION_AUTONOMY:
                 if self._target is not None:
                     target_entity = self._world_info.get_entity(self._target)
                     if isinstance(target_entity, Refuge):
+                        damage = agent.get_damage()
                         self._command_type = (
                             self.ACTION_REST
-                            if agent.get_damage() > 0
+                            if damage is not None and damage > 0
                             else self.ACTION_CLEAR
                         )
                         return self._is_command_completed()
@@ -238,8 +242,9 @@ class DefaultCommandExecutorPolice(CommandExecutor):
                     elif isinstance(target_entity, Human):
                         if target_entity.get_hp() == 0:
                             return True
-                        if target_entity.get_position() is not None and isinstance(
-                            self._world_info.get_entity(target_entity.get_position()),
+                        position = target_entity.get_position()
+                        if position is not None and isinstance(
+                            self._world_info.get_entity(position),
                             Area,
                         ):
                             self._target = target_entity.get_position()

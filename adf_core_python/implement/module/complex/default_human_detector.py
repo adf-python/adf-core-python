@@ -124,6 +124,8 @@ class DefaultHumanDetector(HumanDetector):
         if buriedness is None:
             return False
         myself = self._agent_info.get_myself()
+        if myself is None:
+            return False
         if myself.get_urn() == EntityURN.FIRE_BRIGADE and buriedness == 0:
             return False
         if myself.get_urn() == EntityURN.AMBULANCE_TEAM and buriedness > 0:
