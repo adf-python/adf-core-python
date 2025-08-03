@@ -1,10 +1,6 @@
 from typing import Optional, cast
 
-from rcrs_core.entities.area import Area
-from rcrs_core.entities.blockade import Blockade
-from rcrs_core.entities.entity import Entity
-from rcrs_core.entities.human import Human
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import Area, Blockade, Entity, EntityID, Human
 
 from adf_core_python.core.agent.action.common.action_move import ActionMove
 from adf_core_python.core.agent.communication.message_manager import MessageManager
@@ -83,7 +79,7 @@ class DefaultExtendActionMove(ExtendAction):
             entity = self.world_info.get_entity(position)
 
         if entity is not None and isinstance(entity, Area):
-            self._target_entity_id = entity.get_id()
+            self._target_entity_id = entity.get_entity_id()
 
         return self
 
@@ -94,8 +90,12 @@ class DefaultExtendActionMove(ExtendAction):
         if self._target_entity_id is None:
             return self
 
+        agent_position = agent.get_position()
+        if agent_position is None:
+            return self
+
         path: list[EntityID] = self._path_planning.get_path(
-            agent.get_position(), self._target_entity_id
+            agent_position, self._target_entity_id
         )
 
         if path is not None and len(path) != 0:

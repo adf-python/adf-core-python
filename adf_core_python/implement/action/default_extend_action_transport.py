@@ -1,12 +1,14 @@
 from typing import Optional, Union, cast
 
-from rcrs_core.entities.ambulanceTeam import AmbulanceTeam
-from rcrs_core.entities.area import Area
-from rcrs_core.entities.civilian import Civilian
-from rcrs_core.entities.entity import Entity
-from rcrs_core.entities.human import Human
-from rcrs_core.entities.refuge import Refuge
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import (
+    AmbulanceTeam,
+    Area,
+    Civilian,
+    Entity,
+    EntityID,
+    Human,
+    Refuge,
+)
 
 from adf_core_python.core.agent.action.ambulance.action_load import ActionLoad
 from adf_core_python.core.agent.action.ambulance.action_unload import ActionUnload
@@ -98,7 +100,7 @@ class DefaultExtendActionTransport(ExtendAction):
         agent: AmbulanceTeam = cast(AmbulanceTeam, self.agent_info.get_myself())
         transport_human: Optional[Human] = self.agent_info.some_one_on_board()
         if transport_human is not None:
-            self._logger.debug(f"transport_human: {transport_human.get_id()}")
+            self._logger.debug(f"transport_human: {transport_human.get_entity_id()}")
             self.result = self.calc_unload(
                 agent, self._path_planning, transport_human, self._target_entity_id
             )
@@ -133,7 +135,7 @@ class DefaultExtendActionTransport(ExtendAction):
             target_position = human.get_position()
             if agent_position == target_position:
                 if isinstance(human, Civilian) and ((human.get_buriedness() or 0) == 0):
-                    return ActionLoad(human.get_id())
+                    return ActionLoad(human.get_entity_id())
             else:
                 path = path_planning.get_path(agent_position, target_position)
                 if path is not None and len(path) > 0:
@@ -141,7 +143,7 @@ class DefaultExtendActionTransport(ExtendAction):
             return None
 
         if isinstance(target_entity, Area):
-            path = path_planning.get_path(agent_position, target_entity.get_id())
+            path = path_planning.get_path(agent_position, target_entity.get_entity_id())
             if path is not None and len(path) > 0:
                 return ActionMove(path)
 
@@ -161,10 +163,7 @@ class DefaultExtendActionTransport(ExtendAction):
             return ActionUnload()
 
         agent_position = agent.get_position()
-        if (
-            target_id is None
-            or transport_human.get_id().get_value() == target_id.get_value()
-        ):
+        if target_id is None or transport_human.get_entity_id() == target_id:
             position = self.world_info.get_entity(agent_position)
             if position is None:
                 return None

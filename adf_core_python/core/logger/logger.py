@@ -45,9 +45,13 @@ def get_agent_logger(name: str, agent_info: AgentInfo) -> structlog.BoundLogger:
     structlog.BoundLogger
         The logger with the given name and agent information.
     """
+    agent = agent_info.get_myself()
+    if agent is None:
+        raise ValueError("Agent information is not available")
+
     return structlog.get_logger(name).bind(
         agent_id=str(agent_info.get_entity_id()),
-        agent_type=str(agent_info.get_myself().get_urn().name),
+        agent_type=str(agent.get_urn().name),
     )
 
 

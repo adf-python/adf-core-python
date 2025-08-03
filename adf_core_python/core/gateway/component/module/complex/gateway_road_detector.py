@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from rcrs_core.entities.road import Road
+from rcrscore.entities.road import Road
 
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.component.module.complex.road_detector import RoadDetector

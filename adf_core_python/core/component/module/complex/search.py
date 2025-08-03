@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import TYPE_CHECKING
 
-from rcrs_core.entities.area import Area
+from rcrscore.entities.area import Area
 
 from adf_core_python.core.component.module.complex.target_detector import (
     TargetDetector,

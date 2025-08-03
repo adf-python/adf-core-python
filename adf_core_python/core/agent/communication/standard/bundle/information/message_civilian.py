@@ -3,8 +3,8 @@ from __future__ import annotations
 from typing import Optional
 
 from bitarray import bitarray
-from rcrs_core.entities.civilian import Civilian
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import EntityID
+from rcrscore.entities.civilian import Civilian
 
 from adf_core_python.core.agent.communication.standard.bundle.standard_message import (
     StandardMessage,
@@ -34,7 +34,7 @@ class MessageCivilian(StandardMessage):
         ttl: Optional[int] = None,
     ):
         super().__init__(is_wireless_message, priority, sender_entity_id, ttl)
-        self._civilian_entity_id: Optional[EntityID] = civilian.get_id()
+        self._civilian_entity_id: Optional[EntityID] = civilian.get_entity_id()
         self._civilian_hp: Optional[int] = civilian.get_hp() or None
         self._civilian_buriedness: Optional[int] = civilian.get_buriedness() or None
         self._civilian_damage: Optional[int] = civilian.get_damage() or None

@@ -1,15 +1,17 @@
 import numpy as np
-from rcrs_core.connection.URN import Entity as EntityURN
-from rcrs_core.entities.ambulanceCenter import AmbulanceCentre
-from rcrs_core.entities.building import Building
-from rcrs_core.entities.entity import Entity
-from rcrs_core.entities.fireStation import FireStation
-from rcrs_core.entities.gasStation import GasStation
-from rcrs_core.entities.hydrant import Hydrant
-from rcrs_core.entities.policeOffice import PoliceOffice
-from rcrs_core.entities.refuge import Refuge
-from rcrs_core.entities.road import Road
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import (
+    AmbulanceCenter,
+    Building,
+    Entity,
+    EntityID,
+    FireStation,
+    GasStation,
+    Hydrant,
+    PoliceOffice,
+    Refuge,
+    Road,
+)
+from rcrscore.urn import EntityURN
 from sklearn.cluster import KMeans
 
 from adf_core_python.core.agent.develop.develop_data import DevelopData
@@ -64,16 +66,16 @@ class KMeansClustering(Clustering):
                     agent_info.get_myself().__class__,
                 ]
             ),
-            key=lambda entity: entity.get_id().get_value(),
+            key=lambda entity: entity.get_entity_id().get_value(),
         )
         self.entity_cluster_indices = {
-            entity.get_id(): idx for idx, entity in enumerate(sorted_entities)
+            entity.get_entity_id(): idx for idx, entity in enumerate(sorted_entities)
         }
 
         self.cluster_entities: list[list[Entity]] = []
         self.entities: list[Entity] = world_info.get_entities_of_types(
             [
-                AmbulanceCentre,
+                AmbulanceCenter,
                 FireStation,
                 GasStation,
                 Hydrant,
@@ -92,7 +94,7 @@ class KMeansClustering(Clustering):
         precompute_data.write_json_data(
             {
                 "cluster_entities": [
-                    [entity.get_id().get_value() for entity in cluster]
+                    [entity.get_entity_id().get_value() for entity in cluster]
                     for cluster in cluster_entities
                 ]
             },
@@ -127,7 +129,9 @@ class KMeansClustering(Clustering):
     def get_cluster_entity_ids(self, cluster_index: int) -> list[EntityID]:
         if cluster_index >= len(self.cluster_entities):
             return []
-        return [entity.get_id() for entity in self.cluster_entities[cluster_index]]
+        return [
+            entity.get_entity_id() for entity in self.cluster_entities[cluster_index]
+        ]
 
     def prepare(self) -> Clustering:
         super().prepare()

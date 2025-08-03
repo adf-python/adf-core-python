@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Optional
 
 if TYPE_CHECKING:
-    from rcrs_core.worldmodel.entityID import EntityID
+    from rcrscore.entities import EntityID
 
     from adf_core_python.core.agent.action.action import Action
     from adf_core_python.core.agent.communication.message_manager import MessageManager

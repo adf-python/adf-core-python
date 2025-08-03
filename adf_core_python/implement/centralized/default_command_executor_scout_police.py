@@ -1,9 +1,6 @@
 from typing import Optional, cast
 
-from rcrs_core.entities.area import Area
-from rcrs_core.entities.human import Human
-from rcrs_core.entities.refuge import Refuge
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import Area, EntityID, Human, Refuge
 
 from adf_core_python.core.agent.action.common.action_move import ActionMove
 from adf_core_python.core.agent.communication.message_manager import MessageManager
@@ -77,8 +74,11 @@ class DefaultCommandExecutorScoutPolice(CommandExecutor):
         for entity in self._world_info.get_entities_of_types([Area]):
             if isinstance(entity, Refuge):
                 continue
-            if self._world_info.get_distance(target, entity.get_id()) <= scout_distance:
-                self._targets.append(entity.get_id())
+            if (
+                self._world_info.get_distance(target, entity.get_entity_id())
+                <= scout_distance
+            ):
+                self._targets.append(entity.get_entity_id())
 
         return self
 
@@ -163,7 +163,7 @@ class DefaultCommandExecutorScoutPolice(CommandExecutor):
             case self.ACTION_SCOUT:
                 if len(self._targets) != 0:
                     for entity in self._world_info.get_entities_of_types([Area]):
-                        self._targets.remove(entity.get_id())
+                        self._targets.remove(entity.get_entity_id())
                 return len(self._targets) == 0
             case _:
                 return True

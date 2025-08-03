@@ -1,28 +1,27 @@
-from abc import ABC
-
-from rcrs_core.config.config import Config
-from rcrs_core.connection import RCRSProto_pb2
-from rcrs_core.messages.message import Message
+from rcrscore.config.config import Config
+from rcrscore.messages import KAControlMessage
+from rcrscore.proto import RCRSProto_pb2
+from rcrscore.urn.control_message import ControlMessageURN
 
 from adf_core_python.core.gateway.message.urn.urn import (
-    ModuleMSG,
     ComponentModuleMSG,
+    ModuleMSG,
 )
 
 
-class MAExecResponse(Message, ABC):
-    def __init__(self, data: RCRSProto_pb2) -> None:
-        super().__init__(ModuleMSG.MA_EXEC_RESPONSE)
-        self.module_id = None
+class MAExecResponse(KAControlMessage):
+    def __init__(self, message_proto: RCRSProto_pb2.MessageProto) -> None:
         self.result = Config()
-        self.data = data
-        self.read()
+        self.read(message_proto)
 
-    def read(self) -> None:
-        self.module_id = self.data.components[ComponentModuleMSG.ModuleID].stringValue
-        result = self.data.components[ComponentModuleMSG.Result].config
+    def read(self, message_proto: RCRSProto_pb2.MessageProto) -> None:
+        self.module_id: str = message_proto.components[
+            ComponentModuleMSG.ModuleID
+        ].stringValue
+        result = message_proto.components[ComponentModuleMSG.Result].config
         for key, value in result.data.items():
             self.result.set_value(key, value)
 
-    def write(self) -> None:
-        pass
+    @staticmethod
+    def get_urn() -> ControlMessageURN:
+        return ModuleMSG.MA_EXEC_RESPONSE  # type: ignore

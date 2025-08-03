@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from rcrs_core.entities.human import Human
+from rcrscore.entities.human import Human
 
 from adf_core_python.core.component.module.complex.human_detector import (
     HumanDetector,

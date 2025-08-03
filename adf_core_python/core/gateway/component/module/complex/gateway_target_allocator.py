@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import EntityID
 
 from adf_core_python.core.component.module.complex.target_allocator import (
     TargetAllocator,

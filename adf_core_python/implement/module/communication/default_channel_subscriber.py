@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from rcrs_core.connection.URN import Entity as EntityURN
+from rcrscore.urn import EntityURN
 
 from adf_core_python.core.agent.info.scenario_info import ScenarioInfoKeys
 from adf_core_python.core.component.communication.channel_subscriber import (
@@ -69,7 +69,7 @@ class DefaultChannelSubscriber(ChannelSubscriber):
             agent_index = 2
         elif (
             agent_type == EntityURN.AMBULANCE_TEAM
-            or agent_type == EntityURN.AMBULANCE_CENTRE
+            or agent_type == EntityURN.AMBULANCE_CENTER
         ):
             agent_index = 3
 
@@ -97,5 +97,5 @@ if __name__ == "__main__":
 
     for i in range(max_channels):
         print(
-            f"AMB-{i}: {DefaultChannelSubscriber.get_channel_number(EntityURN.AMBULANCE_CENTRE, i, num_channels)}"
+            f"AMB-{i}: {DefaultChannelSubscriber.get_channel_number(EntityURN.AMBULANCE_CENTER, i, num_channels)}"
         )

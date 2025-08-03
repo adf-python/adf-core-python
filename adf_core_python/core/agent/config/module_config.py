@@ -1,6 +1,6 @@
 from typing import Any, Final
 
-from rcrs_core.config.config import Config
+from rcrscore.config.config import Config
 from yaml import safe_load
 
 

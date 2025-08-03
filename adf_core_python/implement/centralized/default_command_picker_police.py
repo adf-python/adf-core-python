@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-from rcrs_core.entities.area import Area
-from rcrs_core.entities.policeForce import PoliceForce
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import Area, EntityID, PoliceForce
 
 from adf_core_python.core.agent.communication.standard.bundle.centralized.command_police import (
     CommandPolice,
@@ -59,11 +57,11 @@ class DefaultCommandPickerPolice(CommandPicker):
             if isinstance(target, Area):
                 command = CommandPolice(
                     True,
-                    agent.get_id(),
+                    agent.get_entity_id(),
                     self._agent_info.get_entity_id(),
                     CommandPolice.ACTION_AUTONOMY,
                     StandardMessagePriority.NORMAL,
-                    target.get_id(),
+                    target.get_entity_id(),
                 )
                 self.messages.append(command)
         return self

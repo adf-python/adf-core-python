@@ -1,6 +1,6 @@
 from typing import Optional
 
-from rcrs_core.connection.URN import Entity as EntityURN
+from rcrscore.urn import EntityURN
 
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance import (
@@ -96,7 +96,7 @@ class DefaultMessageCoordinator(MessageCoordinator):
                         fire_brigade_messages.append(msg)
                     elif agent_type == EntityURN.POLICE_OFFICE:
                         police_messages.append(msg)
-                    elif agent_type == EntityURN.AMBULANCE_CENTRE:
+                    elif agent_type == EntityURN.AMBULANCE_CENTER:
                         ambulance_messages.append(msg)
                 elif isinstance(msg, MessageReport):
                     if agent_type == EntityURN.FIRE_BRIGADE:

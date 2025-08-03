@@ -1,7 +1,7 @@
 import uuid
 from typing import Optional
 
-from rcrs_core.config.config import Config
+from rcrscore.config.config import Config
 
 from adf_core_python.core.gateway.gateway_agent import GatewayAgent
 from adf_core_python.core.gateway.message.am_exec import AMExec

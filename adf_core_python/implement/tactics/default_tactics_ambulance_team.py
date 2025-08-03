@@ -1,6 +1,6 @@
 from typing import Optional, cast
 
-from rcrs_core.entities.ambulanceTeam import AmbulanceTeam
+from rcrscore.entities import AmbulanceTeam
 
 from adf_core_python.core.agent.action.action import Action
 from adf_core_python.core.agent.action.common.action_rest import ActionRest

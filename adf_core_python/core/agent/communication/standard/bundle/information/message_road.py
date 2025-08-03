@@ -3,9 +3,7 @@ from __future__ import annotations
 from typing import Optional
 
 from bitarray import bitarray
-from rcrs_core.entities.blockade import Blockade
-from rcrs_core.entities.road import Road
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import Blockade, EntityID, Road
 
 from adf_core_python.core.agent.communication.standard.bundle.standard_message import (
     StandardMessage,
@@ -43,15 +41,15 @@ class MessageRoad(StandardMessage):
         ttl: Optional[int] = None,
     ):
         super().__init__(is_wireless_message, priority, sender_entity_id, ttl)
-        self._road_entity_id: Optional[EntityID] = road.get_id()
+        self._road_entity_id: Optional[EntityID] = road.get_entity_id()
         self._road_blockade_entity_id: Optional[EntityID] = None
         self._road_blockade_repair_cost: Optional[int] = None
         self._road_blockade_x: Optional[int] = None
         self._road_blockade_y: Optional[int] = None
 
         if blockade:
-            self._road_blockade_entity_id = blockade.get_id()
-            self._road_blockade_repair_cost = blockade.get_repaire_cost()
+            self._road_blockade_entity_id = blockade.get_entity_id()
+            self._road_blockade_repair_cost = blockade.get_repair_cost()
             if is_send_blockade_location:
                 self._road_blockade_x = blockade.get_x() or None
                 self._road_blockade_y = blockade.get_y() or None
@@ -146,7 +144,7 @@ class MessageRoad(StandardMessage):
         )
         road = Road(road_id or -1)
         blockade = Blockade(road_blockade_id or -1)
-        blockade.set_repaire_cost(road_blockade_repair_cost)
+        blockade.set_repair_cost(road_blockade_repair_cost)
         blockade.set_x(road_blockade_x)
         blockade.set_y(road_blockade_y)
         return MessageRoad(

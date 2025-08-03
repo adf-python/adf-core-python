@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import EntityID
 
 if TYPE_CHECKING:
     from adf_core_python.core.agent.develop.develop_data import DevelopData

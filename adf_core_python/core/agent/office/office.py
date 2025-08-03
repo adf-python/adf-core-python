@@ -129,5 +129,5 @@ class Office(Agent):
         self.send_msg(
             ActionRest()
             .get_command(self.agent_id, self._agent_info.get_time())
-            .prepare_cmd()
+            .to_message_proto()
         )

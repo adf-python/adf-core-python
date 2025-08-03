@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-from typing import Optional, TYPE_CHECKING, Callable
+from typing import TYPE_CHECKING, Callable, Optional
 
-from rcrs_core.connection import RCRSProto_pb2, URN
+from rcrscore.proto import RCRSProto_pb2
+from rcrscore.urn import CommandURN
 
 from adf_core_python.core.agent.info.agent_info import AgentInfo
 from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
@@ -95,7 +96,7 @@ class GatewayAgent:
     def set_send_msg(self, connection_send_func: Callable) -> None:
         self.send_msg = connection_send_func
 
-    def message_received(self, msg: RCRSProto_pb2) -> None:
+    def message_received(self, msg: RCRSProto_pb2.MessageProto) -> None:
         c_msg = ModuleMessageFactory().make_message(msg)
         if isinstance(c_msg, MAModuleResponse):
             if c_msg.module_id is None or c_msg.class_name is None:
@@ -112,7 +113,7 @@ class GatewayAgent:
             self._gateway_modules[c_msg.module_id].set_execute_response(c_msg.result)
             self._gateway_modules[c_msg.module_id].set_is_executed(True)
 
-        if msg.urn == URN.Command.AK_SPEAK:
+        if msg.urn == CommandURN.AK_SPEAK:
             if self.send_msg is None:
                 raise RuntimeError("send_msg is None")
             self.send_msg(msg)

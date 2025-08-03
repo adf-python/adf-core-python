@@ -3,8 +3,7 @@ from __future__ import annotations
 import heapq
 from typing import Optional
 
-from rcrs_core.entities.area import Area
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import Area, EntityID
 
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
@@ -31,9 +30,9 @@ class DijkstraPathPlanning(PathPlanning):
         for area in self._world_info.get_entities_of_types([Area]):
             if not isinstance(area, Area):
                 continue
-            if (neighbors := area.get_neighbours()) is None:
+            if (neighbors := area.get_neighbors()) is None:
                 continue
-            area_id = area.get_id()
+            area_id = area.get_entity_id()
             self.graph[area_id] = [
                 (
                     neighbor,

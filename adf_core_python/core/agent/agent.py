@@ -5,32 +5,49 @@ from threading import Event
 from typing import Any, Callable, NoReturn, Optional
 
 from bitarray import bitarray
-from rcrs_core.commands.AKClear import AKClear
-from rcrs_core.commands.AKClearArea import AKClearArea
-from rcrs_core.commands.AKLoad import AKLoad
-from rcrs_core.commands.AKMove import AKMove
-from rcrs_core.commands.AKRescue import AKRescue
-from rcrs_core.commands.AKRest import AKRest
-from rcrs_core.commands.AKSay import AKSay
-from rcrs_core.commands.AKSpeak import AKSpeak
-from rcrs_core.commands.AKSubscribe import AKSubscribe
-from rcrs_core.commands.AKTell import AKTell
-from rcrs_core.commands.AKUnload import AKUnload
-from rcrs_core.commands.Command import Command
-from rcrs_core.config.config import Config as RCRSConfig
-from rcrs_core.connection.URN import Command as CommandURN
-from rcrs_core.connection.URN import ComponentCommand as ComponentCommandMessageID
-from rcrs_core.connection.URN import ComponentControlMSG as ComponentControlMessageID
-from rcrs_core.connection.URN import Entity as EntityURN
-from rcrs_core.messages.AKAcknowledge import AKAcknowledge
-from rcrs_core.messages.AKConnect import AKConnect
-from rcrs_core.messages.controlMessageFactory import ControlMessageFactory
-from rcrs_core.messages.KAConnectError import KAConnectError
-from rcrs_core.messages.KAConnectOK import KAConnectOK
-from rcrs_core.messages.KASense import KASense
-from rcrs_core.worldmodel.changeSet import ChangeSet
-from rcrs_core.worldmodel.entityID import EntityID
-from rcrs_core.worldmodel.worldmodel import WorldModel
+from rcrscore.commands import (
+    AKClear,
+    AKClearArea,
+    AKLoad,
+    AKMove,
+    AKRescue,
+    AKRest,
+    AKSay,
+    AKSpeak,
+    AKSubscribe,
+    AKTell,
+    AKUnload,
+    Command,
+)
+from rcrscore.config.config import Config as RCRSConfig
+
+# from rcrscore.connection.URN import Command as CommandURN
+# from rcrscore.connection.URN import ComponentCommand as ComponentCommandMessageID
+# from rcrscore.connection.URN import ComponentControlMSG as ComponentControlMessageID
+# from rcrscore.connection.URN import Entity as EntityURN
+from rcrscore.entities import EntityID
+
+# from rcrscore.messages.AKAcknowledge import AKAcknowledge
+# from rcrscore.messages.AKConnect import AKConnect
+# from rcrscore.messages.controlMessageFactory import ControlMessageFactory
+# from rcrscore.messages.KAConnectError import KAConnectError
+# from rcrscore.messages.KAConnectOK import KAConnectOK
+# from rcrscore.messages.KASense import KASense
+from rcrscore.messages import (
+    AKAcknowledge,
+    AKConnect,
+    ControlMessageFactory,
+    KAConnectError,
+    KAConnectOK,
+    KASense,
+)
+from rcrscore.urn import (
+    CommandURN,
+    ComponentCommandURN,
+    ComponentControlMessageURN,
+    EntityURN,
+)
+from rcrscore.worldmodel import ChangeSet, WorldModel
 
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance import (
@@ -229,7 +246,9 @@ class Agent:
 
     def start_up(self, request_id: int) -> None:
         ak_connect = AKConnect()
-        self.send_msg(ak_connect.write(request_id, self))
+        self.send_msg(
+            ak_connect.write(request_id, self.name, self.get_requested_entities())
+        )
 
     def message_received(self, msg: Any) -> None:
         c_msg = ControlMessageFactory().make_message(msg)
@@ -264,14 +283,7 @@ class Agent:
         if config is not None:
             for key, value in config.data.items():
                 self.config.set_value(key, value)
-            for key, value in config.int_data.items():
-                self.config.set_value(key, value)
-            for key, value in config.float_data.items():
-                self.config.set_value(key, value)
-            for key, value in config.boolean_data.items():
-                self.config.set_value(key, value)
-            for key, value in config.array_data.items():
-                self.config.set_value(key, value)
+
         self.send_acknowledge(msg.request_id)
         self.post_connect()
         self.logger.info(
@@ -284,8 +296,8 @@ class Agent:
 
         self.finish_post_connect_event.set()
 
-    def handler_sense(self, msg: Any) -> None:
-        _id = EntityID(msg.agent_id)
+    def handler_sense(self, msg: KASense) -> None:
+        _id = msg.agent_id
         time = msg.time
         change_set = msg.change_set
         heard = msg.hear.commands
@@ -295,24 +307,20 @@ class Agent:
             return
 
         heard_commands: list[Command] = []
-        for herad_command in heard:
-            if herad_command.urn == CommandURN.AK_SPEAK:
+        for heard_command in heard:
+            if heard_command.urn == CommandURN.AK_SPEAK:
                 heard_commands.append(
                     AKSpeak(
                         EntityID(
-                            herad_command.components[
-                                ComponentControlMessageID.AgentID
+                            heard_command.components[
+                                ComponentControlMessageURN.AgentID
                             ].entityID
                         ),
-                        herad_command.components[
-                            ComponentControlMessageID.Time
+                        heard_command.components[
+                            ComponentControlMessageURN.Time
                         ].intValue,
-                        herad_command.components[
-                            ComponentCommandMessageID.Message
-                        ].rawData,
-                        herad_command.components[
-                            ComponentCommandMessageID.Channel
-                        ].intValue,
+                        heard_command.components[ComponentCommandURN.Message].rawData,
+                        heard_command.components[ComponentCommandURN.Channel].intValue,
                     )
                 )
         self.world_model.merge(change_set)
@@ -328,55 +336,57 @@ class Agent:
 
     def send_clear(self, time: int, target: EntityID) -> None:
         cmd = AKClear(self.get_entity_id(), time, target)
-        msg = cmd.prepare_cmd()
+        msg = cmd.to_message_proto()
         self.send_msg(msg)
 
     def send_clear_area(self, time: int, x: int = -1, y: int = -1) -> None:
         cmd = AKClearArea(self.get_entity_id(), time, x, y)
-        msg = cmd.prepare_cmd()
+        msg = cmd.to_message_proto()
         self.send_msg(msg)
 
     def send_load(self, time: int, target: EntityID) -> None:
         cmd = AKLoad(self.get_entity_id(), time, target)
-        msg = cmd.prepare_cmd()
+        msg = cmd.to_message_proto()
         self.send_msg(msg)
 
-    def send_move(self, time: int, path: list[int], x: int = -1, y: int = -1) -> None:
-        cmd = AKMove(self.get_entity_id(), time, path[:], x, y)
-        msg = cmd.prepare_cmd()
+    def send_move(
+        self, time: int, path: list[EntityID], x: int = -1, y: int = -1
+    ) -> None:
+        cmd = AKMove(self.get_entity_id(), time, path, x, y)
+        msg = cmd.to_message_proto()
         self.send_msg(msg)
 
     def send_rescue(self, time: int, target: EntityID) -> None:
         cmd = AKRescue(self.get_entity_id(), time, target)
-        msg = cmd.prepare_cmd()
+        msg = cmd.to_message_proto()
         self.send_msg(msg)
 
     def send_rest(self, time: int) -> None:
         cmd = AKRest(self.get_entity_id(), time)
-        msg = cmd.prepare_cmd()
+        msg = cmd.to_message_proto()
         self.send_msg(msg)
 
-    def send_say(self, time_step: int, message: str) -> None:
+    def send_say(self, time_step: int, message: bytes) -> None:
         cmd = AKSay(self.get_entity_id(), time_step, message)
-        msg = cmd.prepare_cmd()
+        msg = cmd.to_message_proto()
         self.send_msg(msg)
 
     def send_speak(self, time_step: int, message: bitarray, channel: int) -> None:
         cmd = AKSpeak(self.get_entity_id(), time_step, bytes(message), channel)  # type: ignore
-        msg = cmd.prepare_cmd()
+        msg = cmd.to_message_proto()
         self.send_msg(msg)
 
     def send_subscribe(self, time: int, channels: list[int]) -> None:
         cmd = AKSubscribe(self.get_entity_id(), time, channels)
-        msg = cmd.prepare_cmd()
+        msg = cmd.to_message_proto()
         self.send_msg(msg)
 
-    def send_tell(self, time: int, message: str) -> None:
+    def send_tell(self, time: int, message: bytes) -> None:
         cmd = AKTell(self.get_entity_id(), time, message)
-        msg = cmd.prepare_cmd()
+        msg = cmd.to_message_proto()
         self.send_msg(msg)
 
     def send_unload(self, time: int) -> None:
         cmd = AKUnload(self.get_entity_id(), time)
-        msg = cmd.prepare_cmd()
+        msg = cmd.to_message_proto()
         self.send_msg(msg)

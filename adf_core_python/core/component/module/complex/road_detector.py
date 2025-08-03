@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import TYPE_CHECKING
 
-from rcrs_core.entities.road import Road
+from rcrscore.entities.road import Road
 
 from adf_core_python.core.component.module.complex.target_detector import (
     TargetDetector,

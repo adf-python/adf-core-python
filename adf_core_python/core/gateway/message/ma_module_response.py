@@ -1,26 +1,30 @@
 from abc import ABC
 from typing import Optional
 
-from rcrs_core.connection import RCRSProto_pb2
-from rcrs_core.messages.message import Message
+from rcrscore.messages import KAControlMessage
+from rcrscore.proto import RCRSProto_pb2
+from rcrscore.urn.control_message import ControlMessageURN
 
 from adf_core_python.core.gateway.message.urn.urn import (
-    ModuleMSG,
     ComponentModuleMSG,
+    ModuleMSG,
 )
 
 
-class MAModuleResponse(Message, ABC):
-    def __init__(self, data: RCRSProto_pb2) -> None:
-        super().__init__(ModuleMSG.MA_MODULE_RESPONSE)
+class MAModuleResponse(KAControlMessage, ABC):
+    def __init__(self, message_proto: RCRSProto_pb2.MessageProto) -> None:
         self.module_id: Optional[str] = None
         self.class_name: Optional[str] = None
-        self.data = data
-        self.read()
+        self.read(message_proto)
 
-    def read(self) -> None:
-        self.module_id = self.data.components[ComponentModuleMSG.ModuleID].stringValue
-        self.class_name = self.data.components[ComponentModuleMSG.ClassName].stringValue
+    def read(self, message_proto: RCRSProto_pb2.MessageProto) -> None:
+        self.module_id = message_proto.components[
+            ComponentModuleMSG.ModuleID
+        ].stringValue
+        self.class_name = message_proto.components[
+            ComponentModuleMSG.ClassName
+        ].stringValue
 
-    def write(self) -> None:
-        pass
+    @staticmethod
+    def get_urn() -> ControlMessageURN:
+        return ModuleMSG.MA_MODULE_RESPONSE  # type: ignore

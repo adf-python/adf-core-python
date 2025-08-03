@@ -2,16 +2,18 @@ import math
 import sys
 from typing import Optional, cast
 
-from rcrs_core.entities.ambulanceTeam import AmbulanceTeam
-from rcrs_core.entities.area import Area
-from rcrs_core.entities.blockade import Blockade
-from rcrs_core.entities.building import Building
-from rcrs_core.entities.fireBrigade import FireBrigade
-from rcrs_core.entities.human import Human
-from rcrs_core.entities.policeForce import PoliceForce
-from rcrs_core.entities.refuge import Refuge
-from rcrs_core.entities.road import Road
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import (
+    AmbulanceTeam,
+    Area,
+    Blockade,
+    Building,
+    EntityID,
+    FireBrigade,
+    Human,
+    PoliceForce,
+    Refuge,
+    Road,
+)
 from shapely import LineString, Point, Polygon
 
 from adf_core_python.core.agent.action.action import Action
@@ -261,7 +263,7 @@ class DefaultExtendActionClear(ExtendAction):
 
         for agent_entity in agent_entities:
             human = cast(Human, agent_entity)
-            if human.get_position().get_value() != road.get_id().get_value():
+            if human.get_position().get_value() != road.get_entity_id().get_value():
                 continue
 
             human_x = human.get_x()
@@ -294,10 +296,11 @@ class DefaultExtendActionClear(ExtendAction):
                                 return ActionClear(clear_blockade)
 
                             another_distance = self.world_info.get_distance(
-                                police_entity.get_id(), clear_blockade.get_id()
+                                police_entity.get_entity_id(),
+                                clear_blockade.get_entity_id(),
                             )
                             blockade_distance = self.world_info.get_distance(
-                                police_entity.get_id(), blockade.get_id()
+                                police_entity.get_entity_id(), blockade.get_entity_id()
                             )
                             if blockade_distance < another_distance:
                                 return action
@@ -334,10 +337,12 @@ class DefaultExtendActionClear(ExtendAction):
                                         return ActionClear(clear_blockade)
 
                                     distance1 = self.world_info.get_distance(
-                                        police_entity.get_id(), clear_blockade.get_id()
+                                        police_entity.get_entity_id(),
+                                        clear_blockade.get_entity_id(),
                                     )
                                     distance2 = self.world_info.get_distance(
-                                        police_entity.get_id(), blockade.get_id()
+                                        police_entity.get_entity_id(),
+                                        blockade.get_entity_id(),
                                     )
                                     if distance1 > distance2:
                                         return ActionClearArea(clear_x, clear_y)
@@ -346,7 +351,9 @@ class DefaultExtendActionClear(ExtendAction):
 
                         elif distance < min_distance:
                             min_distance = distance
-                            move_action = ActionMove([road.get_id()], human_x, human_y)
+                            move_action = ActionMove(
+                                [road.get_entity_id()], human_x, human_y
+                            )
 
                 if action_clear is not None:
                     return action_clear
@@ -412,7 +419,7 @@ class DefaultExtendActionClear(ExtendAction):
         if best_point is not None:
             bp_x, bp_y = best_point
             if road.get_blockades() is None:
-                return ActionMove([road.get_id()], int(bp_x), int(bp_y))
+                return ActionMove([road.get_entity_id()], int(bp_x), int(bp_y))
 
             action_clear: Optional[ActionClearArea] = None
             clear_blockade: Optional[Blockade] = None
@@ -446,7 +453,9 @@ class DefaultExtendActionClear(ExtendAction):
                                 return ActionClear(clear_blockade)
                             return action_clear
                     elif action_move is None:
-                        action_move = ActionMove([road.get_id()], int(bp_x), int(bp_y))
+                        action_move = ActionMove(
+                            [road.get_entity_id()], int(bp_x), int(bp_y)
+                        )
 
             if action_clear is not None:
                 return action_clear
@@ -457,12 +466,12 @@ class DefaultExtendActionClear(ExtendAction):
             cast(PoliceForce, self.agent_info.get_myself()), road
         )
         if action is None:
-            action = ActionMove([road.get_id()], int(point_x), int(point_y))
+            action = ActionMove([road.get_entity_id()], int(point_x), int(point_y))
         return action
 
     def _get_move_points(self, road: Road) -> set[tuple[float, float]]:
         points: Optional[set[tuple[float, float]]] = self._move_point_cache.get(
-            road.get_id()
+            road.get_entity_id()
         )
         if points is None:
             points = set()
@@ -480,7 +489,7 @@ class DefaultExtendActionClear(ExtendAction):
                 if (mid_x, mid_y) in points:
                     points.remove((mid_x, mid_y))
 
-            self._move_point_cache[road.get_id()] = points
+            self._move_point_cache[road.get_entity_id()] = points
 
         return points
 
@@ -568,10 +577,10 @@ class DefaultExtendActionClear(ExtendAction):
 
                 if self._is_intersecting_blockades(blockade, another):
                     distance1 = self.world_info.get_distance(
-                        police_entity.get_id(), blockade.get_id()
+                        police_entity.get_entity_id(), blockade.get_entity_id()
                     )
                     distance2 = self.world_info.get_distance(
-                        police_entity.get_id(), another.get_id()
+                        police_entity.get_entity_id(), another.get_entity_id()
                     )
                     if distance1 <= distance2 and distance1 < min_distance:
                         min_distance = distance1
@@ -632,7 +641,7 @@ class DefaultExtendActionClear(ExtendAction):
         if position is None:
             return None
 
-        edge = target.get_edge_to(position.get_id())
+        edge = target.get_edge_to(position.get_entity_id())
         if edge is None:
             return None
 
@@ -680,7 +689,9 @@ class DefaultExtendActionClear(ExtendAction):
                                     if self.count >= self._forced_move:
                                         self.count = 0
                                         return ActionMove(
-                                            [road.get_id()], int(clear_x), int(clear_y)
+                                            [road.get_entity_id()],
+                                            int(clear_x),
+                                            int(clear_y),
                                         )
                                     self.count += 1
 
@@ -696,7 +707,7 @@ class DefaultExtendActionClear(ExtendAction):
                                 return action_clear
                         elif action_move is None:
                             action_move = ActionMove(
-                                [road.get_id()], int(mid_x), int(mid_y)
+                                [road.get_entity_id()], int(mid_x), int(mid_y)
                             )
 
                 if action_clear is not None:
@@ -707,7 +718,7 @@ class DefaultExtendActionClear(ExtendAction):
         if isinstance(target, Road):
             road = cast(Road, target)
             if road.get_blockades() == []:
-                return ActionMove([position.get_id(), target.get_id()])
+                return ActionMove([position.get_entity_id(), target.get_entity_id()])
 
             target_blockade: Optional[Blockade] = None
             min_point_distance = sys.float_info.max
@@ -739,11 +750,11 @@ class DefaultExtendActionClear(ExtendAction):
                 ):
                     if self.count >= self._forced_move:
                         self.count = 0
-                        return ActionMove([road.get_id()], clear_x, clear_y)
+                        return ActionMove([road.get_entity_id()], clear_x, clear_y)
                     self.count += 1
 
                 self._old_clear_x = clear_x
                 self._old_clear_y = clear_y
                 return ActionClearArea(clear_x, clear_y)
 
-        return ActionMove([position.get_id(), target.get_id()])
+        return ActionMove([position.get_entity_id(), target.get_entity_id()])

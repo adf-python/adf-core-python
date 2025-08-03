@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from bitarray import bitarray
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import EntityID
 
 from adf_core_python.core.agent.communication.standard.bundle.standard_message import (
     StandardMessage,

@@ -1,10 +1,12 @@
-from rcrs_core.entities.ambulanceTeam import AmbulanceTeam
-from rcrs_core.entities.blockade import Blockade
-from rcrs_core.entities.building import Building
-from rcrs_core.entities.civilian import Civilian
-from rcrs_core.entities.fireBrigade import FireBrigade
-from rcrs_core.entities.policeForce import PoliceForce
-from rcrs_core.entities.road import Road
+from rcrscore.entities import (
+    AmbulanceTeam,
+    Blockade,
+    Building,
+    Civilian,
+    FireBrigade,
+    PoliceForce,
+    Road,
+)
 
 from adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team import (
     MessageAmbulanceTeam,
@@ -317,7 +319,7 @@ def _apply_to_world_info_road(
     if blockade is None:
         road_blockade = Blockade(blockade_entity_id.get_value())
         if (repair_cost := message_road.get_road_blockade_repair_cost()) is not None:
-            road_blockade.set_repaire_cost(repair_cost)
+            road_blockade.set_repair_cost(repair_cost)
         if (x := message_road.get_road_blockade_x()) is not None:
             road_blockade.set_x(x)
         if (y := message_road.get_road_blockade_y()) is not None:
@@ -328,7 +330,7 @@ def _apply_to_world_info_road(
             if (
                 repair_cost := message_road.get_road_blockade_repair_cost()
             ) is not None:
-                blockade.set_repaire_cost(repair_cost)
+                blockade.set_repair_cost(repair_cost)
             if (x := message_road.get_road_blockade_x()) is not None:
                 blockade.set_x(x)
             if (y := message_road.get_road_blockade_y()) is not None:

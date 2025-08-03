@@ -1,6 +1,6 @@
 from typing import Optional, cast
 
-from rcrs_core.entities.fireBrigade import FireBrigade
+from rcrscore.entities import FireBrigade
 
 from adf_core_python.core.agent.action.action import Action
 from adf_core_python.core.agent.action.common.action_rest import ActionRest

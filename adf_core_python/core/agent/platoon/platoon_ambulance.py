@@ -1,7 +1,7 @@
 from threading import Event
 from typing import Optional
 
-from rcrs_core.connection.URN import Entity as EntityURN
+from rcrscore.urn import EntityURN
 
 from adf_core_python.core.agent.config.module_config import ModuleConfig
 from adf_core_python.core.agent.develop.develop_data import DevelopData

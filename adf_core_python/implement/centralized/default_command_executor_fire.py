@@ -1,10 +1,6 @@
 from typing import Optional, cast
 
-from rcrs_core.entities.area import Area
-from rcrs_core.entities.civilian import Civilian
-from rcrs_core.entities.human import Human
-from rcrs_core.entities.refuge import Refuge
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import Area, Civilian, EntityID, Human, Refuge
 
 from adf_core_python.core.agent.action.common.action_move import ActionMove
 from adf_core_python.core.agent.action.common.action_rest import ActionRest

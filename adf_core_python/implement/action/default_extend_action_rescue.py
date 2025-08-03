@@ -1,10 +1,6 @@
 from typing import Optional, cast
 
-from rcrs_core.entities.area import Area
-from rcrs_core.entities.blockade import Blockade
-from rcrs_core.entities.fireBrigade import FireBrigade
-from rcrs_core.entities.human import Human
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import Area, Blockade, EntityID, FireBrigade, Human
 
 from adf_core_python.core.agent.action.action import Action
 from adf_core_python.core.agent.action.ambulance.action_rescue import ActionRescue
@@ -117,16 +113,19 @@ class DefaultExtendActionRescue(ExtendAction):
             return None
 
         agent_position_entity_id = agent.get_position()
+        if agent_position_entity_id is None:
+            return None
+
         if isinstance(target_entity, Human):
             human = cast(Human, target_entity)
             if human.get_hp() == 0:
                 return None
 
             target_position_entity_id = human.get_position()
-            if (
-                agent_position_entity_id.get_value()
-                == target_position_entity_id.get_value()
-            ):
+            if target_position_entity_id is None:
+                return None
+
+            if agent_position_entity_id == target_position_entity_id:
                 buriedness = human.get_buriedness()
                 if buriedness is not None and buriedness > 0:
                     return ActionRescue(target_entity_id)
@@ -141,10 +140,14 @@ class DefaultExtendActionRescue(ExtendAction):
 
         if isinstance(target_entity, Blockade):
             blockade = cast(Blockade, target_entity)
-            target_entity = self.world_info.get_entity(blockade.get_position())
+            blockade_position = blockade.get_position()
+            if blockade_position is None:
+                return None
+
+            target_entity = self.world_info.get_entity(blockade_position)
             if isinstance(target_entity, Area):
                 path = self._path_planning.get_path(
-                    agent_position_entity_id, target_entity.get_id()
+                    agent_position_entity_id, target_entity.get_entity_id()
                 )
                 if path != []:
                     return ActionMove(path)

@@ -133,5 +133,5 @@ class Platoon(Agent):
             self.send_msg(
                 action.get_command(
                     self.agent_id, self._agent_info.get_time()
-                ).prepare_cmd()
+                ).to_message_proto()
             )

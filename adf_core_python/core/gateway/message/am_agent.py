@@ -1,35 +1,30 @@
 from typing import Any
 
-from rcrs_core.connection import RCRSProto_pb2
-from rcrs_core.entities.entity import Entity
-from rcrs_core.messages.message import Message
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import EntityID
+from rcrscore.entities.entity import Entity
+from rcrscore.messages import AKControlMessage
+from rcrscore.proto import RCRSProto_pb2
+from rcrscore.urn.control_message import ControlMessageURN
 
 from adf_core_python.core.gateway.message.urn.urn import (
-    ModuleMSG,
     ComponentModuleMSG,
+    ModuleMSG,
 )
 
 
-class AMAgent(Message):
-    def __init__(self) -> None:
-        super().__init__(ModuleMSG.AM_AGENT)
-
-    def read(self) -> None:
-        pass
-
+class AMAgent(AKControlMessage):
+    @staticmethod
     def write(
-        self,
         agent_id: EntityID,
         entities: list[Entity],
         config: dict[str, Any],
         mode: int,
-    ) -> Any:
+    ) -> RCRSProto_pb2.MessageProto:
         entity_proto_list = []
         for entity in entities:
             entity_proto = RCRSProto_pb2.EntityProto()
             entity_proto.urn = entity.get_urn()
-            entity_proto.entityID = entity.get_id().get_value()
+            entity_proto.entityID = entity.get_entity_id().get_value()
 
             property_proto_list = []
             for k, v in entity.get_properties().items():
@@ -45,7 +40,7 @@ class AMAgent(Message):
             config_proto.data[str(key)] = str(value)
 
         msg = RCRSProto_pb2.MessageProto()
-        msg.urn = self.get_urn()
+        msg.urn = AMAgent.get_urn()
         msg.components[ComponentModuleMSG.AgentID].entityID = agent_id.get_value()
         msg.components[ComponentModuleMSG.Entities].entityList.CopyFrom(
             entity_list_proto
@@ -53,3 +48,7 @@ class AMAgent(Message):
         msg.components[ComponentModuleMSG.Config].config.CopyFrom(config_proto)
         msg.components[ComponentModuleMSG.Mode].intValue = mode
         return msg
+
+    @staticmethod
+    def get_urn() -> ControlMessageURN:
+        return ModuleMSG.AM_AGENT  # type: ignore

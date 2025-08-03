@@ -1,6 +1,6 @@
 from typing import Optional
 
-from rcrs_core.connection import RCRSProto_pb2
+from rcrscore.proto import RCRSProto_pb2
 
 from adf_core_python.core.gateway.message.ma_exec_response import MAExecResponse
 from adf_core_python.core.gateway.message.ma_module_response import (
@@ -14,7 +14,7 @@ class ModuleMessageFactory:
         pass
 
     def make_message(
-        self, msg: RCRSProto_pb2
+        self, msg: RCRSProto_pb2.MessageProto
     ) -> Optional[MAModuleResponse | MAExecResponse]:
         if msg.urn == ModuleMSG.MA_MODULE_RESPONSE:
             return MAModuleResponse(msg)

@@ -1,10 +1,6 @@
 from typing import Optional, cast
 
-from rcrs_core.entities.building import Building
-from rcrs_core.entities.gasStation import GasStation
-from rcrs_core.entities.refuge import Refuge
-from rcrs_core.entities.road import Road
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import Building, EntityID, GasStation, Refuge, Road
 
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.develop.develop_data import DevelopData
@@ -59,7 +55,7 @@ class SampleRoadDetector(RoadDetector):
         for entity in entities:
             if not isinstance(entity, Building):
                 continue
-            for entity_id in entity.get_neighbours():
+            for entity_id in entity.get_neighbors():
                 neighbor = self._world_info.get_entity(entity_id)
                 if isinstance(neighbor, Road):
                     self._target_areas.add(entity_id)
@@ -68,7 +64,7 @@ class SampleRoadDetector(RoadDetector):
         for entity in self._world_info.get_entities_of_types([Refuge]):
             if not isinstance(entity, Building):
                 continue
-            for entity_id in entity.get_neighbours():
+            for entity_id in entity.get_neighbors():
                 neighbor = self._world_info.get_entity(entity_id)
                 if isinstance(neighbor, Road):
                     self._priority_roads.add(entity_id)
@@ -86,7 +82,7 @@ class SampleRoadDetector(RoadDetector):
         )
         for entity in entities:
             building: Building = cast(Building, entity)
-            for entity_id in building.get_neighbours():
+            for entity_id in building.get_neighbors():
                 neighbor = self._world_info.get_entity(entity_id)
                 if isinstance(neighbor, Road):
                     self._target_areas.add(entity_id)
@@ -94,7 +90,7 @@ class SampleRoadDetector(RoadDetector):
         self._priority_roads = set()
         for entity in self._world_info.get_entities_of_types([Refuge]):
             refuge: Refuge = cast(Refuge, entity)
-            for entity_id in refuge.get_neighbours():
+            for entity_id in refuge.get_neighbors():
                 neighbor = self._world_info.get_entity(entity_id)
                 if isinstance(neighbor, Road):
                     self._priority_roads.add(entity_id)

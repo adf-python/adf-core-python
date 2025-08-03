@@ -1,9 +1,6 @@
 from __future__ import annotations
 
-from rcrs_core.entities.ambulanceTeam import AmbulanceTeam
-from rcrs_core.entities.area import Area
-from rcrs_core.entities.human import Human
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import AmbulanceTeam, Area, EntityID, Human
 
 from adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance import (
     CommandAmbulance,
@@ -69,7 +66,7 @@ class DefaultCommandPickerAmbulance(CommandPicker):
                     self._agent_info.get_entity_id(),
                     CommandAmbulance.ACTION_RESCUE,
                     StandardMessagePriority.NORMAL,
-                    target.get_id(),
+                    target.get_entity_id(),
                 )
                 self.messages.append(command)
 
@@ -80,7 +77,7 @@ class DefaultCommandPickerAmbulance(CommandPicker):
                     self._agent_info.get_entity_id(),
                     self.scout_distance,
                     StandardMessagePriority.NORMAL,
-                    target.get_id(),
+                    target.get_entity_id(),
                 )
                 self.messages.append(command)
         return self

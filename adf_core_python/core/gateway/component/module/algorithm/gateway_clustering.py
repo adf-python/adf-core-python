@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from typing import TYPE_CHECKING
 
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import EntityID
 
 from adf_core_python.core.component.module.algorithm.clustering import Clustering
 from adf_core_python.core.gateway.component.module.gateway_abstract_module import (
@@ -11,7 +11,7 @@ from adf_core_python.core.gateway.component.module.gateway_abstract_module impor
 )
 
 if TYPE_CHECKING:
-    from rcrs_core.entities.entity import Entity
+    from rcrscore.entities.entity import Entity
 
     from adf_core_python.core.agent.communication.message_manager import MessageManager
     from adf_core_python.core.agent.develop.develop_data import DevelopData
@@ -64,17 +64,17 @@ class GatewayClustering(GatewayAbstractModule, Clustering):
 
     def get_cluster_number(self) -> int:
         result = self._gateway_module.execute("getClusterNumber")
-        return int(result.get_value_or_default("ClusterNumber", "0"))
+        return int(result.get_value("ClusterNumber") or 0)
 
     def get_cluster_index(self, entity_id: EntityID) -> int:
         arguments: dict[str, str] = {"EntityID": str(entity_id.get_value())}
         result = self._gateway_module.execute("getClusterIndex(EntityID)", arguments)
-        return int(result.get_value_or_default("ClusterIndex", "0"))
+        return int(result.get_value("ClusterIndex") or 0)
 
     def get_cluster_entities(self, cluster_index: int) -> list[Entity]:
         arguments: dict[str, str] = {"Index": str(cluster_index)}
         result = self._gateway_module.execute("getClusterEntities(int)", arguments)
-        json_str = result.get_value_or_default("EntityIDs", "[]")
+        json_str = result.get_value("EntityIDs") or "[]"
         entity_ids: list[int] = json.loads(json_str)
         entities: list[Entity] = []
         for entity_id in entity_ids:
@@ -84,7 +84,7 @@ class GatewayClustering(GatewayAbstractModule, Clustering):
     def get_cluster_entity_ids(self, cluster_index: int) -> list[EntityID]:
         arguments: dict[str, str] = {"Index": str(cluster_index)}
         result = self._gateway_module.execute("getClusterEntityIDs(int)", arguments)
-        json_str = result.get_value_or_default("EntityIDs", "[]")
+        json_str = result.get_value("EntityIDs") or "[]"
         raw_entity_ids: list[int] = json.loads(json_str)
         entity_ids: list[EntityID] = []
         for entity_id in raw_entity_ids:

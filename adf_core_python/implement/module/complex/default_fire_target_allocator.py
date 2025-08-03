@@ -1,10 +1,7 @@
 from functools import cmp_to_key
 from typing import Callable, Optional
 
-from rcrs_core.entities.entity import Entity
-from rcrs_core.entities.fireBrigade import FireBrigade
-from rcrs_core.entities.human import Human
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import Entity, EntityID, FireBrigade, Human
 
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.develop.develop_data import DevelopData
@@ -70,12 +67,12 @@ class DefaultFireTargetAllocator(FireTargetAllocator):
                         agents, key=cmp_to_key(self._compare_by_distance(target_entity))
                     )
                     result = agents.pop(0)
-                    info = self._fire_brigade_info_map[result.get_id()]
+                    info = self._fire_brigade_info_map[result.get_entity_id()]
                     if info is not None:
                         info._can_new_action = False
                         info._target = target
                         info.command_time = current_time
-                        self._fire_brigade_info_map[result.get_id()] = info
+                        self._fire_brigade_info_map[result.get_entity_id()] = info
                         removes.append(target)
 
         for r in removes:
@@ -90,12 +87,12 @@ class DefaultFireTargetAllocator(FireTargetAllocator):
                         agents, key=cmp_to_key(self._compare_by_distance(target_entity))
                     )
                     result = agents.pop(0)
-                    info = self._fire_brigade_info_map[result.get_id()]
+                    info = self._fire_brigade_info_map[result.get_entity_id()]
                     if info is not None:
                         info._can_new_action = False
                         info._target = target
                         info.command_time = current_time
-                        self._fire_brigade_info_map[result.get_id()] = info
+                        self._fire_brigade_info_map[result.get_entity_id()] = info
                         removes.append(target)
 
         for r in removes:
@@ -111,7 +108,7 @@ class DefaultFireTargetAllocator(FireTargetAllocator):
     ) -> list[FireBrigade]:
         result = []
         for entity in self._world_info.get_entities_of_types([FireBrigade]):
-            info = info_map[entity.get_id()]
+            info = info_map[entity.get_entity_id()]
             if info is not None and info._can_new_action:
                 result.append(entity)
         return result
@@ -121,10 +118,10 @@ class DefaultFireTargetAllocator(FireTargetAllocator):
     ) -> Callable[[Entity, Entity], int]:
         def _cmp_func(entity_a: Entity, entity_b: Entity) -> int:
             distance_a = self._world_info.get_distance(
-                target_entity.get_id(), entity_a.get_id()
+                target_entity.get_entity_id(), entity_a.get_entity_id()
             )
             distance_b = self._world_info.get_distance(
-                target_entity.get_id(), entity_b.get_id()
+                target_entity.get_entity_id(), entity_b.get_entity_id()
             )
             if distance_a < distance_b:
                 return -1

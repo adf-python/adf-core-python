@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from typing import TYPE_CHECKING
 
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import EntityID
 
 from adf_core_python.core.component.module.algorithm.path_planning import PathPlanning
 from adf_core_python.core.gateway.component.module.gateway_abstract_module import (
@@ -70,7 +70,7 @@ class GatewayPathPlanning(GatewayAbstractModule, PathPlanning):
         result = self._gateway_module.execute(
             "getResult(EntityID, EntityID)", arguments
         )
-        json_str = result.get_value_or_default("Result", "[]")
+        json_str = result.get_value("Result") or "[]"
         raw_entity_ids: list[int] = json.loads(json_str)
         entity_ids: list[EntityID] = []
         for entity_id in raw_entity_ids:
@@ -89,7 +89,7 @@ class GatewayPathPlanning(GatewayAbstractModule, PathPlanning):
         result = self._gateway_module.execute(
             "getResult(EntityID, List[EntityID])", arguments
         )
-        json_str = result.get_value_or_default("Result", "[]")
+        json_str = result.get_value("Result") or "[]"
         raw_entity_ids: list[int] = json.loads(json_str)
         entity_ids: list[EntityID] = []
         for entity_id in raw_entity_ids:
@@ -104,4 +104,4 @@ class GatewayPathPlanning(GatewayAbstractModule, PathPlanning):
         result = self._gateway_module.execute(
             "getDistance(EntityID, EntityID)", arguments
         )
-        return float(result.get_value_or_default("Result", "0.0"))
+        return float(result.get_value("Result") or 0.0)

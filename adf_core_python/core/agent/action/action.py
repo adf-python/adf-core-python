@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-from rcrs_core.commands.Command import Command
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.commands import Command
+from rcrscore.entities import EntityID
 
 
 class Action(ABC):

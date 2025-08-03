@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 from adf_core_python.core.component.module.abstract_module import AbstractModule
 
 if TYPE_CHECKING:
-    from rcrs_core.worldmodel.entityID import EntityID
+    from rcrscore.entities import EntityID
 
     from adf_core_python.core.agent.communication.message_manager import MessageManager
     from adf_core_python.core.agent.develop.develop_data import DevelopData

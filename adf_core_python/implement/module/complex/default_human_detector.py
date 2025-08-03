@@ -1,10 +1,7 @@
 from typing import Optional, cast
 
-from rcrs_core.connection.URN import Entity as EntityURN
-from rcrs_core.entities.civilian import Civilian
-from rcrs_core.entities.entity import Entity
-from rcrs_core.entities.human import Human
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import Civilian, Entity, EntityID, Human
+from rcrscore.urn import EntityURN
 
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
@@ -46,7 +43,7 @@ class DefaultHumanDetector(HumanDetector):
     def calculate(self) -> HumanDetector:
         transport_human: Optional[Human] = self._agent_info.some_one_on_board()
         if transport_human is not None:
-            self._result = transport_human.get_id()
+            self._result = transport_human.get_entity_id()
             return self
 
         if self._result is not None:
@@ -72,44 +69,45 @@ class DefaultHumanDetector(HumanDetector):
         cluster_valid_human_entities: list[Entity] = [
             entity
             for entity in cluster_entities
-            if self._is_valid_human(entity.get_id()) and isinstance(entity, Civilian)
+            if self._is_valid_human(entity.get_entity_id())
+            and isinstance(entity, Civilian)
         ]
         if len(cluster_valid_human_entities) != 0:
             nearest_human_entity = cluster_valid_human_entities[0]
             nearest_distance = self._world_info.get_distance(
                 self._agent_info.get_entity_id(),
-                nearest_human_entity.get_id(),
+                nearest_human_entity.get_entity_id(),
             )
             for entity in cluster_valid_human_entities:
                 distance = self._world_info.get_distance(
                     self._agent_info.get_entity_id(),
-                    entity.get_id(),
+                    entity.get_entity_id(),
                 )
                 if distance < nearest_distance:
                     nearest_distance = distance
                     nearest_human_entity = entity
-            return nearest_human_entity.get_id()
+            return nearest_human_entity.get_entity_id()
 
         world_valid_human_entities: list[Entity] = [
             entity
             for entity in self._world_info.get_entities_of_types([Civilian])
-            if self._is_valid_human(entity.get_id())
+            if self._is_valid_human(entity.get_entity_id())
         ]
         if len(world_valid_human_entities) != 0:
             nearest_human_entity = world_valid_human_entities[0]
             nearest_distance = self._world_info.get_distance(
                 self._agent_info.get_entity_id(),
-                nearest_human_entity.get_id(),
+                nearest_human_entity.get_entity_id(),
             )
             for entity in world_valid_human_entities:
                 distance = self._world_info.get_distance(
                     self._agent_info.get_entity_id(),
-                    entity.get_id(),
+                    entity.get_entity_id(),
                 )
                 if distance < nearest_distance:
                     nearest_distance = distance
                     nearest_human_entity = entity
-            return nearest_human_entity.get_id()
+            return nearest_human_entity.get_entity_id()
 
         return None
 

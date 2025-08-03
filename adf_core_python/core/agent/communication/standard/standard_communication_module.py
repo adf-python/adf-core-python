@@ -3,8 +3,8 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from bitarray import bitarray
-from rcrs_core.commands.AKSpeak import AKSpeak
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.commands import AKSpeak
+from rcrscore.entities import EntityID
 
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.communication.standard.bundle.standard_message import (

@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-from rcrs_core.entities.area import Area
-from rcrs_core.entities.entity import Entity
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import Area, Entity, EntityID
 
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
@@ -30,9 +28,9 @@ class AStarPathPlanning(PathPlanning):
         self._graph: dict[EntityID, set[EntityID]] = {}
         for entity in entities:
             if isinstance(entity, Area):
-                self._graph[entity.get_id()] = set(
+                self._graph[entity.get_entity_id()] = set(
                     neighbor
-                    for neighbor in entity.get_neighbours()  # TODO: Fix rcrs_core typo
+                    for neighbor in entity.get_neighbors()
                     if neighbor != EntityID(0)
                 )
 

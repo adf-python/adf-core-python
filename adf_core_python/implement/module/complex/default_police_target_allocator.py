@@ -1,13 +1,15 @@
 from functools import cmp_to_key
 from typing import Callable, Optional, cast
 
-from rcrs_core.entities.building import Building
-from rcrs_core.entities.entity import Entity
-from rcrs_core.entities.gasStation import GasStation
-from rcrs_core.entities.policeForce import PoliceForce
-from rcrs_core.entities.refuge import Refuge
-from rcrs_core.entities.road import Road
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import (
+    Building,
+    Entity,
+    EntityID,
+    GasStation,
+    PoliceForce,
+    Refuge,
+    Road,
+)
 
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.develop.develop_data import DevelopData
@@ -50,14 +52,14 @@ class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
                 [Refuge, Building, GasStation]
             ):
                 building: Building = cast(Building, entity)
-                for entity_id in building.get_neighbours():
+                for entity_id in building.get_neighbors():
                     neighbor = self._world_info.get_entity(entity_id)
                     if isinstance(neighbor, Road):
                         self._target_areas.add(entity_id)
 
             for entity in self._world_info.get_entities_of_types([Refuge]):
                 refuge: Refuge = cast(Refuge, entity)
-                for entity_id in refuge.get_neighbours():
+                for entity_id in refuge.get_neighbors():
                     neighbor = self._world_info.get_entity(entity_id)
                     if isinstance(neighbor, Road):
                         self._priority_areas.add(entity_id)
@@ -75,14 +77,14 @@ class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
             [Refuge, Building, GasStation]
         ):
             building: Building = cast(Building, entity)
-            for entity_id in building.get_neighbours():
+            for entity_id in building.get_neighbors():
                 neighbor = self._world_info.get_entity(entity_id)
                 if isinstance(neighbor, Road):
                     self._target_areas.add(entity_id)
 
         for entity in self._world_info.get_entities_of_types([Refuge]):
             refuge: Refuge = cast(Refuge, entity)
-            for entity_id in refuge.get_neighbours():
+            for entity_id in refuge.get_neighbors():
                 neighbor = self._world_info.get_entity(entity_id)
                 if isinstance(neighbor, Road):
                     self._priority_areas.add(entity_id)
@@ -107,12 +109,12 @@ class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
                         agents, key=cmp_to_key(self._compare_by_distance(target_entity))
                     )
                     result = agents.pop(0)
-                    info = self._agent_info_map[result.get_id()]
+                    info = self._agent_info_map[result.get_entity_id()]
                     if info is not None:
                         info._can_new_action = False
                         info._target = target
                         info.command_time = current_time
-                        self._agent_info_map[result.get_id()] = info
+                        self._agent_info_map[result.get_entity_id()] = info
                         removes.append(target)
 
         for r in removes:
@@ -128,13 +130,13 @@ class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
             if len(areas) > 0:
                 areas.sort(key=cmp_to_key(self._compare_by_distance(agent)))
                 result = areas.pop(0)
-                self._target_areas.remove(result.get_id())
-                info = self._agent_info_map[agent.get_id()]
+                self._target_areas.remove(result.get_entity_id())
+                info = self._agent_info_map[agent.get_entity_id()]
                 if info is not None:
                     info._can_new_action = False
-                    info._target = result.get_id()
+                    info._target = result.get_entity_id()
                     info.command_time = current_time
-                    self._agent_info_map[agent.get_id()] = info
+                    self._agent_info_map[agent.get_entity_id()] = info
 
         return self
 
@@ -146,7 +148,7 @@ class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
     ) -> list[PoliceForce]:
         result = []
         for entity in self._world_info.get_entities_of_types([PoliceForce]):
-            info = info_map[entity.get_id()]
+            info = info_map[entity.get_entity_id()]
             if info is not None and info._can_new_action:
                 result.append(entity)
         return result
@@ -156,10 +158,10 @@ class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
     ) -> Callable[[Entity, Entity], int]:
         def _cmp_func(entity_a: Entity, entity_b: Entity) -> int:
             distance_a = self._world_info.get_distance(
-                target_entity.get_id(), entity_a.get_id()
+                target_entity.get_entity_id(), entity_a.get_entity_id()
             )
             distance_b = self._world_info.get_distance(
-                target_entity.get_id(), entity_b.get_id()
+                target_entity.get_entity_id(), entity_b.get_entity_id()
             )
             if distance_a < distance_b:
                 return -1

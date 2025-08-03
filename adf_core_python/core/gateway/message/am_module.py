@@ -1,29 +1,24 @@
 from typing import Any
 
-from rcrs_core.connection import RCRSProto_pb2
-from rcrs_core.messages.message import Message
+from rcrscore.messages import AKControlMessage
+from rcrscore.proto import RCRSProto_pb2
+from rcrscore.urn.control_message import ControlMessageURN
 
 from adf_core_python.core.gateway.message.urn.urn import (
-    ModuleMSG,
     ComponentModuleMSG,
+    ModuleMSG,
 )
 
 
-class AMModule(Message):
-    def __init__(self) -> None:
-        super().__init__(ModuleMSG.AM_MODULE)
-
-    def read(self) -> None:
-        pass
-
+class AMModule(AKControlMessage):
+    @staticmethod
     def write(
-        self,
         module_id: str,
         module_name: str,
         default_class_name: str,
     ) -> Any:
         msg = RCRSProto_pb2.MessageProto()
-        msg.urn = self.get_urn()
+        msg.urn = AMModule.get_urn()
         msg.components[ComponentModuleMSG.ModuleID].stringValue = module_id
         msg.components[ComponentModuleMSG.ModuleName].stringValue = module_name
         msg.components[
@@ -31,3 +26,7 @@ class AMModule(Message):
         ].stringValue = default_class_name
 
         return msg
+
+    @staticmethod
+    def get_urn() -> ControlMessageURN:
+        return ModuleMSG.AM_MODULE  # type: ignore

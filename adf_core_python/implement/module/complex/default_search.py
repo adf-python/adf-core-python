@@ -1,9 +1,6 @@
 from typing import Optional, cast
 
-from rcrs_core.entities.building import Building
-from rcrs_core.entities.entity import Entity
-from rcrs_core.entities.refuge import Refuge
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import Building, Entity, EntityID, Refuge
 
 from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.develop.develop_data import DevelopData
@@ -98,7 +95,7 @@ class DefaultSearch(Search):
             cluster_index
         )
         building_entity_ids: list[EntityID] = [
-            entity.get_id()
+            entity.get_entity_id()
             for entity in cluster_entities
             if isinstance(entity, Building) and not isinstance(entity, Refuge)
         ]

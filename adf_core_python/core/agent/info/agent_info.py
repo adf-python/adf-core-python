@@ -3,13 +3,12 @@ from __future__ import annotations
 from time import time
 from typing import TYPE_CHECKING
 
-from rcrs_core.commands.Command import Command
-from rcrs_core.entities.civilian import Civilian
-from rcrs_core.entities.entity import Entity
-from rcrs_core.entities.human import Human
-from rcrs_core.worldmodel.changeSet import ChangeSet
-from rcrs_core.worldmodel.entityID import EntityID
-from rcrs_core.worldmodel.worldmodel import WorldModel
+from rcrscore.commands import Command
+from rcrscore.entities import EntityID
+from rcrscore.entities.civilian import Civilian
+from rcrscore.entities.entity import Entity
+from rcrscore.entities.human import Human
+from rcrscore.worldmodel import ChangeSet, WorldModel
 
 from adf_core_python.core.agent.action.action import Action
 
@@ -83,7 +82,7 @@ class AgentInfo:
         # TODO: Agent class should return EntityID instead of EntityID | None
         return self._agent.get_entity_id()
 
-    def get_myself(self) -> Entity:
+    def get_myself(self) -> Entity | None:
         """
         Get the entity of the agent
 
@@ -94,7 +93,7 @@ class AgentInfo:
         """
         return self._world_model.get_entity(self.get_entity_id())
 
-    def get_position_entity_id(self) -> EntityID:
+    def get_position_entity_id(self) -> EntityID | None:
         """
         Get the position entity ID of the agent
 
@@ -104,10 +103,13 @@ class AgentInfo:
             Position entity ID of the agent
         """
         entity = self._world_model.get_entity(self.get_entity_id())
+        if entity is None:
+            return None
+
         if isinstance(entity, Human):
             return entity.get_position()
         else:
-            return entity.get_id()
+            return entity.get_entity_id()
 
     def set_change_set(self, change_set: ChangeSet) -> None:
         """

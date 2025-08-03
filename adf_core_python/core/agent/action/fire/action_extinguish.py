@@ -1,14 +1,7 @@
-from typing import TYPE_CHECKING
-
-from rcrs_core.commands.AKExtinguish import AKExtinguish
-from rcrs_core.commands.Command import Command
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.commands import AKExtinguish, Command
+from rcrscore.entities import EntityID
 
 from adf_core_python.core.agent.action.action import Action
-
-if TYPE_CHECKING:
-    from rcrs_core.commands.Command import Command
-    from rcrs_core.worldmodel.entityID import EntityID
 
 
 class ActionExtinguish(Action):
@@ -17,8 +10,7 @@ class ActionExtinguish(Action):
         self.max_power = max_power
 
     def get_command(self, agent_id: EntityID, time: int) -> Command:
-        # TODO: Implement AKEExtinguish
-        return AKExtinguish()
+        return AKExtinguish(agent_id, time, self.target_id, self.max_power)
 
     def __str__(self) -> str:
         return (

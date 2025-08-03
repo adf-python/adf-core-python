@@ -3,8 +3,8 @@ from __future__ import annotations
 from typing import Optional
 
 from bitarray import bitarray
-from rcrs_core.entities.building import Building
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import EntityID
+from rcrscore.entities.building import Building
 
 from adf_core_python.core.agent.communication.standard.bundle.standard_message import (
     StandardMessage,
@@ -33,7 +33,7 @@ class MessageBuilding(StandardMessage):
         ttl: Optional[int] = None,
     ):
         super().__init__(is_wireless_message, priority, sender_entity_id, ttl)
-        self._building_entity_id: Optional[EntityID] = building.get_id()
+        self._building_entity_id: Optional[EntityID] = building.get_entity_id()
         self._building_brokenness: Optional[int] = building.get_brokenness() or None
         self._building_fireyness: Optional[int] = building.get_fieryness() or None
         self._building_temperature: Optional[int] = building.get_temperature() or None

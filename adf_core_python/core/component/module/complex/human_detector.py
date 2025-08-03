@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import TYPE_CHECKING
 
-from rcrs_core.entities.human import Human
+from rcrscore.entities.human import Human
 
 from adf_core_python.core.component.module.complex.target_detector import (
     TargetDetector,

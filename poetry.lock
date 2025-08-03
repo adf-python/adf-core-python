@@ -980,24 +980,24 @@ files = [
 ]
 
 [[package]]
-name = "rcrs_core"
+name = "rcrscore"
 version = "0.1.0"
-description = "RoboCup Rescue Simulation(RCRS Agent Development Library)"
+description = "Add your description here"
 optional = false
-python-versions = "*"
+python-versions = ">=3.13"
 groups = ["main"]
 files = []
 develop = false
 
 [package.dependencies]
-protobuf = ">=5.28"
-rtree = "*"
+protobuf = ">=6.31.1"
+rtree = ">=1.4.0"
 
 [package.source]
 type = "git"
 url = "https://github.com/adf-python/rcrs-core-python"
-reference = "v0.1.0"
-resolved_reference = "42a20e312de20ea46f1e0622a82f41e81fc3514f"
+reference = "improve"
+resolved_reference = "288c666003039b77c09e91d0067f61ad2b125ce4"
 
 [[package]]
 name = "requests"
@@ -1743,5 +1743,5 @@ test = ["pytest (>=6.0.0)", "setuptools (>=65)"]
 
 [metadata]
 lock-version = "2.1"
-python-versions = "^3.12"
-content-hash = "ca8c4ce733e53da7e9b9208c3341bcc8043863f16f8e4300e5cf2212495690c2"
+python-versions = "^3.13"
+content-hash = "0f25d8ec7e7a27c7ea9006b97135f44ede3114ec3a9a6f19702345464d0d7b51"

@@ -1,12 +1,11 @@
 from typing import Any, Optional, cast
 
-from rcrs_core.entities.area import Area
-from rcrs_core.entities.blockade import Blockade
-from rcrs_core.entities.entity import Entity
-from rcrs_core.entities.human import Human
-from rcrs_core.worldmodel.changeSet import ChangeSet
-from rcrs_core.worldmodel.entityID import EntityID
-from rcrs_core.worldmodel.worldmodel import WorldModel
+from rcrscore.entities import EntityID
+from rcrscore.entities.area import Area
+from rcrscore.entities.blockade import Blockade
+from rcrscore.entities.entity import Entity
+from rcrscore.entities.human import Human
+from rcrscore.worldmodel import ChangeSet, WorldModel
 
 
 class WorldInfo:
@@ -74,7 +73,7 @@ class WorldInfo:
         entity_ids: list[EntityID] = []
         for entity in self._world_model.get_entities():
             if any(isinstance(entity, entity_type) for entity_type in entity_types):
-                entity_ids.append(entity.get_id())
+                entity_ids.append(entity.get_entity_id())
 
         return entity_ids
 
@@ -145,7 +144,7 @@ class WorldInfo:
 
         return distance
 
-    def get_entity_position(self, entity_id: EntityID) -> EntityID:
+    def get_entity_position(self, entity_id: EntityID) -> EntityID | None:
         """
         Get the entity position
 
@@ -168,7 +167,7 @@ class WorldInfo:
         if entity is None:
             raise ValueError(f"Invalid entity: entity_id={entity_id}, entity={entity}")
         if isinstance(entity, Area):
-            return entity.get_id()
+            return entity.get_entity_id()
         if isinstance(entity, Human):
             return entity.get_position()
         if isinstance(entity, Blockade):
@@ -196,10 +195,11 @@ class WorldInfo:
             Blockade
         """
         blockades = set()
-        for blockade_entity_id in area.get_blockades():
-            blockades_entity = self.get_entity(blockade_entity_id)
-            if isinstance(blockades_entity, Blockade):
-                blockades.add(cast(Blockade, blockades_entity))
+        if blockade_entity_ids := area.get_blockades():
+            for blockade_entity_id in blockade_entity_ids:
+                blockades_entity = self.get_entity(blockade_entity_id)
+                if isinstance(blockades_entity, Blockade):
+                    blockades.add(cast(Blockade, blockades_entity))
         return blockades
 
     def add_entity(self, entity: Entity) -> None:

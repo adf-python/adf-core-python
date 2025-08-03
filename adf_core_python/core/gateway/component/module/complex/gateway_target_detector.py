@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from typing import Optional, Generic, TypeVar, TYPE_CHECKING
+from typing import TYPE_CHECKING, Generic, Optional, TypeVar
 
-from rcrs_core.entities.entity import Entity
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import EntityID
+from rcrscore.entities.entity import Entity
 
 from adf_core_python.core.component.module.complex.target_detector import TargetDetector
 from adf_core_python.core.gateway.component.module.gateway_abstract_module import (
@@ -64,7 +64,7 @@ class GatewayTargetDetector(GatewayAbstractModule, TargetDetector, Generic[T]):
 
     def get_target_entity_id(self) -> Optional[EntityID]:
         result = self._gateway_module.execute("getTarget")
-        entity_id_str = result.get_value_or_default("EntityID", "-1")
+        entity_id_str = result.get_value("EntityID") or "-1"
         if entity_id_str == "-1":
             return None
         return EntityID(int(entity_id_str))
