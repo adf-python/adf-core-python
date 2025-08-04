@@ -135,5 +135,9 @@ check_untyped_defs = true
 warn_redundant_casts = true
 exclude = ["docs"]
 
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
 [tool.uv.sources]
 rcrscore = { git = "https://github.com/adf-python/rcrs-core-python" , tag = "v0.2.0" }

@@ -33,7 +33,7 @@ jobs:
         run: uv cache prune --ci
 
   ruff-format:
-    name: Ruff format check
+    name: ruff-format
     needs: setup
     runs-on: ubuntu-latest
     steps:
@@ -49,7 +49,7 @@ jobs:
         run: uv run ruff format --check .
 
   ruff-lint:
-    name: Ruff lint check
+    name: ruff-lint
     needs: setup
     runs-on: ubuntu-latest
     steps:
@@ -65,7 +65,7 @@ jobs:
         run: uv run ruff check --output-format=github .
 
   mypy-type-check:
-    name: MyPy type check
+    name: mypy-type-check
     needs: setup
     runs-on: ubuntu-latest
     steps:
@@ -81,7 +81,7 @@ jobs:
         run: uv run --frozen mypy .
 
   pytest:
-    name: PyTest
+    name: pytest
     needs: setup
     runs-on: ubuntu-latest
     steps:
