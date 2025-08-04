@@ -12,116 +12,89 @@ on:
 
 jobs:
   setup:
+    name: Setup ✅
     runs-on: ubuntu-latest
+    outputs:
+      cache-hit: ${{ steps.setup_uv.outputs.cache-hit }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install uv (+ enable cache)
+        id: setup_uv
+        uses: astral-sh/setup-uv@v6
         with:
-          python-version: 3.12
+          enable-cache: true
 
-      - name: Cache virtual environment
-        id: cached-virtualenv
-        uses: actions/cache@v4
-        with:
-          path: .venv
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/uv.lock') }}
+      - name: Sync dependencies
+        run: uv sync --locked --dev
 
-      - name: Install dependencies
-        if: steps.cached-virtualenv.outputs.cache-hit != 'true'
-        run: |
-          python -m venv .venv
-          source .venv/bin/activate
-          pip install --upgrade pip
-          pip install uv
-          uv sync
+      - name: Prune uv cache (optimized for CI)
+        run: uv cache prune --ci
 
   ruff-format:
+    name: Ruff format check
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Restore virtual environment cache
-        uses: actions/cache@v4
+      - name: Install uv + restore cache
+        uses: astral-sh/setup-uv@v6
         with:
-          path: .venv
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/uv.lock') }}
+          enable-cache: true
 
-      - name: Set path
-        run: echo ${{ github.workspace }}/.venv/bin >> $GITHUB_PATH
-
-      - name: Check ruff version
-        run: uv run ruff --version
-
-      - name: Run ruff format check
+      - name: Check ruff formatting
         run: uv run ruff format --check .
 
   ruff-lint:
+    name: Ruff lint check
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Restore virtual environment cache
-        uses: actions/cache@v4
+      - name: Install uv + restore cache
+        uses: astral-sh/setup-uv@v6
         with:
-          path: .venv
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
-
-      - name: Set path
-        run: echo ${{ github.workspace }}/.venv/bin >> $GITHUB_PATH
-
-      - name: Check ruff version
-        run: uv run ruff --version
+          enable-cache: true
 
       - name: Run ruff lint
         run: uv run ruff check --output-format=github .
 
   mypy-type-check:
+    name: MyPy type check
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Restore virtual environment cache
-        uses: actions/cache@v4
+      - name: Install uv + restore cache
+        uses: astral-sh/setup-uv@v6
         with:
-          path: .venv
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
+          enable-cache: true
 
-      - name: Set path
-        run: echo ${{ github.workspace }}/.venv/bin >> $GITHUB_PATH
-
-      - name: Check mypy version
-        run: uv run mypy --version
-
-      - name: Run mypy type check
-        run: uv run mypy .
+      - name: Run mypy
+        run: uv run --frozen mypy .
 
   pytest:
+    name: PyTest
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Restore virtual environment cache
-        uses: actions/cache@v4
+      - name: Install uv + restore cache
+        uses: astral-sh/setup-uv@v6
         with:
-          path: .venv
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
+          enable-cache: true
 
-      - name: Set path
-        run: echo ${{ github.workspace }}/.venv/bin >> $GITHUB_PATH
-
-      - name: Run pytest
-        run: pytest tests/
+      - name: Run tests
+        run: uv run --frozen pytest tests/
 
   publish:
     runs-on: ubuntu-latest
