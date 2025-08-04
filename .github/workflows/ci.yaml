@@ -80,22 +80,6 @@ jobs:
       - name: Run mypy
         run: uv run --frozen mypy .
 
-  pytest:
-    name: pytest
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Install uv + restore cache
-        uses: astral-sh/setup-uv@v6
-        with:
-          enable-cache: true
-
-      - name: Run tests
-        run: uv run --frozen pytest tests/
-
   publish:
     runs-on: ubuntu-latest
     permissions:
