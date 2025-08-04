@@ -8,32 +8,34 @@
 
 ### Prerequisites
 
-- Python (3.12 or higher)
-- Poetry (1.8.3 or higher)
+- Python (3.13 or higher)
+- uv (0.8.2 or higher)
 
 ### Installation
 
 ```bash
-poetry install
+uv sync
 ```
 
 ### Run Agent
 
 ```bash
-poetry run python ./adf_core_python/launcher.py
+uv run python ./adf_core_python/launcher.py
 
 # get help
-poetry run python ./adf_core_python/launcher.py -h
+uv run python ./adf_core_python/launcher.py -h
 ```
 
 ### Build
 
 ```bash
-poetry build
+uv build
 ```
 
 ### Pre Commit
 
 ```bash
-poetry run task precommit
+uv run ruff format .
+uv run ruff check .
+uv run mypy .
 ```
