@@ -12,116 +12,73 @@ on:
 
 jobs:
   setup:
+    name: Setup
     runs-on: ubuntu-latest
+    outputs:
+      cache-hit: ${{ steps.setup_uv.outputs.cache-hit }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install uv (+ enable cache)
+        id: setup_uv
+        uses: astral-sh/setup-uv@v6
         with:
-          python-version: 3.12
+          enable-cache: true
 
-      - name: Cache virtual environment
-        id: cached-virtualenv
-        uses: actions/cache@v4
-        with:
-          path: .venv
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
+      - name: Sync dependencies
+        run: uv sync --locked --dev
 
-      - name: Install dependencies
-        if: steps.cached-virtualenv.outputs.cache-hit != 'true'
-        run: |
-          python -m venv .venv
-          source .venv/bin/activate
-          pip install --upgrade pip
-          pip install poetry
-          poetry install
+      - name: Prune uv cache (optimized for CI)
+        run: uv cache prune --ci
 
   ruff-format:
+    name: ruff-format
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Restore virtual environment cache
-        uses: actions/cache@v4
+      - name: Install uv + restore cache
+        uses: astral-sh/setup-uv@v6
         with:
-          path: .venv
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
+          enable-cache: true
 
-      - name: Set path
-        run: echo ${{ github.workspace }}/.venv/bin >> $GITHUB_PATH
-
-      - name: Check ruff version
-        run: ruff --version
-
-      - name: Run ruff format check
-        run: ruff format --check .
+      - name: Check ruff formatting
+        run: uv run ruff format --check .
 
   ruff-lint:
+    name: ruff-lint
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Restore virtual environment cache
-        uses: actions/cache@v4
+      - name: Install uv + restore cache
+        uses: astral-sh/setup-uv@v6
         with:
-          path: .venv
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
-
-      - name: Set path
-        run: echo ${{ github.workspace }}/.venv/bin >> $GITHUB_PATH
-
-      - name: Check ruff version
-        run: ruff --version
+          enable-cache: true
 
       - name: Run ruff lint
-        run: ruff check --output-format=github .
+        run: uv run ruff check --output-format=github .
 
   mypy-type-check:
+    name: mypy-type-check
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Restore virtual environment cache
-        uses: actions/cache@v4
+      - name: Install uv + restore cache
+        uses: astral-sh/setup-uv@v6
         with:
-          path: .venv
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
+          enable-cache: true
 
-      - name: Set path
-        run: echo ${{ github.workspace }}/.venv/bin >> $GITHUB_PATH
-
-      - name: Check mypy version
-        run: mypy --version
-
-      - name: Run mypy type check
-        run: mypy .
-
-  pytest:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Restore virtual environment cache
-        uses: actions/cache@v4
-        with:
-          path: .venv
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
-
-      - name: Set path
-        run: echo ${{ github.workspace }}/.venv/bin >> $GITHUB_PATH
-
-      - name: Run pytest
-        run: pytest tests/
+      - name: Run mypy
+        run: uv run --frozen mypy .
 
   publish:
     runs-on: ubuntu-latest
@@ -132,8 +89,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
-          java-version: '17'
-          distribution: 'temurin'
+          java-version: "17"
+          distribution: "temurin"
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 

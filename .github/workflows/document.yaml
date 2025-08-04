@@ -40,7 +40,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .venv
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
+          key: ${{ runner.os }}-venv-${{ hashFiles('**/uv.lock') }}
 
       - name: Install dependencies
         if: steps.cached-virtualenv.outputs.cache-hit != 'true'
@@ -48,8 +48,8 @@ jobs:
           python -m venv .venv
           source .venv/bin/activate
           pip install --upgrade pip
-          pip install poetry
-          poetry install
+          pip install uv
+          uv sync
 
       - name: Build documentation
         run: |
