@@ -11,32 +11,32 @@ from adf_core_python.core.gateway.gateway_agent import GatewayAgent
 
 
 class OfficeAmbulance(Office):
-    def __init__(
-        self,
-        tactics_center: TacticsCenter,
-        team_name: str,
-        is_precompute: bool,
-        is_debug: bool,
-        data_storage_name: str,
-        module_config: ModuleConfig,
-        develop_data: DevelopData,
-        finish_post_connect_event: Event,
-        gateway_agent: Optional[GatewayAgent],
-    ) -> None:
-        super().__init__(
-            tactics_center,
-            team_name,
-            is_precompute,
-            is_debug,
-            data_storage_name,
-            module_config,
-            develop_data,
-            finish_post_connect_event,
-            gateway_agent,
-        )
+  def __init__(
+    self,
+    tactics_center: TacticsCenter,
+    team_name: str,
+    is_precompute: bool,
+    is_debug: bool,
+    data_storage_name: str,
+    module_config: ModuleConfig,
+    develop_data: DevelopData,
+    finish_post_connect_event: Event,
+    gateway_agent: Optional[GatewayAgent],
+  ) -> None:
+    super().__init__(
+      tactics_center,
+      team_name,
+      is_precompute,
+      is_debug,
+      data_storage_name,
+      module_config,
+      develop_data,
+      finish_post_connect_event,
+      gateway_agent,
+    )
 
-    def precompute(self) -> None:
-        pass
+  def precompute(self) -> None:
+    pass
 
-    def get_requested_entities(self) -> list[EntityURN]:
-        return [EntityURN.AMBULANCE_CENTER]
+  def get_requested_entities(self) -> list[EntityURN]:
+    return [EntityURN.AMBULANCE_CENTER]

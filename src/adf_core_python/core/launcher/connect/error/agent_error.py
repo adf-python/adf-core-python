@@ -1,2 +1,2 @@
 class AgentError(Exception):
-    pass
+  pass
