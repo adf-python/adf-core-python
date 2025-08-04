@@ -59,7 +59,7 @@ class Connection:
     Connection._write_msg(msg, self.socket)
 
   @staticmethod
-  def _write_int32(value, sock):
+  def _write_int32(value: int, sock: socket.socket) -> None:
     b = [
       ((value >> 24) & 0xFF),
       ((value >> 16) & 0xFF),
@@ -70,7 +70,7 @@ class Connection:
     sock.sendall(bytes(b))
 
   @staticmethod
-  def _readnbytes(sock, n):
+  def _readnbytes(sock: socket.socket, n: int) -> bytes:
     buff = b""
     while n > 0:
       b = sock.recv(n)
@@ -81,7 +81,7 @@ class Connection:
     return buff
 
   @staticmethod
-  def _read_int32(sock):
+  def _read_int32(sock: socket.socket) -> int:
     byte_array = Connection._readnbytes(sock, 4)
     value = int(
       ((byte_array[0]) << 24)
@@ -92,15 +92,14 @@ class Connection:
     return value
 
   @staticmethod
-  def _write_msg(msg, sock):
+  def _write_msg(msg: Any, sock: socket.socket) -> None:
     out = msg.SerializeToString()
     Connection._write_int32(len(out), sock)
 
     sock.sendall(out)
 
   @staticmethod
-  def _read_msg(sock):
-    # await reader.read(1)
+  def _read_msg(sock: socket.socket) -> RCRSProto_pb2.MessageProto:
     size = Connection._read_int32(sock)
     content = Connection._readnbytes(sock, size)
     message = RCRSProto_pb2.MessageProto()
