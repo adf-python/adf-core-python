@@ -1,6 +1,6 @@
 [project]
 name = "adf_core_python"
-version = "0.2.0"
+version = "0.2.1"
 description = "Agent Development Framework for Python"
 readme = "README.md"
 authors = [
