@@ -1,7 +1,7 @@
 import socket
 import time
 
-from structlog import BoundLogger
+from structlog.stdlib import BoundLogger
 
 from adf_core_python.core.agent.agent import Agent
 from adf_core_python.core.launcher.connect.connection import Connection
