@@ -1,0 +1,4 @@
+{
+  "typeCheckingMode": "standard",
+  "include": ["adf_core_python"]
+}

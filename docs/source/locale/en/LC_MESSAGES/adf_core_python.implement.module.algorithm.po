@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Haruki Uehara, Yuki Shimada
+# This file is distributed under the same license as the adf-core-python
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: adf-core-python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-19 13:59+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../source/adf_core_python.implement.module.algorithm.rst:2
+msgid "adf\\_core\\_python.implement.module.algorithm package"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.algorithm.rst:5
+msgid "Submodules"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.algorithm.rst:8
+msgid ""
+"adf\\_core\\_python.implement.module.algorithm.a\\_star\\_path\\_planning"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.algorithm.path_planning.PathPlanning`"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.algorithm.rst:16
+msgid ""
+"adf\\_core\\_python.implement.module.algorithm.k\\_means\\_clustering "
+"module"
+msgstr ""
+
+#: adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.algorithm.clustering.Clustering`"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.algorithm.rst:24
+msgid "Module contents"
+msgstr ""
+

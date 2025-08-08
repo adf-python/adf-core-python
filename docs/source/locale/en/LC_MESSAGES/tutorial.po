@@ -1,0 +1,626 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Haruki Uehara, Yuki Shimada
+# This file is distributed under the same license as the adf-core-python
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: adf-core-python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-19 13:59+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../source/tutorial/agent/agent.md:1
+msgid "エージェントの作成"
+msgstr "Creating an Agent"
+
+#: ../../source/tutorial/agent/agent.md:3
+msgid "このセクションでは、`adf-core-python` ライブラリの使用方法の概要を提供します。"
+msgstr "This section provides an overview of how to use the `adf-core-python` library."
+
+#: ../../source/tutorial/agent/agent.md:5
+msgid "新規エージェントの作成"
+msgstr "Creating a New Agent"
+
+#: ../../source/tutorial/agent/agent.md:7
+msgid "新規エージェントを作成するには、次のコマンドを実行します："
+msgstr "To create a new agent, run the following command:"
+
+#: ../../source/tutorial/agent/agent.md:13
+msgid "実行すると、下記のような対話形式のプロンプトが表示されます："
+msgstr "When executed, an interactive prompt like the one below will be displayed:"
+
+#: ../../source/tutorial/agent/agent.md:21
+msgid ""
+"エージェントチーム名は、エージェントのディレクトリ名として使用されます。 以後、エージェントチーム名を `<your_team_name>` "
+"として参照します。"
+msgstr ""
+"The agent team name will be used as the directory name for the agent. Hereafter, the agent team name will be referred to as `<your_team_name>`."
+
+#: ../../source/tutorial/agent/agent.md:25
+msgid "入力後、下記のようなエージェントのテンプレートがカレントディレクトリに作成されます。"
+msgstr "After entering, an agent template like the one below will be created in the current directory."
+
+#: ../../source/tutorial/agent/agent.md:47
+msgid "シミュレーションを実行する"
+msgstr "Running the Simulation"
+
+#: ../../source/tutorial/agent/agent.md:49
+#: ../../source/tutorial/agent/agent_control.md:110
+#: ../../source/tutorial/agent/agent_control.md:330
+msgid "ターミナルを2つ起動します。"
+msgstr "Open two terminals."
+
+#: ../../source/tutorial/agent/agent.md:51
+#: ../../source/tutorial/agent/agent_control.md:112
+#: ../../source/tutorial/agent/agent_control.md:332
+msgid "片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します："
+msgstr "Open one terminal and start the simulation server with the following command:"
+
+#: ../../source/tutorial/agent/agent.md:59
+#: ../../source/tutorial/agent/agent_control.md:120
+#: ../../source/tutorial/agent/agent_control.md:340
+msgid "その後、別のターミナルを開き、エージェントを起動します："
+msgstr "Then, open another terminal and start the agent:"
+
+#: ../../source/tutorial/agent/agent.md:67
+msgid ""
+"エージェントが正常に起動すると、シミュレーションサーバーに接続され、エージェントがシミュレーションに参加し、エージェントが動き出します。 "
+"途中で止めたい場合は、それぞれのコマンドラインで `Ctrl + C` (MacOSの場合は `Command + C` ) を押してください。"
+msgstr ""
+"When the agent starts successfully, it will connect to the simulation server, participate in the simulation, and start moving. "
+"If you want to stop it midway, press `Ctrl + C` (or `Command + C` on MacOS) in each command line."
+
+#: ../../source/tutorial/agent/agent.md:71
+msgid "シミュレーションサーバーを停止させたあとは、プロセスが残ってしまう場合があるので`./kill.sh` を実行してください。"
+msgstr "After stopping the simulation server, run `./kill.sh` as there may be remaining processes."
+
+#: ../../source/tutorial/agent/agent_control.md:1
+msgid "エージェントの制御"
+msgstr "Agent Control"
+
+#: ../../source/tutorial/agent/agent_control.md:3
+msgid "このセクションでは、エージェントの制御用のプログラムを作成する方法について説明します。"
+msgstr "This section explains how to create a program to control agents."
+
+#: ../../source/tutorial/agent/agent_control.md:5
+msgid "エージェントの制御について"
+msgstr "About Agent Control"
+
+#: ../../source/tutorial/agent/agent_control.md:7
+msgid "RRSの災害救助エージェントは3種類あり、種類毎にそれぞれ異なるプログラムを書く必要があります。しかし、初めから全てのプログラムを書くことは困難です。ここではまず初めに、消防隊エージェントを操作するプログラムの一部を書いてみましょう。"
+msgstr "There are three types of disaster rescue agents in RRS, and each type requires a different program. However, it is difficult to write all the programs from the beginning. Here, let's first write part of the program to control the fire brigade agent."
+
+#: ../../source/tutorial/agent/agent_control.md:10
+msgid ""
+"エージェントを操作するプログラムは、エージェントの種類毎に同一です。 プログラムは各エージェントに配られ、そのエージェントのみの操作を担います。 "
+"消防隊エージェントを操作するプログラムを書けば、それがすべての消防隊エージェント上でそれぞれ動作します。"
+msgstr ""
+"The program that controls the agents is the same for each type of agent. The program is distributed to each agent and is responsible for controlling only that agent. "
+"If you write a program to control the fire brigade agent, it will run on all fire brigade agents."
+
+#: ../../source/tutorial/agent/agent_control.md:13
+msgid "![消防隊エージェント](./../../images/agent_control.jpg)"
+msgstr "![Fire Brigade Agent](./../../images/agent_control.jpg)"
+
+#: ../../source/tutorial/agent/agent_control.md:13
+msgid "消防隊エージェント"
+msgstr "Fire Brigade Agent"
+
+#: ../../source/tutorial/agent/agent_control.md:15
+msgid "エージェントの動作フロー"
+msgstr "Agent Operation Flow"
+
+#: ../../source/tutorial/agent/agent_control.md:17
+msgid "エージェントの動作を決めているのはTacticsというプログラムです。"
+msgstr "The program that determines the agent's actions is called Tactics."
+
+#: ../../source/tutorial/agent/agent_control.md:19
+msgid ""
+"消防隊の思考ルーチンは下の図の通りにおおよそおこなわれます。 消防隊の動作としては、まず救助対象の市民を捜索し(`Human "
+"Detector`)、見つかった市民を救助します(`Action Rescue`)。 "
+"救助対象の市民が見つからない場合は、探索場所を変更して市民を捜索するため、次の捜索場所を決定して(`Search`)移動します(`Action "
+"Ext move`)。 "
+"なお、エージェントは1ステップ内で、移動と救助活動を同時におこなうことが出来ません。つまり、ステップごとに更新される自身の周辺情報を確認して、動作の対象と動作内容を決定していくということになります。"
+" これらそれぞれの機能が、モジュールと呼ばれるプログラムとして分割して表現されています。"
+msgstr ""
+"The fire brigade's thought routine is roughly as shown in the diagram below. The fire brigade's actions are to first search for the target citizen (`Human Detector`) and rescue the found citizen (`Action Rescue`). "
+"If no target citizen is found, the search location is changed to search for citizens, the next search location is determined (`Search`), and the agent moves (`Action Ext move`). "
+"Note that the agent cannot perform both movement and rescue activities within one step. In other words, the agent checks the updated surrounding information at each step and determines the target and action content. "
+"Each of these functions is expressed as a program called a module."
+
+#: ../../source/tutorial/agent/agent_control.md:21
+msgid "今回はこの中で、救助（掘り起こし）対象を決定する `Human Detector` モジュールを開発します。"
+msgstr "This time, we will develop the `Human Detector` module that determines the rescue (digging) target."
+
+#: ../../source/tutorial/agent/agent_control.md:23
+msgid "![消防隊エージェントの動作フロー](./../../images/agent_flow.png)"
+msgstr "![Fire Brigade Agent Operation Flow](./../../images/agent_flow.png)"
+
+#: ../../source/tutorial/agent/agent_control.md:23
+msgid "消防隊エージェントの動作フロー"
+msgstr "Fire Brigade Agent Operation Flow"
+
+#: ../../source/tutorial/agent/agent_control.md:25
+msgid "`Human Detector` モジュールの実装の準備"
+msgstr "Preparing to Implement the `Human Detector` Module"
+
+#: ../../source/tutorial/agent/agent_control.md:27
+msgid "まず、`Human Detector` モジュールを記述するためのファイルを作成します。"
+msgstr "First, create a file to describe the `Human Detector` module."
+
+#: ../../source/tutorial/agent/agent_control.md:34
+msgid ""
+"次に、`Human Detector` モジュールの雛形の実装を行います。 "
+"以下のコードを`fire_brigade_human_detector.py` に記述してください。"
+msgstr ""
+"Next, implement the template for the `Human Detector` module. "
+"Please write the following code in `fire_brigade_human_detector.py`."
+
+#: ../../source/tutorial/agent/agent_control.md:92
+msgid "モジュールの登録"
+msgstr "Registering the Module"
+
+#: ../../source/tutorial/agent/agent_control.md:94
+msgid "次に、作成したモジュールを登録します。"
+msgstr "Next, register the created module."
+
+#: ../../source/tutorial/agent/agent_control.md:96
+msgid "`WORKING_DIR/<your_team_name>/config/module.yaml` ファイルを開き、以下の部分を"
+msgstr "Open the `WORKING_DIR/<your_team_name>/config/module.yaml` file and"
+
+#: ../../source/tutorial/agent/agent_control.md:103
+msgid "以下のように変更してください。"
+msgstr "change the following part as shown below."
+
+#: ../../source/tutorial/agent/agent_control.md:128
+msgid "標準出力に `Calculate FireBrigadeHumanDetector` と表示されれば成功です。"
+msgstr "If `Calculate FireBrigadeHumanDetector` is displayed in the standard output, it is successful."
+
+#: ../../source/tutorial/agent/agent_control.md:130
+msgid "`Human Detector` モジュールの設計"
+msgstr "Designing the `Human Detector` Module"
+
+#: ../../source/tutorial/agent/agent_control.md:132
+msgid "救助対象選択プログラムの中身を書き、消防隊エージェントが救助活動をおこなえるように修正します。"
+msgstr "Write the content of the rescue target selection program and modify it so that the fire brigade agent can perform rescue activities."
+
+#: ../../source/tutorial/agent/agent_control.md:134
+msgid ""
+"消防隊エージェントの救助対象を最も簡単に選択する方法は、埋没している市民の中で最も自身に近い市民を選択する方法です。 "
+"今回は、この方法を採用した消防隊エージェントの行動対象決定モジュールを書いてみましょう。"
+msgstr ""
+"The simplest way for a fire brigade agent to select a rescue target is to choose the closest buried citizen. "
+"This time, let's write a module to determine the action target of the fire brigade agent using this method."
+
+#: ../../source/tutorial/agent/agent_control.md:136
+msgid "埋没している市民の中で最も自身に近い市民を救助対象として選択する方法は、フローチャートで表すと下図のようになります。"
+msgstr ""
+"The method of selecting the closest buried citizen as the rescue target is shown in the flowchart below."
+
+#: ../../source/tutorial/agent/agent_control.md:138
+msgid "![救助対象選択フローチャート](./../../images/human_detector_flow.png)"
+msgstr "![Rescue Target Selection Flowchart](./../../images/human_detector_flow.png)"
+
+#: ../../source/tutorial/agent/agent_control.md:138
+msgid "救助対象選択フローチャート"
+msgstr "Rescue Target Selection Flowchart"
+
+#: ../../source/tutorial/agent/agent_control.md:140
+msgid ""
+"このフローチャート中の各処理を、次小節で紹介する各クラス・メソッド等で置き換えたものを、`fire_brigade_human_detector.py`"
+" に記述していくことで、救助対象選択プログラムを完成させます。"
+msgstr ""
+"By replacing each process in this flowchart with the classes and methods introduced in the next subsection, and writing them in `fire_brigade_human_detector.py`, you will complete the rescue target selection program."
+
+#: ../../source/tutorial/agent/agent_control.md:142
+msgid "`Human Detector` モジュールの実装で使用するクラス・メソッド"
+msgstr "Classes and Methods Used in the Implementation of the `Human Detector` Module"
+
+#: ../../source/tutorial/agent/agent_control.md:144
+msgid "Entity"
+msgstr "Entity"
+
+#: ../../source/tutorial/agent/agent_control.md:146
+msgid "`Entity` クラスは、エンティティの基底クラスです。 このクラスは、エンティティの基本情報を保持します。"
+msgstr ""
+"The `Entity` class is the base class for entities. This class holds the basic information of an entity."
+
+#: ../../source/tutorial/agent/agent_control.md:148
+msgid ""
+"RRS上のエンティティは下図のように `Entity` を継承したクラスで表現されています。 "
+"赤枠で囲まれたクラスは、クラスの意味がそのままRRSの直接的な構成要素を表しています。"
+msgstr ""
+"Entities in RRS are represented by classes that inherit from `Entity` as shown in the diagram below. "
+"The classes enclosed in red boxes directly represent the components of RRS."
+
+#: ../../source/tutorial/agent/agent_control.md:150
+msgid "例: Road クラスのインスタンスの中には、 Hydrant クラスを継承してない通常の道路を表すものも存在しています。"
+msgstr ""
+"For example, among the instances of the Road class, there are those that represent ordinary roads that do not inherit from the Hydrant class."
+
+#: ../../source/tutorial/agent/agent_control.md:152
+msgid "![エンティティの継承関係](./../../images/entity.png)"
+msgstr "![Entity Inheritance Relationship](./../../images/entity.png)"
+
+#: ../../source/tutorial/agent/agent_control.md:152
+msgid "エンティティの継承関係"
+msgstr "Entity Inheritance Relationship"
+
+#: ../../source/tutorial/agent/agent_control.md:154
+msgid "EntityID"
+msgstr "EntityID"
+
+#: ../../source/tutorial/agent/agent_control.md:156
+msgid ""
+"`EntityID` クラスは、全てのエージェント/オブジェクトを一意に識別するためのID(識別子)を表すクラスです。 "
+"RRSではエージェントとオブジェクトをまとめて、エンティティと呼んでいます。"
+msgstr ""
+"The `EntityID` class represents an ID (identifier) that uniquely identifies all agents/objects. "
+"In RRS, agents and objects are collectively referred to as entities."
+
+#: ../../source/tutorial/agent/agent_control.md:158
+msgid "Civilian"
+msgstr "Civilian"
+
+#: ../../source/tutorial/agent/agent_control.md:160
+msgid "`Civilian` クラスは、市民を表すクラスです。このクラスからは、エージェントの位置や負傷の進行状況を取得することができます。"
+msgstr ""
+"The `Civilian` class represents a citizen. From this class, you can obtain the position of the agent and the progress of injuries."
+
+#: ../../source/tutorial/agent/agent_control.md:162
+msgid "`entity` が市民であるかどうかを判定する"
+msgstr "Determine if `entity` is a civilian"
+
+#: ../../source/tutorial/agent/agent_control.md:168
+msgid "エンティティIDを取得する"
+msgstr "Get the Entity ID"
+
+#: ../../source/tutorial/agent/agent_control.md:174
+msgid "市民が生きているかどうかを判定する"
+msgstr "Determine if the civilian is alive"
+
+#: ../../source/tutorial/agent/agent_control.md:182
+msgid "市民が埋まっているかどうかを判定する"
+msgstr "Determine if the civilian is buried"
+
+#: ../../source/tutorial/agent/agent_control.md:190
+msgid "WorldInfo"
+msgstr "WorldInfo"
+
+#: ../../source/tutorial/agent/agent_control.md:192
+msgid ""
+"`WorldInfo` クラスは、エージェントが把握している情報とそれに関する操作をおこなうメソッドをもったクラスです。 "
+"エージェントはこのクラスのインスタンスを通して、他のエージェントやオブジェクトの状態を確認します。"
+msgstr ""
+"The `WorldInfo` class is a class that has methods for the information that the agent knows and the operations related to it. "
+"Through an instance of this class, the agent checks the status of other agents and objects."
+
+#: ../../source/tutorial/agent/agent_control.md:194
+msgid "モジュール内では、`WorldInfo` クラスのインスタンスを `self._world_info` として保持しています。"
+msgstr ""
+"In the module, an instance of the `WorldInfo` class is held as `self._world_info`."
+
+#: ../../source/tutorial/agent/agent_control.md:196
+msgid "エンティティIDからエンティティを取得する"
+msgstr "Get the entity from the Entity ID"
+
+#: ../../source/tutorial/agent/agent_control.md:202
+msgid "指定したクラスのエンティティを全て取得する"
+msgstr "Get all entities of the specified class"
+
+#: ../../source/tutorial/agent/agent_control.md:208
+msgid "エージェントの位置から指定したエンティティまでの距離を取得する"
+msgstr "Get the distance from the agent's position to the specified entity"
+
+#: ../../source/tutorial/agent/agent_control.md:214
+#: ../../source/tutorial/agent/agent_control.md:228
+msgid "[詳細はこちら](../../adf_core_python.core.agent.info.rst)"
+msgstr "[Details here](../../adf_core_python.core.agent.info.rst)"
+
+#: ../../source/tutorial/agent/agent_control.md:216
+msgid "AgentInfo"
+msgstr "AgentInfo"
+
+#: ../../source/tutorial/agent/agent_control.md:218
+msgid ""
+"`AgentInfo` クラスは、エージェント自身の情報とそれに関する操作をおこなうメソッドをもったクラスです。 "
+"エージェントはこのクラスのインスタンスを通して、エージェント自身の状態を取得します。"
+msgstr ""
+"The `AgentInfo` class is a class that has methods for the agent's own information and operations related to it. "
+"Through an instance of this class, the agent obtains its own status."
+
+#: ../../source/tutorial/agent/agent_control.md:220
+msgid "モジュール内では、`AgentInfo` クラスのインスタンスを `self._agent_info` として保持しています。"
+msgstr ""
+"In the module, an instance of the `AgentInfo` class is held as `self._agent_info`."
+
+#: ../../source/tutorial/agent/agent_control.md:222
+msgid "自分自身のエンティティIDを取得する"
+msgstr "Get your own entity ID"
+
+#: ../../source/tutorial/agent/agent_control.md:230
+msgid "`Human Detector` モジュールの実装"
+msgstr "Implementation of the `Human Detector` Module"
+
+#: ../../source/tutorial/agent/agent_control.md:232
+msgid ""
+"`Human Detector` モジュールの実装を行います。 以下のコードを`fire_brigade_human_detector.py` "
+"に記述してください。"
+msgstr ""
+"Implement the `Human Detector` module. Please write the following code in `fire_brigade_human_detector.py`."
+
+#: ../../source/tutorial/agent/agent_control.md:348
+msgid "埋没している市民を消防隊エージェントが救出できるようになっていれば成功です。"
+msgstr ""
+"It is successful if the fire brigade agent can rescue the buried citizens."
+
+#: ../../source/tutorial/config/config.md:1
+msgid "コンフィグについて"
+msgstr "About Config"
+
+#: ../../source/tutorial/config/config.md:3
+msgid "コンフィグについての説明"
+msgstr "Explanation about Config"
+
+#: ../../source/tutorial/config/config.md:14
+msgid "`config` ディレクトリには、エージェントの設定ファイルが格納されています。"
+msgstr ""
+"The `config` directory contains the agent's configuration files."
+
+#: ../../source/tutorial/config/config.md:16
+msgid "launcher.yaml"
+msgstr "launcher.yaml"
+
+#: ../../source/tutorial/config/config.md:18
+msgid ""
+"`launcher.yaml` は、エージェントの起動時に読み込まれる設定ファイルです。 "
+"シミュレーションサーバーの指定や読み込むモジュールが記述されたファイルの指定などが記述されています。"
+msgstr ""
+"`launcher.yaml` is a configuration file that is read when the agent starts. "
+"It specifies the simulation server and the files of the modules to be loaded."
+
+#: ../../source/tutorial/config/config.md:21
+msgid "module.yaml"
+msgstr "module.yaml"
+
+#: ../../source/tutorial/config/config.md:23
+msgid ""
+"`module.yaml` は、エージェントが読み込むモジュールの設定ファイルです。 読み込むモジュールのパスなどが記述されています。 "
+"パスを指定する際は、プロジェクトの`main.py`からの相対パスで指定してください。"
+msgstr ""
+"`module.yaml` is a configuration file for the modules that the agent loads. It specifies the paths of the modules to be loaded. "
+"When specifying the path, use the relative path from the project's `main.py`."
+
+#: ../../source/tutorial/config/config.md:27
+msgid "例"
+msgstr "Example"
+
+#: ../../source/tutorial/config/config.md:36
+msgid "development.json"
+msgstr "development.json"
+
+#: ../../source/tutorial/config/config.md:38
+msgid ""
+"`development.json` は、開発時に使用する設定ファイルです。 エージェントの開発時に外部から値を取得する際に使用します。 "
+"そのため、競技時には使用することができません。"
+msgstr ""
+"`development.json` is a configuration file used during development. It is used to obtain values from external sources during agent development. "
+"Therefore, it cannot be used during competitions."
+
+#: ../../source/tutorial/environment/environment.md:1
+msgid "環境構築"
+msgstr "Environment Setup"
+
+#: ../../source/tutorial/environment/environment.md:2
+msgid "今回はチュートリアル用のシナリオを使用してチュートリアルを行います。"
+msgstr ""
+"This time, we will use a tutorial scenario for the tutorial."
+
+#: ../../source/tutorial/environment/environment.md:4
+msgid "チュートリアルで使用するマップのダウンロード"
+msgstr "Download the map used in the tutorial"
+
+#: ../../source/tutorial/environment/environment.md:6
+msgid ""
+"{download}`マップのダウンロード <./../../download/tutorial_map.zip>` "
+"をクリックしてダウンロードしてください。"
+msgstr ""
+"Click {download}`Download the map <./../../download/tutorial_map.zip>` to download."
+
+#: ../../source/tutorial/environment/environment.md:9
+msgid "ダウンロードしたファイルを解凍し、中のファイルを `rcrs-server/maps/` の中に移動させてください。"
+msgstr ""
+"Unzip the downloaded file and move the files inside to `rcrs-server/maps/`."
+
+#: ../../source/tutorial/environment/environment.md:11
+msgid "シミュレーションサーバーの動作確認"
+msgstr "Check the operation of the simulation server"
+
+#: ../../source/tutorial/environment/environment.md:18
+msgid ""
+"何個かのウィンドウが表示されたら成功です。 コマンドラインで `Ctrl + C` (MacOSの場合は `Command + C` ) "
+"を押すとシミュレーションサーバーが終了します。"
+msgstr ""
+"If several windows are displayed, it is successful. Press `Ctrl + C` (or `Command + C` on MacOS) in the command line to stop the simulation server."
+
+#: ../../source/tutorial/module/module.md:1
+msgid "モジュールについて"
+msgstr "About Modules"
+
+#: ../../source/tutorial/module/module.md:3
+msgid "モジュールの指定方法"
+msgstr "How to specify modules"
+
+#: ../../source/tutorial/module/module.md:5
+msgid "モジュールを指定するには、module.yamlにモジュールの名前とパスを記述します。"
+msgstr ""
+"To specify a module, write the module name and path in module.yaml."
+
+#: ../../source/tutorial/module/module.md:7
+msgid "例えば、以下のように記述します："
+msgstr "For example, write as follows:"
+
+#: ../../source/tutorial/module/module.md:15
+msgid ""
+"この場合、`SampleSearch` というモジュールで使用される、`PathPlanning` と `Clustering` "
+"というモジュールを指定しています。"
+msgstr ""
+"In this case, the modules `PathPlanning` and `Clustering` used in the `SampleSearch` module are specified."
+
+#: ../../source/tutorial/module/module.md:17
+msgid "モジュールの読み込み方法"
+msgstr "How to load modules"
+
+#: ../../source/tutorial/module/module.md:19
+msgid "モジュール内で、他のモジュールを読み込む場合は、次のように記述します："
+msgstr ""
+"To load other modules within a module, write as follows:"
+
+#: ../../source/tutorial/module/module.md:68
+msgid "モジュールの種類について"
+msgstr "About the types of modules"
+
+#: ../../source/tutorial/module/module.md:70
+msgid "adf-core-pythonでは、以下のモジュールが提供されています。"
+msgstr ""
+"The following modules are provided in adf-core-python."
+
+#: ../../source/tutorial/module/module.md
+msgid "クラス"
+msgstr "Class"
+
+#: ../../source/tutorial/module/module.md
+msgid "役割"
+msgstr "Role"
+
+#: ../../source/tutorial/module/module.md
+msgid "TacticsFireBrigade"
+msgstr "TacticsFireBrigade"
+
+#: ../../source/tutorial/module/module.md
+msgid "消防隊用のモジュール呼び出し (競技では変更不可)"
+msgstr ""
+"Module call for fire brigade (cannot be changed in competition)"
+
+#: ../../source/tutorial/module/module.md
+msgid "TacticsPoliceForce"
+msgstr "TacticsPoliceForce"
+
+#: ../../source/tutorial/module/module.md
+msgid "土木隊用のモジュール呼び出し (競技では変更不可)"
+msgstr ""
+"Module call for police force (cannot be changed in competition)"
+
+#: ../../source/tutorial/module/module.md
+msgid "TacticsAmbulanceTeam"
+msgstr "TacticsAmbulanceTeam"
+
+#: ../../source/tutorial/module/module.md
+msgid "救急隊用のモジュール呼び出し (競技では変更不可)"
+msgstr ""
+"Module call for ambulance team (cannot be changed in competition)"
+
+#: ../../source/tutorial/module/module.md
+msgid "BuildingDetector"
+msgstr "BuildingDetector"
+
+#: ../../source/tutorial/module/module.md
+msgid "消防隊の活動対象の選択"
+msgstr ""
+"Selection of activity target for fire brigade"
+
+#: ../../source/tutorial/module/module.md
+msgid "RoadDetector"
+msgstr "RoadDetector"
+
+#: ../../source/tutorial/module/module.md
+msgid "土木隊の活動対象の選択"
+msgstr ""
+"Selection of activity target for police force"
+
+#: ../../source/tutorial/module/module.md
+msgid "HumanDetector"
+msgstr "HumanDetector"
+
+#: ../../source/tutorial/module/module.md
+msgid "救急隊の活動対象の選択"
+msgstr ""
+"Selection of activity target for ambulance team"
+
+#: ../../source/tutorial/module/module.md
+msgid "Search"
+msgstr "Search"
+
+#: ../../source/tutorial/module/module.md
+msgid "情報探索に向けた活動対象の選択"
+msgstr ""
+"Selection of activity target for information search"
+
+#: ../../source/tutorial/module/module.md
+msgid "PathPlanning"
+msgstr "PathPlanning"
+
+#: ../../source/tutorial/module/module.md
+msgid "経路探索"
+msgstr "Path Planning"
+
+#: ../../source/tutorial/module/module.md
+msgid "DynamicClustering"
+msgstr "DynamicClustering"
+
+#: ../../source/tutorial/module/module.md
+msgid "シミュレーションの進行によってクラスタが変化するクラスタリング"
+msgstr ""
+"Clustering that changes as the simulation progresses"
+
+#: ../../source/tutorial/module/module.md
+msgid "StaticClustering"
+msgstr "StaticClustering"
+
+#: ../../source/tutorial/module/module.md
+msgid "シミュレーション開始時にクラスタが定まるクラスタリング"
+msgstr ""
+"Clustering that is determined at the start of the simulation"
+
+#: ../../source/tutorial/module/module.md
+msgid "ExtAction"
+msgstr "ExtAction"
+
+#: ../../source/tutorial/module/module.md
+msgid "活動対象決定後のエージェントの動作決定"
+msgstr ""
+"Determination of agent actions after selecting the activity target"
+
+#: ../../source/tutorial/module/module.md
+msgid "MessageCoordinator"
+msgstr "MessageCoordinator"
+
+#: ../../source/tutorial/module/module.md
+msgid "通信でメッセージ(情報)を送信する経路である、チャンネルへのメッセージの分配"
+msgstr ""
+"Distribution of messages to channels, which are the routes for sending messages (information) via communication"
+
+#: ../../source/tutorial/module/module.md
+msgid "ChannelSubscriber"
+msgstr "ChannelSubscriber"
+
+#: ../../source/tutorial/module/module.md
+msgid "通信によってメッセージを受け取るチャンネルの選択"
+msgstr ""
+"Selection of channels to receive messages via communication"
+
+#: ../../source/tutorial/module/module.md:88
+msgid "自分で上記の役割以外のモジュールを作成する際は、`AbstractModule` を継承してください。"
+msgstr ""
+"When creating a module with a role other than the above, inherit `AbstractModule`."

@@ -1,0 +1,317 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Haruki Uehara, Yuki Shimada
+# This file is distributed under the same license as the adf-core-python
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: adf-core-python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-19 13:59+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../source/adf_core_python.core.agent.info.rst:2
+msgid "adf\\_core\\_python.core.agent.info package"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.info.rst:5
+msgid "Submodules"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.info.rst:8
+msgid "adf\\_core\\_python.core.agent.info.agent\\_info module"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo:1
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo:1
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys:1
+#: adf_core_python.core.agent.info.world_info.WorldInfo:1 of
+msgid "Bases: :py:class:`object`"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_change_set:1
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_change_set:1 of
+msgid "Get the change set"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.info.rst
+msgid "Returns"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_change_set:3
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_change_set:3
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_change_set:3
+#: adf_core_python.core.agent.info.world_info.WorldInfo.set_change_set:3 of
+msgid "Change set"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.info.rst
+msgid "Return type"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_entity_id:1 of
+msgid "Get the entity ID of the agent"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_entity_id:3 of
+msgid "Entity ID of the agent"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_executed_action:1
+#: of
+msgid "Get the executed action at the given time"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.info.rst
+msgid "Parameters"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_executed_action:3
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_executed_action:3
+#: of
+msgid "Time"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_heard_commands:1 of
+msgid "Get the heard commands"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_heard_commands:3
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_heard_commands:3 of
+msgid "Heard commands"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_myself:1 of
+msgid "Get the entity of the agent"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_myself:3 of
+msgid "Entity of the agent"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_position_entity_id:1
+#: of
+msgid "Get the position entity ID of the agent"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_position_entity_id:3
+#: of
+msgid "Position entity ID of the agent"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_think_time:1 of
+msgid "Get the time taken for thinking"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_think_time:3 of
+msgid "Time taken for thinking"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_time:1 of
+msgid "Get the current time of the agent"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_time:3
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_time:3 of
+msgid "Current time"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.record_think_start_time:1
+#: of
+msgid "Record the start time of thinking"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_change_set:1
+#: adf_core_python.core.agent.info.world_info.WorldInfo.set_change_set:1 of
+msgid "Set the change set"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_executed_action:1
+#: of
+msgid "Set the executed action at the given time"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_executed_action:5
+#: of
+msgid "Executed action"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_heard_commands:1 of
+msgid "Set the heard commands"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_time:1 of
+msgid "Set the current time of the agent"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.some_one_on_board:1 of
+msgid "Get the human if someone is on board"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.some_one_on_board:3 of
+msgid "Human if someone is on board, None otherwise"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.info.rst:16
+msgid "adf\\_core\\_python.core.agent.info.scenario\\_info module"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.Mode:1 of
+msgid "Bases: :py:class:`~enum.IntEnum`"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_config:1 of
+msgid "Get the configuration"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_config:3
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.set_config:3 of
+msgid "Configuration"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_mode:1 of
+msgid "Get the mode of the scenario"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_mode:3 of
+msgid "Mode of the scenario"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_value:1 of
+msgid "Get the value of the configuration"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_value:3 of
+msgid "Key of the configuration"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_value:5 of
+msgid "Default value of the configuration"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_value:8 of
+msgid "Value of the configuration"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.set_config:1 of
+msgid "Set the configuration"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.info.rst:24
+msgid "adf\\_core\\_python.core.agent.info.world\\_info module"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.add_entity:1 of
+msgid "Add the entity"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.add_entity:3
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity:6 of
+msgid "Entity"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_blockades:1 of
+msgid "Get the blockades in the area"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_blockades:3 of
+msgid "Blockade"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_distance:1 of
+msgid "Get the distance between two entities"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_distance:3 of
+msgid "Entity ID 1"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_distance:5 of
+msgid "Entity ID 2"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_distance:8 of
+msgid "Distance"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.info.rst
+msgid "Raises"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_distance:11 of
+msgid "If one or both entities are invalid or the location is invalid"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_types:1
+#: of
+msgid "Get the entities of the specified types"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_types:3
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_types:3
+#: of
+msgid "List of entity types"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_types:6
+#: of
+msgid "Entities"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity:1 of
+msgid "Get the entity"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity:3
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position:3
+#: of
+msgid "Entity ID"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_types:1
+#: of
+msgid "Get the entity IDs of the specified types"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_types:6
+#: of
+msgid "Entity IDs"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position:1
+#: of
+msgid "Get the entity position"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position:6
+#: of
+msgid "Entity position"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position:9
+#: of
+msgid "If the entity is invalid"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_world_model:1 of
+msgid "Get the world model"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_world_model:3 of
+msgid "World model"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.info.rst:32
+msgid "Module contents"
+msgstr ""
+

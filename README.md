@@ -1,26 +1,41 @@
 # adf-core-python
 
+## Documentation
+
+[ADF Core Python Documentation](https://adf-python.github.io/adf-core-python/)
+
 ## Development Environment
 
 ### Prerequisites
 
-- Python (3.12 or higher)
-- Poetry (1.8.3 or higher)
+- Python (3.13 or higher)
+- uv (0.8.2 or higher)
 
 ### Installation
 
 ```bash
-poetry install
+uv sync
+```
+
+### Run Agent
+
+```bash
+uv run python ./adf_core_python/launcher.py
+
+# get help
+uv run python ./adf_core_python/launcher.py -h
 ```
 
 ### Build
 
 ```bash
-poetry build
+uv build
 ```
 
 ### Pre Commit
 
 ```bash
-poetry run task precommit
+uv run ruff format .
+uv run ruff check .
+uv run mypy .
 ```

@@ -1,0 +1,70 @@
+name: document
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - "docs/**"
+  pull_request:
+    branches:
+      - main
+      - develop
+    paths:
+      - "docs/**"
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+
+      - name: Cache virtual environment
+        id: cached-virtualenv
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: ${{ runner.os }}-venv-${{ hashFiles('**/uv.lock') }}
+
+      - name: Install dependencies
+        if: steps.cached-virtualenv.outputs.cache-hit != 'true'
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install uv
+          uv sync
+
+      - name: Build documentation
+        run: |
+          source .venv/bin/activate
+          cd docs
+          python build.py
+
+      - name: Redirect to the en documentation
+        run: |
+          username=$(echo $GITHUB_REPOSITORY | cut -d '/' -f 1)
+          repository=$(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)
+          echo '<meta http-equiv="refresh" content="0; url=https://'$username'.github.io/'$repository'/en" />' > ./docs/pages/index.html
+
+      - name: Deploy documentation
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/pages

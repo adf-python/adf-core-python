@@ -1,0 +1,133 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Haruki Uehara, Yuki Shimada
+# This file is distributed under the same license as the adf-core-python
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: adf-core-python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-19 13:59+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../source/adf_core_python.core.agent.communication.standard.utility.rst:2
+msgid "adf\\_core\\_python.core.agent.communication.standard.utility package"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.communication.standard.utility.rst:5
+msgid "Submodules"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.communication.standard.utility.rst:8
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.utility.apply\\_to\\_world\\_info"
+" module"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.apply_to_world_info.apply_to_world_info:1
+#: of
+msgid "Apply to world info."
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.communication.standard.utility.rst
+msgid "Parameters"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.apply_to_world_info.apply_to_world_info:3
+#: of
+msgid "The world info to apply to."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.apply_to_world_info.apply_to_world_info:5
+#: of
+msgid "The standard message to apply to world info."
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.communication.standard.utility.rst:16
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.utility.bitarray\\_with\\_exits\\_flag"
+" module"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.read_with_exist_flag:1
+#: of
+msgid ""
+"Read value from bit_array with an exist flag. If the first bit is "
+"IS_NOT_EXIST_FLAG, return None. If the first bit is IS_EXIST_FLAG, read "
+"and return value from bit_array."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.read_with_exist_flag:5
+#: of
+msgid "The bitarray to read from."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.read_with_exist_flag:7
+#: of
+msgid "The number of bits to read to get value."
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.communication.standard.utility.rst
+msgid "Returns"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.read_with_exist_flag:10
+#: of
+msgid "The value read from bit_array."
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.communication.standard.utility.rst
+msgid "Return type"
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.communication.standard.utility.rst
+msgid "Raises"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.read_with_exist_flag:13
+#: of
+msgid "If the first bit is not IS_EXIST_FLAG or IS_NOT_EXIST_FLAG."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.write_with_exist_flag:1
+#: of
+msgid ""
+"Write value to bit_array with an exist flag. If value is None, write "
+"IS_NOT_EXIST_FLAG to bit_array. If value is not None, write IS_EXIST_FLAG"
+" to bit_array and then write value to bit_array."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.write_with_exist_flag:5
+#: of
+msgid "The bitarray to write to."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.write_with_exist_flag:7
+#: of
+msgid "The value to write."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.write_with_exist_flag:9
+#: of
+msgid "The number of bits to use to write value."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.write_with_exist_flag:12
+#: of
+msgid "If value is too large to fit into bit_size bits."
+msgstr ""
+
+#: ../../source/adf_core_python.core.agent.communication.standard.utility.rst:24
+msgid "Module contents"
+msgstr ""
+

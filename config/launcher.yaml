@@ -1,0 +1,44 @@
+kernel:
+  host: localhost
+  port: 27931
+
+gateway:
+  host: localhost
+  port: 27941
+
+team:
+  name: AIT-Rescue
+
+adf:
+  launcher:
+    precompute: false
+  debug:
+    flag: false
+  agent:
+    moduleconfig:
+      filename: config/module.yaml
+    precompute:
+      dir_name: precompute
+
+  develop:
+    flag: true
+    filename: config/development.json
+
+  team:
+    platoon:
+      ambulance:
+        count: 100
+      fire:
+        count: 100
+      police:
+        count: 100
+    office:
+      ambulance:
+        count: 5
+      fire:
+        count: 5
+      police:
+        count: 5
+
+  gateway:
+    flag: false

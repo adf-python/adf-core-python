@@ -1,0 +1,122 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Haruki Uehara, Yuki Shimada
+# This file is distributed under the same license as the adf-core-python
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: adf-core-python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-19 13:59+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../source/adf_core_python.core.component.module.complex.rst:2
+msgid "adf\\_core\\_python.core.component.module.complex package"
+msgstr ""
+
+#: ../../source/adf_core_python.core.component.module.complex.rst:5
+msgid "Submodules"
+msgstr ""
+
+#: ../../source/adf_core_python.core.component.module.complex.rst:8
+msgid ""
+"adf\\_core\\_python.core.component.module.complex.ambulance\\_target\\_allocator"
+" module"
+msgstr ""
+
+#: adf_core_python.core.component.module.complex.ambulance_target_allocator.AmbulanceTargetAllocator:1
+#: adf_core_python.core.component.module.complex.fire_target_allocator.FireTargetAllocator:1
+#: adf_core_python.core.component.module.complex.police_target_allocator.PoliceTargetAllocator:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.target_allocator.TargetAllocator`"
+msgstr ""
+
+#: ../../source/adf_core_python.core.component.module.complex.rst:16
+msgid ""
+"adf\\_core\\_python.core.component.module.complex.fire\\_target\\_allocator"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python.core.component.module.complex.rst:24
+msgid "adf\\_core\\_python.core.component.module.complex.human\\_detector module"
+msgstr ""
+
+#: adf_core_python.core.component.module.complex.human_detector.HumanDetector:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.target_detector.TargetDetector`\\"
+" [:py:class:`~rcrs_core.entities.human.Human`]"
+msgstr ""
+
+#: ../../source/adf_core_python.core.component.module.complex.rst:32
+msgid ""
+"adf\\_core\\_python.core.component.module.complex.police\\_target\\_allocator"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python.core.component.module.complex.rst:40
+msgid "adf\\_core\\_python.core.component.module.complex.road\\_detector module"
+msgstr ""
+
+#: adf_core_python.core.component.module.complex.road_detector.RoadDetector:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.target_detector.TargetDetector`\\"
+" [:py:class:`~rcrs_core.entities.road.Road`]"
+msgstr ""
+
+#: ../../source/adf_core_python.core.component.module.complex.rst:48
+msgid "adf\\_core\\_python.core.component.module.complex.search module"
+msgstr ""
+
+#: adf_core_python.core.component.module.complex.search.Search:1 of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.target_detector.TargetDetector`\\"
+" [:py:class:`~rcrs_core.entities.area.Area`]"
+msgstr ""
+
+#: ../../source/adf_core_python.core.component.module.complex.rst:56
+msgid ""
+"adf\\_core\\_python.core.component.module.complex.target\\_allocator "
+"module"
+msgstr ""
+
+#: adf_core_python.core.component.module.complex.target_allocator.TargetAllocator:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.abstract_module.AbstractModule`"
+msgstr ""
+
+#: ../../source/adf_core_python.core.component.module.complex.rst:64
+msgid "adf\\_core\\_python.core.component.module.complex.target\\_detector module"
+msgstr ""
+
+#: adf_core_python.core.component.module.complex.target_detector.TargetDetector:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.abstract_module.AbstractModule`,"
+" :py:class:`~typing.Generic`\\ "
+"[:py:obj:`~adf_core_python.core.component.module.complex.target_detector.T`]"
+msgstr ""
+
+#: ../../source/adf_core_python.core.component.module.complex.rst:72
+msgid "Module contents"
+msgstr ""
+

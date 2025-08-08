@@ -1,0 +1,116 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Haruki Uehara, Yuki Shimada
+# This file is distributed under the same license as the adf-core-python
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: adf-core-python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-19 13:59+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../source/adf_core_python.implement.module.complex.rst:2
+msgid "adf\\_core\\_python.implement.module.complex package"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.complex.rst:5
+msgid "Submodules"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.complex.rst:8
+msgid ""
+"adf\\_core\\_python.implement.module.complex.default\\_ambulance\\_target\\_allocator"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.module.complex.default_ambulance_target_allocator.DefaultAmbulanceTargetAllocator:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.ambulance_target_allocator.AmbulanceTargetAllocator`"
+msgstr ""
+
+#: adf_core_python.implement.module.complex.default_ambulance_target_allocator.DefaultAmbulanceTargetAllocator.AmbulanceTeamInfo:1
+#: adf_core_python.implement.module.complex.default_fire_target_allocator.DefaultFireTargetAllocator.FireBrigadeInfo:1
+#: adf_core_python.implement.module.complex.default_police_target_allocator.DefaultPoliceTargetAllocator.PoliceForceInfo:1
+#: of
+msgid "Bases: :py:class:`object`"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.complex.rst:16
+msgid ""
+"adf\\_core\\_python.implement.module.complex.default\\_fire\\_target\\_allocator"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.module.complex.default_fire_target_allocator.DefaultFireTargetAllocator:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.fire_target_allocator.FireTargetAllocator`"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.complex.rst:24
+msgid ""
+"adf\\_core\\_python.implement.module.complex.default\\_human\\_detector "
+"module"
+msgstr ""
+
+#: adf_core_python.implement.module.complex.default_human_detector.DefaultHumanDetector:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.human_detector.HumanDetector`"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.complex.rst:32
+msgid ""
+"adf\\_core\\_python.implement.module.complex.default\\_police\\_target\\_allocator"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.module.complex.default_police_target_allocator.DefaultPoliceTargetAllocator:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.police_target_allocator.PoliceTargetAllocator`"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.complex.rst:40
+msgid ""
+"adf\\_core\\_python.implement.module.complex.default\\_road\\_detector "
+"module"
+msgstr ""
+
+#: adf_core_python.implement.module.complex.default_road_detector.DefaultRoadDetector:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.road_detector.RoadDetector`"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.complex.rst:48
+msgid "adf\\_core\\_python.implement.module.complex.default\\_search module"
+msgstr ""
+
+#: adf_core_python.implement.module.complex.default_search.DefaultSearch:1 of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.search.Search`"
+msgstr ""
+
+#: ../../source/adf_core_python.implement.module.complex.rst:56
+msgid "Module contents"
+msgstr ""
+
