@@ -66,7 +66,7 @@ class DefaultExtendActionClear(ExtendAction):
     self.count = 0
 
     self._path_planning = cast(
-      PathPlanning,
+      "PathPlanning",
       self.module_manager.get_module(
         "DefaultExtendActionClear.PathPlanning",
         "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
@@ -118,7 +118,7 @@ class DefaultExtendActionClear(ExtendAction):
 
   def calculate(self) -> ExtendAction:
     self.result = None
-    police_force = cast(PoliceForce, self.agent_info.get_myself())
+    police_force = cast("PoliceForce", self.agent_info.get_myself())
 
     if self._need_rest(police_force):
       target_entity_ids: list[EntityID] = []
@@ -148,13 +148,13 @@ class DefaultExtendActionClear(ExtendAction):
 
     if agent_position_entity_id == self._target_entity_id:
       self.result = self._get_area_clear_action(
-        police_force, cast(Road, position_entity)
+        police_force, cast("Road", position_entity)
       )
       if self.result is not None:
         return self
-    elif cast(Area, target_entity).get_edge_to(agent_position_entity_id) is not None:
+    elif cast("Area", target_entity).get_edge_to(agent_position_entity_id) is not None:
       self.result = self._get_neighbour_position_action(
-        police_force, cast(Area, target_entity)
+        police_force, cast("Area", target_entity)
       )
     else:
       path = self._path_planning.get_path(
@@ -163,7 +163,7 @@ class DefaultExtendActionClear(ExtendAction):
       if path is not None and len(path) > 0:
         index = self._index_of(path, agent_position_entity_id)
         if index == -1:
-          area = cast(Area, position_entity)
+          area = cast("Area", position_entity)
           for i in range(0, len(path), 1):
             if area.get_edge_to(path[i]) is not None:
               index = i
@@ -175,7 +175,7 @@ class DefaultExtendActionClear(ExtendAction):
         if index >= 0 and index < len(path):
           entity = self.world_info.get_entity(path[index])
           self.result = self._get_neighbour_position_action(
-            police_force, cast(Area, entity)
+            police_force, cast("Area", entity)
           )
           if self.result is not None and isinstance(self.result, ActionMove):
             action_move = self.result
@@ -250,7 +250,7 @@ class DefaultExtendActionClear(ExtendAction):
       []
       if road_blockades is None
       else [
-        cast(Blockade, self.world_info.get_entity(blockade_entity_id))
+        cast("Blockade", self.world_info.get_entity(blockade_entity_id))
         for blockade_entity_id in road_blockades
       ]
     )
@@ -264,7 +264,7 @@ class DefaultExtendActionClear(ExtendAction):
     move_action: Optional[ActionMove] = None
 
     for agent_entity in agent_entities:
-      human = cast(Human, agent_entity)
+      human = cast("Human", agent_entity)
       human_position = human.get_position()
       if (
         human_position is None
@@ -457,7 +457,7 @@ class DefaultExtendActionClear(ExtendAction):
         return action_move
 
     action = self._get_area_clear_action(
-      cast(PoliceForce, self.agent_info.get_myself()), road
+      cast("PoliceForce", self.agent_info.get_myself()), road
     )
     if action is None:
       action = ActionMove([road.get_entity_id()], int(point_x), int(point_y))

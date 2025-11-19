@@ -38,7 +38,7 @@ class DefaultExtendActionRescue(ExtendAction):
     )
 
     self._path_planning = cast(
-      PathPlanning,
+      "PathPlanning",
       self.module_manager.get_module(
         "DefaultExtendActionRescue.PathPlanning",
         "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
@@ -93,7 +93,7 @@ class DefaultExtendActionRescue(ExtendAction):
 
   def calculate(self) -> ExtendAction:
     self.result = None
-    agent = cast(FireBrigade, self.agent_info.get_myself())
+    agent = cast("FireBrigade", self.agent_info.get_myself())
 
     if self._target_entity_id is not None:
       self.result = self._calc_rescue(

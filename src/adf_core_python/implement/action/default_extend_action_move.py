@@ -30,7 +30,7 @@ class DefaultExtendActionMove(ExtendAction):
     self._threshold_to_rest: int = develop_data.get_value("threshold_to_rest", 100)
 
     self._path_planning: PathPlanning = cast(
-      PathPlanning,
+      "PathPlanning",
       self.module_manager.get_module(
         "DefaultExtendActionMove.PathPlanning",
         "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
@@ -85,7 +85,7 @@ class DefaultExtendActionMove(ExtendAction):
 
   def calculate(self) -> ExtendAction:
     self.result = None
-    agent: Human = cast(Human, self.agent_info.get_myself())
+    agent: Human = cast("Human", self.agent_info.get_myself())
 
     if self._target_entity_id is None:
       return self

@@ -31,7 +31,7 @@ class DefaultSearch(Search):
     self._result: Optional[EntityID] = None
 
     self._clustering: Clustering = cast(
-      Clustering,
+      "Clustering",
       module_manager.get_module(
         "DefaultSearch.Clustering",
         "adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering",
@@ -39,7 +39,7 @@ class DefaultSearch(Search):
     )
 
     self._path_planning: PathPlanning = cast(
-      PathPlanning,
+      "PathPlanning",
       module_manager.get_module(
         "DefaultSearch.PathPlanning",
         "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",

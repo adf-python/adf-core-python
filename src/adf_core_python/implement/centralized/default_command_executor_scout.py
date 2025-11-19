@@ -40,7 +40,7 @@ class DefaultCommandExecutorScout(CommandExecutor):
     )
 
     self._path_planning: PathPlanning = cast(
-      PathPlanning,
+      "PathPlanning",
       module_manager.get_module(
         "DefaultCommandExecutorScout.PathPlanning",
         "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",

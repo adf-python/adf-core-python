@@ -30,7 +30,7 @@ class DefaultTacticsFireStation(TacticsFireStation):
     develop_data: DevelopData,
   ) -> None:
     self._allocator: TargetAllocator = cast(
-      TargetAllocator,
+      "TargetAllocator",
       module_manager.get_module(
         "DefaultTacticsFireStation.TargetAllocator",
         "adf_core_python.implement.module.complex.default_fire_target_allocator.DefaultFireTargetAllocator",

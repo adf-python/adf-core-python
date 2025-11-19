@@ -29,7 +29,7 @@ class DefaultRoadDetector(RoadDetector):
     )
 
     self._path_planning: PathPlanning = cast(
-      PathPlanning,
+      "PathPlanning",
       module_manager.get_module(
         "DefaultRoadDetector.PathPlanning",
         "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
@@ -77,7 +77,7 @@ class DefaultRoadDetector(RoadDetector):
     self._target_areas = set()
     entities = self._world_info.get_entities_of_types([Refuge, Building, GasStation])
     for entity in entities:
-      building: Building = cast(Building, entity)
+      building: Building = cast("Building", entity)
       for entity_id in building.get_neighbors():
         neighbor = self._world_info.get_entity(entity_id)
         if isinstance(neighbor, Road):
@@ -85,7 +85,7 @@ class DefaultRoadDetector(RoadDetector):
 
     self._priority_roads = set()
     for entity in self._world_info.get_entities_of_types([Refuge]):
-      refuge: Refuge = cast(Refuge, entity)
+      refuge: Refuge = cast("Refuge", entity)
       for entity_id in refuge.get_neighbors():
         neighbor = self._world_info.get_entity(entity_id)
         if isinstance(neighbor, Road):

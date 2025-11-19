@@ -51,14 +51,14 @@ class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
       for entity in self._world_info.get_entities_of_types(
         [Refuge, Building, GasStation]
       ):
-        building: Building = cast(Building, entity)
+        building: Building = cast("Building", entity)
         for entity_id in building.get_neighbors():
           neighbor = self._world_info.get_entity(entity_id)
           if isinstance(neighbor, Road):
             self._target_areas.add(entity_id)
 
       for entity in self._world_info.get_entities_of_types([Refuge]):
-        refuge: Refuge = cast(Refuge, entity)
+        refuge: Refuge = cast("Refuge", entity)
         for entity_id in refuge.get_neighbors():
           neighbor = self._world_info.get_entity(entity_id)
           if isinstance(neighbor, Road):
@@ -76,14 +76,14 @@ class DefaultPoliceTargetAllocator(PoliceTargetAllocator):
     for entity in self._world_info.get_entities_of_types(
       [Refuge, Building, GasStation]
     ):
-      building: Building = cast(Building, entity)
+      building: Building = cast("Building", entity)
       for entity_id in building.get_neighbors():
         neighbor = self._world_info.get_entity(entity_id)
         if isinstance(neighbor, Road):
           self._target_areas.add(entity_id)
 
     for entity in self._world_info.get_entities_of_types([Refuge]):
-      refuge: Refuge = cast(Refuge, entity)
+      refuge: Refuge = cast("Refuge", entity)
       for entity_id in refuge.get_neighbors():
         neighbor = self._world_info.get_entity(entity_id)
         if isinstance(neighbor, Road):

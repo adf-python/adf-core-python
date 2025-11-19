@@ -30,7 +30,7 @@ class DefaultTacticsPoliceOffice(TacticsPoliceOffice):
     develop_data: DevelopData,
   ) -> None:
     self._allocator: TargetAllocator = cast(
-      TargetAllocator,
+      "TargetAllocator",
       module_manager.get_module(
         "DefaultTacticsPoliceOffice.TargetAllocator",
         "adf_core_python.implement.module.complex.default_police_target_allocator.DefaultPoliceTargetAllocator",

@@ -46,7 +46,7 @@ class DefaultExtendActionTransport(ExtendAction):
     )
 
     self._path_planning: PathPlanning = cast(
-      PathPlanning,
+      "PathPlanning",
       self.module_manager.get_module(
         "DefaultExtendActionMove.PathPlanning",
         "adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning",
@@ -97,7 +97,7 @@ class DefaultExtendActionTransport(ExtendAction):
 
   def calculate(self) -> ExtendAction:
     self._result = None
-    agent: AmbulanceTeam = cast(AmbulanceTeam, self.agent_info.get_myself())
+    agent: AmbulanceTeam = cast("AmbulanceTeam", self.agent_info.get_myself())
     transport_human: Optional[Human] = self.agent_info.some_one_on_board()
     if transport_human is not None:
       self._logger.debug(f"transport_human: {transport_human.get_entity_id()}")

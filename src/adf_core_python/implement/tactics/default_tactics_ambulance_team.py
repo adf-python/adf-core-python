@@ -50,14 +50,14 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
     )
 
     self._search: Search = cast(
-      Search,
+      "Search",
       module_manager.get_module(
         "DefaultTacticsAmbulanceTeam.Search",
         "adf_core_python.implement.module.complex.default_search.DefaultSearch",
       ),
     )
     self._human_detector: HumanDetector = cast(
-      HumanDetector,
+      "HumanDetector",
       module_manager.get_module(
         "DefaultTacticsAmbulanceTeam.HumanDetector",
         "adf_core_python.implement.module.complex.default_human_detector.DefaultHumanDetector",
@@ -137,7 +137,7 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
     self.reset_count()
     self.module_update_info(message_manager)
 
-    agent: AmbulanceTeam = cast(AmbulanceTeam, agent_info.get_myself())  # noqa: F841
+    agent: AmbulanceTeam = cast("AmbulanceTeam", agent_info.get_myself())  # noqa: F841
     entity_id = agent_info.get_entity_id()  # noqa: F841
 
     self._logger.debug(

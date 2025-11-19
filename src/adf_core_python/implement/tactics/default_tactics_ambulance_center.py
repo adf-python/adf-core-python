@@ -30,7 +30,7 @@ class DefaultTacticsAmbulanceCenter(TacticsAmbulanceCenter):
     develop_data: DevelopData,
   ) -> None:
     self._allocator: TargetAllocator = cast(
-      TargetAllocator,
+      "TargetAllocator",
       module_manager.get_module(
         "DefaultTacticsAmbulanceCenter.TargetAllocator",
         "adf_core_python.implement.module.complex.default_ambulance_target_allocator.DefaultAmbulanceTargetAllocator",

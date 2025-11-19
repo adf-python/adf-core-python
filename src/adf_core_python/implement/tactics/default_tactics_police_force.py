@@ -56,14 +56,14 @@ class DefaultTacticsPoliceForce(TacticsPoliceForce):
     # )
 
     self._search: Search = cast(
-      Search,
+      "Search",
       module_manager.get_module(
         "DefaultTacticsPoliceForce.Search",
         "adf_core_python.implement.module.complex.default_search.DefaultSearch",
       ),
     )
     self._road_detector: RoadDetector = cast(
-      RoadDetector,
+      "RoadDetector",
       module_manager.get_module(
         "DefaultTacticsPoliceForce.RoadDetector",
         "adf_core_python.core.component.module.complex.road_detector.RoadDetector",
@@ -143,7 +143,7 @@ class DefaultTacticsPoliceForce(TacticsPoliceForce):
     self.reset_count()
     self.module_update_info(message_manager)
 
-    agent: PoliceForce = cast(PoliceForce, agent_info.get_myself())  # noqa: F841
+    agent: PoliceForce = cast("PoliceForce", agent_info.get_myself())  # noqa: F841
     entity_id = agent_info.get_entity_id()  # noqa: F841
 
     for message in message_manager.get_received_message_list():
