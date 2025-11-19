@@ -18,7 +18,6 @@ if TYPE_CHECKING:
   from adf_core_python.core.agent.module.module_manager import ModuleManager
 
 
-
 class CommandPicker(ABC):
   def __init__(
     self,

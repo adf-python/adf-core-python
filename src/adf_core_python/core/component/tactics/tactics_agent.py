@@ -7,7 +7,9 @@ from typing import TYPE_CHECKING, Optional
 from adf_core_python.core.logger.logger import get_agent_logger
 
 if TYPE_CHECKING:
-  from adf_core_python.core.component.centralized.command_executor import CommandExecutor
+  from adf_core_python.core.component.centralized.command_executor import (
+    CommandExecutor,
+  )
   from adf_core_python.core.agent.action.action import Action
   from adf_core_python.core.agent.communication.message_manager import MessageManager
   from adf_core_python.core.agent.develop.develop_data import DevelopData
