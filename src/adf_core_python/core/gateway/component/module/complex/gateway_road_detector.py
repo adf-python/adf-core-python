@@ -4,13 +4,13 @@ from typing import TYPE_CHECKING
 
 from rcrscore.entities.road import Road
 
-from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.component.module.complex.road_detector import RoadDetector
 from adf_core_python.core.gateway.component.module.complex.gateway_target_detector import (
   GatewayTargetDetector,
 )
 
 if TYPE_CHECKING:
+  from adf_core_python.core.agent.communication.message_manager import MessageManager
   from adf_core_python.core.agent.develop.develop_data import DevelopData
   from adf_core_python.core.agent.info.agent_info import AgentInfo
   from adf_core_python.core.agent.info.scenario_info import ScenarioInfo

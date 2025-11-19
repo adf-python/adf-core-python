@@ -4,9 +4,7 @@ from typing import TYPE_CHECKING
 
 from bitarray import bitarray
 from rcrscore.commands import AKSpeak
-from rcrscore.entities import EntityID
 
-from adf_core_python.core.agent.communication.message_manager import MessageManager
 from adf_core_python.core.agent.communication.standard.bundle.standard_message import (
   StandardMessage,
 )
@@ -20,6 +18,8 @@ from adf_core_python.core.component.communication.communication_module import (
 from adf_core_python.core.logger.logger import get_logger
 
 if TYPE_CHECKING:
+  from adf_core_python.core.agent.communication.message_manager import MessageManager
+  from rcrscore.entities import EntityID
   from adf_core_python.core.agent.agent import Agent
 
 

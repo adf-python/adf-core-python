@@ -1,7 +1,6 @@
 from threading import Event
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 
-from adf_core_python.core.agent.action.action import Action
 from adf_core_python.core.agent.agent import Agent
 from adf_core_python.core.agent.config.module_config import ModuleConfig
 from adf_core_python.core.agent.develop.develop_data import DevelopData
@@ -11,6 +10,9 @@ from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
 from adf_core_python.core.component.tactics.tactics_agent import TacticsAgent
 from adf_core_python.core.gateway.gateway_agent import GatewayAgent
 from adf_core_python.core.logger.logger import get_agent_logger
+
+if TYPE_CHECKING:
+  from adf_core_python.core.agent.action.action import Action
 
 
 class Platoon(Agent):

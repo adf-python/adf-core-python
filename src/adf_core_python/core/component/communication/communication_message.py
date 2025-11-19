@@ -2,7 +2,10 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 
-from bitarray import bitarray
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+  from bitarray import bitarray
 
 
 class CommunicationMessage(ABC):

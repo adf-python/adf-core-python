@@ -3,16 +3,16 @@ from __future__ import annotations
 from time import time
 from typing import TYPE_CHECKING
 
-from rcrscore.commands import Command
-from rcrscore.entities import EntityID
 from rcrscore.entities.civilian import Civilian
-from rcrscore.entities.entity import Entity
 from rcrscore.entities.human import Human
 from rcrscore.worldmodel import ChangeSet, WorldModel
 
-from adf_core_python.core.agent.action.action import Action
 
 if TYPE_CHECKING:
+  from rcrscore.entities import EntityID
+  from rcrscore.commands import Command
+  from adf_core_python.core.agent.action.action import Action
+  from rcrscore.entities.entity import Entity
   from adf_core_python.core.agent.agent import Agent
 
 

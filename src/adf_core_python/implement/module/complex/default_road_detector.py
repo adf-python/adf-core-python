@@ -1,4 +1,4 @@
-from typing import Optional, cast
+from typing import Optional, cast, TYPE_CHECKING
 
 from rcrscore.entities import Building, EntityID, GasStation, Refuge, Road
 
@@ -9,10 +9,12 @@ from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
 from adf_core_python.core.agent.info.world_info import WorldInfo
 from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
-from adf_core_python.core.component.module.algorithm.path_planning import (
-  PathPlanning,
-)
 from adf_core_python.core.component.module.complex.road_detector import RoadDetector
+
+if TYPE_CHECKING:
+  from adf_core_python.core.component.module.algorithm.path_planning import (
+    PathPlanning,
+  )
 
 
 class DefaultRoadDetector(RoadDetector):

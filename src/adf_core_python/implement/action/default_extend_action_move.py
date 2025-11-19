@@ -1,4 +1,4 @@
-from typing import Optional, cast
+from typing import Optional, cast, TYPE_CHECKING
 
 from rcrscore.entities import Area, Blockade, Entity, EntityID, Human
 
@@ -11,7 +11,9 @@ from adf_core_python.core.agent.info.world_info import WorldInfo
 from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
 from adf_core_python.core.component.action.extend_action import ExtendAction
-from adf_core_python.core.component.module.algorithm.path_planning import PathPlanning
+
+if TYPE_CHECKING:
+  from adf_core_python.core.component.module.algorithm.path_planning import PathPlanning
 
 
 class DefaultExtendActionMove(ExtendAction):

@@ -1,9 +1,8 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 
 from bitarray import bitarray
-from rcrscore.entities import EntityID
 
 from adf_core_python.core.agent.communication.standard.bundle.standard_message_priority import (
   StandardMessagePriority,
@@ -15,6 +14,9 @@ from adf_core_python.core.agent.communication.standard.utility.bitarray_with_exi
 from adf_core_python.core.component.communication.communication_message import (
   CommunicationMessage,
 )
+
+if TYPE_CHECKING:
+  from rcrscore.entities import EntityID
 
 
 class StandardMessage(CommunicationMessage):

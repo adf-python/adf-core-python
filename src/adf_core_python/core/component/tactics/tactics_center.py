@@ -3,9 +3,9 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any, Optional
 
-from adf_core_python.core.component.centralized.command_picker import CommandPicker
 
 if TYPE_CHECKING:
+  from adf_core_python.core.component.centralized.command_picker import CommandPicker
   from adf_core_python.core.agent.communication.message_manager import MessageManager
   from adf_core_python.core.agent.develop.develop_data import DevelopData
   from adf_core_python.core.agent.info.agent_info import AgentInfo

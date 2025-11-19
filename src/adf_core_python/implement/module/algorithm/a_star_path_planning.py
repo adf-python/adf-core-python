@@ -2,14 +2,17 @@ from __future__ import annotations
 
 from rcrscore.entities import Area, Building, Entity, EntityID, Road
 
-from adf_core_python.core.agent.develop.develop_data import DevelopData
-from adf_core_python.core.agent.info.agent_info import AgentInfo
-from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
-from adf_core_python.core.agent.info.world_info import WorldInfo
-from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.component.module.algorithm.path_planning import (
   PathPlanning,
 )
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+  from adf_core_python.core.agent.module.module_manager import ModuleManager
+  from adf_core_python.core.agent.info.world_info import WorldInfo
+  from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
+  from adf_core_python.core.agent.info.agent_info import AgentInfo
+  from adf_core_python.core.agent.develop.develop_data import DevelopData
 
 
 class AStarPathPlanning(PathPlanning):

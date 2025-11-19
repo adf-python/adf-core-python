@@ -1,20 +1,22 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 
-from bitarray import bitarray
 from rcrscore.entities import EntityID
 
 from adf_core_python.core.agent.communication.standard.bundle.standard_message import (
   StandardMessage,
 )
-from adf_core_python.core.agent.communication.standard.bundle.standard_message_priority import (
-  StandardMessagePriority,
-)
 from adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag import (
   read_with_exist_flag,
   write_with_exist_flag,
 )
+
+if TYPE_CHECKING:
+  from adf_core_python.core.agent.communication.standard.bundle.standard_message_priority import (
+    StandardMessagePriority,
+  )
+  from bitarray import bitarray
 
 
 class CommandFire(StandardMessage):
