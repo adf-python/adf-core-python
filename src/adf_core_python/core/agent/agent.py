@@ -2,7 +2,7 @@ import sys
 import time as _time
 from abc import abstractmethod
 from threading import Event
-from typing import Any, Callable, NoReturn, Optional, TYPE_CHECKING
+from typing import TYPE_CHECKING, Any, Callable, NoReturn, Optional
 
 from bitarray import bitarray
 from rcrscore.commands import (
@@ -19,19 +19,7 @@ from rcrscore.commands import (
   AKUnload,
   Command,
 )
-
-# from rcrscore.connection.URN import Command as CommandURN
-# from rcrscore.connection.URN import ComponentCommand as ComponentCommandMessageID
-# from rcrscore.connection.URN import ComponentControlMSG as ComponentControlMessageID
-# from rcrscore.connection.URN import Entity as EntityURN
 from rcrscore.entities import EntityID
-
-# from rcrscore.messages.AKAcknowledge import AKAcknowledge
-# from rcrscore.messages.AKConnect import AKConnect
-# from rcrscore.messages.controlMessageFactory import ControlMessageFactory
-# from rcrscore.messages.KAConnectError import KAConnectError
-# from rcrscore.messages.KAConnectOK import KAConnectOK
-# from rcrscore.messages.KASense import KASense
 from rcrscore.messages import (
   AKAcknowledge,
   AKConnect,
@@ -97,10 +85,11 @@ from adf_core_python.core.launcher.config_key import ConfigKey
 from adf_core_python.core.logger.logger import get_agent_logger, get_logger
 
 if TYPE_CHECKING:
+  from rcrscore.config.config import Config as RCRSConfig
+
   from adf_core_python.core.component.communication.communication_module import (
     CommunicationModule,
   )
-  from rcrscore.config.config import Config as RCRSConfig
 
 
 class Agent:
