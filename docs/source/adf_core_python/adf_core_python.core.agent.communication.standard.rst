@@ -18,13 +18,13 @@ adf\_core\_python.core.agent.communication.standard.standard\_communication\_mod
 
 .. automodule:: adf_core_python.core.agent.communication.standard.standard_communication_module
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: adf_core_python.core.agent.communication.standard
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

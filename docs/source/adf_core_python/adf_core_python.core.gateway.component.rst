@@ -14,5 +14,5 @@ Module contents
 
 .. automodule:: adf_core_python.core.gateway.component
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

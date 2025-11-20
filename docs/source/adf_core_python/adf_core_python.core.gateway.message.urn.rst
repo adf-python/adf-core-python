@@ -9,13 +9,13 @@ adf\_core\_python.core.gateway.message.urn.urn module
 
 .. automodule:: adf_core_python.core.gateway.message.urn.urn
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: adf_core_python.core.gateway.message.urn
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
