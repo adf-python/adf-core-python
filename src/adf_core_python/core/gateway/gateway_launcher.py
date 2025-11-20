@@ -1,6 +1,6 @@
 import socket
 
-from structlog import BoundLogger
+from structlog.stdlib import BoundLogger
 
 from adf_core_python.core.gateway.gateway_agent import GatewayAgent
 from adf_core_python.core.launcher.connect.connection import Connection
@@ -32,8 +32,7 @@ class GatewayLauncher:
       self.logger.warning(f"Connection to {self.host}:{self.port} timed out")
       return
     except socket.error as e:
-      self.logger.error(f"Failed to connect to {self.host}:{self.port}")
-      self.logger.error(e)
+      self.logger.error(f"Failed to connect to {self.host}:{self.port} {e}")
       return
 
     connection.message_received(gateway_agent.message_received)

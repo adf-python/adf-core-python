@@ -6,11 +6,12 @@ from datetime import datetime
 import structlog
 from structlog.dev import ConsoleRenderer
 from structlog.processors import JSONRenderer
+from structlog.stdlib import BoundLogger
 
 from adf_core_python.core.agent.info.agent_info import AgentInfo
 
 
-def get_logger(name: str) -> structlog.BoundLogger:
+def get_logger(name: str) -> BoundLogger:
   """
   Get a logger with the given name.
   For kernel logging, use this function to get a logger.
@@ -22,13 +23,13 @@ def get_logger(name: str) -> structlog.BoundLogger:
 
   Returns
   -------
-  structlog.BoundLogger
+  BoundLogger
       The logger with the given name.
   """
   return structlog.get_logger(name)
 
 
-def get_agent_logger(name: str, agent_info: AgentInfo) -> structlog.BoundLogger:
+def get_agent_logger(name: str, agent_info: AgentInfo) -> BoundLogger:
   """
   Get a logger with the given name and agent information.
   For agent logging, use this function to get a logger.
@@ -42,7 +43,7 @@ def get_agent_logger(name: str, agent_info: AgentInfo) -> structlog.BoundLogger:
 
   Returns
   -------
-  structlog.BoundLogger
+  BoundLogger
       The logger with the given name and agent information.
   """
   agent = agent_info.get_myself()
