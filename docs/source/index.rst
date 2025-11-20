@@ -69,6 +69,12 @@ adf-core-pythonを始めるには、インストールに従い、このドキ�
 
 .. toctree::
    :maxdepth: 1
+   :caption: 開発ガイド
+
+   tips/precompute
+
+.. toctree::
+   :maxdepth: 1
    :caption: APIドキュメント
 
    modindex
