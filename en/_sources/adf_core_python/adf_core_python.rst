@@ -19,13 +19,13 @@ adf\_core\_python.launcher module
 
 .. automodule:: adf_core_python.launcher
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: adf_core_python
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

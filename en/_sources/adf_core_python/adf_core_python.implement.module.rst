@@ -16,5 +16,5 @@ Module contents
 
 .. automodule:: adf_core_python.implement.module
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

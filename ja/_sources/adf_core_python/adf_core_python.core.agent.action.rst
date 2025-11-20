@@ -20,13 +20,13 @@ adf\_core\_python.core.agent.action.action module
 
 .. automodule:: adf_core_python.core.agent.action.action
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: adf_core_python.core.agent.action
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

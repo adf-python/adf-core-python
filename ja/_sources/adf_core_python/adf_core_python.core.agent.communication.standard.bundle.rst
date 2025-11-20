@@ -18,21 +18,21 @@ adf\_core\_python.core.agent.communication.standard.bundle.standard\_message mod
 
 .. automodule:: adf_core_python.core.agent.communication.standard.bundle.standard_message
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 adf\_core\_python.core.agent.communication.standard.bundle.standard\_message\_priority module
 ---------------------------------------------------------------------------------------------
 
 .. automodule:: adf_core_python.core.agent.communication.standard.bundle.standard_message_priority
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: adf_core_python.core.agent.communication.standard.bundle
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

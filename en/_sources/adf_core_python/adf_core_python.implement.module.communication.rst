@@ -9,21 +9,21 @@ adf\_core\_python.implement.module.communication.default\_channel\_subscriber mo
 
 .. automodule:: adf_core_python.implement.module.communication.default_channel_subscriber
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 adf\_core\_python.implement.module.communication.default\_message\_coordinator module
 -------------------------------------------------------------------------------------
 
 .. automodule:: adf_core_python.implement.module.communication.default_message_coordinator
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: adf_core_python.implement.module.communication
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
