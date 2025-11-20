@@ -24,13 +24,13 @@ adf\_core\_python.core.agent.agent module
 
 .. automodule:: adf_core_python.core.agent.agent
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: adf_core_python.core.agent
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

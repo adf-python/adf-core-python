@@ -18,13 +18,13 @@ adf\_core\_python.core.component.module.abstract\_module module
 
 .. automodule:: adf_core_python.core.component.module.abstract_module
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: adf_core_python.core.component.module
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

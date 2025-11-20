@@ -9,13 +9,13 @@ adf\_core\_python.core.config.config module
 
 .. automodule:: adf_core_python.core.config.config
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: adf_core_python.core.config
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

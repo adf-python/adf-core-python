@@ -19,13 +19,13 @@ adf\_core\_python.implement.default\_loader module
 
 .. automodule:: adf_core_python.implement.default_loader
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: adf_core_python.implement
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
