@@ -1,4 +1,13 @@
-package adf_core_python_core_python.impl.extaction;
+package adf_core_python.impl.extaction;
+
+import static rescuecore2.standard.entities.StandardEntityURN.HYDRANT;
+import static rescuecore2.standard.entities.StandardEntityURN.REFUGE;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 
 import adf.core.agent.action.Action;
 import adf.core.agent.action.common.ActionMove;
@@ -15,13 +24,12 @@ import adf_core_python.core.agent.precompute.PrecomputeData;
 import adf_core_python.core.component.extaction.ExtAction;
 import adf_core_python.core.component.module.algorithm.PathPlanning;
 import rescuecore2.config.NoSuchConfigOptionException;
-import rescuecore2.standard.entities.*;
+import rescuecore2.standard.entities.Building;
+import rescuecore2.standard.entities.FireBrigade;
+import rescuecore2.standard.entities.Human;
+import rescuecore2.standard.entities.StandardEntity;
+import rescuecore2.standard.entities.StandardEntityURN;
 import rescuecore2.worldmodel.EntityID;
-
-import java.util.*;
-
-import static rescuecore2.standard.entities.StandardEntityURN.HYDRANT;
-import static rescuecore2.standard.entities.StandardEntityURN.REFUGE;
 
 public class DefaultExtActionFireFighting extends ExtAction {
 
