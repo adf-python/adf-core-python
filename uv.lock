@@ -55,7 +55,7 @@ requires-dist = [
     { name = "jinja2", specifier = ">=3.1.6" },
     { name = "protobuf", specifier = ">=6.31.1" },
     { name = "pyyaml", specifier = ">=6.0.2" },
-    { name = "rcrscore", git = "https://github.com/adf-python/rcrs-core-python?tag=v0.2.0" },
+    { name = "rcrscore", git = "https://github.com/adf-python/rcrs-core-python?tag=v0.2.2" },
     { name = "rtree", specifier = ">=1.4.0" },
     { name = "scikit-learn", specifier = ">=1.7.1" },
     { name = "shapely", specifier = ">=2.1.1" },
@@ -510,8 +510,8 @@ wheels = [
 
 [[package]]
 name = "rcrscore"
-version = "0.1.0"
-source = { git = "https://github.com/adf-python/rcrs-core-python?tag=v0.2.0#d8227cfcfb479c020fd0354a923aefcb6f2573df" }
+version = "0.2.2"
+source = { git = "https://github.com/adf-python/rcrs-core-python?tag=v0.2.2#b5e8bb648e8f2182b25947002a4225d5bab8ff09" }
 dependencies = [
     { name = "protobuf" },
     { name = "rtree" },

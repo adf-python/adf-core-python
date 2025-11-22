@@ -20,10 +20,10 @@ uv sync
 ### Run Agent
 
 ```bash
-uv run python ./adf_core_python/launcher.py
+uv run python ./src/adf_core_python/launcher.py
 
 # get help
-uv run python ./adf_core_python/launcher.py -h
+uv run python ./src/adf_core_python/launcher.py -h
 ```
 
 ### Build

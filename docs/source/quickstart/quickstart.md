@@ -12,6 +12,7 @@
 パッケージをインストールするには、次のコマンドを実行します：
 
 ```bash
+pip install rcrscore@git+https://github.com/adf-python/rcrs-core-python@v0.2.2
 pip install git+https://github.com/adf-python/adf-core-python.git
 ```
 
