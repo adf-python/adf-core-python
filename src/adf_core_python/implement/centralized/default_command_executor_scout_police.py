@@ -1,29 +1,25 @@
-from typing import Optional, cast, TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional, cast
 
 from rcrscore.entities import Building, EntityID, Human, Refuge, Road
 
-from adf_core_python.core.agent.action.common.action_move import ActionMove
-from adf_core_python.core.agent.communication.message_manager import MessageManager
-from adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout import (
-  CommandScout,
-)
-from adf_core_python.core.agent.communication.standard.bundle.centralized.message_report import (
-  MessageReport,
-)
-from adf_core_python.core.agent.communication.standard.bundle.standard_message_priority import (
+from adf_core_python.core.agent.action.common import ActionMove
+from adf_core_python.core.agent.communication import MessageManager
+from adf_core_python.core.agent.communication.standard.bundle import (
   StandardMessagePriority,
 )
-from adf_core_python.core.agent.develop.develop_data import DevelopData
-from adf_core_python.core.agent.info.agent_info import AgentInfo
-from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
-from adf_core_python.core.agent.info.world_info import WorldInfo
-from adf_core_python.core.agent.module.module_manager import ModuleManager
-from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
-from adf_core_python.core.component.centralized.command_executor import CommandExecutor
+from adf_core_python.core.agent.communication.standard.bundle.centralized import (
+  CommandScout,
+  MessageReport,
+)
+from adf_core_python.core.agent.develop import DevelopData
+from adf_core_python.core.agent.info import AgentInfo, ScenarioInfo, WorldInfo
+from adf_core_python.core.agent.module import ModuleManager
+from adf_core_python.core.agent.precompute import PrecomputeData
+from adf_core_python.core.component.centralized import CommandExecutor
 
 if TYPE_CHECKING:
-  from adf_core_python.core.component.module.algorithm.path_planning import PathPlanning
-  from adf_core_python.core.component.action.extend_action import ExtendAction
+  from adf_core_python.core.component.action import ExtendAction
+  from adf_core_python.core.component.module.algorithm import PathPlanning
 
 
 class DefaultCommandExecutorScoutPolice(CommandExecutor):

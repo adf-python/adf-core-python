@@ -3,8 +3,7 @@ from typing import Any, Callable
 
 from rcrscore.proto import RCRSProto_pb2
 
-from adf_core_python.core.launcher.connect.error.agent_error import AgentError
-from adf_core_python.core.launcher.connect.error.server_error import ServerError
+from adf_core_python.core.launcher.connect.error import AgentError, ServerError
 
 
 class Connection:

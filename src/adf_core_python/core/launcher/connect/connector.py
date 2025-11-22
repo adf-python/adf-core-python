@@ -1,11 +1,14 @@
+from __future__ import annotations
+
 import threading
 from abc import ABC, abstractmethod
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from adf_core_python.core.component.abstract_loader import AbstractLoader
-from adf_core_python.core.config.config import Config
-from adf_core_python.core.gateway.gateway_launcher import GatewayLauncher
-from adf_core_python.core.launcher.connect.component_launcher import ComponentLauncher
+if TYPE_CHECKING:
+  from adf_core_python.core.component import AbstractLoader
+  from adf_core_python.core.config import Config
+  from adf_core_python.core.gateway import GatewayLauncher
+  from adf_core_python.core.launcher.connect import ComponentLauncher
 
 
 class Connector(ABC):

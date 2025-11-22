@@ -1,28 +1,25 @@
 from __future__ import annotations
 
-from rcrscore.entities import AmbulanceTeam, Area, EntityID, Human
-
-from adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance import (
-  CommandAmbulance,
-)
-from adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout import (
-  CommandScout,
-)
-from adf_core_python.core.agent.communication.standard.bundle.standard_message_priority import (
-  StandardMessagePriority,
-)
-from adf_core_python.core.component.centralized.command_picker import CommandPicker
 from typing import TYPE_CHECKING
 
+from rcrscore.entities import AmbulanceTeam, Area, EntityID, Human
+
+from adf_core_python.core.agent.communication.standard.bundle import (
+  StandardMessagePriority,
+)
+from adf_core_python.core.agent.communication.standard.bundle.centralized import (
+  CommandAmbulance,
+  CommandScout,
+)
+from adf_core_python.core.component.centralized import CommandPicker
+
 if TYPE_CHECKING:
-  from adf_core_python.core.component.communication.communication_message import (
+  from adf_core_python.core.agent.develop import DevelopData
+  from adf_core_python.core.agent.info import AgentInfo, ScenarioInfo, WorldInfo
+  from adf_core_python.core.agent.module import ModuleManager
+  from adf_core_python.core.component.communication import (
     CommunicationMessage,
   )
-  from adf_core_python.core.agent.module.module_manager import ModuleManager
-  from adf_core_python.core.agent.info.world_info import WorldInfo
-  from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
-  from adf_core_python.core.agent.info.agent_info import AgentInfo
-  from adf_core_python.core.agent.develop.develop_data import DevelopData
 
 
 class DefaultCommandPickerAmbulance(CommandPicker):

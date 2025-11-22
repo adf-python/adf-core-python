@@ -1,14 +1,18 @@
+from __future__ import annotations
+
 import logging
 import os
 import sys
 from datetime import datetime
+from typing import TYPE_CHECKING
 
 import structlog
 from structlog.dev import ConsoleRenderer
 from structlog.processors import JSONRenderer
 from structlog.stdlib import BoundLogger
 
-from adf_core_python.core.agent.info.agent_info import AgentInfo
+if TYPE_CHECKING:
+  from adf_core_python.core.agent.info import AgentInfo
 
 
 def get_logger(name: str) -> BoundLogger:

@@ -2,8 +2,8 @@ import socket
 
 from structlog.stdlib import BoundLogger
 
-from adf_core_python.core.gateway.gateway_agent import GatewayAgent
-from adf_core_python.core.launcher.connect.connection import Connection
+from adf_core_python.core.gateway import GatewayAgent
+from adf_core_python.core.launcher.connect import Connection
 
 
 class GatewayLauncher:

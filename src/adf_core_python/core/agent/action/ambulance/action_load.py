@@ -1,7 +1,7 @@
 from rcrscore.commands import AKLoad, Command
 from rcrscore.entities import EntityID
 
-from adf_core_python.core.agent.action.action import Action
+from adf_core_python.core.agent.action import Action
 
 
 class ActionLoad(Action):

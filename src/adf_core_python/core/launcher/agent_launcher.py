@@ -1,35 +1,25 @@
 import importlib
 import socket
 import threading
-from typing import Optional, TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
-from adf_core_python.core.config.config import Config
-from adf_core_python.core.gateway.gateway_launcher import GatewayLauncher
-from adf_core_python.core.launcher.config_key import ConfigKey
-from adf_core_python.core.launcher.connect.component_launcher import ComponentLauncher
-from adf_core_python.core.launcher.connect.connector_ambulance_center import (
+from adf_core_python.core.config import Config
+from adf_core_python.core.gateway import GatewayLauncher
+from adf_core_python.core.launcher import ConfigKey
+from adf_core_python.core.launcher.connect import (
+  ComponentLauncher,
   ConnectorAmbulanceCenter,
-)
-from adf_core_python.core.launcher.connect.connector_ambulance_team import (
   ConnectorAmbulanceTeam,
-)
-from adf_core_python.core.launcher.connect.connector_fire_brigade import (
   ConnectorFireBrigade,
-)
-from adf_core_python.core.launcher.connect.connector_fire_station import (
   ConnectorFireStation,
-)
-from adf_core_python.core.launcher.connect.connector_police_force import (
   ConnectorPoliceForce,
-)
-from adf_core_python.core.launcher.connect.connector_police_office import (
   ConnectorPoliceOffice,
 )
-from adf_core_python.core.logger.logger import get_logger
+from adf_core_python.core.logger import get_logger
 
 if TYPE_CHECKING:
-  from adf_core_python.core.component.abstract_loader import AbstractLoader
-  from adf_core_python.core.launcher.connect.connector import Connector
+  from adf_core_python.core.component import AbstractLoader
+  from adf_core_python.core.launcher.connect import Connector
 
 
 class AgentLauncher:

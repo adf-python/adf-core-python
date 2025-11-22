@@ -1,18 +1,16 @@
 from __future__ import annotations
 
 import heapq
-from typing import Optional, TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from rcrscore.entities import Area, Building, EntityID, Road
 
-from adf_core_python.core.component.module.algorithm.path_planning import PathPlanning
+from adf_core_python.core.component.module.algorithm import PathPlanning
 
 if TYPE_CHECKING:
-  from adf_core_python.core.agent.info.agent_info import AgentInfo
-  from adf_core_python.core.agent.develop.develop_data import DevelopData
-  from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
-  from adf_core_python.core.agent.module.module_manager import ModuleManager
-  from adf_core_python.core.agent.info.world_info import WorldInfo
+  from adf_core_python.core.agent.develop import DevelopData
+  from adf_core_python.core.agent.info import AgentInfo, ScenarioInfo, WorldInfo
+  from adf_core_python.core.agent.module import ModuleManager
 
 
 class DijkstraPathPlanning(PathPlanning):

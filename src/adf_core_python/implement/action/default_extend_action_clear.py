@@ -16,20 +16,16 @@ from rcrscore.entities import (
 )
 from shapely import LineString, Point, Polygon
 
-from adf_core_python.core.agent.action.action import Action
-from adf_core_python.core.agent.action.common.action_move import ActionMove
-from adf_core_python.core.agent.action.common.action_rest import ActionRest
-from adf_core_python.core.agent.action.police.action_clear import ActionClear
-from adf_core_python.core.agent.action.police.action_clear_area import ActionClearArea
-from adf_core_python.core.agent.communication.message_manager import MessageManager
-from adf_core_python.core.agent.develop.develop_data import DevelopData
-from adf_core_python.core.agent.info.agent_info import AgentInfo
-from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
-from adf_core_python.core.agent.info.world_info import WorldInfo
-from adf_core_python.core.agent.module.module_manager import ModuleManager
-from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
-from adf_core_python.core.component.action.extend_action import ExtendAction
-from adf_core_python.core.component.module.algorithm.path_planning import PathPlanning
+from adf_core_python.core.agent.action import Action
+from adf_core_python.core.agent.action.common import ActionMove, ActionRest
+from adf_core_python.core.agent.action.police import ActionClear, ActionClearArea
+from adf_core_python.core.agent.communication import MessageManager
+from adf_core_python.core.agent.develop import DevelopData
+from adf_core_python.core.agent.info import AgentInfo, ScenarioInfo, WorldInfo
+from adf_core_python.core.agent.module import ModuleManager
+from adf_core_python.core.agent.precompute import PrecomputeData
+from adf_core_python.core.component.action import ExtendAction
+from adf_core_python.core.component.module.algorithm import PathPlanning
 
 
 class DefaultExtendActionClear(ExtendAction):

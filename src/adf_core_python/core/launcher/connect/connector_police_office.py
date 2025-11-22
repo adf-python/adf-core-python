@@ -1,20 +1,18 @@
 import threading
-from typing import Optional, TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
-from adf_core_python.core.agent.config.module_config import ModuleConfig
-from adf_core_python.core.agent.develop.develop_data import DevelopData
-from adf_core_python.core.agent.office.office_police import OfficePolice
-from adf_core_python.core.component.abstract_loader import AbstractLoader
-from adf_core_python.core.config.config import Config
-from adf_core_python.core.gateway.gateway_agent import GatewayAgent
-from adf_core_python.core.gateway.gateway_launcher import GatewayLauncher
-from adf_core_python.core.launcher.config_key import ConfigKey
-from adf_core_python.core.launcher.connect.component_launcher import ComponentLauncher
-from adf_core_python.core.launcher.connect.connector import Connector
-from adf_core_python.core.logger.logger import get_logger
+from adf_core_python.core.agent.config import ModuleConfig
+from adf_core_python.core.agent.develop import DevelopData
+from adf_core_python.core.agent.office import OfficePolice
+from adf_core_python.core.component import AbstractLoader
+from adf_core_python.core.config import Config
+from adf_core_python.core.gateway import GatewayAgent, GatewayLauncher
+from adf_core_python.core.launcher import ConfigKey
+from adf_core_python.core.launcher.connect import ComponentLauncher, Connector
+from adf_core_python.core.logger import get_logger
 
 if TYPE_CHECKING:
-  from adf_core_python.core.component.tactics.tactics_police_office import (
+  from adf_core_python.core.component.tactics import (
     TacticsPoliceOffice,
   )
 

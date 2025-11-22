@@ -1,16 +1,16 @@
 from threading import Event
 from typing import Optional
 
-from adf_core_python.core.agent.action.common.action_rest import ActionRest
-from adf_core_python.core.agent.agent import Agent
-from adf_core_python.core.agent.config.module_config import ModuleConfig
-from adf_core_python.core.agent.develop.develop_data import DevelopData
+from adf_core_python.core.agent import Agent
+from adf_core_python.core.agent.action.common import ActionRest
+from adf_core_python.core.agent.config import ModuleConfig
+from adf_core_python.core.agent.develop import DevelopData
 from adf_core_python.core.agent.info.scenario_info import Mode
-from adf_core_python.core.agent.module.module_manager import ModuleManager
-from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
-from adf_core_python.core.component.tactics.tactics_center import TacticsCenter
-from adf_core_python.core.gateway.gateway_agent import GatewayAgent
-from adf_core_python.core.logger.logger import get_agent_logger
+from adf_core_python.core.agent.module import ModuleManager
+from adf_core_python.core.agent.precompute import PrecomputeData
+from adf_core_python.core.component.tactics import TacticsCenter
+from adf_core_python.core.gateway import GatewayAgent
+from adf_core_python.core.logger import get_agent_logger
 
 
 class Office(Agent):

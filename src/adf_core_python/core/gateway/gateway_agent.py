@@ -4,24 +4,20 @@ from typing import TYPE_CHECKING, Callable, Optional
 
 from rcrscore.urn import CommandURN
 
-from adf_core_python.core.gateway.message.am_agent import AMAgent
-from adf_core_python.core.gateway.message.am_update import AMUpdate
-from adf_core_python.core.gateway.message.ma_exec_response import MAExecResponse
-from adf_core_python.core.gateway.message.ma_module_response import (
+from adf_core_python.core.gateway.message import (
+  AMAgent,
+  AMUpdate,
+  MAExecResponse,
   MAModuleResponse,
-)
-from adf_core_python.core.gateway.message.moduleMessageFactory import (
   ModuleMessageFactory,
 )
-from adf_core_python.core.logger.logger import get_logger
+from adf_core_python.core.logger import get_logger
 
 if TYPE_CHECKING:
-  from adf_core_python.core.agent.info.world_info import WorldInfo
-  from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
   from rcrscore.proto import RCRSProto_pb2
-  from adf_core_python.core.agent.info.agent_info import AgentInfo
-  from adf_core_python.core.gateway.gateway_launcher import GatewayLauncher
-  from adf_core_python.core.gateway.gateway_module import GatewayModule
+
+  from adf_core_python.core.agent.info import AgentInfo, ScenarioInfo, WorldInfo
+  from adf_core_python.core.gateway import GatewayLauncher, GatewayModule
 
 
 class GatewayAgent:

@@ -1,18 +1,16 @@
-from typing import Optional, cast, TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional, cast
 
 from rcrscore.entities import Civilian, Entity, EntityID, Human
 from rcrscore.urn import EntityURN
 
-from adf_core_python.core.agent.develop.develop_data import DevelopData
-from adf_core_python.core.agent.info.agent_info import AgentInfo
-from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
-from adf_core_python.core.agent.info.world_info import WorldInfo
-from adf_core_python.core.agent.module.module_manager import ModuleManager
-from adf_core_python.core.component.module.complex.human_detector import HumanDetector
+from adf_core_python.core.agent.develop import DevelopData
+from adf_core_python.core.agent.info import AgentInfo, ScenarioInfo, WorldInfo
+from adf_core_python.core.agent.module import ModuleManager
+from adf_core_python.core.component.module.complex import HumanDetector
 from adf_core_python.core.logger.logger import get_agent_logger
 
 if TYPE_CHECKING:
-  from adf_core_python.core.component.module.algorithm.clustering import Clustering
+  from adf_core_python.core.component.module.algorithm import Clustering
 
 
 class DefaultHumanDetector(HumanDetector):

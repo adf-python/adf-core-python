@@ -4,9 +4,7 @@ from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-  from adf_core_python.core.agent.info.agent_info import AgentInfo
-  from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
-  from adf_core_python.core.agent.info.world_info import WorldInfo
+  from adf_core_python.core.agent.info import AgentInfo, ScenarioInfo, WorldInfo
 
 
 class ChannelSubscriber(ABC):

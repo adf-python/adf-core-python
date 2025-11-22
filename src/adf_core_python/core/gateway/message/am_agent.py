@@ -1,12 +1,11 @@
 from typing import Any
 
-from rcrscore.entities import EntityID
-from rcrscore.entities.entity import Entity
+from rcrscore.entities import Entity, EntityID
 from rcrscore.messages import AKControlMessage
 from rcrscore.proto import RCRSProto_pb2
-from rcrscore.urn.control_message import ControlMessageURN
+from rcrscore.urn import ControlMessageURN
 
-from adf_core_python.core.gateway.message.urn.urn import (
+from adf_core_python.core.gateway.message.urn import (
   ComponentModuleMSG,
   ModuleMSG,
 )

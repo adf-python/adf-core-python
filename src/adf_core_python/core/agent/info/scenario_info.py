@@ -1,7 +1,7 @@
 from enum import IntEnum
 from typing import TypeVar
 
-from adf_core_python.core.config.config import Config
+from adf_core_python.core.config import Config
 
 T = TypeVar("T")
 

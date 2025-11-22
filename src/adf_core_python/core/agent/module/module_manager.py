@@ -3,30 +3,23 @@ from __future__ import annotations
 import importlib
 from typing import TYPE_CHECKING, Any, Optional
 
-from adf_core_python.core.component.action.extend_action import ExtendAction
-from adf_core_python.core.component.centralized.command_executor import CommandExecutor
-from adf_core_python.core.component.centralized.command_picker import CommandPicker
-from adf_core_python.core.component.communication.channel_subscriber import (
+from adf_core_python.core.component.action import ExtendAction
+from adf_core_python.core.component.centralized import CommandExecutor, CommandPicker
+from adf_core_python.core.component.communication import (
   ChannelSubscriber,
-)
-from adf_core_python.core.component.communication.message_coordinator import (
   MessageCoordinator,
 )
-from adf_core_python.core.component.module.abstract_module import AbstractModule
-from adf_core_python.core.gateway.component.module.gateway_abstract_module import (
+from adf_core_python.core.component.module import AbstractModule
+from adf_core_python.core.gateway import GatewayAgent, GatewayModule, ModuleDict
+from adf_core_python.core.gateway.component.module import (
   GatewayAbstractModule,
 )
-from adf_core_python.core.gateway.gateway_agent import GatewayAgent
-from adf_core_python.core.gateway.gateway_module import GatewayModule
-from adf_core_python.core.gateway.module_dict import ModuleDict
-from adf_core_python.core.logger.logger import get_agent_logger
+from adf_core_python.core.logger import get_agent_logger
 
 if TYPE_CHECKING:
-  from adf_core_python.core.agent.config.module_config import ModuleConfig
-  from adf_core_python.core.agent.develop.develop_data import DevelopData
-  from adf_core_python.core.agent.info.agent_info import AgentInfo
-  from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
-  from adf_core_python.core.agent.info.world_info import WorldInfo
+  from adf_core_python.core.agent.config import ModuleConfig
+  from adf_core_python.core.agent.develop import DevelopData
+  from adf_core_python.core.agent.info import AgentInfo, ScenarioInfo, WorldInfo
 
 
 class ModuleManager:

@@ -3,19 +3,17 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
-
 if TYPE_CHECKING:
   from rcrscore.entities import EntityID
-  from adf_core_python.core.component.communication.communication_message import (
+
+  from adf_core_python.core.agent.communication import MessageManager
+  from adf_core_python.core.agent.develop import DevelopData
+  from adf_core_python.core.agent.info import AgentInfo, ScenarioInfo, WorldInfo
+  from adf_core_python.core.agent.module import ModuleManager
+  from adf_core_python.core.agent.precompute import PrecomputeData
+  from adf_core_python.core.component.communication import (
     CommunicationMessage,
   )
-  from adf_core_python.core.agent.communication.message_manager import MessageManager
-  from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
-  from adf_core_python.core.agent.develop.develop_data import DevelopData
-  from adf_core_python.core.agent.info.agent_info import AgentInfo
-  from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
-  from adf_core_python.core.agent.info.world_info import WorldInfo
-  from adf_core_python.core.agent.module.module_manager import ModuleManager
 
 
 class CommandPicker(ABC):

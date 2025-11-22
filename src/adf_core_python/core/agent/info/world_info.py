@@ -1,10 +1,6 @@
 from typing import Any, Optional
 
-from rcrscore.entities import EntityID
-from rcrscore.entities.area import Area
-from rcrscore.entities.blockade import Blockade
-from rcrscore.entities.entity import Entity
-from rcrscore.entities.human import Human
+from rcrscore.entities import Area, Blockade, Entity, EntityID, Human
 from rcrscore.worldmodel import ChangeSet, WorldModel
 
 

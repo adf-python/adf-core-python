@@ -1,22 +1,12 @@
 from abc import ABC, abstractmethod
 from typing import Optional
 
-from adf_core_python.core.component.tactics.tactics_ambulance_center import (
+from adf_core_python.core.component.tactics import (
   TacticsAmbulanceCenter,
-)
-from adf_core_python.core.component.tactics.tactics_ambulance_team import (
   TacticsAmbulanceTeam,
-)
-from adf_core_python.core.component.tactics.tactics_fire_brigade import (
   TacticsFireBrigade,
-)
-from adf_core_python.core.component.tactics.tactics_fire_station import (
   TacticsFireStation,
-)
-from adf_core_python.core.component.tactics.tactics_police_force import (
   TacticsPoliceForce,
-)
-from adf_core_python.core.component.tactics.tactics_police_office import (
   TacticsPoliceOffice,
 )
 

@@ -2,21 +2,21 @@ from typing import Optional, cast
 
 from rcrscore.entities import Area, Blockade, EntityID, FireBrigade, Human
 
-from adf_core_python.core.agent.action.action import Action
-from adf_core_python.core.agent.action.ambulance.action_rescue import ActionRescue
-from adf_core_python.core.agent.action.common.action_move import ActionMove
-from adf_core_python.core.agent.communication.message_manager import MessageManager
-from adf_core_python.core.agent.develop.develop_data import DevelopData
-from adf_core_python.core.agent.info.agent_info import AgentInfo
-from adf_core_python.core.agent.info.scenario_info import (
+from adf_core_python.core.agent.action import Action
+from adf_core_python.core.agent.action.ambulance import ActionRescue
+from adf_core_python.core.agent.action.common import ActionMove
+from adf_core_python.core.agent.communication import MessageManager
+from adf_core_python.core.agent.develop import DevelopData
+from adf_core_python.core.agent.info import (
+  AgentInfo,
   ScenarioInfo,
   ScenarioInfoKeys,
+  WorldInfo,
 )
-from adf_core_python.core.agent.info.world_info import WorldInfo
-from adf_core_python.core.agent.module.module_manager import ModuleManager
-from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
-from adf_core_python.core.component.action.extend_action import ExtendAction
-from adf_core_python.core.component.module.algorithm.path_planning import PathPlanning
+from adf_core_python.core.agent.module import ModuleManager
+from adf_core_python.core.agent.precompute import PrecomputeData
+from adf_core_python.core.component.action import ExtendAction
+from adf_core_python.core.component.module.algorithm import PathPlanning
 
 
 class DefaultExtendActionRescue(ExtendAction):

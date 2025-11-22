@@ -3,10 +3,9 @@ import time
 
 from structlog.stdlib import BoundLogger
 
-from adf_core_python.core.agent.agent import Agent
-from adf_core_python.core.launcher.connect.connection import Connection
-from adf_core_python.core.launcher.connect.error.agent_error import AgentError
-from adf_core_python.core.launcher.connect.error.server_error import ServerError
+from adf_core_python.core.agent import Agent
+from adf_core_python.core.launcher.connect import Connection
+from adf_core_python.core.launcher.connect.error import AgentError, ServerError
 
 
 class ComponentLauncher:

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from adf_core_python.core.component.tactics.tactics_center import TacticsCenter
+from adf_core_python.core.component.tactics import TacticsCenter
 
 
 class TacticsPoliceOffice(TacticsCenter):

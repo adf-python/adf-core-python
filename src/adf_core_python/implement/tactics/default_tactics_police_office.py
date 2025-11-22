@@ -1,23 +1,21 @@
-from typing import cast, TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
 
-
-from adf_core_python.core.agent.communication.message_manager import MessageManager
-from adf_core_python.core.agent.develop.develop_data import DevelopData
-from adf_core_python.core.agent.info.agent_info import AgentInfo
-from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
-from adf_core_python.core.agent.info.world_info import WorldInfo
-from adf_core_python.core.agent.module.module_manager import ModuleManager
-from adf_core_python.core.agent.precompute.precompute_data import PrecomputeData
-from adf_core_python.core.component.tactics.tactics_police_office import (
+from adf_core_python.core.agent.communication import MessageManager
+from adf_core_python.core.agent.develop import DevelopData
+from adf_core_python.core.agent.info import AgentInfo, ScenarioInfo, WorldInfo
+from adf_core_python.core.agent.module import ModuleManager
+from adf_core_python.core.agent.precompute import PrecomputeData
+from adf_core_python.core.component.tactics import (
   TacticsPoliceOffice,
 )
 
 if TYPE_CHECKING:
-  from adf_core_python.core.component.module.complex.target_allocator import (
+  from rcrscore.entities import EntityID
+
+  from adf_core_python.core.component.centralized import CommandPicker
+  from adf_core_python.core.component.module.complex import (
     TargetAllocator,
   )
-  from adf_core_python.core.component.centralized.command_picker import CommandPicker
-  from rcrscore.entities import EntityID
 
 
 class DefaultTacticsPoliceOffice(TacticsPoliceOffice):

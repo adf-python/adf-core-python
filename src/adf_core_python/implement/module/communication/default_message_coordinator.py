@@ -2,53 +2,34 @@ from typing import Optional
 
 from rcrscore.urn import EntityURN
 
-from adf_core_python.core.agent.communication.message_manager import MessageManager
-from adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance import (
-  CommandAmbulance,
-)
-from adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire import (
-  CommandFire,
-)
-from adf_core_python.core.agent.communication.standard.bundle.centralized.command_police import (
-  CommandPolice,
-)
-from adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout import (
-  CommandScout,
-)
-from adf_core_python.core.agent.communication.standard.bundle.centralized.message_report import (
-  MessageReport,
-)
-from adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team import (
-  MessageAmbulanceTeam,
-)
-from adf_core_python.core.agent.communication.standard.bundle.information.message_building import (
-  MessageBuilding,
-)
-from adf_core_python.core.agent.communication.standard.bundle.information.message_civilian import (
-  MessageCivilian,
-)
-from adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade import (
-  MessageFireBrigade,
-)
-from adf_core_python.core.agent.communication.standard.bundle.information.message_police_force import (
-  MessagePoliceForce,
-)
-from adf_core_python.core.agent.communication.standard.bundle.information.message_road import (
-  MessageRoad,
-)
-from adf_core_python.core.agent.communication.standard.bundle.standard_message import (
+from adf_core_python.core.agent.communication import MessageManager
+from adf_core_python.core.agent.communication.standard.bundle import (
   StandardMessage,
-)
-from adf_core_python.core.agent.communication.standard.bundle.standard_message_priority import (
   StandardMessagePriority,
 )
-from adf_core_python.core.agent.info.agent_info import AgentInfo
-from adf_core_python.core.agent.info.scenario_info import ScenarioInfo, ScenarioInfoKeys
-from adf_core_python.core.agent.info.world_info import WorldInfo
-from adf_core_python.core.component.communication.communication_message import (
-  CommunicationMessage,
+from adf_core_python.core.agent.communication.standard.bundle.centralized import (
+  CommandAmbulance,
+  CommandFire,
+  CommandPolice,
+  CommandScout,
+  MessageReport,
 )
-from adf_core_python.core.component.communication.message_coordinator import (
+from adf_core_python.core.agent.communication.standard.bundle.information import (
+  MessageAmbulanceTeam,
+  MessageBuilding,
+  MessageCivilian,
+  MessageFireBrigade,
+  MessagePoliceForce,
+  MessageRoad,
+)
+from adf_core_python.core.agent.info import (
+  AgentInfo,
+  ScenarioInfo,
+  ScenarioInfoKeys,
+  WorldInfo,
+)
+from adf_core_python.core.component.communication import (
+  CommunicationMessage,
   MessageCoordinator,
 )
 from adf_core_python.implement.module.communication.default_channel_subscriber import (

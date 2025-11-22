@@ -3,11 +3,11 @@ from typing import Optional
 
 from rcrscore.urn import EntityURN
 
-from adf_core_python.core.agent.config.module_config import ModuleConfig
-from adf_core_python.core.agent.develop.develop_data import DevelopData
-from adf_core_python.core.agent.platoon.platoon import Platoon
-from adf_core_python.core.component.tactics.tactics_agent import TacticsAgent
-from adf_core_python.core.gateway.gateway_agent import GatewayAgent
+from adf_core_python.core.agent.config import ModuleConfig
+from adf_core_python.core.agent.develop import DevelopData
+from adf_core_python.core.agent.platoon import Platoon
+from adf_core_python.core.component.tactics import TacticsAgent
+from adf_core_python.core.gateway import GatewayAgent
 
 
 class PlatoonFire(Platoon):
