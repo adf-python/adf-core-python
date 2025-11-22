@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: adf-core-python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 13:59+0900\n"
+"POT-Creation-Date: 2025-11-22 21:57+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,29 +18,2074 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.16.0\n"
+"Generated-By: Babel 2.17.0\n"
 
-#: ../../source/adf_core_python.rst:2
+#: ../../source/adf_core_python/adf_core_python.rst:2
 msgid "adf\\_core\\_python package"
 msgstr ""
 
-#: ../../source/adf_core_python.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.component.module.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.component.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.gateway.message.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.gateway.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.launcher.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.rst:5
+#: ../../source/adf_core_python/adf_core_python.implement.module.rst:5
+#: ../../source/adf_core_python/adf_core_python.implement.rst:5
+#: ../../source/adf_core_python/adf_core_python.rst:5
 msgid "Subpackages"
 msgstr ""
 
-#: ../../source/adf_core_python.rst:15
+#: ../../source/adf_core_python/adf_core_python.cli.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.ambulance.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.common.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.fire.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.police.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.rst:16
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.rst:13
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.centralized.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.information.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.rst:14
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.rst:14
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.utility.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.config.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.develop.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.info.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.module.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.platoon.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.precompute.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.agent.rst:20
+#: ../../source/adf_core_python/adf_core_python.core.component.action.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.component.communication.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.component.module.algorithm.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.component.module.complex.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.component.module.rst:14
+#: ../../source/adf_core_python/adf_core_python.core.component.rst:16
+#: ../../source/adf_core_python/adf_core_python.core.component.tactics.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.config.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.algorithm.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.complex.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.rst:14
+#: ../../source/adf_core_python/adf_core_python.core.gateway.message.rst:13
+#: ../../source/adf_core_python/adf_core_python.core.gateway.message.urn.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.gateway.rst:14
+#: ../../source/adf_core_python/adf_core_python.core.launcher.connect.rst:5
+#: ../../source/adf_core_python/adf_core_python.core.launcher.rst:13
+#: ../../source/adf_core_python/adf_core_python.core.logger.rst:5
+#: ../../source/adf_core_python/adf_core_python.implement.action.rst:5
+#: ../../source/adf_core_python/adf_core_python.implement.module.algorithm.rst:5
+#: ../../source/adf_core_python/adf_core_python.implement.module.communication.rst:5
+#: ../../source/adf_core_python/adf_core_python.implement.module.complex.rst:5
+#: ../../source/adf_core_python/adf_core_python.implement.rst:15
+#: ../../source/adf_core_python/adf_core_python.implement.tactics.rst:5
+#: ../../source/adf_core_python/adf_core_python.rst:15
 msgid "Submodules"
 msgstr ""
 
-#: ../../source/adf_core_python.rst:18
+#: ../../source/adf_core_python/adf_core_python.rst:18
 msgid "adf\\_core\\_python.launcher module"
 msgstr ""
 
+#: adf_core_python.core.agent.agent.Agent:1
+#: adf_core_python.core.agent.communication.message_manager.MessageManager:1
+#: adf_core_python.core.agent.develop.develop_data.DevelopData:1
+#: adf_core_python.core.agent.info.agent_info.AgentInfo:1
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo:1
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys:1
+#: adf_core_python.core.agent.info.world_info.WorldInfo:1
+#: adf_core_python.core.agent.module.module_manager.ModuleManager:1
+#: adf_core_python.core.agent.precompute.precompute_data.PrecomputeData:1
+#: adf_core_python.core.config.config.Config:1
+#: adf_core_python.core.gateway.gateway_agent.GatewayAgent:1
+#: adf_core_python.core.gateway.gateway_launcher.GatewayLauncher:1
+#: adf_core_python.core.gateway.gateway_module.GatewayModule:1
+#: adf_core_python.core.gateway.message.moduleMessageFactory.ModuleMessageFactory:1
+#: adf_core_python.core.gateway.module_dict.ModuleDict:1
+#: adf_core_python.core.launcher.agent_launcher.AgentLauncher:1
+#: adf_core_python.core.launcher.config_key.ConfigKey:1
+#: adf_core_python.core.launcher.connect.component_launcher.ComponentLauncher:1
+#: adf_core_python.core.launcher.connect.connection.Connection:1
+#: adf_core_python.implement.module.complex.default_ambulance_target_allocator.DefaultAmbulanceTargetAllocator.AmbulanceTeamInfo:1
+#: adf_core_python.implement.module.complex.default_fire_target_allocator.DefaultFireTargetAllocator.FireBrigadeInfo:1
+#: adf_core_python.implement.module.complex.default_police_target_allocator.DefaultPoliceTargetAllocator.PoliceForceInfo:1
 #: adf_core_python.launcher.Launcher:1 of
 msgid "Bases: :py:class:`object`"
 msgstr ""
 
-#: ../../source/adf_core_python.rst:26
+#: ../../source/adf_core_python/adf_core_python.cli.rst:16
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.ambulance.rst:32
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.common.rst:24
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.fire.rst:32
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.police.rst:24
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.rst:27
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.rst:24
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.centralized.rst:48
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.information.rst:56
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.rst:33
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.rst:25
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.utility.rst:24
+#: ../../source/adf_core_python/adf_core_python.core.agent.config.rst:16
+#: ../../source/adf_core_python/adf_core_python.core.agent.develop.rst:16
+#: ../../source/adf_core_python/adf_core_python.core.agent.info.rst:32
+#: ../../source/adf_core_python/adf_core_python.core.agent.module.rst:16
+#: ../../source/adf_core_python/adf_core_python.core.agent.platoon.rst:40
+#: ../../source/adf_core_python/adf_core_python.core.agent.precompute.rst:16
+#: ../../source/adf_core_python/adf_core_python.core.agent.rst:31
+#: ../../source/adf_core_python/adf_core_python.core.component.action.rst:16
+#: ../../source/adf_core_python/adf_core_python.core.component.communication.rst:40
+#: ../../source/adf_core_python/adf_core_python.core.component.module.algorithm.rst:24
+#: ../../source/adf_core_python/adf_core_python.core.component.module.complex.rst:72
+#: ../../source/adf_core_python/adf_core_python.core.component.module.rst:25
+#: ../../source/adf_core_python/adf_core_python.core.component.rst:27
+#: ../../source/adf_core_python/adf_core_python.core.component.tactics.rst:72
+#: ../../source/adf_core_python/adf_core_python.core.config.rst:16
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.algorithm.rst:24
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.complex.rst:72
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.rst:25
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.rst:13
+#: ../../source/adf_core_python/adf_core_python.core.gateway.message.rst:72
+#: ../../source/adf_core_python/adf_core_python.core.gateway.message.urn.rst:16
+#: ../../source/adf_core_python/adf_core_python.core.gateway.rst:49
+#: ../../source/adf_core_python/adf_core_python.core.launcher.connect.rst:80
+#: ../../source/adf_core_python/adf_core_python.core.launcher.rst:32
+#: ../../source/adf_core_python/adf_core_python.core.logger.rst:16
+#: ../../source/adf_core_python/adf_core_python.core.rst:18
+#: ../../source/adf_core_python/adf_core_python.implement.action.rst:40
+#: ../../source/adf_core_python/adf_core_python.implement.module.algorithm.rst:32
+#: ../../source/adf_core_python/adf_core_python.implement.module.communication.rst:24
+#: ../../source/adf_core_python/adf_core_python.implement.module.complex.rst:56
+#: ../../source/adf_core_python/adf_core_python.implement.module.rst:15
+#: ../../source/adf_core_python/adf_core_python.implement.rst:26
+#: ../../source/adf_core_python/adf_core_python.implement.tactics.rst:56
+#: ../../source/adf_core_python/adf_core_python.rst:26
 msgid "Module contents"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.cli.rst:2
+msgid "adf\\_core\\_python.cli package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.cli.rst:8
+msgid "adf\\_core\\_python.cli.cli module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.rst:2
+msgid "adf\\_core\\_python.core package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.rst:2
+msgid "adf\\_core\\_python.core.agent package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.rst:23
+msgid "adf\\_core\\_python.core.agent.agent module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.rst:2
+msgid "adf\\_core\\_python.core.agent.action package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.rst:19
+msgid "adf\\_core\\_python.core.agent.action.action module"
+msgstr ""
+
+#: adf_core_python.core.agent.action.action.Action:1
+#: adf_core_python.core.component.abstract_loader.AbstractLoader:1
+#: adf_core_python.core.component.action.extend_action.ExtendAction:1
+#: adf_core_python.core.component.communication.channel_subscriber.ChannelSubscriber:1
+#: adf_core_python.core.component.communication.communication_message.CommunicationMessage:1
+#: adf_core_python.core.component.communication.communication_module.CommunicationModule:1
+#: adf_core_python.core.component.communication.message_coordinator.MessageCoordinator:1
+#: adf_core_python.core.component.module.abstract_module.AbstractModule:1
+#: adf_core_python.core.component.tactics.tactics_agent.TacticsAgent:1
+#: adf_core_python.core.component.tactics.tactics_center.TacticsCenter:1
+#: adf_core_python.core.launcher.connect.connector.Connector:1 of
+msgid "Bases: :py:class:`~abc.ABC`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.ambulance.rst:2
+msgid "adf\\_core\\_python.core.agent.action.ambulance package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.ambulance.rst:8
+msgid "adf\\_core\\_python.core.agent.action.ambulance.action\\_load module"
+msgstr ""
+
+#: adf_core_python.core.agent.action.ambulance.action_load.ActionLoad:1
+#: adf_core_python.core.agent.action.ambulance.action_rescue.ActionRescue:1
+#: adf_core_python.core.agent.action.ambulance.action_unload.ActionUnload:1
+#: adf_core_python.core.agent.action.common.action_move.ActionMove:1
+#: adf_core_python.core.agent.action.common.action_rest.ActionRest:1
+#: adf_core_python.core.agent.action.fire.action_extinguish.ActionExtinguish:1
+#: adf_core_python.core.agent.action.fire.action_refill.ActionRefill:1
+#: adf_core_python.core.agent.action.fire.action_rescue.ActionRescue:1
+#: adf_core_python.core.agent.action.police.action_clear.ActionClear:1
+#: adf_core_python.core.agent.action.police.action_clear_area.ActionClearArea:1
+#: of
+msgid "Bases: :py:class:`~adf_core_python.core.agent.action.action.Action`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.ambulance.rst:16
+msgid "adf\\_core\\_python.core.agent.action.ambulance.action\\_rescue module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.ambulance.rst:24
+msgid "adf\\_core\\_python.core.agent.action.ambulance.action\\_unload module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.common.rst:2
+msgid "adf\\_core\\_python.core.agent.action.common package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.common.rst:8
+msgid "adf\\_core\\_python.core.agent.action.common.action\\_move module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.common.rst:16
+msgid "adf\\_core\\_python.core.agent.action.common.action\\_rest module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.fire.rst:2
+msgid "adf\\_core\\_python.core.agent.action.fire package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.fire.rst:8
+msgid "adf\\_core\\_python.core.agent.action.fire.action\\_extinguish module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.fire.rst:16
+msgid "adf\\_core\\_python.core.agent.action.fire.action\\_refill module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.fire.rst:24
+msgid "adf\\_core\\_python.core.agent.action.fire.action\\_rescue module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.police.rst:2
+msgid "adf\\_core\\_python.core.agent.action.police package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.police.rst:8
+msgid "adf\\_core\\_python.core.agent.action.police.action\\_clear module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.action.police.rst:16
+msgid "adf\\_core\\_python.core.agent.action.police.action\\_clear\\_area module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.rst:2
+msgid "adf\\_core\\_python.core.agent.communication package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.rst:16
+msgid "adf\\_core\\_python.core.agent.communication.message\\_manager module"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.add_heard_agent_help_message_count:1
+#: of
+msgid "Add the heard agent help message count."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.add_message:1
+#: of
+msgid "Add the message."
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.rst
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.utility.rst
+#: ../../source/adf_core_python/adf_core_python.core.agent.develop.rst
+#: ../../source/adf_core_python/adf_core_python.core.agent.info.rst
+#: ../../source/adf_core_python/adf_core_python.core.agent.precompute.rst
+#: ../../source/adf_core_python/adf_core_python.core.component.communication.rst
+#: ../../source/adf_core_python/adf_core_python.core.launcher.connect.rst
+#: ../../source/adf_core_python/adf_core_python.core.logger.rst
+#: ../../source/adf_core_python/adf_core_python.implement.module.communication.rst
+msgid "Parameters"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.add_message:3
+#: of
+msgid "The message."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.add_received_message:1
+#: of
+msgid "Add the received message."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.add_received_message:3
+#: of
+msgid "The received message."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.coordinate_message:1
+#: of
+msgid "Coordinate the message."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.coordinate_message:3
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.subscribe:3
+#: adf_core_python.core.component.communication.channel_subscriber.ChannelSubscriber.subscribe:3
+#: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber.subscribe:3
+#: of
+msgid "The agent info."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.coordinate_message:5
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.subscribe:5
+#: adf_core_python.core.component.communication.channel_subscriber.ChannelSubscriber.subscribe:5
+#: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber.subscribe:5
+#: of
+msgid "The world info."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.coordinate_message:7
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.subscribe:7
+#: adf_core_python.core.component.communication.channel_subscriber.ChannelSubscriber.subscribe:7
+#: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber.subscribe:7
+#: of
+msgid "The scenario info."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_channel_send_message_list:1
+#: of
+msgid "Get the channel send message list."
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.rst
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.utility.rst
+#: ../../source/adf_core_python/adf_core_python.core.agent.develop.rst
+#: ../../source/adf_core_python/adf_core_python.core.agent.info.rst
+#: ../../source/adf_core_python/adf_core_python.core.agent.precompute.rst
+#: ../../source/adf_core_python/adf_core_python.core.component.communication.rst
+#: ../../source/adf_core_python/adf_core_python.core.launcher.connect.rst
+#: ../../source/adf_core_python/adf_core_python.core.logger.rst
+#: ../../source/adf_core_python/adf_core_python.implement.module.communication.rst
+msgid "Returns"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_channel_send_message_list:3
+#: of
+msgid "The channel send message list."
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.rst
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.utility.rst
+#: ../../source/adf_core_python/adf_core_python.core.agent.develop.rst
+#: ../../source/adf_core_python/adf_core_python.core.agent.info.rst
+#: ../../source/adf_core_python/adf_core_python.core.agent.precompute.rst
+#: ../../source/adf_core_python/adf_core_python.core.component.communication.rst
+#: ../../source/adf_core_python/adf_core_python.core.launcher.connect.rst
+#: ../../source/adf_core_python/adf_core_python.core.logger.rst
+#: ../../source/adf_core_python/adf_core_python.implement.module.communication.rst
+msgid "Return type"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_channel_subscriber:1
+#: of
+msgid "Get the channel subscriber."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_channel_subscriber:3
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.set_channel_subscriber:3
+#: of
+msgid "The channel subscriber."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_heard_agent_help_message_count:1
+#: of
+msgid "Get the heard agent help message count."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_heard_agent_help_message_count:3
+#: of
+msgid "The heard agent help message count."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_is_subscribed:1
+#: of
+msgid "Get the flag to indicate if the agent is subscribed to the channel."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_is_subscribed:3
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.set_is_subscribed:3
+#: of
+msgid "The flag to indicate if the agent is subscribed to the channel."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_message_class:1
+#: of
+msgid "Get the message class."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_message_class:3
+#: of
+msgid "The index."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_message_class:6
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_message_class_index:3
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.register_message_class:3
+#: of
+msgid "The message class."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_message_class_index:1
+#: of
+msgid "Get the message class index."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_message_class_index:6
+#: of
+msgid "The message class index."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_received_message_list:1
+#: of
+msgid "Get the received message list."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_received_message_list:3
+#: of
+msgid "The received message list."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_send_message_list:1
+#: of
+msgid "Get the send message list."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_send_message_list:3
+#: of
+msgid "The send message list."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_subscribed_channels:1
+#: of
+msgid "Get the subscribed channels."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.get_subscribed_channels:3
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.set_subscribed_channels:3
+#: of
+msgid "The subscribed channels."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.refresh:1
+#: of
+msgid "Refresh the message manager."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.register_message_class:1
+#: of
+msgid "Register the message class."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.set_channel_subscriber:1
+#: of
+msgid "Set the channel subscriber."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.set_is_subscribed:1
+#: of
+msgid "Set the flag to indicate if the agent is subscribed to the channel."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.set_message_coordinator:1
+#: of
+msgid "Set the message coordinator."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.set_message_coordinator:3
+#: of
+msgid "The message coordinator."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.set_subscribed_channels:1
+#: of
+msgid "Set the subscribed channels."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.subscribe:1
+#: adf_core_python.core.component.communication.channel_subscriber.ChannelSubscriber.subscribe:1
+#: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber.subscribe:1
+#: of
+msgid "Subscribe to the channel."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.message_manager.MessageManager.subscribe:11
+#: of
+msgid "If the ChannelSubscriber is not set."
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.rst:2
+msgid "adf\\_core\\_python.core.agent.communication.standard package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.rst:17
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.standard\\_communication\\_module"
+" module"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.standard_communication_module.StandardCommunicationModule:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.communication.communication_module.CommunicationModule`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.rst:2
+msgid "adf\\_core\\_python.core.agent.communication.standard.bundle package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.rst:17
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.standard\\_message"
+" module"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.communication.communication_message.CommunicationMessage`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.rst:25
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.standard\\_message\\_priority"
+" module"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.bundle.standard_message_priority.StandardMessagePriority:1
+#: of
+msgid "Bases: :py:class:`~enum.Enum`"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.bundle.standard_message_priority.StandardMessagePriority:1
+#: of
+msgid "Standard message priorities."
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.centralized.rst:2
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.centralized "
+"package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.centralized.rst:8
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.centralized.command\\_ambulance"
+" module"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.bundle.centralized.command_ambulance.CommandAmbulance:1
+#: adf_core_python.core.agent.communication.standard.bundle.centralized.command_fire.CommandFire:1
+#: adf_core_python.core.agent.communication.standard.bundle.centralized.command_police.CommandPolice:1
+#: adf_core_python.core.agent.communication.standard.bundle.centralized.command_scout.CommandScout:1
+#: adf_core_python.core.agent.communication.standard.bundle.centralized.message_report.MessageReport:1
+#: adf_core_python.core.agent.communication.standard.bundle.information.message_ambulance_team.MessageAmbulanceTeam:1
+#: adf_core_python.core.agent.communication.standard.bundle.information.message_building.MessageBuilding:1
+#: adf_core_python.core.agent.communication.standard.bundle.information.message_civilian.MessageCivilian:1
+#: adf_core_python.core.agent.communication.standard.bundle.information.message_fire_brigade.MessageFireBrigade:1
+#: adf_core_python.core.agent.communication.standard.bundle.information.message_police_force.MessagePoliceForce:1
+#: adf_core_python.core.agent.communication.standard.bundle.information.message_road.MessageRoad:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.agent.communication.standard.bundle.standard_message.StandardMessage`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.centralized.rst:16
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.centralized.command\\_fire"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.centralized.rst:24
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.centralized.command\\_police"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.centralized.rst:32
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.centralized.command\\_scout"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.centralized.rst:40
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.centralized.message\\_report"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.information.rst:2
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.information "
+"package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.information.rst:8
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.information.message\\_ambulance\\_team"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.information.rst:16
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.information.message\\_building"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.information.rst:24
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.information.message\\_civilian"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.information.rst:32
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.information.message\\_fire\\_brigade"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.information.rst:40
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.information.message\\_police\\_force"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.bundle.information.rst:48
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.bundle.information.message\\_road"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.utility.rst:2
+msgid "adf\\_core\\_python.core.agent.communication.standard.utility package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.utility.rst:8
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.utility.apply\\_to\\_world\\_info"
+" module"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.apply_to_world_info.apply_to_world_info:1
+#: of
+msgid "Apply to world info."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.apply_to_world_info.apply_to_world_info:3
+#: of
+msgid "The world info to apply to."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.apply_to_world_info.apply_to_world_info:5
+#: of
+msgid "The standard message to apply to world info."
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.utility.rst:16
+msgid ""
+"adf\\_core\\_python.core.agent.communication.standard.utility.bitarray\\_with\\_exits\\_flag"
+" module"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.read_with_exist_flag:1
+#: of
+msgid ""
+"Read value from bit_array with an exist flag. If the first bit is "
+"IS_NOT_EXIST_FLAG, return None. If the first bit is IS_EXIST_FLAG, read "
+"and return value from bit_array."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.read_with_exist_flag:5
+#: of
+msgid "The bitarray to read from."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.read_with_exist_flag:7
+#: of
+msgid "The number of bits to read to get value."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.read_with_exist_flag:10
+#: of
+msgid "The value read from bit_array."
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.communication.standard.utility.rst
+#: ../../source/adf_core_python/adf_core_python.core.agent.info.rst
+#: ../../source/adf_core_python/adf_core_python.core.agent.precompute.rst
+#: ../../source/adf_core_python/adf_core_python.core.launcher.connect.rst
+msgid "Raises"
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.read_with_exist_flag:13
+#: of
+msgid "If the first bit is not IS_EXIST_FLAG or IS_NOT_EXIST_FLAG."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.write_with_exist_flag:1
+#: of
+msgid ""
+"Write value to bit_array with an exist flag. If value is None, write "
+"IS_NOT_EXIST_FLAG to bit_array. If value is not None, write IS_EXIST_FLAG"
+" to bit_array and then write value to bit_array."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.write_with_exist_flag:5
+#: of
+msgid "The bitarray to write to."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.write_with_exist_flag:7
+#: of
+msgid "The value to write."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.write_with_exist_flag:9
+#: of
+msgid "The number of bits to use to write value."
+msgstr ""
+
+#: adf_core_python.core.agent.communication.standard.utility.bitarray_with_exits_flag.write_with_exist_flag:12
+#: of
+msgid "If value is too large to fit into bit_size bits."
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.config.rst:2
+msgid "adf\\_core\\_python.core.agent.config package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.config.rst:8
+msgid "adf\\_core\\_python.core.agent.config.module\\_config module"
+msgstr ""
+
+#: adf_core_python.core.agent.config.module_config.ModuleConfig:1 of
+msgid "Bases: :py:class:`~rcrscore.config.config.Config`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.develop.rst:2
+msgid "adf\\_core\\_python.core.agent.develop package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.develop.rst:8
+msgid "adf\\_core\\_python.core.agent.develop.develop\\_data module"
+msgstr ""
+
+#: adf_core_python.core.agent.develop.develop_data.DevelopData.get_value:1 of
+msgid ""
+"Get value from develop data If develop mode is disabled, return default "
+"value"
+msgstr ""
+
+#: adf_core_python.core.agent.develop.develop_data.DevelopData.get_value:4 of
+msgid "Key"
+msgstr ""
+
+#: adf_core_python.core.agent.develop.develop_data.DevelopData.get_value:7 of
+msgid "Value"
+msgstr ""
+
+#: adf_core_python.core.agent.develop.develop_data.DevelopData.is_develop_mode:1
+#: of
+msgid "Check if develop mode is enabled"
+msgstr ""
+
+#: adf_core_python.core.agent.develop.develop_data.DevelopData.is_develop_mode:3
+#: of
+msgid "True if develop mode is enabled"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.info.rst:2
+msgid "adf\\_core\\_python.core.agent.info package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.info.rst:8
+msgid "adf\\_core\\_python.core.agent.info.agent\\_info module"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_change_set:1
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_change_set:1 of
+msgid "Get the change set"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_change_set:3
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_change_set:3
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_change_set:3
+#: adf_core_python.core.agent.info.world_info.WorldInfo.set_change_set:3 of
+msgid "Change set"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_entity_id:1 of
+msgid "Get the entity ID of the agent"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_entity_id:3 of
+msgid "Entity ID of the agent"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_executed_action:1
+#: of
+msgid "Get the executed action at the given time"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_executed_action:3
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_executed_action:3
+#: of
+msgid "Time"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_heard_commands:1 of
+msgid "Get the heard commands"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_heard_commands:3
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_heard_commands:3 of
+msgid "Heard commands"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_myself:1 of
+msgid "Get the entity of the agent"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_myself:3 of
+msgid "Entity of the agent"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_position_entity_id:1
+#: of
+msgid "Get the position entity ID of the agent"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_position_entity_id:3
+#: of
+msgid "Position entity ID of the agent"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_think_time:1 of
+msgid "Get the time taken for thinking"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_think_time:3 of
+msgid "Time taken for thinking"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_time:1 of
+msgid "Get the current time of the agent"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.get_time:3
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_time:3 of
+msgid "Current time"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.record_think_start_time:1
+#: of
+msgid "Record the start time of thinking"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_change_set:1
+#: adf_core_python.core.agent.info.world_info.WorldInfo.set_change_set:1 of
+msgid "Set the change set"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_executed_action:1
+#: of
+msgid "Set the executed action at the given time"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_executed_action:5
+#: of
+msgid "Executed action"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_heard_commands:1 of
+msgid "Set the heard commands"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.set_time:1 of
+msgid "Set the current time of the agent"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.some_one_on_board:1 of
+msgid "Get the human if someone is on board"
+msgstr ""
+
+#: adf_core_python.core.agent.info.agent_info.AgentInfo.some_one_on_board:3 of
+msgid "Human if someone is on board, None otherwise"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.info.rst:16
+msgid "adf\\_core\\_python.core.agent.info.scenario\\_info module"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.Mode:1
+#: adf_core_python.core.gateway.message.urn.urn.ComponentModuleMSG:1
+#: adf_core_python.core.gateway.message.urn.urn.ModuleMSG:1 of
+msgid "Bases: :py:class:`~enum.IntEnum`"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_config:1 of
+msgid "Get the configuration"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_config:3
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.set_config:3 of
+msgid "Configuration"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_mode:1 of
+msgid "Get the mode of the scenario"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_mode:3 of
+msgid "Mode of the scenario"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_value:1 of
+msgid "Get the value of the configuration"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_value:3 of
+msgid "Key of the configuration"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_value:5 of
+msgid "Default value of the configuration"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_value:8 of
+msgid "Value of the configuration"
+msgstr ""
+
+#: adf_core_python.core.agent.info.scenario_info.ScenarioInfo.set_config:1 of
+msgid "Set the configuration"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.info.rst:24
+msgid "adf\\_core\\_python.core.agent.info.world\\_info module"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.add_entity:1 of
+msgid "Add the entity"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.add_entity:3
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity:6 of
+msgid "Entity"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_blockades:1 of
+msgid "Get the blockades in the area"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_blockades:3 of
+msgid "Blockade"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_distance:1 of
+msgid "Get the distance between two entities"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_distance:3 of
+msgid "Entity ID 1"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_distance:5 of
+msgid "Entity ID 2"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_distance:8 of
+msgid "Distance"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_distance:11 of
+msgid "If one or both entities are invalid or the location is invalid"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_types:1
+#: of
+msgid "Get the entities of the specified types"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_types:3
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_types:3
+#: of
+msgid "List of entity types"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_types:6
+#: of
+msgid "Entities"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity:1 of
+msgid "Get the entity"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity:3
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position:3
+#: of
+msgid "Entity ID"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_types:1
+#: of
+msgid "Get the entity IDs of the specified types"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_types:6
+#: of
+msgid "Entity IDs"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position:1
+#: of
+msgid "Get the entity position"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position:6
+#: of
+msgid "Entity position"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position:9
+#: of
+msgid "If the entity is invalid"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_world_model:1 of
+msgid "Get the world model"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_world_model:3 of
+msgid "World model"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.module.rst:2
+msgid "adf\\_core\\_python.core.agent.module package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.module.rst:8
+msgid "adf\\_core\\_python.core.agent.module.module\\_manager module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.platoon.rst:2
+msgid "adf\\_core\\_python.core.agent.platoon package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.platoon.rst:8
+msgid "adf\\_core\\_python.core.agent.platoon.platoon module"
+msgstr ""
+
+#: adf_core_python.core.agent.platoon.platoon.Platoon:1 of
+msgid "Bases: :py:class:`~adf_core_python.core.agent.agent.Agent`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.platoon.rst:16
+msgid "adf\\_core\\_python.core.agent.platoon.platoon\\_ambulance module"
+msgstr ""
+
+#: adf_core_python.core.agent.platoon.platoon_ambulance.PlatoonAmbulance:1
+#: adf_core_python.core.agent.platoon.platoon_fire.PlatoonFire:1
+#: adf_core_python.core.agent.platoon.platoon_police.PlatoonPolice:1 of
+msgid "Bases: :py:class:`~adf_core_python.core.agent.platoon.platoon.Platoon`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.platoon.rst:24
+msgid "adf\\_core\\_python.core.agent.platoon.platoon\\_fire module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.platoon.rst:32
+msgid "adf\\_core\\_python.core.agent.platoon.platoon\\_police module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.precompute.rst:2
+msgid "adf\\_core\\_python.core.agent.precompute package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.agent.precompute.rst:8
+msgid "adf\\_core\\_python.core.agent.precompute.precompute\\_data module"
+msgstr ""
+
+#: adf_core_python.core.agent.precompute.precompute_data.PrecomputeData.is_available:1
+#: of
+msgid "Check if the precompute data is available."
+msgstr ""
+
+#: adf_core_python.core.agent.precompute.precompute_data.PrecomputeData.is_available:3
+#: of
+msgid "True if the precompute data is available, False otherwise."
+msgstr ""
+
+#: adf_core_python.core.agent.precompute.precompute_data.PrecomputeData.read_json_data:1
+#: of
+msgid "Read the precompute data from the file."
+msgstr ""
+
+#: adf_core_python.core.agent.precompute.precompute_data.PrecomputeData.read_json_data:3
+#: of
+msgid "The precompute data."
+msgstr ""
+
+#: adf_core_python.core.agent.precompute.precompute_data.PrecomputeData.remove_precompute_data:1
+#: of
+msgid "Remove the precompute data file."
+msgstr ""
+
+#: adf_core_python.core.agent.precompute.precompute_data.PrecomputeData.write_json_data:1
+#: of
+msgid "Write the precompute data to the file."
+msgstr ""
+
+#: adf_core_python.core.agent.precompute.precompute_data.PrecomputeData.write_json_data:3
+#: of
+msgid "The data to write."
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.rst:2
+msgid "adf\\_core\\_python.core.component package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.rst:19
+msgid "adf\\_core\\_python.core.component.abstract\\_loader module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.action.rst:2
+msgid "adf\\_core\\_python.core.component.action package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.action.rst:8
+msgid "adf\\_core\\_python.core.component.action.extend\\_action module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.communication.rst:2
+msgid "adf\\_core\\_python.core.component.communication package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.communication.rst:8
+msgid ""
+"adf\\_core\\_python.core.component.communication.channel\\_subscriber "
+"module"
+msgstr ""
+
+#: adf_core_python.core.component.communication.channel_subscriber.ChannelSubscriber.subscribe:10
+#: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber.subscribe:10
+#: of
+msgid "The list of subscribed channels."
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.communication.rst:16
+msgid ""
+"adf\\_core\\_python.core.component.communication.communication\\_message "
+"module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.communication.rst:24
+msgid ""
+"adf\\_core\\_python.core.component.communication.communication\\_module "
+"module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.communication.rst:32
+msgid ""
+"adf\\_core\\_python.core.component.communication.message\\_coordinator "
+"module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.module.rst:2
+msgid "adf\\_core\\_python.core.component.module package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.module.rst:17
+msgid "adf\\_core\\_python.core.component.module.abstract\\_module module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.module.algorithm.rst:2
+msgid "adf\\_core\\_python.core.component.module.algorithm package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.module.algorithm.rst:8
+msgid "adf\\_core\\_python.core.component.module.algorithm.clustering module"
+msgstr ""
+
+#: adf_core_python.core.component.module.algorithm.clustering.Clustering:1
+#: adf_core_python.core.component.module.algorithm.path_planning.PathPlanning:1
+#: adf_core_python.core.component.module.complex.target_allocator.TargetAllocator:1
+#: adf_core_python.core.gateway.component.module.gateway_abstract_module.GatewayAbstractModule:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.abstract_module.AbstractModule`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.module.algorithm.rst:16
+msgid "adf\\_core\\_python.core.component.module.algorithm.path\\_planning module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.module.complex.rst:2
+msgid "adf\\_core\\_python.core.component.module.complex package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.module.complex.rst:8
+msgid ""
+"adf\\_core\\_python.core.component.module.complex.ambulance\\_target\\_allocator"
+" module"
+msgstr ""
+
+#: adf_core_python.core.component.module.complex.ambulance_target_allocator.AmbulanceTargetAllocator:1
+#: adf_core_python.core.component.module.complex.fire_target_allocator.FireTargetAllocator:1
+#: adf_core_python.core.component.module.complex.police_target_allocator.PoliceTargetAllocator:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.target_allocator.TargetAllocator`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.module.complex.rst:16
+msgid ""
+"adf\\_core\\_python.core.component.module.complex.fire\\_target\\_allocator"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.module.complex.rst:24
+msgid "adf\\_core\\_python.core.component.module.complex.human\\_detector module"
+msgstr ""
+
+#: adf_core_python.core.component.module.complex.human_detector.HumanDetector:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.target_detector.TargetDetector`\\"
+" [:py:class:`~rcrscore.entities.human.Human`]"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.module.complex.rst:32
+msgid ""
+"adf\\_core\\_python.core.component.module.complex.police\\_target\\_allocator"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.module.complex.rst:40
+msgid "adf\\_core\\_python.core.component.module.complex.road\\_detector module"
+msgstr ""
+
+#: adf_core_python.core.component.module.complex.road_detector.RoadDetector:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.target_detector.TargetDetector`\\"
+" [:py:class:`~rcrscore.entities.road.Road`]"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.module.complex.rst:48
+msgid "adf\\_core\\_python.core.component.module.complex.search module"
+msgstr ""
+
+#: adf_core_python.core.component.module.complex.search.Search:1 of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.target_detector.TargetDetector`\\"
+" [:py:class:`~rcrscore.entities.area.Area`]"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.module.complex.rst:56
+msgid ""
+"adf\\_core\\_python.core.component.module.complex.target\\_allocator "
+"module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.module.complex.rst:64
+msgid "adf\\_core\\_python.core.component.module.complex.target\\_detector module"
+msgstr ""
+
+#: adf_core_python.core.component.module.complex.target_detector.TargetDetector:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.abstract_module.AbstractModule`,"
+" :py:class:`~typing.Generic`\\ "
+"[:py:obj:`~adf_core_python.core.component.module.complex.target_detector.T`]"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.tactics.rst:2
+msgid "adf\\_core\\_python.core.component.tactics package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.tactics.rst:8
+msgid "adf\\_core\\_python.core.component.tactics.tactics\\_agent module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.tactics.rst:16
+msgid ""
+"adf\\_core\\_python.core.component.tactics.tactics\\_ambulance\\_center "
+"module"
+msgstr ""
+
+#: adf_core_python.core.component.tactics.tactics_ambulance_center.TacticsAmbulanceCenter:1
+#: adf_core_python.core.component.tactics.tactics_fire_station.TacticsFireStation:1
+#: adf_core_python.core.component.tactics.tactics_police_office.TacticsPoliceOffice:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.tactics.tactics_center.TacticsCenter`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.tactics.rst:24
+msgid ""
+"adf\\_core\\_python.core.component.tactics.tactics\\_ambulance\\_team "
+"module"
+msgstr ""
+
+#: adf_core_python.core.component.tactics.tactics_ambulance_team.TacticsAmbulanceTeam:1
+#: adf_core_python.core.component.tactics.tactics_fire_brigade.TacticsFireBrigade:1
+#: adf_core_python.core.component.tactics.tactics_police_force.TacticsPoliceForce:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.tactics.tactics_agent.TacticsAgent`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.tactics.rst:32
+msgid "adf\\_core\\_python.core.component.tactics.tactics\\_center module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.tactics.rst:40
+msgid "adf\\_core\\_python.core.component.tactics.tactics\\_fire\\_brigade module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.tactics.rst:48
+msgid "adf\\_core\\_python.core.component.tactics.tactics\\_fire\\_station module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.tactics.rst:56
+msgid "adf\\_core\\_python.core.component.tactics.tactics\\_police\\_force module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.component.tactics.rst:64
+msgid ""
+"adf\\_core\\_python.core.component.tactics.tactics\\_police\\_office "
+"module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.config.rst:2
+msgid "adf\\_core\\_python.core.config package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.config.rst:8
+msgid "adf\\_core\\_python.core.config.config module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.rst:2
+msgid "adf\\_core\\_python.core.gateway package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.rst:17
+msgid "adf\\_core\\_python.core.gateway.gateway\\_agent module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.rst:25
+msgid "adf\\_core\\_python.core.gateway.gateway\\_launcher module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.rst:33
+msgid "adf\\_core\\_python.core.gateway.gateway\\_module module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.rst:41
+msgid "adf\\_core\\_python.core.gateway.module\\_dict module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.rst:2
+msgid "adf\\_core\\_python.core.gateway.component package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.rst:2
+msgid "adf\\_core\\_python.core.gateway.component.module package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.rst:17
+msgid ""
+"adf\\_core\\_python.core.gateway.component.module.gateway\\_abstract\\_module"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.algorithm.rst:2
+msgid "adf\\_core\\_python.core.gateway.component.module.algorithm package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.algorithm.rst:8
+msgid ""
+"adf\\_core\\_python.core.gateway.component.module.algorithm.gateway\\_clustering"
+" module"
+msgstr ""
+
+#: adf_core_python.core.gateway.component.module.algorithm.gateway_clustering.GatewayClustering:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.gateway.component.module.gateway_abstract_module.GatewayAbstractModule`,"
+" "
+":py:class:`~adf_core_python.core.component.module.algorithm.clustering.Clustering`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.algorithm.rst:16
+msgid ""
+"adf\\_core\\_python.core.gateway.component.module.algorithm.gateway\\_path\\_planning"
+" module"
+msgstr ""
+
+#: adf_core_python.core.gateway.component.module.algorithm.gateway_path_planning.GatewayPathPlanning:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.gateway.component.module.gateway_abstract_module.GatewayAbstractModule`,"
+" "
+":py:class:`~adf_core_python.core.component.module.algorithm.path_planning.PathPlanning`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.complex.rst:2
+msgid "adf\\_core\\_python.core.gateway.component.module.complex package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.complex.rst:8
+msgid ""
+"adf\\_core\\_python.core.gateway.component.module.complex.gateway\\_ambulance\\_target\\_allocator"
+" module"
+msgstr ""
+
+#: adf_core_python.core.gateway.component.module.complex.gateway_ambulance_target_allocator.GatewayAmbulanceTargetAllocator:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.gateway.component.module.complex.gateway_target_allocator.GatewayTargetAllocator`,"
+" "
+":py:class:`~adf_core_python.core.component.module.complex.ambulance_target_allocator.AmbulanceTargetAllocator`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.complex.rst:16
+msgid ""
+"adf\\_core\\_python.core.gateway.component.module.complex.gateway\\_fire\\_target\\_allocator"
+" module"
+msgstr ""
+
+#: adf_core_python.core.gateway.component.module.complex.gateway_fire_target_allocator.GatewayFireTargetAllocator:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.gateway.component.module.complex.gateway_target_allocator.GatewayTargetAllocator`,"
+" "
+":py:class:`~adf_core_python.core.component.module.complex.fire_target_allocator.FireTargetAllocator`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.complex.rst:24
+msgid ""
+"adf\\_core\\_python.core.gateway.component.module.complex.gateway\\_human\\_detector"
+" module"
+msgstr ""
+
+#: adf_core_python.core.gateway.component.module.complex.gateway_human_detector.GatewayHumanDetector:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.gateway.component.module.complex.gateway_target_detector.GatewayTargetDetector`\\"
+" [:py:class:`~rcrscore.entities.human.Human`], "
+":py:class:`~adf_core_python.core.component.module.complex.human_detector.HumanDetector`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.complex.rst:32
+msgid ""
+"adf\\_core\\_python.core.gateway.component.module.complex.gateway\\_police\\_target\\_allocator"
+" module"
+msgstr ""
+
+#: adf_core_python.core.gateway.component.module.complex.gateway_police_target_allocator.GatewayPoliceTargetAllocator:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.gateway.component.module.complex.gateway_target_allocator.GatewayTargetAllocator`,"
+" "
+":py:class:`~adf_core_python.core.component.module.complex.police_target_allocator.PoliceTargetAllocator`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.complex.rst:40
+msgid ""
+"adf\\_core\\_python.core.gateway.component.module.complex.gateway\\_road\\_detector"
+" module"
+msgstr ""
+
+#: adf_core_python.core.gateway.component.module.complex.gateway_road_detector.GatewayRoadDetector:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.gateway.component.module.complex.gateway_target_detector.GatewayTargetDetector`\\"
+" [:py:class:`~rcrscore.entities.road.Road`], "
+":py:class:`~adf_core_python.core.component.module.complex.road_detector.RoadDetector`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.complex.rst:48
+msgid ""
+"adf\\_core\\_python.core.gateway.component.module.complex.gateway\\_search"
+" module"
+msgstr ""
+
+#: adf_core_python.core.gateway.component.module.complex.gateway_search.GatewaySearch:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.gateway.component.module.complex.gateway_target_detector.GatewayTargetDetector`,"
+" :py:class:`~adf_core_python.core.component.module.complex.search.Search`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.complex.rst:56
+msgid ""
+"adf\\_core\\_python.core.gateway.component.module.complex.gateway\\_target\\_allocator"
+" module"
+msgstr ""
+
+#: adf_core_python.core.gateway.component.module.complex.gateway_target_allocator.GatewayTargetAllocator:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.gateway.component.module.gateway_abstract_module.GatewayAbstractModule`,"
+" "
+":py:class:`~adf_core_python.core.component.module.complex.target_allocator.TargetAllocator`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.component.module.complex.rst:64
+msgid ""
+"adf\\_core\\_python.core.gateway.component.module.complex.gateway\\_target\\_detector"
+" module"
+msgstr ""
+
+#: adf_core_python.core.gateway.component.module.complex.gateway_target_detector.GatewayTargetDetector:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.gateway.component.module.gateway_abstract_module.GatewayAbstractModule`,"
+" "
+":py:class:`~adf_core_python.core.component.module.complex.target_detector.TargetDetector`,"
+" :py:class:`~typing.Generic`\\ "
+"[:py:obj:`~adf_core_python.core.gateway.component.module.complex.gateway_target_detector.T`]"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.message.rst:2
+msgid "adf\\_core\\_python.core.gateway.message package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.message.rst:16
+msgid "adf\\_core\\_python.core.gateway.message.am\\_agent module"
+msgstr ""
+
+#: adf_core_python.core.gateway.message.am_agent.AMAgent:1
+#: adf_core_python.core.gateway.message.am_exec.AMExec:1
+#: adf_core_python.core.gateway.message.am_module.AMModule:1
+#: adf_core_python.core.gateway.message.am_update.AMUpdate:1 of
+msgid "Bases: :py:class:`~rcrscore.messages.message.AKControlMessage`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.message.rst:24
+msgid "adf\\_core\\_python.core.gateway.message.am\\_exec module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.message.rst:32
+msgid "adf\\_core\\_python.core.gateway.message.am\\_module module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.message.rst:40
+msgid "adf\\_core\\_python.core.gateway.message.am\\_update module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.message.rst:48
+msgid "adf\\_core\\_python.core.gateway.message.ma\\_exec\\_response module"
+msgstr ""
+
+#: adf_core_python.core.gateway.message.ma_exec_response.MAExecResponse:1 of
+msgid "Bases: :py:class:`~rcrscore.messages.message.KAControlMessage`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.message.rst:56
+msgid "adf\\_core\\_python.core.gateway.message.ma\\_module\\_response module"
+msgstr ""
+
+#: adf_core_python.core.gateway.message.ma_module_response.MAModuleResponse:1
+#: of
+msgid ""
+"Bases: :py:class:`~rcrscore.messages.message.KAControlMessage`, "
+":py:class:`~abc.ABC`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.message.rst:64
+msgid "adf\\_core\\_python.core.gateway.message.moduleMessageFactory module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.message.urn.rst:2
+msgid "adf\\_core\\_python.core.gateway.message.urn package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.gateway.message.urn.rst:8
+msgid "adf\\_core\\_python.core.gateway.message.urn.urn module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.launcher.rst:2
+msgid "adf\\_core\\_python.core.launcher package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.launcher.rst:16
+msgid "adf\\_core\\_python.core.launcher.agent\\_launcher module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.launcher.rst:24
+msgid "adf\\_core\\_python.core.launcher.config\\_key module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.launcher.connect.rst:2
+msgid "adf\\_core\\_python.core.launcher.connect package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.launcher.connect.rst:8
+msgid "adf\\_core\\_python.core.launcher.connect.component\\_launcher module"
+msgstr ""
+
+#: adf_core_python.core.launcher.connect.component_launcher.ComponentLauncher.check_kernel_connection:1
+#: of
+msgid ""
+"Attempts to connect to the kernel multiple times within the specified "
+"timeout period."
+msgstr ""
+
+#: adf_core_python.core.launcher.connect.component_launcher.ComponentLauncher.check_kernel_connection:3
+#: of
+msgid "Total timeout duration in seconds"
+msgstr ""
+
+#: adf_core_python.core.launcher.connect.component_launcher.ComponentLauncher.check_kernel_connection:5
+#: of
+msgid "Interval between retry attempts in seconds"
+msgstr ""
+
+#: adf_core_python.core.launcher.connect.component_launcher.ComponentLauncher.check_kernel_connection:8
+#: of
+msgid "True if connection successful, False otherwise"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.launcher.connect.rst:16
+msgid "adf\\_core\\_python.core.launcher.connect.connection module"
+msgstr ""
+
+#: adf_core_python.core.launcher.connect.connection.Connection.connect:1 of
+msgid "Connect to the kernel"
+msgstr ""
+
+#: adf_core_python.core.launcher.connect.connection.Connection.connect:3 of
+msgid "If the connection times out"
+msgstr ""
+
+#: adf_core_python.core.launcher.connect.connection.Connection.connect:4 of
+msgid "If there is an error connecting to the socket"
+msgstr ""
+
+#: adf_core_python.core.launcher.connect.connection.Connection.parse_message_from_kernel:1
+#: of
+msgid "Parse messages from the kernel"
+msgstr ""
+
+#: adf_core_python.core.launcher.connect.connection.Connection.parse_message_from_kernel:3
+#: of
+msgid "If there is an error reading from the socket"
+msgstr ""
+
+#: adf_core_python.core.launcher.connect.connection.Connection.parse_message_from_kernel:4
+#: of
+msgid "If there is an error in the agent calculation"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.launcher.connect.rst:24
+msgid "adf\\_core\\_python.core.launcher.connect.connector module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.launcher.connect.rst:32
+msgid ""
+"adf\\_core\\_python.core.launcher.connect.connector\\_ambulance\\_center "
+"module"
+msgstr ""
+
+#: adf_core_python.core.launcher.connect.connector_ambulance_center.ConnectorAmbulanceCenter:1
+#: adf_core_python.core.launcher.connect.connector_ambulance_team.ConnectorAmbulanceTeam:1
+#: adf_core_python.core.launcher.connect.connector_fire_brigade.ConnectorFireBrigade:1
+#: adf_core_python.core.launcher.connect.connector_fire_station.ConnectorFireStation:1
+#: adf_core_python.core.launcher.connect.connector_police_force.ConnectorPoliceForce:1
+#: adf_core_python.core.launcher.connect.connector_police_office.ConnectorPoliceOffice:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.launcher.connect.connector.Connector`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.launcher.connect.rst:40
+msgid ""
+"adf\\_core\\_python.core.launcher.connect.connector\\_ambulance\\_team "
+"module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.launcher.connect.rst:48
+msgid ""
+"adf\\_core\\_python.core.launcher.connect.connector\\_fire\\_brigade "
+"module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.launcher.connect.rst:56
+msgid ""
+"adf\\_core\\_python.core.launcher.connect.connector\\_fire\\_station "
+"module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.launcher.connect.rst:64
+msgid ""
+"adf\\_core\\_python.core.launcher.connect.connector\\_police\\_force "
+"module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.launcher.connect.rst:72
+msgid ""
+"adf\\_core\\_python.core.launcher.connect.connector\\_police\\_office "
+"module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.logger.rst:2
+msgid "adf\\_core\\_python.core.logger package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.core.logger.rst:8
+msgid "adf\\_core\\_python.core.logger.logger module"
+msgstr ""
+
+#: adf_core_python.core.logger.logger.get_agent_logger:1 of
+msgid ""
+"Get a logger with the given name and agent information. For agent "
+"logging, use this function to get a logger."
+msgstr ""
+
+#: adf_core_python.core.logger.logger.get_agent_logger:4
+#: adf_core_python.core.logger.logger.get_logger:4 of
+msgid "The name of the logger."
+msgstr ""
+
+#: adf_core_python.core.logger.logger.get_agent_logger:6 of
+msgid "The agent information."
+msgstr ""
+
+#: adf_core_python.core.logger.logger.get_agent_logger:9 of
+msgid "The logger with the given name and agent information."
+msgstr ""
+
+#: adf_core_python.core.logger.logger.get_logger:1 of
+msgid ""
+"Get a logger with the given name. For kernel logging, use this function "
+"to get a logger."
+msgstr ""
+
+#: adf_core_python.core.logger.logger.get_logger:7 of
+msgid "The logger with the given name."
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.rst:2
+msgid "adf\\_core\\_python.implement package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.rst:18
+msgid "adf\\_core\\_python.implement.default\\_loader module"
+msgstr ""
+
+#: adf_core_python.implement.default_loader.DefaultLoader:1 of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.abstract_loader.AbstractLoader`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.action.rst:2
+msgid "adf\\_core\\_python.implement.action package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.action.rst:8
+msgid ""
+"adf\\_core\\_python.implement.action.default\\_extend\\_action\\_clear "
+"module"
+msgstr ""
+
+#: adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear:1
+#: adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove:1
+#: adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue:1
+#: adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.action.extend_action.ExtendAction`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.action.rst:16
+msgid ""
+"adf\\_core\\_python.implement.action.default\\_extend\\_action\\_move "
+"module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.action.rst:24
+msgid ""
+"adf\\_core\\_python.implement.action.default\\_extend\\_action\\_rescue "
+"module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.action.rst:32
+msgid ""
+"adf\\_core\\_python.implement.action.default\\_extend\\_action\\_transport"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.module.rst:2
+msgid "adf\\_core\\_python.implement.module package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.module.algorithm.rst:2
+msgid "adf\\_core\\_python.implement.module.algorithm package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.module.algorithm.rst:8
+msgid ""
+"adf\\_core\\_python.implement.module.algorithm.a\\_star\\_path\\_planning"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning:1
+#: adf_core_python.implement.module.algorithm.dijkstra_path_planning.DijkstraPathPlanning:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.algorithm.path_planning.PathPlanning`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.module.algorithm.rst:16
+msgid ""
+"adf\\_core\\_python.implement.module.algorithm.dijkstra\\_path\\_planning"
+" module"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.module.algorithm.rst:24
+msgid ""
+"adf\\_core\\_python.implement.module.algorithm.k\\_means\\_clustering "
+"module"
+msgstr ""
+
+#: adf_core_python.implement.module.algorithm.k_means_clustering.KMeansClustering:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.algorithm.clustering.Clustering`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.module.communication.rst:2
+msgid "adf\\_core\\_python.implement.module.communication package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.module.communication.rst:8
+msgid ""
+"adf\\_core\\_python.implement.module.communication.default\\_channel\\_subscriber"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.module.communication.default_channel_subscriber.DefaultChannelSubscriber:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.communication.channel_subscriber.ChannelSubscriber`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.module.communication.rst:16
+msgid ""
+"adf\\_core\\_python.implement.module.communication.default\\_message\\_coordinator"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.module.communication.default_message_coordinator.DefaultMessageCoordinator:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.communication.message_coordinator.MessageCoordinator`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.module.complex.rst:2
+msgid "adf\\_core\\_python.implement.module.complex package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.module.complex.rst:8
+msgid ""
+"adf\\_core\\_python.implement.module.complex.default\\_ambulance\\_target\\_allocator"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.module.complex.default_ambulance_target_allocator.DefaultAmbulanceTargetAllocator:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.ambulance_target_allocator.AmbulanceTargetAllocator`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.module.complex.rst:16
+msgid ""
+"adf\\_core\\_python.implement.module.complex.default\\_fire\\_target\\_allocator"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.module.complex.default_fire_target_allocator.DefaultFireTargetAllocator:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.fire_target_allocator.FireTargetAllocator`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.module.complex.rst:24
+msgid ""
+"adf\\_core\\_python.implement.module.complex.default\\_human\\_detector "
+"module"
+msgstr ""
+
+#: adf_core_python.implement.module.complex.default_human_detector.DefaultHumanDetector:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.human_detector.HumanDetector`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.module.complex.rst:32
+msgid ""
+"adf\\_core\\_python.implement.module.complex.default\\_police\\_target\\_allocator"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.module.complex.default_police_target_allocator.DefaultPoliceTargetAllocator:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.police_target_allocator.PoliceTargetAllocator`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.module.complex.rst:40
+msgid ""
+"adf\\_core\\_python.implement.module.complex.default\\_road\\_detector "
+"module"
+msgstr ""
+
+#: adf_core_python.implement.module.complex.default_road_detector.DefaultRoadDetector:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.road_detector.RoadDetector`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.module.complex.rst:48
+msgid "adf\\_core\\_python.implement.module.complex.default\\_search module"
+msgstr ""
+
+#: adf_core_python.implement.module.complex.default_search.DefaultSearch:1 of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.module.complex.search.Search`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.tactics.rst:2
+msgid "adf\\_core\\_python.implement.tactics package"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.tactics.rst:8
+msgid ""
+"adf\\_core\\_python.implement.tactics.default\\_tactics\\_ambulance\\_center"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.tactics.default_tactics_ambulance_center.DefaultTacticsAmbulanceCenter:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.tactics.tactics_ambulance_center.TacticsAmbulanceCenter`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.tactics.rst:16
+msgid ""
+"adf\\_core\\_python.implement.tactics.default\\_tactics\\_ambulance\\_team"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.tactics.default_tactics_ambulance_team.DefaultTacticsAmbulanceTeam:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.tactics.tactics_ambulance_team.TacticsAmbulanceTeam`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.tactics.rst:24
+msgid ""
+"adf\\_core\\_python.implement.tactics.default\\_tactics\\_fire\\_brigade "
+"module"
+msgstr ""
+
+#: adf_core_python.implement.tactics.default_tactics_fire_brigade.DefaultTacticsFireBrigade:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.tactics.tactics_fire_brigade.TacticsFireBrigade`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.tactics.rst:32
+msgid ""
+"adf\\_core\\_python.implement.tactics.default\\_tactics\\_fire\\_station "
+"module"
+msgstr ""
+
+#: adf_core_python.implement.tactics.default_tactics_fire_station.DefaultTacticsFireStation:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.tactics.tactics_fire_station.TacticsFireStation`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.tactics.rst:40
+msgid ""
+"adf\\_core\\_python.implement.tactics.default\\_tactics\\_police\\_force "
+"module"
+msgstr ""
+
+#: adf_core_python.implement.tactics.default_tactics_police_force.DefaultTacticsPoliceForce:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.tactics.tactics_police_force.TacticsPoliceForce`"
+msgstr ""
+
+#: ../../source/adf_core_python/adf_core_python.implement.tactics.rst:48
+msgid ""
+"adf\\_core\\_python.implement.tactics.default\\_tactics\\_police\\_office"
+" module"
+msgstr ""
+
+#: adf_core_python.implement.tactics.default_tactics_police_office.DefaultTacticsPoliceOffice:1
+#: of
+msgid ""
+"Bases: "
+":py:class:`~adf_core_python.core.component.tactics.tactics_police_office.TacticsPoliceOffice`"
+msgstr ""
+
+#: ../../source/adf_core_python/modules.rst:2
+msgid "adf_core_python"
 msgstr ""
 

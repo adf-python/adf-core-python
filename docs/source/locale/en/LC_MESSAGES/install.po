@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: adf-core-python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 13:59+0900\n"
+"POT-Creation-Date: 2025-11-22 21:57+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,7 +18,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.16.0\n"
+"Generated-By: Babel 2.17.0\n"
 
 #: ../../source/install/environment/environment.md:1
 msgid "環境構築"
@@ -29,8 +29,8 @@ msgid ""
 "adf-core-pythonをインストールするには以下の必要条件が必要です。 "
 "既にお使いのPCにインストールされている場合は再度インストールする必要はありません。"
 msgstr ""
-"To install adf-core-python, the following prerequisites are required. "
-"If they are already installed on your PC, you do not need to reinstall them."
+"To install adf-core-python, the following prerequisites are required. If "
+"they are already installed on your PC, you do not need to reinstall them."
 
 #: ../../source/install/environment/environment.md:6
 msgid "必要条件"
@@ -89,20 +89,24 @@ msgstr "Simulation Server Operation Check"
 msgid "![シミュレーションサーバーの起動](../../images/launch_server.png)"
 msgstr "![Launching the Simulation Server](../../images/launch_server.png)"
 
-#: ../../source/install/environment/environment.md:49
-msgid "シミュレーションサーバーの起動"
-msgstr "Launching the Simulation Server"
+#: ../../source/install/environment/environment.md:49:<translated>:1
+msgid "Launching the Simulation Server"
+msgstr ""
 
 #: ../../source/install/environment/environment.md:51
 msgid ""
 "上記のように何個かのウィンドウが表示されたら成功です。 コマンドラインで `Ctrl + C`  (MacOSの場合は `Command + C`"
 " )  を押すとシミュレーションサーバーが終了します。"
 msgstr ""
-"If several windows are displayed as shown above, it is successful. Press `Ctrl + C` (or `Command + C` on MacOS) in the command line to stop the simulation server."
+"If several windows are displayed as shown above, it is successful. Press "
+"`Ctrl + C` (or `Command + C` on MacOS) in the command line to stop the "
+"simulation server."
 
 #: ../../source/install/environment/environment.md:55
 msgid "シミュレーションサーバーを停止させたあとは、プロセスが残ってしまう場合があるので`./kill.sh` を実行してください。"
-msgstr "After stopping the simulation server, run `./kill.sh` as there may be remaining processes."
+msgstr ""
+"After stopping the simulation server, run `./kill.sh` as there may be "
+"remaining processes."
 
 #: ../../source/install/environment/linux/install.md:1
 msgid "Linuxでの環境構築"
@@ -121,7 +125,9 @@ msgstr "Open the terminal and run the following command."
 
 #: ../../source/install/environment/linux/install.md:10
 msgid "もし、`command not found`などのエラーが出た場合、OS標準のパッケージマネージャーを使用してインストールします。"
-msgstr "If you get an error like `command not found`, use the OS's standard package manager to install."
+msgstr ""
+"If you get an error like `command not found`, use the OS's standard "
+"package manager to install."
 
 #: ../../source/install/environment/linux/install.md:11
 #: ../../source/install/environment/linux/install.md:85
@@ -142,7 +148,9 @@ msgstr "For Red Hat-based OS (e.g., Fedora)"
 #: ../../source/install/environment/mac/install.md:43
 #: ../../source/install/environment/mac/install.md:58
 msgid "以下のコマンドを入力し、バージョンが表示されたら成功です。(表示されない方はTerminalを再起動してください)"
-msgstr "Enter the following command, and if the version is displayed, it is successful. (If not displayed, restart the terminal.)"
+msgstr ""
+"Enter the following command, and if the version is displayed, it is "
+"successful. (If not displayed, restart the terminal.)"
 
 #: ../../source/install/environment/linux/install.md:31
 #: ../../source/install/environment/windows/install.md:14
@@ -152,18 +160,23 @@ msgstr "2. Installing Python"
 #: ../../source/install/environment/linux/install.md:33
 #: ../../source/install/environment/mac/install.md:35
 msgid "Terminalを起動し、以下のコマンドを実行します。また、バージョンが3.12以上になっていることを確認します。"
-msgstr "Open the terminal and run the following command. Also, make sure the version is 3.12 or higher."
+msgstr ""
+"Open the terminal and run the following command. Also, make sure the "
+"version is 3.12 or higher."
 
 #: ../../source/install/environment/linux/install.md:38
 msgid ""
 "もし、`command not "
 "found`などのエラーが出た場合やバージョンが低い場合、Pythonのバージョン管理ツールであるpyenvを使用してインストールします"
 msgstr ""
-"If you get an error like `command not found` or the version is low, use the Python version management tool pyenv to install."
+"If you get an error like `command not found` or the version is low, use "
+"the Python version management tool pyenv to install."
 
 #: ../../source/install/environment/linux/install.md:41
 msgid "インストール方法の内容が最新ではない場合があるため、[https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)を参照してください。"
-msgstr "The installation method may not be up to date, so please refer to [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)."
+msgstr ""
+"The installation method may not be up to date, so please refer to "
+"[https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)."
 
 #: ../../source/install/environment/linux/install.md:44
 msgid "以下のコマンドを実行します。"
@@ -206,14 +219,17 @@ msgstr "3. Installing OpenJDK"
 #: ../../source/install/environment/linux/install.md:116
 #: ../../source/install/environment/mac/install.md:50
 msgid "Terminalを起動し、以下のコマンドを実行します。また、バージョンが17になっていることを確認します。"
-msgstr "Open the terminal and run the following command. Also, make sure the version is 17."
+msgstr ""
+"Open the terminal and run the following command. Also, make sure the "
+"version is 17."
 
 #: ../../source/install/environment/linux/install.md:121
 msgid ""
 "もし、`command not "
 "found`などのエラーが出た場合やバージョンが異なる場合、OS標準のパッケージマネージャーを使用してインストールします"
 msgstr ""
-"If you get an error like `command not found` or the version is different, use the OS's standard package manager to install."
+"If you get an error like `command not found` or the version is different,"
+" use the OS's standard package manager to install."
 
 #: ../../source/install/environment/mac/install.md:1
 msgid "Macでの環境構築"
@@ -230,7 +246,9 @@ msgstr "If you get an error like `command not found`, run the following command.
 
 #: ../../source/install/environment/mac/install.md:13
 msgid "もう一度、以下のコマンドを実行してバージョンが表示されたら成功です。(表示されない方はTerminalを再起動してください)"
-msgstr "Run the following command again, and if the version is displayed, it is successful. (If not displayed, restart the terminal.)"
+msgstr ""
+"Run the following command again, and if the version is displayed, it is "
+"successful. (If not displayed, restart the terminal.)"
 
 #: ../../source/install/environment/mac/install.md:18
 msgid "2. Gitのインストール"
@@ -242,11 +260,15 @@ msgstr "3. Installing Python"
 
 #: ../../source/install/environment/mac/install.md:39
 msgid "もし、`command not found`などのエラーが出た場合やバージョンが低い場合、以下のコマンドを実行します。"
-msgstr "If you get an error like `command not found` or the version is low, run the following command."
+msgstr ""
+"If you get an error like `command not found` or the version is low, run "
+"the following command."
 
 #: ../../source/install/environment/mac/install.md:54
 msgid "もし、`command not found`などのエラーが出た場合やバージョンが異なる場合、以下のコマンドを実行します。"
-msgstr "If you get an error like `command not found` or the version is different, run the following command."
+msgstr ""
+"If you get an error like `command not found` or the version is different,"
+" run the following command."
 
 #: ../../source/install/environment/windows/install.md:1
 msgid "Windowsでの環境構築"
@@ -296,7 +318,9 @@ msgstr "Click \"Download Python ~\" on the top page."
 
 #: ../../source/install/environment/windows/install.md:19
 msgid "\"Add python.exe to PATH\"にチェックが入っていることを確認した後、\"Install Now\"をクリックします。"
-msgstr "Make sure \"Add python.exe to PATH\" is checked, then click \"Install Now\"."
+msgstr ""
+"Make sure \"Add python.exe to PATH\" is checked, then click \"Install "
+"Now\"."
 
 #: ../../source/install/environment/windows/install.md:21
 msgid "インストールが完了したら\"Close\"をクリックします。"
@@ -307,7 +331,8 @@ msgid ""
 "Git Bashを開き、`python --version`と入力し、`Python "
 "[バージョン]`が表示されたら成功です。(もし表示されない場合はGit Bashを開き直してください)"
 msgstr ""
-"Open Git Bash, enter `python --version`, and if `Python [version]` is displayed, it is successful. (If not displayed, reopen Git Bash.)"
+"Open Git Bash, enter `python --version`, and if `Python [version]` is "
+"displayed, it is successful. (If not displayed, reopen Git Bash.)"
 
 #: ../../source/install/environment/windows/install.md:26
 msgid "[OpenJDK](https://jdk.java.net/archive/)のダウンロードページにアクセスします。"
@@ -343,7 +368,9 @@ msgstr "Next, run the following command."
 
 #: ../../source/install/environment/windows/install.md:40
 msgid "Git Bashを開き、`java -version`と入力します。  以下のような文字が表示されたらインストール成功です。"
-msgstr "Open Git Bash and enter `java -version`. If the following text is displayed, the installation is successful."
+msgstr ""
+"Open Git Bash and enter `java -version`. If the following text is "
+"displayed, the installation is successful."
 
 #: ../../source/install/install/install.md:1
 msgid "インストール"
@@ -373,15 +400,20 @@ msgstr "Installing the package"
 msgid "パッケージをインストールするには、次のコマンドを実行します："
 msgstr "To install the package, run the following command:"
 
-#: ../../source/install/install/install.md:20
+#: ../../source/install/install/install.md:21
 msgid "インストールの確認"
 msgstr "Verifying the installation"
 
-#: ../../source/install/install/install.md:22
+#: ../../source/install/install/install.md:23
 msgid "インストールを確認するには、次のコマンドを実行します："
 msgstr "To verify the installation, run the following command:"
 
-#: ../../source/install/install/install.md:28
+#: ../../source/install/install/install.md:29
 msgid "パッケージが正しくインストールされている場合、パッケージのバージョン番号などが表示されます。"
-msgstr "If the package is installed correctly, the package version number, etc., will be displayed."
+msgstr ""
+"If the package is installed correctly, the package version number, etc., "
+"will be displayed."
+
+#~ msgid "シミュレーションサーバーの起動"
+#~ msgstr "Launching the Simulation Server"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: adf-core-python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 13:59+0900\n"
+"POT-Creation-Date: 2025-11-22 21:57+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,7 +18,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.16.0\n"
+"Generated-By: Babel 2.17.0\n"
 
 #: ../../source/hands-on/clustering.md:1
 msgid "クラスタリングモジュール"
@@ -30,11 +30,19 @@ msgstr "Purpose of the Clustering Module"
 
 #: ../../source/hands-on/clustering.md:5
 msgid "複数のエージェントを動かす場合は、それらのエージェントにどのように協調させるかが重要になります。RRSでは多くのチームが、エージェントに各々の担当地域を持たせ役割分担をおこなう協調を取り入れています(他の手段による協調も取り入れています)。担当地域を割り振るためには、地図上のオブジェクトをいくつかのグループに分ける必要があります。このようなグループ分けをしてそれらを管理する場合には、クラスタリングモジュールと呼ばれるモジュールを用います。"
-msgstr "When operating multiple agents, it is crucial to determine how to coordinate them. In RRS, many teams adopt coordination methods that assign each agent a designated area of responsibility (as well as other coordination methods). To assign these areas, objects on the map need to be divided into several groups. A module called the clustering module is used to manage these groupings."
+msgstr ""
+"When operating multiple agents, it is crucial to determine how to "
+"coordinate them. In RRS, many teams adopt coordination methods that "
+"assign each agent a designated area of responsibility (as well as other "
+"coordination methods). To assign these areas, objects on the map need to "
+"be divided into several groups. A module called the clustering module is "
+"used to manage these groupings."
 
 #: ../../source/hands-on/clustering.md:7
 msgid "本資料では、多くの世界大会参加チームが使用しているアルゴリズムを用いたクラスタリングモジュールの実装をおこないます。"
-msgstr "In this document, we will implement a clustering module using algorithms commonly employed by many teams participating in world championships."
+msgstr ""
+"In this document, we will implement a clustering module using algorithms "
+"commonly employed by many teams participating in world championships."
 
 #: ../../source/hands-on/clustering.md:9
 msgid "開発するクラスタリングモジュールの概要"
@@ -46,20 +54,24 @@ msgstr "The module developed in this document, as shown in the image below,"
 
 #: ../../source/hands-on/clustering.md:13
 msgid "k-means++アルゴリズムによって地図上のオブジェクトをエージェント数分の区画に分けます。"
-msgstr "Divides the objects on the map into sections equal to the number of agents using the k-means++ algorithm."
+msgstr ""
+"Divides the objects on the map into sections equal to the number of "
+"agents using the k-means++ algorithm."
 
 #: ../../source/hands-on/clustering.md:14
 msgid "Hungarianアルゴリズムによってそれらの区画とエージェントを (間の距離の総和が最も小さくなるように)1対1で結びつけます。"
-msgstr "Assigns the sections to the agents in a one-to-one manner using the Hungarian algorithm, minimizing the total distance between them."
+msgstr ""
+"Assigns the sections to the agents in a one-to-one manner using the "
+"Hungarian algorithm, minimizing the total distance between them."
 
 #: ../../source/hands-on/clustering.md:16
 msgid "![クラスタリングの画像](./../images/clustering_image.jpg)"
 msgstr "![Clustering Image](./../images/clustering_image.jpg)"
 
-#: ../../source/hands-on/clustering.md:16
-#: ../../source/hands-on/clustering.md:362
-msgid "クラスタリングの画像"
-msgstr "Clustering Image"
+#: ../../source/hands-on/clustering.md:16:<translated>:1
+#: ../../source/hands-on/clustering.md:362:<translated>:1
+msgid "Clustering Image"
+msgstr ""
 
 #: ../../source/hands-on/clustering.md:18
 msgid "クラスタリングモジュールの実装"
@@ -67,7 +79,9 @@ msgstr "Implementation of the Clustering Module"
 
 #: ../../source/hands-on/clustering.md:21 ../../source/hands-on/search.md:10
 msgid "以降の作業では、カレントディレクトリがプロジェクトのルートディレクトリであることを前提としています。"
-msgstr "The following tasks assume that the current directory is the root directory of the project."
+msgstr ""
+"The following tasks assume that the current directory is the root "
+"directory of the project."
 
 #: ../../source/hands-on/clustering.md:24
 msgid "まず、クラスタリングモジュールを記述するためのファイルを作成します。"
@@ -75,15 +89,28 @@ msgstr "First, create a file to write the clustering module."
 
 #: ../../source/hands-on/clustering.md:31
 msgid "次に、クラスタリングモジュールの実装を行います。 以下のコードを `k_means_pp_clustering.py` に記述してください。"
-msgstr "Next, implement the clustering module. Write the following code into `k_means_pp_clustering.py`."
+msgstr ""
+"Next, implement the clustering module. Write the following code into "
+"`k_means_pp_clustering.py`."
 
 #: ../../source/hands-on/clustering.md:295
-msgid "k-means++の実装は、scikit-learnの`KMeans`クラスを使用しています。`KMeans`クラスは、`n_clusters`で指定したクラスター数によって地図上のオブジェクトをクラスタリングします。クラスタリング結果は、`labels_`属性に格納されます。また、`cluster_centers_`属性には各クラスターの中心座標が格納されます。"
-msgstr "The implementation of k-means++ uses the `KMeans` class from scikit-learn. The `KMeans` class clusters objects on the map based on the number of clusters specified by `n_clusters`. The clustering results are stored in the `labels_` attribute, and the coordinates of each cluster center are stored in the `cluster_centers_` attribute."
+msgid ""
+"k-means++の実装は、scikit-"
+"learnの`KMeans`クラスを使用しています。`KMeans`クラスは、`n_clusters`で指定したクラスター数によって地図上のオブジェクトをクラスタリングします。クラスタリング結果は、`labels_`属性に格納されます。また、`cluster_centers_`属性には各クラスターの中心座標が格納されます。"
+msgstr ""
+"The implementation of k-means++ uses the `KMeans` class from scikit-"
+"learn. The `KMeans` class clusters objects on the map based on the number"
+" of clusters specified by `n_clusters`. The clustering results are stored"
+" in the `labels_` attribute, and the coordinates of each cluster center "
+"are stored in the `cluster_centers_` attribute."
 
 #: ../../source/hands-on/clustering.md:297
 msgid "hungarianアルゴリズムの実装は、scipyの`linear_sum_assignment`関数を使用しています。`linear_sum_assignment`関数は、コスト行列を引数として受け取り、最適な割り当てを行います。"
-msgstr "The implementation of the Hungarian algorithm uses the `linear_sum_assignment` function from scipy. The `linear_sum_assignment` function takes a cost matrix as an argument and performs optimal assignment."
+msgstr ""
+"The implementation of the Hungarian algorithm uses the "
+"`linear_sum_assignment` function from scipy. The `linear_sum_assignment` "
+"function takes a cost matrix as an argument and performs optimal "
+"assignment."
 
 #: ../../source/hands-on/clustering.md:299
 msgid "次に、作成したモジュールを登録します。`config/module.yaml` を以下のように編集してください。"
@@ -95,7 +122,9 @@ msgstr "Open two terminals."
 
 #: ../../source/hands-on/clustering.md:312 ../../source/hands-on/search.md:162
 msgid "片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します："
-msgstr "Open one terminal and start the simulation server with the following command:"
+msgstr ""
+"Open one terminal and start the simulation server with the following "
+"command:"
 
 #: ../../source/hands-on/clustering.md:320 ../../source/hands-on/search.md:170
 msgid "その後、別のターミナルを開き、エージェントを起動します："
@@ -103,15 +132,25 @@ msgstr "Then open another terminal and start the agent:"
 
 #: ../../source/hands-on/clustering.md:328
 msgid "エージェントが起動すると、標準出力にクラスタリング結果が表示されます。"
-msgstr "When the agent starts, the clustering results will be displayed in the standard output."
+msgstr ""
+"When the agent starts, the clustering results will be displayed in the "
+"standard output."
 
 #: ../../source/hands-on/clustering.md:335
 msgid "このままだと、クラスタリング結果がわかりにくいので、クラスタリング結果を地図上に表示してみましょう。"
-msgstr "As it is, the clustering results are not very clear, so let's display the clustering results on the map."
+msgstr ""
+"As it is, the clustering results are not very clear, so let's display the"
+" clustering results on the map."
 
 #: ../../source/hands-on/clustering.md:337
-msgid "{download}`クラスターの可視化用スクリプト <./../download/cluster_plot.zip>`をダウンロードして解凍し、中の`main.py`の以下の部分に"
-msgstr "{download}`Download the cluster visualization script <./../download/cluster_plot.zip>` and extract it. Then, in `main.py`, modify the following part."
+#, python-brace-format
+msgid ""
+"{download}`クラスターの可視化用スクリプト "
+"<./../download/cluster_plot.zip>`をダウンロードして解凍し、中の`main.py`の以下の部分に"
+msgstr ""
+"{download}`Download the cluster visualization script "
+"<./../download/cluster_plot.zip>` and extract it. Then, in `main.py`, "
+"modify the following part."
 
 #: ../../source/hands-on/clustering.md:344
 msgid "出力の`Clustered entities: `の後ろの部分の配列をコピーして貼り付けてください。"
@@ -146,8 +185,10 @@ msgid ""
 "今回開発するモジュールは、`KMeansPPClustering` モジュールを用いた情報探索対象決定 (`Search`) モジュールです。 "
 "クラスタリングモジュールによってエージェント間で担当地域の分割をおこない、 担当地域内からランダムに探索対象として選択します。"
 msgstr ""
-"The module to be developed this time is the information search target determination (`Search`) module using the `KMeansPPClustering` module. "
-"The clustering module divides the areas of responsibility among agents and randomly selects search targets within the assigned areas."
+"The module to be developed this time is the information search target "
+"determination (`Search`) module using the `KMeansPPClustering` module. "
+"The clustering module divides the areas of responsibility among agents "
+"and randomly selects search targets within the assigned areas."
 
 #: ../../source/hands-on/search.md:7
 msgid "サーチモジュールの実装の準備"
@@ -162,8 +203,9 @@ msgid ""
 "次に、サーチモジュールの実装を行います。 以下のコードを `k_means_pp_search.py` に記述してください。 "
 "これが今回実装するサーチモジュールの雛形になります。"
 msgstr ""
-"Next, implement the search module. Write the following code into `k_means_pp_search.py`. "
-"This will be the template for the search module to be implemented this time."
+"Next, implement the search module. Write the following code into "
+"`k_means_pp_search.py`. This will be the template for the search module "
+"to be implemented this time."
 
 #: ../../source/hands-on/search.md:67
 msgid "モジュールの登録"
@@ -171,7 +213,9 @@ msgstr "Module Registration"
 
 #: ../../source/hands-on/search.md:69
 msgid "次に、作成したモジュールを登録します。 以下のように`config/module.yaml`の該当箇所を変更してください"
-msgstr "Next, register the created module. Modify the relevant section of `config/module.yaml` as follows."
+msgstr ""
+"Next, register the created module. Modify the relevant section of "
+"`config/module.yaml` as follows."
 
 #: ../../source/hands-on/search.md:83
 msgid "モジュールの実装"
@@ -187,7 +231,9 @@ msgstr "Add the following code to `config/module.yaml`."
 
 #: ../../source/hands-on/search.md:94
 msgid "次に、`KMeansPPSearch` モジュールで `KMeansPPClustering` モジュールを呼び出せるようにします。"
-msgstr "Next, make it possible to call the `KMeansPPClustering` module in the `KMeansPPSearch` module."
+msgstr ""
+"Next, make it possible to call the `KMeansPPClustering` module in the "
+"`KMeansPPSearch` module."
 
 #: ../../source/hands-on/search.md:96 ../../source/hands-on/search.md:136
 msgid "以下のコードを `k_means_pp_search.py` に追記してください。"
@@ -195,11 +241,15 @@ msgstr "Add the following code to `k_means_pp_search.py`."
 
 #: ../../source/hands-on/search.md:134
 msgid "そして、`calculate` メソッドでクラスタリングモジュールを呼び出し、探索対象を決定するように変更します。"
-msgstr "Then, modify the `calculate` method to call the clustering module and determine the search target."
+msgstr ""
+"Then, modify the `calculate` method to call the clustering module and "
+"determine the search target."
 
 #: ../../source/hands-on/search.md:158
 msgid "以上で、`KMeansPPClustering` モジュールを用いた `KMeansPPSearch` モジュールの実装が完了しました。"
-msgstr "This completes the implementation of the `KMeansPPSearch` module using the `KMeansPPClustering` module."
+msgstr ""
+"This completes the implementation of the `KMeansPPSearch` module using "
+"the `KMeansPPClustering` module."
 
 #: ../../source/hands-on/search.md:178
 msgid "モジュールの改善"
@@ -210,8 +260,9 @@ msgid ""
 "`KMeansPPSearch` モジュールは、クラスタリングモジュールを用いて担当地域内からランダムに探索対象を選択しています。 "
 "そのため、以下のような問題があります。"
 msgstr ""
-"The `KMeansPPSearch` module randomly selects search targets within the assigned areas using the clustering module. "
-"As a result, the following issues arise:"
+"The `KMeansPPSearch` module randomly selects search targets within the "
+"assigned areas using the clustering module. As a result, the following "
+"issues arise:"
 
 #: ../../source/hands-on/search.md:183
 msgid "探索対象がステップごとに変わってしまう"
@@ -219,19 +270,27 @@ msgstr "The search target changes with each step"
 
 #: ../../source/hands-on/search.md:184
 msgid "目標にたどり着く前に探索対象が変わってしまうため、なかなか目標にたどり着けない"
-msgstr "The search target changes before reaching the goal, making it difficult to reach the goal"
+msgstr ""
+"The search target changes before reaching the goal, making it difficult "
+"to reach the goal"
 
 #: ../../source/hands-on/search.md:185
 msgid "色んなところにランダムに探索対象を選択することで、効率的な探索ができない"
-msgstr "Randomly selecting search targets in various places makes efficient searching impossible"
+msgstr ""
+"Randomly selecting search targets in various places makes efficient "
+"searching impossible"
 
 #: ../../source/hands-on/search.md:186
 msgid "すでに探索したエンティティを再度探索対象として選択してしまうため、効率的な探索ができない"
-msgstr "Selecting already searched entities as search targets again makes efficient searching impossible"
+msgstr ""
+"Selecting already searched entities as search targets again makes "
+"efficient searching impossible"
 
 #: ../../source/hands-on/search.md:187 ../../source/hands-on/search.md:329
 msgid "近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう"
-msgstr "Selecting distant entities as search targets even though there are unexplored entities nearby"
+msgstr ""
+"Selecting distant entities as search targets even though there are "
+"unexplored entities nearby"
 
 #: ../../source/hands-on/search.md:189
 msgid "などの問題があります。"
@@ -243,15 +302,21 @@ msgstr "Challenges"
 
 #: ../../source/hands-on/search.md:193
 msgid "`KMeansPPSearch` モジュールを改善し、より効率的な探索を行うモジュールを実装して見てください。"
-msgstr "Improve the `KMeansPPSearch` module and implement a module that performs more efficient searches."
+msgstr ""
+"Improve the `KMeansPPSearch` module and implement a module that performs "
+"more efficient searches."
 
 #: ../../source/hands-on/search.md:196
 msgid "ここに上げた問題以外にも、改善すべき点が存在すると思うので、それを改善していただいても構いません。"
-msgstr "There may be other points for improvement besides the issues listed here, so feel free to address them as well."
+msgstr ""
+"There may be other points for improvement besides the issues listed here,"
+" so feel free to address them as well."
 
 #: ../../source/hands-on/search.md:200
 msgid "プログラム例のプログラムにも一部改善点があるので、余裕があったら修正してみてください。"
-msgstr "There are also some points for improvement in the example program, so try to fix them if you have time."
+msgstr ""
+"There are also some points for improvement in the example program, so try"
+" to fix them if you have time."
 
 #: ../../source/hands-on/search.md:203
 msgid "探索対象がステップごとに変わってしまう問題"
@@ -264,7 +329,9 @@ msgstr "Hints for the Approach"
 
 #: ../../source/hands-on/search.md:208
 msgid "一度選択した探索対象に到達するまで、探索対象を変更しないようにする"
-msgstr "Do not change the search target until the initially selected target is reached"
+msgstr ""
+"Do not change the search target until the initially selected target is "
+"reached"
 
 #: ../../source/hands-on/search.md:211 ../../source/hands-on/search.md:254
 #: ../../source/hands-on/search.md:337
@@ -277,8 +344,16 @@ msgstr "Issue of selecting already searched entities as search targets again"
 
 #: ../../source/hands-on/search.md:251
 msgid "すでに探索したエンティティを何かしらの方法で記録し、再度探索対象として選択しないようにする"
-msgstr "Record already searched entities in some way to avoid selecting them as search targets again"
+msgstr ""
+"Record already searched entities in some way to avoid selecting them as "
+"search targets again"
 
 #: ../../source/hands-on/search.md:334
 msgid "エンティティ間の距離を計算し、もっとも近いエンティティを探索対象として選択する"
-msgstr "Calculate the distance between entities and select the closest entity as the search target"
+msgstr ""
+"Calculate the distance between entities and select the closest entity as "
+"the search target"
+
+#~ msgid "クラスタリングの画像"
+#~ msgstr "Clustering Image"
+
