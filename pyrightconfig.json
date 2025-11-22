@@ -1,4 +1,4 @@
 {
   "typeCheckingMode": "standard",
-  "include": ["adf_core_python"]
+  "include": ["src/adf_core_python"]
 }
