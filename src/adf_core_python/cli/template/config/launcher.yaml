@@ -2,20 +2,26 @@ kernel:
   host: localhost
   port: 27931
 
+gateway:
+  host: localhost
+  port: 27941
+
 team:
   name: team_name
 
 adf:
   launcher:
-    precompute: 0
+    precompute: false
   debug:
-    flag: 0
+    flag: false
   agent:
     moduleconfig:
       filename: config/module.yaml
+    precompute:
+      dir_name: precompute
 
   develop:
-    flag: 1
+    flag: true
     filename: config/development.json
 
   team:
@@ -33,3 +39,6 @@ adf:
         count: 5
       police:
         count: 5
+
+  gateway:
+    flag: false
