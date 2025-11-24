@@ -1,6 +1,6 @@
 [project]
 name = "adf_core_python"
-version = "0.2.1"
+version = "0.2.3"
 description = "Agent Development Framework for Python"
 readme = "README.md"
 authors = [
@@ -21,6 +21,9 @@ dependencies = [
     "structlog>=25.4.0",
     "types-pyyaml>=6.0.12.20250516",
 ]
+
+[project.scripts]
+adf-core-python = "adf_core_python.cli.cli:cli"
 
 [build-system]
 requires = ["uv_build>=0.8.2,<0.9.0"]
