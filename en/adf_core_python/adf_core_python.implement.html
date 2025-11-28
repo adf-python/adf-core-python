@@ -1,0 +1,766 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>adf_core_python.implement package &#8212; adf-core-python 0.2.2 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=d3f42505"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'adf_core_python/adf_core_python.implement';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">adf-core-python 0.2.2 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><style>
+  .rst-versions {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  .rst-current-version {
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .rst-other-versions {
+    display: none; /* 初期状態では非表示 */
+  }
+
+  .rst-other-versions dl {
+    margin: 0;
+    padding: 0;
+  }
+
+  .rst-other-versions dt {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .rst-other-versions dd {
+    margin: 0;
+    padding: 0 0 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .rst-other-versions a {
+    text-decoration: none;
+    color: #27ae60;
+    margin-right: 10px;
+  }
+
+  .rst-other-versions a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div
+  class="rst-versions"
+  data-toggle="rst-versions"
+  role="note"
+  aria-label="versions"
+>
+  <span
+    class="rst-current-version"
+    data-toggle="rst-current-version"
+    onclick="toggleVersions()"
+  >
+    Language: en
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    
+    <dl>
+      <dt>Languages</dt>
+      <dd>
+        
+        <a href="https://adf-python.github.io/adf-core-python//index.html">en</a>
+        
+        <a href="https://adf-python.github.io/adf-core-python//ja/index.html">ja</a>
+        
+      </dd>
+    </dl>
+    
+    <!-- 
+      <br>
+      </dl> -->
+  </div>
+</div>
+
+<script>
+  function toggleVersions() {
+    var versionsDiv = document.querySelector(".rst-other-versions");
+    if (
+      versionsDiv.style.display === "none" ||
+      versionsDiv.style.display === ""
+    ) {
+      versionsDiv.style.display = "block";
+    } else {
+      versionsDiv.style.display = "none";
+    }
+  }
+</script></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../install/environment/environment.html">Environment Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install/install.html">Installation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quick Start</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart/quickstart.html">Quick Start</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">Environment Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">Agent Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">About Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">About Modules</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-On</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hands-on/clustering.html">Clustering Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hands-on/search.html">Search Module</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tips/precompute.html">About Precomputation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../py-modindex.html">Module Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../search.html">Search Page</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/adf_core_python/adf_core_python.implement.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>adf_core_python.implement package</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.implement.default_loader">adf_core_python.implement.default_loader module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.implement.default_loader.DefaultLoader"><code class="docutils literal notranslate"><span class="pre">DefaultLoader</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_ambulance_center"><code class="docutils literal notranslate"><span class="pre">DefaultLoader.get_tactics_ambulance_center()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_ambulance_team"><code class="docutils literal notranslate"><span class="pre">DefaultLoader.get_tactics_ambulance_team()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_fire_brigade"><code class="docutils literal notranslate"><span class="pre">DefaultLoader.get_tactics_fire_brigade()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_fire_station"><code class="docutils literal notranslate"><span class="pre">DefaultLoader.get_tactics_fire_station()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_police_force"><code class="docutils literal notranslate"><span class="pre">DefaultLoader.get_tactics_police_force()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_police_office"><code class="docutils literal notranslate"><span class="pre">DefaultLoader.get_tactics_police_office()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.implement">Module contents</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="adf-core-python-implement-package">
+<h1>adf_core_python.implement package<a class="headerlink" href="#adf-core-python-implement-package" title="Link to this heading">#</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="adf_core_python.implement.action.html">adf_core_python.implement.action package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.implement.action.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.implement.action.html#module-adf_core_python.implement.action.default_extend_action_clear">adf_core_python.implement.action.default_extend_action_clear module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionClear</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear.calculate"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionClear.calculate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear.precompute"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionClear.precompute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear.prepare"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionClear.prepare()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear.resume"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionClear.resume()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear.set_target_entity_id"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionClear.set_target_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_clear.DefaultExtendActionClear.update_info"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionClear.update_info()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.implement.action.html#module-adf_core_python.implement.action.default_extend_action_move">adf_core_python.implement.action.default_extend_action_move module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionMove</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove.calculate"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionMove.calculate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove.precompute"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionMove.precompute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove.prepare"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionMove.prepare()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove.resume"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionMove.resume()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove.set_target_entity_id"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionMove.set_target_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove.update_info"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionMove.update_info()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.implement.action.html#module-adf_core_python.implement.action.default_extend_action_rescue">adf_core_python.implement.action.default_extend_action_rescue module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionRescue</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue.calculate"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionRescue.calculate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue.precompute"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionRescue.precompute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue.prepare"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionRescue.prepare()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue.resume"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionRescue.resume()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue.set_target_entity_id"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionRescue.set_target_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue.update_info"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionRescue.update_info()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.implement.action.html#module-adf_core_python.implement.action.default_extend_action_transport">adf_core_python.implement.action.default_extend_action_transport module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionTransport</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport.calc_refuge_action"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionTransport.calc_refuge_action()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport.calc_rescue"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionTransport.calc_rescue()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport.calc_unload"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionTransport.calc_unload()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport.calculate"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionTransport.calculate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport.get_nearest_refuge_path"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionTransport.get_nearest_refuge_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport.precompute"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionTransport.precompute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport.prepare"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionTransport.prepare()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport.resume"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionTransport.resume()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport.set_target_entity_id"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionTransport.set_target_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.action.html#adf_core_python.implement.action.default_extend_action_transport.DefaultExtendActionTransport.update_info"><code class="docutils literal notranslate"><span class="pre">DefaultExtendActionTransport.update_info()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.implement.action.html#module-adf_core_python.implement.action">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adf_core_python.implement.module.html">adf_core_python.implement.module package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.implement.module.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.implement.module.algorithm.html">adf_core_python.implement.module.algorithm package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.algorithm.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.algorithm.html#module-adf_core_python.implement.module.algorithm.a_star_path_planning">adf_core_python.implement.module.algorithm.a_star_path_planning module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.algorithm.html#module-adf_core_python.implement.module.algorithm.dijkstra_path_planning">adf_core_python.implement.module.algorithm.dijkstra_path_planning module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.algorithm.html#module-adf_core_python.implement.module.algorithm.k_means_clustering">adf_core_python.implement.module.algorithm.k_means_clustering module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.algorithm.html#module-adf_core_python.implement.module.algorithm">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.implement.module.communication.html">adf_core_python.implement.module.communication package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.communication.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.communication.html#module-adf_core_python.implement.module.communication.default_channel_subscriber">adf_core_python.implement.module.communication.default_channel_subscriber module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.communication.html#module-adf_core_python.implement.module.communication.default_message_coordinator">adf_core_python.implement.module.communication.default_message_coordinator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.communication.html#module-adf_core_python.implement.module.communication">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.implement.module.complex.html">adf_core_python.implement.module.complex package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.complex.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.complex.html#module-adf_core_python.implement.module.complex.default_ambulance_target_allocator">adf_core_python.implement.module.complex.default_ambulance_target_allocator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.complex.html#module-adf_core_python.implement.module.complex.default_fire_target_allocator">adf_core_python.implement.module.complex.default_fire_target_allocator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.complex.html#module-adf_core_python.implement.module.complex.default_human_detector">adf_core_python.implement.module.complex.default_human_detector module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.complex.html#module-adf_core_python.implement.module.complex.default_police_target_allocator">adf_core_python.implement.module.complex.default_police_target_allocator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.complex.html#module-adf_core_python.implement.module.complex.default_road_detector">adf_core_python.implement.module.complex.default_road_detector module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.complex.html#module-adf_core_python.implement.module.complex.default_search">adf_core_python.implement.module.complex.default_search module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.module.complex.html#module-adf_core_python.implement.module.complex">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.implement.module.html#module-adf_core_python.implement.module">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adf_core_python.implement.tactics.html">adf_core_python.implement.tactics package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.implement.tactics.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.implement.tactics.html#module-adf_core_python.implement.tactics.default_tactics_ambulance_center">adf_core_python.implement.tactics.default_tactics_ambulance_center module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_ambulance_center.DefaultTacticsAmbulanceCenter"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsAmbulanceCenter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_ambulance_center.DefaultTacticsAmbulanceCenter.initialize"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsAmbulanceCenter.initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_ambulance_center.DefaultTacticsAmbulanceCenter.precompute"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsAmbulanceCenter.precompute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_ambulance_center.DefaultTacticsAmbulanceCenter.prepare"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsAmbulanceCenter.prepare()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_ambulance_center.DefaultTacticsAmbulanceCenter.resume"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsAmbulanceCenter.resume()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_ambulance_center.DefaultTacticsAmbulanceCenter.think"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsAmbulanceCenter.think()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.implement.tactics.html#module-adf_core_python.implement.tactics.default_tactics_ambulance_team">adf_core_python.implement.tactics.default_tactics_ambulance_team module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_ambulance_team.DefaultTacticsAmbulanceTeam"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsAmbulanceTeam</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_ambulance_team.DefaultTacticsAmbulanceTeam.initialize"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsAmbulanceTeam.initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_ambulance_team.DefaultTacticsAmbulanceTeam.precompute"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsAmbulanceTeam.precompute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_ambulance_team.DefaultTacticsAmbulanceTeam.prepare"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsAmbulanceTeam.prepare()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_ambulance_team.DefaultTacticsAmbulanceTeam.resume"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsAmbulanceTeam.resume()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_ambulance_team.DefaultTacticsAmbulanceTeam.think"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsAmbulanceTeam.think()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.implement.tactics.html#module-adf_core_python.implement.tactics.default_tactics_fire_brigade">adf_core_python.implement.tactics.default_tactics_fire_brigade module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_fire_brigade.DefaultTacticsFireBrigade"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsFireBrigade</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_fire_brigade.DefaultTacticsFireBrigade.initialize"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsFireBrigade.initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_fire_brigade.DefaultTacticsFireBrigade.precompute"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsFireBrigade.precompute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_fire_brigade.DefaultTacticsFireBrigade.prepare"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsFireBrigade.prepare()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_fire_brigade.DefaultTacticsFireBrigade.resume"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsFireBrigade.resume()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_fire_brigade.DefaultTacticsFireBrigade.think"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsFireBrigade.think()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.implement.tactics.html#module-adf_core_python.implement.tactics.default_tactics_fire_station">adf_core_python.implement.tactics.default_tactics_fire_station module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_fire_station.DefaultTacticsFireStation"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsFireStation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_fire_station.DefaultTacticsFireStation.initialize"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsFireStation.initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_fire_station.DefaultTacticsFireStation.precompute"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsFireStation.precompute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_fire_station.DefaultTacticsFireStation.prepare"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsFireStation.prepare()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_fire_station.DefaultTacticsFireStation.resume"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsFireStation.resume()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_fire_station.DefaultTacticsFireStation.think"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsFireStation.think()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.implement.tactics.html#module-adf_core_python.implement.tactics.default_tactics_police_force">adf_core_python.implement.tactics.default_tactics_police_force module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_police_force.DefaultTacticsPoliceForce"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsPoliceForce</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_police_force.DefaultTacticsPoliceForce.initialize"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsPoliceForce.initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_police_force.DefaultTacticsPoliceForce.precompute"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsPoliceForce.precompute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_police_force.DefaultTacticsPoliceForce.prepare"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsPoliceForce.prepare()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_police_force.DefaultTacticsPoliceForce.resume"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsPoliceForce.resume()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_police_force.DefaultTacticsPoliceForce.think"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsPoliceForce.think()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.implement.tactics.html#module-adf_core_python.implement.tactics.default_tactics_police_office">adf_core_python.implement.tactics.default_tactics_police_office module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_police_office.DefaultTacticsPoliceOffice"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsPoliceOffice</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_police_office.DefaultTacticsPoliceOffice.initialize"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsPoliceOffice.initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_police_office.DefaultTacticsPoliceOffice.precompute"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsPoliceOffice.precompute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_police_office.DefaultTacticsPoliceOffice.prepare"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsPoliceOffice.prepare()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_police_office.DefaultTacticsPoliceOffice.resume"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsPoliceOffice.resume()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.implement.tactics.html#adf_core_python.implement.tactics.default_tactics_police_office.DefaultTacticsPoliceOffice.think"><code class="docutils literal notranslate"><span class="pre">DefaultTacticsPoliceOffice.think()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.implement.tactics.html#module-adf_core_python.implement.tactics">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-adf_core_python.implement.default_loader">
+<span id="adf-core-python-implement-default-loader-module"></span><h2>adf_core_python.implement.default_loader module<a class="headerlink" href="#module-adf_core_python.implement.default_loader" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="adf_core_python.implement.default_loader.DefaultLoader">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adf_core_python.implement.default_loader.</span></span><span class="sig-name descname"><span class="pre">DefaultLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">team_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adf_core_python.implement.default_loader.DefaultLoader" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="adf_core_python.core.component.html#adf_core_python.core.component.abstract_loader.AbstractLoader" title="adf_core_python.core.component.abstract_loader.AbstractLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractLoader</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.implement.default_loader.DefaultLoader.get_tactics_ambulance_center">
+<span class="sig-name descname"><span class="pre">get_tactics_ambulance_center</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="adf_core_python.core.component.tactics.html#adf_core_python.core.component.tactics.tactics_ambulance_center.TacticsAmbulanceCenter" title="adf_core_python.core.component.tactics.tactics_ambulance_center.TacticsAmbulanceCenter"><span class="pre">TacticsAmbulanceCenter</span></a></span></span><a class="headerlink" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_ambulance_center" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.implement.default_loader.DefaultLoader.get_tactics_ambulance_team">
+<span class="sig-name descname"><span class="pre">get_tactics_ambulance_team</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="adf_core_python.core.component.tactics.html#adf_core_python.core.component.tactics.tactics_ambulance_team.TacticsAmbulanceTeam" title="adf_core_python.core.component.tactics.tactics_ambulance_team.TacticsAmbulanceTeam"><span class="pre">TacticsAmbulanceTeam</span></a></span></span><a class="headerlink" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_ambulance_team" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.implement.default_loader.DefaultLoader.get_tactics_fire_brigade">
+<span class="sig-name descname"><span class="pre">get_tactics_fire_brigade</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="adf_core_python.core.component.tactics.html#adf_core_python.core.component.tactics.tactics_fire_brigade.TacticsFireBrigade" title="adf_core_python.core.component.tactics.tactics_fire_brigade.TacticsFireBrigade"><span class="pre">TacticsFireBrigade</span></a></span></span><a class="headerlink" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_fire_brigade" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.implement.default_loader.DefaultLoader.get_tactics_fire_station">
+<span class="sig-name descname"><span class="pre">get_tactics_fire_station</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="adf_core_python.core.component.tactics.html#adf_core_python.core.component.tactics.tactics_fire_station.TacticsFireStation" title="adf_core_python.core.component.tactics.tactics_fire_station.TacticsFireStation"><span class="pre">TacticsFireStation</span></a></span></span><a class="headerlink" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_fire_station" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.implement.default_loader.DefaultLoader.get_tactics_police_force">
+<span class="sig-name descname"><span class="pre">get_tactics_police_force</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="adf_core_python.core.component.tactics.html#adf_core_python.core.component.tactics.tactics_police_force.TacticsPoliceForce" title="adf_core_python.core.component.tactics.tactics_police_force.TacticsPoliceForce"><span class="pre">TacticsPoliceForce</span></a></span></span><a class="headerlink" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_police_force" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.implement.default_loader.DefaultLoader.get_tactics_police_office">
+<span class="sig-name descname"><span class="pre">get_tactics_police_office</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="adf_core_python.core.component.tactics.html#adf_core_python.core.component.tactics.tactics_police_office.TacticsPoliceOffice" title="adf_core_python.core.component.tactics.tactics_police_office.TacticsPoliceOffice"><span class="pre">TacticsPoliceOffice</span></a></span></span><a class="headerlink" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_police_office" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-adf_core_python.implement">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-adf_core_python.implement" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.implement.default_loader">adf_core_python.implement.default_loader module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.implement.default_loader.DefaultLoader"><code class="docutils literal notranslate"><span class="pre">DefaultLoader</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_ambulance_center"><code class="docutils literal notranslate"><span class="pre">DefaultLoader.get_tactics_ambulance_center()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_ambulance_team"><code class="docutils literal notranslate"><span class="pre">DefaultLoader.get_tactics_ambulance_team()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_fire_brigade"><code class="docutils literal notranslate"><span class="pre">DefaultLoader.get_tactics_fire_brigade()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_fire_station"><code class="docutils literal notranslate"><span class="pre">DefaultLoader.get_tactics_fire_station()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_police_force"><code class="docutils literal notranslate"><span class="pre">DefaultLoader.get_tactics_police_force()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.implement.default_loader.DefaultLoader.get_tactics_police_office"><code class="docutils literal notranslate"><span class="pre">DefaultLoader.get_tactics_police_office()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.implement">Module contents</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Haruki Uehara, Yuki Shimada
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Haruki Uehara, Yuki Shimada.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

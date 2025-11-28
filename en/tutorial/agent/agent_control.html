@@ -1,0 +1,879 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Agent Control &#8212; adf-core-python 0.2.2 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=d3f42505"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial/agent/agent_control';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="About Config" href="../config/config.html" />
+    <link rel="prev" title="Creating an Agent" href="agent.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">adf-core-python 0.2.2 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><style>
+  .rst-versions {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  .rst-current-version {
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .rst-other-versions {
+    display: none; /* 初期状態では非表示 */
+  }
+
+  .rst-other-versions dl {
+    margin: 0;
+    padding: 0;
+  }
+
+  .rst-other-versions dt {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .rst-other-versions dd {
+    margin: 0;
+    padding: 0 0 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .rst-other-versions a {
+    text-decoration: none;
+    color: #27ae60;
+    margin-right: 10px;
+  }
+
+  .rst-other-versions a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div
+  class="rst-versions"
+  data-toggle="rst-versions"
+  role="note"
+  aria-label="versions"
+>
+  <span
+    class="rst-current-version"
+    data-toggle="rst-current-version"
+    onclick="toggleVersions()"
+  >
+    Language: en
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    
+    <dl>
+      <dt>Languages</dt>
+      <dd>
+        
+        <a href="https://adf-python.github.io/adf-core-python//index.html">en</a>
+        
+        <a href="https://adf-python.github.io/adf-core-python//ja/index.html">ja</a>
+        
+      </dd>
+    </dl>
+    
+    <!-- 
+      <br>
+      </dl> -->
+  </div>
+</div>
+
+<script>
+  function toggleVersions() {
+    var versionsDiv = document.querySelector(".rst-other-versions");
+    if (
+      versionsDiv.style.display === "none" ||
+      versionsDiv.style.display === ""
+    ) {
+      versionsDiv.style.display = "block";
+    } else {
+      versionsDiv.style.display = "none";
+    }
+  }
+</script></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../install/environment/environment.html">Environment Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install/install/install.html">Installation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quick Start</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/quickstart.html">Quick Start</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../environment/environment.html">Environment Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agent.html">Creating an Agent</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Agent Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../config/config.html">About Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module/module.html">About Modules</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-On</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../hands-on/clustering.html">Clustering Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hands-on/search.html">Search Module</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../tips/precompute.html">About Precomputation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../py-modindex.html">Module Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../search.html">Search Page</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/tutorial/agent/agent_control.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Agent Control</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">About Agent Control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Agent Operation Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-detector">Preparing to Implement the <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Registering the Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Designing the <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Classes and Methods Used in the Implementation of the <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> Module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entity">Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entityid">EntityID</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#civilian">Civilian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#worldinfo">WorldInfo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agentinfo">AgentInfo</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Implementation of the <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> Module</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="id1">
+<h1>Agent Control<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>This section explains how to create a program to control agents.</p>
+<section id="id2">
+<h2>About Agent Control<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>RRS の災害救助エージェントは 3 種類あり、種類毎にそれぞれ異なるプログラムを書く必要があります。しかし、初めから全てのプログラムを書くことは困難です。ここではまず初めに、消防隊エージェントを操作するプログラムの一部を書いてみましょう。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The program that controls the agents is the same for each type of agent. The program is distributed to each agent and is responsible for controlling only that agent. If you write a program to control the fire brigade agent, it will run on all fire brigade agents.</p>
+</div>
+<p><img alt="Fire Brigade Agent" src="../../_images/agent_control.jpg" /></p>
+</section>
+<section id="id3">
+<h2>Agent Operation Flow<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>エージェントの動作を決めているのは Tactics というプログラムです。</p>
+<p>消防隊の思考ルーチンは下の図の通りにおおよそおこなわれます。 消防隊の動作としては、まず救助対象の市民を捜索し(<code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code>)、見つかった市民を救助します(<code class="docutils literal notranslate"><span class="pre">Action</span> <span class="pre">Rescue</span></code>)。 救助対象の市民が見つからない場合は、探索場所を変更して市民を捜索するため、次の捜索場所を決定して(<code class="docutils literal notranslate"><span class="pre">Search</span></code>)移動します(<code class="docutils literal notranslate"><span class="pre">Action</span> <span class="pre">Ext</span> <span class="pre">move</span></code>)。 なお、エージェントは 1 ステップ内で、移動と救助活動を同時におこなうことが出来ません。つまり、ステップごとに更新される自身の周辺情報を確認して、動作の対象と動作内容を決定していくということになります。 これらそれぞれの機能が、モジュールと呼ばれるプログラムとして分割して表現されています。</p>
+<p>This time, we will develop the <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> module that determines the rescue (digging) target.</p>
+<p><img alt="Fire Brigade Agent Operation Flow" src="../../_images/agent_flow.png" /></p>
+</section>
+<section id="human-detector">
+<h2>Preparing to Implement the <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> Module<a class="headerlink" href="#human-detector" title="Link to this heading">#</a></h2>
+<p>First, create a file to describe the <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> module.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
+touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/complex/fire_brigade_human_detector.py
+</pre></div>
+</div>
+<p>Next, implement the template for the <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> module. Please write the following code in <code class="docutils literal notranslate"><span class="pre">fire_brigade_human_detector.py</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.agent.develop.develop_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DevelopData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.agent.info.agent_info</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentInfo</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.agent.info.scenario_info</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScenarioInfo</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.agent.info.world_info</span><span class="w"> </span><span class="kn">import</span> <span class="n">WorldInfo</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.agent.module.module_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModuleManager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.component.module.complex.human_detector</span><span class="w"> </span><span class="kn">import</span> <span class="n">HumanDetector</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.logger.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_agent_logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rcrscore.entities</span><span class="w"> </span><span class="kn">import</span> <span class="n">EntityID</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">FireBrigadeHumanDetector</span><span class="p">(</span><span class="n">HumanDetector</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">agent_info</span><span class="p">:</span> <span class="n">AgentInfo</span><span class="p">,</span>
+        <span class="n">world_info</span><span class="p">:</span> <span class="n">WorldInfo</span><span class="p">,</span>
+        <span class="n">scenario_info</span><span class="p">:</span> <span class="n">ScenarioInfo</span><span class="p">,</span>
+        <span class="n">module_manager</span><span class="p">:</span> <span class="n">ModuleManager</span><span class="p">,</span>
+        <span class="n">develop_data</span><span class="p">:</span> <span class="n">DevelopData</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">agent_info</span><span class="p">,</span> <span class="n">world_info</span><span class="p">,</span> <span class="n">scenario_info</span><span class="p">,</span> <span class="n">module_manager</span><span class="p">,</span> <span class="n">develop_data</span>
+        <span class="p">)</span>
+        <span class="c1"># 計算結果を格納する変数</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># ロガーの取得</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">get_agent_logger</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HumanDetector</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        行動対象を決定する</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            HumanDetector: 自身のインスタンス</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Calculate FireBrigadeHumanDetector&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_target_entity_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        行動対象のEntityIDを取得する</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            Optional[EntityID]: 行動対象のEntityID</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>Registering the Module<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>Next, register the created module.</p>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">WORKING_DIR/&lt;your_team_name&gt;/config/module.yaml</span></code> file and</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">DefaultTacticsFireBrigade</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">HumanDetector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.sample_human_detector.SampleHumanDetector</span>
+</pre></div>
+</div>
+<p>change the following part as shown below.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">DefaultTacticsFireBrigade</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">HumanDetector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.fire_brigade_human_detector.FireBrigadeHumanDetector</span>
+</pre></div>
+</div>
+<p>ターミナルを 2 つ起動します。</p>
+<p>Open one terminal and start the simulation server with the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal A</span>
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/rcrs-server/scripts
+./start-comprun.sh<span class="w"> </span>-m<span class="w"> </span>../maps/tutorial_fire_brigade_only/map<span class="w"> </span>-c<span class="w"> </span>../maps/tutorial_fire_brigade_only/config
+</pre></div>
+</div>
+<p>Then, open another terminal and start the agent:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal B</span>
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
+python<span class="w"> </span>main.py
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">Calculate</span> <span class="pre">FireBrigadeHumanDetector</span></code> is displayed in the standard output, it is successful.</p>
+</section>
+<section id="id5">
+<h2>Designing the <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> Module<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>Write the content of the rescue target selection program and modify it so that the fire brigade agent can perform rescue activities.</p>
+<p>The simplest way for a fire brigade agent to select a rescue target is to choose the closest buried citizen. This time, let’s write a module to determine the action target of the fire brigade agent using this method.</p>
+<p>The method of selecting the closest buried citizen as the rescue target is shown in the flowchart below.</p>
+<p><img alt="Rescue Target Selection Flowchart" src="../../_images/human_detector_flow.png" /></p>
+<p>By replacing each process in this flowchart with the classes and methods introduced in the next subsection, and writing them in <code class="docutils literal notranslate"><span class="pre">fire_brigade_human_detector.py</span></code>, you will complete the rescue target selection program.</p>
+</section>
+<section id="id6">
+<h2>Classes and Methods Used in the Implementation of the <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> Module<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<section id="entity">
+<h3>Entity<a class="headerlink" href="#entity" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Entity</span></code> class is the base class for entities. This class holds the basic information of an entity.</p>
+<p>RRS 上のエンティティは下図のように <code class="docutils literal notranslate"><span class="pre">Entity</span></code> を継承したクラスで表現されています。 赤枠で囲まれたクラスは、クラスの意味がそのまま RRS の直接的な構成要素を表しています。</p>
+<p>For example, among the instances of the Road class, there are those that represent ordinary roads that do not inherit from the Hydrant class.</p>
+<p><img alt="Entity Inheritance Relationship" src="../../_images/entity.png" /></p>
+</section>
+<section id="entityid">
+<h3>EntityID<a class="headerlink" href="#entityid" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">EntityID</span></code> クラスは、全てのエージェント/オブジェクトを一意に識別するための ID(識別子)を表すクラスです。 RRS ではエージェントとオブジェクトをまとめて、エンティティと呼んでいます。</p>
+</section>
+<section id="civilian">
+<h3>Civilian<a class="headerlink" href="#civilian" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Civilian</span></code> class represents a citizen. From this class, you can obtain the position of the agent and the progress of injuries.</p>
+<ul class="simple">
+<li><p>Determine if <code class="docutils literal notranslate"><span class="pre">entity</span></code> is a civilian</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">is_civilian</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="n">Civilian</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>エンティティ ID を取得する</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entity_id</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Determine if the civilian is alive</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">get_hp</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">hp</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">hp</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Determine if the civilian is buried</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">buriedness</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">get_buriedness</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">buriedness</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">buriedness</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
+<section id="worldinfo">
+<h3>WorldInfo<a class="headerlink" href="#worldinfo" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">WorldInfo</span></code> class is a class that has methods for the information that the agent knows and the operations related to it. Through an instance of this class, the agent checks the status of other agents and objects.</p>
+<p>In the module, an instance of the <code class="docutils literal notranslate"><span class="pre">WorldInfo</span></code> class is held as <code class="docutils literal notranslate"><span class="pre">self._world_info</span></code>.</p>
+<ul class="simple">
+<li><p>エンティティ ID からエンティティを取得する</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entity</span><span class="p">:</span> <span class="n">Entity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entity</span><span class="p">(</span><span class="n">entity_id</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Get all entities of the specified class</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entities</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Entity</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entities_by_type</span><span class="p">([</span><span class="n">Building</span><span class="p">,</span> <span class="n">Road</span><span class="p">])</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Get the distance from the agent’s position to the specified entity</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">distance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_distance</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">civilian</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="#../../adf_core_python.core.agent.info.rst"><span class="xref myst">Details here</span></a></p>
+</section>
+<section id="agentinfo">
+<h3>AgentInfo<a class="headerlink" href="#agentinfo" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">AgentInfo</span></code> class is a class that has methods for the agent’s own information and operations related to it. Through an instance of this class, the agent obtains its own status.</p>
+<p>In the module, an instance of the <code class="docutils literal notranslate"><span class="pre">AgentInfo</span></code> class is held as <code class="docutils literal notranslate"><span class="pre">self._agent_info</span></code>.</p>
+<ul class="simple">
+<li><p>自分自身のエンティティ ID を取得する</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_entity_id</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="#../../adf_core_python.core.agent.info.rst"><span class="xref myst">Details here</span></a></p>
+</section>
+</section>
+<section id="id7">
+<h2>Implementation of the <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> Module<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>Implement the <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> module. Please write the following code in <code class="docutils literal notranslate"><span class="pre">fire_brigade_human_detector.py</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.agent.develop.develop_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DevelopData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.agent.info.agent_info</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentInfo</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.agent.info.scenario_info</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScenarioInfo</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.agent.info.world_info</span><span class="w"> </span><span class="kn">import</span> <span class="n">WorldInfo</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.agent.module.module_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModuleManager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.component.module.complex.human_detector</span><span class="w"> </span><span class="kn">import</span> <span class="n">HumanDetector</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.logger.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_agent_logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rcrscore.entities</span><span class="w"> </span><span class="kn">import</span> <span class="n">Civilian</span><span class="p">,</span> <span class="n">Entity</span><span class="p">,</span> <span class="n">EntityID</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">FireBrigadeHumanDetector</span><span class="p">(</span><span class="n">HumanDetector</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">agent_info</span><span class="p">:</span> <span class="n">AgentInfo</span><span class="p">,</span>
+        <span class="n">world_info</span><span class="p">:</span> <span class="n">WorldInfo</span><span class="p">,</span>
+        <span class="n">scenario_info</span><span class="p">:</span> <span class="n">ScenarioInfo</span><span class="p">,</span>
+        <span class="n">module_manager</span><span class="p">:</span> <span class="n">ModuleManager</span><span class="p">,</span>
+        <span class="n">develop_data</span><span class="p">:</span> <span class="n">DevelopData</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">agent_info</span><span class="p">,</span> <span class="n">world_info</span><span class="p">,</span> <span class="n">scenario_info</span><span class="p">,</span> <span class="n">module_manager</span><span class="p">,</span> <span class="n">develop_data</span>
+        <span class="p">)</span>
+        <span class="c1"># 計算結果を格納する変数</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># ロガーの取得</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">get_agent_logger</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HumanDetector</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        行動対象を決定する</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            HumanDetector: 自身のインスタンス</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 自分自身のEntityIDを取得</span>
+        <span class="n">me</span><span class="p">:</span> <span class="n">EntityID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_info</span><span class="o">.</span><span class="n">get_entity_id</span><span class="p">()</span>
+        <span class="c1"># すべてのCivilianを取得</span>
+        <span class="n">civilians</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Entity</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_entities_of_types</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">Civilian</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 最も近いCivilianを探す</span>
+        <span class="n">nearest_civilian</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">nearest_distance</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">civilian</span> <span class="ow">in</span> <span class="n">civilians</span><span class="p">:</span>
+            <span class="c1"># civilianがCivilianクラスのインスタンスでない場合はスキップ</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">civilian</span><span class="p">,</span> <span class="n">Civilian</span><span class="p">):</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># civilianのHPが0以下の場合はすでに死んでしまっているのでスキップ</span>
+            <span class="k">if</span> <span class="n">civilian</span><span class="o">.</span><span class="n">get_hp</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># civilianの埋没度が0以下の場合は掘り起こす必要がないのでスキップ</span>
+            <span class="k">if</span> <span class="n">civilian</span><span class="o">.</span><span class="n">get_buriedness</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># 自分自身との距離を計算</span>
+            <span class="n">distance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_world_info</span><span class="o">.</span><span class="n">get_distance</span><span class="p">(</span><span class="n">me</span><span class="p">,</span> <span class="n">civilian</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
+
+            <span class="c1"># 最も近いCivilianを更新</span>
+            <span class="k">if</span> <span class="n">nearest_distance</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">nearest_distance</span><span class="p">:</span>
+                <span class="n">nearest_civilian</span> <span class="o">=</span> <span class="n">civilian</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span>
+                <span class="n">nearest_distance</span> <span class="o">=</span> <span class="n">distance</span>
+
+        <span class="c1"># 計算結果を格納</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_result</span> <span class="o">=</span> <span class="n">nearest_civilian</span>
+
+        <span class="c1"># ロガーに出力</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Target: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_target_entity_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EntityID</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        行動対象のEntityIDを取得する</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            Optional[EntityID]: 行動対象のEntityID</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result</span>
+</pre></div>
+</div>
+<p>ターミナルを 2 つ起動します。</p>
+<p>Open one terminal and start the simulation server with the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal A</span>
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/rcrs-server/scripts
+./start-comprun.sh<span class="w"> </span>-m<span class="w"> </span>../maps/tutorial_fire_brigade_only/map<span class="w"> </span>-c<span class="w"> </span>../maps/tutorial_fire_brigade_only/config
+</pre></div>
+</div>
+<p>Then, open another terminal and start the agent:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal B</span>
+<span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
+python<span class="w"> </span>main.py
+</pre></div>
+</div>
+<p>It is successful if the fire brigade agent can rescue the buried citizens.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="agent.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Creating an Agent</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../config/config.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">About Config</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">About Agent Control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Agent Operation Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-detector">Preparing to Implement the <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Registering the Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Designing the <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Classes and Methods Used in the Implementation of the <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> Module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entity">Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entityid">EntityID</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#civilian">Civilian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#worldinfo">WorldInfo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agentinfo">AgentInfo</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Implementation of the <code class="docutils literal notranslate"><span class="pre">Human</span> <span class="pre">Detector</span></code> Module</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Haruki Uehara, Yuki Shimada
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Haruki Uehara, Yuki Shimada.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

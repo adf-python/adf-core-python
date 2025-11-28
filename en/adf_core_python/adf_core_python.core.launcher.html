@@ -1,0 +1,834 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>adf_core_python.core.launcher package &#8212; adf-core-python 0.2.2 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=d3f42505"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'adf_core_python/adf_core_python.core.launcher';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">adf-core-python 0.2.2 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><style>
+  .rst-versions {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  .rst-current-version {
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .rst-other-versions {
+    display: none; /* 初期状態では非表示 */
+  }
+
+  .rst-other-versions dl {
+    margin: 0;
+    padding: 0;
+  }
+
+  .rst-other-versions dt {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .rst-other-versions dd {
+    margin: 0;
+    padding: 0 0 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .rst-other-versions a {
+    text-decoration: none;
+    color: #27ae60;
+    margin-right: 10px;
+  }
+
+  .rst-other-versions a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div
+  class="rst-versions"
+  data-toggle="rst-versions"
+  role="note"
+  aria-label="versions"
+>
+  <span
+    class="rst-current-version"
+    data-toggle="rst-current-version"
+    onclick="toggleVersions()"
+  >
+    Language: en
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    
+    <dl>
+      <dt>Languages</dt>
+      <dd>
+        
+        <a href="https://adf-python.github.io/adf-core-python//index.html">en</a>
+        
+        <a href="https://adf-python.github.io/adf-core-python//ja/index.html">ja</a>
+        
+      </dd>
+    </dl>
+    
+    <!-- 
+      <br>
+      </dl> -->
+  </div>
+</div>
+
+<script>
+  function toggleVersions() {
+    var versionsDiv = document.querySelector(".rst-other-versions");
+    if (
+      versionsDiv.style.display === "none" ||
+      versionsDiv.style.display === ""
+    ) {
+      versionsDiv.style.display = "block";
+    } else {
+      versionsDiv.style.display = "none";
+    }
+  }
+</script></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../install/environment/environment.html">Environment Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install/install.html">Installation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quick Start</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart/quickstart.html">Quick Start</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">Environment Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">Agent Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">About Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">About Modules</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-On</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hands-on/clustering.html">Clustering Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hands-on/search.html">Search Module</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tips/precompute.html">About Precomputation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../py-modindex.html">Module Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../search.html">Search Page</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/adf_core_python/adf_core_python.core.launcher.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>adf_core_python.core.launcher package</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core.launcher.agent_launcher">adf_core_python.core.launcher.agent_launcher module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.agent_launcher.AgentLauncher"><code class="docutils literal notranslate"><span class="pre">AgentLauncher</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.agent_launcher.AgentLauncher.check_kernel_connection"><code class="docutils literal notranslate"><span class="pre">AgentLauncher.check_kernel_connection()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.agent_launcher.AgentLauncher.init_connector"><code class="docutils literal notranslate"><span class="pre">AgentLauncher.init_connector()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.agent_launcher.AgentLauncher.launch"><code class="docutils literal notranslate"><span class="pre">AgentLauncher.launch()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core.launcher.config_key">adf_core_python.core.launcher.config_key module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey"><code class="docutils literal notranslate"><span class="pre">ConfigKey</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_AMBULANCE_CENTRE_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_AMBULANCE_CENTRE_COUNT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_AMBULANCE_TEAM_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_AMBULANCE_TEAM_COUNT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEBUG_FLAG"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_DEBUG_FLAG</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEVELOP_DATA"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_DEVELOP_DATA</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEVELOP_DATA_FILE_NAME"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_DEVELOP_DATA_FILE_NAME</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEVELOP_FLAG"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_DEVELOP_FLAG</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_FIRE_BRIGADE_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_FIRE_BRIGADE_COUNT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_FIRE_STATION_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_FIRE_STATION_COUNT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_GATEWAY_FLAG"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_GATEWAY_FLAG</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_GATEWAY_HOST"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_GATEWAY_HOST</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_GATEWAY_PORT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_GATEWAY_PORT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_KERNEL_HOST"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_KERNEL_HOST</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_KERNEL_PORT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_KERNEL_PORT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_KERNEL_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_KERNEL_TIMEOUT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_LOADER_CLASS"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_LOADER_CLASS</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_MODULE_CONFIG_FILE_NAME"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_MODULE_CONFIG_FILE_NAME</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_MODULE_DATA"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_MODULE_DATA</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_POLICE_FORCE_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_POLICE_FORCE_COUNT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_POLICE_OFFICE_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_POLICE_OFFICE_COUNT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_PRECOMPUTE"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_PRECOMPUTE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_PRECOMPUTE_DATA_DIR"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_PRECOMPUTE_DATA_DIR</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_TEAM_NAME"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_TEAM_NAME</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core.launcher">Module contents</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="adf-core-python-core-launcher-package">
+<h1>adf_core_python.core.launcher package<a class="headerlink" href="#adf-core-python-core-launcher-package" title="Link to this heading">#</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="adf_core_python.core.launcher.connect.html">adf_core_python.core.launcher.connect package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.component_launcher">adf_core_python.core.launcher.connect.component_launcher module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.component_launcher.ComponentLauncher"><code class="docutils literal notranslate"><span class="pre">ComponentLauncher</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.component_launcher.ComponentLauncher.check_kernel_connection"><code class="docutils literal notranslate"><span class="pre">ComponentLauncher.check_kernel_connection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.component_launcher.ComponentLauncher.connect"><code class="docutils literal notranslate"><span class="pre">ComponentLauncher.connect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.component_launcher.ComponentLauncher.generate_request_id"><code class="docutils literal notranslate"><span class="pre">ComponentLauncher.generate_request_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.component_launcher.ComponentLauncher.make_connection"><code class="docutils literal notranslate"><span class="pre">ComponentLauncher.make_connection()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.connection">adf_core_python.core.launcher.connect.connection module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connection.Connection"><code class="docutils literal notranslate"><span class="pre">Connection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connection.Connection.connect"><code class="docutils literal notranslate"><span class="pre">Connection.connect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connection.Connection.message_received"><code class="docutils literal notranslate"><span class="pre">Connection.message_received()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connection.Connection.parse_message_from_kernel"><code class="docutils literal notranslate"><span class="pre">Connection.parse_message_from_kernel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connection.Connection.send_msg"><code class="docutils literal notranslate"><span class="pre">Connection.send_msg()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.connector">adf_core_python.core.launcher.connect.connector module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connector.Connector"><code class="docutils literal notranslate"><span class="pre">Connector</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connector.Connector.connect"><code class="docutils literal notranslate"><span class="pre">Connector.connect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connector.Connector.get_connected_agent_count"><code class="docutils literal notranslate"><span class="pre">Connector.get_connected_agent_count()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.connector_ambulance_center">adf_core_python.core.launcher.connect.connector_ambulance_center module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connector_ambulance_center.ConnectorAmbulanceCenter"><code class="docutils literal notranslate"><span class="pre">ConnectorAmbulanceCenter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connector_ambulance_center.ConnectorAmbulanceCenter.connect"><code class="docutils literal notranslate"><span class="pre">ConnectorAmbulanceCenter.connect()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.connector_ambulance_team">adf_core_python.core.launcher.connect.connector_ambulance_team module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connector_ambulance_team.ConnectorAmbulanceTeam"><code class="docutils literal notranslate"><span class="pre">ConnectorAmbulanceTeam</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connector_ambulance_team.ConnectorAmbulanceTeam.connect"><code class="docutils literal notranslate"><span class="pre">ConnectorAmbulanceTeam.connect()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.connector_fire_brigade">adf_core_python.core.launcher.connect.connector_fire_brigade module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connector_fire_brigade.ConnectorFireBrigade"><code class="docutils literal notranslate"><span class="pre">ConnectorFireBrigade</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connector_fire_brigade.ConnectorFireBrigade.connect"><code class="docutils literal notranslate"><span class="pre">ConnectorFireBrigade.connect()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.connector_fire_station">adf_core_python.core.launcher.connect.connector_fire_station module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connector_fire_station.ConnectorFireStation"><code class="docutils literal notranslate"><span class="pre">ConnectorFireStation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connector_fire_station.ConnectorFireStation.connect"><code class="docutils literal notranslate"><span class="pre">ConnectorFireStation.connect()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.connector_police_force">adf_core_python.core.launcher.connect.connector_police_force module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connector_police_force.ConnectorPoliceForce"><code class="docutils literal notranslate"><span class="pre">ConnectorPoliceForce</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connector_police_force.ConnectorPoliceForce.connect"><code class="docutils literal notranslate"><span class="pre">ConnectorPoliceForce.connect()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.connector_police_office">adf_core_python.core.launcher.connect.connector_police_office module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connector_police_office.ConnectorPoliceOffice"><code class="docutils literal notranslate"><span class="pre">ConnectorPoliceOffice</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#adf_core_python.core.launcher.connect.connector_police_office.ConnectorPoliceOffice.connect"><code class="docutils literal notranslate"><span class="pre">ConnectorPoliceOffice.connect()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-adf_core_python.core.launcher.agent_launcher">
+<span id="adf-core-python-core-launcher-agent-launcher-module"></span><h2>adf_core_python.core.launcher.agent_launcher module<a class="headerlink" href="#module-adf_core_python.core.launcher.agent_launcher" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.agent_launcher.AgentLauncher">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adf_core_python.core.launcher.agent_launcher.</span></span><span class="sig-name descname"><span class="pre">AgentLauncher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="adf_core_python.core.config.html#adf_core_python.core.config.config.Config" title="adf_core_python.core.config.config.Config"><span class="pre">Config</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adf_core_python.core.launcher.agent_launcher.AgentLauncher" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.agent_launcher.AgentLauncher.check_kernel_connection">
+<span class="sig-name descname"><span class="pre">check_kernel_connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#adf_core_python.core.launcher.agent_launcher.AgentLauncher.check_kernel_connection" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.agent_launcher.AgentLauncher.init_connector">
+<span class="sig-name descname"><span class="pre">init_connector</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.launcher.agent_launcher.AgentLauncher.init_connector" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.agent_launcher.AgentLauncher.launch">
+<span class="sig-name descname"><span class="pre">launch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.launcher.agent_launcher.AgentLauncher.launch" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-adf_core_python.core.launcher.config_key">
+<span id="adf-core-python-core-launcher-config-key-module"></span><h2>adf_core_python.core.launcher.config_key module<a class="headerlink" href="#module-adf_core_python.core.launcher.config_key" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adf_core_python.core.launcher.config_key.</span></span><span class="sig-name descname"><span class="pre">ConfigKey</span></span><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_AMBULANCE_CENTRE_COUNT">
+<span class="sig-name descname"><span class="pre">KEY_AMBULANCE_CENTRE_COUNT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adf.team.office.ambulance.count'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_AMBULANCE_CENTRE_COUNT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_AMBULANCE_TEAM_COUNT">
+<span class="sig-name descname"><span class="pre">KEY_AMBULANCE_TEAM_COUNT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adf.team.platoon.ambulance.count'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_AMBULANCE_TEAM_COUNT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEBUG_FLAG">
+<span class="sig-name descname"><span class="pre">KEY_DEBUG_FLAG</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adf.debug.flag'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEBUG_FLAG" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEVELOP_DATA">
+<span class="sig-name descname"><span class="pre">KEY_DEVELOP_DATA</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adf.develop.data'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEVELOP_DATA" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEVELOP_DATA_FILE_NAME">
+<span class="sig-name descname"><span class="pre">KEY_DEVELOP_DATA_FILE_NAME</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adf.develop.filename'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEVELOP_DATA_FILE_NAME" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEVELOP_FLAG">
+<span class="sig-name descname"><span class="pre">KEY_DEVELOP_FLAG</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adf.develop.flag'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEVELOP_FLAG" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_FIRE_BRIGADE_COUNT">
+<span class="sig-name descname"><span class="pre">KEY_FIRE_BRIGADE_COUNT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adf.team.platoon.fire.count'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_FIRE_BRIGADE_COUNT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_FIRE_STATION_COUNT">
+<span class="sig-name descname"><span class="pre">KEY_FIRE_STATION_COUNT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adf.team.office.fire.count'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_FIRE_STATION_COUNT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_GATEWAY_FLAG">
+<span class="sig-name descname"><span class="pre">KEY_GATEWAY_FLAG</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adf.gateway.flag'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_GATEWAY_FLAG" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_GATEWAY_HOST">
+<span class="sig-name descname"><span class="pre">KEY_GATEWAY_HOST</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'gateway.host'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_GATEWAY_HOST" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_GATEWAY_PORT">
+<span class="sig-name descname"><span class="pre">KEY_GATEWAY_PORT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'gateway.port'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_GATEWAY_PORT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_KERNEL_HOST">
+<span class="sig-name descname"><span class="pre">KEY_KERNEL_HOST</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'kernel.host'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_KERNEL_HOST" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_KERNEL_PORT">
+<span class="sig-name descname"><span class="pre">KEY_KERNEL_PORT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'kernel.port'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_KERNEL_PORT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_KERNEL_TIMEOUT">
+<span class="sig-name descname"><span class="pre">KEY_KERNEL_TIMEOUT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'kernel.timeout'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_KERNEL_TIMEOUT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_LOADER_CLASS">
+<span class="sig-name descname"><span class="pre">KEY_LOADER_CLASS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adf_core_python.launcher.loader'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_LOADER_CLASS" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_MODULE_CONFIG_FILE_NAME">
+<span class="sig-name descname"><span class="pre">KEY_MODULE_CONFIG_FILE_NAME</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adf.agent.moduleconfig.filename'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_MODULE_CONFIG_FILE_NAME" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_MODULE_DATA">
+<span class="sig-name descname"><span class="pre">KEY_MODULE_DATA</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adf.agent.moduleconfig.data'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_MODULE_DATA" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_POLICE_FORCE_COUNT">
+<span class="sig-name descname"><span class="pre">KEY_POLICE_FORCE_COUNT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adf.team.platoon.police.count'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_POLICE_FORCE_COUNT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_POLICE_OFFICE_COUNT">
+<span class="sig-name descname"><span class="pre">KEY_POLICE_OFFICE_COUNT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adf.team.office.police.count'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_POLICE_OFFICE_COUNT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_PRECOMPUTE">
+<span class="sig-name descname"><span class="pre">KEY_PRECOMPUTE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adf.launcher.precompute'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_PRECOMPUTE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_PRECOMPUTE_DATA_DIR">
+<span class="sig-name descname"><span class="pre">KEY_PRECOMPUTE_DATA_DIR</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'adf.agent.precompute.dir_name'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_PRECOMPUTE_DATA_DIR" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.launcher.config_key.ConfigKey.KEY_TEAM_NAME">
+<span class="sig-name descname"><span class="pre">KEY_TEAM_NAME</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Final</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'team.name'</span></em><a class="headerlink" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_TEAM_NAME" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-adf_core_python.core.launcher">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-adf_core_python.core.launcher" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core.launcher.agent_launcher">adf_core_python.core.launcher.agent_launcher module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.agent_launcher.AgentLauncher"><code class="docutils literal notranslate"><span class="pre">AgentLauncher</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.agent_launcher.AgentLauncher.check_kernel_connection"><code class="docutils literal notranslate"><span class="pre">AgentLauncher.check_kernel_connection()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.agent_launcher.AgentLauncher.init_connector"><code class="docutils literal notranslate"><span class="pre">AgentLauncher.init_connector()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.agent_launcher.AgentLauncher.launch"><code class="docutils literal notranslate"><span class="pre">AgentLauncher.launch()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core.launcher.config_key">adf_core_python.core.launcher.config_key module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey"><code class="docutils literal notranslate"><span class="pre">ConfigKey</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_AMBULANCE_CENTRE_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_AMBULANCE_CENTRE_COUNT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_AMBULANCE_TEAM_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_AMBULANCE_TEAM_COUNT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEBUG_FLAG"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_DEBUG_FLAG</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEVELOP_DATA"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_DEVELOP_DATA</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEVELOP_DATA_FILE_NAME"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_DEVELOP_DATA_FILE_NAME</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEVELOP_FLAG"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_DEVELOP_FLAG</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_FIRE_BRIGADE_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_FIRE_BRIGADE_COUNT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_FIRE_STATION_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_FIRE_STATION_COUNT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_GATEWAY_FLAG"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_GATEWAY_FLAG</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_GATEWAY_HOST"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_GATEWAY_HOST</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_GATEWAY_PORT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_GATEWAY_PORT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_KERNEL_HOST"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_KERNEL_HOST</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_KERNEL_PORT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_KERNEL_PORT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_KERNEL_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_KERNEL_TIMEOUT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_LOADER_CLASS"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_LOADER_CLASS</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_MODULE_CONFIG_FILE_NAME"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_MODULE_CONFIG_FILE_NAME</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_MODULE_DATA"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_MODULE_DATA</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_POLICE_FORCE_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_POLICE_FORCE_COUNT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_POLICE_OFFICE_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_POLICE_OFFICE_COUNT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_PRECOMPUTE"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_PRECOMPUTE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_PRECOMPUTE_DATA_DIR"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_PRECOMPUTE_DATA_DIR</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.launcher.config_key.ConfigKey.KEY_TEAM_NAME"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_TEAM_NAME</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core.launcher">Module contents</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Haruki Uehara, Yuki Shimada
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Haruki Uehara, Yuki Shimada.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

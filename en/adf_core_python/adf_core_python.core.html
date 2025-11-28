@@ -1,0 +1,839 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>adf_core_python.core package &#8212; adf-core-python 0.2.2 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=d3f42505"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'adf_core_python/adf_core_python.core';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">adf-core-python 0.2.2 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><style>
+  .rst-versions {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  .rst-current-version {
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .rst-other-versions {
+    display: none; /* 初期状態では非表示 */
+  }
+
+  .rst-other-versions dl {
+    margin: 0;
+    padding: 0;
+  }
+
+  .rst-other-versions dt {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .rst-other-versions dd {
+    margin: 0;
+    padding: 0 0 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .rst-other-versions a {
+    text-decoration: none;
+    color: #27ae60;
+    margin-right: 10px;
+  }
+
+  .rst-other-versions a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div
+  class="rst-versions"
+  data-toggle="rst-versions"
+  role="note"
+  aria-label="versions"
+>
+  <span
+    class="rst-current-version"
+    data-toggle="rst-current-version"
+    onclick="toggleVersions()"
+  >
+    Language: en
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    
+    <dl>
+      <dt>Languages</dt>
+      <dd>
+        
+        <a href="https://adf-python.github.io/adf-core-python//index.html">en</a>
+        
+        <a href="https://adf-python.github.io/adf-core-python//ja/index.html">ja</a>
+        
+      </dd>
+    </dl>
+    
+    <!-- 
+      <br>
+      </dl> -->
+  </div>
+</div>
+
+<script>
+  function toggleVersions() {
+    var versionsDiv = document.querySelector(".rst-other-versions");
+    if (
+      versionsDiv.style.display === "none" ||
+      versionsDiv.style.display === ""
+    ) {
+      versionsDiv.style.display = "block";
+    } else {
+      versionsDiv.style.display = "none";
+    }
+  }
+</script></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../install/environment/environment.html">Environment Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install/install.html">Installation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quick Start</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart/quickstart.html">Quick Start</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">Environment Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">Agent Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">About Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">About Modules</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-On</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hands-on/clustering.html">Clustering Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hands-on/search.html">Search Module</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tips/precompute.html">About Precomputation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../py-modindex.html">Module Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../search.html">Search Page</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/adf_core_python/adf_core_python.core.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>adf_core_python.core package</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core">Module contents</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="adf-core-python-core-package">
+<h1>adf_core_python.core package<a class="headerlink" href="#adf-core-python-core-package" title="Link to this heading">#</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="adf_core_python.core.agent.html">adf_core_python.core.agent package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.action.html">adf_core_python.core.agent.action package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.action.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.action.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.action.html#module-adf_core_python.core.agent.action.action">adf_core_python.core.agent.action.action module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.action.html#module-adf_core_python.core.agent.action">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.communication.html">adf_core_python.core.agent.communication package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.html#module-adf_core_python.core.agent.communication.message_manager">adf_core_python.core.agent.communication.message_manager module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.communication.html#module-adf_core_python.core.agent.communication">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.config.html">adf_core_python.core.agent.config package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.config.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.config.html#module-adf_core_python.core.agent.config.module_config">adf_core_python.core.agent.config.module_config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.config.html#module-adf_core_python.core.agent.config">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.develop.html">adf_core_python.core.agent.develop package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.develop.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.develop.html#module-adf_core_python.core.agent.develop.develop_data">adf_core_python.core.agent.develop.develop_data module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.develop.html#module-adf_core_python.core.agent.develop">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.info.html">adf_core_python.core.agent.info package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.info.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.info.html#module-adf_core_python.core.agent.info.agent_info">adf_core_python.core.agent.info.agent_info module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.info.html#module-adf_core_python.core.agent.info.scenario_info">adf_core_python.core.agent.info.scenario_info module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.info.html#module-adf_core_python.core.agent.info.world_info">adf_core_python.core.agent.info.world_info module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.info.html#module-adf_core_python.core.agent.info">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.module.html">adf_core_python.core.agent.module package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.module.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.module.html#module-adf_core_python.core.agent.module.module_manager">adf_core_python.core.agent.module.module_manager module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.module.html#module-adf_core_python.core.agent.module">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.platoon.html">adf_core_python.core.agent.platoon package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.platoon.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.platoon.html#module-adf_core_python.core.agent.platoon.platoon">adf_core_python.core.agent.platoon.platoon module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.platoon.html#module-adf_core_python.core.agent.platoon.platoon_ambulance">adf_core_python.core.agent.platoon.platoon_ambulance module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.platoon.html#module-adf_core_python.core.agent.platoon.platoon_fire">adf_core_python.core.agent.platoon.platoon_fire module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.platoon.html#module-adf_core_python.core.agent.platoon.platoon_police">adf_core_python.core.agent.platoon.platoon_police module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.platoon.html#module-adf_core_python.core.agent.platoon">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.precompute.html">adf_core_python.core.agent.precompute package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.precompute.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.precompute.html#module-adf_core_python.core.agent.precompute.precompute_data">adf_core_python.core.agent.precompute.precompute_data module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.precompute.html#module-adf_core_python.core.agent.precompute">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.html#module-adf_core_python.core.agent.agent">adf_core_python.core.agent.agent module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent"><code class="docutils literal notranslate"><span class="pre">Agent</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.get_entity_id"><code class="docutils literal notranslate"><span class="pre">Agent.get_entity_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.get_requested_entities"><code class="docutils literal notranslate"><span class="pre">Agent.get_requested_entities()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.handle_connect_error"><code class="docutils literal notranslate"><span class="pre">Agent.handle_connect_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.handle_connect_ok"><code class="docutils literal notranslate"><span class="pre">Agent.handle_connect_ok()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.handler_sense"><code class="docutils literal notranslate"><span class="pre">Agent.handler_sense()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.message_received"><code class="docutils literal notranslate"><span class="pre">Agent.message_received()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.post_connect"><code class="docutils literal notranslate"><span class="pre">Agent.post_connect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.send_acknowledge"><code class="docutils literal notranslate"><span class="pre">Agent.send_acknowledge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.send_clear"><code class="docutils literal notranslate"><span class="pre">Agent.send_clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.send_clear_area"><code class="docutils literal notranslate"><span class="pre">Agent.send_clear_area()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.send_load"><code class="docutils literal notranslate"><span class="pre">Agent.send_load()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.send_move"><code class="docutils literal notranslate"><span class="pre">Agent.send_move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.send_rescue"><code class="docutils literal notranslate"><span class="pre">Agent.send_rescue()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.send_rest"><code class="docutils literal notranslate"><span class="pre">Agent.send_rest()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.send_say"><code class="docutils literal notranslate"><span class="pre">Agent.send_say()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.send_speak"><code class="docutils literal notranslate"><span class="pre">Agent.send_speak()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.send_subscribe"><code class="docutils literal notranslate"><span class="pre">Agent.send_subscribe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.send_tell"><code class="docutils literal notranslate"><span class="pre">Agent.send_tell()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.send_unload"><code class="docutils literal notranslate"><span class="pre">Agent.send_unload()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.set_send_msg"><code class="docutils literal notranslate"><span class="pre">Agent.set_send_msg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.start_up"><code class="docutils literal notranslate"><span class="pre">Agent.start_up()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.think"><code class="docutils literal notranslate"><span class="pre">Agent.think()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent.update_step_info"><code class="docutils literal notranslate"><span class="pre">Agent.update_step_info()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.agent.html#module-adf_core_python.core.agent">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adf_core_python.core.component.html">adf_core_python.core.component package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.component.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.component.action.html">adf_core_python.core.component.action package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.action.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.action.html#module-adf_core_python.core.component.action.extend_action">adf_core_python.core.component.action.extend_action module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.action.html#module-adf_core_python.core.component.action">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.component.communication.html">adf_core_python.core.component.communication package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.communication.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.communication.html#module-adf_core_python.core.component.communication.channel_subscriber">adf_core_python.core.component.communication.channel_subscriber module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.communication.html#module-adf_core_python.core.component.communication.communication_message">adf_core_python.core.component.communication.communication_message module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.communication.html#module-adf_core_python.core.component.communication.communication_module">adf_core_python.core.component.communication.communication_module module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.communication.html#module-adf_core_python.core.component.communication.message_coordinator">adf_core_python.core.component.communication.message_coordinator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.communication.html#module-adf_core_python.core.component.communication">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.component.module.html">adf_core_python.core.component.module package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.module.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.module.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.module.html#module-adf_core_python.core.component.module.abstract_module">adf_core_python.core.component.module.abstract_module module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.module.html#module-adf_core_python.core.component.module">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.component.tactics.html">adf_core_python.core.component.tactics package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.tactics.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.tactics.html#module-adf_core_python.core.component.tactics.tactics_agent">adf_core_python.core.component.tactics.tactics_agent module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.tactics.html#module-adf_core_python.core.component.tactics.tactics_ambulance_center">adf_core_python.core.component.tactics.tactics_ambulance_center module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.tactics.html#module-adf_core_python.core.component.tactics.tactics_ambulance_team">adf_core_python.core.component.tactics.tactics_ambulance_team module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.tactics.html#module-adf_core_python.core.component.tactics.tactics_center">adf_core_python.core.component.tactics.tactics_center module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.tactics.html#module-adf_core_python.core.component.tactics.tactics_fire_brigade">adf_core_python.core.component.tactics.tactics_fire_brigade module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.tactics.html#module-adf_core_python.core.component.tactics.tactics_fire_station">adf_core_python.core.component.tactics.tactics_fire_station module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.tactics.html#module-adf_core_python.core.component.tactics.tactics_police_force">adf_core_python.core.component.tactics.tactics_police_force module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.tactics.html#module-adf_core_python.core.component.tactics.tactics_police_office">adf_core_python.core.component.tactics.tactics_police_office module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.tactics.html#module-adf_core_python.core.component.tactics">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.component.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.component.html#module-adf_core_python.core.component.abstract_loader">adf_core_python.core.component.abstract_loader module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.component.html#adf_core_python.core.component.abstract_loader.AbstractLoader"><code class="docutils literal notranslate"><span class="pre">AbstractLoader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.html#adf_core_python.core.component.abstract_loader.AbstractLoader.get_tactics_ambulance_center"><code class="docutils literal notranslate"><span class="pre">AbstractLoader.get_tactics_ambulance_center()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.html#adf_core_python.core.component.abstract_loader.AbstractLoader.get_tactics_ambulance_team"><code class="docutils literal notranslate"><span class="pre">AbstractLoader.get_tactics_ambulance_team()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.html#adf_core_python.core.component.abstract_loader.AbstractLoader.get_tactics_fire_brigade"><code class="docutils literal notranslate"><span class="pre">AbstractLoader.get_tactics_fire_brigade()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.html#adf_core_python.core.component.abstract_loader.AbstractLoader.get_tactics_fire_station"><code class="docutils literal notranslate"><span class="pre">AbstractLoader.get_tactics_fire_station()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.html#adf_core_python.core.component.abstract_loader.AbstractLoader.get_tactics_police_force"><code class="docutils literal notranslate"><span class="pre">AbstractLoader.get_tactics_police_force()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.html#adf_core_python.core.component.abstract_loader.AbstractLoader.get_tactics_police_office"><code class="docutils literal notranslate"><span class="pre">AbstractLoader.get_tactics_police_office()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.component.html#adf_core_python.core.component.abstract_loader.AbstractLoader.get_team_name"><code class="docutils literal notranslate"><span class="pre">AbstractLoader.get_team_name()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.component.html#module-adf_core_python.core.component">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adf_core_python.core.config.html">adf_core_python.core.config package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.config.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.config.html#module-adf_core_python.core.config.config">adf_core_python.core.config.config module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.config.html#adf_core_python.core.config.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.config.html#adf_core_python.core.config.config.Config.flatten"><code class="docutils literal notranslate"><span class="pre">Config.flatten()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.config.html#adf_core_python.core.config.config.Config.get_value"><code class="docutils literal notranslate"><span class="pre">Config.get_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.config.html#adf_core_python.core.config.config.Config.read_from_yaml"><code class="docutils literal notranslate"><span class="pre">Config.read_from_yaml()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.config.html#adf_core_python.core.config.config.Config.set_value"><code class="docutils literal notranslate"><span class="pre">Config.set_value()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.config.html#module-adf_core_python.core.config">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adf_core_python.core.gateway.html">adf_core_python.core.gateway package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.gateway.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.gateway.component.html">adf_core_python.core.gateway.component package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.component.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.component.html#module-adf_core_python.core.gateway.component">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.gateway.message.html">adf_core_python.core.gateway.message package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.message.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.message.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.message.html#module-adf_core_python.core.gateway.message.am_agent">adf_core_python.core.gateway.message.am_agent module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.message.html#module-adf_core_python.core.gateway.message.am_exec">adf_core_python.core.gateway.message.am_exec module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.message.html#module-adf_core_python.core.gateway.message.am_module">adf_core_python.core.gateway.message.am_module module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.message.html#module-adf_core_python.core.gateway.message.am_update">adf_core_python.core.gateway.message.am_update module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.message.html#module-adf_core_python.core.gateway.message.ma_exec_response">adf_core_python.core.gateway.message.ma_exec_response module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.message.html#module-adf_core_python.core.gateway.message.ma_module_response">adf_core_python.core.gateway.message.ma_module_response module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.message.html#module-adf_core_python.core.gateway.message.moduleMessageFactory">adf_core_python.core.gateway.message.moduleMessageFactory module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.message.html#module-adf_core_python.core.gateway.message">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.gateway.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.gateway.html#module-adf_core_python.core.gateway.gateway_agent">adf_core_python.core.gateway.gateway_agent module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_agent.GatewayAgent"><code class="docutils literal notranslate"><span class="pre">GatewayAgent</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_agent.GatewayAgent.add_gateway_module"><code class="docutils literal notranslate"><span class="pre">GatewayAgent.add_gateway_module()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_agent.GatewayAgent.get_module_count"><code class="docutils literal notranslate"><span class="pre">GatewayAgent.get_module_count()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_agent.GatewayAgent.initialize"><code class="docutils literal notranslate"><span class="pre">GatewayAgent.initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_agent.GatewayAgent.is_initialized"><code class="docutils literal notranslate"><span class="pre">GatewayAgent.is_initialized()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_agent.GatewayAgent.message_received"><code class="docutils literal notranslate"><span class="pre">GatewayAgent.message_received()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_agent.GatewayAgent.set_initialize_data"><code class="docutils literal notranslate"><span class="pre">GatewayAgent.set_initialize_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_agent.GatewayAgent.set_send_msg"><code class="docutils literal notranslate"><span class="pre">GatewayAgent.set_send_msg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_agent.GatewayAgent.update"><code class="docutils literal notranslate"><span class="pre">GatewayAgent.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.gateway.html#module-adf_core_python.core.gateway.gateway_launcher">adf_core_python.core.gateway.gateway_launcher module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_launcher.GatewayLauncher"><code class="docutils literal notranslate"><span class="pre">GatewayLauncher</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_launcher.GatewayLauncher.connect"><code class="docutils literal notranslate"><span class="pre">GatewayLauncher.connect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_launcher.GatewayLauncher.make_connection"><code class="docutils literal notranslate"><span class="pre">GatewayLauncher.make_connection()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.gateway.html#module-adf_core_python.core.gateway.gateway_module">adf_core_python.core.gateway.gateway_module module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_module.GatewayModule"><code class="docutils literal notranslate"><span class="pre">GatewayModule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_module.GatewayModule.execute"><code class="docutils literal notranslate"><span class="pre">GatewayModule.execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_module.GatewayModule.get_execute_response"><code class="docutils literal notranslate"><span class="pre">GatewayModule.get_execute_response()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_module.GatewayModule.get_gateway_class_name"><code class="docutils literal notranslate"><span class="pre">GatewayModule.get_gateway_class_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_module.GatewayModule.get_is_executed"><code class="docutils literal notranslate"><span class="pre">GatewayModule.get_is_executed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_module.GatewayModule.get_is_initialized"><code class="docutils literal notranslate"><span class="pre">GatewayModule.get_is_initialized()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_module.GatewayModule.get_module_id"><code class="docutils literal notranslate"><span class="pre">GatewayModule.get_module_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_module.GatewayModule.initialize"><code class="docutils literal notranslate"><span class="pre">GatewayModule.initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_module.GatewayModule.set_execute_response"><code class="docutils literal notranslate"><span class="pre">GatewayModule.set_execute_response()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_module.GatewayModule.set_gateway_class_name"><code class="docutils literal notranslate"><span class="pre">GatewayModule.set_gateway_class_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_module.GatewayModule.set_is_executed"><code class="docutils literal notranslate"><span class="pre">GatewayModule.set_is_executed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.gateway_module.GatewayModule.set_is_initialized"><code class="docutils literal notranslate"><span class="pre">GatewayModule.set_is_initialized()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.gateway.html#module-adf_core_python.core.gateway.module_dict">adf_core_python.core.gateway.module_dict module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.gateway.html#adf_core_python.core.gateway.module_dict.ModuleDict"><code class="docutils literal notranslate"><span class="pre">ModuleDict</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.gateway.html#module-adf_core_python.core.gateway">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adf_core_python.core.launcher.html">adf_core_python.core.launcher package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.launcher.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.launcher.connect.html">adf_core_python.core.launcher.connect package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.component_launcher">adf_core_python.core.launcher.connect.component_launcher module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.connection">adf_core_python.core.launcher.connect.connection module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.connector">adf_core_python.core.launcher.connect.connector module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.connector_ambulance_center">adf_core_python.core.launcher.connect.connector_ambulance_center module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.connector_ambulance_team">adf_core_python.core.launcher.connect.connector_ambulance_team module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.connector_fire_brigade">adf_core_python.core.launcher.connect.connector_fire_brigade module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.connector_fire_station">adf_core_python.core.launcher.connect.connector_fire_station module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.connector_police_force">adf_core_python.core.launcher.connect.connector_police_force module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect.connector_police_office">adf_core_python.core.launcher.connect.connector_police_office module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.connect.html#module-adf_core_python.core.launcher.connect">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.launcher.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.launcher.html#module-adf_core_python.core.launcher.agent_launcher">adf_core_python.core.launcher.agent_launcher module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.agent_launcher.AgentLauncher"><code class="docutils literal notranslate"><span class="pre">AgentLauncher</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.agent_launcher.AgentLauncher.check_kernel_connection"><code class="docutils literal notranslate"><span class="pre">AgentLauncher.check_kernel_connection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.agent_launcher.AgentLauncher.init_connector"><code class="docutils literal notranslate"><span class="pre">AgentLauncher.init_connector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.agent_launcher.AgentLauncher.launch"><code class="docutils literal notranslate"><span class="pre">AgentLauncher.launch()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.launcher.html#module-adf_core_python.core.launcher.config_key">adf_core_python.core.launcher.config_key module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey"><code class="docutils literal notranslate"><span class="pre">ConfigKey</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_AMBULANCE_CENTRE_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_AMBULANCE_CENTRE_COUNT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_AMBULANCE_TEAM_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_AMBULANCE_TEAM_COUNT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEBUG_FLAG"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_DEBUG_FLAG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEVELOP_DATA"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_DEVELOP_DATA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEVELOP_DATA_FILE_NAME"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_DEVELOP_DATA_FILE_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_DEVELOP_FLAG"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_DEVELOP_FLAG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_FIRE_BRIGADE_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_FIRE_BRIGADE_COUNT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_FIRE_STATION_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_FIRE_STATION_COUNT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_GATEWAY_FLAG"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_GATEWAY_FLAG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_GATEWAY_HOST"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_GATEWAY_HOST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_GATEWAY_PORT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_GATEWAY_PORT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_KERNEL_HOST"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_KERNEL_HOST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_KERNEL_PORT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_KERNEL_PORT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_KERNEL_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_KERNEL_TIMEOUT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_LOADER_CLASS"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_LOADER_CLASS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_MODULE_CONFIG_FILE_NAME"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_MODULE_CONFIG_FILE_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_MODULE_DATA"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_MODULE_DATA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_POLICE_FORCE_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_POLICE_FORCE_COUNT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_POLICE_OFFICE_COUNT"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_POLICE_OFFICE_COUNT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_PRECOMPUTE"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_PRECOMPUTE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_PRECOMPUTE_DATA_DIR"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_PRECOMPUTE_DATA_DIR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="adf_core_python.core.launcher.html#adf_core_python.core.launcher.config_key.ConfigKey.KEY_TEAM_NAME"><code class="docutils literal notranslate"><span class="pre">ConfigKey.KEY_TEAM_NAME</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.launcher.html#module-adf_core_python.core.launcher">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adf_core_python.core.logger.html">adf_core_python.core.logger package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.logger.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.logger.html#module-adf_core_python.core.logger.logger">adf_core_python.core.logger.logger module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.logger.html#adf_core_python.core.logger.logger.configure_logger"><code class="docutils literal notranslate"><span class="pre">configure_logger()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.logger.html#adf_core_python.core.logger.logger.get_agent_logger"><code class="docutils literal notranslate"><span class="pre">get_agent_logger()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="adf_core_python.core.logger.html#adf_core_python.core.logger.logger.get_logger"><code class="docutils literal notranslate"><span class="pre">get_logger()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="adf_core_python.core.logger.html#module-adf_core_python.core.logger">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-adf_core_python.core">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-adf_core_python.core" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core">Module contents</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Haruki Uehara, Yuki Shimada
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Haruki Uehara, Yuki Shimada.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

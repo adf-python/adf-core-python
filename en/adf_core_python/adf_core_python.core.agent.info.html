@@ -1,0 +1,1286 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>adf_core_python.core.agent.info package &#8212; adf-core-python 0.2.2 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=d3f42505"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'adf_core_python/adf_core_python.core.agent.info';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">adf-core-python 0.2.2 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><style>
+  .rst-versions {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  .rst-current-version {
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .rst-other-versions {
+    display: none; /* 初期状態では非表示 */
+  }
+
+  .rst-other-versions dl {
+    margin: 0;
+    padding: 0;
+  }
+
+  .rst-other-versions dt {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .rst-other-versions dd {
+    margin: 0;
+    padding: 0 0 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .rst-other-versions a {
+    text-decoration: none;
+    color: #27ae60;
+    margin-right: 10px;
+  }
+
+  .rst-other-versions a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div
+  class="rst-versions"
+  data-toggle="rst-versions"
+  role="note"
+  aria-label="versions"
+>
+  <span
+    class="rst-current-version"
+    data-toggle="rst-current-version"
+    onclick="toggleVersions()"
+  >
+    Language: en
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    
+    <dl>
+      <dt>Languages</dt>
+      <dd>
+        
+        <a href="https://adf-python.github.io/adf-core-python//index.html">en</a>
+        
+        <a href="https://adf-python.github.io/adf-core-python//ja/index.html">ja</a>
+        
+      </dd>
+    </dl>
+    
+    <!-- 
+      <br>
+      </dl> -->
+  </div>
+</div>
+
+<script>
+  function toggleVersions() {
+    var versionsDiv = document.querySelector(".rst-other-versions");
+    if (
+      versionsDiv.style.display === "none" ||
+      versionsDiv.style.display === ""
+    ) {
+      versionsDiv.style.display = "block";
+    } else {
+      versionsDiv.style.display = "none";
+    }
+  }
+</script></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../install/environment/environment.html">Environment Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install/install/install.html">Installation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Quick Start</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart/quickstart.html">Quick Start</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">Environment Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">Agent Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">About Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">About Modules</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-On</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hands-on/clustering.html">Clustering Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hands-on/search.html">Search Module</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tips/precompute.html">About Precomputation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../py-modindex.html">Module Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../search.html">Search Page</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/adf_core_python/adf_core_python.core.agent.info.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>adf_core_python.core.agent.info package</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core.agent.info.agent_info">adf_core_python.core.agent.info.agent_info module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo"><code class="docutils literal notranslate"><span class="pre">AgentInfo</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_change_set"><code class="docutils literal notranslate"><span class="pre">AgentInfo.get_change_set()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_entity_id"><code class="docutils literal notranslate"><span class="pre">AgentInfo.get_entity_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_executed_action"><code class="docutils literal notranslate"><span class="pre">AgentInfo.get_executed_action()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_heard_commands"><code class="docutils literal notranslate"><span class="pre">AgentInfo.get_heard_commands()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_myself"><code class="docutils literal notranslate"><span class="pre">AgentInfo.get_myself()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_position_entity_id"><code class="docutils literal notranslate"><span class="pre">AgentInfo.get_position_entity_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_think_time"><code class="docutils literal notranslate"><span class="pre">AgentInfo.get_think_time()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_time"><code class="docutils literal notranslate"><span class="pre">AgentInfo.get_time()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.record_think_start_time"><code class="docutils literal notranslate"><span class="pre">AgentInfo.record_think_start_time()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.set_change_set"><code class="docutils literal notranslate"><span class="pre">AgentInfo.set_change_set()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.set_executed_action"><code class="docutils literal notranslate"><span class="pre">AgentInfo.set_executed_action()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.set_heard_commands"><code class="docutils literal notranslate"><span class="pre">AgentInfo.set_heard_commands()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.set_time"><code class="docutils literal notranslate"><span class="pre">AgentInfo.set_time()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.some_one_on_board"><code class="docutils literal notranslate"><span class="pre">AgentInfo.some_one_on_board()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core.agent.info.scenario_info">adf_core_python.core.agent.info.scenario_info module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.Mode"><code class="docutils literal notranslate"><span class="pre">Mode</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.Mode.NON_PRECOMPUTE"><code class="docutils literal notranslate"><span class="pre">Mode.NON_PRECOMPUTE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.Mode.PRECOMPUTATION"><code class="docutils literal notranslate"><span class="pre">Mode.PRECOMPUTATION</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.Mode.PRECOMPUTED"><code class="docutils literal notranslate"><span class="pre">Mode.PRECOMPUTED</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfo"><code class="docutils literal notranslate"><span class="pre">ScenarioInfo</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_config"><code class="docutils literal notranslate"><span class="pre">ScenarioInfo.get_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_mode"><code class="docutils literal notranslate"><span class="pre">ScenarioInfo.get_mode()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_value"><code class="docutils literal notranslate"><span class="pre">ScenarioInfo.get_value()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfo.set_config"><code class="docutils literal notranslate"><span class="pre">ScenarioInfo.set_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.CLEAR_REPAIR_DISTANCE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.CLEAR_REPAIR_DISTANCE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.CLEAR_REPAIR_RAD"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.CLEAR_REPAIR_RAD</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.CLEAR_REPAIR_RATE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.CLEAR_REPAIR_RATE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.COMMUNICATION_CHANNELS_COUNT"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.COMMUNICATION_CHANNELS_COUNT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.COMMUNICATION_CHANNELS_MAX_OFFICE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.COMMUNICATION_CHANNELS_MAX_OFFICE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.COMMUNICATION_CHANNELS_MAX_PLATOON"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.COMMUNICATION_CHANNELS_MAX_PLATOON</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_EXTINGUISH_MAX_DISTANCE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.FIRE_EXTINGUISH_MAX_DISTANCE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_EXTINGUISH_MAX_SUM"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.FIRE_EXTINGUISH_MAX_SUM</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_TANK_MAXIMUM"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.FIRE_TANK_MAXIMUM</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_TANK_REFILL_HYDRANT_RATE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.FIRE_TANK_REFILL_HYDRANT_RATE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_TANK_REFILL_RATE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.FIRE_TANK_REFILL_RATE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_AGENTS_IGNOREUNTIL"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.KERNEL_AGENTS_IGNOREUNTIL</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_AGENTS_THINK_TIME"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.KERNEL_AGENTS_THINK_TIME</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_COMMUNICATION_MODEL"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.KERNEL_COMMUNICATION_MODEL</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_HOST"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.KERNEL_HOST</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_PERCEPTION"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.KERNEL_PERCEPTION</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_STARTUP_CONNECT_TIME"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.KERNEL_STARTUP_CONNECT_TIME</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_TIMESTEPS"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.KERNEL_TIMESTEPS</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.PERCEPTION_LOS_MAX_DISTANCE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.PERCEPTION_LOS_MAX_DISTANCE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.PERCEPTION_LOS_PRECISION_DAMAGE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.PERCEPTION_LOS_PRECISION_DAMAGE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.PERCEPTION_LOS_PRECISION_HP"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.PERCEPTION_LOS_PRECISION_HP</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_AC"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.SCENARIO_AGENTS_AC</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_AT"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.SCENARIO_AGENTS_AT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_FB"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.SCENARIO_AGENTS_FB</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_FS"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.SCENARIO_AGENTS_FS</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_PF"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.SCENARIO_AGENTS_PF</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_PO"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.SCENARIO_AGENTS_PO</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.VOICE_MESSAGES_SIZE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.VOICE_MESSAGES_SIZE</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core.agent.info.world_info">adf_core_python.core.agent.info.world_info module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo"><code class="docutils literal notranslate"><span class="pre">WorldInfo</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.add_entity"><code class="docutils literal notranslate"><span class="pre">WorldInfo.add_entity()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_blockades"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_blockades()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_change_set"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_change_set()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_distance"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_distance()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_types"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_entities_of_types()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entity"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_entity()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_types"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_entity_ids_of_types()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_entity_position()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_world_model"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_world_model()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.set_change_set"><code class="docutils literal notranslate"><span class="pre">WorldInfo.set_change_set()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core.agent.info">Module contents</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="adf-core-python-core-agent-info-package">
+<h1>adf_core_python.core.agent.info package<a class="headerlink" href="#adf-core-python-core-agent-info-package" title="Link to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-adf_core_python.core.agent.info.agent_info">
+<span id="adf-core-python-core-agent-info-agent-info-module"></span><h2>adf_core_python.core.agent.info.agent_info module<a class="headerlink" href="#module-adf_core_python.core.agent.info.agent_info" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.agent_info.AgentInfo">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adf_core_python.core.agent.info.agent_info.</span></span><span class="sig-name descname"><span class="pre">AgentInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="adf_core_python.core.agent.html#adf_core_python.core.agent.agent.Agent" title="adf_core_python.core.agent.agent.Agent"><span class="pre">Agent</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">world_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">WorldModel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adf_core_python.core.agent.info.agent_info.AgentInfo" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.agent_info.AgentInfo.get_change_set">
+<span class="sig-name descname"><span class="pre">get_change_set</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ChangeSet</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_change_set" title="Link to this definition">#</a></dt>
+<dd><p>Get the change set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Change set</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>ChangeSet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.agent_info.AgentInfo.get_entity_id">
+<span class="sig-name descname"><span class="pre">get_entity_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">EntityID</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_entity_id" title="Link to this definition">#</a></dt>
+<dd><p>Get the entity ID of the agent</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Entity ID of the agent</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>EntityID</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.agent_info.AgentInfo.get_executed_action">
+<span class="sig-name descname"><span class="pre">get_executed_action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="adf_core_python.core.agent.action.html#adf_core_python.core.agent.action.action.Action" title="adf_core_python.core.agent.action.action.Action"><span class="pre">Action</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_executed_action" title="Link to this definition">#</a></dt>
+<dd><p>Get the executed action at the given time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>time</strong> (<em>int</em>) – Time</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.agent_info.AgentInfo.get_heard_commands">
+<span class="sig-name descname"><span class="pre">get_heard_commands</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Command</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_heard_commands" title="Link to this definition">#</a></dt>
+<dd><p>Get the heard commands</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Heard commands</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[Command]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.agent_info.AgentInfo.get_myself">
+<span class="sig-name descname"><span class="pre">get_myself</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Entity</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_myself" title="Link to this definition">#</a></dt>
+<dd><p>Get the entity of the agent</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Entity of the agent</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Entity</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.agent_info.AgentInfo.get_position_entity_id">
+<span class="sig-name descname"><span class="pre">get_position_entity_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">EntityID</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_position_entity_id" title="Link to this definition">#</a></dt>
+<dd><p>Get the position entity ID of the agent</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Position entity ID of the agent</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>EntityID</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.agent_info.AgentInfo.get_think_time">
+<span class="sig-name descname"><span class="pre">get_think_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_think_time" title="Link to this definition">#</a></dt>
+<dd><p>Get the time taken for thinking</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Time taken for thinking</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.agent_info.AgentInfo.get_time">
+<span class="sig-name descname"><span class="pre">get_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_time" title="Link to this definition">#</a></dt>
+<dd><p>Get the current time of the agent</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current time</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.agent_info.AgentInfo.record_think_start_time">
+<span class="sig-name descname"><span class="pre">record_think_start_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.record_think_start_time" title="Link to this definition">#</a></dt>
+<dd><p>Record the start time of thinking</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.agent_info.AgentInfo.set_change_set">
+<span class="sig-name descname"><span class="pre">set_change_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">change_set</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ChangeSet</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.set_change_set" title="Link to this definition">#</a></dt>
+<dd><p>Set the change set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>change_set</strong> (<em>ChangeSet</em>) – Change set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.agent_info.AgentInfo.set_executed_action">
+<span class="sig-name descname"><span class="pre">set_executed_action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="adf_core_python.core.agent.action.html#adf_core_python.core.agent.action.action.Action" title="adf_core_python.core.agent.action.action.Action"><span class="pre">Action</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.set_executed_action" title="Link to this definition">#</a></dt>
+<dd><p>Set the executed action at the given time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> (<em>int</em>) – Time</p></li>
+<li><p><strong>action</strong> (<a class="reference internal" href="adf_core_python.core.agent.action.html#adf_core_python.core.agent.action.action.Action" title="adf_core_python.core.agent.action.action.Action"><em>Action</em></a>) – Executed action</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.agent_info.AgentInfo.set_heard_commands">
+<span class="sig-name descname"><span class="pre">set_heard_commands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">heard_commands</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Command</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.set_heard_commands" title="Link to this definition">#</a></dt>
+<dd><p>Set the heard commands</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>heard_commands</strong> (<em>list</em><em>[</em><em>Command</em><em>]</em>) – Heard commands</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.agent_info.AgentInfo.set_time">
+<span class="sig-name descname"><span class="pre">set_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.set_time" title="Link to this definition">#</a></dt>
+<dd><p>Set the current time of the agent</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>time</strong> (<em>int</em>) – Current time</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.agent_info.AgentInfo.some_one_on_board">
+<span class="sig-name descname"><span class="pre">some_one_on_board</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Human</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.some_one_on_board" title="Link to this definition">#</a></dt>
+<dd><p>Get the human if someone is on board</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Human if someone is on board, None otherwise</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Human | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-adf_core_python.core.agent.info.scenario_info">
+<span id="adf-core-python-core-agent-info-scenario-info-module"></span><h2>adf_core_python.core.agent.info.scenario_info module<a class="headerlink" href="#module-adf_core_python.core.agent.info.scenario_info" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.Mode">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adf_core_python.core.agent.info.scenario_info.</span></span><span class="sig-name descname"><span class="pre">Mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.Mode" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.Mode.NON_PRECOMPUTE">
+<span class="sig-name descname"><span class="pre">NON_PRECOMPUTE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.Mode.NON_PRECOMPUTE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.Mode.PRECOMPUTATION">
+<span class="sig-name descname"><span class="pre">PRECOMPUTATION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.Mode.PRECOMPUTATION" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.Mode.PRECOMPUTED">
+<span class="sig-name descname"><span class="pre">PRECOMPUTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.Mode.PRECOMPUTED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfo">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adf_core_python.core.agent.info.scenario_info.</span></span><span class="sig-name descname"><span class="pre">ScenarioInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="adf_core_python.core.config.html#adf_core_python.core.config.config.Config" title="adf_core_python.core.config.config.Config"><span class="pre">Config</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#adf_core_python.core.agent.info.scenario_info.Mode" title="adf_core_python.core.agent.info.scenario_info.Mode"><span class="pre">Mode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfo" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="adf_core_python.core.config.html#adf_core_python.core.config.config.Config" title="adf_core_python.core.config.config.Config"><span class="pre">Config</span></a></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_config" title="Link to this definition">#</a></dt>
+<dd><p>Get the configuration</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Configuration</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="adf_core_python.core.config.html#adf_core_python.core.config.config.Config" title="adf_core_python.core.config.config.Config">Config</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_mode">
+<span class="sig-name descname"><span class="pre">get_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#adf_core_python.core.agent.info.scenario_info.Mode" title="adf_core_python.core.agent.info.scenario_info.Mode"><span class="pre">Mode</span></a></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_mode" title="Link to this definition">#</a></dt>
+<dd><p>Get the mode of the scenario</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Mode of the scenario</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#adf_core_python.core.agent.info.scenario_info.Mode" title="adf_core_python.core.agent.info.scenario_info.Mode">Mode</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_value">
+<span class="sig-name descname"><span class="pre">get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_value" title="Link to this definition">#</a></dt>
+<dd><p>Get the value of the configuration</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – Key of the configuration</p></li>
+<li><p><strong>default</strong> (<em>Any</em>) – Default value of the configuration</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Value of the configuration</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfo.set_config">
+<span class="sig-name descname"><span class="pre">set_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="adf_core_python.core.config.html#adf_core_python.core.config.config.Config" title="adf_core_python.core.config.config.Config"><span class="pre">Config</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfo.set_config" title="Link to this definition">#</a></dt>
+<dd><p>Set the configuration</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="adf_core_python.core.config.html#adf_core_python.core.config.config.Config" title="adf_core_python.core.config.config.Config"><em>Config</em></a>) – Configuration</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adf_core_python.core.agent.info.scenario_info.</span></span><span class="sig-name descname"><span class="pre">ScenarioInfoKeys</span></span><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.CLEAR_REPAIR_DISTANCE">
+<span class="sig-name descname"><span class="pre">CLEAR_REPAIR_DISTANCE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'clear.repair.distance'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.CLEAR_REPAIR_DISTANCE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.CLEAR_REPAIR_RAD">
+<span class="sig-name descname"><span class="pre">CLEAR_REPAIR_RAD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'clear.repair.rad'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.CLEAR_REPAIR_RAD" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.CLEAR_REPAIR_RATE">
+<span class="sig-name descname"><span class="pre">CLEAR_REPAIR_RATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'clear.repair.rate'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.CLEAR_REPAIR_RATE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.COMMUNICATION_CHANNELS_COUNT">
+<span class="sig-name descname"><span class="pre">COMMUNICATION_CHANNELS_COUNT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'comms.channels.count'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.COMMUNICATION_CHANNELS_COUNT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.COMMUNICATION_CHANNELS_MAX_OFFICE">
+<span class="sig-name descname"><span class="pre">COMMUNICATION_CHANNELS_MAX_OFFICE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'comms.channels.max.centre'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.COMMUNICATION_CHANNELS_MAX_OFFICE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.COMMUNICATION_CHANNELS_MAX_PLATOON">
+<span class="sig-name descname"><span class="pre">COMMUNICATION_CHANNELS_MAX_PLATOON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'comms.channels.max.platoon'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.COMMUNICATION_CHANNELS_MAX_PLATOON" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_EXTINGUISH_MAX_DISTANCE">
+<span class="sig-name descname"><span class="pre">FIRE_EXTINGUISH_MAX_DISTANCE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fire.extinguish.max-distance'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_EXTINGUISH_MAX_DISTANCE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_EXTINGUISH_MAX_SUM">
+<span class="sig-name descname"><span class="pre">FIRE_EXTINGUISH_MAX_SUM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fire.extinguish.max-sum'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_EXTINGUISH_MAX_SUM" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_TANK_MAXIMUM">
+<span class="sig-name descname"><span class="pre">FIRE_TANK_MAXIMUM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fire.tank.maximum'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_TANK_MAXIMUM" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_TANK_REFILL_HYDRANT_RATE">
+<span class="sig-name descname"><span class="pre">FIRE_TANK_REFILL_HYDRANT_RATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fire.tank.refill_hydrant_rate'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_TANK_REFILL_HYDRANT_RATE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_TANK_REFILL_RATE">
+<span class="sig-name descname"><span class="pre">FIRE_TANK_REFILL_RATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fire.tank.refill_rate'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_TANK_REFILL_RATE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_AGENTS_IGNOREUNTIL">
+<span class="sig-name descname"><span class="pre">KERNEL_AGENTS_IGNOREUNTIL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'kernel.agents.ignoreuntil'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_AGENTS_IGNOREUNTIL" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_AGENTS_THINK_TIME">
+<span class="sig-name descname"><span class="pre">KERNEL_AGENTS_THINK_TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'kernel.agents.think-time'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_AGENTS_THINK_TIME" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_COMMUNICATION_MODEL">
+<span class="sig-name descname"><span class="pre">KERNEL_COMMUNICATION_MODEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'kernel.communication-model'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_COMMUNICATION_MODEL" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_HOST">
+<span class="sig-name descname"><span class="pre">KERNEL_HOST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'kernel.host'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_HOST" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_PERCEPTION">
+<span class="sig-name descname"><span class="pre">KERNEL_PERCEPTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'kernel.perception'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_PERCEPTION" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_STARTUP_CONNECT_TIME">
+<span class="sig-name descname"><span class="pre">KERNEL_STARTUP_CONNECT_TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'kernel.startup.connect-time'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_STARTUP_CONNECT_TIME" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_TIMESTEPS">
+<span class="sig-name descname"><span class="pre">KERNEL_TIMESTEPS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'kernel.timesteps'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_TIMESTEPS" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.PERCEPTION_LOS_MAX_DISTANCE">
+<span class="sig-name descname"><span class="pre">PERCEPTION_LOS_MAX_DISTANCE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'perception.los.max-distance'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.PERCEPTION_LOS_MAX_DISTANCE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.PERCEPTION_LOS_PRECISION_DAMAGE">
+<span class="sig-name descname"><span class="pre">PERCEPTION_LOS_PRECISION_DAMAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'perception.los.precision.damage'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.PERCEPTION_LOS_PRECISION_DAMAGE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.PERCEPTION_LOS_PRECISION_HP">
+<span class="sig-name descname"><span class="pre">PERCEPTION_LOS_PRECISION_HP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'perception.los.precision.hp'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.PERCEPTION_LOS_PRECISION_HP" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_AC">
+<span class="sig-name descname"><span class="pre">SCENARIO_AGENTS_AC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'scenario.agents.ac'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_AC" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_AT">
+<span class="sig-name descname"><span class="pre">SCENARIO_AGENTS_AT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'scenario.agents.at'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_AT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_FB">
+<span class="sig-name descname"><span class="pre">SCENARIO_AGENTS_FB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'scenario.agents.fb'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_FB" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_FS">
+<span class="sig-name descname"><span class="pre">SCENARIO_AGENTS_FS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'scenario.agents.fs'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_FS" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_PF">
+<span class="sig-name descname"><span class="pre">SCENARIO_AGENTS_PF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'scenario.agents.pf'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_PF" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_PO">
+<span class="sig-name descname"><span class="pre">SCENARIO_AGENTS_PO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'scenario.agents.po'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_PO" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.VOICE_MESSAGES_SIZE">
+<span class="sig-name descname"><span class="pre">VOICE_MESSAGES_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'comms.channels.0.messages.size'</span></em><a class="headerlink" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.VOICE_MESSAGES_SIZE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-adf_core_python.core.agent.info.world_info">
+<span id="adf-core-python-core-agent-info-world-info-module"></span><h2>adf_core_python.core.agent.info.world_info module<a class="headerlink" href="#module-adf_core_python.core.agent.info.world_info" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.world_info.WorldInfo">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adf_core_python.core.agent.info.world_info.</span></span><span class="sig-name descname"><span class="pre">WorldInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">world_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">WorldModel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adf_core_python.core.agent.info.world_info.WorldInfo" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.world_info.WorldInfo.add_entity">
+<span class="sig-name descname"><span class="pre">add_entity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Entity</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.world_info.WorldInfo.add_entity" title="Link to this definition">#</a></dt>
+<dd><p>Add the entity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entity</strong> (<em>Entity</em>) – Entity</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.world_info.WorldInfo.get_blockades">
+<span class="sig-name descname"><span class="pre">get_blockades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Area</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">Blockade</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_blockades" title="Link to this definition">#</a></dt>
+<dd><p>Get the blockades in the area</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Blockade</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>ChangeSet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.world_info.WorldInfo.get_change_set">
+<span class="sig-name descname"><span class="pre">get_change_set</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ChangeSet</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_change_set" title="Link to this definition">#</a></dt>
+<dd><p>Get the change set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Change set</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>ChangeSet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.world_info.WorldInfo.get_distance">
+<span class="sig-name descname"><span class="pre">get_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity_id1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EntityID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entity_id2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EntityID</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_distance" title="Link to this definition">#</a></dt>
+<dd><p>Get the distance between two entities</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>entity_id1</strong> (<em>EntityID</em>) – Entity ID 1</p></li>
+<li><p><strong>entity_id2</strong> (<em>EntityID</em>) – Entity ID 2</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Distance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If one or both entities are invalid or the location is invalid</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_types">
+<span class="sig-name descname"><span class="pre">get_entities_of_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">type</span><span class="p"><span class="pre">[</span></span><span class="pre">Entity</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Entity</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_types" title="Link to this definition">#</a></dt>
+<dd><p>Get the entities of the specified types</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entity_types</strong> (<em>list</em><em>[</em><em>type</em><em>[</em><em>Entity</em><em>]</em><em>]</em>) – List of entity types</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Entities</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[Entity]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.world_info.WorldInfo.get_entity">
+<span class="sig-name descname"><span class="pre">get_entity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EntityID</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Entity</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entity" title="Link to this definition">#</a></dt>
+<dd><p>Get the entity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entity_id</strong> (<em>EntityID</em>) – Entity ID</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Entity</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[Entity]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_types">
+<span class="sig-name descname"><span class="pre">get_entity_ids_of_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">type</span><span class="p"><span class="pre">[</span></span><span class="pre">Entity</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EntityID</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_types" title="Link to this definition">#</a></dt>
+<dd><p>Get the entity IDs of the specified types</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entity_types</strong> (<em>list</em><em>[</em><em>type</em><em>[</em><em>Entity</em><em>]</em><em>]</em>) – List of entity types</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Entity IDs</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[EntityID]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position">
+<span class="sig-name descname"><span class="pre">get_entity_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EntityID</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">EntityID</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position" title="Link to this definition">#</a></dt>
+<dd><p>Get the entity position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entity_id</strong> (<em>EntityID</em>) – Entity ID</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Entity position</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>EntityID</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the entity is invalid</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.world_info.WorldInfo.get_world_model">
+<span class="sig-name descname"><span class="pre">get_world_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">WorldModel</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_world_model" title="Link to this definition">#</a></dt>
+<dd><p>Get the world model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>World model</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>WorldModel</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adf_core_python.core.agent.info.world_info.WorldInfo.set_change_set">
+<span class="sig-name descname"><span class="pre">set_change_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">change_set</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ChangeSet</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#adf_core_python.core.agent.info.world_info.WorldInfo.set_change_set" title="Link to this definition">#</a></dt>
+<dd><p>Set the change set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>change_set</strong> (<em>ChangeSet</em>) – Change set</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-adf_core_python.core.agent.info">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-adf_core_python.core.agent.info" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core.agent.info.agent_info">adf_core_python.core.agent.info.agent_info module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo"><code class="docutils literal notranslate"><span class="pre">AgentInfo</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_change_set"><code class="docutils literal notranslate"><span class="pre">AgentInfo.get_change_set()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_entity_id"><code class="docutils literal notranslate"><span class="pre">AgentInfo.get_entity_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_executed_action"><code class="docutils literal notranslate"><span class="pre">AgentInfo.get_executed_action()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_heard_commands"><code class="docutils literal notranslate"><span class="pre">AgentInfo.get_heard_commands()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_myself"><code class="docutils literal notranslate"><span class="pre">AgentInfo.get_myself()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_position_entity_id"><code class="docutils literal notranslate"><span class="pre">AgentInfo.get_position_entity_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_think_time"><code class="docutils literal notranslate"><span class="pre">AgentInfo.get_think_time()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.get_time"><code class="docutils literal notranslate"><span class="pre">AgentInfo.get_time()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.record_think_start_time"><code class="docutils literal notranslate"><span class="pre">AgentInfo.record_think_start_time()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.set_change_set"><code class="docutils literal notranslate"><span class="pre">AgentInfo.set_change_set()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.set_executed_action"><code class="docutils literal notranslate"><span class="pre">AgentInfo.set_executed_action()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.set_heard_commands"><code class="docutils literal notranslate"><span class="pre">AgentInfo.set_heard_commands()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.set_time"><code class="docutils literal notranslate"><span class="pre">AgentInfo.set_time()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.agent_info.AgentInfo.some_one_on_board"><code class="docutils literal notranslate"><span class="pre">AgentInfo.some_one_on_board()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core.agent.info.scenario_info">adf_core_python.core.agent.info.scenario_info module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.Mode"><code class="docutils literal notranslate"><span class="pre">Mode</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.Mode.NON_PRECOMPUTE"><code class="docutils literal notranslate"><span class="pre">Mode.NON_PRECOMPUTE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.Mode.PRECOMPUTATION"><code class="docutils literal notranslate"><span class="pre">Mode.PRECOMPUTATION</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.Mode.PRECOMPUTED"><code class="docutils literal notranslate"><span class="pre">Mode.PRECOMPUTED</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfo"><code class="docutils literal notranslate"><span class="pre">ScenarioInfo</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_config"><code class="docutils literal notranslate"><span class="pre">ScenarioInfo.get_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_mode"><code class="docutils literal notranslate"><span class="pre">ScenarioInfo.get_mode()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfo.get_value"><code class="docutils literal notranslate"><span class="pre">ScenarioInfo.get_value()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfo.set_config"><code class="docutils literal notranslate"><span class="pre">ScenarioInfo.set_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.CLEAR_REPAIR_DISTANCE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.CLEAR_REPAIR_DISTANCE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.CLEAR_REPAIR_RAD"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.CLEAR_REPAIR_RAD</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.CLEAR_REPAIR_RATE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.CLEAR_REPAIR_RATE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.COMMUNICATION_CHANNELS_COUNT"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.COMMUNICATION_CHANNELS_COUNT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.COMMUNICATION_CHANNELS_MAX_OFFICE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.COMMUNICATION_CHANNELS_MAX_OFFICE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.COMMUNICATION_CHANNELS_MAX_PLATOON"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.COMMUNICATION_CHANNELS_MAX_PLATOON</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_EXTINGUISH_MAX_DISTANCE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.FIRE_EXTINGUISH_MAX_DISTANCE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_EXTINGUISH_MAX_SUM"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.FIRE_EXTINGUISH_MAX_SUM</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_TANK_MAXIMUM"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.FIRE_TANK_MAXIMUM</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_TANK_REFILL_HYDRANT_RATE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.FIRE_TANK_REFILL_HYDRANT_RATE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.FIRE_TANK_REFILL_RATE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.FIRE_TANK_REFILL_RATE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_AGENTS_IGNOREUNTIL"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.KERNEL_AGENTS_IGNOREUNTIL</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_AGENTS_THINK_TIME"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.KERNEL_AGENTS_THINK_TIME</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_COMMUNICATION_MODEL"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.KERNEL_COMMUNICATION_MODEL</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_HOST"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.KERNEL_HOST</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_PERCEPTION"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.KERNEL_PERCEPTION</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_STARTUP_CONNECT_TIME"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.KERNEL_STARTUP_CONNECT_TIME</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.KERNEL_TIMESTEPS"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.KERNEL_TIMESTEPS</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.PERCEPTION_LOS_MAX_DISTANCE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.PERCEPTION_LOS_MAX_DISTANCE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.PERCEPTION_LOS_PRECISION_DAMAGE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.PERCEPTION_LOS_PRECISION_DAMAGE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.PERCEPTION_LOS_PRECISION_HP"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.PERCEPTION_LOS_PRECISION_HP</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_AC"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.SCENARIO_AGENTS_AC</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_AT"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.SCENARIO_AGENTS_AT</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_FB"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.SCENARIO_AGENTS_FB</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_FS"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.SCENARIO_AGENTS_FS</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_PF"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.SCENARIO_AGENTS_PF</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.SCENARIO_AGENTS_PO"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.SCENARIO_AGENTS_PO</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.scenario_info.ScenarioInfoKeys.VOICE_MESSAGES_SIZE"><code class="docutils literal notranslate"><span class="pre">ScenarioInfoKeys.VOICE_MESSAGES_SIZE</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core.agent.info.world_info">adf_core_python.core.agent.info.world_info module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo"><code class="docutils literal notranslate"><span class="pre">WorldInfo</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.add_entity"><code class="docutils literal notranslate"><span class="pre">WorldInfo.add_entity()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_blockades"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_blockades()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_change_set"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_change_set()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_distance"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_distance()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_types"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_entities_of_types()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entity"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_entity()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_types"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_entity_ids_of_types()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_entity_position()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.get_world_model"><code class="docutils literal notranslate"><span class="pre">WorldInfo.get_world_model()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adf_core_python.core.agent.info.world_info.WorldInfo.set_change_set"><code class="docutils literal notranslate"><span class="pre">WorldInfo.set_change_set()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-adf_core_python.core.agent.info">Module contents</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Haruki Uehara, Yuki Shimada
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Haruki Uehara, Yuki Shimada.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
