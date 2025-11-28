@@ -23,11 +23,6 @@ touch src/<your_team_name>/module/complex/k_means_pp_search.py
 import random
 from typing import Optional, cast
 
-from rcrs_core.entities.building import Building
-from rcrs_core.entities.entity import Entity
-from rcrs_core.entities.refuge import Refuge
-from rcrs_core.worldmodel.entityID import EntityID
-
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
 from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
@@ -36,6 +31,7 @@ from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.component.module.algorithm.clustering import Clustering
 from adf_core_python.core.component.module.complex.search import Search
 from adf_core_python.core.logger.logger import get_agent_logger
+from rcrscore.entities import Building, Entity, Refuge, EntityID
 
 
 class KMeansPPSearch(Search):
@@ -109,7 +105,7 @@ class KMeansPPSearch(Search):
             agent_info, world_info, scenario_info, module_manager, develop_data
         )
         self._result: Optional[EntityID] = None
-        
+
         # ロガーの取得
         self._logger = get_agent_logger(
             f"{self.__class__.__module__}.{self.__class__.__qualname__}",
@@ -148,16 +144,16 @@ class KMeansPPSearch(Search):
         # 乱数で選択
         if cluster_entity_ids:
             self._result = random.choice(cluster_entity_ids)
-        
+
         # ログ出力
         self._logger.info(f"Target entity ID: {self._result}")
-        
+
         return self
 ```
 
 以上で、`KMeansPPClustering` モジュールを用いた `KMeansPPSearch` モジュールの実装が完了しました。
 
-ターミナルを2つ起動します。
+ターミナルを 2 つ起動します。
 
 片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します：
 
@@ -208,7 +204,7 @@ python main.py
 一度選択した探索対象に到達するまで、探索対象を変更しないようにする
 ```
 
-```{admonition} プログラム例
+`````{admonition} プログラム例
 :class: hint dropdown
 
 ````python
@@ -236,12 +232,12 @@ python main.py
         # 探索対象が未選択の場合
         if not self._result and cluster_entity_ids:
             self._result = random.choice(cluster_entity_ids)
-        
+
         # ログ出力
         self._logger.info(f"Target entity ID: {self._result}")
 
         return self
-```
+`````
 
 ### すでに探索したエンティティを再度探索対象として選択してしまう問題
 
@@ -251,7 +247,7 @@ python main.py
 すでに探索したエンティティを何かしらの方法で記録し、再度探索対象として選択しないようにする
 ```
 
-```{admonition} プログラム例
+`````{admonition} プログラム例
 :class: hint dropdown
 
 ````python
@@ -319,12 +315,12 @@ python main.py
         # 探索対象が未選択の場合(変更)
         if not self._result and self._search_entity_ids:
             self._result = random.choice(self._search_entity_ids)
-        
+
         # ログ出力
         self._logger.info(f"Target entity ID: {self._result}")
 
         return self
-```
+`````
 
 ### 近くに未探索のエンティティがあるのに、遠くのエンティティを探索対象として選択してしまう
 
@@ -334,7 +330,7 @@ python main.py
 エンティティ間の距離を計算し、もっとも近いエンティティを探索対象として選択する
 ```
 
-```{admonition} プログラム例
+`````{admonition} プログラム例
 :class: hint dropdown
 
 ````python
@@ -375,9 +371,9 @@ python main.py
                     nearest_entity_id = entity_id
                     nearest_distance = distance
             self._result = nearest_entity_id
-        
+
         # ログ出力
         self._logger.info(f"Target entity ID: {self._result}")
 
         return self
-```
+`````

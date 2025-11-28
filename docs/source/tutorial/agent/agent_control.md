@@ -4,7 +4,7 @@
 
 ## エージェントの制御について
 
-RRSの災害救助エージェントは3種類あり、種類毎にそれぞれ異なるプログラムを書く必要があります。しかし、初めから全てのプログラムを書くことは困難です。ここではまず初めに、消防隊エージェントを操作するプログラムの一部を書いてみましょう。
+RRS の災害救助エージェントは 3 種類あり、種類毎にそれぞれ異なるプログラムを書く必要があります。しかし、初めから全てのプログラムを書くことは困難です。ここではまず初めに、消防隊エージェントを操作するプログラムの一部を書いてみましょう。
 
 ```{note}
 エージェントを操作するプログラムは、エージェントの種類毎に同一です。 プログラムは各エージェントに配られ、そのエージェントのみの操作を担います。 消防隊エージェントを操作するプログラムを書けば、それがすべての消防隊エージェント上でそれぞれ動作します。
@@ -14,9 +14,9 @@ RRSの災害救助エージェントは3種類あり、種類毎にそれぞれ�
 
 ## エージェントの動作フロー
 
-エージェントの動作を決めているのはTacticsというプログラムです。
+エージェントの動作を決めているのは Tactics というプログラムです。
 
-消防隊の思考ルーチンは下の図の通りにおおよそおこなわれます。 消防隊の動作としては、まず救助対象の市民を捜索し(`Human Detector`)、見つかった市民を救助します(`Action Rescue`)。 救助対象の市民が見つからない場合は、探索場所を変更して市民を捜索するため、次の捜索場所を決定して(`Search`)移動します(`Action Ext move`)。 なお、エージェントは1ステップ内で、移動と救助活動を同時におこなうことが出来ません。つまり、ステップごとに更新される自身の周辺情報を確認して、動作の対象と動作内容を決定していくということになります。 これらそれぞれの機能が、モジュールと呼ばれるプログラムとして分割して表現されています。
+消防隊の思考ルーチンは下の図の通りにおおよそおこなわれます。 消防隊の動作としては、まず救助対象の市民を捜索し(`Human Detector`)、見つかった市民を救助します(`Action Rescue`)。 救助対象の市民が見つからない場合は、探索場所を変更して市民を捜索するため、次の捜索場所を決定して(`Search`)移動します(`Action Ext move`)。 なお、エージェントは 1 ステップ内で、移動と救助活動を同時におこなうことが出来ません。つまり、ステップごとに更新される自身の周辺情報を確認して、動作の対象と動作内容を決定していくということになります。 これらそれぞれの機能が、モジュールと呼ばれるプログラムとして分割して表現されています。
 
 今回はこの中で、救助（掘り起こし）対象を決定する `Human Detector` モジュールを開発します。
 
@@ -36,8 +36,6 @@ touch src/<your_team_name>/module/complex/fire_brigade_human_detector.py
 ```python
 from typing import Optional
 
-from rcrs_core.worldmodel.entityID import EntityID
-
 from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.agent.info.agent_info import AgentInfo
 from adf_core_python.core.agent.info.scenario_info import ScenarioInfo
@@ -45,6 +43,7 @@ from adf_core_python.core.agent.info.world_info import WorldInfo
 from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.component.module.complex.human_detector import HumanDetector
 from adf_core_python.core.logger.logger import get_agent_logger
+from rcrscore.entities import EntityID
 
 
 class FireBrigadeHumanDetector(HumanDetector):
@@ -70,7 +69,7 @@ class FireBrigadeHumanDetector(HumanDetector):
     def calculate(self) -> HumanDetector:
         """
         行動対象を決定する
-        
+
         Returns
         -------
             HumanDetector: 自身のインスタンス
@@ -81,7 +80,7 @@ class FireBrigadeHumanDetector(HumanDetector):
     def get_target_entity_id(self) -> Optional[EntityID]:
         """
         行動対象のEntityIDを取得する
-        
+
         Returns
         -------
             Optional[EntityID]: 行動対象のEntityID
@@ -107,7 +106,7 @@ DefaultTacticsFireBrigade:
   HumanDetector: src.<your_team_name>.module.complex.fire_brigade_human_detector.FireBrigadeHumanDetector
 ```
 
-ターミナルを2つ起動します。
+ターミナルを 2 つ起動します。
 
 片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します：
 
@@ -145,7 +144,7 @@ python main.py
 
 `Entity` クラスは、エンティティの基底クラスです。 このクラスは、エンティティの基本情報を保持します。
 
-RRS上のエンティティは下図のように `Entity` を継承したクラスで表現されています。 赤枠で囲まれたクラスは、クラスの意味がそのままRRSの直接的な構成要素を表しています。
+RRS 上のエンティティは下図のように `Entity` を継承したクラスで表現されています。 赤枠で囲まれたクラスは、クラスの意味がそのまま RRS の直接的な構成要素を表しています。
 
 例: Road クラスのインスタンスの中には、 Hydrant クラスを継承してない通常の道路を表すものも存在しています。
 
@@ -153,7 +152,7 @@ RRS上のエンティティは下図のように `Entity` を継承したクラ�
 
 ### EntityID
 
-`EntityID` クラスは、全てのエージェント/オブジェクトを一意に識別するためのID(識別子)を表すクラスです。 RRSではエージェントとオブジェクトをまとめて、エンティティと呼んでいます。
+`EntityID` クラスは、全てのエージェント/オブジェクトを一意に識別するための ID(識別子)を表すクラスです。 RRS ではエージェントとオブジェクトをまとめて、エンティティと呼んでいます。
 
 ### Civilian
 
@@ -165,7 +164,7 @@ RRS上のエンティティは下図のように `Entity` を継承したクラ�
 is_civilian: bool = isinstance(entity, Civilian)
 ```
 
-- エンティティIDを取得する
+- エンティティ ID を取得する
 
 ```python
 entity_id: EntityID = entity.get_id()
@@ -193,7 +192,7 @@ if buriedness is None or buriedness <= 0:
 
 モジュール内では、`WorldInfo` クラスのインスタンスを `self._world_info` として保持しています。
 
-- エンティティIDからエンティティを取得する
+- エンティティ ID からエンティティを取得する
 
 ```python
 entity: Entity = self._world_info.get_entity(entity_id)
@@ -219,7 +218,7 @@ distance: float = self._world_info.get_distance(me, civilian.get_id())
 
 モジュール内では、`AgentInfo` クラスのインスタンスを `self._agent_info` として保持しています。
 
-- 自分自身のエンティティIDを取得する
+- 自分自身のエンティティ ID を取得する
 
 ```python
 my_entity_id: EntityID = self._agent_info.get_entity_id()
@@ -242,9 +241,7 @@ from adf_core_python.core.agent.info.world_info import WorldInfo
 from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.component.module.complex.human_detector import HumanDetector
 from adf_core_python.core.logger.logger import get_agent_logger
-from rcrs_core.entities.civilian import Civilian
-from rcrs_core.entities.entity import Entity
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import Civilian, Entity, EntityID
 
 
 class FireBrigadeHumanDetector(HumanDetector):
@@ -310,7 +307,7 @@ class FireBrigadeHumanDetector(HumanDetector):
 
         # 計算結果を格納
         self._result = nearest_civilian
-        
+
         # ロガーに出力
         self._logger.info(f"Target: {self._result}")
 
@@ -327,7 +324,7 @@ class FireBrigadeHumanDetector(HumanDetector):
         return self._result
 ```
 
-ターミナルを2つ起動します。
+ターミナルを 2 つ起動します。
 
 片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します：
 

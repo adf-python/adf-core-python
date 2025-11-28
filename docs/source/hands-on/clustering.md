@@ -2,7 +2,7 @@
 
 ## クラスタリングモジュールの目的
 
-複数のエージェントを動かす場合は、それらのエージェントにどのように協調させるかが重要になります。RRSでは多くのチームが、エージェントに各々の担当地域を持たせ役割分担をおこなう協調を取り入れています(他の手段による協調も取り入れています)。担当地域を割り振るためには、地図上のオブジェクトをいくつかのグループに分ける必要があります。このようなグループ分けをしてそれらを管理する場合には、クラスタリングモジュールと呼ばれるモジュールを用います。
+複数のエージェントを動かす場合は、それらのエージェントにどのように協調させるかが重要になります。RRS では多くのチームが、エージェントに各々の担当地域を持たせ役割分担をおこなう協調を取り入れています(他の手段による協調も取り入れています)。担当地域を割り振るためには、地図上のオブジェクトをいくつかのグループに分ける必要があります。このようなグループ分けをしてそれらを管理する場合には、クラスタリングモジュールと呼ばれるモジュールを用います。
 
 本資料では、多くの世界大会参加チームが使用しているアルゴリズムを用いたクラスタリングモジュールの実装をおこないます。
 
@@ -11,7 +11,7 @@
 本資料で開発するモジュールは下の画像のように、
 
 1. k-means++アルゴリズムによって地図上のオブジェクトをエージェント数分の区画に分けます。
-1. Hungarianアルゴリズムによってそれらの区画とエージェントを (間の距離の総和が最も小さくなるように)1対1で結びつけます。
+1. Hungarian アルゴリズムによってそれらの区画とエージェントを (間の距離の総和が最も小さくなるように)1 対 1 で結びつけます。
 
 ![クラスタリングの画像](./../images/clustering_image.jpg)
 
@@ -39,17 +39,19 @@ from adf_core_python.core.agent.info.world_info import WorldInfo
 from adf_core_python.core.agent.module.module_manager import ModuleManager
 from adf_core_python.core.component.module.algorithm.clustering import Clustering
 from adf_core_python.core.logger.logger import get_logger
-from rcrs_core.connection.URN import Entity as EntityURN
-from rcrs_core.entities.ambulanceCenter import AmbulanceCentre
-from rcrs_core.entities.building import Building
-from rcrs_core.entities.entity import Entity
-from rcrs_core.entities.fireStation import FireStation
-from rcrs_core.entities.gasStation import GasStation
-from rcrs_core.entities.hydrant import Hydrant
-from rcrs_core.entities.policeOffice import PoliceOffice
-from rcrs_core.entities.refuge import Refuge
-from rcrs_core.entities.road import Road
-from rcrs_core.worldmodel.entityID import EntityID
+from rcrscore.entities import (
+    AmbulanceCenter,
+    Building,
+    Entity,
+    EntityID,
+    FireStation,
+    GasStation,
+    Hydrant,
+    PoliceOffice,
+    Refuge,
+    Road,
+)
+from rcrscore.urn import EntityURN
 from scipy.optimize import linear_sum_assignment
 from sklearn.cluster import KMeans
 
@@ -74,7 +76,13 @@ class KMeansPPClustering(Clustering):
 
         # クラスター数の設定
         self._cluster_number: int = 1
-        match agent_info.get_myself().get_urn():
+
+        me = agent_info.get_myself()
+        if not me:
+            self._logger.error("Myself entity is None.")
+            return
+
+        match me.get_urn():
             # エージェントのクラスに応じてクラスター数を設定
             case EntityURN.AMBULANCE_TEAM:
                 self._cluster_number = scenario_info.get_value(
@@ -95,7 +103,7 @@ class KMeansPPClustering(Clustering):
         # 自分と同じクラスのエージェントのリストを取得
         self._agents: list[Entity] = world_info.get_entities_of_types(
             [
-                agent_info.get_myself().__class__,
+                me.__class__,
             ]
         )
 
@@ -105,7 +113,7 @@ class KMeansPPClustering(Clustering):
         # クラスタリング対象のエンティティのリストを取得
         self._entities: list[Entity] = world_info.get_entities_of_types(
             [
-                AmbulanceCentre,
+                AmbulanceCenter,
                 FireStation,
                 GasStation,
                 Hydrant,
@@ -180,7 +188,9 @@ class KMeansPPClustering(Clustering):
         """
         if cluster_index >= len(self._cluster_entities):
             return []
-        return [entity.get_id() for entity in self._cluster_entities[cluster_index]]
+        return [
+            entity.get_entity_id() for entity in self._cluster_entities[cluster_index]
+        ]
 
     def prepare(self) -> Clustering:
         """
@@ -205,17 +215,17 @@ class KMeansPPClustering(Clustering):
 
         # エージェントとクラスターの対応付け結果を保持
         self._agent_cluster_indices = {
-            entity.get_id(): cluster_index
+            entity.get_entity_id(): cluster_index
             for entity, cluster_index in zip(self._agents, agent_cluster_indices)
         }
 
         # デバッグ用のログ出力
         self._logger.info(
-            f"Clustered entities: {[[entity.get_id().get_value() for entity in cluster] for cluster in self._cluster_entities]}"
+            f"Clustered entities: {[[entity.get_entity_id().get_value() for entity in cluster] for cluster in self._cluster_entities]}"
         )
 
         self._logger.info(
-            f"Agent cluster indices: {[([self._world_info.get_entity(entity_id).get_x(), self._world_info.get_entity(entity_id).get_y()], int(cluster_index)) for entity_id, cluster_index in self._agent_cluster_indices.items()]}"
+            f"Agent cluster indices: {[([e.get_x(), e.get_y()] if (e is not None and e.get_x() is not None and e.get_y() is not None) else [None, None], int(cluster_index)) for entity_id, cluster_index in self._agent_cluster_indices.items() for e in (self._world_info.get_entity(entity_id),)]}"
         )
 
         return self
@@ -292,9 +302,9 @@ class KMeansPPClustering(Clustering):
         return col_ind
 ```
 
-k-means++の実装は、scikit-learnの`KMeans`クラスを使用しています。`KMeans`クラスは、`n_clusters`で指定したクラスター数によって地図上のオブジェクトをクラスタリングします。クラスタリング結果は、`labels_`属性に格納されます。また、`cluster_centers_`属性には各クラスターの中心座標が格納されます。
+k-means++の実装は、scikit-learn の`KMeans`クラスを使用しています。`KMeans`クラスは、`n_clusters`で指定したクラスター数によって地図上のオブジェクトをクラスタリングします。クラスタリング結果は、`labels_`属性に格納されます。また、`cluster_centers_`属性には各クラスターの中心座標が格納されます。
 
-hungarianアルゴリズムの実装は、scipyの`linear_sum_assignment`関数を使用しています。`linear_sum_assignment`関数は、コスト行列を引数として受け取り、最適な割り当てを行います。
+hungarian アルゴリズムの実装は、scipy の`linear_sum_assignment`関数を使用しています。`linear_sum_assignment`関数は、コスト行列を引数として受け取り、最適な割り当てを行います。
 
 次に、作成したモジュールを登録します。`config/module.yaml` を以下のように編集してください。
 
@@ -307,7 +317,7 @@ SampleHumanDetector:
   Clustering: src.<your_team_name>.module.algorithm.k_means_pp_clustering.KMeansPPClustering
 ```
 
-ターミナルを2つ起動します。
+ターミナルを 2 つ起動します。
 
 片方のターミナルを開き、シミュレーションサーバーを以下のコマンドで起動します：
 
