@@ -5,6 +5,7 @@ from rcrscore.entities.area import Area
 from rcrscore.entities.blockade import Blockade
 from rcrscore.entities.entity import Entity
 from rcrscore.entities.human import Human
+from rcrscore.urn import EntityURN
 from rcrscore.worldmodel import ChangeSet, WorldModel
 
 
@@ -54,6 +55,28 @@ class WorldInfo:
     """
     return self._world_model.get_entity(entity_id)
 
+  def get_entities(self) -> list[Entity]:
+    """
+    Get all entities
+
+    Returns
+    -------
+    list[Entity]
+        Entities
+    """
+    return self._world_model.get_entities()
+
+  def get_entity_ids(self) -> list[EntityID]:
+    """
+    Get all entity IDs
+
+    Returns
+    -------
+    list[EntityID]
+        Entity IDs
+    """
+    return [entity.get_entity_id() for entity in self._world_model.get_entities()]
+
   def get_entity_ids_of_types(self, entity_types: list[type[Entity]]) -> list[EntityID]:
     """
     Get the entity IDs of the specified types
@@ -94,6 +117,45 @@ class WorldInfo:
       if any(isinstance(entity, entity_type) for entity_type in entity_types):
         entities.append(entity)
 
+    return entities
+
+  def get_entity_ids_of_urns(self, urns: list[EntityURN]) -> list[EntityID]:
+    """
+    Get the entity IDs of the specified URNs
+
+    Parameters
+    ----------
+    urns : list[EntityURN]
+        List of entity URNs
+
+    Returns
+    -------
+    list[EntityID]
+        Entity IDs
+    """
+    entity_ids: list[EntityID] = []
+    for entity in self._world_model.get_entities():
+      if entity.get_urn() in urns:
+        entity_ids.append(entity.get_entity_id())
+
+    return entity_ids
+
+  def get_entities_of_urns(self, urns: list[EntityURN]) -> list[Entity]:
+    """
+    Get the entities of the specified URNs
+    Parameters
+    ----------
+    urns : list[EntityURN]
+        List of entity URNs
+    Returns
+    -------
+    list[Entity]
+        Entities
+    """
+    entities: list[Entity] = []
+    for entity in self._world_model.get_entities():
+      if entity.get_urn() in urns:
+        entities.append(entity)
     return entities
 
   def get_distance(self, entity_id1: EntityID, entity_id2: EntityID) -> float:
