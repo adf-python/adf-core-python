@@ -103,12 +103,16 @@ class AgentLauncher:
       with lock:
         self.agent_thread_list.extend(threads)
 
-      def start_connector_threads(threads=threads) -> None:
+      def start_connector_threads(
+        threads: dict[threading.Thread, threading.Event],
+      ) -> None:
         for thread, event in threads.items():
           thread.start()
           event.wait(5)
 
-      connector_thread = threading.Thread(target=start_connector_threads)
+      connector_thread = threading.Thread(
+        target=start_connector_threads, args=(threads,)
+      )
       connector_thread_list.append(connector_thread)
       connector_thread.start()
 
