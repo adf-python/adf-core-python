@@ -89,20 +89,30 @@ class AgentLauncher:
 
       gateway_launcher = GatewayLauncher(gateway_host, gateway_port, self.logger)
 
+    lock = threading.Lock()
     connector_thread_list: list[threading.Thread] = []
+
     for connector in self.connectors:
       threads = connector.connect(
         component_launcher, gateway_launcher, self.config, self.loader
       )
-      self.agent_thread_list.extend(threads)
 
-      def connect() -> None:
+      for thread in threads:
+        thread.daemon = True
+
+      with lock:
+        self.agent_thread_list.extend(threads)
+
+      def start_connector_threads(
+        threads: dict[threading.Thread, threading.Event],
+      ) -> None:
         for thread, event in threads.items():
-          thread.daemon = True
           thread.start()
           event.wait(5)
 
-      connector_thread = threading.Thread(target=connect)
+      connector_thread = threading.Thread(
+        target=start_connector_threads, args=(threads,)
+      )
       connector_thread_list.append(connector_thread)
       connector_thread.start()
 
