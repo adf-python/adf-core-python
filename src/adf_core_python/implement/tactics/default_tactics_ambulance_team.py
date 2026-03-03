@@ -140,10 +140,6 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
     agent: AmbulanceTeam = cast(AmbulanceTeam, agent_info.get_myself())  # noqa: F841
     entity_id = agent_info.get_entity_id()  # noqa: F841
 
-    self._logger.debug(
-      f"received messages: {[str(message) for message in message_manager.get_received_message_list()]}, help: {message_manager.get_heard_agent_help_message_count()}"
-    )
-
     for message in message_manager.get_received_message_list():
       if isinstance(message, CommandScout):
         if message.get_command_executor_agent_entity_id() == agent_info.get_entity_id():
@@ -162,14 +158,18 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
         action = self._command_executor_ambulance.calculate().get_action()
       if action is not None:
         self._logger.debug(
-          f"action decided by command: {action}", time=agent_info.get_time()
+          f"action: {action}",
+          time=agent_info.get_time(),
+          action_type=type(action).__name__,
+          type="command_decided_action",
         )
         return action
 
     target_entity_id = self._human_detector.calculate().get_target_entity_id()
     self._logger.debug(
-      f"human detector target_entity_id: {target_entity_id}",
+      f"detector target_entity_id: {target_entity_id}",
       time=agent_info.get_time(),
+      type="detector_decided_target",
     )
     if target_entity_id is not None:
       action = (
@@ -178,12 +178,19 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
         .get_action()
       )
       if action is not None:
-        self._logger.debug(f"action: {action}", time=agent_info.get_time())
+        self._logger.debug(
+          f"action: {action}",
+          time=agent_info.get_time(),
+          action_type=type(action).__name__,
+          type="detector_decided_action",
+        )
         return action
 
     target_entity_id = self._search.calculate().get_target_entity_id()
     self._logger.debug(
-      f"search target_entity_id: {target_entity_id}", time=agent_info.get_time()
+      f"search target_entity_id: {target_entity_id}",
+      time=agent_info.get_time(),
+      type="search_decided_target",
     )
     if target_entity_id is not None:
       action = (
@@ -192,7 +199,12 @@ class DefaultTacticsAmbulanceTeam(TacticsAmbulanceTeam):
         .get_action()
       )
       if action is not None:
-        self._logger.debug(f"action: {action}", time=agent_info.get_time())
+        self._logger.debug(
+          f"action: {action}",
+          time=agent_info.get_time(),
+          action_type=type(action).__name__,
+          type="search_decided_action",
+        )
         return action
 
     return ActionRest()
