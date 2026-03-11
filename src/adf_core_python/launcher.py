@@ -135,9 +135,12 @@ class Launcher:
         self.launcher_config.set_value(key, value)
 
     configure_logger(
-      log_file=args.logger_file_name or self.launcher_config.get_value(ConfigKey.KEY_LOGGER_FILE_NAME, "agent.log"),
-      file_level=args.logger_file_level or self.launcher_config.get_value(ConfigKey.KEY_LOGGER_FILE_LEVEL, "DEBUG"),
-      stream_level=args.logger_stream_level or self.launcher_config.get_value(ConfigKey.KEY_LOGGER_STREAM_LEVEL, "INFO"),
+      log_file=args.logger_file_name
+      or self.launcher_config.get_value(ConfigKey.KEY_LOGGER_FILE_NAME, "agent.log"),
+      file_level=args.logger_file_level
+      or self.launcher_config.get_value(ConfigKey.KEY_LOGGER_FILE_LEVEL, "DEBUG"),
+      stream_level=args.logger_stream_level
+      or self.launcher_config.get_value(ConfigKey.KEY_LOGGER_STREAM_LEVEL, "INFO"),
     )
     self.logger = get_logger(__name__)
 
