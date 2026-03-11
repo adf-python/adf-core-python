@@ -24,6 +24,11 @@ adf:
     flag: true
     filename: config/development.json
 
+  logger:
+    file_name: agent.log
+    file_level: DEBUG
+    stream_level: INFO
+
   team:
     platoon:
       ambulance:

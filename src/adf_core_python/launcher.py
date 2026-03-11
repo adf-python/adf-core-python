@@ -95,6 +95,24 @@ class Launcher:
       action="store_true",
       help="using java module flag",
     )
+    parser.add_argument(
+      "--logger-file-name",
+      type=str,
+      help="logger file name",
+      metavar="",
+    )
+    parser.add_argument(
+      "--logger-file-level",
+      type=str,
+      help="logger file level",
+      metavar="",
+    )
+    parser.add_argument(
+      "--logger-stream-level",
+      type=str,
+      help="logger stream level",
+      metavar="",
+    )
     args = parser.parse_args()
 
     config_map = {
@@ -116,7 +134,11 @@ class Launcher:
       if value is not None:
         self.launcher_config.set_value(key, value)
 
-    configure_logger()
+    configure_logger(
+      log_file=args.logger_file_name or self.launcher_config.get_value(ConfigKey.KEY_LOGGER_FILE_NAME, "agent.log"),
+      file_level=args.logger_file_level or self.launcher_config.get_value(ConfigKey.KEY_LOGGER_FILE_LEVEL, "DEBUG"),
+      stream_level=args.logger_stream_level or self.launcher_config.get_value(ConfigKey.KEY_LOGGER_STREAM_LEVEL, "INFO"),
+    )
     self.logger = get_logger(__name__)
 
     self.logger.debug(f"launcher_config: {self.launcher_config}")

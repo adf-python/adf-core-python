@@ -56,12 +56,15 @@ def get_agent_logger(name: str, agent_info: AgentInfo) -> BoundLogger:
   )
 
 
-def configure_logger() -> None:
+def configure_logger(
+  log_file: str = "agent.log",
+  file_level: int | str = logging.DEBUG,
+  stream_level: int | str = logging.INFO,
+) -> None:
   # 既存のログファイルが存在する場合、日付付きでバックアップする
-  log_file = "agent.log"
   if os.path.exists(log_file):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    backup_file = f"agent_{timestamp}.log"
+    backup_file = f"{log_file}_{timestamp}.log"
     os.rename(log_file, backup_file)
 
   structlog.configure(
@@ -83,13 +86,13 @@ def configure_logger() -> None:
   handler_stdout.setFormatter(
     structlog.stdlib.ProcessorFormatter(processor=ConsoleRenderer())
   )
-  handler_stdout.setLevel(logging.INFO)
+  handler_stdout.setLevel(stream_level)
 
   handler_file = logging.FileHandler(log_file)
   handler_file.setFormatter(
     structlog.stdlib.ProcessorFormatter(processor=JSONRenderer())
   )
-  handler_file.setLevel(logging.DEBUG)
+  handler_file.setLevel(file_level)
 
   root_logger = logging.getLogger()
   root_logger.addHandler(handler_stdout)
