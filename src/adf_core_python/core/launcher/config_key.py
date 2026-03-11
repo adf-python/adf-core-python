@@ -25,6 +25,10 @@ class ConfigKey:
   KEY_POLICE_OFFICE_COUNT: Final[str] = "adf.team.office.police.count"
   # adf-core-python
   KEY_PRECOMPUTE_DATA_DIR: Final[str] = "adf.agent.precompute.dir_name"
+  # logger
+  KEY_LOGGER_FILE_NAME: Final[str] = "adf.logger.file_name"
+  KEY_LOGGER_FILE_LEVEL: Final[str] = "adf.logger.file_level"
+  KEY_LOGGER_STREAM_LEVEL: Final[str] = "adf.logger.stream_level"
   # Gateway
   KEY_GATEWAY_HOST: Final[str] = "gateway.host"
   KEY_GATEWAY_PORT: Final[str] = "gateway.port"
