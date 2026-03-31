@@ -4,6 +4,8 @@ import time
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
+from structlog.stdlib import BoundLogger
+
 from adf_core_python.core.logger.logger import get_agent_logger
 
 if TYPE_CHECKING:
@@ -25,17 +27,17 @@ class AbstractModule(ABC):
     module_manager: ModuleManager,
     develop_data: DevelopData,
   ) -> None:
-    self._agent_info = agent_info
-    self._world_info = world_info
-    self._scenario_info = scenario_info
-    self._module_manager = module_manager
-    self._develop_data = develop_data
+    self._agent_info: AgentInfo = agent_info
+    self._world_info: WorldInfo = world_info
+    self._scenario_info: ScenarioInfo = scenario_info
+    self._module_manager: ModuleManager = module_manager
+    self._develop_data: DevelopData = develop_data
     self._count_precompute: int = 0
     self._count_resume: int = 0
     self._count_prepare: int = 0
     self._count_update_info: int = 0
     self._count_update_info_current_time: int = 0
-    self._logger = get_agent_logger(
+    self._logger: BoundLogger = get_agent_logger(
       f"{self.__class__.__module__}.{self.__class__.__qualname__}",
       self._agent_info,
     )
