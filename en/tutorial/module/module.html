@@ -53,7 +53,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Clustering Module" href="../../hands-on/clustering.html" />
-    <link rel="prev" title="About Config" href="../config/config.html" />
+    <link rel="prev" title="About the Configuration" href="../config/config.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -248,7 +248,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Install</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../install/environment/environment.html">Environment Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../install/install/install.html">Installation</a></li>
@@ -261,11 +261,11 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../environment/environment.html">Environment Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../agent/agent.html">Creating an Agent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../agent/agent_control.html">Agent Control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../config/config.html">About Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agent/agent_control.html">Controlling the Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../config/config.html">About the Configuration</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">About Modules</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-On</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-on</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../hands-on/clustering.html">Clustering Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../hands-on/search.html">Search Module</a></li>
@@ -426,9 +426,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">How to specify modules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">How to load modules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">About the types of modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">How to Specify Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">How to Load Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">About Module Types</a></li>
 </ul>
             </nav>
         </div>
@@ -443,19 +443,19 @@ document.write(`
   <section id="id1">
 <h1>About Modules<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
-<h2>How to specify modules<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>To specify a module, write the module name and path in module.yaml.</p>
-<p>For example, write as follows:</p>
+<h2>How to Specify Modules<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>To specify a module, write its name and path in module.yaml.</p>
+<p>For example, write it as follows:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">SampleSearch</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">PathPlanning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.sample_search.SampleSearch</span>
 <span class="w">    </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.sample_search.SampleClustering</span>
 </pre></div>
 </div>
-<p>In this case, the modules <code class="docutils literal notranslate"><span class="pre">PathPlanning</span></code> and <code class="docutils literal notranslate"><span class="pre">Clustering</span></code> used in the <code class="docutils literal notranslate"><span class="pre">SampleSearch</span></code> module are specified.</p>
+<p>In this case, the <code class="docutils literal notranslate"><span class="pre">PathPlanning</span></code> and <code class="docutils literal notranslate"><span class="pre">Clustering</span></code> modules used by the <code class="docutils literal notranslate"><span class="pre">SampleSearch</span></code> module are specified.</p>
 </section>
 <section id="id3">
-<h2>How to load modules<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>To load other modules within a module, write as follows:</p>
+<h2>How to Load Modules<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>When loading another module within a module, write it as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.agent.module.module_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModuleManager</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">SampleSearch</span><span class="p">(</span><span class="n">Search</span><span class="p">):</span>
@@ -504,7 +504,7 @@ document.write(`
 </div>
 </section>
 <section id="id4">
-<h2>About the types of modules<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2>About Module Types<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>The following modules are provided in adf-core-python.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -514,48 +514,48 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p>TacticsFireBrigade</p></td>
-<td><p>Module call for fire brigade (cannot be changed in competition)</p></td>
+<td><p>Module invocation for the fire brigade (cannot be changed during competition)</p></td>
 </tr>
 <tr class="row-odd"><td><p>TacticsPoliceForce</p></td>
-<td><p>Module call for police force (cannot be changed in competition)</p></td>
+<td><p>Module invocation for the police force (cannot be changed during competition)</p></td>
 </tr>
 <tr class="row-even"><td><p>TacticsAmbulanceTeam</p></td>
-<td><p>Module call for ambulance team (cannot be changed in competition)</p></td>
+<td><p>Module invocation for the ambulance team (cannot be changed during competition)</p></td>
 </tr>
 <tr class="row-odd"><td><p>BuildingDetector</p></td>
-<td><p>Selection of activity target for fire brigade</p></td>
+<td><p>Selecting the fire brigade’s activity target</p></td>
 </tr>
 <tr class="row-even"><td><p>RoadDetector</p></td>
-<td><p>Selection of activity target for police force</p></td>
+<td><p>Selecting the police force’s activity target</p></td>
 </tr>
 <tr class="row-odd"><td><p>HumanDetector</p></td>
-<td><p>Selection of activity target for ambulance team</p></td>
+<td><p>Selecting the ambulance team’s activity target</p></td>
 </tr>
 <tr class="row-even"><td><p>Search</p></td>
-<td><p>Selection of activity target for information search</p></td>
+<td><p>Selecting activity targets for information search</p></td>
 </tr>
 <tr class="row-odd"><td><p>PathPlanning</p></td>
-<td><p>Path Planning</p></td>
+<td><p>Path planning</p></td>
 </tr>
 <tr class="row-even"><td><p>DynamicClustering</p></td>
-<td><p>Clustering that changes as the simulation progresses</p></td>
+<td><p>Clustering in which clusters change as the simulation progresses</p></td>
 </tr>
 <tr class="row-odd"><td><p>StaticClustering</p></td>
-<td><p>Clustering that is determined at the start of the simulation</p></td>
+<td><p>Clustering in which clusters are determined at the start of the simulation</p></td>
 </tr>
 <tr class="row-even"><td><p>ExtAction</p></td>
-<td><p>Determination of agent actions after selecting the activity target</p></td>
+<td><p>Determining the agent’s behavior after the activity target is decided</p></td>
 </tr>
 <tr class="row-odd"><td><p>MessageCoordinator</p></td>
-<td><p>Distribution of messages to channels, which are the routes for sending messages (information) via communication</p></td>
+<td><p>Distributing messages to channels, which are the paths used to send messages (information) by communication</p></td>
 </tr>
 <tr class="row-even"><td><p>ChannelSubscriber</p></td>
-<td><p>Selection of channels to receive messages via communication</p></td>
+<td><p>Selecting channels that receive messages via communication</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>When creating a module with a role other than the above, inherit <code class="docutils literal notranslate"><span class="pre">AbstractModule</span></code>.</p>
+<p>If you create a module for a role other than those listed above, inherit from <code class="docutils literal notranslate"><span class="pre">AbstractModule</span></code>.</p>
 </section>
 </section>
 
@@ -576,7 +576,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">About Config</p>
+        <p class="prev-next-title">About the Configuration</p>
       </div>
     </a>
     <a class="right-next"
@@ -604,9 +604,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">How to specify modules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">How to load modules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">About the types of modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">How to Specify Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">How to Load Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">About Module Types</a></li>
 </ul>
   </nav></div>
 

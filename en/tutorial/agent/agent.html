@@ -52,7 +52,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial/agent/agent';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Agent Control" href="agent_control.html" />
+    <link rel="next" title="Controlling the Agent" href="agent_control.html" />
     <link rel="prev" title="Environment Setup" href="../environment/environment.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -248,7 +248,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Install</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../install/environment/environment.html">Environment Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../install/install/install.html">Installation</a></li>
@@ -261,11 +261,11 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../environment/environment.html">Environment Setup</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating an Agent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="agent_control.html">Agent Control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../config/config.html">About Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agent_control.html">Controlling the Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../config/config.html">About the Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/module.html">About Modules</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-On</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-on</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../hands-on/clustering.html">Clustering Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../hands-on/search.html">Search Module</a></li>
@@ -448,16 +448,16 @@ document.write(`
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>adf-core-python
 </pre></div>
 </div>
-<p>When executed, an interactive prompt like the one below will be displayed:</p>
+<p>When you run it, an interactive prompt like the following will appear:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Your<span class="w"> </span>agent<span class="w"> </span>team<span class="w"> </span>name:<span class="w"> </span>my-agent
 Creating<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>agent<span class="w"> </span>team<span class="w"> </span>with<span class="w"> </span>name:<span class="w"> </span>my-agent
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The agent team name will be used as the directory name for the agent. Hereafter, the agent team name will be referred to as <code class="docutils literal notranslate"><span class="pre">&lt;your_team_name&gt;</span></code>.</p>
+<p>The agent team name is used as the agent directory name. From here on, the agent team name will be referred to as <code class="docutils literal notranslate"><span class="pre">&lt;your_team_name&gt;</span></code>.</p>
 </div>
-<p>After entering, an agent template like the one below will be created in the current directory.</p>
+<p>After you enter the values, a template for the agent will be created in the current directory.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
 └──<span class="w"> </span>my-agent
 <span class="w">    </span>├──<span class="w"> </span>config
@@ -487,16 +487,16 @@ Creating<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </s
 ./start-comprun.sh<span class="w"> </span>-m<span class="w"> </span>../maps/tutorial_fire_brigade_only/map<span class="w"> </span>-c<span class="w"> </span>../maps/tutorial_fire_brigade_only/config
 </pre></div>
 </div>
-<p>Then, open another terminal and start the agent:</p>
+<p>Then open another terminal and start the agent:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal B</span>
 <span class="nb">cd</span><span class="w"> </span>WORKING_DIR/&lt;your_team_name&gt;
 python<span class="w"> </span>main.py
 </pre></div>
 </div>
-<p>When the agent starts successfully, it will connect to the simulation server, participate in the simulation, and start moving. If you want to stop it midway, press <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">C</span></code> (or <code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">+</span> <span class="pre">C</span></code> on MacOS) in each command line.</p>
+<p>If the agent starts successfully, it will connect to the simulation server, join the simulation, and begin moving. If you want to stop it midway, press <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">C</span></code> in each command line (<code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">+</span> <span class="pre">C</span></code> on macOS).</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>After stopping the simulation server, run <code class="docutils literal notranslate"><span class="pre">./kill.sh</span></code> as there may be remaining processes.</p>
+<p>After stopping the simulation server, some processes may remain, so run <code class="docutils literal notranslate"><span class="pre">./kill.sh</span></code>.</p>
 </div>
 </section>
 </section>
@@ -526,7 +526,7 @@ python<span class="w"> </span>main.py
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Agent Control</p>
+        <p class="prev-next-title">Controlling the Agent</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

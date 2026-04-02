@@ -248,7 +248,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Install</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../environment.html">Environment Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../install/install.html">Installation</a></li>
@@ -261,11 +261,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/environment/environment.html">Environment Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/agent/agent.html">Creating an Agent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/agent/agent_control.html">Agent Control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/config/config.html">About Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/agent/agent_control.html">Controlling the Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/config/config.html">About the Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/module/module.html">About Modules</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-On</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-on</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../hands-on/clustering.html">Clustering Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../hands-on/search.html">Search Module</a></li>
@@ -445,51 +445,57 @@ document.write(`
 <section id="git">
 <h2>1. Gitのインストール<a class="headerlink" href="#git" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Access the <a class="reference external" href="https://gitforwindows.org/">Git for Windows</a> official site.</p></li>
+<li><p>Go to the official <a class="reference external" href="https://gitforwindows.org/">Git for Windows</a> website.</p></li>
 <li><p>Click “Download” on the top page.</p></li>
-<li><p>After the download is complete, run the installer.</p></li>
-<li><p>Click “Next” for all steps.</p></li>
-<li><p>Wait for the installation to complete.</p></li>
-<li><p>Click “Finish” when the installation is complete.</p></li>
-<li><p>Enter “Git Bash” in the search bar and run Git Bash.</p></li>
-<li><p>If the screen is displayed, the installation is successful.</p></li>
+<li><p>After the download finishes, run the installer.</p></li>
+<li><p>Click “Next” for every step.</p></li>
+<li><p>Wait until the installation is complete.</p></li>
+<li><p>When the installation is complete, click “Finish”.</p></li>
+<li><p>Type “Git Bash” in the search bar and launch Git Bash.</p></li>
+<li><p>If the window appears, the installation was successful.</p></li>
 </ol>
 </section>
 <section id="python">
 <h2>2. Pythonのインストール<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Access the <a class="reference external" href="https://www.python.org/">Python</a> official site.</p></li>
+<li><p>Go to the official <a class="reference external" href="https://www.python.org/">Python</a> website.</p></li>
 <li><p>Click “Download Python ~” on the top page.</p></li>
-<li><p>After the download is complete, run the installer.</p></li>
+<li><p>After the download finishes, run the installer.</p></li>
 <li><p>Make sure “Add python.exe to PATH” is checked, then click “Install Now”.</p></li>
-<li><p>Wait for the installation to complete.</p></li>
-<li><p>Click “Close” when the installation is complete.</p></li>
-<li><p>Open Git Bash, enter <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">--version</span></code>, and if <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">[version]</span></code> is displayed, it is successful. (If not displayed, reopen Git Bash.)</p></li>
+<li><p>Wait until the installation is complete.</p></li>
+<li><p>When the installation is complete, click “Close”.</p></li>
+<li><p>Open Git Bash, type <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">--version</span></code>, and if <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">[version]</span></code> is displayed, the installation was successful. (If it does not appear, restart Git Bash.)</p></li>
 </ol>
 </section>
 <section id="openjdk">
 <h2>3. OpenJDKのインストール<a class="headerlink" href="#openjdk" title="Link to this heading">#</a></h2>
-<ol class="arabic">
-<li><p>Access the <a class="reference external" href="https://jdk.java.net/archive/">OpenJDK</a> download page.</p></li>
-<li><p>Click “zip” next to Windows for version 17.0.2.</p></li>
+<ol class="arabic simple">
+<li><p>Go to the <a class="reference external" href="https://jdk.java.net/archive/">OpenJDK</a> download page.</p></li>
+<li><p>Click “zip” next to Windows for 21.0.2.</p></li>
 <li><p>Extract the downloaded zip file.</p></li>
-<li><p>Confirm that a folder like “jdk-17.0.2” is created after extraction.</p></li>
-<li><p>Move this folder “jdk-17.0.2” to the root of <code class="docutils literal notranslate"><span class="pre">C:¥</span></code>.</p></li>
-<li><p>Run the command prompt as an administrator on Windows.</p></li>
-<li><p>Once opened, run the following command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">powershell</span> <span class="o">-</span><span class="n">command</span> <span class="s2">&quot;[System.Environment]::SetEnvironmentVariable(</span><span class="se">\&quot;</span><span class="s2">JAVA_HOME</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">c:\jdk-17.0.2</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">Machine</span><span class="se">\&quot;</span><span class="s2">)&quot;</span>
+<li><p>Confirm that extraction creates a folder such as “jdk-21.0.2”.</p></li>
+<li><p>Move this folder, “jdk-21.0.2”, directly under <code class="docutils literal notranslate"><span class="pre">C:\</span></code>.</p></li>
+<li><p>Run Command Prompt as an administrator on Windows.</p></li>
+<li><p>After opening it, run the following command.</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="w">   </span>powershell<span class="w"> </span>-command<span class="w"> </span><span class="s2">&quot;[System.Environment]::SetEnvironmentVariable(\&quot;JAVA_HOME\&quot;, \&quot;c:\jdk-21.0.2\&quot;, \&quot;Machine\&quot;)&quot;</span>
 </pre></div>
 </div>
-</li>
+<ol class="arabic">
 <li><p>Next, run the following command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">powershell</span> <span class="o">-</span><span class="n">command</span> <span class="s2">&quot;$oldpath = [System.Environment]::GetEnvironmentVariable(</span><span class="se">\&quot;</span><span class="s2">Path</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">Machine</span><span class="se">\&quot;</span><span class="s2">); $oldpath += </span><span class="se">\&quot;</span><span class="s2">;c:\jdk-17.0.2</span><span class="se">\b</span><span class="s2">in</span><span class="se">\&quot;</span><span class="s2">; [System.Environment]::SetEnvironmentVariable(</span><span class="se">\&quot;</span><span class="s2">Path</span><span class="se">\&quot;</span><span class="s2">, $oldpath, </span><span class="se">\&quot;</span><span class="s2">Machine</span><span class="se">\&quot;</span><span class="s2">)&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>powershell<span class="w"> </span>-command<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$oldpath</span><span class="s2"> = [System.Environment]::GetEnvironmentVariable(\&quot;Path\&quot;, \&quot;Machine\&quot;); </span><span class="nv">$oldpath</span><span class="s2"> += \&quot;;c:\jdk-21.0.2\bin\&quot;; [System.Environment]::SetEnvironmentVariable(\&quot;Path\&quot;, </span><span class="nv">$oldpath</span><span class="s2">, \&quot;Machine\&quot;)&quot;</span>
 </pre></div>
 </div>
 </li>
-<li><p>Open Git Bash and enter <code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">-version</span></code>. If the following text is displayed, the installation is successful.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openjdk</span> <span class="n">version</span> <span class="s2">&quot;17.0.2&quot;</span> <span class="mi">2022</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">18</span>
-<span class="n">OpenJDK</span> <span class="n">Runtime</span> <span class="n">Environment</span> <span class="p">(</span><span class="n">build</span> <span class="mf">17.0.2</span><span class="o">+</span><span class="mi">8</span><span class="o">-</span><span class="mi">86</span><span class="p">)</span>
-<span class="n">OpenJDK</span> <span class="mi">64</span><span class="o">-</span><span class="n">Bit</span> <span class="n">Server</span> <span class="n">VM</span> <span class="p">(</span><span class="n">build</span> <span class="mf">17.0.2</span><span class="o">+</span><span class="mi">8</span><span class="o">-</span><span class="mi">86</span><span class="p">,</span> <span class="n">mixed</span> <span class="n">mode</span><span class="p">,</span> <span class="n">sharing</span><span class="p">)</span>
+<li><p>Open Git Bash and type <code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">-version</span></code>. If text like the following is displayed, the installation was successful.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>openjdk<span class="w"> </span>version<span class="w"> </span><span class="s2">&quot;21.0.2&quot;</span><span class="w"> </span><span class="m">2022</span>-01-18
+OpenJDK<span class="w"> </span>Runtime<span class="w"> </span>Environment<span class="w"> </span><span class="o">(</span>build<span class="w"> </span><span class="m">21</span>.0.2<span class="o">)</span>
+OpenJDK<span class="w"> </span><span class="m">64</span>-Bit<span class="w"> </span>Server<span class="w"> </span>VM<span class="w"> </span><span class="o">(</span>build<span class="w"> </span><span class="m">21</span>.0.2,<span class="w"> </span>mixed<span class="w"> </span>mode,<span class="w"> </span>sharing<span class="o">)</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>openjdk<span class="w"> </span>version<span class="w"> </span><span class="s2">&quot;21.0.2&quot;</span><span class="w"> </span><span class="m">2022</span>-01-18
+OpenJDK<span class="w"> </span>Runtime<span class="w"> </span>Environment<span class="w"> </span><span class="o">(</span>build<span class="w"> </span><span class="m">21</span>.0.2<span class="o">)</span>
+OpenJDK<span class="w"> </span><span class="m">64</span>-Bit<span class="w"> </span>Server<span class="w"> </span>VM<span class="w"> </span><span class="o">(</span>build<span class="w"> </span><span class="m">21</span>.0.2,<span class="w"> </span>mixed<span class="w"> </span>mode,<span class="w"> </span>sharing<span class="o">)</span>
 </pre></div>
 </div>
 </li>

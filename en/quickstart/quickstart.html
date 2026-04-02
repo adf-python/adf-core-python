@@ -248,7 +248,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Install</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../install/environment/environment.html">Environment Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install/install/install.html">Installation</a></li>
@@ -261,11 +261,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">Environment Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">Creating an Agent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">Agent Control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">About Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">Controlling the Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">About the Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">About Modules</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-On</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-on</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../hands-on/clustering.html">Clustering Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hands-on/search.html">Search Module</a></li>
@@ -427,7 +427,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Package Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Installing the Package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Creating a New Agent</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Running the Agent</a></li>
 </ul>
@@ -445,16 +445,16 @@ document.write(`
 <h1>Quick Start<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
 <h2>Prerequisites<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>Before installing, please check the following prerequisites:</p>
+<p>Before installing, check the following prerequisites:</p>
 <ul class="simple">
-<li><p>Python 3.12 or higher</p></li>
+<li><p>Python 3.12 or later</p></li>
 <li><p>pip</p></li>
 </ul>
 </section>
 <section id="id3">
-<h2>Package Installation<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2>Installing the Package<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>To install the package, run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>rcrscore@git+https://github.com/adf-python/rcrs-core-python@v0.2.2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>rcrscore@git+https://github.com/adf-python/rcrs-core-python@v0.2.3
 pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/adf-python/adf-core-python.git
 </pre></div>
 </div>
@@ -465,12 +465,12 @@ pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>adf-core-python
 </pre></div>
 </div>
-<p>When executed, an interactive prompt like the one below will be displayed:</p>
+<p>When you run it, an interactive prompt like the following will appear:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Your<span class="w"> </span>agent<span class="w"> </span>team<span class="w"> </span>name:<span class="w"> </span>my-agent
 Creating<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>agent<span class="w"> </span>team<span class="w"> </span>with<span class="w"> </span>name:<span class="w"> </span>my-agent
 </pre></div>
 </div>
-<p>After input, an agent template like the one below will be created in the current directory.</p>
+<p>After you enter the values, a template for the agent will be created in the current directory.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
 └──<span class="w"> </span>my-agent
 <span class="w">    </span>├──<span class="w"> </span>config
@@ -497,7 +497,7 @@ Creating<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </s
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py
 </pre></div>
 </div>
-<p>The agent execution will start, and communication with the simulation server will begin.</p>
+<p>The agent will start running and communication with the simulation server will begin.</p>
 </section>
 </section>
 
@@ -547,7 +547,7 @@ Creating<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </s
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Package Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Installing the Package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Creating a New Agent</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Running the Agent</a></li>
 </ul>

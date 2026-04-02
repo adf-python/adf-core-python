@@ -24,23 +24,34 @@
 ## 3. OpenJDKのインストール
 
 1. [OpenJDK](https://jdk.java.net/archive/)のダウンロードページにアクセスします。
-2. 17.0.2のWindowsの横にある"zip"をクリックします。
+2. 21.0.2のWindowsの横にある"zip"をクリックします。
 3. ダウンロードしたzipを展開(解凍)します。
-4. 展開(解凍)すると"jdk-17.0.2"のようなフォルダができるのを確認します。
-5. このフォルダ"jdk-17.0.2"を`C:¥`の直下に移動させます。
+4. 展開(解凍)すると"jdk-21.0.2"のようなフォルダができるのを確認します。
+5. このフォルダ"jdk-21.0.2"を`C:¥`の直下に移動させます。
 6. Windowsでコマンドプロンプトを管理者として実行します。
 7. 開いたら以下のコマンドを実行します。
-    ```
-    powershell -command "[System.Environment]::SetEnvironmentVariable(\"JAVA_HOME\", \"c:\jdk-17.0.2\", \"Machine\")"
-    ```
-8. 次に以下のコマンドを実行します。
-    ```
-    powershell -command "$oldpath = [System.Environment]::GetEnvironmentVariable(\"Path\", \"Machine\"); $oldpath += \";c:\jdk-17.0.2\bin\"; [System.Environment]::SetEnvironmentVariable(\"Path\", $oldpath, \"Machine\")"
-    ```
-9. Git Bashを開き、`java -version`と入力します。
-    以下のような文字が表示されたらインストール成功です。
-    ```
-    openjdk version "17.0.2" 2022-01-18
-    OpenJDK Runtime Environment (build 17.0.2+8-86)
-    OpenJDK 64-Bit Server VM (build 17.0.2+8-86, mixed mode, sharing)
-    ```
+
+```shell
+   powershell -command "[System.Environment]::SetEnvironmentVariable(\"JAVA_HOME\", \"c:\jdk-21.0.2\", \"Machine\")"
+```
+
+1. 次に以下のコマンドを実行します。
+
+   ```shell
+   powershell -command "$oldpath = [System.Environment]::GetEnvironmentVariable(\"Path\", \"Machine\"); $oldpath += \";c:\jdk-21.0.2\bin\"; [System.Environment]::SetEnvironmentVariable(\"Path\", $oldpath, \"Machine\")"
+   ```
+
+2. Git Bashを開き、`java -version`と入力します。
+   以下のような文字が表示されたらインストール成功です。
+
+   ```shell
+   openjdk version "21.0.2" 2022-01-18
+   OpenJDK Runtime Environment (build 21.0.2)
+   OpenJDK 64-Bit Server VM (build 21.0.2, mixed mode, sharing)
+   ```
+
+   ```shell
+   openjdk version "21.0.2" 2022-01-18
+   OpenJDK Runtime Environment (build 21.0.2)
+   OpenJDK 64-Bit Server VM (build 21.0.2, mixed mode, sharing)
+   ```

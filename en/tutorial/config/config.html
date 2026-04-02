@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>About Config &#8212; adf-core-python 0.2.2 documentation</title>
+    <title>About the Configuration &#8212; adf-core-python 0.2.2 documentation</title>
   
   
   
@@ -53,7 +53,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="About Modules" href="../module/module.html" />
-    <link rel="prev" title="Agent Control" href="../agent/agent_control.html" />
+    <link rel="prev" title="Controlling the Agent" href="../agent/agent_control.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -248,7 +248,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Install</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../install/environment/environment.html">Environment Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../install/install/install.html">Installation</a></li>
@@ -261,11 +261,11 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../environment/environment.html">Environment Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../agent/agent.html">Creating an Agent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../agent/agent_control.html">Agent Control</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">About Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agent/agent_control.html">Controlling the Agent</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">About the Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../module/module.html">About Modules</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-On</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-on</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../hands-on/clustering.html">Clustering Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../hands-on/search.html">Search Module</a></li>
@@ -416,7 +416,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>About Config</h1>
+    <h1>About the Configuration</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -426,7 +426,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Explanation about Config</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Explanation of the Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#launcher-yaml">launcher.yaml</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-yaml">module.yaml</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-json">development.json</a></li>
@@ -444,9 +444,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="id1">
-<h1>About Config<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>About the Configuration<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
-<h2>Explanation about Config<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2>Explanation of the Configuration<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
 └──<span class="w"> </span>&lt;your_team_name&gt;
 <span class="w">    </span>└──<span class="w"> </span>config
@@ -455,14 +455,14 @@ document.write(`
 <span class="w">        </span>└──<span class="w"> </span>module.yaml
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">config</span></code> directory contains the agent’s configuration files.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">config</span></code> directory contains the agent configuration files.</p>
 <section id="launcher-yaml">
 <h3>launcher.yaml<a class="headerlink" href="#launcher-yaml" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">launcher.yaml</span></code> is a configuration file that is read when the agent starts. It specifies the simulation server and the files of the modules to be loaded.</p>
+<p><code class="docutils literal notranslate"><span class="pre">launcher.yaml</span></code> is the configuration file loaded when the agent starts. It specifies the simulation server and the file that describes which modules to load.</p>
 </section>
 <section id="module-yaml">
 <h3>module.yaml<a class="headerlink" href="#module-yaml" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">module.yaml</span></code> is a configuration file for the modules that the agent loads. It specifies the paths of the modules to be loaded. When specifying the path, use the relative path from the project’s <code class="docutils literal notranslate"><span class="pre">main.py</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">module.yaml</span></code> is the configuration file for the modules loaded by the agent. It specifies the paths of the modules to load. When specifying paths, use paths relative to the project’s <code class="docutils literal notranslate"><span class="pre">main.py</span></code>.</p>
 <div class="note admonition">
 <p class="admonition-title">Example</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">DefaultSearch</span><span class="p">:</span>
@@ -474,7 +474,7 @@ document.write(`
 </section>
 <section id="development-json">
 <h3>development.json<a class="headerlink" href="#development-json" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">development.json</span></code> is a configuration file used during development. It is used to obtain values from external sources during agent development. Therefore, it cannot be used during competitions.</p>
+<p><code class="docutils literal notranslate"><span class="pre">development.json</span></code> is a configuration file used during development. It is used when retrieving values from external sources while developing agents. Therefore, it cannot be used during competition.</p>
 </section>
 </section>
 </section>
@@ -496,7 +496,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Agent Control</p>
+        <p class="prev-next-title">Controlling the Agent</p>
       </div>
     </a>
     <a class="right-next"
@@ -524,7 +524,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Explanation about Config</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Explanation of the Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#launcher-yaml">launcher.yaml</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-yaml">module.yaml</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-json">development.json</a></li>

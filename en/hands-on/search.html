@@ -248,7 +248,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Install</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../install/environment/environment.html">Environment Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install/install/install.html">Installation</a></li>
@@ -261,11 +261,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">Environment Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">Creating an Agent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">Agent Control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">About Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">Controlling the Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">About the Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">About Modules</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-On</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-on</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="clustering.html">Clustering Module</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Search Module</a></li>
@@ -427,14 +427,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Overview of the Search Module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Preparation for Implementing the Search Module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Module Registration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Module Implementation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Module Improvement</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Challenges</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Issue of the search target changing with each step</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Issue of selecting already searched entities as search targets again</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Selecting distant entities as search targets even though there are unexplored entities nearby</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Preparing to Implement the Search Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Registering the Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Implementing the Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Improving the Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Task</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Problem: The search target changes on every step</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Problem: Already searched entities are selected again as targets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Even when there is an unexplored entity nearby, a distant entity may be chosen as the search target</a></li>
 </ul>
 </li>
 </ul>
@@ -452,19 +452,19 @@ document.write(`
 <h1>Search Module<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
 <h2>Overview of the Search Module<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>The module to be developed this time is the information search target determination (<code class="docutils literal notranslate"><span class="pre">Search</span></code>) module using the <code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> module. The clustering module divides the areas of responsibility among agents and randomly selects search targets within the assigned areas.</p>
+<p>The module we will develop here is a <code class="docutils literal notranslate"><span class="pre">Search</span></code> module that determines information search targets using the <code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> module. The clustering module divides the assigned areas among the agents, and a search target is chosen at random from within each assigned area.</p>
 </section>
 <section id="id3">
-<h2>Preparation for Implementing the Search Module<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2>Preparing to Implement the Search Module<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The following tasks assume that the current directory is the root directory of the project.</p>
+<p>The following steps assume that the current directory is the project root directory.</p>
 </div>
-<p>First, create a file to write the search module.</p>
+<p>First, create the file for the search module.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/complex/k_means_pp_search.py
 </pre></div>
 </div>
-<p>Next, implement the search module. Write the following code into <code class="docutils literal notranslate"><span class="pre">k_means_pp_search.py</span></code>. This will be the template for the search module to be implemented this time.</p>
+<p>Next, implement the search module. Write the following code in <code class="docutils literal notranslate"><span class="pre">k_means_pp_search.py</span></code>. This will be the template for the search module we implement here.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">cast</span>
 
@@ -507,8 +507,8 @@ document.write(`
 </div>
 </section>
 <section id="id4">
-<h2>Module Registration<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>Next, register the created module. Modify the relevant section of <code class="docutils literal notranslate"><span class="pre">config/module.yaml</span></code> as follows.</p>
+<h2>Registering the Module<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>Next, register the module you created. Change the relevant section of <code class="docutils literal notranslate"><span class="pre">config/module.yaml</span></code> as follows.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">DefaultTacticsAmbulanceTeam</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">Search</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.complex.k_means_pp_search.KMeansPPSearch</span>
 
@@ -521,14 +521,14 @@ document.write(`
 </div>
 </section>
 <section id="id5">
-<h2>Module Implementation<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p>First, make it possible to call the <code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> module.</p>
+<h2>Implementing the Module<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>First, make the <code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> module callable.</p>
 <p>Add the following code to <code class="docutils literal notranslate"><span class="pre">config/module.yaml</span></code>.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">KMeansPPSearch</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.algorithm.k_means_pp_clustering.KMeansPPClustering</span>
 </pre></div>
 </div>
-<p>Next, make it possible to call the <code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> module in the <code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> module.</p>
+<p>Next, make the <code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> module callable from the <code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> module.</p>
 <p>Add the following code to <code class="docutils literal notranslate"><span class="pre">k_means_pp_search.py</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">KMeansPPSearch</span><span class="p">(</span><span class="n">Search</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
@@ -565,7 +565,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">register_sub_module</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clustering</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Then, modify the <code class="docutils literal notranslate"><span class="pre">calculate</span></code> method to call the clustering module and determine the search target.</p>
+<p>Then change the <code class="docutils literal notranslate"><span class="pre">calculate</span></code> method so that it calls the clustering module and determines the search target.</p>
 <p>Add the following code to <code class="docutils literal notranslate"><span class="pre">k_means_pp_search.py</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Search</span><span class="p">:</span>
         <span class="c1"># 自エージェントのエンティティIDを取得</span>
@@ -587,7 +587,7 @@ document.write(`
 </pre></div>
 </div>
 <p>This completes the implementation of the <code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> module using the <code class="docutils literal notranslate"><span class="pre">KMeansPPClustering</span></code> module.</p>
-<p>ターミナルを 2 つ起動します。</p>
+<p>Open two terminals.</p>
 <p>Open one terminal and start the simulation server with the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal A</span>
 <span class="nb">cd</span><span class="w"> </span>WORKING_DIR/rcrs-server/scripts
@@ -602,36 +602,36 @@ python<span class="w"> </span>main.py
 </div>
 </section>
 <section id="id6">
-<h2>Module Improvement<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> module randomly selects search targets within the assigned areas using the clustering module. As a result, the following issues arise:</p>
+<h2>Improving the Module<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> module uses the clustering module to randomly select search targets from within each assigned area. As a result, it has the following problems.</p>
 <ul class="simple">
-<li><p>The search target changes with each step</p>
+<li><p>The search target changes on every step</p>
 <ul>
-<li><p>The search target changes before reaching the goal, making it difficult to reach the goal</p></li>
-<li><p>Randomly selecting search targets in various places makes efficient searching impossible</p></li>
+<li><p>Because the target changes before the agent reaches it, it is difficult to ever reach the goal</p></li>
+<li><p>Choosing search targets at random from many different places makes efficient search impossible</p></li>
 </ul>
 </li>
-<li><p>Selecting already searched entities as search targets again makes efficient searching impossible</p></li>
-<li><p>Selecting distant entities as search targets even though there are unexplored entities nearby</p></li>
+<li><p>Because already searched entities can be selected again as search targets, efficient search is not possible</p></li>
+<li><p>Even when there is an unexplored entity nearby, a distant entity may be chosen as the search target</p></li>
 </ul>
-<p>These are some of the issues.</p>
+<p>These are some of the problems.</p>
 </section>
 <section id="id7">
-<h2>Challenges<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
-<p>Improve the <code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> module and implement a module that performs more efficient searches.</p>
+<h2>Task<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>Improve the <code class="docutils literal notranslate"><span class="pre">KMeansPPSearch</span></code> module and try implementing a module that performs more efficient searching.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>There may be other points for improvement besides the issues listed here, so feel free to address them as well.</p>
+<p>There may be other areas that should be improved in addition to the problems listed here, so you are welcome to improve those as well.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>There are also some points for improvement in the example program, so try to fix them if you have time.</p>
+<p>There are also some improvements to be made in the example program, so please fix them if you have time.</p>
 </div>
 <section id="id8">
-<h3>Issue of the search target changing with each step<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<h3>Problem: The search target changes on every step<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <div class="hint dropdown admonition">
-<p class="admonition-title">Hints for the Approach</p>
-<p>Do not change the search target until the initially selected target is reached</p>
+<p class="admonition-title">Hint</p>
+<p>Do not change the search target until the once-selected target has been reached</p>
 </div>
 <div class="hint dropdown admonition">
 <p class="admonition-title">Example Program</p>
@@ -669,10 +669,10 @@ python<span class="w"> </span>main.py
 </div>
 </section>
 <section id="id9">
-<h3>Issue of selecting already searched entities as search targets again<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<h3>Problem: Already searched entities are selected again as targets<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <div class="hint dropdown admonition">
-<p class="admonition-title">Hints for the Approach</p>
-<p>Record already searched entities in some way to avoid selecting them as search targets again</p>
+<p class="admonition-title">Hint</p>
+<p>Record entities that have already been searched in some way so they are not selected again as targets</p>
 </div>
 <div class="hint dropdown admonition">
 <p class="admonition-title">Example Program</p>
@@ -750,10 +750,10 @@ python<span class="w"> </span>main.py
 </div>
 </section>
 <section id="id10">
-<h3>Selecting distant entities as search targets even though there are unexplored entities nearby<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<h3>Even when there is an unexplored entity nearby, a distant entity may be chosen as the search target<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <div class="hint dropdown admonition">
-<p class="admonition-title">Hints for the Approach</p>
-<p>Calculate the distance between entities and select the closest entity as the search target</p>
+<p class="admonition-title">Hint</p>
+<p>Calculate the distance between entities and select the nearest entity as the search target</p>
 </div>
 <div class="hint dropdown admonition">
 <p class="admonition-title">Example Program</p>
@@ -852,14 +852,14 @@ python<span class="w"> </span>main.py
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Overview of the Search Module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Preparation for Implementing the Search Module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Module Registration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Module Implementation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Module Improvement</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Challenges</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Issue of the search target changing with each step</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Issue of selecting already searched entities as search targets again</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Selecting distant entities as search targets even though there are unexplored entities nearby</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Preparing to Implement the Search Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Registering the Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Implementing the Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Improving the Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Task</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Problem: The search target changes on every step</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Problem: Already searched entities are selected again as targets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Even when there is an unexplored entity nearby, a distant entity may be chosen as the search target</a></li>
 </ul>
 </li>
 </ul>

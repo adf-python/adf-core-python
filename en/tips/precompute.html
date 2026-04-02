@@ -247,7 +247,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Install</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../install/environment/environment.html">Environment Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install/install/install.html">Installation</a></li>
@@ -260,11 +260,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">Environment Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">Creating an Agent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">Agent Control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">About Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">Controlling the Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">About the Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">About Modules</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-On</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-on</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../hands-on/clustering.html">Clustering Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hands-on/search.html">Search Module</a></li>
@@ -425,7 +425,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">How to Execute Precomputation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">How to Run Precomputation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">How to Use Precomputation</a></li>
 </ul>
             </nav>
@@ -441,19 +441,19 @@ document.write(`
   <section id="id1">
 <h1>About Precomputation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
-<h2>How to Execute Precomputation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>To execute precomputation, use the <code class="docutils literal notranslate"><span class="pre">--precompute</span></code> flag.</p>
+<h2>How to Run Precomputation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>To run precomputation, use the <code class="docutils literal notranslate"><span class="pre">--precompute</span></code> flag.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py<span class="w"> </span>--precompute<span class="w"> </span>-a<span class="w"> </span><span class="m">1</span><span class="w"> </span>-f<span class="w"> </span><span class="m">1</span><span class="w"> </span>-p<span class="w"> </span><span class="m">1</span><span class="w"> </span>-ac<span class="w"> </span><span class="m">0</span><span class="w"> </span>-fs<span class="w"> </span><span class="m">0</span><span class="w"> </span>-po<span class="w"> </span><span class="m">0</span>
 </pre></div>
 </div>
-<p>This command executes precomputation and saves the precomputation results in the directory specified by <code class="docutils literal notranslate"><span class="pre">adf.agent.precompute</span></code> in <code class="docutils literal notranslate"><span class="pre">launcher.yaml</span></code>.</p>
+<p>This command runs precomputation and saves the results in the directory specified by <code class="docutils literal notranslate"><span class="pre">adf.agent.precompute</span></code> in <code class="docutils literal notranslate"><span class="pre">launcher.yaml</span></code>.</p>
 </section>
 <section id="id3">
 <h2>How to Use Precomputation<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>If the precomputation results are saved in the directory specified by <code class="docutils literal notranslate"><span class="pre">adf.agent.precompute</span></code> in <code class="docutils literal notranslate"><span class="pre">launcher.yaml</span></code>, the precomputation results will be automatically used during normal execution. No special flags are required.</p>
+<p>If the precomputation results are saved in the directory specified by <code class="docutils literal notranslate"><span class="pre">adf.agent.precompute</span></code> in <code class="docutils literal notranslate"><span class="pre">launcher.yaml</span></code>, they will be used automatically during normal execution. No special flag is required.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If you do not want to use the precomputation results, please delete the directory created during precomputation.</p>
+<p>If you do not want to use the precomputation results, delete the directory created during precomputation.</p>
 </div>
 </section>
 </section>
@@ -494,7 +494,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">How to Execute Precomputation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">How to Run Precomputation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">How to Use Precomputation</a></li>
 </ul>
   </nav></div>

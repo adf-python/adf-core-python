@@ -248,7 +248,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Install</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../install/environment/environment.html">Environment Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install/install/install.html">Installation</a></li>
@@ -261,11 +261,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/environment/environment.html">Environment Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent.html">Creating an Agent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">Agent Control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">About Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/agent/agent_control.html">Controlling the Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/config/config.html">About the Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/module/module.html">About Modules</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-On</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-on</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Clustering Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="search.html">Search Module</a></li>
@@ -428,7 +428,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Purpose of the Clustering Module</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Overview of the Clustering Module to Be Developed</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Implementation of the Clustering Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Implementing the Clustering Module</a></li>
 </ul>
             </nav>
         </div>
@@ -444,30 +444,30 @@ document.write(`
 <h1>Clustering Module<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
 <h2>Purpose of the Clustering Module<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>複数のエージェントを動かす場合は、それらのエージェントにどのように協調させるかが重要になります。RRS では多くのチームが、エージェントに各々の担当地域を持たせ役割分担をおこなう協調を取り入れています(他の手段による協調も取り入れています)。担当地域を割り振るためには、地図上のオブジェクトをいくつかのグループに分ける必要があります。このようなグループ分けをしてそれらを管理する場合には、クラスタリングモジュールと呼ばれるモジュールを用います。</p>
-<p>In this document, we will implement a clustering module using algorithms commonly employed by many teams participating in world championships.</p>
+<p>When running multiple agents, it is important to decide how they should cooperate. In RRS, many teams use a form of cooperation in which each agent is assigned its own area of responsibility and work is divided accordingly (they also use other forms of cooperation). To assign those areas, you need to divide the objects on the map into several groups. A module called a clustering module is used when creating and managing these groups.</p>
+<p>In this guide, we will implement a clustering module using the algorithm employed by many teams that compete in world championship events.</p>
 </section>
 <section id="id3">
 <h2>Overview of the Clustering Module to Be Developed<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>The module developed in this document, as shown in the image below,</p>
+<p>The module developed in this guide will work as shown in the image below:</p>
 <ol class="arabic simple">
-<li><p>Divides the objects on the map into sections equal to the number of agents using the k-means++ algorithm.</p></li>
-<li><p>Hungarian アルゴリズムによってそれらの区画とエージェントを (間の距離の総和が最も小さくなるように)1 対 1 で結びつけます。</p></li>
+<li><p>It divides the objects on the map into as many regions as there are agents using the k-means++ algorithm.</p></li>
+<li><p>It then pairs those regions with the agents one-to-one using the Hungarian algorithm so that the total distance between them is minimized.</p></li>
 </ol>
 <p><img alt="Clustering Image" src="../_images/clustering_image.jpg" /></p>
 </section>
 <section id="id4">
-<h2>Implementation of the Clustering Module<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2>Implementing the Clustering Module<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The following tasks assume that the current directory is the root directory of the project.</p>
+<p>The following steps assume that the current directory is the project root directory.</p>
 </div>
-<p>First, create a file to write the clustering module.</p>
+<p>First, create the file for the clustering module.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>src/&lt;your_team_name&gt;/module/algorithm
 touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/algorithm/k_means_pp_clustering.py
 </pre></div>
 </div>
-<p>Next, implement the clustering module. Write the following code into <code class="docutils literal notranslate"><span class="pre">k_means_pp_clustering.py</span></code>.</p>
+<p>Next, implement the clustering module. Write the following code in <code class="docutils literal notranslate"><span class="pre">k_means_pp_clustering.py</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.agent.develop.develop_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DevelopData</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">adf_core_python.core.agent.info.agent_info</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentInfo</span>
@@ -739,9 +739,9 @@ touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/algorithm/k_means
         <span class="k">return</span> <span class="n">col_ind</span>
 </pre></div>
 </div>
-<p>k-means++の実装は、scikit-learn の<code class="docutils literal notranslate"><span class="pre">KMeans</span></code>クラスを使用しています。<code class="docutils literal notranslate"><span class="pre">KMeans</span></code>クラスは、<code class="docutils literal notranslate"><span class="pre">n_clusters</span></code>で指定したクラスター数によって地図上のオブジェクトをクラスタリングします。クラスタリング結果は、<code class="docutils literal notranslate"><span class="pre">labels_</span></code>属性に格納されます。また、<code class="docutils literal notranslate"><span class="pre">cluster_centers_</span></code>属性には各クラスターの中心座標が格納されます。</p>
-<p>hungarian アルゴリズムの実装は、scipy の<code class="docutils literal notranslate"><span class="pre">linear_sum_assignment</span></code>関数を使用しています。<code class="docutils literal notranslate"><span class="pre">linear_sum_assignment</span></code>関数は、コスト行列を引数として受け取り、最適な割り当てを行います。</p>
-<p>Next, register the created module. Edit <code class="docutils literal notranslate"><span class="pre">config/module.yaml</span></code> as follows.</p>
+<p>The k-means++ implementation uses scikit-learn’s <code class="docutils literal notranslate"><span class="pre">KMeans</span></code> class. The <code class="docutils literal notranslate"><span class="pre">KMeans</span></code> class clusters objects on the map according to the number of clusters specified by <code class="docutils literal notranslate"><span class="pre">n_clusters</span></code>. The clustering result is stored in the <code class="docutils literal notranslate"><span class="pre">labels_</span></code> attribute. The center coordinates of each cluster are stored in the <code class="docutils literal notranslate"><span class="pre">cluster_centers_</span></code> attribute.</p>
+<p>The Hungarian algorithm implementation uses SciPy’s <code class="docutils literal notranslate"><span class="pre">linear_sum_assignment</span></code> function. <code class="docutils literal notranslate"><span class="pre">linear_sum_assignment</span></code> takes a cost matrix as input and performs the optimal assignment.</p>
+<p>Next, register the module you created. Edit <code class="docutils literal notranslate"><span class="pre">config/module.yaml</span></code> as follows.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">SampleSearch</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">PathPlanning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adf_core_python.implement.module.algorithm.a_star_path_planning.AStarPathPlanning</span>
 <span class="w">  </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.algorithm.k_means_pp_clustering.KMeansPPClustering</span>
@@ -750,7 +750,7 @@ touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/algorithm/k_means
 <span class="w">  </span><span class="nt">Clustering</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src.&lt;your_team_name&gt;.module.algorithm.k_means_pp_clustering.KMeansPPClustering</span>
 </pre></div>
 </div>
-<p>ターミナルを 2 つ起動します。</p>
+<p>Open two terminals.</p>
 <p>Open one terminal and start the simulation server with the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Terminal A</span>
 <span class="nb">cd</span><span class="w"> </span>WORKING_DIR/rcrs-server/scripts
@@ -763,29 +763,29 @@ touch<span class="w"> </span>src/&lt;your_team_name&gt;/module/algorithm/k_means
 python<span class="w"> </span>main.py
 </pre></div>
 </div>
-<p>When the agent starts, the clustering results will be displayed in the standard output.</p>
+<p>When the agent starts, the clustering result is printed to standard output.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>info<span class="w">     </span><span class="o">]</span><span class="w"> </span>Clustered<span class="w"> </span>entities:<span class="w"> </span><span class="o">[[</span><span class="m">257</span>,<span class="w"> </span><span class="m">259</span>,<span class="w"> </span><span class="m">262</span>,<span class="w"> </span><span class="m">263</span>,<span class="w"> </span><span class="m">270</span>,<span class="w"> </span><span class="m">278</span>,<span class="w"> </span><span class="m">280</span>,<span class="w"> </span><span class="m">297</span>,<span class="w"> </span><span class="m">336</span>,<span class="w"> </span><span class="m">913</span>,<span class="w"> </span><span class="m">914</span>,<span class="w"> </span><span class="m">915</span>,<span class="w"> </span><span class="m">916</span>,<span class="w"> </span><span class="m">917</span>,<span class="w"> </span><span class="m">918</span>,<span class="w"> </span><span class="m">919</span>,<span class="w"> </span><span class="m">933</span>,<span class="w"> </span><span class="m">941</span>,<span class="w"> </span><span class="m">942</span>,<span class="w"> </span><span class="m">943</span>,<span class="w"> </span><span class="m">944</span>,<span class="w"> </span><span class="m">945</span>,<span class="w"> </span><span class="m">946</span>,<span class="w"> </span><span class="m">947</span>,<span class="w"> </span><span class="m">974</span>,<span class="w"> </span><span class="m">250</span>,<span class="w"> </span><span class="m">253</span><span class="o">]</span>,<span class="w"> </span><span class="o">[</span><span class="m">349</span>,<span class="w"> </span><span class="m">896</span>,<span class="w"> </span><span class="m">899</span>,<span class="w"> </span><span class="m">902</span>,<span class="w"> </span><span class="m">934</span>,<span class="w"> </span><span class="m">960</span>,<span class="w"> </span><span class="m">968</span>,<span class="w"> </span><span class="m">969</span>,<span class="w"> </span><span class="m">970</span>,<span class="w"> </span><span class="m">971</span>,<span class="w"> </span><span class="m">248</span>,<span class="w"> </span><span class="m">251</span><span class="o">]</span>,<span class="w"> </span><span class="o">[</span><span class="m">258</span>,<span class="w"> </span><span class="m">266</span>,<span class="w"> </span><span class="m">268</span>,<span class="w"> </span><span class="m">269</span>,<span class="w"> </span><span class="m">274</span>,<span class="w"> </span><span class="m">275</span>,<span class="w"> </span><span class="m">279</span>,<span class="w"> </span><span class="m">920</span>,<span class="w"> </span><span class="m">921</span>,<span class="w"> </span><span class="m">922</span>,<span class="w"> </span><span class="m">923</span>,<span class="w"> </span><span class="m">924</span>,<span class="w"> </span><span class="m">925</span>,<span class="w"> </span><span class="m">926</span>,<span class="w"> </span><span class="m">927</span>,<span class="w"> </span><span class="m">928</span>,<span class="w"> </span><span class="m">929</span>,<span class="w"> </span><span class="m">932</span>,<span class="w"> </span><span class="m">948</span>,<span class="w"> </span><span class="m">949</span>,<span class="w"> </span><span class="m">950</span>,<span class="w"> </span><span class="m">951</span>,<span class="w"> </span><span class="m">952</span>,<span class="w"> </span><span class="m">953</span>,<span class="w"> </span><span class="m">954</span>,<span class="w"> </span><span class="m">955</span>,<span class="w"> </span><span class="m">956</span>,<span class="w"> </span><span class="m">957</span>,<span class="w"> </span><span class="m">958</span>,<span class="w"> </span><span class="m">959</span>,<span class="w"> </span><span class="m">975</span>,<span class="w"> </span><span class="m">976</span>,<span class="w"> </span><span class="m">254</span>,<span class="w"> </span><span class="m">255</span><span class="o">]</span>,<span class="w"> </span><span class="o">[</span><span class="m">256</span>,<span class="w"> </span><span class="m">271</span>,<span class="w"> </span><span class="m">273</span>,<span class="w"> </span><span class="m">281</span>,<span class="w"> </span><span class="m">296</span>,<span class="w"> </span><span class="m">298</span>,<span class="w"> </span><span class="m">314</span>,<span class="w"> </span><span class="m">330</span>,<span class="w"> </span><span class="m">903</span>,<span class="w"> </span><span class="m">904</span>,<span class="w"> </span><span class="m">905</span>,<span class="w"> </span><span class="m">910</span>,<span class="w"> </span><span class="m">911</span>,<span class="w"> </span><span class="m">912</span>,<span class="w"> </span><span class="m">935</span>,<span class="w"> </span><span class="m">936</span>,<span class="w"> </span><span class="m">937</span>,<span class="w"> </span><span class="m">938</span>,<span class="w"> </span><span class="m">939</span>,<span class="w"> </span><span class="m">940</span>,<span class="w"> </span><span class="m">247</span>,<span class="w"> </span><span class="m">249</span><span class="o">]]</span><span class="w"> </span><span class="o">[</span>KMeansPPClustering<span class="o">]</span>
 <span class="o">[</span>info<span class="w">     </span><span class="o">]</span><span class="w"> </span>Agent<span class="w"> </span>cluster<span class="w"> </span>indices:<span class="w"> </span><span class="o">[([</span><span class="m">89544</span>,<span class="w"> </span><span class="m">19925</span><span class="o">]</span>,<span class="w"> </span><span class="m">1</span><span class="o">)</span>,<span class="w"> </span><span class="o">([</span><span class="m">69989</span>,<span class="w"> </span><span class="m">120063</span><span class="o">]</span>,<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span><span class="o">([</span><span class="m">130029</span>,<span class="w"> </span><span class="m">50380</span><span class="o">]</span>,<span class="w"> </span><span class="m">2</span><span class="o">)</span>,<span class="w"> </span><span class="o">([</span><span class="m">29898</span>,<span class="w"> </span><span class="m">59056</span><span class="o">]</span>,<span class="w"> </span><span class="m">3</span><span class="o">)]</span><span class="w"> </span><span class="o">[</span>KMeansPPClustering<span class="o">]</span>
 </pre></div>
 </div>
-<p>As it is, the clustering results are not very clear, so let’s display the clustering results on the map.</p>
-<p><a class="reference download internal" download="" href="../_downloads/3a5f9008a07336d7227e96be15803593/cluster_plot.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">the</span> <span class="pre">cluster</span> <span class="pre">visualization</span> <span class="pre">script</span></code></a> and extract it. Then, in <code class="docutils literal notranslate"><span class="pre">main.py</span></code>, modify the following part.</p>
+<p>As it stands, the clustering result is hard to understand, so let’s display it on the map.</p>
+<p>Download and extract the <a class="reference download internal" download="" href="../_downloads/3a5f9008a07336d7227e96be15803593/cluster_plot.zip"><code class="xref download docutils literal notranslate"><span class="pre">cluster</span> <span class="pre">visualization</span> <span class="pre">script</span></code></a>, then paste the following into the relevant part of <code class="docutils literal notranslate"><span class="pre">main.py</span></code> inside it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># クラスタリング結果</span>
 <span class="n">clusters</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
-<p>Copy the array after <code class="docutils literal notranslate"><span class="pre">Clustered</span> <span class="pre">entities:</span></code> in the output and paste it.</p>
+<p>Copy and paste the array that appears after <code class="docutils literal notranslate"><span class="pre">Clustered</span> <span class="pre">entities:</span></code> in the output.</p>
 <p>Example</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># クラスタリング結果</span>
 <span class="n">clusters</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">257</span><span class="p">,</span> <span class="mi">259</span><span class="p">,</span> <span class="mi">262</span><span class="p">,</span> <span class="mi">263</span><span class="p">,</span> <span class="mi">270</span><span class="p">,</span> <span class="mi">278</span><span class="p">,</span> <span class="mi">280</span><span class="p">,</span> <span class="mi">297</span><span class="p">,</span> <span class="mi">336</span><span class="p">,</span> <span class="mi">913</span><span class="p">,</span> <span class="mi">914</span><span class="p">,</span> <span class="mi">915</span><span class="p">,</span> <span class="mi">916</span><span class="p">,</span> <span class="mi">917</span><span class="p">,</span> <span class="mi">918</span><span class="p">,</span> <span class="mi">919</span><span class="p">,</span> <span class="mi">933</span><span class="p">,</span> <span class="mi">941</span><span class="p">,</span> <span class="mi">942</span><span class="p">,</span> <span class="mi">943</span><span class="p">,</span> <span class="mi">944</span><span class="p">,</span> <span class="mi">945</span><span class="p">,</span> <span class="mi">946</span><span class="p">,</span> <span class="mi">947</span><span class="p">,</span> <span class="mi">974</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">253</span><span class="p">],</span> <span class="p">[</span><span class="mi">349</span><span class="p">,</span> <span class="mi">896</span><span class="p">,</span> <span class="mi">899</span><span class="p">,</span> <span class="mi">902</span><span class="p">,</span> <span class="mi">934</span><span class="p">,</span> <span class="mi">960</span><span class="p">,</span> <span class="mi">968</span><span class="p">,</span> <span class="mi">969</span><span class="p">,</span> <span class="mi">970</span><span class="p">,</span> <span class="mi">971</span><span class="p">,</span> <span class="mi">248</span><span class="p">,</span> <span class="mi">251</span><span class="p">],</span> <span class="p">[</span><span class="mi">258</span><span class="p">,</span> <span class="mi">266</span><span class="p">,</span> <span class="mi">268</span><span class="p">,</span> <span class="mi">269</span><span class="p">,</span> <span class="mi">274</span><span class="p">,</span> <span class="mi">275</span><span class="p">,</span> <span class="mi">279</span><span class="p">,</span> <span class="mi">920</span><span class="p">,</span> <span class="mi">921</span><span class="p">,</span> <span class="mi">922</span><span class="p">,</span> <span class="mi">923</span><span class="p">,</span> <span class="mi">924</span><span class="p">,</span> <span class="mi">925</span><span class="p">,</span> <span class="mi">926</span><span class="p">,</span> <span class="mi">927</span><span class="p">,</span> <span class="mi">928</span><span class="p">,</span> <span class="mi">929</span><span class="p">,</span> <span class="mi">932</span><span class="p">,</span> <span class="mi">948</span><span class="p">,</span> <span class="mi">949</span><span class="p">,</span> <span class="mi">950</span><span class="p">,</span> <span class="mi">951</span><span class="p">,</span> <span class="mi">952</span><span class="p">,</span> <span class="mi">953</span><span class="p">,</span> <span class="mi">954</span><span class="p">,</span> <span class="mi">955</span><span class="p">,</span> <span class="mi">956</span><span class="p">,</span> <span class="mi">957</span><span class="p">,</span> <span class="mi">958</span><span class="p">,</span> <span class="mi">959</span><span class="p">,</span> <span class="mi">975</span><span class="p">,</span> <span class="mi">976</span><span class="p">,</span> <span class="mi">254</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span> <span class="p">[</span><span class="mi">256</span><span class="p">,</span> <span class="mi">271</span><span class="p">,</span> <span class="mi">273</span><span class="p">,</span> <span class="mi">281</span><span class="p">,</span> <span class="mi">296</span><span class="p">,</span> <span class="mi">298</span><span class="p">,</span> <span class="mi">314</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">903</span><span class="p">,</span> <span class="mi">904</span><span class="p">,</span> <span class="mi">905</span><span class="p">,</span> <span class="mi">910</span><span class="p">,</span> <span class="mi">911</span><span class="p">,</span> <span class="mi">912</span><span class="p">,</span> <span class="mi">935</span><span class="p">,</span> <span class="mi">936</span><span class="p">,</span> <span class="mi">937</span><span class="p">,</span> <span class="mi">938</span><span class="p">,</span> <span class="mi">939</span><span class="p">,</span> <span class="mi">940</span><span class="p">,</span> <span class="mi">247</span><span class="p">,</span> <span class="mi">249</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>After pasting, execute the following command.</p>
+<p>After pasting it, run the following command.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 python<span class="w"> </span>main.py
 </pre></div>
 </div>
-<p>An image like the one below will be output.</p>
+<p>An image like the following will be generated.</p>
 <p><img alt="Clustering Image" src="../_images/cluster.png" /></p>
 </section>
 </section>
@@ -837,7 +837,7 @@ python<span class="w"> </span>main.py
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Purpose of the Clustering Module</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Overview of the Clustering Module to Be Developed</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Implementation of the Clustering Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Implementing the Clustering Module</a></li>
 </ul>
   </nav></div>
 

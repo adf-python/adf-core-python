@@ -470,28 +470,34 @@ document.write(`
 </section>
 <section id="openjdk">
 <h2>3. OpenJDKのインストール<a class="headerlink" href="#openjdk" title="Link to this heading">#</a></h2>
-<ol class="arabic">
+<ol class="arabic simple">
 <li><p><a class="reference external" href="https://jdk.java.net/archive/">OpenJDK</a>のダウンロードページにアクセスします。</p></li>
-<li><p>17.0.2のWindowsの横にある&quot;zip&quot;をクリックします。</p></li>
+<li><p>21.0.2のWindowsの横にある&quot;zip&quot;をクリックします。</p></li>
 <li><p>ダウンロードしたzipを展開(解凍)します。</p></li>
-<li><p>展開(解凍)すると&quot;jdk-17.0.2&quot;のようなフォルダができるのを確認します。</p></li>
-<li><p>このフォルダ&quot;jdk-17.0.2&quot;を<code class="docutils literal notranslate"><span class="pre">C:¥</span></code>の直下に移動させます。</p></li>
+<li><p>展開(解凍)すると&quot;jdk-21.0.2&quot;のようなフォルダができるのを確認します。</p></li>
+<li><p>このフォルダ&quot;jdk-21.0.2&quot;を<code class="docutils literal notranslate"><span class="pre">C:¥</span></code>の直下に移動させます。</p></li>
 <li><p>Windowsでコマンドプロンプトを管理者として実行します。</p></li>
-<li><p>開いたら以下のコマンドを実行します。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">powershell</span> <span class="o">-</span><span class="n">command</span> <span class="s2">&quot;[System.Environment]::SetEnvironmentVariable(</span><span class="se">\&quot;</span><span class="s2">JAVA_HOME</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">c:\jdk-17.0.2</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">Machine</span><span class="se">\&quot;</span><span class="s2">)&quot;</span>
+<li><p>開いたら以下のコマンドを実行します。</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="w">   </span>powershell<span class="w"> </span>-command<span class="w"> </span><span class="s2">&quot;[System.Environment]::SetEnvironmentVariable(\&quot;JAVA_HOME\&quot;, \&quot;c:\jdk-21.0.2\&quot;, \&quot;Machine\&quot;)&quot;</span>
 </pre></div>
 </div>
-</li>
+<ol class="arabic">
 <li><p>次に以下のコマンドを実行します。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">powershell</span> <span class="o">-</span><span class="n">command</span> <span class="s2">&quot;$oldpath = [System.Environment]::GetEnvironmentVariable(</span><span class="se">\&quot;</span><span class="s2">Path</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">Machine</span><span class="se">\&quot;</span><span class="s2">); $oldpath += </span><span class="se">\&quot;</span><span class="s2">;c:\jdk-17.0.2</span><span class="se">\b</span><span class="s2">in</span><span class="se">\&quot;</span><span class="s2">; [System.Environment]::SetEnvironmentVariable(</span><span class="se">\&quot;</span><span class="s2">Path</span><span class="se">\&quot;</span><span class="s2">, $oldpath, </span><span class="se">\&quot;</span><span class="s2">Machine</span><span class="se">\&quot;</span><span class="s2">)&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>powershell<span class="w"> </span>-command<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$oldpath</span><span class="s2"> = [System.Environment]::GetEnvironmentVariable(\&quot;Path\&quot;, \&quot;Machine\&quot;); </span><span class="nv">$oldpath</span><span class="s2"> += \&quot;;c:\jdk-21.0.2\bin\&quot;; [System.Environment]::SetEnvironmentVariable(\&quot;Path\&quot;, </span><span class="nv">$oldpath</span><span class="s2">, \&quot;Machine\&quot;)&quot;</span>
 </pre></div>
 </div>
 </li>
 <li><p>Git Bashを開き、<code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">-version</span></code>と入力します。
 以下のような文字が表示されたらインストール成功です。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openjdk</span> <span class="n">version</span> <span class="s2">&quot;17.0.2&quot;</span> <span class="mi">2022</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">18</span>
-<span class="n">OpenJDK</span> <span class="n">Runtime</span> <span class="n">Environment</span> <span class="p">(</span><span class="n">build</span> <span class="mf">17.0.2</span><span class="o">+</span><span class="mi">8</span><span class="o">-</span><span class="mi">86</span><span class="p">)</span>
-<span class="n">OpenJDK</span> <span class="mi">64</span><span class="o">-</span><span class="n">Bit</span> <span class="n">Server</span> <span class="n">VM</span> <span class="p">(</span><span class="n">build</span> <span class="mf">17.0.2</span><span class="o">+</span><span class="mi">8</span><span class="o">-</span><span class="mi">86</span><span class="p">,</span> <span class="n">mixed</span> <span class="n">mode</span><span class="p">,</span> <span class="n">sharing</span><span class="p">)</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>openjdk<span class="w"> </span>version<span class="w"> </span><span class="s2">&quot;21.0.2&quot;</span><span class="w"> </span><span class="m">2022</span>-01-18
+OpenJDK<span class="w"> </span>Runtime<span class="w"> </span>Environment<span class="w"> </span><span class="o">(</span>build<span class="w"> </span><span class="m">21</span>.0.2<span class="o">)</span>
+OpenJDK<span class="w"> </span><span class="m">64</span>-Bit<span class="w"> </span>Server<span class="w"> </span>VM<span class="w"> </span><span class="o">(</span>build<span class="w"> </span><span class="m">21</span>.0.2,<span class="w"> </span>mixed<span class="w"> </span>mode,<span class="w"> </span>sharing<span class="o">)</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>openjdk<span class="w"> </span>version<span class="w"> </span><span class="s2">&quot;21.0.2&quot;</span><span class="w"> </span><span class="m">2022</span>-01-18
+OpenJDK<span class="w"> </span>Runtime<span class="w"> </span>Environment<span class="w"> </span><span class="o">(</span>build<span class="w"> </span><span class="m">21</span>.0.2<span class="o">)</span>
+OpenJDK<span class="w"> </span><span class="m">64</span>-Bit<span class="w"> </span>Server<span class="w"> </span>VM<span class="w"> </span><span class="o">(</span>build<span class="w"> </span><span class="m">21</span>.0.2,<span class="w"> </span>mixed<span class="w"> </span>mode,<span class="w"> </span>sharing<span class="o">)</span>
 </pre></div>
 </div>
 </li>
