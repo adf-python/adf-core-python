@@ -351,7 +351,7 @@ python main.py
 clusters = []
 ```
 
-出力の`Clustered entities: `の後ろの部分の配列をコピーして貼り付けてください。
+出力の`Clustered entities:`の後ろの部分の配列をコピーして貼り付けてください。
 
 例
 
