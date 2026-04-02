@@ -2,14 +2,13 @@
 # Copyright (C) 2024, Haruki Uehara, Yuki Shimada
 # This file is distributed under the same license as the adf-core-python
 # package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: adf-core-python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-22 21:57+0900\n"
+"POT-Creation-Date: 2026-04-02 19:10+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -26,14 +25,15 @@ msgstr "About Precomputation"
 
 #: ../../source/tips/precompute.md:3
 msgid "事前計算の実行の仕方"
-msgstr "How to Execute Precomputation"
+msgstr "How to Run Precomputation"
 
 #: ../../source/tips/precompute.md:5
 msgid "事前計算を実行するには、`--precompute` フラグを使用します。"
-msgstr "To execute precomputation, use the `--precompute` flag."
+msgstr "To run precomputation, use the `--precompute` flag."
+
 #: ../../source/tips/precompute.md:11
 msgid "このコマンドは、事前計算を実行し、事前計算結果を`launcher.yaml`の`adf.agent.precompute`で指定されたディレクトリに保存します。"
-msgstr "This command executes precomputation and saves the precomputation results in the directory specified by `adf.agent.precompute` in `launcher.yaml`."
+msgstr "This command runs precomputation and saves the results in the directory specified by `adf.agent.precompute` in `launcher.yaml`."
 
 #: ../../source/tips/precompute.md:13
 msgid "事前計算の利用の仕方"
@@ -41,9 +41,8 @@ msgstr "How to Use Precomputation"
 
 #: ../../source/tips/precompute.md:15
 msgid "事前計算結果が`launcher.yaml`の`adf.agent.precompute`で指定されたディレクトリに保存されている場合、通常の実行時に自動的に事前計算結果が利用されます。特別なフラグを指定する必要はありません。"
-msgstr "If the precomputation results are saved in the directory specified by `adf.agent.precompute` in `launcher.yaml`, the precomputation results will be automatically used during normal execution. No special flags are required."
+msgstr "If the precomputation results are saved in the directory specified by `adf.agent.precompute` in `launcher.yaml`, they will be used automatically during normal execution. No special flag is required."
 
 #: ../../source/tips/precompute.md:18
 msgid "事前計算の結果を使用したくない場合は事前計算時に作成されたディレクトリを削除してください。"
-msgstr "If you do not want to use the precomputation results, please delete the directory created during precomputation."
-
+msgstr "If you do not want to use the precomputation results, delete the directory created during precomputation."

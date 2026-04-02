@@ -44,7 +44,7 @@ html_sidebars = {
 
 html_static_path = ["_static"]
 
-locale_dirs = ["locale"]
+locale_dirs = ["locales"]
 language = "en"
 
 # get the environment variable build_all_docs and pages_root

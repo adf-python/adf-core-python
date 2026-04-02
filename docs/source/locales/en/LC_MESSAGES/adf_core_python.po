@@ -2,14 +2,14 @@
 # Copyright (C) 2024, Haruki Uehara, Yuki Shimada
 # This file is distributed under the same license as the adf-core-python
 # package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: adf-core-python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-22 21:57+0900\n"
+"POT-Creation-Date: 2026-04-02 19:10+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -1015,6 +1015,17 @@ msgstr ""
 msgid "If one or both entities are invalid or the location is invalid"
 msgstr ""
 
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entities:1 of
+msgid "Get all entities"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entities:3
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_types:6
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_urns:5
+#: of
+msgid "Entities"
+msgstr ""
+
 #: adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_types:1
 #: of
 msgid "Get the entities of the specified types"
@@ -1026,9 +1037,11 @@ msgstr ""
 msgid "List of entity types"
 msgstr ""
 
-#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_types:6
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entities_of_urns:1
 #: of
-msgid "Entities"
+msgid ""
+"Get the entities of the specified URNs :param urns: List of entity URNs "
+":type urns: list[EntityURN]"
 msgstr ""
 
 #: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity:1 of
@@ -1037,8 +1050,21 @@ msgstr ""
 
 #: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity:3
 #: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position:3
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position_entity:3
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position_entity_id:3
 #: of
 msgid "Entity ID"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids:1 of
+msgid "Get all entity IDs"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids:3
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_types:6
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_urns:6
+#: of
+msgid "Entity IDs"
 msgstr ""
 
 #: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_types:1
@@ -1046,9 +1072,14 @@ msgstr ""
 msgid "Get the entity IDs of the specified types"
 msgstr ""
 
-#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_types:6
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_urns:1
 #: of
-msgid "Entity IDs"
+msgid "Get the entity IDs of the specified URNs"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_ids_of_urns:3
+#: of
+msgid "List of entity URNs"
 msgstr ""
 
 #: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position:1
@@ -1064,6 +1095,26 @@ msgstr ""
 #: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position:9
 #: of
 msgid "If the entity is invalid"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position_entity:1
+#: of
+msgid "Get the entity position Entity"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position_entity:6
+#: of
+msgid "Entity position Entity"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position_entity_id:1
+#: of
+msgid "Get the entity position EntityID"
+msgstr ""
+
+#: adf_core_python.core.agent.info.world_info.WorldInfo.get_entity_position_entity_id:6
+#: of
+msgid "Entity position EntityID"
 msgstr ""
 
 #: adf_core_python.core.agent.info.world_info.WorldInfo.get_world_model:1 of

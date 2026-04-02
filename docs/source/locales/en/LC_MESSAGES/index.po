@@ -2,14 +2,13 @@
 # Copyright (C) 2024, Haruki Uehara, Yuki Shimada
 # This file is distributed under the same license as the adf-core-python
 # package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: adf-core-python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-22 21:57+0900\n"
+"POT-Creation-Date: 2026-04-02 19:10+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -22,7 +21,7 @@ msgstr ""
 
 #: ../../source/index.rst:40
 msgid "インストール"
-msgstr "Installation"
+msgstr "Install"
 
 #: ../../source/index.rst:47
 msgid "クイックスタート"
@@ -34,7 +33,7 @@ msgstr "Tutorial"
 
 #: ../../source/index.rst:63
 msgid "ハンズオン"
-msgstr "Hands-On"
+msgstr "Hands-on"
 
 #: ../../source/index.rst:70
 msgid "開発ガイド"
@@ -50,19 +49,15 @@ msgstr "adf-core-python Documentation"
 
 #: ../../source/index.rst:11
 msgid "現在このパッケージは開発中です。破壊的な変更が行われる可能性があります。"
-msgstr "This package is currently under development. Breaking changes may occur."
+msgstr "This package is still under development. Breaking changes may be introduced."
 
 #: ../../source/index.rst:15
 msgid "パッケージとしてまだ公開していないため、pip でインストールすることはできません。"
-msgstr ""
-"Since it has not been released as a package yet, it cannot be installed "
-"via pip."
+msgstr "It has not yet been published as a package, so it cannot be installed with pip."
 
 #: ../../source/index.rst:19
 msgid "以下の言語のドキュメントは機械翻訳を使用しています。翻訳の正確性については保証できません。 英語"
-msgstr ""
-"The following language documents use machine translation. The accuracy of"
-" the translation cannot be guaranteed. English"
+msgstr "The documentation for the following language uses machine translation. Translation accuracy is not guaranteed. English"
 
 #: ../../source/index.rst:24
 msgid "概要"
@@ -74,9 +69,7 @@ msgid ""
 "Simulation(RRS)におけるエージェント開発を支援するためのライブラリ及びフレームワークです。 adf-core-"
 "pythonを使用することで、エージェントの開発を効率化し、再利用性を向上させることができます。"
 msgstr ""
-"adf-core-python is a library and framework to support agent development "
-"in RoboCup Rescue Simulation (RRS). By using adf-core-python, you can "
-"streamline agent development and improve reusability."
+"adf-core-python is a library and framework for supporting agent development in RoboCup Rescue Simulation (RRS). By using adf-core-python, you can streamline agent development and improve reusability."
 
 #: ../../source/index.rst:29
 msgid "特徴"
@@ -84,13 +77,11 @@ msgstr "Features"
 
 #: ../../source/index.rst:30
 msgid "adf-core-pythonには以下のような特徴があります。"
-msgstr "adf-core-python has the following features:"
+msgstr "adf-core-python has the following features."
 
 #: ../../source/index.rst:32
 msgid "**モジュール単位での開発**: モジュール単位でエージェント開発を行い、モジュールの入れ替えが容易です。"
-msgstr ""
-"**Module-based development**: Develop agents on a module basis, making it"
-" easy to replace modules."
+msgstr "**Module-based development**: Develop agents in modules, making it easy to replace modules."
 
 #: ../../source/index.rst:33
 msgid "**モジュールの再利用**: 他のエージェントで使用されているモジュールを再利用することができます。"
@@ -98,9 +89,7 @@ msgstr "**Module reuse**: Reuse modules used by other agents."
 
 #: ../../source/index.rst:34
 msgid "**エージェントの開発に集中**: シミュレーションサーバーとの通信やログ出力などの共通処理をライブラリが提供します。"
-msgstr ""
-"**Focus on agent development**: The library provides common processing "
-"such as communication with the simulation server and log output."
+msgstr "**Focus on agent development**: The library provides common processing such as communication with the simulation server and log output."
 
 #: ../../source/index.rst:37
 msgid "はじめに"
@@ -108,7 +97,4 @@ msgstr "Getting Started"
 
 #: ../../source/index.rst:38
 msgid "adf-core-pythonを始めるには、インストールに従い、このドキュメントに記載されているチュートリアルやハンズオンを参照してください。"
-msgstr ""
-"To get started with adf-core-python, follow the installation and refer to"
-" the tutorials and hands-on in this document."
-
+msgstr "To get started with adf-core-python, follow the installation instructions and refer to the tutorials and hands-on guides in this document."
