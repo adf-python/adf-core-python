@@ -1,13 +1,13 @@
 [project]
 name = "adf_core_python"
-version = "0.2.8"
+version = "0.2.9"
 description = "Agent Development Framework for Python"
 readme = "README.md"
 authors = [
     { name = "Haruki Uehara", email = "k19016kk@maslab.aitech.ac.jp"},
     { name = "Yuki Shimada", email = "shimapaca@maslab.aitech.ac.jp" }
 ]
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
     "bitarray>=3.6.0",
     "click>=8.2.1",
@@ -44,6 +44,9 @@ dev = [
     "sphinxcontrib-mermaid>=1.0.0",
     "types-protobuf>=6.30.2.20250703",
 ]
+
+[tool.uv]
+exclude-newer = "1 week"
 
 
 [tool.ruff]
@@ -143,4 +146,4 @@ pythonpath = ["src"]
 testpaths = ["tests"]
 
 [tool.uv.sources]
-rcrscore = { git = "https://github.com/adf-python/rcrs-core-python" , tag = "v0.2.2" }
+rcrscore = { git = "https://github.com/adf-python/rcrs-core-python" , tag = "v0.2.3" }
