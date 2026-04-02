@@ -35,7 +35,7 @@
 
 ## 2. Pythonのインストール
 
-1. Terminalを起動し、以下のコマンドを実行します。また、バージョンが3.12以上になっていることを確認します。
+1. Terminalを起動し、以下のコマンドを実行します。また、バージョンが3.13以上になっていることを確認します。
 
    ```bash
    python --version
@@ -111,12 +111,12 @@
         sudo dnf install gcc bzip2 bzip2-devel openssl openssl-devel readline readline-devel sqlite-devel tk-devel
         ```
 
-   5. python3.12のインストール
+   5. python3.13のインストール
 
       ```bash
       exec "$SHELL"
-      pyenv install 3.12
-      pyenv global 3.12
+      pyenv install 3.13
+      pyenv global 3.13
       ```
 
 3. 以下のコマンドを入力し、バージョンが表示されたら成功です。(表示されない方はTerminalを再起動してください)

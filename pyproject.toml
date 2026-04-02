@@ -1,13 +1,13 @@
 [project]
 name = "adf_core_python"
-version = "0.2.9"
+version = "0.2.10"
 description = "Agent Development Framework for Python"
 readme = "README.md"
 authors = [
     { name = "Haruki Uehara", email = "k19016kk@maslab.aitech.ac.jp"},
     { name = "Yuki Shimada", email = "shimapaca@maslab.aitech.ac.jp" }
 ]
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 dependencies = [
     "bitarray>=3.6.0",
     "click>=8.2.1",
@@ -87,8 +87,8 @@ exclude = [
 line-length = 88
 indent-width = 2
 
-# Assume Python 3.12
-target-version = "py312"
+# Assume Python 3.13
+target-version = "py313"
 
 [tool.ruff.lint]
 # Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.

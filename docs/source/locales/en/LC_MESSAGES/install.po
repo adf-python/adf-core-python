@@ -40,8 +40,8 @@ msgstr "Git"
 
 #: ../../source/install/environment/environment.md:9
 #: ../../source/install/install/install.md:9
-msgid "Python 3.12 以上"
-msgstr "Python 3.12 or later"
+msgid "Python 3.13 以上"
+msgstr "Python 3.13 or later"
 
 #: ../../source/install/environment/environment.md:10
 msgid "OpenJDK 21"
@@ -151,8 +151,8 @@ msgstr "2. Install Python"
 
 #: ../../source/install/environment/linux/install.md:38
 #: ../../source/install/environment/mac/install.md:45
-msgid "Terminalを起動し、以下のコマンドを実行します。また、バージョンが3.12以上になっていることを確認します。"
-msgstr "Open a terminal and run the following command. Also make sure the version is 3.12 or later."
+msgid "Terminalを起動し、以下のコマンドを実行します。また、バージョンが3.13以上になっていることを確認します。"
+msgstr "Open a terminal and run the following command. Also make sure the version is 3.13 or later."
 
 #: ../../source/install/environment/linux/install.md:44
 msgid ""
@@ -194,8 +194,8 @@ msgid "必要パッケージのインストール"
 msgstr "Installing Required Packages"
 
 #: ../../source/install/environment/linux/install.md:114
-msgid "python3.12のインストール"
-msgstr "Installing python3.12"
+msgid "python3.13のインストール"
+msgstr "Installing python3.13"
 
 #: ../../source/install/environment/linux/install.md:128
 #: ../../source/install/environment/mac/install.md:63

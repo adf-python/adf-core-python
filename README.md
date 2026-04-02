@@ -8,7 +8,7 @@
 
 ### Prerequisites
 
-- Python (3.12 or higher)
+- Python (3.13 or higher)
 - uv (0.8.2 or higher)
 
 ### Installation

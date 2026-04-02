@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.abspath("../../"))
 project = "adf-core-python"
 copyright = "2024, Haruki Uehara, Yuki Shimada"
 author = "Haruki Uehara, Yuki Shimada"
-release = "0.2.9"
+release = "0.2.10"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
