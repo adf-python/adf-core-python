@@ -215,7 +215,10 @@ class MessageManager:
     if self.__channel_subscriber is None:
       raise ValueError("ChannelSubscriber is not set.")
 
-    if agent_info.get_time() == 1:
+    if (
+      agent_info.get_time()
+      == scenario_info.get_value(ScenarioInfoKeys.KERNEL_AGENTS_IGNOREUNTIL, 0) + 1
+    ):
       self.__subscribed_channels = self.__channel_subscriber.subscribe(
         agent_info, world_info, scenario_info
       )
