@@ -282,8 +282,9 @@ class Agent:
       for key, value in config.data.items():
         self.config.set_value(key, value)
 
-    self.send_acknowledge(msg.request_id)
     self.post_connect()
+
+    self.send_acknowledge(msg.request_id)
     self.logger.info(
       f"Connected to kernel: {self.__class__.__qualname__} (request_id: {msg.request_id}, agent_id: {self.agent_id}, mode: {self._mode})",
       request_id=msg.request_id,

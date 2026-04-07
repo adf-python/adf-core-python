@@ -108,7 +108,7 @@ class AgentLauncher:
       ) -> None:
         for thread, event in threads.items():
           thread.start()
-          event.wait(5)
+          event.wait(1)
 
       connector_thread = threading.Thread(
         target=start_connector_threads, args=(threads,)
