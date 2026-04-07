@@ -38,6 +38,8 @@ class MessageCivilian(StandardMessage):
     self._civilian_hp: Optional[int] = civilian.get_hp() or None
     self._civilian_buriedness: Optional[int] = civilian.get_buriedness() or None
     self._civilian_damage: Optional[int] = civilian.get_damage() or None
+    if self._civilian_damage is not None and self._civilian_damage > 10000:
+      self._civilian_damage = 10000
     self._civilian_position: Optional[EntityID] = civilian.get_position() or None
 
   def get_civilian_entity_id(self) -> Optional[EntityID]:

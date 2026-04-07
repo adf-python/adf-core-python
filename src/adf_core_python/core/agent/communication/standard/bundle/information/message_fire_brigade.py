@@ -48,6 +48,8 @@ class MessageFireBrigade(StandardMessage):
     self._fire_brigade_hp: Optional[int] = fire_brigade.get_hp() or None
     self._fire_brigade_buriedness: Optional[int] = fire_brigade.get_buriedness() or None
     self._fire_brigade_damage: Optional[int] = fire_brigade.get_damage() or None
+    if self._fire_brigade_damage is not None and self._fire_brigade_damage > 10000:
+      self._fire_brigade_damage = 10000
     self._fire_brigade_position: Optional[EntityID] = (
       fire_brigade.get_position() or None
     )
