@@ -84,7 +84,9 @@ def configure_logger(
 
   handler_stdout = logging.StreamHandler(sys.stdout)
   handler_stdout.setFormatter(
-    structlog.stdlib.ProcessorFormatter(processor=ConsoleRenderer())
+    structlog.stdlib.ProcessorFormatter(
+      processor=ConsoleRenderer(exception_formatter=structlog.dev.plain_traceback)
+    )
   )
   handler_stdout.setLevel(stream_level)
 
