@@ -49,6 +49,8 @@ class MessageAmbulanceTeam(StandardMessage):
       ambulance_team.get_buriedness() or None
     )
     self._ambulance_team_damage: Optional[int] = ambulance_team.get_damage() or None
+    if self._ambulance_team_damage is not None and self._ambulance_team_damage > 10000:
+      self._ambulance_team_damage = 10000
     self._ambulance_team_position: Optional[EntityID] = (
       ambulance_team.get_position() or None
     )

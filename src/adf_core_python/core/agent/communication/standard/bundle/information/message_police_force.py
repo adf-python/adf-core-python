@@ -45,6 +45,8 @@ class MessagePoliceForce(StandardMessage):
     self._police_force_hp: Optional[int] = police_force.get_hp() or None
     self._police_force_buriedness: Optional[int] = police_force.get_buriedness() or None
     self._police_force_damage: Optional[int] = police_force.get_damage() or None
+    if self._police_force_damage is not None and self._police_force_damage > 10000:
+      self._police_force_damage = 10000
     self._police_force_position: Optional[EntityID] = (
       police_force.get_position() or None
     )
