@@ -29,11 +29,11 @@ class CommandExecutor(ABC, Generic[T]):
     module_manager: ModuleManager,
     develop_data: DevelopData,
   ) -> None:
-    self._agent_info = agent_info
-    self._world_info = world_info
-    self._scenario_info = scenario_info
-    self._module_manager = module_manager
-    self._develop_data = develop_data
+    self._agent_info: AgentInfo = agent_info
+    self._world_info: WorldInfo = world_info
+    self._scenario_info: ScenarioInfo = scenario_info
+    self._module_manager: ModuleManager = module_manager
+    self._develop_data: DevelopData = develop_data
 
     self._result: Optional[Action] = None
 

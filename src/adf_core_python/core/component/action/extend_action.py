@@ -25,11 +25,11 @@ class ExtendAction(ABC):
     module_manager: ModuleManager,
     develop_data: DevelopData,
   ):
-    self.world_info = world_info
-    self.agent_info = agent_info
-    self.scenario_info = scenario_info
-    self.module_manager = module_manager
-    self.develop_data = develop_data
+    self.world_info: WorldInfo = world_info
+    self.agent_info: AgentInfo = agent_info
+    self.scenario_info: ScenarioInfo = scenario_info
+    self.module_manager: ModuleManager = module_manager
+    self.develop_data: DevelopData = develop_data
     self.result: Optional[Action] = None
     self.count_precompute: int = 0
     self.count_resume: int = 0
