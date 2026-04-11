@@ -124,9 +124,17 @@ class TacticsAgent(ABC):
 
   def module_resume(self, precompute_data: PrecomputeData) -> None:
     for module in self._modules:
+      start_time = time.time()
       module.resume(precompute_data)
+      self._logger.debug(
+        f"module {module.__class__.__name__} resume time: {time.time() - start_time:.3f}",
+      )
     for action in self._actions:
+      start_time = time.time()
       action.resume(precompute_data)
+      self._logger.debug(
+        f"action {action.__class__.__name__} resume time: {time.time() - start_time:.3f}",
+      )
     for executor in self._command_executor:
       executor.resume(precompute_data)
 
