@@ -59,7 +59,11 @@ class AbstractModule(ABC):
   def resume(self, precompute_data: PrecomputeData) -> AbstractModule:
     self._count_resume += 1
     for sub_module in self._sub_modules:
+      start_time = time.time()
       sub_module.resume(precompute_data)
+      self._logger.debug(
+        f"{self.__class__.__name__}'s sub_module {sub_module.__class__.__name__} resume time: {time.time() - start_time:.3f}",
+      )
     return self
 
   def prepare(self) -> AbstractModule:
