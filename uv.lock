@@ -3,7 +3,7 @@ revision = 3
 requires-python = ">=3.13"
 
 [options]
-exclude-newer = "2026-03-31T07:15:12.529465123Z"
+exclude-newer = "2026-04-04T04:33:53.822142181Z"
 exclude-newer-span = "P1W"
 
 [[package]]
@@ -20,7 +20,7 @@ wheels = [
 
 [[package]]
 name = "adf-core-python"
-version = "0.2.13"
+version = "0.2.14"
 source = { editable = "." }
 dependencies = [
     { name = "bitarray" },
