@@ -3,6 +3,7 @@ name = "adf_core_python"
 version = "0.2.14"
 description = "Agent Development Framework for Python"
 readme = "README.md"
+license = { file = "LICENSE" }
 authors = [
     { name = "Haruki Uehara", email = "k19016kk@maslab.aitech.ac.jp"},
     { name = "Yuki Shimada", email = "shimapaca@maslab.aitech.ac.jp" }

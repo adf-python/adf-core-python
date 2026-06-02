@@ -39,3 +39,7 @@ uv run ruff format .
 uv run ruff check .
 uv run mypy .
 ```
+
+## License
+
+MIT License. See [LICENSE](https://github.com/adf-python/adf-core-python/LICENSE).
