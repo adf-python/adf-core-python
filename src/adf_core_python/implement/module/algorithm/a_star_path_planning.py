@@ -84,6 +84,9 @@ class AStarPathPlanning(PathPlanning):
 
   def get_distance(self, from_entity_id: EntityID, to_entity_id: EntityID) -> float:
     path: list[EntityID] = self.get_path(from_entity_id, to_entity_id)
+    if not path:
+      return float("inf")
+
     distance: float = 0.0
     for i in range(len(path) - 1):
       distance += self.distance(path[i], path[i + 1])
