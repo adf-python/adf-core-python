@@ -1,9 +1,8 @@
 import argparse
+import sys
 
-try:
+if sys.platform != "win32":
   import resource
-except ImportError:
-  resource = None
 
 from adf_core_python.core.config.config import Config
 from adf_core_python.core.launcher.agent_launcher import AgentLauncher
@@ -16,7 +15,7 @@ class Launcher:
     self,
     launcher_config_file: str,
   ) -> None:
-    if resource is not None:
+    if sys.platform != "win32":
       try:
         resource.setrlimit(resource.RLIMIT_NOFILE, (8192, 1048576))
       except Exception as e:
