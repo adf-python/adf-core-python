@@ -38,9 +38,26 @@ class SampleRoadDetector(RoadDetector):
 
     self.register_sub_module(self._path_planning)
     self._result: Optional[EntityID] = None
+    self._target_areas: set[EntityID] = set()
+    self._priority_roads: set[EntityID] = set()
 
   def precompute(self, precompute_data: PrecomputeData) -> RoadDetector:
     super().precompute(precompute_data)
+    if self.get_count_precompute() >= 2:
+      return self
+
+    self._initialize_roads()
+    precompute_data.write_json_data(
+      {
+        "target_areas": sorted(
+          entity_id.get_value() for entity_id in self._target_areas
+        ),
+        "priority_roads": sorted(
+          entity_id.get_value() for entity_id in self._priority_roads
+        ),
+      },
+      self.__class__.__name__,
+    )
     return self
 
   def resume(self, precompute_data: PrecomputeData) -> RoadDetector:
@@ -48,25 +65,9 @@ class SampleRoadDetector(RoadDetector):
     if self.get_count_resume() >= 2:
       return self
 
-    self._target_areas: set[EntityID] = set()
-    entities = self._world_info.get_entities_of_types([Refuge, Building, GasStation])
-    for entity in entities:
-      if not isinstance(entity, Building):
-        continue
-      for entity_id in entity.get_neighbors():
-        neighbor = self._world_info.get_entity(entity_id)
-        if isinstance(neighbor, Road):
-          self._target_areas.add(entity_id)
-
-    self._priority_roads = set()
-    for entity in self._world_info.get_entities_of_types([Refuge]):
-      if not isinstance(entity, Building):
-        continue
-      for entity_id in entity.get_neighbors():
-        neighbor = self._world_info.get_entity(entity_id)
-        if isinstance(neighbor, Road):
-          self._priority_roads.add(entity_id)
-
+    data = precompute_data.read_json_data(self.__class__.__name__)
+    self._target_areas = {EntityID(value) for value in data["target_areas"]}
+    self._priority_roads = {EntityID(value) for value in data["priority_roads"]}
     return self
 
   def prepare(self) -> RoadDetector:
@@ -74,24 +75,28 @@ class SampleRoadDetector(RoadDetector):
     if self.get_count_prepare() >= 2:
       return self
 
+    self._initialize_roads()
+    return self
+
+  def _initialize_roads(self) -> None:
     self._target_areas = set()
     entities = self._world_info.get_entities_of_types([Refuge, Building, GasStation])
     for entity in entities:
-      building: Building = cast(Building, entity)
-      for entity_id in building.get_neighbors():
+      if not isinstance(entity, Building):
+        continue
+      for entity_id in entity.get_neighbors():
         neighbor = self._world_info.get_entity(entity_id)
         if isinstance(neighbor, Road):
           self._target_areas.add(entity_id)
 
     self._priority_roads = set()
     for entity in self._world_info.get_entities_of_types([Refuge]):
-      refuge: Refuge = cast(Refuge, entity)
-      for entity_id in refuge.get_neighbors():
+      if not isinstance(entity, Building):
+        continue
+      for entity_id in entity.get_neighbors():
         neighbor = self._world_info.get_entity(entity_id)
         if isinstance(neighbor, Road):
           self._priority_roads.add(entity_id)
-
-    return self
 
   def update_info(self, message_manager: MessageManager) -> RoadDetector:
     super().update_info(message_manager)
