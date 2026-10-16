@@ -73,13 +73,16 @@ class DefaultSearch(Search):
     return self
 
   def calculate(self) -> Search:
+    position = self._agent_info.get_position_entity_id()
+    if position is None:
+      self._result = None
+      return self
+
     nearest_building_id: Optional[EntityID] = None
-    nearest_distance: Optional[float] = None
+    nearest_distance = float("inf")
     for building_id in self._unreached_building_ids:
-      distance = self._world_info.get_distance(
-        self._agent_info.get_entity_id(), building_id
-      )
-      if nearest_distance is None or distance < nearest_distance:
+      distance = self._path_planning.get_distance(position, building_id)
+      if distance < nearest_distance:
         nearest_building_id = building_id
         nearest_distance = distance
     self._result = nearest_building_id
