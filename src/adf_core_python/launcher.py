@@ -1,5 +1,8 @@
 import argparse
-import resource
+import sys
+
+if sys.platform != "win32":
+  import resource
 
 from adf_core_python.core.config.config import Config
 from adf_core_python.core.launcher.agent_launcher import AgentLauncher
@@ -12,13 +15,14 @@ class Launcher:
     self,
     launcher_config_file: str,
   ) -> None:
-    try:
-      resource.setrlimit(resource.RLIMIT_NOFILE, (8192, 1048576))
-    except Exception as e:
-      print(
-        f"Failed to set resource limit: {e}. "
-        "This may cause issues with the number of open files."
-      )
+    if sys.platform != "win32":
+      try:
+        resource.setrlimit(resource.RLIMIT_NOFILE, (8192, 1048576))
+      except Exception as e:
+        print(
+          f"Failed to set resource limit: {e}. "
+          "This may cause issues with the number of open files."
+        )
 
     self.launcher_config = Config(launcher_config_file)
 
