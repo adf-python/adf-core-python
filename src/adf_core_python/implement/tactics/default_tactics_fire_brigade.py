@@ -68,7 +68,7 @@ class DefaultTacticsFireBrigade(TacticsFireBrigade):
       "adf_core_python.implement.action.default_extend_action_rescue.DefaultExtendActionRescue",
     )
     self._action_ext_move = module_manager.get_extend_action(
-      "DefaultTacticsAmbulanceTeam.ExtendActionMove",
+      "DefaultTacticsFireBrigade.ExtendActionMove",
       "adf_core_python.implement.action.default_extend_action_move.DefaultExtendActionMove",
     )
     self._command_executor_fire = module_manager.get_command_executor(
@@ -76,7 +76,7 @@ class DefaultTacticsFireBrigade(TacticsFireBrigade):
       "adf_core_python.implement.centralized.default_command_executor_fire.DefaultCommandExecutorFire",
     )
     self._command_executor_scout = module_manager.get_command_executor(
-      "DefaultTacticsAmbulanceTeam.CommandExecutorScout",
+      "DefaultTacticsFireBrigade.CommandExecutorScout",
       "adf_core_python.implement.centralized.default_command_executor_scout.DefaultCommandExecutorScout",
     )
 
