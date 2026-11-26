@@ -28,11 +28,8 @@ class Connector(ABC):
     return self.connected_agent_count
 
   def _create_develop_data(self, config: Config) -> DevelopData:
-    # Preserve --debug for configurations without an explicit develop flag.
     return DevelopData(
-      config.get_value(
-        ConfigKey.KEY_DEVELOP_FLAG, config.get_value(ConfigKey.KEY_DEBUG_FLAG, False)
-      ),
+      config.get_value(ConfigKey.KEY_DEVELOP_FLAG, False),
       config.get_value(
         ConfigKey.KEY_DEVELOP_DATA_FILE_NAME, DevelopData.DEFAULT_FILE_NAME
       ),
