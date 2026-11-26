@@ -93,7 +93,7 @@ class Launcher:
       help="timeout in seconds",
       metavar="",
     )
-    parser.add_argument("--debug", action="store_true", help="debug flag")
+    parser.add_argument("--debug", action="store_true", default=None, help="debug flag")
     parser.add_argument(
       "--java",
       action="store_true",

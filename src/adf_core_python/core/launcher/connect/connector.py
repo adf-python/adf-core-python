@@ -2,9 +2,11 @@ import threading
 from abc import ABC, abstractmethod
 from typing import Optional
 
+from adf_core_python.core.agent.develop.develop_data import DevelopData
 from adf_core_python.core.component.abstract_loader import AbstractLoader
 from adf_core_python.core.config.config import Config
 from adf_core_python.core.gateway.gateway_launcher import GatewayLauncher
+from adf_core_python.core.launcher.config_key import ConfigKey
 from adf_core_python.core.launcher.connect.component_launcher import ComponentLauncher
 
 
@@ -24,3 +26,14 @@ class Connector(ABC):
 
   def get_connected_agent_count(self) -> int:
     return self.connected_agent_count
+
+  def _create_develop_data(self, config: Config) -> DevelopData:
+    # Preserve --debug for configurations without an explicit develop flag.
+    return DevelopData(
+      config.get_value(
+        ConfigKey.KEY_DEVELOP_FLAG, config.get_value(ConfigKey.KEY_DEBUG_FLAG, False)
+      ),
+      config.get_value(
+        ConfigKey.KEY_DEVELOP_DATA_FILE_NAME, DevelopData.DEFAULT_FILE_NAME
+      ),
+    )
